@@ -1,8 +1,11 @@
 @import url(bulma.min.css);
+.section.is-subpage .table.type-common tbody tr:last-child th, .section.is-subpage .table.type-common tbody tr:last-child td {
+  border-bottom: 1px solid #dbdbdb; }
+
 /* common style */
 body {
   color: #565656;
-  font-family: light; }
+  font-family: regular; }
 
 @font-face {
   font-family: thin;
