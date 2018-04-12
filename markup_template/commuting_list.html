@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>designfever intranet</title>
+    <link rel="stylesheet" href="assets/css/work.df.css">
+    <script defer src="assets/js/all.js"></script>
+    <script defer src="assets/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+
+<nav id="navbar" class="navbar">
+    <!--is-fixed-top-->
+    <div class="container">
+        <div class="navbar-brand">
+            <div class="navbar-item is-size-7">
+                Visual Interaction Development 이사 신형주
+            </div>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item is-size-7">
+                    퇴근 가능시간은 <strong>18:53</strong> 입니다.
+                </div>
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a class="button" href="#">
+                                <span>퇴근하기</span>
+                            </a>
+                        </p>
+                        <p class="control">
+                            <a class="button is-primary" href="#">
+                                <span>로그아웃</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="hero is-link">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column">
+                    <img src="assets/images/df_logo_w.svg" width="150">
+                </div>
+                <div class="column is-narrow">
+                    <span class="is-size-6 is-italic">a difference that matters.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="hero-foot">
+        <div class="container">
+            <nav class="tabs is-boxed is-fullwidth">
+                <ul>
+                    <li class="is-active"><a href="#">홈</a></li>
+                    <li><a href="#">근태</a></li>
+                    <li><a href="#">휴가</a></li>
+                    <li><a href="#">전자결재</a></li>
+                    <li><a href="#">프로젝트</a></li>
+                    <li><a href="#">주간보고서</a></li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">게시판</a></li>
+                    <li><a href="#">예약</a></li>
+                    <li><a href="#">조직도</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<nav class="navbar has-shadow">
+    <div class="container">
+        <div class="navbar-tabs">
+            <a class="navbar-item is-tab is-active" href="#">근태 현황</a>
+            <a class="navbar-item is-tab " href="#">실/팀원 근태현황</a>
+            <a class="navbar-item is-tab " href="#">일/월별 근태통계</a>
+            <a class="navbar-item is-tab " href="#">연별 근태통계</a>
+            <a class="navbar-item is-tab " href="#">비용정산</a>
+            <a class="navbar-item is-tab " href="#">휴가/외근/출장 현황</a>
+        </div>
+    </div>
+</nav>
+
+<section class="section">
+    <div class="container">
+        <div class="calendar is-large">
+            <div class="calendar-nav">
+                <div class="calendar-nav-previous-month">
+                    <button class="button is-text">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                </div>
+                <div>March 2017</div>
+                <div class="calendar-nav-next-month">
+                    <button class="button is-text">
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <div class="calendar-date">Sun</div>
+                    <div class="calendar-date">Mon</div>
+                    <div class="calendar-date">Tue</div>
+                    <div class="calendar-date">Wed</div>
+                    <div class="calendar-date">Thu</div>
+                    <div class="calendar-date">Fri</div>
+                    <div class="calendar-date">Sat</div>
+                </div>
+                <div class="calendar-body">
+                    <div class="calendar-date is-disabled"><button class="date-item">26</button></div>
+                    <div class="calendar-date is-disabled">
+                        <button class="date-item">27</button>
+                        <div class="calendar-events">
+                            <a class="calendar-event">Default event</a>
+                        </div>
+                    </div>
+                    <div class="calendar-date is-disabled"><button class="date-item">28</button></div>
+                    <div class="calendar-date"><button class="date-item">1</button></div>
+                    <div class="calendar-date"><button class="date-item">2</button></div>
+                    <div class="calendar-date"><button class="date-item">3</button></div>
+                    <div class="calendar-date tooltip" data-tooltip="Today"><button class="date-item is-today">4</button></div>
+                    <div class="calendar-date" disabled=""><button class="date-item">5</button></div>
+                    <div class="calendar-date"><button class="date-item">6</button></div>
+                    <div class="calendar-date"><button class="date-item">7</button></div>
+                    <div class="calendar-date tooltip" data-tooltip="You have appointments">
+                        <button class="date-item badge">8</button>
+                        <div class="calendar-events">
+                            <a class="calendar-event is-primary">Primary event</a>
+                            <a class="calendar-event is-warning">Warning event</a>
+                            <a class="calendar-event is-danger">Danger event</a>
+                        </div>
+                    </div>
+                    <div class="calendar-date"><button class="date-item">9</button></div>
+                    <div class="calendar-date"><button class="date-item">10</button></div>
+                    <div class="calendar-date"><button class="date-item">11</button></div>
+                    <div class="calendar-date">
+                        <button class="date-item">12</button>
+                        <div class="calendar-events">
+                            <a class="calendar-event">Default event</a>
+                        </div>
+                    </div>
+                    <div class="calendar-date"><button class="date-item">13</button></div>
+                    <div class="calendar-date"><button class="date-item">14</button></div>
+                    <div class="calendar-date"><button class="date-item">15</button></div>
+                    <div class="calendar-date calendar-range calendar-range-start"><button class="date-item is-active">16</button></div>
+                    <div class="calendar-date calendar-range"><button class="date-item">17</button></div>
+                    <div class="calendar-date calendar-range"><button class="date-item">18</button></div>
+                    <div class="calendar-date calendar-range"><button class="date-item">19</button></div>
+                    <div class="calendar-date calendar-range calendar-range-end">
+                        <button class="date-item is-active">20</button>
+                        <div class="calendar-events">
+                            <a class="calendar-event is-success">Success event</a>
+                        </div>
+                    </div>
+                    <div class="calendar-date"><button class="date-item">21</button></div>
+                    <div class="calendar-date"><button class="date-item">22</button></div>
+                    <div class="calendar-date"><button class="date-item">23</button></div>
+                    <div class="calendar-date"><button class="date-item">24</button></div>
+                    <div class="calendar-date"><button class="date-item">25</button></div>
+                    <div class="calendar-date"><button class="date-item">26</button></div>
+                    <div class="calendar-date"><button class="date-item">27</button></div>
+                    <div class="calendar-date"><button class="date-item">28</button></div>
+                    <div class="calendar-date"><button class="date-item">29</button></div>
+                    <div class="calendar-date"><button class="date-item">30</button></div>
+                    <div class="calendar-date"><button class="date-item">31</button></div>
+                    <div class="calendar-date is-disabled">
+                        <button class="date-item">1</button>
+                        <div class="calendar-events">
+                            <a class="calendar-event">Second default event</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</section>
+
+<!--<footer class="footer">-->
+    <!--<div class="container">-->
+        <!--<div class="content has-text-centered">-->
+            <!--<p>-->
+                <!--<strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed-->
+                <!--<a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content-->
+                <!--is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.-->
+            <!--</p>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</footer>-->
+
+<script lang="javascript">
+</script>
+
+</body>
+</html>

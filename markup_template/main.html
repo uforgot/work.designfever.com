@@ -6,6 +6,7 @@
     <title>designfever intranet</title>
     <link rel="stylesheet" href="assets/css/work.df.css">
     <script defer src="assets/js/all.js"></script>
+    <script defer src="assets/js/bulma-calendar.min.js"></script>
 </head>
 <body>
 
@@ -112,26 +113,27 @@
                 </div>
     
                 <div class="content">
+
                     <div class="field has-addons">
                         <div class="control is-expanded">
-                            <a class="button is-fullwidth">
-                                <span class="icon is-small is-left">
+                            <a class="button is-fullwidth is-danger">
+                                <span class="icon is-small is-hidden-tablet-only">
                                     <i class="fas fa-check"></i>
                                 </span>
-                                <span class="is-right">2</span>
+                                <span>2</span>
                             </a>
                         </div>
                         <div class="control is-expanded">
                             <a class="button is-fullwidth">
-                                <span class="icon is-small is-left">
+                                <span class="icon is-small is-hidden-tablet-only">
                                     <i class="fas fa-arrow-up"></i>
                                 </span>
-                                <span class="is-right">2</span>
+                                <span>2</span>
                             </a>
                         </div>
                         <div class="control is-expanded">
                             <a class="button is-fullwidth">
-                            <span class="icon is-small">
+                            <span class="icon is-small is-hidden-tablet-only">
                                 <i class="fas fa-bullseye"></i>
                             </span>
                                 <span>2</span>
@@ -147,74 +149,141 @@
                     <div class="tile is-vertical">
                         <div class="tile">
  
-                            <div class="tile is-parent is-vertical is-6">
+                            <div class="tile is-parent is-vertical">
                                 <article class="tile is-child card">
                                     <header class="card-header">
                                         <p class="card-header-title">
-                                            근태체크
+                                            <span class="icon is-small">
+                                                <i class="fas fa-clock"></i>
+                                            </span>
+                                            <span style="margin-left:0.4em;">근태체크</span>
                                         </p>
+                                        <p class="card-header-icon title is-7" style="cursor:auto;">2018년 4월 12일</p>
                                     </header>
                                     <div class="card-content">
-                                        <p class="heading is-size-6">2018. 04. 10화요일</p>
                                         <p class="title is-size-1">03:25:20</p>
+                                        <div class="columns is-fullheight">
+                                            <!--<div class="column">-->
+                                                <!--<div class="notification is-danger has-text-centered">-->
+                                                    <!--출근-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+    
+                                            <div class="column">
+                                                <div class="notification has-text-centered is-danger">
+                                                    퇴근
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <div class="notification has-text-centered">
+                                                    외출
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                    
                                 </article>
                             </div>
                 
                             <div class="tile is-parent">
                                 <article class="tile is-child card">
-                                    <header class="card-header">
-                                        <p class="card-header-title">
-                                            이달의 생일자
-                                        </p>
-                                    </header>
-                                    <div class="card-content">
-                        
-                                    </div>
+                                    <!--<header class="card-header">-->
+                                        <!--<p class="card-header-title">-->
+                                            <!--이달의 생일자-->
+                                        <!--</p>-->
+                                    <!--</header>-->
+                                    <!--<div class="card-content">-->
+    
+                                        <div class="calendar" style="max-width:none !important;">
+                                            <div class="calendar-nav">
+                                                <div class="calendar-nav-previous-month">
+                                                    <button class="button is-text is-small">
+                                                        <i class="fa fa-chevron-left"></i>
+                                                    </button>
+                                                </div>
+                                                <div>March 2017</div>
+                                                <div class="calendar-nav-next-month">
+                                                    <button class="button is-text is-small">
+                                                        <i class="fa fa-chevron-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="calendar-container">
+                                                <div class="calendar-header">
+                                                    <div class="calendar-date">Sun</div>
+                                                    <div class="calendar-date">Mon</div>
+                                                    <div class="calendar-date">Tue</div>
+                                                    <div class="calendar-date">Wed</div>
+                                                    <div class="calendar-date">Thu</div>
+                                                    <div class="calendar-date">Fri</div>
+                                                    <div class="calendar-date">Sat</div>
+                                                </div>
+                                                <div class="calendar-body">
+                                                    <div class="calendar-date is-disabled"><button class="date-item">26</button></div>
+                                                    <div class="calendar-date is-disabled"><button class="date-item">27</button></div>
+                                                    <div class="calendar-date is-disabled"><button class="date-item">28</button></div>
+                                                    <div class="calendar-date"><button class="date-item">1</button></div>
+                                                    <div class="calendar-date"><button class="date-item">2</button></div>
+                                                    <div class="calendar-date"><button class="date-item">3</button></div>
+                                                    <div class="calendar-date tooltip" data-tooltip="Today"><button class="date-item is-today">4</button></div>
+                                                    <div class="calendar-date tooltip" data-tooltip="Not available" disabled=""><button class="date-item">5</button></div>
+                                                    <div class="calendar-date"><button class="date-item">6</button></div>
+                                                    <div class="calendar-date"><button class="date-item">7</button></div>
+                                                    <div class="calendar-date tooltip" data-tooltip="You have appointments"><button class="date-item">8</button></div>
+                                                    <div class="calendar-date"><button class="date-item">9</button></div>
+                                                    <div class="calendar-date"><button class="date-item">10</button></div>
+                                                    <div class="calendar-date"><button class="date-item">11</button></div>
+                                                    <div class="calendar-date"><button class="date-item">12</button></div>
+                                                    <div class="calendar-date"><button class="date-item">13</button></div>
+                                                    <div class="calendar-date"><button class="date-item">14</button></div>
+                                                    <div class="calendar-date"><button class="date-item">15</button></div>
+                                                    <div class="calendar-date calendar-range calendar-range-start"><button class="date-item is-active">16</button></div>
+                                                    <div class="calendar-date calendar-range"><button class="date-item">17</button></div>
+                                                    <div class="calendar-date calendar-range"><button class="date-item">18</button></div>
+                                                    <div class="calendar-date calendar-range"><button class="date-item">19</button></div>
+                                                    <div class="calendar-date calendar-range calendar-range-end"><button class="date-item is-active">20</button></div>
+                                                    <div class="calendar-date"><button class="date-item">21</button></div>
+                                                    <div class="calendar-date"><button class="date-item">22</button></div>
+                                                    <div class="calendar-date"><button class="date-item">23</button></div>
+                                                    <div class="calendar-date"><button class="date-item">24</button></div>
+                                                    <div class="calendar-date"><button class="date-item">25</button></div>
+                                                    <div class="calendar-date"><button class="date-item">26</button></div>
+                                                    <div class="calendar-date"><button class="date-item">27</button></div>
+                                                    <div class="calendar-date"><button class="date-item">28</button></div>
+                                                    <div class="calendar-date"><button class="date-item">29</button></div>
+                                                    <div class="calendar-date"><button class="date-item">30</button></div>
+                                                    <div class="calendar-date"><button class="date-item">31</button></div>
+                                                    <div class="calendar-date is-disabled"><button class="date-item">1</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    <!--</div>-->
                                 </article>
+                                
                             </div>
                         </div>
                         <div class="tile">
-
                             <div class="tile is-parent">
                                 <article class="tile is-child card">
+                                    <header class="card-header">
+                                        <p class="card-header-title">
+                                            공지사항
+                                        </p>
+                                    </header>
                                     <div class="card-content">
-                                        <div class="tabs is-boxed">
-                                            <ul>
-                                                <li class="is-active">
-                                                    <a>
-                                                        <span>공지사항</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a>
-                                                        <span>최신게시물</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                         <table class="table is-fullwidth is-hoverable is-marginless">
                                             <tbody>
-                                            <tr class="is-selected">
+                                            <tr>
                                                 <th>3층 인테리어 공사 안내</th>
-                                                <td>사원 김은경</td>
+                                                <td class="has-text-right">사원 김은경</td>
                                             </tr>
-                                            <tr class="is-selected">
+                                            <tr>
                                                 <th>승진 및 인사발령 안내</th>
-                                                <td>팀장 김숙진</td>
+                                                <td class="has-text-right">사원 김은경</td>
                                             </tr>
                                             <tr>
                                                 <th>제증명 및 소득증빙 서류 발급 신청...</th>
-                                                <td>팀장 김숙진</td>
-                                            </tr>
-                                            <tr>
-                                                <th>3층 인테리어 공사로 인한 층간...</th>
-                                                <td>사원 김은경</td>
-                                            </tr>
-                                            <tr>
-                                                <th>3층 정수기 사용금지 및 냉장고 청...</th>
-                                                <td>사원 김은경</td>
+                                                <td class="has-text-right">사원 김은경</td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -222,6 +291,44 @@
                                 </article>
                             </div>
                         </div>
+                        <div class="tile">
+                            <div class="tile is-parent">
+                                <article class="tile is-child card">
+                                    <header class="card-header">
+                                        <p class="card-header-title">
+                                            최신소식
+                                        </p>
+                                    </header>
+                                    <div class="card-content">
+                                        <table class="table is-fullwidth is-hoverable is-marginless">
+                                            <tbody>
+                                            <tr>
+                                                <th>3층 인테리어 공사 안내</th>
+                                                <td class="has-text-right">사원 김은경</td>
+                                            </tr>
+                                            <tr>
+                                                <th>승진 및 인사발령 안내</th>
+                                                <td class="has-text-right">사원 김은경</td>
+                                            </tr>
+                                            <tr>
+                                                <th>제증명 및 소득증빙 서류 발급 신청...</th>
+                                                <td class="has-text-right">사원 김은경</td>
+                                            </tr>
+                                            <tr>
+                                                <th>3층 인테리어 공사로 인한 층간...</th>
+                                                <td class="has-text-right">사원 김은경</td>
+                                            </tr>
+                                            <tr>
+                                                <th>3층 정수기 사용금지 및 냉장고 청...</th>
+                                                <td class="has-text-right">사원 김은경</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+
                     </div>
     
                 </div>
@@ -243,6 +350,9 @@
         <!--</div>-->
     <!--</div>-->
 <!--</footer>-->
+
+<script lang="javascript">
+</script>
 
 </body>
 </html>
