@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>공지사항 상세</title>
+    <link rel="stylesheet" href="assets/css/work.df.css">
+    <script defer src="assets/js/all.js"></script>
+</head>
+<body><nav id="navbar" class="navbar">
+    <!--is-fixed-top-->
+    <div class="container">
+        <div class="navbar-brand">
+            <div class="navbar-item is-size-7">
+                Visual Interaction Development 이사 신형주
+            </div>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item is-size-7">
+                    퇴근 가능시간은 <strong>18:53</strong> 입니다.
+                </div>
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a class="button" href="#">
+                                <span>퇴근하기</span>
+                            </a>
+                        </p>
+                        <p class="control">
+                            <a class="button is-primary" href="#">
+                                <span>로그아웃</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="hero is-link">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column">
+                    <img src="assets/images/df_logo_w.svg" width="150">
+                </div>
+                <div class="column is-narrow">
+                    <span class="is-size-6 is-italic">a difference that matters.</span>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    <div class="hero-foot">
+        <div class="container">
+            <nav class="tabs is-boxed is-fullwidth">
+                <ul>
+                    <li class="is-active"><a href="#">홈</a></li>
+                    <li><a href="#">근태</a></li>
+                    <li><a href="#">휴가</a></li>
+                    <li><a href="#">전자결재</a></li>
+                    <li><a href="#">프로젝트</a></li>
+                    <li><a href="#">주간보고서</a></li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">게시판</a></li>
+                    <li><a href="#">예약</a></li>
+                    <li><a href="#">조직도</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<nav class="navbar has-shadow">
+    <div class="container">
+        <div class="navbar-tabs">
+            <a class="navbar-item is-tab is-active" href="#">공지 사항</a>
+        </div>
+    </div>
+</nav>
+
+<section class="section is-subpage">
+    <div class="container">
+        <nav class="level">
+            <div class="level-left">
+                <p class="buttons">
+                    <a href="board_list.html" class="button">목록</a>
+                </p>
+            </div>
+
+            <div class="level-right">
+                <p class="buttons">
+                    <a href="" class="button is-danger">삭제</a>
+                    <a href="" class="button">수정</a>
+                </p>
+            </div>
+        </nav>
+
+        <hr>
+
+
+        <div class="content">
+            <!-- 내용 출력 -->
+            <h1>Hello World</h1>
+            <p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
+            <h2>Second level</h2>
+            <p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
+
+            <ul>
+                <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
+                <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
+                <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
+                <li>Ut non enim metus.</li>
+            </ul>
+
+            <pre>
+                &lt;!DOCTYPE html&gt;
+                &lt;html&gt;
+                  &lt;head&gt;
+                    &lt;title&gt;Hello World&lt;/title&gt;
+                  &lt;/head&gt;
+                  &lt;body&gt;
+                    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mollis.&lt;/p&gt;
+                  &lt;/body&gt;
+                &lt;/html&gt;
+                </pre>
+
+            <blockquote>Ut venenatis, nisl scelerisque sollicitudin fermentum, quam libero hendrerit ipsum, ut blandit est tellus sit amet turpis.</blockquote>
+            <p>Quisque at semper enim, eu hendrerit odio. Etiam auctor nisl et <em>justo sodales</em> elementum. Maecenas ultrices lacus quis neque consectetur, et lobortis nisi molestie.</p>
+
+            <!-- //내용 출력 -->
+        </div>
+
+        <hr>
+
+        <!-- 댓글 리스트 -->
+        <article class="media">
+            <figure class="media-left">
+                <p class="image is-64x64">
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                </p>
+            </figure>
+            <div class="media-content">
+                <div class="content">
+                    <p>
+                        <strong>Barbara Middleton</strong>
+                        <br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+                        <br>
+                        <small><a>댓글</a></small>
+                    </p>
+                </div>
+
+                <article class="media">
+                    <figure class="media-left">
+                        <p class="image is-48x48">
+                            <img src="https://bulma.io/images/placeholders/96x96.png">
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>Sean Brown</strong>
+                                <br>
+                                Donec sollicitudin urna eget eros malesuada sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam blandit nisl a nulla sagittis, a lobortis leo feugiat.
+                                <br>
+                                <small><a>댓글</a></small>
+                            </p>
+                        </div>
+
+                        <article class="media">
+                            Vivamus quis semper metus, non tincidunt dolor. Vivamus in mi eu lorem cursus ullamcorper sit amet nec massa.
+                        </article>
+
+                        <article class="media">
+                            Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent malesuada metus sed pharetra euismod. Cras tellus odio, tincidunt iaculis diam non, porta aliquet tortor.
+                        </article>
+                    </div>
+                </article>
+
+                <article class="media">
+                    <figure class="media-left">
+                        <p class="image is-48x48">
+                            <img src="https://bulma.io/images/placeholders/96x96.png">
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>Kayli Eunice </strong>
+                                <br>
+                                Sed convallis scelerisque mauris, non pulvinar nunc mattis vel. Maecenas varius felis sit amet magna vestibulum euismod malesuada cursus libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus lacinia non nisl id feugiat.
+                                <br>
+                                <small><a>댓글</a></small>
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </article>
+
+        <!-- 댓글 작성 -->
+        <article class="media">
+            <figure class="media-left">
+                <p class="image is-64x64">
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                </p>
+            </figure>
+            <div class="media-content">
+                <div class="field">
+                    <p class="control">
+                        <textarea class="textarea" placeholder="댓글을 입력해주세요~"></textarea>
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <button class="button">댓글 작성</button>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <hr>
+
+        <nav class="level">
+            <div class="level-left">
+                <p class="buttons">
+                    <a href="board_list.html" class="button">목록</a>
+                </p>
+            </div>
+
+            <div class="level-right">
+                <p class="buttons">
+                    <a href="" class="button is-danger">삭제</a>
+                    <a href="board_write.html" class="button">수정</a>
+                </p>
+            </div>
+        </nav>
+    </div>
+</section>
+
+
+</body>
+</html>
