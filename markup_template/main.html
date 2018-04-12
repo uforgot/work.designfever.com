@@ -41,12 +41,18 @@
     </div>
 </nav>
 
-<section class="hero is-dark">
+<section class="hero is-link">
     <div class="hero-body">
         <div class="container">
-            <img src="assets/images/df_logo_w.svg" width="150">
-            <p class="title"></p>
-            <p class="subtitle">difference that matters</p>
+            <div class="columns is-vcentered">
+                <div class="column">
+                    <img src="assets/images/df_logo_w.svg" width="150">
+                </div>
+                <div class="column is-narrow">
+                    <span class="is-size-6 is-italic">a difference that matters.</span>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="hero-foot">
@@ -69,212 +75,195 @@
     </div>
 </section>
 
+<nav class="navbar has-shadow">
+    <div class="container">
+        <div class="navbar-tabs">
+            <a class="navbar-item is-tab is-active" href="#">근태 현황</a>
+            <a class="navbar-item is-tab " href="#">실/팀원 근태현황</a>
+            <a class="navbar-item is-tab " href="#">일/월별 근태통계</a>
+            <a class="navbar-item is-tab " href="#">연별 근태통계</a>
+            <a class="navbar-item is-tab " href="#">비용정산</a>
+            <a class="navbar-item is-tab " href="#">휴가/외근/출장 현황</a>
+        </div>
+    </div>
+</nav>
+
 <section class="section">
     <div class="container">
-        <div class="tile is-ancestor">
-            <div class="tile is-vertical is-7">
-                <div class="tile">
-                    <div class="tile is-parent">
-                        <article class="tile is-child card">
-                            
-                            <div class="card-content">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <figure class="image is-96x96">
-                                            <img src="assets/images/profile.jpg" alt="Placeholder image">
-                                        </figure>
-                                    </div>
-                                    <div class="media-content">
-                                        <p class="title is-3">김성빈</p>
-                                        <p class="subtitle is-7"><br>
-                                            Visual Interaction Development<br>
-                                            <strong>manager</strong>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <a class="button">정보수정하기</a>
-                                    <a class="button">서명생성</a>
-                                </div>
-                            </div>
-
-                        </article>
-                    </div>
-    
-                    <div class="tile is-parent is-vertical">
-                        <article class="tile is-child card">
-                            <header class="card-header">
-                                <p class="card-header-title">
-                                    근태체크
-                                </p>
-                            </header>
-                            <div class="card-content">
-                                <p class="heading is-size-6">2018. 04. 10화요일</p>
-                                <p class="title is-size-1">03:25:20</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child card">
-                        <header class="card-header">
-                            <p class="card-header-title">
-                                이달의 생일자
-                            </p>
-                        </header>
-                        <div class="card-content field is-grouped is-grouped-multiline">
-                            <div class="control">
-                                <div class="tags has-addons">
-                                    <span class="tag is-danger">김형곤 실장</span>
-                                    <span class="tag">4월 2일</span>
-                                </div>
-                            </div>
-                            <div class="control">
-                                <div class="tags has-addons">
-                                    <span class="tag is-danger">서효정 주임</span>
-                                    <span class="tag">4월 4일</span>
-                                </div>
-                            </div>
-                            <div class="control">
-                                <div class="tags has-addons">
-                                    <span class="tag is-danger">곽병준 주임</span>
-                                    <span class="tag">4월 6일</span>
-                                </div>
-                            </div>
-                            <div class="control">
-                                <div class="tags has-addons">
-                                    <span class="tag is-danger">마현정 차장</span>
-                                    <span class="tag">4월 9일</span>
-                                </div>
-                            </div>
-                            <div class="control">
-                    
-                                <div class="tags has-addons">
-                                    <span class="tag is-danger">한성백 팀장</span>
-                                    <span class="tag">4월 9일</span>
-                                </div>
-                            </div>
-                            <div class="control">
-                    
-                                <div class="tags has-addons">
-                                    <span class="tag is-danger">고희수 주임</span>
-                                    <span class="tag">4월 17일</span>
-                                </div>
-                            </div>
-                            <div class="control">
-                                <div class="tags has-addons">
-                                    <span class="tag is-danger">김민경 사원</span>
-                                    <span class="tag">4월 19일</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child card">
+        <div class="columns">
+            <div class="column is-one-fifth">
+                <div class="content">
+                    <article class="card">
                         <div class="card-content">
-                            <div class="tabs is-boxed">
-                                <ul>
-                                    <li class="is-active">
-                                        <a>
-                                            <span>공지사항</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span>최신게시물</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                            <div class="image is-fullwidth is-hidden-mobile">
+                                <img src="assets/images/profile.jpg" alt="Placeholder image">
                             </div>
-                            <table class="table is-fullwidth is-hoverable is-size-7-mobile">
-                                <tbody>
-                                <tr class="is-selected">
-                                    <th>3층 인테리어 공사 안내</th>
-                                    <td>사원 김은경</td>
-                                </tr>
-                                <tr class="is-selected">
-                                    <th>승진 및 인사발령 안내</th>
-                                    <td>팀장 김숙진</td>
-                                </tr>
-                                <tr>
-                                    <th>제증명 및 소득증빙 서류 발급 신청...</th>
-                                    <td>팀장 김숙진</td>
-                                </tr>
-                                <tr>
-                                    <th>3층 인테리어 공사로 인한 층간...</th>
-                                    <td>사원 김은경</td>
-                                </tr>
-                                <tr>
-                                    <th>3층 정수기 사용금지 및 냉장고 청...</th>
-                                    <td>사원 김은경</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <hr class="is-hidden-mobile"/>
+                            <div class="content">
+                                <p class="title  is-4"><span>박재형</span> <span class="title is-5">/ 대표</span></p>
+                                <p class="subtitle is-7">Chief executive officer </p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a class="card-footer-item is-text"><span>정보수정</span></a>
+                            <a class="card-footer-item is-text"><span>서명생성</span></a>
                         </div>
                     </article>
+                </div>
+    
+                <div class="content">
+                    <div class="field is-grouped is-grouped-multiline is-fullwidth">
+                        <div class="control is-one-third">
+                            <div class="tags has-addons is-large">
+                                <span class="tag is-dark is-medium">결제할 문서</span>
+                                <span class="tag is-info is-medium">10</span>
+                            </div>
+                        </div>
+                        <div class="control is-one-third">
+                            <div class="tags has-addons is-large">
+                                <span class="tag is-dark is-medium">결제할 문서</span>
+                                <span class="tag is-info is-medium">10</span>
+                            </div>
+                        </div>
+                        <div class="control is-one-third">
+                            <div class="tags has-addons is-large">
+                                <span class="tag is-dark is-medium">결제할 문서</span>
+                                <span class="tag is-info is-medium">10</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
+                <!--<div class="content">-->
+                    <!--<article class="is-child card is-info">-->
+                        <!--<div class="card-content">-->
+                            <!--<div class="field is-grouped is-grouped-multiline">-->
+                                <!--<div class="control">-->
+                                    <!--<div class="tags has-addons is-fullwidth is-large">-->
+                                        <!--<span class="tag is-dark is-large">결제할 문서</span>-->
+                                        <!--<span class="tag is-info is-large">10</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+        <!---->
+                                <!--<div class="control">-->
+                                    <!--<div class="tags has-addons">-->
+                                        <!--<span class="tag is-dark">build</span>-->
+                                        <!--<span class="tag is-success">passing</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+        <!---->
+                                <!--<div class="control">-->
+                                    <!--<div class="tags has-addons">-->
+                                        <!--<span class="tag is-dark">chat</span>-->
+                                        <!--<span class="tag is-primary">on gitter</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;<div class="columns">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="column is-four-fifths">결제할 문서</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="column">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<a class="button" ></a></div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="columns">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="column is-four-fifths">결제할 문서</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="column">0</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="columns">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="column is-four-fifths">결제할 문서</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="column">0</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--</div>-->
+                    <!--</article>-->
+                <!--</div>-->
+    
             </div>
-
-            <div class="tile is-parent">
-                <article class="tile is-child card">
-                    <div class="card-content">
-                        <div class="tabs is-fullwidth is-boxed">
-                            <ul>
-                                <li class="is-active">
-                                    <a>
-                                        <span class="tag is-danger">2</span>
-                                        <span>결제할 문서</span>
-                                       
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span>결제 진행중</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span>참조된 문서</span>
-                                    </a>
-                                </li>
-                            </ul>
+            <div class="column">
+                <div class="tile is-ancestor">
+                    <div class="tile is-vertical">
+                        <div class="tile">
+ 
+                            <div class="tile is-parent is-vertical is-6">
+                                <article class="tile is-child card">
+                                    <header class="card-header">
+                                        <p class="card-header-title">
+                                            근태체크
+                                        </p>
+                                    </header>
+                                    <div class="card-content">
+                                        <p class="heading is-size-6">2018. 04. 10화요일</p>
+                                        <p class="title is-size-1">03:25:20</p>
+                                    </div>
+                    
+                                </article>
+                            </div>
+                
+                            <div class="tile is-parent">
+                                <article class="tile is-child card">
+                                    <header class="card-header">
+                                        <p class="card-header-title">
+                                            이달의 생일자
+                                        </p>
+                                    </header>
+                                    <div class="card-content">
+                        
+                                    </div>
+                                </article>
+                            </div>
                         </div>
-                        <table class="table is-fullwidth is-hoverable is-size-7-mobile">
-                            <tbody>
-                            <tr>
-                                <th>3층 인테리어 공사 안내</th>
-                            </tr>
-                            <tr>
-                                <th>승진 및 인사발령 안내</th>
-                            </tr>
-                            <tr>
-                                <th>제증명 및 소득증빙 서류 발급 신청...</th>
-                            </tr>
-                            <tr>
-                                <th>3층 인테리어 공사로 인한 층간...</th>
-                            </tr>
-                            <tr>
-                                <th>3층 정수기 사용금지 및 냉장고 청...</th>
-                            </tr>
-                            <tr>
-                                <th>4월 주차타워 이용자 공지</th>
-                            </tr>
-                            <tr>
-                                <th>3층 인테리어 공사로 인한 층간...</th>
-                            </tr>
-                            <tr>
-                                <th>3층 정수기 사용금지 및 냉장고 청...</th>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="tile">
+
+                            <div class="tile is-parent">
+                                <article class="tile is-child card">
+                                    <div class="card-content">
+                                        <div class="tabs is-boxed">
+                                            <ul>
+                                                <li class="is-active">
+                                                    <a>
+                                                        <span>공지사항</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a>
+                                                        <span>최신게시물</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <table class="table is-fullwidth is-hoverable is-marginless">
+                                            <tbody>
+                                            <tr class="is-selected">
+                                                <th>3층 인테리어 공사 안내</th>
+                                                <td>사원 김은경</td>
+                                            </tr>
+                                            <tr class="is-selected">
+                                                <th>승진 및 인사발령 안내</th>
+                                                <td>팀장 김숙진</td>
+                                            </tr>
+                                            <tr>
+                                                <th>제증명 및 소득증빙 서류 발급 신청...</th>
+                                                <td>팀장 김숙진</td>
+                                            </tr>
+                                            <tr>
+                                                <th>3층 인테리어 공사로 인한 층간...</th>
+                                                <td>사원 김은경</td>
+                                            </tr>
+                                            <tr>
+                                                <th>3층 정수기 사용금지 및 냉장고 청...</th>
+                                                <td>사원 김은경</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
                     </div>
     
-
-                </article>
+                </div>
             </div>
         </div>
+        
+        
     </div>
 </section>
 

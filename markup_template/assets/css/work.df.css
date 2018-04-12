@@ -5,7 +5,8 @@
 /* common style */
 body {
   color: #565656;
-  font-family: regular; }
+  /*font-family: regular; */
+}
 
 @font-face {
   font-family: thin;
