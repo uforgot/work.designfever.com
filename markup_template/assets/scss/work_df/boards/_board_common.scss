@@ -1,1 +1,17 @@
 /* board.common */
+.control{
+  &.has-add-button{
+    .file{
+      margin:0.5rem 0;
+      .file-label{
+        margin-right: 1rem;
+      }
+    }
+    .buttons{
+      flex-wrap:nowrap;
+      .icon{
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
