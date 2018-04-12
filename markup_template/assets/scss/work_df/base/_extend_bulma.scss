@@ -13,9 +13,14 @@
         //  }
         //}
         tbody{
+          &.notice{
+            th,td{
+              background: #fafafa;
+              border-color: #dbdbdb;
+              color:#222;
+            }
+          }
           tr{
-
-
             &:last-child{
               th, td{
                 border-bottom: 1px solid #dbdbdb;
