@@ -1,5 +1,9 @@
 @import url(bulma.min.css);
 @import url(bulma-calendar.min.css);
+.section.is-subpage .table.type-common tbody.notice th, .section.is-subpage .table.type-common tbody.notice td {
+  background: #fafafa;
+  border-color: #dbdbdb;
+  color: #222; }
 .section.is-subpage .table.type-common tbody tr:last-child th, .section.is-subpage .table.type-common tbody tr:last-child td {
   border-bottom: 1px solid #dbdbdb; }
 
