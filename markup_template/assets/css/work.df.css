@@ -1,5 +1,6 @@
 @import url(bulma.min.css);
 @import url(bulma-calendar.min.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 .section.is-subpage .table.type-common tbody.notice th, .section.is-subpage .table.type-common tbody.notice td {
   background: #fafafa;
   border-color: #dbdbdb;
@@ -35,6 +36,10 @@
   margin-bottom: 1.5rem; }
 
 /* common style */
+body {
+  font-family: Nanum Gothic;
+  font-weight: bold; }
+
 @font-face {
   font-family: thin;
   src: url(../fonts/NotoSansKR-Thin.woff2) format("woff2"), url(../fonts/NotoSansKR-Thin.woff) format("woff");
@@ -71,6 +76,9 @@
   font-style: normal;
   font-weight: normal;
   text-rendering: optimizeLegibility; }
+.wrapper {
+  margin-bottom: 1.5rem; }
+
 .main-calendar {
   max-width: none !important; }
 
@@ -82,8 +90,8 @@
   height: 100%;
   padding: 0.8rem; }
   .main-clock-content .clock-area {
-    height: 63%;
-    background: #dddddd;
+    height: 69%;
+    background: #bbbbbb;
     margin-bottom: 2%;
     border-radius: 0.25rem;
     text-align: center; }
@@ -104,7 +112,7 @@
       .main-clock-content .clock-area .clock-txt .clock-txt-start {
         font-size: 1rem; }
   .main-clock-content .clock-buttons {
-    height: 35%; }
+    height: 29%; }
     .main-clock-content .clock-buttons .clock-button {
       height: 100%;
       padding: 1rem; }
