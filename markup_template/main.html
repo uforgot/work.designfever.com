@@ -42,7 +42,7 @@
     </div>
 </nav>
 
-<section class="hero is-link">
+<section class="hero is-primary">
     <div class="hero-body">
         <div class="container">
             <div class="columns is-vcentered">
@@ -134,7 +134,7 @@
                         <div class="control is-expanded">
                             <a class="button is-fullwidth">
                             <span class="icon is-small is-hidden-tablet-only">
-                                <i class="fas fa-bullseye"></i>
+                                <i class="fas fa-dot-circle"></i>
                             </span>
                                 <span>2</span>
                             </a>
@@ -151,56 +151,60 @@
  
                             <div class="tile is-parent is-vertical">
                                 <article class="tile is-child card">
-                                    <header class="card-header">
-                                        <p class="card-header-title">
-                                            <span class="icon is-small">
-                                                <i class="fas fa-clock"></i>
-                                            </span>
-                                            <span style="margin-left:0.4em;">근태체크</span>
-                                        </p>
-                                        <p class="card-header-icon title is-7" style="cursor:auto;">2018년 4월 12일</p>
-                                    </header>
-                                    <div class="card-content">
-                                        <p class="title is-size-1">03:25:20</p>
-                                        <div class="columns is-fullheight">
-                                            <!--<div class="column">-->
-                                                <!--<div class="notification is-danger has-text-centered">-->
-                                                    <!--출근-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-    
-                                            <div class="column">
-                                                <div class="notification has-text-centered is-danger">
-                                                    퇴근
-                                                </div>
-                                            </div>
-                                            <div class="column">
-                                                <div class="notification has-text-centered">
-                                                    외출
-                                                </div>
+                                    
+                                    <div class="main-clock-content">
+                                        
+                                        <div class="clock-area">
+                                            <div class="title has-text-centered has-text-white clock-txt">
+                                                <p class="clock-txt-now">17:56:20</p>
+                                                <p class="clock-txt-start">출근 09:20:12</p>
                                             </div>
                                         </div>
+                                        
+                                        <div class="field has-addons clock-buttons">
+    
+                                            <!-- 출근 체크 전 일 경우
+                                            <div class="control is-expanded">
+                                                <a class="button is-fullwidth is-danger" style="height:100%;">
+                                                    <span class="title is-3 has-text-white">출근</span>
+                                                </a>
+                                            </div>
+                                            <!-- 출근 체크 전 일 경우 끝 -->
+    
+                                            <!-- 출근 체크 후 일 경우 -->
+                                            <div class="control is-expanded">
+                                                <a class="button is-fullwidth is-info clock-button">
+                                                    <div class="title is-5 has-text-white">퇴근</div>
+                                                </a>
+                                            </div>
+                                            <div class="control is-expanded">
+                                                <a class="button is-fullwidth is-primary clock-button">
+                                                    <span class="title is-5 has-text-white">외출</span>
+                                                </a>
+                                            </div>
+                                            <!-- 출근 체크 후 일 경우 끝 -->
+                                        </div>
+
+    
+
+                                        
+
                                     </div>
+           
                                 </article>
                             </div>
                 
                             <div class="tile is-parent">
                                 <article class="tile is-child card">
-                                    <!--<header class="card-header">-->
-                                        <!--<p class="card-header-title">-->
-                                            <!--이달의 생일자-->
-                                        <!--</p>-->
-                                    <!--</header>-->
-                                    <!--<div class="card-content">-->
     
-                                        <div class="calendar" style="max-width:none !important;">
+                                        <div class="calendar main-calendar">
                                             <div class="calendar-nav">
                                                 <div class="calendar-nav-previous-month">
                                                     <button class="button is-text is-small is-primary">
                                                         <i class="fa fa-chevron-left"></i>
                                                     </button>
                                                 </div>
-                                                <div>March 2017</div>
+                                                <div><span class="title is-6 has-text-white">2018년 4월</span></div>
                                                 <div class="calendar-nav-next-month">
                                                     <button class="button is-text is-small is-primary">
                                                         <i class="fa fa-chevron-right"></i>
@@ -256,8 +260,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    
-                                    <!--</div>-->
+   
                                 </article>
                                 
                             </div>
@@ -267,7 +270,10 @@
                                 <article class="tile is-child card">
                                     <header class="card-header">
                                         <p class="card-header-title">
-                                            공지사항
+                                            <span class="icon is-small">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                            </span>
+                                            <span class="main-card-title">공지사항</span>
                                         </p>
                                     </header>
                                     <div class="card-content">
@@ -296,7 +302,10 @@
                                 <article class="tile is-child card">
                                     <header class="card-header">
                                         <p class="card-header-title">
-                                            최신소식
+                                            <span class="icon is-small">
+                                                <i class="fas fa-plus-circle"></i>
+                                            </span>
+                                            <span class="main-card-title">최신소식</span>
                                         </p>
                                     </header>
                                     <div class="card-content">

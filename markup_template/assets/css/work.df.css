@@ -71,6 +71,44 @@
   font-style: normal;
   font-weight: normal;
   text-rendering: optimizeLegibility; }
+.main-calendar {
+  max-width: none !important; }
+
+.main-card-title {
+  margin-left: 0.5em; }
+
+.main-clock-content {
+  width: 100%;
+  height: 100%;
+  padding: 0.8rem; }
+  .main-clock-content .clock-area {
+    height: 63%;
+    background: #dddddd;
+    margin-bottom: 2%;
+    border-radius: 0.25rem;
+    text-align: center; }
+    .main-clock-content .clock-area:before {
+      display: inline-block;
+      content: '';
+      width: 1px;
+      height: 100%;
+      vertical-align: middle;
+      margin-left: -1px; }
+    .main-clock-content .clock-area .clock-txt {
+      text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 1rem; }
+      .main-clock-content .clock-area .clock-txt .clock-txt-now {
+        font-size: 4rem; }
+      .main-clock-content .clock-area .clock-txt .clock-txt-start {
+        font-size: 1rem; }
+  .main-clock-content .clock-buttons {
+    height: 35%; }
+    .main-clock-content .clock-buttons .clock-button {
+      height: 100%;
+      padding: 1rem; }
+
 /* board.common */
 .control.has-add-button .file {
   margin: 0.5rem 0; }
