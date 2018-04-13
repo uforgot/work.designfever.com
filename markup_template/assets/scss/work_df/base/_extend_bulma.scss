@@ -1,12 +1,13 @@
 @charset "utf-8";
 // bulma css-framework 확장
 .section{
+  // subpage
   &.is-subpage{
+    //테이블 확장
     .table{
       &.type-common{
 
         tbody{
-
           &.notice{
             th,td{
               background: #fafafa;
@@ -69,6 +70,7 @@
 
   }
 
+  // 필드 그룹
   .field-group{
     margin-bottom: 1.5rem;
   }
