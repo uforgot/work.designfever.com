@@ -160,6 +160,9 @@ section {
     display: inline-block;
     width: 100%; }
 
+.login-image {
+  padding: 2rem 2rem 0 2rem; }
+
 /* board.common */
 .control.has-add-button .file {
   margin: 0.5rem 0; }
