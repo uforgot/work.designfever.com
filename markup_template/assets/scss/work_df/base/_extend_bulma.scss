@@ -1,77 +1,121 @@
 @charset "utf-8";
 // bulma css-framework 확장
 .section{
-  // subpage
-  &.is-subpage{
-    //테이블 확장
-    .table{
-      &.type-common{
+    // subpage
+    &.is-subpage{
 
-        tbody{
-          &.notice{
-            th,td{
-              background: #fafafa;
-              border-color: #dbdbdb;
-              color:#222;
+        //테이블 확장
+        .table{
+            &.type-common{
+                thead {
+                    th {
+                        border-color:#000;
+                    }
+                }
+                tbody{
+                    &.notice{
+                        th,td{
+                            background: #fafafa;
+                            border-color: #dbdbdb;
+                            color:#222;
+                        }
+                    }
+                    tr{
+                        &:last-child{
+                            th, td{
+                                border-bottom: 1px solid #dbdbdb;
+                            }
+                        }
+                    }
+
+
+                }
+
+                @include breakpoint(mobile){
+                    thead{
+                        //display: none;
+                        tr {
+                            th {
+                                display:none;
+                            }
+                            th:first-child {
+                                //display:inline-block;
+                                width:100%;
+                                padding:0;
+                                margin:0;
+                            }
+                        }
+                    }
+                    tbody{
+                        &:nth-of-type(1) {
+                            border-top:2px solid #000;
+                        }
+
+                        border-bottom: 1px solid #dbdbdb;
+                        &.notice{
+                            border-bottom: none;
+                            tr{
+                                background: #fafafa;
+                            }
+                            th,td{
+                                background: none;
+                            }
+                        }
+                        tr{
+                            display: block;
+                            border-bottom: 1px solid #dbdbdb;
+                            th, td {
+                                display: inline-block;
+                                border:none;
+                                font-size: 0.75rem;
+
+                                padding: 0.1rem 0 0.8rem 0.45rem;
+
+                                &:after{
+                                    margin-left:0.5rem;
+                                    opacity:0.2;
+                                    content:' |';
+                                }
+
+                                &:nth-of-type(1){
+                                    display: none;
+                                }
+
+                                &:nth-of-type(2) {
+                                    display:block;
+                                    font-size:1rem;
+                                    &:after {
+                                        content:'';
+                                    }
+                                    padding:0.8rem .75rem 0 .75rem;
+                                }
+
+                                &:nth-of-type(3) {
+                                    padding: 0.1rem 0 0.8rem 0.85rem;
+                                }
+
+                                &:last-child {
+                                    &:after{
+                                        content:'';
+                                    };
+                                }
+                            }
+
+                            &:last-child {
+                                th, td {
+                                    border-bottom: none;
+                                }
+                            }
+                        }
+                    }
+                }
             }
-          }
-          tr{
-            &:last-child{
-              th, td{
-                border-bottom: 1px solid #dbdbdb;
-              }
-            }
-          }
-
-
         }
 
-        @include breakpoint(mobile){
-          thead{
-            display: none;
-          }
-          tbody{
-            border-bottom: 1px solid #dbdbdb;
-            &.notice{
-              border-bottom: none;
-              tr{
-                background: #e9e9e9;
-              }
-              th,td{
-                background: none;
-              }
-            }
-            tr{
-              display: block;
-              border-bottom: 1px solid #dbdbdb;
-              th, td {
-                display: inline-block;
-                border:none;
-                font-size: 0.75rem;
-                &:nth-of-type(1){
-                  display: none;
-                }
-                &:nth-of-type(2){
-                  display: block;
-                  font-size: 1rem;
-                }
-              }
-
-              &:last-child {
-                th, td {
-                  border-bottom: none;
-                }
-              }
-            }
-          }
-        }
-      }
     }
 
-  }
-
-  // 필드 그룹
-  .field-group{
-    margin-bottom: 1.5rem;
-  }
+    // 필드 그룹
+    .field-group{
+        margin-bottom: 1.5rem;
+    }
 }

@@ -2,6 +2,8 @@
 @import url(bulma-extensions.min.css);
 @import url(bulma-calendar.min.css);
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+.section.is-subpage .table.type-common thead th {
+  border-color: #000; }
 .section.is-subpage .table.type-common tbody.notice th, .section.is-subpage .table.type-common tbody.notice td {
   background: #fafafa;
   border-color: #dbdbdb;
@@ -9,14 +11,20 @@
 .section.is-subpage .table.type-common tbody tr:last-child th, .section.is-subpage .table.type-common tbody tr:last-child td {
   border-bottom: 1px solid #dbdbdb; }
 @media screen and (max-width: 767px) {
-  .section.is-subpage .table.type-common thead {
+  .section.is-subpage .table.type-common thead tr th {
     display: none; }
+  .section.is-subpage .table.type-common thead tr th:first-child {
+    width: 100%;
+    padding: 0;
+    margin: 0; }
   .section.is-subpage .table.type-common tbody {
     border-bottom: 1px solid #dbdbdb; }
+    .section.is-subpage .table.type-common tbody:nth-of-type(1) {
+      border-top: 2px solid #000; }
     .section.is-subpage .table.type-common tbody.notice {
       border-bottom: none; }
       .section.is-subpage .table.type-common tbody.notice tr {
-        background: #e9e9e9; }
+        background: #fafafa; }
       .section.is-subpage .table.type-common tbody.notice th, .section.is-subpage .table.type-common tbody.notice td {
         background: none; }
     .section.is-subpage .table.type-common tbody tr {
@@ -25,12 +33,24 @@
       .section.is-subpage .table.type-common tbody tr th, .section.is-subpage .table.type-common tbody tr td {
         display: inline-block;
         border: none;
-        font-size: 0.75rem; }
+        font-size: 0.75rem;
+        padding: 0.1rem 0 0.8rem 0.45rem; }
+        .section.is-subpage .table.type-common tbody tr th:after, .section.is-subpage .table.type-common tbody tr td:after {
+          margin-left: 0.5rem;
+          opacity: 0.2;
+          content: ' |'; }
         .section.is-subpage .table.type-common tbody tr th:nth-of-type(1), .section.is-subpage .table.type-common tbody tr td:nth-of-type(1) {
           display: none; }
         .section.is-subpage .table.type-common tbody tr th:nth-of-type(2), .section.is-subpage .table.type-common tbody tr td:nth-of-type(2) {
           display: block;
-          font-size: 1rem; }
+          font-size: 1rem;
+          padding: 0.8rem .75rem 0 .75rem; }
+          .section.is-subpage .table.type-common tbody tr th:nth-of-type(2):after, .section.is-subpage .table.type-common tbody tr td:nth-of-type(2):after {
+            content: ''; }
+        .section.is-subpage .table.type-common tbody tr th:nth-of-type(3), .section.is-subpage .table.type-common tbody tr td:nth-of-type(3) {
+          padding: 0.1rem 0 0.8rem 0.85rem; }
+        .section.is-subpage .table.type-common tbody tr th:last-child:after, .section.is-subpage .table.type-common tbody tr td:last-child:after {
+          content: ''; }
       .section.is-subpage .table.type-common tbody tr:last-child th, .section.is-subpage .table.type-common tbody tr:last-child td {
         border-bottom: none; } }
 .section .field-group {
@@ -39,7 +59,7 @@
 /* common style */
 body {
   font-family: Nanum Gothic;
-  font-weight: bold; }
+  font-weight: 600; }
 
 @font-face {
   font-family: thin;
@@ -126,7 +146,7 @@ section {
   min-width: 370px; }
   @media screen and (max-width: 767px) {
     section {
-      padding: 1.5rem 1.5rem !important; } }
+      padding: 1rem 1rem !important; } }
 
 .section-fixed-margin {
   height: 3.3rem; }
@@ -163,7 +183,19 @@ section {
 .login-image {
   padding: 2rem 2rem 0 2rem; }
 
+.hr-strong {
+  border: 1px solid #000; }
+
 /* board.common */
+.table td, th {
+  padding: 0.8em .75em .6em .75em; }
+
+.td-icon {
+  transform: translateY(20%); }
+
+.td-tag {
+  transform: translateY(-5%); }
+
 .control.has-add-button .file {
   margin: 0.5rem 0; }
   .control.has-add-button .file .file-label {

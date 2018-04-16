@@ -18,69 +18,76 @@
 <!-- 본문 시작 -->
 <section class="section is-subpage">
     <div class="container">
-        <nav class="level">
+        <div class="columns is-vcentered">
             <!-- Left side -->
-            <div class="level-left">
+            <div class="column">
                 <!-- todo 0413 구조 변경 -->
-                <div class="level-item">
-                    <div class="field">
-                        <p class="control select">
+                    <div class="field is-grouped">
+                        <div class="control select">
                             <select>
-                                <option>선택1</option>
-                                <option value="1">옵션1</option>
-                                <option value="2">옵션2</option>
-                                <option value="3">옵션3</option>
+                                <option>전체</option>
+                                <option value="1">전체</option>
+                                <option value="2">제목 + 본문</option>
+                                <option value="3">제목</option>
+                                <option value="3">본문</option>
+                                <option value="3">작성자</option>
                             </select>
-                        </p>
+                        </div>
+                        
+                        <div class="control is-expanded">
+                            <input class="input" type="text" placeholder="">
+                        </div>
+                        <div class="control is-hidden-mobile">
+                            <button class="button is-link">
+                                <span class="icon is-small">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                                <span>검색</span>
+                            </button>
+                        </div>
+    
+                        <div class="control is-hidden-tablet">
+                            <a href="board_write.html" class="button is-link">
+                                <span class="icon is-small">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </a>
+                        </div>
+    
+                        <div class="control is-hidden-tablet">
+                            <a href="board_write.html" class="button is-danger">
+                                <span class="icon is-small">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </span>
+                            </a>
+                        </div>
 
-                        <p class="control select">
-                            <select>
-                                <option>선택2</option>
-                                <option value="1">옵션1</option>
-                                <option value="2">옵션2</option>
-                                <option value="3">옵션3</option>
-                            </select>
-                        </p>
                     </div>
-                </div>
-                <div class="level-item">
-                    <div class="field has-addons">
-                        <p class="control">
-                            <input class="input" type="text" placeholder="Find a post">
-                        </p>
-                        <p class="control">
-                            <button class="button">
-                                Search
-                            </button>
-                        </p>
-                        <p class="control">
-                            <button class="button">
-                                Reset
-                            </button>
-                        </p>
-                    </div>
-                </div>
             </div>
-
             <!-- Right side -->
-            <div class="level-right">
-                <div class="buttons is-centered">
-                    <a href="board_write.html" class="button">작성</a>
+            <div class="column is-hidden-mobile">
+                <div class="control has-text-right">
+                <a href="board_write.html" class="button is-danger">
+                    <span class="icon is-small">
+                        <i class="fas fa-pencil-alt"></i>
+                    </span>
+                    <span>게시물 작성</span>
+                </a>
                 </div>
             </div>
-        </nav>
+        </div>
 
         <table class="table is-fullwidth is-hoverable type-common">
             <colgroup>
-                <col width="10%">
+                <col width="8%">
                 <col width="*">
                 <col width="15%">
                 <col width="15%">
-                <col width="15%">
+                <col width="10%">
             </colgroup>
             <thead>
             <tr>
-                <th>No.</th>
+                <th><span class="is-hidden-mobile">No.</span></th>
                 <th>제목</th>
                 <th class="has-text-centered">작성자</th>
                 <th class="has-text-centered">날자</th>
@@ -90,7 +97,18 @@
             <!-- 상단 공지 -->
             <tbody class="notice">
             <tr>
-                <td><span class="tag is-danger">공지</span></td>
+                <td><span class="tag is-danger td-tag">공지</span></td>
+                <td>
+                    <a href="board_detail.html">
+                        <span>[디바이스] 관련 담당자 변경 공지</span>
+                    </a>
+                </td>
+                <td class="has-text-centered">사원 김은경</td>
+                <td class="has-text-centered">2018-04-14</td>
+                <td class="has-text-centered">333</td>
+            </tr>
+            <tr>
+                <td><span class="tag is-danger td-tag">공지</span></td>
                 <td>
                     <a href="board_detail.html">
                         <span>3층 인테리어 공사 안내</span>
@@ -101,11 +119,12 @@
                 <td class="has-text-centered">333</td>
             </tr>
             <tr>
-                <td><span class="tag is-danger">공지</span></td>
+                <td><span class="tag is-danger td-tag">공지</span></td>
                 <td>
                     <a href="board_detail.html">
-                        <span>3층 인테리어 공사 안내</span>
+                        <span>제증명 및 소득증빙 서류 발급 신청 안내 [333]</span>
                     </a>
+                    <!--<span class="tag is-info is-rounded is-size-7">309</span>-->
                 </td>
                 <td class="has-text-centered">사원 김은경</td>
                 <td class="has-text-centered">2018-04-14</td>
@@ -115,7 +134,7 @@
             <!-- 일반 리스트 -->
             <tbody class="list">
             <tr>
-                <td>4444</td>
+                <td>488</td>
                 <td>
                     <a href="">
                         <span>3층 인테리어 공사로 인한 층간</span>
@@ -126,11 +145,12 @@
                 <td class="has-text-centered">141</td>
             </tr>
             <tr>
-                <td>300</td>
+                <td>487</td>
                 <td>
                     <a href="">
-                        <span>3층 인테리어 공사로 인한 층간 댓글 수 출력</span>
-                        <span class="tag is-info is-rounded" style="font-size:0.7rem; vertical-align:middle;">99999</span>
+                        <span>3층 정수기 사용금지 및 냉장고 청소 요청 공지</span>
+                        <span class="tag is-rounded td-tag">40</span>
+                    
                     </a>
                 </td>
                 <td class="has-text-centered">사원 김은경</td>
@@ -138,13 +158,12 @@
                 <td class="has-text-centered">141</td>
             </tr>
             <tr>
-                <td>99</td>
+                <td>486</td>
                 <td>
                     <a href="">
-                        <span>3층 인테리어 공사로 인한 층간 이동 공지</span>
-                        <span class="tag is-small has-text-info is-rounded"><i class="fas fa-file"></i></span>
-    
-                        <span class="tag is-info is-rounded" style="font-size:0.7rem; vertical-align:middle;">5</span>
+                        <span>4월 주차타워 이용자 공지</span>
+                        <span class="icon is-small td-icon"><i class="fas fa-file"></i></span>
+                        <span class="tag is-rounded td-tag">24</span>
                     </a>
                 </td>
                 <td class="has-text-centered">사원 김은경</td>
@@ -152,8 +171,36 @@
                 <td class="has-text-centered">141</td>
             </tr>
             <tr>
-                <td>1</td>
+                <td>485</td>
                 <td><a href="">3층 인테리어 공사로 인한 층간 이동 공지</a></td>
+                <td class="has-text-centered">사원 김은경</td>
+                <td class="has-text-centered">2018-04-04</td>
+                <td class="has-text-centered">141</td>
+            </tr>
+            <tr>
+                <td>484</td>
+                <td><a href="">[필독] 3월 생일파티 공지(3월 29일 오전 10:00 지하1층)</a></td>
+                <td class="has-text-centered">사원 김은경</td>
+                <td class="has-text-centered">2018-04-04</td>
+                <td class="has-text-centered">141</td>
+            </tr>
+            <tr>
+                <td>483</td>
+                <td><a href="">[공지] 3월 전체워크샵 _ 강원도 강릉/속초</a></td>
+                <td class="has-text-centered">사원 김은경</td>
+                <td class="has-text-centered">2018-04-04</td>
+                <td class="has-text-centered">141</td>
+            </tr>
+            <tr>
+                <td>482</td>
+                <td><a href="">2월 Best Team, Best Player</a></td>
+                <td class="has-text-centered">사원 김은경</td>
+                <td class="has-text-centered">2018-04-04</td>
+                <td class="has-text-centered">141</td>
+            </tr>
+            <tr>
+                <td>481</td>
+                <td><a href="">승진 및 인사발령 안내</a></td>
                 <td class="has-text-centered">사원 김은경</td>
                 <td class="has-text-centered">2018-04-04</td>
                 <td class="has-text-centered">141</td>
