@@ -74,6 +74,9 @@
 .section .field-group {
   margin-bottom: 1.5rem; }
 
+.is-title-column {
+  margin: auto 0; }
+
 /* common style */
 body {
   font-family: Nanum Gothic;

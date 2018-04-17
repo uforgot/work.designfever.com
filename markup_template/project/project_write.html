@@ -41,93 +41,213 @@
                 </p>
             </div>
         </nav>
-
-        
-        <div class="field-group">
+    
+        <div class="box">
             <div class="field">
                 <div class="control">
                     <input class="input is-large" type="text" placeholder="프로젝트명">
                 </div>
             </div>
-
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="field is-grouped">
+                        <input class="is-checkradio is-info" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" >
+                        <label for="exampleCheckbox" class="is-size-7">
+                            * 이미 등록된 프로젝트의 파생 프로젝트인 경우 체크해 주세요.
+                        </label>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <div class="control select is-disabled is-fullwidth">
+                            <select>
+                                <option value="DF2018_014">[DF2018_014] NCSOFT Brand Identity 제안</option>
+                                <option value="DF2018_013">[DF2018_013] 삼성 메모리 사업부 마컴 제작 연간 대행 제안</option>
+                                <option value="DF2018_012">[DF2018_012] 삼성 Flexible Mobile 선행 UX 디자인</option>
+                                <option value="DF2018_011">[DF2018_011] Galaxy s9 interactive table 러시아 월드컵 콘텐츠 제작</option>
+                                <option value="DF2018_010">[DF2018_010] AIA Vitality</option>
+                                <option value="DF2018_009">[DF2018_009] [Clash Royale] Asia Pro League website</option>
+                                <option value="DF2018_008">[DF2018_008] Samsung UNPK Star_China</option>
+                                <option value="DF2018_007">[DF2018_007] Samsung History Wall_MWC/Frankfurt/Paris</option>
+                                <option value="DF2018_006">[DF2018_006] 디자인삼성 </option>
+                                <option value="DF2018_005">[DF2018_005] DF 인트라넷</option>
+                                <option value="DF2018_004">[DF2018_004] 2018 렉서스 디지털 마케팅 (중고차 포함)</option>
+                                <option value="DF2018_003">[DF2018_003] DFH 운영 </option>
+                                <option value="DF2018_002">[DF2018_002] DF 운영 </option>
+                                <option value="DF2018_001">[DF2018_001] 2018 슈퍼셀 디지털 마케팅</option>
+                            </select>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
             <div class="field">
                 <div class="control">
                     <textarea class="textarea" placeholder="프로젝트 설명" rows="4"></textarea>
                 </div>
             </div>
-    
-            <div class="field is-grouped">
-                <input class="is-checkradio" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked">
-                <label for="exampleCheckbox">Check me</label>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" placeholder="2018년 4월 17일">
+                        </div>
+                        <div class="control">
+                            <a class="button is-static">
+                                부터
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" placeholder="2018년 4월 17일">
+                        </div>
+                
+                        <div class="control">
+                            <a class="button is-static">
+                                까지
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
+    
     
         <div class="box">
-            <div class="control has-add-button"><!-- 커스텀 클래스 : has-add-button -->
-                <div class="file has-name is-right is-fullwidth">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="resume">
-                        <span class="file-cta">
-                                  <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
-                                  </span>
-                                  <span class="file-label">파일찾기</span>
-                                </span>
-                        <span class="file-name">
-                                  Screen Shot 2017-07-29 at 15.54.25.png
-                                </span>
-                    </label>
-                    <span class="buttons">
-                                <a class="button tag icon is-medium">
-                                  <i class="fas fa-plus"></i>
-                                </a>
-                            </span>
+            <div class="columns">
+                <div class="column">
+                    <div class="level is-mobile">
+                        <div class="level-left is-title-column">
+                            <p class="title is-size-6">기간 경과율</p>
+                        </div>
+                        <div class="level-right">
+                            <div class="field  has-addons">
+                                <div class="control">
+                                    <input class="input" type="text" value="0">
+                                </div>
+                                <div class="control">
+                                    <div class="button is-static">
+                                        <span>%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <progress class="progress is-small" value="0" max="100">0%</progress>
                 </div>
-            
-                <!-- sample -->
-                <div class="file has-name is-right is-fullwidth">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="resume">
-                        <span class="file-cta">
-                                  <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
-                                  </span>
-                                  <span class="file-label">파일찾기</span>
-                                </span>
-                        <span class="file-name">
-                                  Screen Shot 2017-07-29 at 15.54.25.png
-                                </span>
-                    </label>
-                    <span class="buttons">
-                                <a class="button tag icon is-medium">
-                                  <i class="fas fa-minus"></i>
-                                </a>
-                            </span>
+                <div class="column">
+                    <div class="level is-mobile">
+                        <div class="level-left is-title-column">
+                            <p class="title is-size-6">프로젝트 전체 진행율</p>
+                        </div>
+                        <div class="level-right">
+                            <div class="field  has-addons">
+                                <div class="control">
+                                    <input class="input" type="text" value="0">
+                                </div>
+                                <div class="control">
+                                    <div class="button is-static">
+                                        <span>%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <progress class="progress is-small" value="90" max="100">90%</progress>
                 </div>
-                <div class="file has-name is-right is-fullwidth">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="resume">
-                        <span class="file-cta">
-                                  <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
-                                  </span>
-                                  <span class="file-label">파일찾기</span>
-                                </span>
-                        <span class="file-name">
-                                  Screen Shot 2017-07-29 at 15.54.25.png
-                                </span>
-                    </label>
-                    <span class="buttons">
-                                <a class="button tag icon is-medium">
-                                  <i class="fas fa-minus"></i>
-                                </a>
-                            </span>
+            </div>
+        </div>
+    
+        <div class="notification">
+            <div class="columns is-mobile">
+                <div class="column">
+                <div class="field is-grouped">
+                    <div class="control select is-disabled is-fullwidth">
+                        <select>
+                            <option>BM</option>
+                            <option>CD</option>
+                            <option>PM</option>
+                            <option>PL</option>
+                            <option>기획</option>
+                            <option>디자인</option>
+                            <option>모션</option>
+                            <option>개발(front-end)</option>
+                            <option>개발(back-end)</option>
+                        </select>
+                    </div>
                 </div>
-                <p class="help is-dark">* 한번에 올릴 수 있는 파일 용량은 최대 10MB 입니다.</p>
+                </div>
+                <div class="column">
+                    <div class="field  has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" type="text" value="신형주">
+                        </div>
+                        <div class="control">
+                            <div class="button">
+                                <span>담당자 선택</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
     
+            <div class="field">
+                <div class="control">
+                    <input class="input" type="text" placeholder="작업명">
+                </div>
+            </div>
+            
+            <div class="level is-mobile">
+                <div class="level-left is-title-column">
+                    <p class="title is-size-6">프로젝트 참여율</p>
+                </div>
+                <div class="level-right">
+                    <div class="field  has-addons">
+                        <div class="control">
+                            <input class="input" type="text" value="0" maxlength="3">
+                        </div>
+                        <div class="control">
+                            <div class="button is-static">
+                                <span>%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="columns">
+                <div class="column">
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" placeholder="2018년 4월 17일">
+                        </div>
+                        <div class="control">
+                            <a class="button is-static">
+                                부터
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" placeholder="2018년 4월 17일">
+                        </div>
+                
+                        <div class="control">
+                            <a class="button is-static">
+                                까지
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
         <nav class="level is-mobile">
             <div class="level-left">
