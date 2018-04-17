@@ -66,6 +66,12 @@ section {
     }
 }
 
+.card-content {
+    @include breakpoint(mobile) {
+        padding:1rem !important;
+    }
+}
+
 .section-fixed-margin {
     height:3.3rem;
 }
@@ -105,9 +111,18 @@ section {
     }
 
     span {
+        margin-top:0.3em;
         font-size:0.75rem;
+        font-weight:600;
         display:inline-block;
         width:100%;
+        line-height:1.05em;
+    }
+
+    &.mobile {
+        width:20%;
+        height:20%;
+        margin:2.5%;
     }
 }
 
@@ -117,4 +132,8 @@ section {
 
 .hr-strong {
     border:1px solid #000;
+}
+
+.date-item  {
+    font-size:0.8rem !important;;
 }

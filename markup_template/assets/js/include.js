@@ -7,7 +7,8 @@
 
 
 $(window).on('load',function(){
-    $('#top').load('include/top.html .top');
-    $('#sub-men-2').load('include/top.html .sub-menu-2');
-    $('#sub-menu-7').load('include/top.html .sub-menu-7');
+    $('#top').load('/include/top.html .top');
+    $('#sub-menu-2').load('/include/top.html .sub-menu-2');
+    $('#sub-menu-5').load('/include/top.html .sub-menu-5');
+    $('#sub-menu-7').load('/include/top.html .sub-menu-7');
 });

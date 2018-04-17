@@ -1,8 +1,47 @@
 @charset "utf-8";
 // bulma css-framework 확장
 .section{
+    // main
+    &.is-main {
+        .table{
+            @include breakpoint(mobile){
+                tbody{
+                    tr{
+                        display: block;
+                        border-bottom: 1px solid #dbdbdb;
+                        th, td {
+                            display: inline-block;
+                            border:none;
+                            font-size: 0.75rem;
+
+                            &:nth-of-type(1) {
+                                display:block;
+                                font-size:1rem;
+                                &:after {
+                                    content:'';
+                                }
+                                padding:0.8rem 0 0 0;
+                            }
+
+                            &:nth-of-type(2) {
+                                padding: 0.1rem 0 0.8rem 0;
+                            }
+                        }
+
+                        &:last-child {
+                            border-bottom: none;
+                            th, td {
+                                border-bottom: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // subpage
-    &.is-subpage{
+    &.is-resize{
 
         //테이블 확장
         .table{

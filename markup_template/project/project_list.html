@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>designfever intranet</title>
+    <link rel="stylesheet" href="/assets/css/work.df.css">
+    
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script defer src="/assets/js/all.js"></script>
+    <script defer src="/assets/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+
+<div id="top"></div>
+<div id="sub-menu-5"></div>
+
+<!-- 본문 시작 -->
+<section class="section is-resize">
+    <div class="container">
+        <div class="content">
+            <div class="box">
+                <div class="columns">
+                    <div class="column">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input class="input" placeholder="2018년 4월 17일">
+                            </div>
+                            <div class="control">
+                                <a class="button is-static">
+                                    부터
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input class="input" placeholder="2018년 4월 17일">
+                            </div>
+
+                            <div class="control">
+                                <a class="button is-static">
+                                    까지
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-grouped">
+                    <div class="control select">
+                        <select>
+                            <option>전체</option>
+                            <option value="1">전체</option>
+                            <option value="2">프로젝트 번호</option>
+                            <option value="3">등록자</option>
+                        </select>
+                    </div>
+                    <div class="control is-expanded">
+                        <input class="input" type="text" placeholder="">
+                    </div>
+                    <div class="control">
+                        <button class="button is-link">
+                                <span class="icon is-small">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            <span>검색</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="control is-hidden-tablet">
+                <a href="project_write.html" class="button is-danger is-fullwidth is-large">
+                    <span class="icon is-small">
+                        <i class="fas fa-pencil-alt"></i>
+                    </span>
+                    <span>프로젝트 등록</span>
+                </a>
+            </div>
+            <div class="columns is-hidden-mobile">
+                <!-- Left side -->
+                <div class="column is-three-fifths">
+                    <p class="is-size-7">
+                        * 프로젝트가 완료된 이후에는 꼭 해당 프로젝트에 들어가셔서 <span class="tag is-info">프로젝트 완료</span> 처리 해주시기 바랍니다.<br>
+                        * 프로젝트 번호는 관리자에 의해 변경될 수 있습니다.
+                    </p>
+                </div>
+                <!-- Right side -->
+                <div class="column">
+                    <div class="control has-text-right">
+                        <a href="project_write.html" class="button is-danger">
+                    <span class="icon is-small">
+                        <i class="fas fa-pencil-alt"></i>
+                    </span>
+                            <span>프로젝트 등록</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <table class="table is-fullwidth is-hoverable type-common">
+                <colgroup>
+                    <col width="8%">
+                    <col width="*">
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="10%">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th><span class="is-hidden-mobile">No.</span></th>
+                    <th>프로젝트명</th>
+                    <th class="has-text-centered">등록자</th>
+                    <th class="has-text-centered">등록일</th>
+                    <th class="has-text-centered">진행률</th>
+                </tr>
+                </thead>
+                <!-- 일반 리스트 -->
+                <tbody class="list">
+                <tr>
+                    <td>488</td>
+                    <td>
+                        <a href="">
+                            <span class="is-size-7">[DF2018_014] &nbsp; 2018.04.16 ~ 2018.04.26</span>
+                            <br>
+                            <span>NCSOFT Brand Identity 제안</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">대리 전민아</td>
+                    <td class="has-text-centered">2018-04-04</td>
+                    <td class="has-text-centered">0%</td>
+                </tr>
+                <tr>
+                    <td>488</td>
+                    <td>
+                        <a href="">
+                            <span class="is-size-7">[DF2018_014] &nbsp; 2018.04.16 ~ 2018.04.26</span>
+                            <br>
+                            <span>삼성 메모리 사업부 마컴 제작 연간 대행 제안</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">팀장 배유리</td>
+                    <td class="has-text-centered">2018-04-04</td>
+                    <td class="has-text-centered">0%</td>
+                </tr>
+                <tr>
+                    <td>487</td>
+                    <td>
+                        <a href="">
+                            <span class="is-size-7">[DF2018_014] &nbsp; 2018.04.16 ~ 2018.04.26</span>
+                            <br>
+                            <span>삼성 Flexible Mobile 선행 UX 디자인</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">팀장 배유리</td>
+                    <td class="has-text-centered">2018-04-04</td>
+                    <td class="has-text-centered">0%</td>
+                </tr>
+                <tr>
+                    <td>487</td>
+                    <td>
+                        <a href="">
+                            <span class="is-size-7">[DF2018_014] &nbsp; 2018.04.16 ~ 2018.04.26</span>
+                            <br>
+                            <span>Galaxy s9 interactive table 러시아 월드컵 콘텐츠 제작</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">팀장 배유리</td>
+                    <td class="has-text-centered">2018-04-04</td>
+                    <td class="has-text-centered">0%</td>
+                </tr>
+                <tr>
+                    <td>487</td>
+                    <td>
+                        <a href="">
+                            <span class="is-size-7">[DF2018_014] &nbsp; 2018.04.16 ~ 2018.04.26</span>
+                            <br>
+                            <span>AIA Vitality</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">팀장 배유리</td>
+                    <td class="has-text-centered">2018-04-04</td>
+                    <td class="has-text-centered">0%</td>
+                </tr>
+                <tr>
+                    <td>487</td>
+                    <td>
+                        <a href="">
+                            <span class="is-size-7">[DF2018_014] &nbsp; 2018.04.16 ~ 2018.04.26</span>
+                            <br>
+                            <span>[Clash Royale] Asia Pro League website</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">팀장 배유리</td>
+                    <td class="has-text-centered">2018-04-04</td>
+                    <td class="has-text-centered">0%</td>
+                </tr>
+                <tr>
+                    <td>487</td>
+                    <td>
+                        <a href="">
+                            <span class="is-size-7">[DF2018_014] &nbsp; 2018.04.16 ~ 2018.04.26</span>
+                            <br>
+                            <span>Samsung UNPK Star_China</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">팀장 배유리</td>
+                    <td class="has-text-centered">2018-04-04</td>
+                    <td class="has-text-centered">0%</td>
+                </tr>
+                <tr>
+                    <td>487</td>
+                    <td>
+                        <a href="">
+                            <span class="is-size-7">[DF2018_014] &nbsp; 2018.04.16 ~ 2018.04.26</span>
+                            <br>
+                            <span>Samsung History Wall_MWC/Frankfurt/Paris</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">팀장 배유리</td>
+                    <td class="has-text-centered">2018-04-04</td>
+                    <td class="has-text-centered">0%</td>
+                </tr>
+                <tr>
+                    <td>487</td>
+                    <td>
+                        <a href="">
+                            <span class="is-size-7">[DF2018_014] &nbsp; 2018.04.16 ~ 2018.04.26</span>
+                            <br>
+                            <span>디자인삼성</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">팀장 배유리</td>
+                    <td class="has-text-centered">2018-04-04</td>
+                    <td class="has-text-centered">0%</td>
+                </tr>
+                <tr>
+                    <td>487</td>
+                    <td>
+                        <a href="">
+                            <span class="is-size-7">[DF2018_014] &nbsp; 2018.04.16 ~ 2018.04.26</span>
+                            <br>
+                            <span>DF 인트라넷</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">팀장 배유리</td>
+                    <td class="has-text-centered">2018-04-04</td>
+                    <td class="has-text-centered">0%</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <nav class="pagination" role="navigation" aria-label="pagination">
+            <a class="pagination-previous">이전</a>
+            <a class="pagination-next">다음</a>
+        
+            <ul class="pagination-list ">
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 1">1</a>
+                </li>
+                <li>
+                    <span class="pagination-ellipsis">&hellip;</span>
+                </li>
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 45">45</a>
+                </li>
+                <li>
+                    <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a>
+                </li>
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 47">47</a>
+                </li>
+                <li>
+                    <span class="pagination-ellipsis">&hellip;</span>
+                </li>
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 86">86</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+<!-- 본문 끌 -->
+
+<script src="/assets/js/include.js"></script>
+</body>
+</html>
