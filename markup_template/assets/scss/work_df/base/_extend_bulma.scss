@@ -167,3 +167,27 @@
 .is-title-column {
     margin:auto 0;
 }
+
+.is-column-marginless {
+    margin-bottom:0 !important;
+
+    @include breakpoint(mobile) {
+        .column:not(:last-child) {
+            padding-bottom:0;
+        }
+    }
+}
+
+.is-level-marginless {
+    margin-bottom:0.75rem !important;
+}
+
+.column {
+    &.last-button {
+        flex-grow:0;
+    }
+}
+
+.is-bordered {
+        border:1px #dddddd solid !important;
+    }
