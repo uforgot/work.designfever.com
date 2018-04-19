@@ -20,56 +20,56 @@
       border-bottom: none; }
       .section.is-main .table tbody tr:last-child th, .section.is-main .table tbody tr:last-child td {
         border-bottom: none; } }
-.section.is-resize .table.type-common thead th {
+.section.is-resize .table thead th {
   border-color: #000; }
-.section.is-resize .table.type-common tbody.notice th, .section.is-resize .table.type-common tbody.notice td {
+.section.is-resize .table tbody td {
+  vertical-align: middle; }
+.section.is-resize .table tbody.notice th, .section.is-resize .table tbody.notice td {
   background: #fafafa;
   border-color: #dbdbdb;
   color: #222; }
-.section.is-resize .table.type-common tbody tr:last-child th, .section.is-resize .table.type-common tbody tr:last-child td {
+.section.is-resize .table tbody tr:last-child th, .section.is-resize .table tbody tr:last-child td {
   border-bottom: 1px solid #dbdbdb; }
 @media screen and (max-width: 767px) {
-  .section.is-resize .table.type-common thead tr th {
+  .section.is-resize .table thead tr th {
     display: none; }
-  .section.is-resize .table.type-common thead tr th:first-child {
+  .section.is-resize .table thead tr th:first-child {
     width: 100%;
     padding: 0;
     margin: 0; }
-  .section.is-resize .table.type-common tbody {
+  .section.is-resize .table tbody {
     border-bottom: 1px solid #dbdbdb; }
-    .section.is-resize .table.type-common tbody:nth-of-type(1) {
+    .section.is-resize .table tbody:nth-of-type(1) {
       border-top: 2px solid #000; }
-    .section.is-resize .table.type-common tbody.notice {
+    .section.is-resize .table tbody.notice {
       border-bottom: none; }
-      .section.is-resize .table.type-common tbody.notice tr {
+      .section.is-resize .table tbody.notice tr {
         background: #fafafa; }
-      .section.is-resize .table.type-common tbody.notice th, .section.is-resize .table.type-common tbody.notice td {
+      .section.is-resize .table tbody.notice th, .section.is-resize .table tbody.notice td {
         background: none; }
-    .section.is-resize .table.type-common tbody tr {
+    .section.is-resize .table tbody tr {
       display: block;
       border-bottom: 1px solid #dbdbdb; }
-      .section.is-resize .table.type-common tbody tr th, .section.is-resize .table.type-common tbody tr td {
+      .section.is-resize .table tbody tr th, .section.is-resize .table tbody tr td {
         display: inline-block;
         border: none;
         font-size: 0.75rem;
         padding: 0.1rem 0 0.8rem 0.45rem; }
-        .section.is-resize .table.type-common tbody tr th:after, .section.is-resize .table.type-common tbody tr td:after {
+        .section.is-resize .table tbody tr th:not(:last-child):after, .section.is-resize .table tbody tr td:not(:last-child):after {
           margin-left: 0.5rem;
           opacity: 0.2;
-          content: ' |'; }
-        .section.is-resize .table.type-common tbody tr th:nth-of-type(1), .section.is-resize .table.type-common tbody tr td:nth-of-type(1) {
+          content: ' | '; }
+        .section.is-resize .table tbody tr th:nth-of-type(1), .section.is-resize .table tbody tr td:nth-of-type(1) {
           display: none; }
-        .section.is-resize .table.type-common tbody tr th:nth-of-type(2), .section.is-resize .table.type-common tbody tr td:nth-of-type(2) {
+        .section.is-resize .table tbody tr th:nth-of-type(2), .section.is-resize .table tbody tr td:nth-of-type(2) {
           display: block;
           font-size: 1rem;
           padding: 0.8rem .75rem 0 .75rem; }
-          .section.is-resize .table.type-common tbody tr th:nth-of-type(2):after, .section.is-resize .table.type-common tbody tr td:nth-of-type(2):after {
-            content: ''; }
-        .section.is-resize .table.type-common tbody tr th:nth-of-type(3), .section.is-resize .table.type-common tbody tr td:nth-of-type(3) {
+          .section.is-resize .table tbody tr th:nth-of-type(2):after, .section.is-resize .table tbody tr td:nth-of-type(2):after {
+            content: none; }
+        .section.is-resize .table tbody tr th:nth-of-type(3), .section.is-resize .table tbody tr td:nth-of-type(3) {
           padding: 0.1rem 0 0.8rem 0.85rem; }
-        .section.is-resize .table.type-common tbody tr th:last-child:after, .section.is-resize .table.type-common tbody tr td:last-child:after {
-          content: ''; }
-      .section.is-resize .table.type-common tbody tr:last-child th, .section.is-resize .table.type-common tbody tr:last-child td {
+      .section.is-resize .table tbody tr:last-child th, .section.is-resize .table tbody tr:last-child td {
         border-bottom: none; } }
 .section .field-group {
   margin-bottom: 1.5rem; }
@@ -83,6 +83,9 @@
     .is-column-marginless .column:not(:last-child) {
       padding-bottom: 0; } }
 
+.is-paddingless-bottom {
+  padding-bottom: 0 !important; }
+
 .is-level-marginless {
   margin-bottom: 0.75rem !important; }
 
@@ -91,6 +94,17 @@
 
 .is-bordered {
   border: 1px #dddddd solid !important; }
+
+.tag.is-small-middle {
+  margin-top: -0.2rem; }
+
+.card {
+  border-radius: 5px; }
+
+.is-vacation-title {
+  border-bottom: 1px solid #cdcdcd;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.5rem; }
 
 /* common style */
 body {

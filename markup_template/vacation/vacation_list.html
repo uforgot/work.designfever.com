@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>designfever intranet</title>
+    <link rel="stylesheet" href="/assets/css/work.df.css">
+    
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script defer src="/assets/js/all.js"></script>
+    <script defer src="/assets/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+
+<div id="top"></div>
+<div id="sub-menu-3"></div>
+
+<!-- 본문 시작 -->
+<section class="section is-resize">
+    <div class="container">
+
+        <div class="content">
+            <div class="card">
+                <div class="card-content">
+                    <div class="content">
+                        <div class="control select is-fullwidth">
+                            <select>
+                                <option>2018년 휴가사용 현황</option>
+                                <option value="1">2018년</option>
+                                <option value="2">2017년</option>
+                                <option value="3">2016년</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <progress class="progress is-danger" value="19" max="100">19%</progress>
+                </div>
+                <div class="card-footer">
+                    <div class="card-footer-item">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered">휴가 지급일수</div>
+                            <div class="title is-size-4 has-text-centered">
+                                <span class="has-text-info">22</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer-item">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered">휴가 사용일</div>
+                            <div class="title is-size-4 has-text-centered">
+                                <span>4</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer-item">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered">휴가 잔여일수</div>
+                            <div class="title is-size-4 has-text-centered has-text-danger">18</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="message">
+                <div class="message-body">
+                <div class="columns is-mobile is-multiline">
+                    <div class="column is-one-quarter-mobile">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered is-vacation-title">
+                                연차휴가
+                            </div>
+                            <div class="title is-size-6 has-text-centered">2</div>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter-mobile">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered is-vacation-title">
+                                병가
+                            </div>
+                            <div class="title is-size-6 has-text-centered">0</div>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter-mobile">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered is-vacation-title">
+                                반차
+                            </div>
+                            <div class="title is-size-6 has-text-centered">2</div>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter-mobile">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered is-vacation-title">
+                                리프레쉬
+                            </div>
+                            <div class="title is-size-6 has-text-centered">0</div>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter-mobile m">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered is-vacation-title">
+                                프로젝트
+                            </div>
+                            <div class="title is-size-6 has-text-centered">0</div>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter-mobile">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered is-vacation-title">
+                                경조사
+                            </div>
+                            <div class="title is-size-6 has-text-centered">0</div>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter-mobile">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered is-vacation-title">
+                                기타
+                            </div>
+                            <div class="title is-size-6 has-text-centered">0</div>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter-mobile" style="margin:auto">
+                        <div class="content has-text-centered">
+                            <span class="tag is-large is-rounded is-danger">4.5</span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <table class="table is-fullwidth is-hoverable">
+                <colgroup>
+                    <col width="8%">
+                    <col width="*">
+                    <col width="20%">
+                    <col width="20%">
+                    <col width="20%">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th><span class="is-hidden-mobile">No.</span></th>
+                    <th>휴가일</th>
+                    <th class="has-text-centered">종류</th>
+                    <th class="has-text-centered">휴가계 작성여부</th>
+                    <th class="has-text-centered">휴가계 승인여부</th>
+                </tr>
+                </thead>
+                <!-- 일반 리스트 -->
+                <tbody class="list">
+                <tr>
+                    <td>6</td>
+                    <td>
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                2018-03-15
+                            </div>
+                            <div class="level-right is-hidden-tablet">
+                                <div class="button is-static">자동반차</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">오전반차</td>
+                    <td class="has-text-centered is-hidden-mobile">
+                        <div class="button is-static">자동반차</div>
+                    </td>
+                    <td class="has-text-centered">-</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                2018-03-15
+                            </div>
+                            <div class="level-right is-hidden-tablet">
+                                <div class="button is-static">자동반차</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">오전반차</td>
+                    <td class="has-text-centered is-hidden-mobile">
+                        <div class="button is-static">자동반차</div>
+                    </td>
+                    <td class="has-text-centered">-</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                2018-03-15
+                            </div>
+                            <div class="level-right is-hidden-tablet">
+                                <div class="button is-static">자동반차</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">오전반차</td>
+                    <td class="has-text-centered is-hidden-mobile">
+                        <div class="button is-static">자동반차</div>
+                    </td>
+                    <td class="has-text-centered">-</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                2018-03-15
+                            </div>
+                            <div class="level-right is-hidden-tablet">
+                                <div class="button is-static">자동반차</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">오전반차</td>
+                    <td class="has-text-centered is-hidden-mobile">
+                        <div class="button is-static">자동반차</div>
+                    </td>
+                    <td class="has-text-centered">-</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                2018-03-15
+                            </div>
+                            <div class="level-right is-hidden-tablet">
+                                <div class="button">연차휴가계</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">오전반차</td>
+                    <td class="has-text-centered is-hidden-mobile">
+                        <div class="button">연차휴가계</div>
+                    </td>
+                    <td class="has-text-centered">
+                        결제
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                2018-03-15
+                            </div>
+                            <div class="level-right is-hidden-tablet">
+                                <div class="button is-static">자동반차</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">오전반차</td>
+                    <td class="has-text-centered is-hidden-mobile">
+                        <div class="button is-static">자동반차</div>
+                    </td>
+                    <td class="has-text-centered">-</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                2018-03-15
+                            </div>
+                            <div class="level-right is-hidden-tablet">
+                                <div class="button is-static">자동반차</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">오전반차</td>
+                    <td class="has-text-centered is-hidden-mobile">
+                        <div class="button is-static">자동반차</div>
+                    </td>
+                    <td class="has-text-centered">-</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<!-- 본문 끌 -->
+
+<div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">연차 휴가계</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body" style="font-size:0.75rem;">
+            
+            <form name="form2" method="post">
+                <input type="hidden" name="doc_no" value="1802-0068">
+                <table class="" width="100%">
+                    <colgroup>
+                        <col width="13%">
+                        <col width="37%">
+                        <col width="13%">
+                        <col width="37%">
+                    </colgroup>
+                    <tbody class="">
+                    <tr>
+                        <th class="gray">문서번호</th>
+                            <td>1802-0068</td>
+                        <th class="gray" rowspan="2">결재</th>
+                        <td rowspan="2" style="padding:0;">
+                            <table class="sign" width="100%">
+                                <tbody>
+                                <tr style="height:30px">
+                                    <td width="20%">실장</td>
+                                    <td width="20%">대표</td>
+                                    <td width="20%"></td>
+                                    <td width="20%"></td>
+                                    <td width="20%" class="last"></td>
+                                </tr>
+                                <tr style="height:65px">
+                                    <td>
+                                        <span class="signature">신형주</span>
+                                    </td>
+                                    <td>
+                                        <span class="signature">노진영</span>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="last"></td>
+                                </tr>
+                                <tr style="height:30px" class="last">
+                                    <td><span class="signature_state">02/08결재</span></td>
+                                    <td><span class="signature_state">02/08결재</span></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="last"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="gray">문서종류</th>
+                        <td>연차 휴가계</td>
+                    </tr>
+                    <tr>
+                        <th class="gray">기안일</th>
+                        <td>2018년 02월 08일</td>
+                        <th class="gray">수신참조</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th class="gray">부서</th>
+                        <td colspan="3">비주얼 인터랙션 디벨롭먼트 1실</td>
+                    </tr>
+                    <tr>
+                        <th class="gray">이름</th>
+                        <td>실장 신형주</td>
+                        <th class="gray">공개여부</th>
+                        <td>공개</td>
+                    </tr>
+                    <tr>
+                        <th class="gray">제목</th>
+                        <td colspan="3">[신형주 연차 휴가] 2월 14일 연차 휴가</td>
+                    </tr>
+                    <tr>
+                        <th class="gray">기간</th>
+                        <td colspan="3">2018.02.14 - 2018.02.14 (1일)</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="editor-txt">
+                    <p>아래와 같은 사유로 인하여 연차 휴가계를 제출하오니 재가 바랍니다.</p>
+                    <p>&nbsp;</p><p>- 아&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 래 -</p>
+                    <p>&nbsp;</p><p>&nbsp;</p>
+                    <table border="1" cellpadding="0" cellspacing="0">
+                        <tbody>
+                        <tr>
+                            <td style="background-color:transparent; height:23.85pt; width:99pt">
+                                <p><strong>행선지</strong></p>
+                            </td>
+                            <td colspan="3" style="background-color:transparent; border-color:windowtext windowtext windowtext rgb(236, 233, 216); height:23.85pt; width:324pt">
+                                <p>&nbsp;경주&nbsp;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext; height:23.85pt; width:99pt">
+                                <p><strong>사유</strong></p>
+                            </td>
+                            <td colspan="3" style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext rgb(236, 233, 216); height:23.85pt; width:324pt">
+                                <p>&nbsp;연차휴가</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext; height:23.85pt; width:99pt">
+                                <p><strong>비상 연락처</strong></p>
+                            </td>
+                            <td colspan="3" style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext rgb(236, 233, 216); height:23.85pt; width:324pt">&nbsp;010-8582-1051</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p><br>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>끝.</p>
+                </div>
+                <table class="editor-table2" width="100%">
+                    <colgroup>
+                        <col width="10%">
+                        <col width="90%">
+                    </colgroup>
+                    <tbody class="">
+                    <tr class="idea-add">
+                        <th>의견등록</th>
+                        <td>
+                            <input name="reply_contents" id="w_comment" onkeyup="textcounter(this.form.reply_contents, this.form.remlen,200);" onkeydown="textcounter(this.form.reply_contents, this.form.remlen,200);">
+                            <input type="hidden" readonly="" name="remlen" size="3" maxlength="3" value="200">
+                            <div id="reply_btn">
+                                <a href="javascript:writeReply();"><img src="/img/btn_insert.gif" alt=""></a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </section>
+        
+        
+        <footer class="modal-card-foot">
+            <button class="button">닫기</button>
+        </footer>
+    </div>
+</div>
+
+<script src="/assets/js/include.js"></script>
+</body>
+</html>
