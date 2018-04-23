@@ -1,0 +1,274 @@
+@import url(bulma-total.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@media screen and (max-width: 767px) {
+  .section.is-main .table tbody tr {
+    display: block;
+    border-bottom: 1px solid #dbdbdb; }
+    .section.is-main .table tbody tr th, .section.is-main .table tbody tr td {
+      display: inline-block;
+      border: none;
+      font-size: 0.75rem; }
+      .section.is-main .table tbody tr th:nth-of-type(1), .section.is-main .table tbody tr td:nth-of-type(1) {
+        display: block;
+        font-size: 1rem;
+        padding: 0.8rem 0 0 0; }
+        .section.is-main .table tbody tr th:nth-of-type(1):after, .section.is-main .table tbody tr td:nth-of-type(1):after {
+          content: ''; }
+      .section.is-main .table tbody tr th:nth-of-type(2), .section.is-main .table tbody tr td:nth-of-type(2) {
+        padding: 0.1rem 0 0.8rem 0; }
+    .section.is-main .table tbody tr:last-child {
+      border-bottom: none; }
+      .section.is-main .table tbody tr:last-child th, .section.is-main .table tbody tr:last-child td {
+        border-bottom: none; } }
+.section.is-resize .table thead th {
+  border-color: #000; }
+.section.is-resize .table tbody td {
+  vertical-align: middle; }
+.section.is-resize .table tbody.notice th, .section.is-resize .table tbody.notice td {
+  background: #fafafa;
+  border-color: #dbdbdb;
+  color: #222; }
+.section.is-resize .table tbody tr:last-child th, .section.is-resize .table tbody tr:last-child td {
+  border-bottom: 1px solid #dbdbdb; }
+@media screen and (max-width: 767px) {
+  .section.is-resize .table thead tr th {
+    display: none; }
+  .section.is-resize .table thead tr th:first-child {
+    width: 100%;
+    padding: 0;
+    margin: 0; }
+  .section.is-resize .table tbody {
+    border-bottom: 1px solid #dbdbdb; }
+    .section.is-resize .table tbody:nth-of-type(1) {
+      border-top: 2px solid #000; }
+    .section.is-resize .table tbody.notice {
+      border-bottom: none; }
+      .section.is-resize .table tbody.notice tr {
+        background: #fafafa; }
+      .section.is-resize .table tbody.notice th, .section.is-resize .table tbody.notice td {
+        background: none; }
+    .section.is-resize .table tbody tr {
+      display: block;
+      border-bottom: 1px solid #dbdbdb; }
+      .section.is-resize .table tbody tr th, .section.is-resize .table tbody tr td {
+        display: inline-block;
+        border: none;
+        font-size: 0.75rem;
+        padding: 0.1rem 0 0.8rem 0.45rem; }
+        .section.is-resize .table tbody tr th:not(:last-child):after, .section.is-resize .table tbody tr td:not(:last-child):after {
+          margin-left: 0.5rem;
+          opacity: 0.2;
+          content: ' | '; }
+        .section.is-resize .table tbody tr th:nth-of-type(1), .section.is-resize .table tbody tr td:nth-of-type(1) {
+          display: none; }
+        .section.is-resize .table tbody tr th:nth-of-type(2), .section.is-resize .table tbody tr td:nth-of-type(2) {
+          display: block;
+          font-size: 1rem;
+          padding: 0.8rem .75rem 0 .75rem; }
+          .section.is-resize .table tbody tr th:nth-of-type(2):after, .section.is-resize .table tbody tr td:nth-of-type(2):after {
+            content: none; }
+        .section.is-resize .table tbody tr th:nth-of-type(3), .section.is-resize .table tbody tr td:nth-of-type(3) {
+          padding: 0.1rem 0 0.8rem 0.85rem; }
+      .section.is-resize .table tbody tr:last-child th, .section.is-resize .table tbody tr:last-child td {
+        border-bottom: none; } }
+.section .field-group {
+  margin-bottom: 1.5rem; }
+
+.is-title-column {
+  margin: auto 0; }
+
+.is-column-marginless {
+  margin-bottom: 0 !important; }
+  @media screen and (max-width: 767px) {
+    .is-column-marginless .column:not(:last-child) {
+      padding-bottom: 0; } }
+
+.is-paddingless-bottom {
+  padding-bottom: 0 !important; }
+
+.is-level-marginless {
+  margin-bottom: 0.75rem !important; }
+
+.column.last-button {
+  flex-grow: 0; }
+
+.is-bordered {
+  border: 1px #dddddd solid !important; }
+
+.tag.is-small-middle {
+  margin-top: -0.2rem; }
+
+.card {
+  border-radius: 5px; }
+
+.is-vacation-title {
+  border-bottom: 1px solid #cdcdcd;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.5rem; }
+
+/* common style */
+body {
+  font-family: Nanum Gothic;
+  font-weight: 600; }
+
+@font-face {
+  font-family: thin;
+  src: url(../fonts/NotoSansKR-Thin.woff2) format("woff2"), url(../fonts/NotoSansKR-Thin.woff) format("woff");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility; }
+@font-face {
+  font-family: light;
+  src: url(../fonts/NotoSansKR-Light.woff2) format("woff2"), url(../fonts/NotoSansKR-Light.woff) format("woff");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility; }
+@font-face {
+  font-family: regular;
+  src: url(../fonts/NotoSansKR-Regular.woff2) format("woff2"), url(../fonts/NotoSansKR-Regular.woff) format("woff");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility; }
+@font-face {
+  font-family: medium;
+  src: url(../fonts/NotoSansKR-Medium.woff2) format("woff2"), url(../fonts/NotoSansKR-Medium.woff) format("woff");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility; }
+@font-face {
+  font-family: bold;
+  src: url(../fonts/NotoSansKR-Bold.woff2) format("woff2"), url(../fonts/NotoSansKR-Bold.woff) format("woff");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility; }
+@font-face {
+  font-family: black;
+  src: url(../fonts/NotoSansKR-Black.woff2) format("woff2"), url(../fonts/NotoSansKR-Black.woff) format("woff");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility; }
+.wrapper {
+  margin-bottom: 1.5rem; }
+
+.main-calendar {
+  max-width: none !important; }
+
+.main-card-title {
+  margin-left: 0.5em; }
+
+.main-mobile-profile-buttons {
+  position: absolute;
+  bottom: 4.5rem; }
+
+.main-clock-content {
+  width: 100%;
+  height: 100%;
+  padding: 0.8rem; }
+  .main-clock-content .clock-area {
+    height: 69%;
+    background: #bbbbbb;
+    margin-bottom: 2%;
+    border-radius: 0.25rem;
+    text-align: center; }
+    .main-clock-content .clock-area:before {
+      display: inline-block;
+      content: '';
+      width: 1px;
+      height: 100%;
+      vertical-align: middle;
+      margin-left: -1px; }
+    .main-clock-content .clock-area .clock-txt {
+      text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 1rem; }
+      .main-clock-content .clock-area .clock-txt .clock-txt-now {
+        font-size: 4rem; }
+      .main-clock-content .clock-area .clock-txt .clock-txt-start {
+        font-size: 1rem; }
+  .main-clock-content .clock-buttons {
+    height: 29%; }
+    .main-clock-content .clock-buttons .clock-button {
+      height: 100%;
+      padding: 1rem; }
+
+section {
+  min-width: 370px; }
+  @media screen and (max-width: 767px) {
+    section {
+      padding: 1rem 1rem !important; } }
+
+@media screen and (max-width: 767px) {
+  .card-content {
+    padding: 1rem !important; } }
+
+.section-fixed-margin {
+  height: 3.3rem; }
+
+@media screen and (max-width: 767px) {
+  .hero-body {
+    padding: 1rem 0.5rem; } }
+
+.is-rounded-image {
+  overflow: hidden;
+  border-radius: 100%;
+  margin: 2.5%;
+  width: 28%;
+  height: 28%; }
+  .is-rounded-image img {
+    width: 100%; }
+
+.birthday-profile {
+  width: 28%;
+  height: 28%;
+  margin: 2.5%; }
+  .birthday-profile .is-rounded-image {
+    overflow: hidden;
+    border-radius: 100%;
+    width: 100%;
+    height: 100%; }
+    .birthday-profile .is-rounded-image img {
+      width: 100%; }
+  .birthday-profile span {
+    margin-top: 0.3em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+    width: 100%;
+    line-height: 1.05em; }
+  .birthday-profile.mobile {
+    width: 20%;
+    height: 20%;
+    margin: 2.5%; }
+
+.login-image {
+  padding: 2rem 2rem 0 2rem; }
+
+.hr-strong {
+  border: 1px solid #000; }
+
+.date-item {
+  font-size: 0.8rem !important; }
+
+/* board.common */
+.table td, th {
+  padding: 0.8em .75em .6em .75em; }
+
+.td-icon {
+  transform: translateY(20%); }
+
+.td-tag {
+  transform: translateY(-5%); }
+
+.control.has-add-button .file {
+  margin: 0.5rem 0; }
+  .control.has-add-button .file .file-label {
+    margin-right: 1rem; }
+.control.has-add-button .buttons {
+  flex-wrap: nowrap; }
+  .control.has-add-button .buttons .icon {
+    margin-right: 0.5rem; }
+
+/* board.calendar */
+
+/*# sourceMappingURL=work.df.css.map */

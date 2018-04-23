@@ -1,0 +1,371 @@
+@charset "utf-8";
+
+/* browser reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+header, footer, nav, menu, section, article, aside, figure {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+background: transparent;
+}
+body {
+line-height: 100%;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: "";
+content: none;
+}
+ins {
+text-decoration: none;
+}
+del {
+text-decoration: line-through;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+img {
+vertical-align:top;
+}
+
+.clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; } .clearfix { display:inline-block; }/*  ie-mac \*/ *html .clearfix {height: 1%;} .clearfix {display: block;}/* ie-mac */
+
+/* button */
+button {margin:0; padding:0; border:0; font:11px/11px dotum, sans-serif; background:none; vertical-align:top; cursor:pointer;}
+button::-moz-focus-inner {border:0; padding:0;}
+input,
+select {vertical-align:top; font:12px/15px candara, "NanumGothic", dotum;}
+option {vertical-align:middle; font:12px/15px candara, "NanumGothic", dotum;}
+::-webkit-input-placeholder  {font:11px/15px candara, "NanumGothic", dotum; color:#eaad9a;}
+input:-moz-placeholder {font:11px/15px candara, "NanumGothic", dotum; color:#eaad9a;}
+
+/* image replace */
+.ir {position:relative; z-index:-1; *visibility:hidden;}
+
+/* page style */
+body {width:100%; height:100%;}
+/*body {width:100%; height:100%; background:url("../img/bg_body02.jpg") 50% 0;}*/
+section, div, td {font:11px/15px candara, "NanumGothic", dotum; color:#9c9c9c;}
+a {text-decoration:none;}
+a:link, a:visited {text-decoration:none; color:#8c8c8c;}
+a:hover {color:#ff6600;}
+::selection {background:#ff6600; color:#fff;}
+::-moz-selection {background:#ff6600; color:#fff;}
+
+/* login */
+.loginwrap {position:absolute; top:50%; left:50%; width:350px; height:320px; margin-top:-160px; margin-left:-175px; border:solid 1px #000; background:#000;}
+.loginwrap h1 {padding-top:48px; padding-bottom:32px; text-align:center;}
+.loginwrap .inputdiv {position:relative; padding:0 49px; text-align:right;}
+.loginwrap .inputdiv .iddiv {margin-bottom:5px; padding-right:58px;}
+.loginwrap .inputdiv .pwdiv {padding-right:58px;}
+.loginwrap .inputdiv label {padding-right:5px; line-height:20px; font-size:16px; font-weight:bold;}
+.loginwrap input[type=text],
+.loginwrap input[type=password] {width:153px; height:20px; line-height:20px; font-size:15px; border:solid 1px #696969; border-radius:2px; background:#fff; *height:19px;}
+.loginwrap .inputdiv .loginbtndiv {position:absolute; top:0; right:49px;}
+.loginwrap .inputdiv .loginbtndiv input {width:54px; height:54px; line-height:54px; font-size:1px; text-align:left; border:solid 1px #393939; color:#f66200; background:#f66200 url("../img/bgbtn_login.png") no-repeat; cursor:pointer;}
+.loginwrap > form > p {float:left; padding-top:5px; padding-left:84px; background:url("../img/bglabel_checkin.png") 100% 8px no-repeat;}
+.loginwrap > form > p > label {opacity:0; *visibility:hidden;}
+.loginwrap .inputdiv + p input[type=checkbox] {vertical-align:middle;}
+.loginwrap > form > a {float:left; width:64px; height:16px; margin-top:4px; margin-left:32px; background:url("../img/bgbtn_register.png") no-repeat;}
+.loginwrap > form > a span {position:relative; z-index:-1; *visibility:hidden;}
+
+/* registration */
+.layerpop {position:absolute; top:50%; left:50%; width:568px; height:580px; margin-top:-290px; margin-left:-284px; background:#343434; border:1px solid #000}
+.layerpop h1 {padding:13px 0 13px 20px; background:#000;}
+.layerpop .formlineout {padding:40px 0 0 20px;}
+.layerpop .formlinein {}
+.layerpop form .desc {margin-bottom:17px; padding-left:38px;}
+.layerpop form select {height:23px; line-height:23px; padding:0 0 0 3px; border:solid 1px #b0b0b0; background:#fff;}
+.layerpop form option {height:23px; line-height:23px; padding:0 0 0 0 3px; background:#fff;}
+.layerpop form input[type=text],
+.layerpop form input[type=password] {width:133px; height:23px; line-height:23px; padding:0 3px; border:solid 1px #b0b0b0; background:#f5f5f5;}
+.layerpop form .regdiv {margin-bottom:10px;}
+.layerpop form .regdiv label {display:inline-block; width:83px; padding-top:7px; padding-right:10px; text-align:right;}
+.layerpop form .regdiv p {padding-left:93px;}
+.layerpop form #dfwpdiv label[for=dfwpp] {padding-left:15px;}
+.layerpop form #dfmobilediv input[type=text],
+.layerpop form #dfphonediv input[type=text],
+.layerpop form #dfaddrdiv input[type=text] {width:52px; margin-right:10px;}
+.layerpop form #dfmobilediv input[type=text] + span,
+.layerpop form #dfphonediv input[type=text] + span {padding:0 4px 0 5px;}
+.layerpop form #dfaddrdiv p input[type=text] {width:124px;}
+.layerpop form #dfaddrdiv p {padding-top:3px; padding-left:95px;}
+.layerpop form #dfaddrdiv {}
+.layerpop form #dfclassdiv {position:absolute; top:429px; left:273px;}
+.layerpop .btndiv {padding-top:25px; text-align:center;}
+.layerpop .btndiv input:first-child {margin-right:5px;}
+.layerpop > button {position:absolute; top:11px; right:15px;}
+.layerpops {position:absolute; top:50%; left:50%; margin-top:-140px; margin-left:-180px; width:355px; background:#fff;}
+/*.layerpops {position:absolute; top:50%; left:50%; margin-top:-160Px; margin-left:-177px; width:355px; background:#fff;}*/
+.layerpops h1 {padding:13px 0 13px 20px; background:#000;}
+.layerpops .inlp {padding:40px;}
+.layerpops .inlp p {font-size:14px; font-weight:bold;}
+.layerpops .inlp .desc {color:#f29400;}
+.layerpops .regdiv {margin:17px 0 20px 0;}
+.layerpops .regdiv label {display:inline-block; padding-top:7px; padding-right:10px;}
+.layerpops input[type=text] {width:133px; height:23px; line-height:23px; padding:0 3px; border:solid 1px #b0b0b0; background:#f5f5f5;}
+.layerpops .ziplist {height:90px; overflow:auto; margin-top:15px; background:#f5f5f5;} /*height크기 조절*/
+.layerpops .ziplist li {height:22px; line-height:22px; *zoom;}
+.layerpops .ziplist li:after {content:""; display:block; clear:both;}
+.layerpops .ziplist span {float:left;}
+.layerpops .ziplist .zipno {width:70px; padding-left:10px;}
+.layerpops .btndiv {padding-top:40px; text-align:center;}
+.layerpops .btndiv input:first-child {margin-right:5px;}
+.layerpops > button {position:absolute; top:11px; right:15px;}
+.layerpops .modifydiv {position:relative; width:266px; height:83px; margin:10px 0; padding:13px 0 13px 13px; background:#f5f5f5; *zoom:1;}
+.layerpops .modifydiv:after {content:""; display:block; clear:both;}
+.layerpops .modifydiv .sstatus {width:312px; position:absolute; top:13px; left:13px; z-index:3; *zoom:1;}
+.layerpops .modifydiv .selecttime {width:312px; position:absolute; top:43px; left:13px; z-index:2; *zoom:1;}
+.layerpops .modifydiv .selecttimeo {width:312px; position:absolute; top:73px; left:13px; *zoom:1;}
+.layerpops .modifydiv .sstatus:after,
+.layerpops .modifydiv .selecttime:after,
+.layerpops .modifydiv .selecttimeo:after {content:""; display:block; clear:both;}
+.layerpops .modifydiv .sstatus h2 {display:none;}
+.layerpops .modifydiv .selecttag {float:left; line-height:20px; text-align:left; border:solid 1px #b0b0b0; background:#f5f5f5 url("../img/btn_arrowb.png") 100% 8px no-repeat;;}
+.layerpops .modifydiv .selecttag li {display:none; padding-left:7px; }
+.layerpops .modifydiv .selecttag li.here {display:block;}
+.layerpops .modifydiv .selecttag.open {max-height:200px; overflow:auto;}
+.layerpops .modifydiv .selecttag.open li.here {}
+.layerpops .modifydiv .selecttag.open li:hover {color:#343434; background:#fff;}
+.layerpops .modifydiv .selecttag {width:75px; margin-bottom:10px; margin-right:10px;}
+
+.myinfos {margin:30px 0 0 50px}
+.myinfos .f {float:left; width:320px}
+.myinfos .f table {margin-top:10px}
+.myinfos .f th {text-align:right; width:50px; padding:10px 0;}
+.myinfos .f td {padding-left:20px; font-size:12px}
+.myinfos .s {float:left}
+.myinfos .s a {display:block; width:61px; height:25px; margin:13px 0 7px 0}
+.systemforms {margin:30px 15px 10px 15px; padding-bottom:30px; border-top:1px solid #000; border-bottom:1px solid #000}
+
+/* main */
+.wrap {position:absolute; top:50%; left:50%; width:835px; height:760px; margin-top:-380px; margin-left:-415px;}
+.wrap > h1 {position:absolute; top:0; left:0;}
+.wrap > h1 img {}
+.wrap > nav {position:absolute; top:120px; left:0; width:115px;}
+.wrap > nav a {display:block; width:115px; height:115px; margin-bottom:5px;}
+.wrap > nav a.workchart {background:url("../img/bg_workchart.png") 100% 0 no-repeat;}
+.wrap > nav a.vacation {background:url("../img/bg_vacation.png") 100% 0 no-repeat;}
+.wrap > nav a.approval {background:url("../img/bg_approval.png") 100% 0 no-repeat;}
+.wrap > nav a.project {background:url("../img/bg_project.png") 100% 0 no-repeat;}
+.wrap > nav a.board {background:url("../img/bg_board.png") 100% 0 no-repeat;}
+.wrap > nav a:hover {background-position:0 0;}
+.wrap > nav a span {position:relative; z-index:-1; *visibility:hidden;}
+.wrap .contentsdiv {margin-left:120px; *zoom:1;}
+.wrap .contentsdiv:after {content:""; display:block; clear:both;}
+.wrap .contentsdiv .personaldiv {height:115px; margin-bottom:5px; *zoom:1;}
+.wrap .contentsdiv .personaldiv:after {content:""; display:block; clear:both;}
+.wrap .contentsdiv .personaldiv li {position:relative; float:left; width:115px; height:93px; margin-right:5px; padding-top:22px; text-align:center; background:#343434;}
+.wrap .contentsdiv .personaldiv li.profile {padding-top:0;}
+.wrap .contentsdiv .personaldiv li.checkin h2 {height:25px;}
+.wrap .contentsdiv .personaldiv li.checkout h2 {height:30px;}
+.wrap .contentsdiv .personaldiv li.ready h2,
+.wrap .contentsdiv .personaldiv li.approval h2, 
+.wrap .contentsdiv .personaldiv li.cc h2 {height:20px;}
+.wrap .contentsdiv .personaldiv li.checkin strong {line-height:30px; font-size:35px; color:#fff;}
+.wrap .contentsdiv .personaldiv li.checkout strong {line-height:30px; font-size:35px; color:#fff;}
+.wrap .contentsdiv .personaldiv li.ready strong,
+.wrap .contentsdiv .personaldiv li.approval strong, 
+.wrap .contentsdiv .personaldiv li.cc strong {line-height:40px; font-size:60px; color:#fff;}
+.wrap .contentsdiv .personaldiv li.cc {margin-right:0;}
+.wrap .contentsdiv .personaldiv li.profile .over_profile {display:none; position:absolute; top:0; left:0; width:115px; height:93px; padding-top:22px; background-color:rgba(0,0,0,0.8); background-color:#000\9;}
+.wrap .contentsdiv .personaldiv li.profile .over_profile h2 {height:36px; font-size:12px; color:#fff;}
+.wrap .contentsdiv .personaldiv li.profile .over_profile h2 span {display:block;}
+.wrap .contentsdiv .personaldiv li.profile .over_profile .modipro {margin-right:3px;}
+.wrap .contentsdiv .personaldiv li.profile:hover .over_profile {display:block;}
+.wrap .contentsdiv .personaldiv li.checkin .over_checkin {display:none; position:absolute; top:0; left:0; width:115px; height:115px; background:url("../img/bg_checkin.png") no-repeat;}
+.wrap .contentsdiv .personaldiv li.checkin .over_checkout {display:none; position:absolute; top:0; left:0; width:115px; height:115px; background:url("../img/bg_checkout.png") no-repeat;}
+.wrap .contentsdiv .personaldiv li.checkin .over_checkin p {visibility:hidden; height:58px;}
+.wrap .contentsdiv .personaldiv li.checkout .over_checkout p {visibility:hidden; height:58px;}
+.wrap .contentsdiv .personaldiv li.checkin:hover .over_checkin {display:block;}
+.wrap .contentsdiv .personaldiv li.checkin:hover .over_checkout {display:block;}
+.wrap .contentsdiv .notice {width:715px; height:235px; margin-bottom:5px; background:#343434;}
+.wrap .contentsdiv .notice h2 {padding:24px 0 65px 25px; background:url("../img/notice_more.png") 678px 30px no-repeat;}
+.wrap .contentsdiv .notice h2 a {display:block;}
+.wrap .contentsdiv .notice ul {padding-left:25px;}
+.wrap .contentsdiv .notice ul li {height:20px; line-height:20px; *zoom:1;}
+.wrap .contentsdiv .notice ul li:after {content:""; display:block; clear:both;}
+.wrap .contentsdiv .notice ul li a {float:left; width:450px; padding-right:50px; overflow:hidden;}
+.wrap .contentsdiv .notice ul li a img {padding-left:7px; vertical-align:middle;}
+.wrap .contentsdiv .notice ul li span.date {float:left; width:100px; font-size:15px;}
+.wrap .contentsdiv .notice ul li span.author {float:left; width:80px; text-align:center;}
+.wrap .contentsdiv .banner {*zoom:1;}
+.wrap .contentsdiv .banner:after {content:""; display:block; clear:both;}
+.wrap .contentsdiv .banner li {float:left; margin:0 5px 5px 0;}
+.wrap .contentsdiv .banner li.third {margin-right:0;}
+.wrap .contentsdiv .banner li a.f {display:block; width:235px; height:115px}
+.wrap .contentsdiv .banner li a.s {display:block; width:235px; height:115px; margin-top:5px}
+.wrap footer {background:#000; *zoom:1;}
+.wrap footer:after {content:""; display:block; clear:both;}
+.wrap footer a {float:left; padding:18px 38px 14px 20px;}
+.wrap footer p {line-height:44px;}
+
+.topinfo {position:absolute; z-index:100; right:0; margin-top:-30px; color:#fff}
+.topinfo img {vertical-align:middle}
+.topinfo span.s {margin:0 10px}
+.topinfo a.f {margin:0 10px 0 20px}
+
+/* workchart */
+.wrap .workchartdiv {position:relative; min-height:685px; margin-left:120px; padding-bottom:30px; background:#343434; *zoom:1;}
+.wrap .workchartdiv:after {content:""; display:block; clear:both;}
+.wrap .workchartdiv h1 {padding:11px 0 10px 19px; border-bottom:solid 1px #000; background:#222222;}
+.wrap .workchartdiv nav {position:absolute; top:7px; left:82px;}
+.wrap .workchartdiv nav h2 {float:left; padding:10px 17px 11px 17px; border:solid 1px #000; border-bottom:none; background:#343434;}
+.wrap .workchartdiv nav h2 img {float:left;}
+.wrap .workchartdiv nav a {float:left; padding:11px 18px 0 18px;}
+.wrap .workchartdiv .datetitle {position:relative; height:50px; padding-top:31px; text-align:center;}
+.wrap .workchartdiv .datetitle h3 {font-size:35px; font-weight:bold; color:#fff;}
+.wrap .workchartdiv .datetitle .prevmonth {position:absolute; top:32px; left:50%; margin-left:-107px;}
+.wrap .workchartdiv .datetitle .nextmonth {position:absolute; top:32px; left:50%; margin-left:107px;}
+.wrap .workchartdiv .datetitle .selectdate {position:absolute; left:50%; margin-left:-74px;}
+.wrap .workchartdiv .datetitle .selectyear,
+.wrap .workchartdiv .datetitle .selectmonth {float:left; line-height:34px;} 
+.wrap .workchartdiv .datetitle .selectdot {float:left; line-height:34px; font-size:34px; color:#fff; margin-top:-5px} 
+.wrap .workchartdiv .datetitle .selectmonth {}
+.wrap .workchartdiv .datetitle .selectyear span,
+.wrap .workchartdiv .datetitle .selectmonth span {padding:0 14px 0 7px;} 
+.wrap .workchartdiv .datetitle .selecttag {
+	float:left;
+	margin-top:-10px;
+	line-height:34px;
+	text-align:left; border:solid 0px #454545; 
+	background:#343434 url("../img/btn_arrow.png") 100% 18px no-repeat;
+}
+.wrap .workchartdiv .datetitle .selecttag li {display:none; padding-left:1px; font-size:35px; font-weight:bold; color:#fff;}
+.wrap .workchartdiv .datetitle .selecttag li.here {display:block;}
+.wrap .workchartdiv .datetitle .selecttag.open li.here {}
+.wrap .workchartdiv .datetitle .selecttag.open li:hover {color:#343434; background:#fff;}
+.wrap .workchartdiv .datetitle .selectyear .selecttag {width:95px;}
+.wrap .workchartdiv .datetitle .selectmonth .selecttag {width:65px;} 
+
+.wrap .workchartdiv .workstat {width:677px; margin:0 auto; padding:8px 0; color:#fff; border:solid 1px #262626; background:#2c2c2c; *zoom:}
+.wrap .workchartdiv .workstat:after {content:""; display:block; clear:both;}
+.wrap .workchartdiv .workstat li {float:left; width:95px; text-align:center; border-left:solid 1px #383838;}/*가로크기늘림*/
+.wrap .workchartdiv .workstat li h4 {font-size:11px; color:#c4c4c4;}
+.wrap .workchartdiv .workstat li span {font-size:16px; font-weight:bold;}
+.wrap .workchartdiv .workstat li.checkin {border-left:none;}
+
+.wrap .workchartdiv .worktable {width:679px; margin:0 auto; background:url("../img/worktable.png") no-repeat;}
+.wrap .workchartdiv .worktable thead th {position:relative; z-index:-1; width:96px; height:45px; *visibilidy:hidden;}
+.wrap .workchartdiv .worktable tbody td { padding:10px 10px 8px 10px; vertical-align:top; border:solid 1px #454545;}
+.wrap .workchartdiv .worktable tbody td h5 {font-size:25px; font-weight:bold; color:#fff;}
+.wrap .workchartdiv .worktable tbody td li {line-height:16px; letter-spacing:-1px; color:#c4c4c4;}
+.wrap .workchartdiv .worktable tbody td li strong {padding-right:3px;}
+.wrap .workchartdiv .worktable tbody td.last h5, 
+.wrap .workchartdiv .worktable tbody td.next h5 {color:#646464;}
+.wrap .workchartdiv .worktable tbody td .status {color:#ffcc00;}
+.wrap .workchartdiv .worktable tbody td .red {color:#9e0b0f;}
+.wrap .workchartdiv .worktable tbody td .red strong {color:#c4c4c4;}
+.wrap .workchartdiv .worktable tbody .today {background:#454545;}
+
+.wrap .workchartdiv .tablescroll {width:679px; overflow:auto; margin:0 auto;}
+.wrap .workchartdiv .teamtable {}
+.wrap .workchartdiv .teamtable thead th {background:#1a1a1a;}
+.wrap .workchartdiv .teamtable tbody {}
+.wrap .workchartdiv .teamtable tbody th {background:#292929;}
+.wrap .workchartdiv .teamtable th {padding:8px 2px; border:solid 1px #454545;}
+.wrap .workchartdiv .teamtable td {padding:6px 4px; vertical-align:top; text-align:center; border:solid 1px #454545;}
+.wrap .workchartdiv .teamtable td span.mm {display:block;}
+.wrap .workchartdiv .teamtable .day {font-size:18px; color:#fff;}
+.wrap .workchartdiv .teamtable .sun {color:#ef0000;}
+.wrap .workchartdiv .teamtable .sat {color:#1a81d8;}
+.wrap .workchartdiv .teamtable .hastatus {position:relative; height:100%;}
+.wrap .workchartdiv .teamtable .status01,
+.wrap .workchartdiv .teamtable .status01 span {color:#ff5e48;}
+.wrap .workchartdiv .teamtable .status02,
+.wrap .workchartdiv .teamtable .status02 span {color:#3bbbfe;}
+.wrap .workchartdiv .teamtable td .teamstatusdiv {display:none; position:absolute; top:-75px; left:50%; width:130px; margin-left:-65px; padding:20px 18px; color:#444444; box-shadow:2px 2px 2px #0f0f0f; background:#fff;}
+.wrap .workchartdiv .teamtable td .teamstatusdiv .arrow {display:block; position:absolute; top:55px; left:50%; margin-left:-30px; width:0; height:0; border-color:#fff transparent transparent transparent; border-style:solid; border-width:14px;}
+.wrap .workchartdiv .teamtable td .hastatus:hover .teamstatusdiv {display:block;}
+
+.wrap .workchartdiv .stattable {width:679px; overflow:auto; margin:0 auto;}
+.wrap .workchartdiv .stattable th {padding:8px 2px; border:solid 1px #454545; background:#1a1a1a;}
+.wrap .workchartdiv .stattable td {padding:6px 4px; vertical-align:middle; text-align:center; border:solid 1px #454545;}
+.wrap .workchartdiv .stattable td span {display:block;}
+.wrap .workchartdiv .stattable .late {color:#ff5e48;}
+.wrap .workchartdiv .stattable .over {color:#3bbbfe;}
+.wrap .workchartdiv .searchdiv {width:680px; height:49px; margin:0 auto 24px auto; padding-top:25px; border-bottom:solid 1px #262626;}
+.wrap .workchartdiv .searchdiv h2 {float:left; margin-right:30px;}
+.wrap .workchartdiv .searchdiv .selecttag {float:left; margin-right:6px; line-height:20px; text-align:left; border:solid 1px #454545; background:#343434 url("../img/btn_arrow.png") 100% 8px no-repeat;;}
+.wrap .workchartdiv .searchdiv .selecttag li {display:none; padding-left:7px; }
+.wrap .workchartdiv .searchdiv .selecttag li.here {display:block;}
+.wrap .workchartdiv .searchdiv .selecttag.open li.here {}
+.wrap .workchartdiv .searchdiv .selecttag.open li:hover {color:#343434; background:#fff;}
+.wrap .workchartdiv .searchdiv .selectname .selecttag {width:80px;}
+.wrap .workchartdiv .searchdiv .selectdate .selecttag {width:80px;} 
+.wrap .workchartdiv .searchdiv .datetype {width:100px; height:18px; padding:1px 5px; line-height:18px; border:solid 1px #454545; background:#343434;}
+.wrap .workchartdiv .searchdiv .searchbtn {float:right;}
+
+.wrap #teamchart,
+//.wrap #statistics {display:none;}
+
+.paging {margin-top:25px; text-align:center; margin-top:16px\9;}
+.paging a {padding:0 4px 0 7px; vertical-align:top;}
+.paging a img {vertical-align:top; padding-top:1px; padding-top:0\9;}
+.paging a.icon {padding:0; background:none;}
+.paging a.one {background:none;}
+.paging a.here,
+.paging a:hover {font-weight:bold; color:#ff6600; text-decoration:underline;}
+.downbtn {float:right; padding-right:18px;}
+.paging + .downbtn {position:relative; top:-17px;}
+
+/* admin */
+.wrap .admintitle {width:680px; height:49px; margin:0 auto 24px auto; padding-top:25px; border-bottom:solid 1px #262626;}
+.wrap .admintitle h3 {float:left; margin-right:30px;}
+.wrap .admintitle p {float:left; line-height:16px;}
+.wrap .admintitle .savebtn {float:right;}
+.wrap .adminsbox {width:680px; margin:0 auto 7px auto; padding:8px 0; border:solid 1px #262626; background:#2c2c2c; *zoom:1;}
+.wrap .adminsbox:after {content:""; display:block; clear:both;}
+.wrap .adminsbox h4 {float:left; width:109px; height:32px; margin-right:38px; line-height:32px; text-align:center; font-size:11px; font-weight:bold; color:#fff; border-right:solid 1px #383838;}
+.wrap .adminsbox .selecttag {float:left; margin-top:6px; margin-right:6px; line-height:20px; text-align:left; border:solid 1px #454545; background:#343434 url("../img/btn_arrow.png") 100% 8px no-repeat;;}
+.wrap .adminsbox .selecttag li {display:none; padding-left:7px; }
+.wrap .adminsbox .selecttag li.here {display:block;}
+.wrap .adminsbox .selecttag.open li.here {}
+.wrap .adminsbox span {float:left; width:29px; margin-top:6px; line-height:22px;}
+.wrap .adminsbox .selecttag.open li:hover {color:#343434; background:#fff;}
+.wrap .adminsbox .selectmm {float:left; margin-right:29px;}
+.wrap .adminsbox .selectmm .selecttag {width:58px;}
+.wrap .adminsbox .selecthour .selecttag,
+.wrap .adminsbox .selectminute .selecttag {width:58px;} 
+.wrap .adminpbox {position:relative; width:680px; height:180px; margin:0 auto;}
+.wrap .sucheckin {position:absolute; top:0; left:0; height:32px; z-index:3;}
+.wrap .sucheckout {position:absolute; top:56px; left:0; height:32px; z-index:2;}
+.wrap .suoverwork {position:absolute; top:112px; left:0; height:32px;}
+.wrap .admintitle {position:relative;}
+.wrap .admintitle .adminpbox {position:absolute;}
+.wrap .admintitle .selecttag {float:left; line-height:20px; text-align:left; border:solid 1px #454545; background:#343434 url("../img/btn_arrow.png") 100% 8px no-repeat;;}
+.wrap .admintitle .selecttag li {display:none; padding-left:7px; }
+.wrap .admintitle .selecttag li.here {display:block;}
+.wrap .admintitle .selecttag.open li.here {}
+.wrap .admintitle .selecttag.open li:hover {color:#343434; background:#fff;}
+.wrap .admintitle .selectyear .selecttag {width:58px;}
+.wrap .admintitle .selectyear span {float:left; width:29px; line-height:22px; padding-left:7px;}
+.wrap .admintitle .selectteam .selecttag {width:158px;}
+.wrap .verscroll {width:680px; height:534px; overflow-x:hidden; overflow-y:scroll; margin:0 auto; }
+.wrap .verscroll .vactable {width:662px;}
+.wrap .verscroll .vactable th {width:110px; padding:8px 2px; border:solid 1px #454545; background:#292929;}
+.wrap .verscroll .vactable td {padding:6px 4px; vertical-align:middle; text-align:center; border:solid 1px #454545;}
+.wrap .verscroll .vactable .date input {width:36px; height:20px; line-height:20px; padding-left:8px; color:#fff; border:solid 1px #454545; background:#343434;}
+.wrap .odd {background:#3a3a3a;}
+
+.wrap #setupvac,
+.wrap #setupapp,
+.wrap #setupauth,
+.wrap #setuporg {display:none;}

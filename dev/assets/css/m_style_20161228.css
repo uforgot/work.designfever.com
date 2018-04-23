@@ -1,0 +1,52 @@
+
+/* common */
+body { min-width:auto;}
+
+/*/////////////////////////////////////// 조직도 ///////////////////////////////////////*/
+/* 조직도 - 주소록 for mobile */
+/*@media only screen and (max-width: 767px) {*/
+    body {min-width:100%;background-color: #222;}
+    #address_wrapper ul li p.m-email .m_icon_email {background-color: #222; color:#555;}
+
+    #address_wrapper header {margin:20px 0 40px;}
+    #address_wrapper header .img-holder {width:25%;margin:0 auto;}
+    #address_wrapper header .txt-holder {margin-top:10px; font-size:0.8rem;line-height:1;color:#ccc;}
+    #address_wrapper header .img-holder img.logo-mobile {display:block;}
+    #address_wrapper header .img-holder img.logo-web {display: none;}
+
+    #address_wrapper .search-holder {padding:0;box-sizing: border-box;}
+    #address_wrapper .search-holder img#btnReset {width:auto; height:2rem;}
+    /*#address_wrapper #inner-address {padding-bottom:10px;}*/
+    #address_wrapper .address-holder {border-top: 2px solid #fff;}
+    #address_wrapper .address-holder .address-category {width:100%;margin:0;border-top:0;background-color: transparent;}
+    #address_wrapper .address-category .inner-category-holder {display:none;}
+    #address_wrapper .address-category .inner-category-holder p {padding-left:0; font-size:1rem; line-height:1.2;color:#fff;}
+    #address_wrapper .address-holder #inner-address {width:100%;border-top:0;}
+    #address_wrapper ul {margin-bottom:10px;color:#ccc;}
+    #address_wrapper ul > p.group-name {padding: 4px 0 4px 10px; font-size:1rem; line-height:1.6; background-color: #303030; color:#eb6100; border-top:1px solid #4e4e4e;}
+    #address_wrapper ul li {width:100%;font-size:1rem;line-height:1.6;box-sizing: border-box;border-top: 1px solid #2c2c2c;}
+    #address_wrapper ul li p {display:block;float:left;box-sizing:border-box;}
+    #address_wrapper ul li p a {color:#ccc;}
+    #address_wrapper ul li p.name {width:40%; padding-left:4px;}
+    #address_wrapper ul li p.tel-drc {display: none;}
+    #address_wrapper ul li p.tel-ext {display: none;}
+    #address_wrapper ul li p.m-tel-phone {width:60%; padding-right:50px;text-align:right;}
+    #address_wrapper ul li p.web-email {display:none;width:100%;padding:0;text-align:right;font-size:1rem; line-height:1.6;}
+    #address_wrapper ul li p.web-email a {padding-right:10px;}
+    #address_wrapper ul li p.m-email {display: inline-block;}
+    #address_wrapper ul li:after { visibility: hidden; display: block; content: ""; clear: both; height: 0;}
+    #address_wrapper input[type=text] {width:140px;height:2rem;margin-bottom:10px;box-sizing: border-box;}
+    #address_wrapper input[type=text]:focus {width: 140px;}
+    #address_wrapper .result-txt-wrap {width:100%;color:#ccc;}
+    #address_wrapper footer {display:block;width:100%;margin:20px 0;border-top:2px solid #fff;}
+    #address_wrapper footer .img-holder {width:30%;margin:0 auto;}
+    #address_wrapper footer .img-holder img.img-mobile {display:block;}
+    #address_wrapper footer .img-holder img.img-web {display:none;}
+/*}*/
+
+
+@media (orientation: landscape) {
+    #address_wrapper input[type=text] {width:200px;}
+    #address_wrapper input[type=text]:focus {width: 200px;}
+}
+

@@ -1,0 +1,211 @@
+@charset "utf-8";
+// bulma css-framework 확장
+.section{
+    // main
+    &.is-main {
+        .table{
+            @include breakpoint(mobile){
+                tbody{
+                    tr{
+                        display: block;
+                        border-bottom: 1px solid #dbdbdb;
+                        th, td {
+                            display: inline-block;
+                            border:none;
+                            font-size: 0.75rem;
+
+                            &:nth-of-type(1) {
+                                display:block;
+                                font-size:1rem;
+                                &:after {
+                                    content:'';
+                                }
+                                padding:0.8rem 0 0 0;
+                            }
+
+                            &:nth-of-type(2) {
+                                padding: 0.1rem 0 0.8rem 0;
+                            }
+                        }
+
+                        &:last-child {
+                            border-bottom: none;
+                            th, td {
+                                border-bottom: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // subpage
+    &.is-resize{
+
+        //테이블 확장
+        .table{
+
+            thead {
+                th {
+                    border-color:#000;
+                }
+            }
+            tbody{
+                td {
+                    vertical-align:middle;
+                }
+
+                &.notice{
+                    th,td{
+                        background: #fafafa;
+                        border-color: #dbdbdb;
+                        color:#222;
+                    }
+                }
+                tr{
+                    &:last-child{
+                        th, td{
+                            border-bottom: 1px solid #dbdbdb;
+                        }
+                    }
+                }
+
+
+            }
+
+            @include breakpoint(mobile){
+                thead{
+                    //display: none;
+                    tr {
+                        th {
+                            display:none;
+                        }
+                        th:first-child {
+                            //display:inline-block;
+                            width:100%;
+                            padding:0;
+                            margin:0;
+                        }
+                    }
+                }
+                tbody{
+                    &:nth-of-type(1) {
+                        border-top:2px solid #000;
+                    }
+
+                    border-bottom: 1px solid #dbdbdb;
+                    &.notice{
+                        border-bottom: none;
+                        tr{
+                            background: #fafafa;
+                        }
+                        th,td{
+                            background: none;
+                        }
+                    }
+                    tr{
+                        display: block;
+                        border-bottom: 1px solid #dbdbdb;
+                        th, td {
+                            display: inline-block;
+                            border:none;
+                            font-size: 0.75rem;
+
+                            padding: 0.1rem 0 0.8rem 0.45rem;
+
+                            &:not(:last-child):after{
+                                margin-left:0.5rem;
+                                opacity:0.2;
+                                content:' | ';
+                            }
+
+                            &:nth-of-type(1){
+                                display: none;
+                            }
+
+                            &:nth-of-type(2) {
+                                display:block;
+                                font-size:1rem;
+                                &:after {
+                                    content:none;
+                                }
+                                padding:0.8rem .75rem 0 .75rem;
+                            }
+
+                            &:nth-of-type(3) {
+                                padding: 0.1rem 0 0.8rem 0.85rem;
+                            }
+                        }
+
+                        &:last-child {
+                            th, td {
+                                border-bottom: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    // 필드 그룹
+    .field-group{
+        margin-bottom: 1.5rem;
+    }
+}
+
+//.is-checkradio[type="checkbox"]+label {
+//    padding:0.1rem .5rem .2rem 0;
+//    padding-left:2rem;
+//}
+
+.is-title-column {
+    margin:auto 0;
+}
+
+.is-column-marginless {
+    margin-bottom:0 !important;
+
+    @include breakpoint(mobile) {
+        .column:not(:last-child) {
+            padding-bottom:0;
+        }
+    }
+}
+
+.is-paddingless-bottom {
+    padding-bottom:0 !important;
+}
+
+.is-level-marginless {
+    margin-bottom:0.75rem !important;
+}
+
+.column {
+    &.last-button {
+        flex-grow:0;
+    }
+}
+
+.is-bordered {
+    border:1px #dddddd solid !important;
+}
+
+.tag {
+    &.is-small-middle {
+        margin-top:-0.2rem;
+    }
+}
+
+.card {
+    border-radius:5px;
+}
+
+.is-vacation-title {
+    border-bottom:1px solid #cdcdcd;
+    padding-bottom:0.3rem;
+    margin-bottom:0.5rem;
+}

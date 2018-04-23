@@ -1,0 +1,333 @@
+/*
+ * !HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/
+ * By Designfever.com has been modified.
+ * date : 2014/07/02
+*/
+
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * These selection rule sets have to be separate.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+legend{display: none;}
+
+textarea {
+    resize: vertical;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* ���� ��ȯ
+	px to % conversions
+	-------------------
+	px	|	%
+	-------------------
+	 8  |   50.0
+	 9	|	56.3
+	10	|	62.5
+	11	|	68.8
+	12	|	75.0
+	13	|	81.3
+	14	|	87.5
+	15	|	93.8
+	16	|	100
+	17	|	106.3
+	18	|	112.5
+	19	|	118.8
+	20	|	125.5
+	21	|	131.3
+	22	|	137.5
+	23	|	143.8
+	24	|	150.0
+*/
+
+
+/*
+ * Nanum Gothic (Korean) http://www.google.com/webfonts/earlyaccess
+ */
+
+
+@font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 700;
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot);
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
+        url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff2) format('woff2'),
+    url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff) format('woff'),
+    url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.ttf) format('truetype');
+}
+
+
+body {font-size:11px; line-height:1; font-family: Open Sans, Dotum, Gulim, arial, AppleGothic, sans-serif; color:#ffffff; background:#141414; margin:0;}
+table, th, td{}
+caption { visibility:hidden; height:0; width:0; font-size:0; text-indent:-9999px; }
+figure, figcaption{margin:0}
+img{vertical-align: top}
+
+a:link, a:visited, a:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+input[type="radio"], input[type="checkbox"]{position:relative; left:1px; top:1px; width: 13px; height:13px;margin:0; padding:0; visibility: hidden}
+input[type="text"],input[type="search"], input[type="password"] {border:0; padding:0; text-indent:10px; margin:0; height:40px; line-height:28px; vertical-align: middle; background-color:#ffffff; color:#000000;}
+select{border:0; background-color:#ffffff; height:40px; width:100%; color:#000000; padding:0; margin:0; text-indent:15px;}
+button{display:block; border:0; padding:0; text-indent: -9999px; overflow: hidden; font-size: 0}
+
+
+.disp-block{display: block !important;}
+.disp-none {display:none !important;}
+.disp-inblock{display:inline-block !important;}
+.fl {float:left !important;}
+.fr {float:right !important;}
+.cl{clear:left !important;}
+.cr{clear:right !important;}
+.pos-abs {position:absolute !important;}
+.pos-rel {position:relative !important;}
+.tleft{text-align:left !important;}
+.tcenter{text-align:center !important;}
+.tright{text-align:right !important;}
+
+.nopad{padding:0 !important;}
+.nopad-l{padding-left:0 !important;}
+.nopad-r{padding-right:0 !important;}
+.nopad-t{padding-top:0 !important;}
+.nopad-b{padding-bottom:0 !important;}
+.noma{margin:0 !important;}
+.noma-l{margin-left:0 !important;}
+.noma-r{margin-right:0 !important;}
+.noma-t{margin-top:0 !important;}
+.noma-b{margin-bottom:0 !important;}
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+.acc-tag{
+    font-size: 0 !important;
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    text-indent: -9999px;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DF Mail Sign Generator</title>
+	<meta charset="UTF-8">
+	<script src="assets/js/jquery-1.11.3.min.js"></script>
+	
+	<script src="assets/js/html2canvas.min.js"></script>
+	<script src="assets/js/mail_generator2x.js?v=0.06"></script>
+</head>
+<body style="font-family:'Malgun Gothic', 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Microsoft NeoGothic', 'Droid sans', '맑은 고딕', 'Dotum', '돋움', '굴림', 'arial', 'sans-serif'; font-size:16px; font-weight:bold">
+	<div id="input-con" style="font-size:12px; padding-bottom:30px;">
+		<div style="font-size:12px; padding:30px 0 10px 0;">
+			<span style="display:inline-block; width:60px;">이 메 일 : </span><span><input id="input-mail" type="text" style="width:100px; height:18px; padding:0 2px; border:1px solid #bbb; box-sizing:border-box;"></span><span>@designfever.com</span>
+			<span class="error-holder-email" style="display:none; color:#FF0000">해당하는 이메일이 없습니다.</span>
+		</div>
+		<div style="font-size:12px; ">
+			<span style="display:inline-block;width:60px;">영문이름 : </span><span><input id="input-name-eng" type="text" style="width:200px; height:18px; padding:0 2px; border:1px solid #bbb; box-sizing:border-box;" placeholder="ex) Gildong Hong"></span>
+			<span class="error-holder-name" style="display:none; color:#FF0000">영문 이름을 입력해 주세요.</span>
+		</div>
+		<div style="top:43px;left:280px;font-size:12px;border-bottom:1px solid #ccc;padding:10px 0 30px 0;">
+			<span class="btn-ok" style="display:inline-block;width:260px; padding:5px 0; text-align:center; background-color:#000; color:#fff;">확인</span>
+		</div>
+	</div>
+	<div id="clipboard-con" style="padding-bottom:30px; border-bottom:1px solid #ccc;">
+		<div id="mail-con" style="font-family:'Malgun Gothic', 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Microsoft NeoGothic', 'Droid sans', '맑은 고딕', 'Dotum', '돋움', '굴림', 'arial', 'sans-serif'; font-size:0; font-weight:bold">
+			<p></p>
+			<div class="capture-area" style="padding-bottom:30px;font-size:0;">
+				<table style="font-size:0;">
+					<caption></caption>
+					<tbody>
+						<tr style="font-size:0;">
+							<td style="font-size:0;"><img src="assets/img/mail_logo_2x.jpg" class="img-logo" alt="logo"/></td>
+							<td style="font-size:0;"></td>
+							<td style="font-size:0;"></td>
+						</tr>
+						<tr style="height:45px;font-size:0;">
+							<td style="font-size:0;"></td>
+							<td style="font-size:0;"></td>
+							<td style="font-size:0;"></td>
+						</tr>
+						<tr style="font-size:0;">
+							<td style="height:46px;padding:0 10px 0 0;font-size:33px;"class="df-name">홍길동 사원</td>
+							<td style="width:119px;height:46px;padding:0;"><img src="assets/img/mail_hyphen_2x.jpg" alt="hyphen" class="img-hyphen"/></td>
+							<td style="height:46px;padding:0 0 0 10px;font-size:33px;" class="df-name-eng">Gildong Hong</td>
+						</tr>
+						
+						<tr style="font-size:0;">
+							<td colspan="2" class="df-division" style="padding:0; height:18px;font-size:25px;">DIRECTOR / IX division</td>
+							<td style="height:18px;padding:0 0 0 10px;font-size:25px;" ><a href="mailto:honggildong@designfever.com" class="df-email" style="text-decoration:none; color:#000;">honggildong@designfever.com</a></td>
+						</tr>
+						<tr style="font-size:0;">
+							<td colspan="2" style="height:18px;padding:0;font-size:0;"></td>
+							<td style="height:18px;padding:0 0 0 10px;font-size:25px;"><a href="tel:010-1234-5678" class="df-mobile-number" style="text-decoration:none;color:#000;">010 1234 5678</a></td>
+						</tr>
+						<tr style="font-size:0;">
+							<td colspan="2" style="height:18px;padding:0;font-size:0;"></td>
+							<td style="height:18px;padding:0 0 0 10px;font-size:25px;"><a href="tel:02-325-2767" style="text-decoration:none;color:#000;">02 325 2767</a> / 101</td>
+						</tr>
+					</tbody>
+				</table>
+				<table width="960" style="font-size:0;">
+					<caption></caption>
+					<tbody>
+						<tr style="height:35px;">
+							<td></td>
+						</tr>
+						<tr>
+							<td style="font-size:20px;height:15px;padding:0;">주)디자인피버 04047 서울시 마포구 양화대로 10길 40. DF빌딩</td>
+						</tr>
+						<tr>
+							<td style="font-size:20px;height:15px;padding:0;">DESIGNFEVER INC. 04047, 40, YANGHWA DAE-RO 10GIL, MAPO-GU, SEOUL KOREA</td>
+						</tr>
+						<tr>
+							<td style="font-size:20px;height:15px;padding:0;"><a href="http://www.designfever.com" target="_blank" style="text-decoration: none;color:#000;">WWW.DESIGNFEVER.COM</a></td>
+						</tr>
+						<tr>
+							<td style="font-size:16px; text-align:justify; padding-top:28px;">상기 메시지와 첨부화일 내에는 비밀정보가 포함되어 있을 수 있으며, 지정된 수신자에 한하여 조회 및 사용 될 수 있습니다. 만약 송신자의 실수로 인하여 상기 메시지를 수신하였다면,송신자에게 메시지를 반송해 주시고, 원본 메시지와 모든 사본을 폐기해 주시기 바랍니다. 상기 메시지의 전체 또는 일부에 대해 무단 열람, 사용, 공개, 배포하는 것은 엄격히 금지되어 있습니다. (주)디자인피버<br>
+THE INFORMATION IN THIS EMAIL AND ANY ATTACHMENTS ARE FOR THE SOLE USE OF THE INTENDED RECIPIENT AND MAY CONTAIN PRIVILEGED AND CONFIDENTIAL,
+INFORMATION. IF YOU BELIEVE THAT YOU HAVE RECEIVED THIS EMAIL IN ERROR, PLEASE CONTACT THE SENDER IMMEDIATELY AND DELETE THE EMAIL AND
+ALL OF ITS ATTACHMENTS. IF YOU ARE NOT THE INTENDED RECIPIENT, ANY USE, DISCLOSURE, COPYING OR DISTRIBUTION OF THIS MESSAGE OR ATTACHMENT IS STRICTLY
+PROHIBITED. DESIGNFEVER INC.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div style="display: none;"><textarea id="myClipboard"></textarea></div>
+	<div class="ta-con" style="padding:30px 0;border-bottom: 1px solid #ccc; display:none;">
+		<p style="font-size:12px;">소스코드</p>
+		<textarea id="targetTa" class="ta" style="width:100%; height:300px;" onclick="copyToClipboard(this, myClipboard);"></textarea>
+	</div>
+	<div class="img-con" style="position:relative; overflow:hidden;">
+		<div class="draw-area" style="padding-top:30px;">
+			<p style="font-size:12px; padding-bottom:30px;">이미지 타입</p>
+			<p style="font-size:12px; padding-bottom:30px;">이미지 경로 : <span class="img-path"><a href="#" target="_blank">NO DATA!!</a></span></p>
+			<p></p>
+			<div class="txt-top">
+				<div><img src="assets/img/mail_top_bar.jpg" alt="hyphen" class="img-bar"/></div>
+				<div>&nbsp;</div>
+				<div style="font-size:12px;">Contact directly to.</div>
+				<div style="font-size:12px;">
+					<span><a href=""><a href="mailto:honggildong@designfever.com" class="df-email-img" style="text-decoration:none; color:#000;">honggildong@designfever.com</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+					<span><a href="tel:010-1234-5678" class="df-mobile-number-img" style="text-decoration:none;color:#000;">010-1234-5678</a></span>
+				</div>
+				<div>&nbsp;</div>
+			</div>
+			<div class="canvas-con">
+			</div>
+			<div class="result-img" style="none"><img src="" alt="" width="480"/></div>
+		</div>
+	</div>
+</body>
+</html>

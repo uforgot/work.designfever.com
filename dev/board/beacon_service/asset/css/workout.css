@@ -1,0 +1,34 @@
+.underline {display:block; posiiton:absolute; width:100%; height:4px; background-color:#ffffff; margin-top:8px;}
+
+.body-wrap {display:block; position:absolute; width:100%; height:100%; margin:0;}
+
+.login-wrap {display: block; position:absolute; left:50%; top:50%; width:320px; border:2px #ffffff; margin-left:-160px; margin-top:-50%;  text-align: center;}
+.login-wrap .logo {display:block;  position:relative; width:90%; margin:0 auto;}
+.login-wrap .form-wrap {display:block; position:relative; width:100%; margin-top:30px; margin-bottom:20px;}
+.login-wrap .form-wrap input {display:block; position:relative; width:100%; margin-bottom:10px; height:50px; font-size:12pt; background-color:#444444;}
+.login-wrap .login-bt {display:block; position:relative; font-size:22pt; width:90px; font-weight:800; text-align:center; margin:0 auto;}
+
+.main-wrap {display:block; position:absolute; width:100%; height:100%; margin:0;}
+.main-wrap .top-wrap {display:block; position:absolute; top:0; left:0; width:100%;}
+
+.main-wrap .top-wrap .date {display:block; position:absolute; top:25px; left:15px; font-size:12pt; width:90px; font-weight:800; text-align:left;}
+.main-wrap .top-wrap .day {display:block; position:absolute; top:45px; left:15px; font-size:12pt; width:90px; font-weight:800; text-align:left;}
+
+.main-wrap .top-wrap .time {display:block; position:absolute; top:5px; right:15px; width:200px;}
+.main-wrap .top-wrap .time .hour {display:block; position:absolute; font-size:60pt; font-weight:400; text-align:right;}
+.main-wrap .top-wrap .time .minute {display:block; position:absolute; font-size:60pt; font-weight:400; text-align:right; right:0;}
+.main-wrap .top-wrap .time .second {display:block; position:absolute; font-size:60pt; font-weight:400; text-align:right; right:0; top:70px; opacity:0.3;}
+
+.main-wrap .bottom-wrap {display:block; position:absolute; bottom:0; left:0; width:100%;}
+.main-wrap .bottom-wrap .logo {display:block; position:absolute; bottom:10px; right:10px; width:70px;}
+.main-wrap .bottom-wrap .beacon {display:block; position:absolute; bottom:10px; left:15px;}
+.main-wrap .bottom-wrap .beacon .item {display:inline-block; position:relative; width:24px; height:24px;}
+
+.main-wrap .bottom-wrap .beacon .item .activated {display:none; position:absolute; left:0; top:0;}
+.main-wrap .bottom-wrap .beacon .item .deactivated {display:block; position:absolute; left:0; top:0;}
+.main-wrap .bottom-wrap .login-bt {display:block; position:relative; font-size:11pt; font-weight:800; bottom:10px; width:120px; text-align:center; margin:0 auto;}
+
+
+.main-wrap .main {display:block; position:absolute; left:0; top:0; width:100%; height:100%;}
+.main-wrap .main .in-bt {display:block; position:absolute; left:50%; top:50%; font-size:100pt; font-weight:800; width:130px; height:130px; text-align:center; margin-left:-65px; margin-top:-65px;}
+.main-wrap .main .out-bt {display:none; position:absolute; left:50%; top:50%; font-size:100pt; font-weight:800; width:240px; height:130px; text-align:center; margin-left:-120px; margin-top:-65px;}

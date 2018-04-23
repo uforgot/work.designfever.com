@@ -1,0 +1,117 @@
+@charset 'euc-kr';
+/* Copyright 2011 Designfever. All Rights Reserved. */
+
+/* ***************  global *************** */
+html { margin:0; padding:0; width:100%; height:100%;} /* height:100%; */
+body { margin:0; padding:0; width:100%; height:100%; font-size:12px;  font-family:dotum, µ¸¿ò, gulim, ±¼¸²} /* height:100%; */
+
+/*
+	px to % conversions
+	-------------------
+	px	|	%
+	-------------------
+	9	|	70
+	10	|	77
+	11	|	85
+	12	|	93
+	13	|	100
+	14	|	108
+	15	|	116
+	16	|	123.1
+	17	|	131
+	18	|	138.5
+	19	|	146.5
+	20	|	153.9
+	21	|	161.6
+	22	|	167
+	23	|	174
+	24	|	182
+	25	|	189
+	26	|	197
+	27	|	204
+	28	|	212
+	29	|	219
+	30	|	227
+	31	|	234
+	32	|	242
+*/
+
+#cont_wrap .cont {
+scrollbar-face-color:#FFFFFF; 
+scrollbar-shadow-color:#D1D1D1; 
+scrollbar-highlight-color:#ECECEC; 
+scrollbar-3dlight-color:#FFFFFF; 
+scrollbar-darkshadow-color:#F6F6F6; 
+scrollbar-track-color:#F2F2F2; 
+scrollbar-arrow-color:#A9A9A9; 
+}
+
+.clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; } .clearfix { display:inline-block; }/*  ie-mac \*/ *html .clearfix {height: 1%;} .clearfix {display: block;}/* ie-mac */
+.none {display:none;}
+.floatl {float:left;} 
+.floatr {float:right;}
+.pos_a {position:absolute;}
+.pos_r {position:relative;}
+
+
+/* *********** other ********** */
+.effect {background-color:#000; filter:Alpha(opacity=35); opacity:0.3; -moz-opacity:0.3;}
+.pngfilter {height:26px; background:url(pngfile)  0 0 repeat-x; * background:url(pngfile) 0 0 repeat-x; _background-image:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale', src='pngfile');}
+.iepng {behavior:url('/css/common/iepngfix.htc');}  /* after 1*1px blank image    if(typeof blankImg == 'undefined') var blankImg = 'blank.gif image url'; */
+.select {behavior:url('/css/common/selectbox.htc');}
+summary { display:none}
+caption { visibility:hidden; height:0; width:0;}
+/* link */
+a { text-decoration:none}
+a:link {color:#000; text-decoration:none} 
+a:visited {color:#000; text-decoration:none} 
+a:active { color:#000; text-decoration:none} 
+a:hover {color:#000; text-decoration:none}
+
+/* image */
+img {border:0; vertical-align:top}
+
+/* define */
+dl, dt, dd {margin:0px; padding:0px;} 
+
+/* sentence */
+div, h2{padding:0; margin:0;}
+p {margin:0px; padding:0px}
+
+/* list */
+ul, ol {list-style-type:none; margin:0px; padding:0px; }
+
+/* area */
+hr {display:none;}
+
+/* form */
+form {margin:0; padding:0;}
+form label, label {height:19px; color:#000; cursor:default; font-size:12px;}
+select {font-size:12px; font-family:"UttumDotumRegular","arial","dotum", "sans-serif"; background:#fff; vertical-align:middle; height:20px; letter-spacing:0px}
+legend {display:none;}
+fieldset {margin:0; padding:0; border:none;}
+/* 20130207
+checkbox {width:13px; height:13px;}
+input, textarea {vertical-align:middle; font-size:12px; color:#777777; line-height:14px; font-family:"UttumDotumRegular","arial","dotum", "sans-serif"; background:#fff;}
+*?
+
+.inputform {border:1px solid; border-color:#C9C9C9 #FFFFFF #FFFFFF #C9C9C9; height:14px; margin:0px; background-color:#F5F5F5; padding-top:3px; padding-left:2px; font-size:12px; font-family:dotum}
+.inputformwhite {border:1px solid #CFCFCF; height:16px; margin:0px; background-color:#FFFFFF; font-size:11px; font-family:dotum; padding-top:4px}
+
+/* align */
+.inline {display:inline;}
+.textl {text-align:left;}
+.textc {text-align:center; margin:0 auto;}
+.textr {text-align:right;}
+
+/* table */ 
+table {margin:0px; padding:0px; border-spacing:0; border-collapse:collapse;}
+td {margin:0px; padding:0px; font-size:12px; color:#777777; }
+.notable{border-collapse:collapse; margin:0; padding:0; border-spacing:0; border:0 solid;}
+
+/* h */
+h1, h2, h3, h4, h5, h6, h7 { margin:0; padding:0;}
+
+/* botton */
+button{ margin:0; padding:0; border:0; background:none; cursor:pointer}
+button img{display:block; *margin:-1px -1px -3px -1px}
