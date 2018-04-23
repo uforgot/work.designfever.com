@@ -1,0 +1,198 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>DESIGN FEVER INTRANET</title>
+<meta http-equiv="Content-Type" content="text/html" charset="euc-kr">
+
+<link rel="stylesheet" href="/css/common.css" />
+<link rel="stylesheet" href="/css/style_20180406.css" />
+<link rel="stylesheet" href="/css/jquery-ui.css" />
+<style type="text/css">
+	#ui-datepicker-div { padding:0 30px 0 30px; border:1px solid #000; }
+	.ui-widget-content { border:0px; }
+	.ui-widget-header { border:0px; }
+	.ui-icon, .ui-widget-content .ui-icon { background-image: url("/img/ui-icons_222222_256x240.png"); }
+	.ui-widget-header .ui-icon { background-image: url("/img/ui-icons_222222_256x240.png"); }
+	.ui-state-hover .ui-icon, .ui-state-focus .ui-icon { background-image: url("/img/ui-icons_454545_256x240.png"); }
+	.ui-state-active .ui-icon { background-image: url("/img/ui-icons_454545_256x240.png"); }
+	.ui-datepicker-header { margin-top:9px; height:35px; }
+	.ui-datepicker-calendar thead { border-top:1px solid #000; border-bottom:1px solid #000; }
+	.ui-datepicker-calendar tbody { border-bottom:12px solid #fff; }
+	.ui-datepicker-calendar tbody tr:first-child td { padding-top:24px; }
+	.ui-datepicker-calendar tbody a { text-align:center; }
+	.ui-datepicker-calendar tbody .ui-datepicker-week-end:nth-child(1) a { color:#eb6100; }
+</style>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/modernizr.custom.72169.js"></script>
+<script src="/js/jquery.cookie.js"></script>
+<script src="/js/custom.js"></script>
+
+<!-- 페이지 로딩바 표시 -->
+<link rel="stylesheet" href="/css/page.css" />
+<script src="/js/page.js" class="pagejs"></script>
+<!-- //페이지 로딩바 표시 -->
+
+<meta property="wb:webmaster" content="0bbb8ebfde17ab16" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+<!-- add homescreen -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-title" content="df intranet">
+<link rel="shortcut icon" sizes="16x16" href="/img/homescreen/icon-16x16.png">
+<link rel="shortcut icon" sizes="196x196" href="/img/homescreen/icon-196x196.png">
+<link rel="apple-touch-icon-precomposed" href="/img/homescreen/icon-152x152.png">
+
+<link rel="stylesheet" type="text/css" href="/css/addtohomescreen.css">
+<script src="/js/addtohomescreen.min.js"></script>
+<!-- //add homescreen -->
+
+<script type="text/javascript">
+	
+
+
+	var KEYBOARD_ENTER= 13;
+	var id, pwd;
+	var isMobile = false;
+	var storageId, storagePw;
+
+	$(document).ready( function(){
+		init();
+	});
+
+	function init(){
+
+		/**
+		* modify 20170113 / do / 모바일일 때 추가
+		*/
+		
+
+		//모바일 단말기 확인하여 홈페이지 이동
+		var ua = window.navigator.userAgent.toLowerCase();
+		if ( /iphone/.test(ua) || /android/.test(ua) || /opera/.test(ua) || /bada/.test(ua) ) {
+			setMobile();
+		}
+
+
+		id = $('#user_id');
+		pwd = $('.se');
+
+		id.on( 'keypress', keypressId );
+		pwd.on( 'keypress', keypressPwd );
+		$(window).on( 'resize', resizeHandler );
+
+		console.log(storageId)
+		if(storageId == null || storageId == undefined){
+			id.focus();
+		}
+		$(window).trigger( 'resize' );
+	}
+
+	function setMobile(){
+		isMobile = true;
+		$('<link rel="stylesheet" href="/css/mobile.css" />').insertAfter(".pagejs");
+
+
+		storageId = localStorage.getItem("id");
+		storagePw = localStorage.getItem("pw");
+
+		if(storageId != null){
+			$("#user_id").val(storageId)
+		}
+
+		if(storagePw != null){
+			$("#user_pw").val(storagePw)
+		}
+	}
+
+	function keypressId( $evt ) {
+		switch( $evt.which ) {
+			case KEYBOARD_ENTER : pwd.focus(); break;
+		}
+	}
+
+	function keypressPwd( $evt ) {
+		switch( $evt.which ) {
+			case KEYBOARD_ENTER : loginCheck(); break;
+		}
+	}
+
+	function resizeHandler() {
+		resizeWrapper();
+	}
+
+	function resizeWrapper() {
+		$('.wrapper_login').css( {height:$(window).height()-82} );		// Footer Height
+	}
+
+	function loginCheck() {
+		var frm = document.form;
+		/*
+		if( frm.user_id.value.length < 4 || frm.user_id.value.length > 16 ) {
+			alert("잘못된 아이디입니다. (4-16자리 가능)");
+			frm.user_id.focus();
+			return;
+		}
+
+		if( frm.user_pw.value.length < 4 || frm.user_pw.value.length > 16) {
+			alert("잘못된 패스워드입니다. (4-16자리 가능)");
+			frm.user_pw.focus();
+			return;
+		}
+		*/
+		frm.target	= "hdnFrame";
+		frm.action	= "/member/login_act.php";
+		frm.submit();
+	}
+</script>
+</head>
+
+<body>
+<div class="wrapper_login">
+<form name="form" method="post">
+<input type="hidden" name="retUrl" value="">
+	<div style="position:absolute; z-index:10; width:300px; height:300px; left:50%; top:50%; margin:-300px 0 0 -200px">
+		<!-- <div class="graphic"><img src="../img/logo_A_1.gif" alt="" /></div> -->
+	</div>
+	<!-- <p class="login_txt1"><img src="../img/txt_left.gif" alt="" /></p> -->
+		<div class="login_area">
+		<!-- <div class="logo"></div> -->
+		<div class="logo"><img class="js-svg" src="/img/df_logo_new.svg" alt="" /></div>
+
+		<p class="a1"><img src="../img/txt_please.gif" alt="" /></p>
+		
+		<div class="loginfo">
+			<a href="javascript:loginCheck();"><img src="../img/bn_ok.gif" alt="" /></a>
+			<input type="text" tabindex="1" name="user_id" id="user_id" /><br />
+			<input type="password" tabindex="2" class="se" name="user_pw" id="user_pw"/>
+		</div>
+
+		<p class="a2" align="center">
+			<!--input type="checkbox" name="commute_check" value="1"/> 출근체크 <a href="/member/join.php">+ 회원가입</a-->
+			<a href="/member/join.php">+ 회원가입</a>
+		</p>
+		</div>
+</form>	
+	<!-- wapper set close -->
+	</div>				
+	</div>				
+	</div>		
+	</div>
+	<!-- //wapper set close -->
+
+<!-- <p class="footer"><img src="/img/txt_copy.gif" alt="" /></p> -->
+<p class="footer"><img class="js-svg" src="/img/footerLogo.svg" alt="" /></p>
+
+<iframe name="hdnFrame" id="hdnFrame" width="0" height="0" style="border:0;"></iframe>
+<iframe name="hdnFrame2" id="hdnFrame2" width="0" height="0" style="border:0;"></iframe>
+
+	<!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> -->
+</div>
+</body>
+</html>
