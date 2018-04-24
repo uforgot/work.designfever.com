@@ -143,7 +143,7 @@
                         </div>
                         
                         <div class="control is-expanded">                           
-                             <input id="keyword" class="input" type="text" placeholder="" type="text" name ="keyword" value="<?=$keyword?>">			
+                             <input id="keyword" class="input" type="text" placeholder="" type="text" name ="keyword" value="<?=$keyword?>">
                         </div>
                         <div class="control is-hidden-mobile">
                             <button class="button is-link" id="btnSearch">
@@ -262,7 +262,7 @@
 						?>
 						</tr>
             	<tr>
-								<td colspan="5" style="text-align: center;">검색된 결과가 없습니다.</td>
+								<td colspan="5" style="has-text-centered">검색된 결과가 없습니다.</td>
 							</tr>
 						<?
 							}

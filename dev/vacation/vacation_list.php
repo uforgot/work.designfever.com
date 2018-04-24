@@ -199,7 +199,7 @@
 										{
 									?>
 								<tr>
-									<td colspan="5">등록된 휴가계가 없습니다.</td>
+									<td colspan="5" style="has-text-centered">등록된 휴가계가 없습니다.</td>
 								</tr>
 								
 								<!--                                
@@ -391,11 +391,11 @@
                 </tbody>
             </table>
             <!--페이징처리-->        
-						<nav class="pagination" role="navigation" aria-label="pagination">
-    	    		<?=getPaging($total_cnt,$page,$per_page);?>
-  	    			</ul>        	
-	     			</nav>
-  				 	<!--페이징처리-->
+            <nav class="pagination" role="navigation" aria-label="pagination">
+                <?=getPaging($total_cnt,$page,$per_page);?>
+                </ul>
+            </nav>
+  			<!--페이징처리-->
             
         </div>
     </div>

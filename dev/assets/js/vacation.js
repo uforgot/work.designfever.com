@@ -50,16 +50,38 @@
 	//검색조건 변경
 	function selCase(f)
 	{
-		if (f.mode.value == "team")
+        if(f.mode.value=="" || f.mode.value=="all")
+        {
+            $('#team_div').css("display","none");
+            $('#vacation_div').css("display","none");
+            f.team.style.display = "none";
+            f.vacation.style.display = "none";
+
+
+
+        }
+		else if (f.mode.value == "team")
 		{
-			f.team.style.display = "inline";
-			f.vacation.style.display = "none";
+            $('#team_div').css("display","");
+            $('#vacation_div').css("display","none");
+            f.team.style.display = "";
+            f.vacation.style.display = "none";
 		}
-		if (f.mode.value == "vacation")
+		else if (f.mode.value == "vacation")
 		{
-			f.team.style.display = "none";
-			f.vacation.style.display = "inline";
+            $('#team_div').css("display","none");
+            $('#vacation_div').css("display","");
+            f.team.style.display = "none";
+            f.vacation.style.display = "";
 		}
+        else
+        {
+            $('#team_div').css("display","none");
+            $('#vacation_div').css("display","none");
+            f.team.style.display = "none";
+            f.vacation.style.display = "none";
+        }
+
 	}
 	//휴가계 읽기
 	function funView(doc_no)

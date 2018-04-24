@@ -1,7 +1,26 @@
 # Created by .ignore support plugin (hsz.mobi)
+*.iml
 *.map
 .gitignore
 .idea/
 /node_modules/
 
 markup_template/assets/images/.DS_Store
+dev/assets/js/tablesorter/addons/.svn/
+dev/assets/js/tablesorter/addons/pager/.svn/
+dev/assets/js/tablesorter/build/.svn/
+dev/assets/js/tablesorter/docs/.svn/
+dev/assets/js/tablesorter/docs/.tmp_index.html.55071~
+dev/assets/js/tablesorter/docs/assets/.svn/
+dev/assets/js/tablesorter/docs/css/.svn/
+dev/assets/js/tablesorter/docs/img/.svn/
+dev/assets/js/tablesorter/docs/js/.svn/
+dev/assets/js/tablesorter/tests/.svn/
+dev/assets/js/tablesorter/tests/assets/.svn/
+dev/assets/js/tablesorter/themes/.svn/
+dev/assets/js/tablesorter/themes/blue/.svn/
+dev/assets/js/tablesorter/themes/green/.svn/
+dev/board/beacon_service/asset/.DS_Store
+dev/board/beacon_service/asset/img/
+markup_template/outputxhtml.css
+work.designfever.com.iml
