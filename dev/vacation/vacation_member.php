@@ -138,214 +138,218 @@
     <input type="hidden" name="page" value="<?=$page?>">
     <? include INC_PATH."/vacation_menu.php";?>
     <!-- 본문 시작 -->
-    <section class="section is-resize">
+    <section class="section df-vacation">
     <div class="container">
         <div class="content">
             <!--검색 영역-->
-            <div class="box">
-                <div class="columns is-column-marginless">
-                    <div class="column" style="display:inline-block;flex-grow:0;flex-basis:auto;">
-                        <div class="field is-group">
-                            <div class="control select">
-                                <select name="fr_year" id="fr_year">
-                                    <?
-                                    for ($i=$startYear; $i<=($fr_year+1); $i++)
-                                    {
-                                        if ($i == $fr_year)
-                                        {  $selected = " selected"; }
-                                        else
-                                        { $selected = ""; }
-                                        echo "<option value='".$i."'".$selected.">".$i."년</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="control select">
-                                <select name="fr_month" id="fr_month">
-                                    <?
-                                    for ($i=1; $i<=12; $i++)
-                                    {
-                                        if (strlen($i) == "1")
-                                        { $j = "0".$i; }
-                                        else
-                                        { $j = $i; }
-
-                                        if ($j == $fr_month)
-                                        { $selected = " selected"; }
-                                        else
-                                        { $selected = ""; }
-                                        echo "<option value='".$j."'".$selected.">".$i."월</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="control select">
-                                <select name="fr_day" id="fr_day">
-                                    <?
-                                    for ($i=1; $i<=31; $i++)
-                                    {
-                                        if (strlen($i) == "1")
-                                        { $j = "0".$i; }
-                                        else
-                                        { $j = $i; }
-                                        if ($j == $fr_day)
-                                        { $selected = " selected"; }
-                                        else
-                                        { $selected = ""; }
-                                        echo "<option value='".$j."'".$selected.">".$i."일</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="button">
-                                <input type="hidden" id="fr_date" class="datepicker">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="field is-group">
-                            <div class="control select">
-                                <select name="to_year" id="to_year">
-                                    <?
-                                    for ($i=$startYear; $i<=($to_year+1); $i++)
-                                    {
-                                        if ($i == $to_year)
-                                        { $selected = " selected"; }
-                                        else
-                                        { $selected = ""; }
-                                        echo "<option value='".$i."'".$selected.">".$i."년</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="control select">
-                                <select name="to_month" id="to_month">
-                                    <?
-                                    for ($i=1; $i<=12; $i++)
-                                    {
-                                        if (strlen($i) == "1")
-                                        { $j = "0".$i; }
-                                        else
-                                        { $j = $i; }
-                                        if ($j == $to_month)
-                                        { $selected = " selected"; }
-                                        else
-                                        { $selected = ""; }
-                                        echo "<option value='".$j."'".$selected.">".$i."월</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="control select">
-                                <select name="to_day" id="to_day">
-                                    <?
-                                    for ($i=1; $i<=31; $i++)
-                                    {
-                                        if (strlen($i) == "1")
-                                        { $j = "0".$i; }
-                                        else
-                                        { $j = $i; }
-                                        if ($j == $to_day)
-                                        { $selected = " selected"; }
-                                        else
-                                        { $selected = "";}
-                                        echo "<option value='".$j."'".$selected.">".$i."일</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="button">
-                                <input type="hidden" id="to_date" class="datepicker">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="columns is-column-marginless">
-                    <div class="column">
-                    	<div class="field is-group">
-                            <div class="control select">
-                                <select name="status">
-                                    <option value="">승인여부 전체</option>
-                                    <option value="미결재"<? if ($p_status == "미결재") { echo " selected"; } ?>>미결재</option>
-                                    <option value="기각"<? if ($p_status == "기각") { echo " selected"; } ?>>기각</option>
-                                    <option value="결재"<? if ($p_status == "결재") { echo " selected"; } ?>>결재</option>
-                                </select>
-                            </div>
-                            <div class="control select">
-                                <select name="mode" onChange="javascript:selCase(this.form);">
-                                    <option value="">전체</option>
-                                    <option value="team"<? if ($p_mode == "team") { echo " selected"; } ?>>부서</option>
-                                    <option value="vacation"<? if ($p_mode == "vacation") { echo " selected"; } ?>>휴가</option>
-                                </select>
-                            </div>
-                            <div class="control select" id ="team_div">
-                                <select name="team" style="display:<? if ($p_mode == "team") { echo ""; } else { echo " none"; } ?>; ">
-                                    <option value=""<? if ($p_team2 == ""){ echo " selected"; } ?>>전직원</option>
-                                    <?
-                                    //$selSQL = "SELECT STEP, TEAM FROM DF_TEAM_CODE WITH(NOLOCK) WHERE VIEW_YN = 'Y' ORDER BY SORT";
-                                    $selSQL = "SELECT STEP, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE VIEW_YN = 'Y' ORDER BY SORT";
-                                    $selRs = sqlsrv_query($dbConn,$selSQL);
-
-                                    while ($selRecord = sqlsrv_fetch_array($selRs))
-                                    {
-                                        $selStep = $selRecord['STEP'];
-                                        $selTeam = $selRecord['TEAM'];
-
-                                        $blank = "";
-                                        for ($i=3;$i<=$selStep;$i++)
+            <div class="card">
+                <div class="card-content">
+                    <div class="columns is-column-marginless">
+                        <div class="column" style="display:inline-block;flex-grow:0;flex-basis:auto;">
+                            <div class="field is-group">
+                                <div class="control select">
+                                    <select name="fr_year" id="fr_year">
+                                        <?
+                                        for ($i=$startYear; $i<=($fr_year+1); $i++)
                                         {
-                                            $blank .= "&nbsp;&nbsp;&nbsp;";
+                                            if ($i == $fr_year)
+                                            {  $selected = " selected"; }
+                                            else
+                                            { $selected = ""; }
+                                            echo "<option value='".$i."'".$selected.">".$i."년</option>";
                                         }
                                         ?>
-                                        <option value="<?=$selTeam?>"<? if ($p_team == $selTeam){ echo " selected"; } ?>><?=$blank?><?=$selTeam?></option>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="fr_month" id="fr_month">
                                         <?
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="control select" id="vacation_div">
-                                <select name="vacation" style="display:<? if ($p_mode == "vacation") { echo ""; } else { echo " none"; } ?>;" >
-                                    <option value="">전체</option>
-                                    <option value="연차"<? if ($p_vacation == "연차") { echo " selected"; } ?>>연차</option>
-                                    <option value="병가"<? if ($p_vacation == "병가") { echo " selected"; } ?>>병가</option>
-                                    <option value="반차"<? if ($p_vacation == "반차") { echo " selected"; } ?>>반차</option>
-                                    <option value="리프레쉬"<? if ($p_vacation == "리프레쉬") { echo " selected"; } ?>>리프레쉬</option>
-                                    <option value="프로젝트"<? if ($p_vacation == "프로젝트") { echo " selected"; } ?>>프로젝트</option>
-                                    <option value="무급"<? if ($p_vacation == "무급") { echo " selected"; } ?>>무급</option>
-                                    <option value="경조사"<? if ($p_vacation == "경조사") { echo " selected"; } ?>>경조사</option>
-                                    <option value="예비군"<? if ($p_vacation == "예비군") { echo " selected"; } ?>>예비군</option>
-                                    <option value="기타"<? if ($p_vacation == "기타") { echo " selected"; } ?>>기타</option>
-                                    <option value="휴가 소진시"<? if ($p_vacation == "휴가 소진시") { echo " selected"; } ?>>휴가 소진시</option>
-                                </select>
-                            </div>
-                       </div>
-                    </div>
-                </div>
+                                        for ($i=1; $i<=12; $i++)
+                                        {
+                                            if (strlen($i) == "1")
+                                            { $j = "0".$i; }
+                                            else
+                                            { $j = $i; }
 
-                <div class="field is-grouped">
-                    <div class="control is-expanded">
-                        <input class="input" type="text" type="text" name="name" value="<?=$p_name?>" placeholder="기안자">
+                                            if ($j == $fr_month)
+                                            { $selected = " selected"; }
+                                            else
+                                            { $selected = ""; }
+                                            echo "<option value='".$j."'".$selected.">".$i."월</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="fr_day" id="fr_day">
+                                        <?
+                                        for ($i=1; $i<=31; $i++)
+                                        {
+                                            if (strlen($i) == "1")
+                                            { $j = "0".$i; }
+                                            else
+                                            { $j = $i; }
+                                            if ($j == $fr_day)
+                                            { $selected = " selected"; }
+                                            else
+                                            { $selected = ""; }
+                                            echo "<option value='".$j."'".$selected.">".$i."일</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="button">
+                                    <input type="hidden" id="fr_date" class="datepicker">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field is-group">
+                                <div class="control select">
+                                    <select name="to_year" id="to_year">
+                                        <?
+                                        for ($i=$startYear; $i<=($to_year+1); $i++)
+                                        {
+                                            if ($i == $to_year)
+                                            { $selected = " selected"; }
+                                            else
+                                            { $selected = ""; }
+                                            echo "<option value='".$i."'".$selected.">".$i."년</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="to_month" id="to_month">
+                                        <?
+                                        for ($i=1; $i<=12; $i++)
+                                        {
+                                            if (strlen($i) == "1")
+                                            { $j = "0".$i; }
+                                            else
+                                            { $j = $i; }
+                                            if ($j == $to_month)
+                                            { $selected = " selected"; }
+                                            else
+                                            { $selected = ""; }
+                                            echo "<option value='".$j."'".$selected.">".$i."월</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="to_day" id="to_day">
+                                        <?
+                                        for ($i=1; $i<=31; $i++)
+                                        {
+                                            if (strlen($i) == "1")
+                                            { $j = "0".$i; }
+                                            else
+                                            { $j = $i; }
+                                            if ($j == $to_day)
+                                            { $selected = " selected"; }
+                                            else
+                                            { $selected = "";}
+                                            echo "<option value='".$j."'".$selected.">".$i."일</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="button">
+                                    <input type="hidden" id="to_date" class="datepicker">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="control">
-                        <a href="javascript:funSearch(this.form);" class="button is-link">
+                    <div class="columns is-column-marginless">
+                        <div class="column">
+                            <div class="field is-group">
+                                <div class="control select">
+                                    <select name="status">
+                                        <option value="">승인여부 전체</option>
+                                        <option value="미결재"<? if ($p_status == "미결재") { echo " selected"; } ?>>미결재</option>
+                                        <option value="기각"<? if ($p_status == "기각") { echo " selected"; } ?>>기각</option>
+                                        <option value="결재"<? if ($p_status == "결재") { echo " selected"; } ?>>결재</option>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="mode" onChange="javascript:selCase(this.form);">
+                                        <option value="">전체</option>
+                                        <option value="team"<? if ($p_mode == "team") { echo " selected"; } ?>>부서</option>
+                                        <option value="vacation"<? if ($p_mode == "vacation") { echo " selected"; } ?>>휴가</option>
+                                    </select>
+                                </div>
+                                <div class="control select" id ="team_div">
+                                    <select name="team" style="display:<? if ($p_mode == "team") { echo ""; } else { echo " none"; } ?>; ">
+                                        <option value=""<? if ($p_team2 == ""){ echo " selected"; } ?>>전직원</option>
+                                        <?
+                                        //$selSQL = "SELECT STEP, TEAM FROM DF_TEAM_CODE WITH(NOLOCK) WHERE VIEW_YN = 'Y' ORDER BY SORT";
+                                        $selSQL = "SELECT STEP, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE VIEW_YN = 'Y' ORDER BY SORT";
+                                        $selRs = sqlsrv_query($dbConn,$selSQL);
+
+                                        while ($selRecord = sqlsrv_fetch_array($selRs))
+                                        {
+                                            $selStep = $selRecord['STEP'];
+                                            $selTeam = $selRecord['TEAM'];
+
+                                            $blank = "";
+                                            for ($i=3;$i<=$selStep;$i++)
+                                            {
+                                                $blank .= "&nbsp;&nbsp;&nbsp;";
+                                            }
+                                            ?>
+                                            <option value="<?=$selTeam?>"<? if ($p_team == $selTeam){ echo " selected"; } ?>><?=$blank?><?=$selTeam?></option>
+                                            <?
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="control select" id="vacation_div">
+                                    <select name="vacation" style="display:<? if ($p_mode == "vacation") { echo ""; } else { echo " none"; } ?>;" >
+                                        <option value="">전체</option>
+                                        <option value="연차"<? if ($p_vacation == "연차") { echo " selected"; } ?>>연차</option>
+                                        <option value="병가"<? if ($p_vacation == "병가") { echo " selected"; } ?>>병가</option>
+                                        <option value="반차"<? if ($p_vacation == "반차") { echo " selected"; } ?>>반차</option>
+                                        <option value="리프레쉬"<? if ($p_vacation == "리프레쉬") { echo " selected"; } ?>>리프레쉬</option>
+                                        <option value="프로젝트"<? if ($p_vacation == "프로젝트") { echo " selected"; } ?>>프로젝트</option>
+                                        <option value="무급"<? if ($p_vacation == "무급") { echo " selected"; } ?>>무급</option>
+                                        <option value="경조사"<? if ($p_vacation == "경조사") { echo " selected"; } ?>>경조사</option>
+                                        <option value="예비군"<? if ($p_vacation == "예비군") { echo " selected"; } ?>>예비군</option>
+                                        <option value="기타"<? if ($p_vacation == "기타") { echo " selected"; } ?>>기타</option>
+                                        <option value="휴가 소진시"<? if ($p_vacation == "휴가 소진시") { echo " selected"; } ?>>휴가 소진시</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field is-grouped">
+                        <div class="control is-expanded">
+                            <input class="input" type="text" type="text" name="name" value="<?=$p_name?>" placeholder="기안자">
+                        </div>
+                        <div class="control">
+                            <a href="javascript:funSearch(this.form);" class="button is-link">
                                 <span class="icon is-small">
                                     <i class="fas fa-search"></i>
                                 </span>
-                            <span>검색</span>
-                        </a>
-                    </div>
-                    <div class="control">
-                        <a href="vacation_member.php" class="button is-danger">
+                                <span>검색</span>
+                            </a>
+                        </div>
+                        <div class="control">
+                            <a href="vacation_member.php" class="button is-danger">
                                 <span class="icon is-small">
                                     <i class="fas fa-times"></i>
                                 </span>
-                            <span>초기화</span>
-                        </a>
+                                <span>초기화</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="content">
       	<!--검색 영역-->
-            <table class="table is-fullwidth is-hoverable">
+            <table class="table is-fullwidth is-hoverable is-resize">
                 <colgroup>
                     <col width="8%">
                     <col width="*">

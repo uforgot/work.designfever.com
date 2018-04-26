@@ -48,7 +48,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
 <form method="post" name="form" id="form">
 <? include INC_PATH . "/top_menu.php"; ?>
 <? include INC_PATH . "/org_menu.php"; ?>
-    <section class="section is-resize is-member">
+    <section class="section df-org">
     <div class="container">
         <div class="content">
             <div class="card">

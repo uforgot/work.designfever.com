@@ -59,7 +59,7 @@
 <!-- 서브 네비게이션 시작 -->
 <? include INC_PATH."/vacation_menu.php";?>
 <!-- 본문 시작 -->
-<section class="section is-resize">
+<section class="section df-vacation">
     <div class="container">
         <div class="content">
             <div class="card">
@@ -103,8 +103,8 @@
         </div>
         
         <div class="content">
-            <div class="message">
-                <div class="message-body">
+            <div class="box">
+
                 <div class="columns is-mobile is-multiline">
                     <div class="column is-one-quarter-mobile">
                         <div class="content" style="width:100%;">
@@ -168,12 +168,11 @@
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
         </div>
         
         <div class="content">
-            <table class="table is-fullwidth is-hoverable">
+            <table class="table is-fullwidth is-hoverable is-resize">
                 <colgroup>
                     <col width="8%">
                     <col width="*">
@@ -371,7 +370,7 @@
 	                                <?=$date?>
 	                            </div>
 	                            <div class="level-right is-hidden-tablet">
-	                                <div class="button is-static"><?=$approval?></div>
+	                                <?=$approval?>
 	                            </div>
                         	 </div>
 			                    </td>
@@ -389,14 +388,13 @@
 								?>    
                 </tbody>
             </table>
-            <!--페이징처리-->        
-            <nav class="pagination" role="navigation" aria-label="pagination">
-                <?=getPaging($total_cnt,$page,$per_page);?>
-                </ul>
-            </nav>
-  			<!--페이징처리-->
-            
         </div>
+        <!--페이징처리-->
+        <nav class="pagination" role="navigation" aria-label="pagination">
+            <?=getPaging($total_cnt,$page,$per_page);?>
+            </ul>
+        </nav>
+        <!--페이징처리-->
     </div>
 </section>
 <? include INC_PATH."/bottom.php"; ?>
