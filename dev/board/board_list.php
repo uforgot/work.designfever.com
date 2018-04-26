@@ -125,7 +125,7 @@
 </div>
 <!-- 서브 네비게이션 끝-->
 <!-- 본문 시작 -->
-<section class="section is-resize">
+<section class="section">
     <div class="container">
         <div class="columns is-vcentered">
             <!-- Left side -->
@@ -188,7 +188,7 @@
             </div>
         </div>
 
-        <table class="table is-fullwidth is-hoverable type-common">
+        <table class="table is-fullwidth is-hoverable is-resize">
             <colgroup>
                 <col width="8%">
                 <col width="*">

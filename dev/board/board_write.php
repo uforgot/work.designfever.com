@@ -258,14 +258,21 @@
         <div class="field-group">
             <div class="field">
                 <div class="control">
-                    <input name="title" class="input is-large" type="text" placeholder="제목을 입력하세요" value="<?=$board_title?>">                                        
-									<br><br>
-										<? if ($board == "default") { ?>
-											<input type="checkbox" name="announcement"<? if ($board_notice == "Y") { echo " checked"; } ?>>&nbsp;<span>상단 공지사항 등록</span> 										
-										<? } ?>
-									<br>
+                    <input name="title" class="input is-large" type="text" placeholder="제목을 입력하세요" value="<?=$board_title?>">
                 </div>
             </div>
+
+            <? if ($board == "default") { ?>
+                <!--- 04/18 공지 사항 등록  start -->
+                <div class="field is-grouped">
+                    <input class="is-checkradio is-info" id="exampleCheckbox" type="checkbox" name="announcement" <? if ($board_notice == "Y") { echo " checked"; } ?>>
+                    <label for="exampleCheckbox" class="is-size-7">
+                       상단 공지 사항으로 등록 하실 경우 체크해 주세요.
+                    </label>
+                </div>
+                <!--- 04/18 공지 사항 등록  end -->
+                <!--                                            <input type="checkbox" name="announcement"&nbsp;<span>상단 공지사항 등록</span> 										-->
+            <? } ?>
 
             <div class="field">
                 <div class="control">
@@ -273,87 +280,128 @@
                 </div>
             </div>
         </div>
-               
-        	<!--파일업로드-->
-        	 <div class="box">
-            <div class="control has-add-button"><!-- 커스텀 클래스 : has-add-button -->          
-            	
-            	<!--파일1-->  	
-                <div class="file has-name is-right is-fullwidth" id="file_D1" name="file_D1">
-                    <label class="file-label">
-                        <input type="file" id="file_1" name="file_1" class="file-input" >                        
-                        <span class="file-cta">
+
+        <!--파일업로드-->
+        <div class="box">
+
+            <div class="columns is-mobile">
+                <div class="column">
+                    <div class="file has-name is-fullwidth">
+                        <label class="file-label">
+                            <input class="file-input" type="file" id="file_D1" name="file_D1">
+                            <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">파일찾기</span>
+                                </span>
+                            <span class="file-name"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="column last-button">
+                        <span class="buttons">
+                            <a class="button is-fullwidth">
+                                <span class="icon is-small">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </a>
+                        </span>
+                </div>
+            </div>
+
+
+
+            <div class="columns is-mobile"><!-- 커스텀 클래스 : has-add-button -->
+                <div class="column">
+
+                    <!--파일1-->
+                    <div class="file has-name is-right is-fullwidth" id="file_D1" name="file_D1">
+
+                        <label class="file-label">
+                            <input type="file" id="file_1" name="file_1" class="file-input" >
+                            <span class="file-cta">
                               <span class="file-icon">
                                     <i class="fas fa-upload"></i>
                               </span>
                               <span class="file-label">파일찾기</span>
                         </span>
-                        <input type="text" id="attachment_1" name="attachment_1"class="file-name" readonly>                                                          
-                    </label>
+                            <input type="text" id="attachment_1" name="attachment_1"class="file-name" readonly>
+                        </label>
+
+                    </div>
+                </div>
+                <div class="column">
+
                     <span class="buttons">
-                        	<a href="javascript:addFile();" class="button tag icon is-medium">                        		
+                        	<a href="javascript:addFile();" class="button tag icon is-medium">
                           	<i class="fas fa-plus"></i>
                          </a>
-                    </span>                                        
+                    </span>
                 </div>
-                <div class="attached" id="delfile_1">
-												<? if ($type == "modify" && $board_file1 != "") { ?>	
-													&nbsp;&nbsp;<span><?=$board_file1?></span>
-													&nbsp;&nbsp;<a href="javascript:delFile(1);" class="tag is-danger">삭제</a>
-												<? } ?>
-								</div>
-            
-              <!--파일2-->  	
+            </div>
+
+
+            <div class="attached" id="delfile_1">
+                <? if ($type == "modify" && $board_file1 != "") { ?>
+                    &nbsp;&nbsp;<span><?=$board_file1?></span>
+                    &nbsp;&nbsp;<a href="javascript:delFile(1);" class="tag is-danger">삭제</a>
+                <? } ?>
+            </div>
+
+            <div>
+
+                <!--파일2-->
                 <div class="file has-name is-right is-fullwidth" id="file_D2" name="file_D2"<? if ($board_file2 == "") { ?> style="display:none;"<? } ?>>
                     <label class="file-label">
-                        <input type="file" id="file_2" name="file_2" class="file-input" >                        
+                        <input type="file" id="file_2" name="file_2" class="file-input" >
                         <span class="file-cta">
                               <span class="file-icon">
                                     <i class="fas fa-upload"></i>
                               </span>
                               <span class="file-label">파일찾기</span>
                         </span>
-                        <input type="text" id="attachment_2" name="attachment_2"class="file-name" readonly>                                                          
+                        <input type="text" id="attachment_2" name="attachment_2"class="file-name" readonly>
                     </label>
                     <span class="buttons">
-                        	<a href="javascript:addFile();" class="button tag icon is-medium">                        		
+                        	<a href="javascript:addFile();" class="button tag icon is-medium">
                           	<i class="fas fa-plus"></i>
                          </a>
-                    </span>                                        
+                    </span>
                 </div>
                 <div class="attached" id="delfile_2">
-												<? if ($type == "modify" && $board_file2 != "") { ?>	
-													&nbsp;&nbsp;<span><?=$board_file2?></span>
-													&nbsp;&nbsp;<a href="javascript:delFile(2);" class="tag is-danger">삭제</a>
-												<? } ?>
-								</div>
-                
-                <!--파일3-->  	
+                    <? if ($type == "modify" && $board_file2 != "") { ?>
+                        &nbsp;&nbsp;<span><?=$board_file2?></span>
+                        &nbsp;&nbsp;<a href="javascript:delFile(2);" class="tag is-danger">삭제</a>
+                    <? } ?>
+                </div>
+
+                <!--파일3-->
                 <div class="file has-name is-right is-fullwidth" id="file_D3" name="file_D3"<? if ($board_file2 == "") { ?> style="display:none;"<? } ?>>
                     <label class="file-label">
-                        <input type="file" id="file_3" name="file_3" class="file-input" >                        
+                        <input type="file" id="file_3" name="file_3" class="file-input" >
                         <span class="file-cta">
                               <span class="file-icon">
                                     <i class="fas fa-upload"></i>
                               </span>
                               <span class="file-label">파일찾기</span>
                         </span>
-                        <input type="text" id="attachment_3" name="attachment_3"class="file-name" readonly>                                                          
+                        <input type="text" id="attachment_3" name="attachment_3"class="file-name" readonly>
                     </label>
                     <span class="buttons">
-                        	<a href="javascript:addFile();" class="button tag icon is-medium">                        		
+                        	<a href="javascript:addFile();" class="button tag icon is-medium">
                           	<i class="fas fa-plus"></i>
                          </a>
-                    </span>                                        
+                    </span>
                 </div>
                 <div class="attached" id="delfile_3">
-												<? if ($type == "modify" && $board_file3 != "") { ?>	
-													&nbsp;&nbsp;<span><?=$board_file3?></span>
-													&nbsp;&nbsp;<a href="javascript:delFile(3);" class="tag is-danger">삭제</a>
-												<? } ?>
-								</div>
+                    <? if ($type == "modify" && $board_file3 != "") { ?>
+                        &nbsp;&nbsp;<span><?=$board_file3?></span>
+                        &nbsp;&nbsp;<a href="javascript:delFile(3);" class="tag is-danger">삭제</a>
+                    <? } ?>
+                </div>
                 <p class="help is-dark">* 한번에 올릴 수 있는 파일 용량은 최대 10MB 입니다.</p>
-            </div>    
+            </div>
         </div>
 
 			<!--파일업로드-->								

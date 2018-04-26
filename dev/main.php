@@ -126,7 +126,7 @@ require_once CMN_PATH."/weekly_check.php";
 <form method="post" name="form">
     <? include INC_PATH."/top_menu.php"; ?>
     <!-- 본문 시작 -->
-    <section class="section is-main">
+    <section class="section df-main">
         <div class="container">
             <div class="columns">
 
@@ -151,7 +151,7 @@ require_once CMN_PATH."/weekly_check.php";
                                             <span class="subtitle is-7"><?=$prs_team?>&nbsp;/&nbsp;<?=$prs_position1?></span>
                                         </p>
                                     </div>
-                                    <nav class="buttons has-addons main-mobile-profile-buttons">
+                                    <nav class="buttons has-addons mobile-profile-buttons">
                                         <a class="button is-small" href="/member/modify.php">
                                             정보수정
                                         </a>
@@ -356,22 +356,22 @@ require_once CMN_PATH."/weekly_check.php";
                                 <!--근태출력부분-->
                                 <div class="tile is-parent is-vertical">
                                     <article class="tile is-child card">
-                                        <div class="main-clock-content">
-                                            <div class="clock-area">
+                                        <div class="clock">
+                                            <div class="area">
                                                 <?
                                                 if (!in_array($prs_id,$NoCommuting_arr))
                                                 {
                                                 if ($today_gubun1 >= 10)
                                                 {
                                                     ?>
-                                                    <div class="title has-text-centered has-text-white clock-txt">
-                                                        <p class="clock-txt-now">
+                                                    <div class="title has-text-centered has-text-white txt">
+                                                        <p class="now">
                                                             <span id="clock"></span>		<!--시계-->
                                                         </p>
-                                                        <p class="clock-txt-start"> 휴가계를 제출하셨습니다.<br>출퇴근체크를 원하시면 휴가계 삭제를 요청해 주세요.</p>
-                                                        <p class='clock-txt-start'></p>
+                                                        <p class="start"> 휴가계를 제출하셨습니다.<br>출퇴근체크를 원하시면 휴가계 삭제를 요청해 주세요.</p>
+                                                        <p class='start'></p>
                                                     </div>
-                                                    <div class="field has-addons clock-buttons">
+                                                    <div class="field has-addons buttons">
                                                         <div class='control is-expanded'>
                                                             <a class='button is-static is-primary clock-button'>
                                                                 <div class='title is-5 has-text-white'>휴가</div>
@@ -386,8 +386,8 @@ require_once CMN_PATH."/weekly_check.php";
                                                 {
                                                 ?>
 
-                                                <div class="title has-text-centered has-text-white clock-txt">
-                                                    <p class="clock-txt-now">
+                                                <div class="title has-text-centered has-text-white txt">
+                                                    <p class="now">
                                                         <span id="clock"></span>		<!--시계-->
                                                     </p>
 
@@ -399,7 +399,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                         {
                                                             if ($yesterday_checktime1 != "" && $yesterday_checktime2 == "")
                                                             {
-                                                                echo " <p class='clock-txt-start'>출근 : ". substr($yesterday_checktime1,8,2) .":". substr($yesterday_checktime1,10,2) ."";
+                                                                echo " <p class='start'>출근 : ". substr($yesterday_checktime1,8,2) .":". substr($yesterday_checktime1,10,2) ."";
                                                             }
                                                             else
                                                             {}
@@ -409,7 +409,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                             if ($today_checktime1 == "")
                                                             {}
                                                             else{
-                                                                echo " <p class='clock-txt-start'>출근 : ". substr($today_checktime1,8,2) .":". substr($today_checktime1,10,2) ."";
+                                                                echo " <p class='start'>출근 : ". substr($today_checktime1,8,2) .":". substr($today_checktime1,10,2) ."";
                                                             }
                                                         }
 
@@ -433,14 +433,14 @@ require_once CMN_PATH."/weekly_check.php";
                                                             {
                                                                 //echo "<a href='javascript:off_office(\"comeback\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>복귀</span></a> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ --:--</span></a><br/>";
                                                                 //echo " <p class='clock-txt-start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
-                                                                echo " <p class='clock-txt-start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ."";
+                                                                echo " <p class='start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ."";
                                                                 echo "</p>";
                                                             }
                                                             else
                                                             {
                                                                 //echo "<a href='javascript:off_office(\"goout\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."</span></a><br/>";
                                                                 //echo " <p class='clock-txt-start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ."";
-                                                                echo " <p class='clock-txt-start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
+                                                                echo " <p class='start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
                                                                 echo "</p>";
                                                             }
                                                         }
@@ -466,7 +466,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                     {
                                                         if ($yesterday_checktime1 != "" && $yesterday_checktime2 == "")
                                                         {
-                                                            echo " <p class='clock-txt-start'>출근 : ". substr($yesterday_checktime1,8,2) .":". substr($yesterday_checktime1,10,2) ."";
+                                                            echo " <p class='start'>출근 : ". substr($yesterday_checktime1,8,2) .":". substr($yesterday_checktime1,10,2) ."";
                                                         }
                                                         else
                                                         {}
@@ -475,7 +475,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                         {}
                                                         else
                                                         {
-                                                            echo " <p class='clock-txt-start'>출근 : ". substr($today_checktime1,8,2) .":". substr($today_checktime1,10,2) ."";
+                                                            echo " <p class='start'>출근 : ". substr($today_checktime1,8,2) .":". substr($today_checktime1,10,2) ."";
                                                         }
                                                     }
 
@@ -499,13 +499,13 @@ require_once CMN_PATH."/weekly_check.php";
                                                         if ($last_off_endtime == "")
                                                         {
                                                             //echo "<a href='javascript:off_office(\"comeback\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>복귀</span></a> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ --:--</span></a><br/>";
-                                                            echo " <p class='clock-txt-start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
+                                                            echo " <p class='start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
                                                             echo "</p>";
                                                         }
                                                         else
                                                         {
                                                             //echo "<a href='javascript:off_office(\"goout\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."</span></a><br/>";
-                                                            echo " <p class='clock-txt-start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
+                                                            echo " <p class='start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
                                                             echo "</p>";
                                                         }
                                                     }
@@ -516,7 +516,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                         else
                                                         {
                                                             //echo "<span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."</span><br/>";
-                                                            echo " <p class='clock-txt-start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
+                                                            echo " <p class='start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
                                                             //echo "</p>";
                                                         }
                                                     }
@@ -526,11 +526,11 @@ require_once CMN_PATH."/weekly_check.php";
                                             <? }
                                             else
                                             { ?>
-                                                <p class="clock-txt-start">출퇴근 체크는 사내에서만 가능합니다.</p>
+                                                <p class="start">출퇴근 체크는 사내에서만 가능합니다.</p>
                                             <? } ?>
                                             </div>
                                         </div>
-                                        <div class="field has-addons clock-buttons">
+                                        <div class="field has-addons buttons">
                                             <?
                                             //출근 버튼 출력
                                             if ($time_gubun == "before")
@@ -538,7 +538,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                 if ($yesterday_checktime1 != "" && $yesterday_checktime2 == "")
                                                 {
                                                     echo	"<div class='control is-expanded'>
-                                                			<a href='javascript:go_office();' onClick='return !count++' class='button is-fullwidth is-info clock-button'>
+                                                			<a href='javascript:go_office();' onClick='return !count++' class='button is-fullwidth is-info'>
                                                     	        <div class='title is-5 has-text-white'>출근</div>
                                                 			</a>
                                             			</div>";
@@ -546,7 +546,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                 else
                                                 {
                                                     echo	"<div class='control is-expanded'>
-                                                			<a href='javascript:go_office();' onClick='return !count++' class='button is-fullwidth is-info clock-button'>
+                                                			<a href='javascript:go_office();' onClick='return !count++' class='button is-fullwidth is-info'>
                                                     			<div class='title is-5 has-text-white'>출근</div>
                                                 			</a>
                                             			</div>";
@@ -601,7 +601,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                 if ($today_checktime2 != "")												//퇴근 중복체크
                                                 {
                                                     echo	"<div class='control is-expanded'>
-                                                			<a href=javascript:leave_office(2,'". $today_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info clock-button'>
+                                                			<a href=javascript:leave_office(2,'". $today_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info'>
                                                     			<div class='title is-5 has-text-white'>퇴근</div>
                                                 			</a>
                                             			</div>";
@@ -621,7 +621,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                 {
 
                                                     echo	"<div class='control is-expanded'>
-                                                			<a href=javascript:leave_office(4,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info clock-button'>
+                                                			<a href=javascript:leave_office(4,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info'>
                                                     			<div class='title is-5 has-text-white'>퇴근</div>
                                                 			</a>
                                             			</div>";
@@ -632,7 +632,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                 else if (($chk_gb1 == 1 || $chk_gb2 == 1) && $yesterday_checktime1 != "" && $yesterday_checktime2 == "" && $time_gubun == "before")	//어제 퇴근체크 - 오늘 휴가, 어제 출근체크 O, 어제 퇴근체크 X, 08:00이전(조건4)
                                                 {
                                                     echo	"<div class='control is-expanded'>
-                                                			<a href=javascript:leave_office(3,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info clock-button'>
+                                                			<a href=javascript:leave_office(3,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info'>
                                                     			<div class='title is-5 has-text-white'>퇴근</div>
                                                 			</a>
                                             			</div>";
@@ -648,7 +648,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                 else if ($today_checktime1 != "" && $today_checktime2 == "")		//퇴근체크 - 오늘 출근체크 O, 오늘 퇴근체크 X
                                                 {
                                                     echo	"<div class='control is-expanded'>
-                                                			<a href=javascript:leave_office(1,'". $today_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info clock-button'>
+                                                			<a href=javascript:leave_office(1,'". $today_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info'>
                                                     			<div class='title is-5 has-text-white'>퇴근</div>
                                                 			</a>
                                             			</div>";
@@ -664,7 +664,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                 {
                                                     //echo "<a href='javascript:off_office(\"comeback\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>복귀</span></a> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ --:--</span></a><br/>";
                                                     echo	"<div class='control is-expanded'>
-                                                				<a href='javascript:off_office(\"comeback\");' class='button is-fullwidth is-primary clock-button'>
+                                                				<a href='javascript:off_office(\"comeback\");' class='button is-fullwidth is-primary '>
                                                     			    <div class='title is-5 has-text-white'>외출</div>
                                                 				</a>
                                             			</div>";
@@ -673,7 +673,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                 {
                                                     //echo "<a href='javascript:off_office(\"goout\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."</span></a><br/>";
                                                     echo	"<div class='control is-expanded'>
-                                                				<a href='javascript:off_office(\"goout\");' class='button is-fullwidth is-primary clock-button'>
+                                                				<a href='javascript:off_office(\"goout\");' class='button is-fullwidth is-primary'>
                                                     		    	<div class='title is-5 has-text-white'>외출</div>
                                                 				</a>
                                             			</div>";
@@ -685,7 +685,7 @@ require_once CMN_PATH."/weekly_check.php";
                                                 {
                                                     //echo "<a href='javascript:off_office(\"goout\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span></a><br/>";
                                                     echo	"<div class='control is-expanded'>
-                                                			<a href='javascript:off_office(\"goout\");' class='button is-fullwidth is-primary clock-button'>
+                                                			<a href='javascript:off_office(\"goout\");' class='button is-fullwidth is-primary'>
                                                     			<div class='title is-5 has-text-white'>외출</div>
                                                 			</a>
                                             			</div>";
@@ -704,11 +704,11 @@ require_once CMN_PATH."/weekly_check.php";
                                             ?>
                                         </div>
                                         <?	}else{?>
-                                            <div class="title has-text-centered has-text-white clock-txt">
-                                                <p class="clock-txt-now">
+                                            <div class="title has-text-centered has-text-white txt">
+                                                <p class="now">
                                                     <span id="clock"></span>		<!--시계-->
                                                 </p>
-                                                <p class="clock-txt-start"> 출퇴근 체크는 사내에서만 가능합니다.</p>
+                                                <p class="start"> 출퇴근 체크는 사내에서만 가능합니다.</p>
                                             </div>
                                         <?}
                                         }
