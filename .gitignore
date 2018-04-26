@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 *.map
+*.iml
 .gitignore
 .idea/
 /node_modules/

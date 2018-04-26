@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>designfever intranet</title>
     <link rel="stylesheet" href="/assets/css/work.df.css">
-    
+
     <script src="/assets/js/jquery-1.11.0.min.js"></script>
     <script defer src="/assets/js/all.js"></script>
     <script defer src="/assets/js/bulma-calendar.min.js"></script>
@@ -18,113 +18,115 @@
 <!-- 본문 시작 -->
 <section class="section is-resize">
     <div class="container">
-        <nav class="level is-mobile">
-            <div class="level-left">
-                <p class="buttons">
-                    <a href="board_list.html" class="button">
+        <div class="content">
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <p class="buttons">
+                        <a href="board_list.html" class="button">
                         <span class="icon is-small">
                             <i class="fas fa-bars"></i>
                         </span>
-                        <span>목록</span>
-                    </a>
-                </p>
-            </div>
+                            <span>목록</span>
+                        </a>
+                    </p>
+                </div>
 
-            <div class="level-right">
-                <p class="buttons">
-                    <a href="board_list.html" class="button is-danger">
+                <div class="level-right">
+                    <p class="buttons">
+                        <a href="board_list.html" class="button is-danger">
                         <span class="icon is-small">
                             <i class="fas fa-pencil-alt"></i>
                         </span>
-                        <span>게시물 작성</span>
-                    </a>
-                </p>
-            </div>
-        </nav>
+                            <span>게시물 작성</span>
+                        </a>
+                    </p>
+                </div>
+            </nav>
 
-        
-        <div class="field-group">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="text" placeholder="제목을 입력하세요">
+
+            <div class="field-group">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="text" placeholder="제목을 입력하세요">
+                    </div>
                 </div>
-            </div>
-    
-            <!--- 04/18 공지 사항 등록  start -->
-            <div class="field is-grouped">
-                <input class="is-checkradio is-info" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" >
-                <label for="exampleCheckbox" class="is-size-7">
-                    * 상단 공지 사항으로 등록 하실 경우 체크해 주세요.
-                </label>
-            </div>
-            <!--- 04/18 공지 사항 등록  end -->
-            
-            <div class="field">
-                <div class="control">
-                    <textarea class="textarea" placeholder="10 lines of textarea" rows="10"></textarea>
+
+                <!--- 04/18 공지 사항 등록  start -->
+                <div class="field is-grouped">
+                    <input class="is-checkradio is-info" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" >
+                    <label for="exampleCheckbox" class="is-size-7">
+                        * 상단 공지 사항으로 등록 하실 경우 체크해 주세요.
+                    </label>
+                </div>
+                <!--- 04/18 공지 사항 등록  end -->
+
+                <div class="field">
+                    <div class="control">
+                        <textarea class="textarea" placeholder="10 lines of textarea" rows="10"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="box">
-    
-            <!--- 04/18 파일 찾기 태그 수정 start -->
-            <div class="columns is-column-marginless is-mobile">
-                <div class="column">
-                    <div class="file has-name is-fullwidth">
-                        <label class="file-label">
-                            <input class="file-input" type="file" name="resume">
-                            <span class="file-cta">
-                                <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
+
+        <div class="content">
+            <div class="box">
+                <!--- 04/18 파일 찾기 태그 수정 start -->
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="file has-name is-fullwidth">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">파일찾기</span>
                                 </span>
-                                <span class="file-label">파일찾기</span>
-                            </span>
-                            <span class="file-name"></span>
-                        </label>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column last-button">
+                        <span class="buttons">
+                            <a class="button is-fullwidth">
+                                <span class="icon is-small">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </a>
+                        </span>
                     </div>
                 </div>
-                <div class="column last-button">
-                    <span class="buttons">
-                        <a class="button is-fullwidth">
-                            <span class="icon is-small">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                        </a>
-                    </span>
-                </div>
-            </div>
-            
-            <div class="columns is-column-marginless is-mobile">
-                <div class="column">
-                    <div class="file has-name is-fullwidth">
-                        <label class="file-label">
-                            <input class="file-input" type="file" name="resume">
-                            <span class="file-cta">
-                                <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
+
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="file has-name is-fullwidth">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">파일찾기</span>
                                 </span>
-                                <span class="file-label">파일찾기</span>
-                            </span>
-                            <span class="file-name"></span>
-                        </label>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column last-button">
+                        <span class="buttons">
+                            <a class="button is-fullwidth">
+                                <span class="icon is-small">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </a>
+                        </span>
                     </div>
                 </div>
-                <div class="column last-button">
-                    <span class="buttons">
-                        <a class="button is-fullwidth">
-                            <span class="icon is-small">
-                                <i class="fas fa-minus"></i>
-                            </span>
-                        </a>
-                    </span>
-                </div>
+                <!--- 04/18 파일 찾기 태그 수정 start -->
             </div>
-            <!--- 04/18 파일 찾기 태그 수정 start -->
-    
         </div>
-    
-    
+
+
         <nav class="level is-mobile">
             <div class="level-left">
                 <p class="buttons">
@@ -136,7 +138,7 @@
                     </a>
                 </p>
             </div>
-        
+
             <div class="level-right">
                 <p class="buttons">
                     <a href="board_list.html" class="button is-danger">
