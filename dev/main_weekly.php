@@ -169,7 +169,7 @@
 	//Åð±Ù Ã¼Å©
 	function leave_office(gubun,commute,working){
 	/*
-		var now = "<?=date("YmdHis");?>";
+		var now = '<?=date("YmdHis");?>';
 		var g = <?=date("G");?>;
 		var commute = commute;
 

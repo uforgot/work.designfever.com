@@ -1,0 +1,66 @@
+=df-main-clock-area
+  .area
+    height: 69%
+    background: #bbbbbb
+    margin-bottom: 2%
+    border-radius: 0.25rem
+    text-align: center
+
+    &:before
+      display: inline-block
+      content: ''
+      width: 1px
+      height: 100%
+      vertical-align: middle
+      margin-left: -1px
+
+    .txt
+      text-align: center
+      display: inline-block
+      vertical-align: middle
+      .now
+        font-size: 4rem
+      .start
+        font-size: 1rem
+
+=df-main-clock-buttons
+  .buttons
+    height: 29%
+    .control
+      height: 100% !important
+      .button
+        height: 100% !important
+        padding: 1rem
+
+=df-birthday
+  .birthday-profile
+    width: 28%
+    height: 28%
+    margin: 2.5%
+
+    span
+      display: inline-block
+      margin-top: 0.3em
+      font-size: 0.7rem
+      width: 100%
+      line-height: 1.05em
+    &.mobile
+      width: 20%
+      height: 20%
+      margin: 2.5%
+
+
+.df-main
+  .card-header-title
+    .icon
+      margin-right: 0.5rem
+  .clock
+    width: 100%
+    height: 100%
+    padding: 0.8rem
+    +df-main-clock-area
+    +df-main-clock-buttons
+  .mobile-profile-buttons
+    position: absolute
+    bottom: 4.0rem
+  +df-birthday
