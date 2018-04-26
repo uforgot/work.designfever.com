@@ -134,12 +134,12 @@
                     <div class="field is-grouped">
                         <div class="control select">
                            <select name="keyfield" id="keyfield" >
-															<option value="ALL"<? if ($keyfield == "ALL") { echo " selected"; } ?>>전체</option>
+                              <option value="ALL"<? if ($keyfield == "ALL") { echo " selected"; } ?>>전체</option>
                               <option value="TITLE_CONTENTS"<? if ($keyfield == "TITLE_CONTENTS") { echo " selected"; } ?>>제목+본문</option>
                               <option value="TITLE"<? if ($keyfield == "TITLE") { echo " selected"; } ?>>제목</option>
                               <option value="CONTENTS"<? if ($keyfield == "CONTENTS") { echo " selected"; } ?>>본문</option>
-															<option value="PRS_NAME"<? if ($keyfield == "PRS_NAME") { echo " selected"; } ?>>작성자</option>
-												</select>
+							   <option value="PRS_NAME"<? if ($keyfield == "PRS_NAME") { echo " selected"; } ?>>작성자</option>
+							</select>
                         </div>
                         
                         <div class="control is-expanded">                           

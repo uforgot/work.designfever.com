@@ -1,728 +1,1174 @@
 <?
-	require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
-	require_once CMN_PATH."/login_check.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/common/global.php";
+require_once CMN_PATH . "/login_check.php";
+require_once CMN_PATH . "/working_check.php";
+require_once CMN_PATH . "/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
-
 <?
-	$p_team = isset($_REQUEST['team']) ? $_REQUEST['team'] : null; 
+$p_team = isset($_REQUEST['team']) ? $_REQUEST['team'] : null;
+$where = " AND PRF_ID IN (1,2,3,4,5)";
+$sql = "SELECT SEQNO, POSITION FROM DF_POSITION2_2018 WITH(NOLOCK) ORDER BY SEQNO";
+$rs = sqlsrv_query($dbConn, $sql);
 
-	$where = " AND PRF_ID IN (1,2,3,4,5)";
+while ($record = sqlsrv_fetch_array($rs)) {
+    $orderby1 .= "WHEN PRS_POSITION2 ='" . $record['POSITION'] . "' THEN " . $record['SEQNO'] . " ";
+}
 
-	$sql = "SELECT SEQNO, POSITION FROM DF_POSITION2_2018 WITH(NOLOCK) ORDER BY SEQNO";
-	$rs = sqlsrv_query($dbConn,$sql);
+$sql = "SELECT SEQNO, POSITION FROM DF_POSITION1_2018 WITH(NOLOCK) ORDER BY SEQNO";
+$rs = sqlsrv_query($dbConn, $sql);
 
-	while($record=sqlsrv_fetch_array($rs))
-	{
-		$orderby1 .= "WHEN PRS_POSITION2 ='". $record['POSITION'] ."' THEN ". $record['SEQNO'] ." ";
-	}
+while ($record = sqlsrv_fetch_array($rs)) {
+    $orderby2 .= "WHEN PRS_POSITION1 ='" . $record['POSITION'] . "' THEN " . $record['SEQNO'] . " ";
+}
 
-	$sql = "SELECT SEQNO, POSITION FROM DF_POSITION1_2018 WITH(NOLOCK) ORDER BY SEQNO";
-	$rs = sqlsrv_query($dbConn,$sql);
-
-	while($record=sqlsrv_fetch_array($rs))
-	{
-		$orderby2 .= "WHEN PRS_POSITION1 ='". $record['POSITION'] ."' THEN ". $record['SEQNO'] ." ";
-	}
-
-	$orderbycase .= " ORDER BY CASE ". $orderby1 . " END, CASE ". $orderby2 . " END, PRS_NAME";
+$orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " END, PRS_NAME";
 ?>
-
-<? include INC_PATH."/top.php"; ?>
-
+<? include INC_PATH . "/top.php"; ?>
 <script type="text/javascript">
-	$(document).ready(function(){
-		//검색
-		$("#team").change(function(){
-			var team = $("#team").val().replace(/ /g,'');
+    $(document).ready(function () {
+        //검색
+        $("#team").change(function(){
+            var team = $("#team").val().replace(/ /g,'');
 
-			$("#form").attr("target","_self");
-			$("#form").attr("action","<?=CURRENT_URL?>#"+team); 
-			$("#form").submit();
-		});
-		//상세정보
-		$("[name=person]").attr("style","cursor:pointer;").click(function(){
-			$("#form").attr("target","hdnFrame");
-			$("#form").attr("action","person_detail.php?id="+$(this).attr("value")); 
-			$("#form").submit();
-			$("#popup").attr("style","display:inline;");
-		//	alert($(this).children("input").val());
-		});
-		//상세정보 닫기
-		$("[name=btnClose]").attr("style","cursor:pointer;").click(function(){
-			$("#popup").attr("style","display:none;");
-			
-			$("#pop_img").empty();
-			$("#pop_id").empty();
-			$("#pop_name").empty();
-			$("#pop_birth").empty();
-			$("#pop_tel").empty();
-			$("#pop_team").empty();
-			$("#pop_position").empty();
-			$("#pop_email").empty();
-			$("#pop_extension").empty();
-		});
-		//엑셀 다운로드
-		$("#btnExcel").attr("style","cursor:pointer;").click(function(){
-			$("#form").attr("target","hdnFrame");
-			$("#form").attr("action","excel_person.php"); 
-			$("#form").submit();
-		});
-	});
--->
+            $("#form").attr("target","_self");
+            $("#form").attr("action","<?=CURRENT_URL?>#"+team);
+            $("#form").submit();
+        });
+
+        //엑셀 다운로드
+        $("#btnExcel").attr("style", "cursor:pointer;").click(function () {
+            $("#form").attr("target", "hdnFrame");
+            $("#form").attr("action", "excel_person.php");
+            $("#form").submit();
+        });
+    });
 </script>
 </head>
 <body>
-<div class="wrapper">
 <form method="post" name="form" id="form">
-	<? include INC_PATH."/top_menu.php"; ?>
+<? include INC_PATH . "/top_menu.php"; ?>
+<? include INC_PATH . "/org_menu.php"; ?>
+    <section class="section is-resize is-member">
+    <div class="container">
+        <div class="content">
+            <div class="card">
+            <?
+            $sql = "SELECT COUNT(PRS_ID) AS CNT FROM DF_PERSON WITH (NOLOCK) WHERE PRF_ID NOT IN(6) AND PRS_ID NOT IN (281,102) AND PRS_POSITION NOT IN('이사','대표')";
+            $rs = sqlsrv_query($dbConn, $sql);
+            While ($record = sqlsrv_fetch_array($rs)) {
+            $cnt = $record['CNT'];
+            ?>
+                <div class="card-content">
+                    <progress class="progress is-danger" value="" max="<?=$cnt?>"><?=$cnt?>%</progress>
+                </div>
+                <div class="card-footer">
+                    <div class="card-footer-item">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered">전체</div>
+                            <div class="title is-size-4 has-text-centered">
 
-		<div class="inner-home">
-			<? include INC_PATH."/org_menu.php"; ?>
+                                <span class="has-text-info"><?=$cnt?></span>
+            <? } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer-item">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered">미출근</div>
+                            <div class="title is-size-4 has-text-centered">
+                                <span>10</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer-item">
+                        <div class="content" style="width:100%;">
+                            <div class="is-size-7 has-text-centered">근무중</div>
+                            <div class="title is-size-4 has-text-centered has-text-danger">
+                                <span><?= $work_count['TOT'] ?></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="level">
+                <div class="level-left">
+                    <div class="control select is-fullwidth">
+                        <select name="team" id="team">
+                            <option value=""<? if ($p_team == "") {
+                                echo " selected";
+                            } ?>>전직원
+                            </option>
+                            <?
+                            $selSQL = "SELECT STEP, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) ORDER BY SORT";
+                            $selRs = sqlsrv_query($dbConn, $selSQL);
 
-			<div class="work_wrap clearfix">
-			
-				<div class="work_stats_search clearfix">
-				
-					<table class="notable" width="100%">
-						<tr>
-							<td>
-								<select name="team" id="team">
-									<option value=""<? if ($p_team == ""){ echo " selected"; } ?>>전직원</option>
-							<?
-								$selSQL = "SELECT STEP, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) ORDER BY SORT";
-								$selRs = sqlsrv_query($dbConn,$selSQL);
+                            while ($selRecord = sqlsrv_fetch_array($selRs)) {
+                                $selStep = $selRecord['STEP'];
+                                $selTeam = $selRecord['TEAM'];
 
-								while ($selRecord = sqlsrv_fetch_array($selRs))
-								{
-									$selStep = $selRecord['STEP'];
-									$selTeam = $selRecord['TEAM'];
-									
-									if ($selStep == 1) {
-										$selTeam2 = $selTeam;
-									}
-									else if ($selStep == 2) {
-										$selTeam2 = "&nbsp;&nbsp;└ ". $selTeam;
-									}
-									else if ($selStep == 3) {
-										$selTeam2 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ ". $selTeam;
-									}
-							?>
-									<option value="<?=$selTeam?>"<? if ($p_team == $selTeam){ echo " selected"; } ?>><?=$selTeam2?></option>
-							<?
-								}
-							?>
-								</select>
-							</td>
-							<td align="right">
-							<? if ($prf_id == "4") { ?>
-								<img src="../img/btn_excell.gif" alt="엑셀다운로드" id="btnExcel" class="btn_right" />
-							<? } ?>
-							</td>
-						</tr>
-					</table>		
-				</div>
-			<div class="tables">
-		<a name="CEO">
-				<table class="notable work_stats3 group" width="100%">
-					<thead>
-						<tr>
-							<th class="div" style="border-bottom-width:1px; border-bottom-style:solid; border-bottom-color: #b2b2b2;">CEO (<span id="df_ceo_cnt">00</span>)</th>
-						</tr>
-					<thead>
-					<tbody> 
-						<tr>
-							<td class="list1">
-								<ul>
-<?
-		$sql = "SELECT PRS_ID, PRS_NAME, PRS_POSITION1, PRS_POSITION2, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH(NOLOCK) WHERE PRS_POSITION2 = '대표' AND PRF_ID = 4";
-		$rs = sqlsrv_query($dbConn, $sql);
+                                if ($selStep == 1) {
+                                    $selTeam2 = $selTeam;
+                                } else if ($selStep == 2) {
+                                    $selTeam2 = "&nbsp;&nbsp;└ " . $selTeam;
+                                } else if ($selStep == 3) {
+                                    $selTeam2 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ " . $selTeam;
+                                }
+                                ?>
+                                <option value="<?= $selTeam ?>"<? if ($p_team == $selTeam) {
+                                    echo " selected";
+                                } ?>><?= $selTeam2 ?></option>
+                                <?
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="level-right is-hidden-mobile">
+                    <? if ($prf_id == "4") { ?>
+                        <button class="button" alt="엑셀다운로드" id="btnExcel">
+                                <span class="icon is-small">
+                                    <i class="fas fa-file-excel"></i>
+                                </span>
+                            <span>엑셀로 다운로드</span>
+                        </button>
+                    <? } ?>
+                </div>
+            </div>
+        </div>
+        <a name="CEO" style="cursor: default">
+        <div class="content">
+            <div class="title is-size-5">
+                CEO
+            </div>
+            <div class="columns is-multiline">
+                <?
+                $sql = "SELECT PRS_ID, PRS_NAME, PRS_POSITION1, PRS_POSITION2, PRS_EXTENSION, FILE_IMG, PRS_EMAIL, PRS_MOBILE FROM DF_PERSON WITH(NOLOCK) WHERE PRS_POSITION2 = '대표' AND PRF_ID = 4";
+                $rs = sqlsrv_query($dbConn, $sql);
+                While ($record = sqlsrv_fetch_array($rs)) {
+                    $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
+                    ?>
+                    <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                        <div class="notification is-white is-bordered">
+                            <div class="columns is-mobile">
+                                <div class="column member-photo">
+                                    <p class="image is-70x70 is-rounded-image">
+                                        <img src="/file/<?= $col_file_img ?>">
+                                    </p>
+                                </div>
+                                <div class="column">
+                                    <p class="is-member-p">
+                                        <span class="title is-size-6"><?= $col_prs_name ?></span>
+                                        <span class="title is-size-7">/ 대표</span>
+                                    </p>
+                                    <p class="is-member-p">
+                                        <?= $col_prs_mobile ?>
+                                    </p>
+                                    <p class="is-member-p">
+                                        <span class="tag is-small"><?= $col_prs_email ?>@designfever.com</span>
+                                        <span class="tag is-small"><?= $col_prs_extension ?></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <? } ?>
+            </div>
+        </div>
 
-		While ($record = sqlsrv_fetch_array($rs))
-		{
-			$col_prs_id = $record['PRS_ID'];
-			$col_prs_name = $record['PRS_NAME'];
-			$col_prs_position1 = $record['PRS_POSITION1'];
-			$col_prs_position2 = $record['PRS_POSITION2'];
-			$col_prs_extension = $record['PRS_EXTENSION'];
-			$col_file_img = $record['FILE_IMG'];
+        <hr>
 
-			$df_cnt['ceo']++;
-?>
-									<li>
-										<?=getProfileImg($col_file_img,78,'person',$col_prs_id);?>
-										<br><br><span><?=$col_prs_name?></span><br>대표<br>(내선 <?=$col_prs_extension?>)
-									</li>
-<?
-		}
-?>
-								</ul>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-<?
-	$divSql = "SELECT SEQNO, STEP, TEAM, (SELECT COUNT(*) FROM DF_TEAM_2018 WHERE R_SEQNO = A.SEQNO) AS CNT FROM DF_TEAM_2018 A WITH(NOLOCK) WHERE STEP <= 2 AND TEAM NOT IN ('CEO') ORDER BY SORT";
-	$divRs = sqlsrv_query($dbConn, $divSql);
-	
-	$i = 0;
+<!-- 기획실-->
+        <a name="Planning"  style="cursor: default">
+        <div class="content">
+            <div class="title is-size-5">
+                Planning
+                <?
+                $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Creative Planning Division','Creative Planning 1 Team','Creative Planning 2 Team', 'Marketing Planning Division')";
+                $rs  = sqlsrv_query($dbConn, $sql);
+                While ($record = sqlsrv_fetch_array($rs)) {
+                    $cnt = $record['CNT']; ?>
+                    (<?=$cnt?>) <?}?>
+            </div>
+        </div>
+        <?
+                $sql = "select PRS_ID , PRS_NAME , PRS_TEAM , PRS_POSITION1, PRS_MOBILE, PRS_EMAIL, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH (NOLOCK) WHERE PRF_ID IN(5,4,3)   AND PRS_TEAM = 'Creative Planning Division'";
+                $rs = sqlsrv_query($dbConn, $sql);
+                While ($record = sqlsrv_fetch_array($rs)) {
+                $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
 
-	while($divRecord = sqlsrv_fetch_array($divRs))
-	{
-		$div_seqno = $divRecord['SEQNO'];
-		$div_step = $divRecord['STEP'];
-		$div_team = $divRecord['TEAM'];
-		$div_team_cnt = $divRecord['CNT'];
+        ?>
+            <a name="Creative Planning Division"  style="cursor: default">
+        <div class="content">
+            <div class="title is-size-6">
+                Creative Planning Division
+                <?
+                    $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Creative Planning Division','Creative Planning 1 Team','Creative Planning 2 Team')";
+                    $rs  = sqlsrv_query($dbConn, $sql);
+                    While ($record = sqlsrv_fetch_array($rs)) {
+                    $cnt = $record['CNT']; ?>
+                    (<?=$cnt?>) <?}?>
+            </div>
+            <!-- 실장 / 이사-->
+            <div class="columns is-multiline">
+                <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                    <div class="notification is-white is-bordered">
+                        <div class="columns is-mobile">
+                            <div class="column member-photo">
+                                <p class="image is-70x70 is-rounded-image">
+                                    <img src="/file/<?=$col_file_img?>">
+                                </p>
+                            </div>
+                            <div class="column">
+                                <p class="is-member-p">
+                                    <span class="title is-size-6"><?= $col_prs_name ?></span>
+                                    <span class="title is-size-7">/ <?=$col_prs_position1?></span>
+                                </p>
+                                <p class="is-member-p">
+                                    <?= $col_prs_mobile ?>
+                                </p>
+                                <p class="is-member-p">
+                                    <span class="tag is-small"><?= $col_prs_email ?>@designfever.com</span>
+                                    <span class="tag is-small"><?= $col_prs_extension ?></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <? } ?>
 
-		$div_team2 = str_replace(" ","",$div_team);
-?>
-		<a name="<?=$div_team2?>">
-<?
-		if ($div_step == 1) 
-		{
-			$i++;
-			$group_cnt[$i] = 0;
-?>
-				<table class="notable work_stats3 group" width="100%" id="<?=$div_team?>">
-					<thead>
-						<tr>
-							<th class="div"><?=$div_team?> (<span id="df_group<?=$i?>_cnt">00</span>)</th>
-						</tr>
-					<thead>
-				</table>
-<?
-		}
-		else 
-		{
-			if ($div_team == "Design 1 Division")
-			{
-?>
-				<table class="notable work_stats3" width="100%" id="<?=$div_team?>">
-					<thead>
-						<tr>
-							<th class="team2" colspan="3"><?=$div_team?> (<span id="df_<?=$div_team2?>_cnt">00</span>)</td>
-						</tr>
-					</thead>
-					<tbody> 
-						<tr>
-<?
-				$sql = "SELECT PRS_ID, PRS_NAME, PRS_POSITION1, PRS_POSITION2, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH(NOLOCK) WHERE PRS_TEAM = 'CEO' AND PRS_NAME = '박재형'";
-				$rs = sqlsrv_query($dbConn, $sql);
+            <!-- 팀장포함 팀원-->
+            <div class="is-team">
+                <div class="is-member-depth-1-line"></div>
+                <div class="is-member-depth-1">
+                    <a name="Creative Planning 1 Team"  style="cursor: default">
+                    <div class="title is-team-title is-size-6">
+                        Creative Planning 1 Team
+                        <?
+                        $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Creative Planning 1 Team')";
+                        $rs  = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $cnt = $record['CNT']; ?>
+                            (<?=$cnt?>) <?}?>
+                    </div>
+                    <div class="columns is-multiline">
+                        <?
+                        $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281) 
+                                   AND A.PRS_TEAM IN ('Creative Planning 1 Team')  ORDER BY B.SEQNO, A.PRS_ID";
+                        $rs = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
 
-				$record = sqlsrv_fetch_array($rs);
-					
-				$div_prs_id = $record['PRS_ID'];
-				$div_prs_name = $record['PRS_NAME'];
-				$div_prs_position1 = $record['PRS_POSITION1'];
-				$div_prs_position2 = $record['PRS_POSITION2'];
-				$div_prs_extension = $record['PRS_EXTENSION'];
-				$div_file_img = $record['FILE_IMG'];
+                        ?>
+                        <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                            <div class="notification is-white is-bordered">
+                                <div class="columns is-mobile">
+                                    <div class="column member-photo">
+                                        <p class="image is-70x70 is-rounded-image">
+                                            <img src="/file/<?=$col_file_img?>">
+                                        </p>
+                                    </div>
+                                    <div class="column">
+                                        <p class="is-member-p">
+                                            <span class="title is-size-6"><?=$col_prs_name?></span>
+                                            <span class="title is-size-7">/ <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                        </p>
+                                        <p class="is-member-p">
+                                            <?=$col_prs_mobile?>
+                                        </p>
+                                        <p class="is-member-p">
+                                            <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                            <span class="tag is-small"><?=$col_prs_extension?></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <? } ?>
+                    </div>
+                </div>
+                <div class="is-member-depth-1">
+                    <a name="Creative Planning 2 Team"  style="cursor: default">
+                    <div class="title is-team-title is-size-6">
+                        Creative Planning 2 Team
+                        <?
+                        $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Creative Planning 2 Team')";
+                        $rs  = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $cnt = $record['CNT']; ?>
+                            (<?=$cnt?>) <?}?>
+                    </div>
 
-				if ($div_prs_position1 == $div_prs_position2)
-				{
-					$div_prs_position = $div_prs_position2;
-				}
-				else
-				{
-					$div_prs_position = $div_prs_position2 ." / ". $div_prs_position1;
-				}
-?>
+                    <div class="columns is-multiline">
+                        <?
+                        $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281)
+                                   AND A.PRS_TEAM IN ('Creative Planning 2 Team')  ORDER BY B.SEQNO, A.PRS_ID";
 
-							<td class="leader">
-								<ul>
-									<li>
-										<?=getProfileImg($div_file_img,78,'person',$div_prs_id);?>
-										<br><br><span><?=$div_prs_name?></span><br><?=$div_prs_position?><br>(내선 <?=$div_prs_extension?>)
-									</li>
-								</ul>
-							</td>
-<?
-				if ($div_team_cnt == 0)
-				{
-?>
-							<td class="list1">
-								<ul>
-<?
-					$sql = "SELECT PRS_ID, PRS_NAME, PRS_POSITION1, PRS_POSITION2, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH(NOLOCK) WHERE PRS_TEAM = '". $div_team ."' $where AND PRS_POSITION2 = '매니저'". $orderbycase;
-					$rs = sqlsrv_query($dbConn, $sql);
+                        $rs = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
+                        ?>
+                        <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                                <div class="notification is-white is-bordered">
+                                    <div class="columns is-mobile">
+                                        <div class="column member-photo">
+                                            <p class="image is-70x70 is-rounded-image">
+                                                <img src="/file/<?=$col_file_img?>">
+                                            </p>
+                                        </div>
+                                        <div class="column">
+                                            <p class="is-member-p">
+                                                <span class="title is-size-6"><?=$col_prs_name?></span>
+                                                <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <?=$col_prs_mobile?>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                                <span class="tag is-small"><?=$col_prs_extension?></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <? } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-					While ($record = sqlsrv_fetch_array($rs))
-					{
-						$col_prs_id = $record['PRS_ID'];
-						$col_prs_name = $record['PRS_NAME'];
-						$col_prs_position1 = $record['PRS_POSITION1'];
-						$col_prs_position2 = $record['PRS_POSITION2'];
-						$col_prs_extension = $record['PRS_EXTENSION'];
-						$col_file_img = $record['FILE_IMG'];
+        <!-- 팀장포함 팀원-->
+        <?
+        $sql = "select PRS_ID , PRS_NAME , PRS_TEAM , PRS_POSITION1, PRS_MOBILE, PRS_EMAIL, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH (NOLOCK) WHERE PRF_ID IN(5,4,3)   AND PRS_TEAM = 'Marketing Planning Division' ";
+        $rs = sqlsrv_query($dbConn, $sql);
+        While ($record = sqlsrv_fetch_array($rs)) {
+        $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
 
-						if ($col_prs_position1 == $col_prs_position2)
-						{
-							$col_prs_position = $col_prs_position2;
-						}
-						else
-						{
-							$col_prs_position = $col_prs_position2 ." / ". $col_prs_position1;
-						}
+        ?>
+    <a name="Marketing Planning Division"  style="cursor: default">
+    <div class="content">
+            <div class="title is-size-6">
+                Marketing Planning Division
+                <?
+                $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Marketing Planning Division')";
+                $rs  = sqlsrv_query($dbConn, $sql);
+                While ($record = sqlsrv_fetch_array($rs)) {
+                    $cnt = $record['CNT']; ?>
+                    (<?=$cnt?>) <?}?>
+            </div>
+            <!-- 실장 / 이사-->
+            <div class="columns is-multiline">
+                <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                    <div class="notification is-white is-bordered">
+                        <div class="columns is-mobile">
+                            <div class="column member-photo">
+                                <p class="image is-70x70 is-rounded-image">
+                                    <img src="/file/<?=$col_file_img?>">
+                                </p>
+                            </div>
+                            <div class="column">
+                                <p class="is-member-p">
+                                    <span class="title is-size-6"><?= $col_prs_name ?></span>
+                                    <span class="title is-size-7">/ <?=$col_prs_position1?></span>
+                                </p>
+                                <p class="is-member-p">
+                                    <?= $col_prs_mobile ?>
+                                </p>
+                                <p class="is-member-p">
+                                    <span class="tag is-small"><?= $col_prs_email ?>@designfever.com</span>
+                                    <span class="tag is-small"><?= $col_prs_extension ?></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <? } ?>
+        <div class="is-team">
+            <div class="is-member-depth-1-line"></div>
+            <div class="is-member-depth-1">
+                <a name="Marketing Planning Division"  style="cursor: default">
+                <div class="title is-team-title is-size-6">
+                    Marketing Planning Division
+                    <?
+                    $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Marketing Planning Division')";
+                    $rs  = sqlsrv_query($dbConn, $sql);
+                    While ($record = sqlsrv_fetch_array($rs)) {
+                        $cnt = $record['CNT']; ?>
+                        (<?=$cnt?>) <?}?>
+                </div>
+                <div class="columns is-multiline">
+                    <?
+                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,7) AND A.PRS_ID NOT IN(102,281)
+                                   AND A.PRS_TEAM IN ('Marketing Planning Division')  ORDER BY B.SEQNO, A.PRS_ID";
+                    $rs = sqlsrv_query($dbConn, $sql);
+                    While ($record = sqlsrv_fetch_array($rs)) {
+                        $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
+                        ?>
+                        <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                            <div class="notification is-white is-bordered">
+                                <div class="columns is-mobile">
+                                    <div class="column member-photo">
+                                        <p class="image is-70x70 is-rounded-image">
+                                            <img src="/file/<?=$col_file_img?>">
+                                        </p>
+                                    </div>
+                                    <div class="column">
+                                        <p class="is-member-p">
+                                            <span class="title is-size-6"><?=$col_prs_name?></span>
+                                            <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                        </p>
+                                        <p class="is-member-p">
+                                            <?=$col_prs_mobile?>
+                                        </p>
+                                        <p class="is-member-p">
+                                            <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                            <span class="tag is-small"><?=$col_prs_extension?></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <? } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- 기획실 끝-->
 
-						$df_cnt[$div_team2]++;
-						$group_cnt[$i]++;
-?>
-									<li>
-										<?=getProfileImg($col_file_img,78,'person',$col_prs_id);?>
-										<br><br><span><?=$col_prs_name?></span><br><?=$col_prs_position?><br>(내선 <?=$col_prs_extension?>)
-									</li>
-<?
-					}
-?>								
-								</ul>
-							</td>
-<?
-				}
-				else
-				{
-?>
-							<td>
-<?
-					$teamSql = "SELECT SEQNO, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE STEP = 3 AND R_SEQNO = $div_seqno ORDER BY SORT";
-					$teamRs = sqlsrv_query($dbConn, $teamSql);
-					
-					$j = 0;
-					while($teamRecord = sqlsrv_fetch_array($teamRs))
-					{
-						$team_seqno = $teamRecord['SEQNO'];
-						$team_step = $teamRecord['STEP'];
-						$team_team = $teamRecord['TEAM'];
-						$team_cnt = $teamRecord['CNT'];
+        <hr>
 
-						$team_team2 = str_replace(" ","",$team_team);
-?>
-							<a name="<?=$team_team2?>">
-							<table class="notable work_stats3" width="100%" id="<?=$team_team?>">
-								<thead>
-									<tr>
-										<th class="team" colspan="2"<? if ($j ==0) { ?> style="border-top-style:hidden;"<? } ?>><?=$team_team?> (<span id="df_<?=$team_team2?>_cnt">00</span>)</td>
-									</tr>
-								</thead>
-								<tbody> 
-									<tr>
-<?
-						$sql = "SELECT TOP 1 PRS_ID, PRS_NAME, PRS_POSITION1, PRS_POSITION2, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH(NOLOCK) WHERE PRS_TEAM = '". $team_team ."' AND PRS_POSITION2 IN ('실장','팀장')". $orderbycase;
-						$rs = sqlsrv_query($dbConn, $sql);
+<!-- 디자인실 -->
+        <a name="Design"  style="cursor: default">
+        <div class="content">
+            <div class="title is-size-5">
+                Design
+                <?
+                $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Design 1 Division','Design 1 Division 1 Team','Design 2 Division','Design 2 Division 1 Team','Design 2 Division 2 Team')";
+                $rs  = sqlsrv_query($dbConn, $sql);
+                While ($record = sqlsrv_fetch_array($rs)) {
+                    $cnt = $record['CNT']; ?>
+                    (<?=$cnt?>) <?}?>
+            </div>
+        </div>
+        <?
+        $sql = "select PRS_ID , PRS_NAME , PRS_TEAM , PRS_POSITION1, PRS_MOBILE, PRS_EMAIL, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH (NOLOCK) WHERE PRF_ID IN(5,4,3)   AND PRS_NAME = '박재형'";
+        $rs = sqlsrv_query($dbConn, $sql);
+        While ($record = sqlsrv_fetch_array($rs)) {
+        $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
 
-						$record = sqlsrv_fetch_array($rs);
-							
-						$col_prs_id = $record['PRS_ID'];
-						$col_prs_name = $record['PRS_NAME'];
-						$col_prs_position1 = $record['PRS_POSITION1'];
-						$col_prs_position2 = $record['PRS_POSITION2'];
-						$col_prs_extension = $record['PRS_EXTENSION'];
-						$col_file_img = $record['FILE_IMG'];
+        ?>
+        <a name="Design 1 Division"  style="cursor: default">
+        <div class="content">
+            <div class="title is-size-6">
+                Design 1 Division
+                <?
+                $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Design 1 Division','Design 1 Division 1 Team')";
+                $rs  = sqlsrv_query($dbConn, $sql);
+                While ($record = sqlsrv_fetch_array($rs)) {
+                    $cnt = $record['CNT']; ?>
+                    (<?=$cnt?>) <?}?>
+            </div>
+            <!-- 실장 / 이사-->
+            <div class="columns is-multiline">
+                <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                    <div class="notification is-white is-bordered">
+                        <div class="columns is-mobile">
+                            <div class="column member-photo">
+                                <p class="image is-70x70 is-rounded-image">
+                                    <img src="/file/<?=$col_file_img?>">
+                                </p>
+                            </div>
+                            <div class="column">
+                                <p class="is-member-p">
+                                    <span class="title is-size-6"><?= $col_prs_name ?></span>
+                                    <span class="title is-size-7">/ <?=$col_prs_position1?></span>
+                                </p>
+                                <p class="is-member-p">
+                                    <?= $col_prs_mobile ?>
+                                </p>
+                                <p class="is-member-p">
+                                    <span class="tag is-small"><?= $col_prs_email ?>@designfever.com</span>
+                                    <span class="tag is-small"><?= $col_prs_extension ?></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <? } ?>
 
-						if ($col_prs_position1 == $col_prs_position2)
-						{
-							$col_prs_position = $col_prs_position2;
-						}
-						else
-						{
-							$col_prs_position = $col_prs_position2 ." / ". $col_prs_position1;
-						}
+            <!-- 팀장포함 팀원-->
+            <div class="is-team">
+                <div class="is-member-depth-1-line"></div>
+                <div class="is-member-depth-1">
+                    <a name="Design 1 Division 1 Team"  style="cursor: default">
+                    <div class="title is-team-title is-size-6">
+                        Design 1 Division 1 Team
+                        <?
+                        $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Design 1 Division 1 Team')";
+                        $rs  = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $cnt = $record['CNT']; ?>
+                            (<?=$cnt?>) <?}?>
+                    </div>
+                    <div class="columns is-multiline">
+                        <?
+                        $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281) 
+                                   AND A.PRS_TEAM IN ('Design 1 Division 1 Team')  ORDER BY B.SEQNO, A.PRS_ID";
+                        $rs = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
 
-						$df_cnt[$div_team2]++;
-						$df_cnt[$team_team2]++;
-						$group_cnt[$i]++;
-?>
+                            ?>
+                            <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                                <div class="notification is-white is-bordered">
+                                    <div class="columns is-mobile">
+                                        <div class="column member-photo">
+                                            <p class="image is-70x70 is-rounded-image">
+                                                <img src="/file/<?=$col_file_img?>">
+                                            </p>
+                                        </div>
+                                        <div class="column">
+                                            <p class="is-member-p">
+                                                <span class="title is-size-6"><?=$col_prs_name?></span>
+                                                <span class="title is-size-7">/ <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <?=$col_prs_mobile?>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                                <span class="tag is-small"><?=$col_prs_extension?></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <? } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?
+        $sql = "select PRS_ID , PRS_NAME , PRS_TEAM , PRS_POSITION1, PRS_MOBILE, PRS_EMAIL, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH (NOLOCK) WHERE PRF_ID IN(5,4,3)   AND PRS_TEAM = 'Design 2 Division'";
+        $rs = sqlsrv_query($dbConn, $sql);
+        While ($record = sqlsrv_fetch_array($rs)) {
+            $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
+            ?>
+            <a name="Design 2 Division"  style="cursor: default">
+            <div class="content">
+                <div class="title is-size-6">
+                    Design 2 Division
+                    <?
+                    $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Design 2 Division','Design 2 Division 1 Team','Design 2 Division 2 Team')";
+                    $rs  = sqlsrv_query($dbConn, $sql);
+                    While ($record = sqlsrv_fetch_array($rs)) {
+                        $cnt = $record['CNT']; ?>
+                        (<?=$cnt?>) <?}?>
+                </div>
+                <!-- 실장 / 이사-->
+                <div class="columns is-multiline">
+                    <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                        <div class="notification is-white is-bordered">
+                            <div class="columns is-mobile">
+                                <div class="column member-photo">
+                                    <p class="image is-70x70 is-rounded-image">
+                                        <img src="/file/<?=$col_file_img?>">
+                                    </p>
+                                </div>
+                                <div class="column">
+                                    <p class="is-member-p">
+                                        <span class="title is-size-6"><?= $col_prs_name ?></span>
+                                        <span class="title is-size-7">/ <?=$col_prs_position1?></span>
+                                    </p>
+                                    <p class="is-member-p">
+                                        <?= $col_prs_mobile ?>
+                                    </p>
+                                    <p class="is-member-p">
+                                        <span class="tag is-small"><?= $col_prs_email ?>@designfever.com</span>
+                                        <span class="tag is-small"><?= $col_prs_extension ?></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <? } ?>
+        <!-- 팀장포함 팀원-->
+        <div class="is-team">
+            <div class="is-member-depth-1-line"></div>
+            <div class="is-member-depth-1">
+                <a name="Design 2 Division 1 Team"  style="cursor: default">
+                <div class="title is-team-title is-size-6">
+                    Design 2 Division 1 Team
+                    <?
+                    $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Design 2 Division 1 Team')";
+                    $rs  = sqlsrv_query($dbConn, $sql);
+                    While ($record = sqlsrv_fetch_array($rs)) {
+                        $cnt = $record['CNT']; ?>
+                        (<?=$cnt?>) <?}?>
+                </div>
+                <div class="columns is-multiline">
+                    <?
+                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,7) AND A.PRS_ID NOT IN(102,281) 
+                                   AND A.PRS_TEAM IN ('Design 2 Division 1 Team')  ORDER BY B.SEQNO, A.PRS_ID";
+                    $rs = sqlsrv_query($dbConn, $sql);
+                    While ($record = sqlsrv_fetch_array($rs)) {
+                        $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
+                        ?>
+                        <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                            <div class="notification is-white is-bordered">
+                                <div class="columns is-mobile">
+                                    <div class="column member-photo">
+                                        <p class="image is-70x70 is-rounded-image">
+                                            <img src="/file/<?=$col_file_img?>">
+                                        </p>
+                                    </div>
+                                    <div class="column">
+                                        <p class="is-member-p">
+                                            <span class="title is-size-6"><?=$col_prs_name?></span>
+                                            <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                        </p>
+                                        <p class="is-member-p">
+                                            <?=$col_prs_mobile?>
+                                        </p>
+                                        <p class="is-member-p">
+                                            <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                            <span class="tag is-small"><?=$col_prs_extension?></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <? } ?>
+                </div>
+            </div>
+            <div class="is-member-depth-1">
+                <a name="Design 2 Division 2 Team"  style="cursor: default">
+                <div class="title is-team-title is-size-6">
+                    Design 2 Division 2 Team
+                    <?
+                    $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Design 2 Division 2 Team')";
+                    $rs  = sqlsrv_query($dbConn, $sql);
+                    While ($record = sqlsrv_fetch_array($rs)) {
+                        $cnt = $record['CNT']; ?>
+                        (<?=$cnt?>) <?}?>
+                </div>
 
-										<td class="leader">
-											<ul>
-												<li>
-													<?=getProfileImg($col_file_img,78,'person',$col_prs_id);?>
-													<br><br><span><?=$col_prs_name?></span><br><?=$col_prs_position?><br>(내선 <?=$col_prs_extension?>)
-												</li>
-											</ul>
-										</td>
-										<td class="list1">
-											<ul>
-<?
-						$sql = "SELECT PRS_ID, PRS_NAME, PRS_POSITION1, PRS_POSITION2, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH(NOLOCK) WHERE PRS_TEAM = '". $team_team ."' $where AND PRS_POSITION2 = '매니저'". $orderbycase;
-						$rs = sqlsrv_query($dbConn, $sql);
+                <div class="columns is-multiline">
+                    <?
+                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281)
+                                   AND A.PRS_TEAM IN ('Design 2 Division 2 Team')  ORDER BY B.SEQNO, A.PRS_ID";
 
-						While ($record = sqlsrv_fetch_array($rs))
-						{
-							$col_prs_id = $record['PRS_ID'];
-							$col_prs_name = $record['PRS_NAME'];
-							$col_prs_position1 = $record['PRS_POSITION1'];
-							$col_prs_position2 = $record['PRS_POSITION2'];
-							$col_prs_extension = $record['PRS_EXTENSION'];
-							$col_file_img = $record['FILE_IMG'];
+                    $rs = sqlsrv_query($dbConn, $sql);
+                    While ($record = sqlsrv_fetch_array($rs)) {
+                        $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
+                        ?>
+                        <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                            <div class="notification is-white is-bordered">
+                                <div class="columns is-mobile">
+                                    <div class="column member-photo">
+                                        <p class="image is-70x70 is-rounded-image">
+                                            <img src="/file/<?=$col_file_img?>">
+                                        </p>
+                                    </div>
+                                    <div class="column">
+                                        <p class="is-member-p">
+                                            <span class="title is-size-6"><?=$col_prs_name?></span>
+                                            <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                        </p>
+                                        <p class="is-member-p">
+                                            <?=$col_prs_mobile?>
+                                        </p>
+                                        <p class="is-member-p">
+                                            <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                            <span class="tag is-small"><?=$col_prs_extension?></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <? } ?>
+                </div>
+            </div>
+        </div>
+<!-- 디자인실 끝-->
 
-							if ($col_prs_position1 == $col_prs_position2)
-							{
-								$col_prs_position = $col_prs_position2;
-							}
-							else
-							{
-								$col_prs_position = $col_prs_position2 ." / ". $col_prs_position1;
-							}
+        <hr>
 
-							$df_cnt[$div_team2]++;
-							$df_cnt[$team_team2]++;
-							$group_cnt[$i]++;
-?>
-												<li>
-													<?=getProfileImg($col_file_img,78,'person',$col_prs_id);?>
-													<br><br><span><?=$col_prs_name?></span><br><?=$col_prs_position?><br>(내선 <?=$col_prs_extension?>)
-												</li>
-<?
-						}
-?>								
-											</ul>
-										</td>
-									</tr>
-							</table>
-<?
-						$j++;
-					}
-?>
-							</td>
-<?
-				}
-			}
-			else
-			{
-?>
-				<table class="notable work_stats3" width="100%" id="<?=$div_team?>">
-					<thead>
-						<tr>
-							<th class="team2" colspan="3"><?=$div_team?> (<span id="df_<?=$div_team2?>_cnt">00</span>)</td>
-						</tr>
-					</thead>
-					<tbody> 
-						<tr>
-<?
-				$sql = "SELECT TOP 1 PRS_ID, PRS_NAME, PRS_POSITION1, PRS_POSITION2, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH(NOLOCK) WHERE PRS_TEAM = '". $div_team ."'". $orderbycase;
-				$rs = sqlsrv_query($dbConn, $sql);
+<!-- 모션실-->
+        <a name="Motion"  style="cursor: default">
+        <div class="content">
+            <div class="title is-size-5">
+                Motion
+                <?
+                $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Motion Division','Motion 1 Team', 'Art Division')";
+                $rs  = sqlsrv_query($dbConn, $sql);
+                While ($record = sqlsrv_fetch_array($rs)) {
+                    $cnt = $record['CNT']; ?>
+                    (<?=$cnt?>) <?}?>
+            </div>
+        </div>
+        <?
+        $sql = "select PRS_ID , PRS_NAME , PRS_TEAM , PRS_POSITION2, PRS_MOBILE, PRS_EMAIL, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH (NOLOCK) WHERE PRF_ID IN(5,4,3)   AND PRS_TEAM = 'Motion Division'";
+        $rs = sqlsrv_query($dbConn, $sql);
+        While ($record = sqlsrv_fetch_array($rs)) {
+        $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
 
-				$record = sqlsrv_fetch_array($rs);
-					
-				$div_prs_id = $record['PRS_ID'];
-				$div_prs_name = $record['PRS_NAME'];
-				$div_prs_position1 = $record['PRS_POSITION1'];
-				$div_prs_position2 = $record['PRS_POSITION2'];
-				$div_prs_extension = $record['PRS_EXTENSION'];
-				$div_file_img = $record['FILE_IMG'];
+        ?>
+        <a name="Motion Division"  style="cursor: default">
+        <div class="content">
+            <div class="title is-size-6">
+                Motion Division
+                <?
+                $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Motion Division','Motion 1 Team')";
+                $rs  = sqlsrv_query($dbConn, $sql);
+                While ($record = sqlsrv_fetch_array($rs)) {
+                    $cnt = $record['CNT']; ?>
+                    (<?=$cnt?>) <?}?>
+            </div>
+            <!-- 실장 / 이사-->
+            <div class="columns is-multiline">
+                <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                    <div class="notification is-white is-bordered">
+                        <div class="columns is-mobile">
+                            <div class="column member-photo">
+                                <p class="image is-70x70 is-rounded-image">
+                                    <img src="/file/<?=$col_file_img?>">
+                                </p>
+                            </div>
+                            <div class="column">
+                                <p class="is-member-p">
+                                    <span class="title is-size-6"><?= $col_prs_name ?></span>
+                                    <span class="title is-size-7">/ <?=$col_prs_position2?></span>
+                                </p>
+                                <p class="is-member-p">
+                                    <?= $col_prs_mobile ?>
+                                </p>
+                                <p class="is-member-p">
+                                    <span class="tag is-small"><?= $col_prs_email ?>@designfever.com</span>
+                                    <span class="tag is-small"><?= $col_prs_extension ?></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <? } ?>
 
-				if ($div_prs_position1 == $div_prs_position2)
-				{
-					$div_prs_position = $div_prs_position2;
-				}
-				else
-				{
-					$div_prs_position = $div_prs_position2 ." / ". $div_prs_position1;
-				}
+            <!-- 팀장포함 팀원-->
+            <div class="is-team">
+                <div class="is-member-depth-1-line"></div>
+                <div class="is-member-depth-1">
+                    <a name="Motion 1 Team"  style="cursor: default">
+                    <div class="title is-team-title is-size-6">
+                        Motion 1 Team
+                        <?
+                        $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Motion 1 Team')";
+                        $rs  = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $cnt = $record['CNT']; ?>
+                            (<?=$cnt?>) <?}?>
+                    </div>
+                    <div class="columns is-multiline">
+                        <?
+                        $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281) 
+                                   AND A.PRS_TEAM IN ('Motion 1 Team')  ORDER BY B.SEQNO, A.PRS_ID";
+                        $rs = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
 
-				$df_cnt[$div_team2]++;
-				$group_cnt[$i]++;
-?>
+                            ?>
+                            <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                                <div class="notification is-white is-bordered">
+                                    <div class="columns is-mobile">
+                                        <div class="column member-photo">
+                                            <p class="image is-70x70 is-rounded-image">
+                                                <img src="/file/<?=$col_file_img?>">
+                                            </p>
+                                        </div>
+                                        <div class="column">
+                                            <p class="is-member-p">
+                                                <span class="title is-size-6"><?=$col_prs_name?></span>
+                                                <span class="title is-size-7">/ <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <?=$col_prs_mobile?>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                                <span class="tag is-small"><?=$col_prs_extension?></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <? } ?>
+                    </div>
+                </div>
+                <div class="is-member-depth-1">
+                    <a name="Art Division"  style="cursor: default">
+                    <div class="title is-team-title is-size-6">
+                        Art Division
+                        <?
+                        $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Art Division')";
+                        $rs  = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $cnt = $record['CNT']; ?>
+                            (<?=$cnt?>) <?}?>
+                    </div>
+                    <div class="columns is-multiline">
+                        <?
+                        $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281)
+                                   AND A.PRS_TEAM IN ('Art Division')  ORDER BY B.SEQNO, A.PRS_ID";
 
-							<td class="leader">
-								<ul>
-									<li>
-										<?=getProfileImg($div_file_img,78,'person',$div_prs_id);?>
-										<br><br><span><?=$div_prs_name?></span><br><?=$div_prs_position?><br>(내선 <?=$div_prs_extension?>)
-									</li>
-								</ul>
-							</td>
-<?
-				if ($div_team_cnt == 0)
-				{
-?>
-							<td class="list1">
-								<ul>
-<?
-					$sql = "SELECT PRS_ID, PRS_NAME, PRS_POSITION1, PRS_POSITION2, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH(NOLOCK) WHERE PRS_TEAM = '". $div_team ."' $where AND PRS_POSITION2 = '매니저'". $orderbycase;
-					$rs = sqlsrv_query($dbConn, $sql);
+                        $rs = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
+                            ?>
+                            <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                                <div class="notification is-white is-bordered">
+                                    <div class="columns is-mobile">
+                                        <div class="column member-photo">
+                                            <p class="image is-70x70 is-rounded-image">
+                                                <img src="/file/<?=$col_file_img?>">
+                                            </p>
+                                        </div>
+                                        <div class="column">
+                                            <p class="is-member-p">
+                                                <span class="title is-size-6"><?=$col_prs_name?></span>
+                                                <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <?=$col_prs_mobile?>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                                <span class="tag is-small"><?=$col_prs_extension?></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <? } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- 모션실 끝 -->
 
-					While ($record = sqlsrv_fetch_array($rs))
-					{
-						$col_prs_id = $record['PRS_ID'];
-						$col_prs_name = $record['PRS_NAME'];
-						$col_prs_position1 = $record['PRS_POSITION1'];
-						$col_prs_position2 = $record['PRS_POSITION2'];
-						$col_prs_extension = $record['PRS_EXTENSION'];
-						$col_file_img = $record['FILE_IMG'];
+<hr>
 
-						if ($col_prs_position1 == $col_prs_position2)
-						{
-							$col_prs_position = $col_prs_position2;
-						}
-						else
-						{
-							$col_prs_position = $col_prs_position2 ." / ". $col_prs_position1;
-						}
+<!-- VID 실-->
+        <a name="Development"  style="cursor: default">
+        <div class="content">
+            <div class="title is-size-5">
+                Development
+                <?
+                $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Visual Interaction Development','VID 1 Team', 'VID 2 Team','LAB')";
+                $rs  = sqlsrv_query($dbConn, $sql);
+                While ($record = sqlsrv_fetch_array($rs)) {
+                    $cnt = $record['CNT']; ?>
+                    (<?=$cnt?>) <?}?>
+            </div>
+        </div>
+        <?
+        $sql = "select PRS_ID , PRS_NAME , PRS_TEAM , PRS_POSITION2, PRS_MOBILE, PRS_EMAIL, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH (NOLOCK) WHERE PRF_ID IN(5,4,3)   AND PRS_TEAM = 'Visual Interaction Development'";
+        $rs = sqlsrv_query($dbConn, $sql);
+        While ($record = sqlsrv_fetch_array($rs)) {
+        $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
 
-						$df_cnt[$div_team2]++;
-						$group_cnt[$i]++;
-?>
-									<li>
-										<?=getProfileImg($col_file_img,78,'person',$col_prs_id);?>
-										<br><br><span><?=$col_prs_name?></span><br><?=$col_prs_position?><br>(내선 <?=$col_prs_extension?>)
-									</li>
-<?
-					}
-?>								
-								</ul>
-							</td>
-<?
-				}
-				else
-				{
-?>
-							<td>
-<?
-					$teamSql = "SELECT SEQNO, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE STEP = 3 AND R_SEQNO = $div_seqno ORDER BY SORT";
-					$teamRs = sqlsrv_query($dbConn, $teamSql);
-					
-					$j = 0;
-					while($teamRecord = sqlsrv_fetch_array($teamRs))
-					{
-						$team_seqno = $teamRecord['SEQNO'];
-						$team_step = $teamRecord['STEP'];
-						$team_team = $teamRecord['TEAM'];
-						$team_cnt = $teamRecord['CNT'];
+        ?>
+        <a name="Visual Interaction Development"  style="cursor: default">
+        <div class="content">
+            <div class="title is-size-6">
+                Visual Interaction Development
+                <?
+                $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Visual Interaction Development','VID 1 Team', 'VID 2 Team')";
+                $rs  = sqlsrv_query($dbConn, $sql);
+                While ($record = sqlsrv_fetch_array($rs)) {
+                    $cnt = $record['CNT']; ?>
+                    (<?=$cnt?>) <?}?>
+            </div>
+            <!-- 실장 / 이사-->
+            <div class="columns is-multiline">
+                <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                    <div class="notification is-white is-bordered">
+                        <div class="columns is-mobile">
+                            <div class="column member-photo">
+                                <p class="image is-70x70 is-rounded-image">
+                                    <img src="/file/<?=$col_file_img?>">
+                                </p>
+                            </div>
+                            <div class="column">
+                                <p class="is-member-p">
+                                    <span class="title is-size-6"><?= $col_prs_name ?></span>
+                                    <span class="title is-size-7">/ <?=$col_prs_position2?></span>
+                                </p>
+                                <p class="is-member-p">
+                                    <?= $col_prs_mobile ?>
+                                </p>
+                                <p class="is-member-p">
+                                    <span class="tag is-small"><?= $col_prs_email ?>@designfever.com</span>
+                                    <span class="tag is-small"><?= $col_prs_extension ?></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <? } ?>
 
-						$team_team2 = str_replace(" ","",$team_team);
-?>
-							<a name="<?=$team_team2?>">
-							<table class="notable work_stats3" width="100%" id="<?=$team_team?>">
-								<thead>
-									<tr>
-										<th class="team" colspan="2"<? if ($j ==0) { ?> style="border-top-style:hidden;"<? } ?>><?=$team_team?> (<span id="df_<?=$team_team2?>_cnt">00</span>)</td>
-									</tr>
-								</thead>
-								<tbody> 
-									<tr>
-<?
-						$sql = "SELECT TOP 1 PRS_ID, PRS_NAME, PRS_POSITION1, PRS_POSITION2, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH(NOLOCK) WHERE PRS_TEAM = '". $team_team ."' AND PRS_POSITION2 IN ('실장','팀장')". $orderbycase;
-						$rs = sqlsrv_query($dbConn, $sql);
+            <!-- 팀장포함 팀원-->
+            <div class="is-team">
+                <div class="is-member-depth-1-line"></div>
+                <div class="is-member-depth-1">
+                    <a name="VID 1 Team"  style="cursor: default">
+                    <div class="title is-team-title is-size-6">
+                        VID 1 Team
+                        <?
+                        $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('VID 1 Team')";
+                        $rs  = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $cnt = $record['CNT']; ?>
+                            (<?=$cnt?>) <?}?>
+                    </div>
+                    <div class="columns is-multiline">
+                        <?
+                        $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281) 
+                                   AND A.PRS_TEAM IN ('VID 1 Team')  ORDER BY B.SEQNO, A.PRS_ID";
+                        $rs = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
 
-						$record = sqlsrv_fetch_array($rs);
-							
-						$col_prs_id = $record['PRS_ID'];
-						$col_prs_name = $record['PRS_NAME'];
-						$col_prs_position1 = $record['PRS_POSITION1'];
-						$col_prs_position2 = $record['PRS_POSITION2'];
-						$col_prs_extension = $record['PRS_EXTENSION'];
-						$col_file_img = $record['FILE_IMG'];
+                            ?>
+                            <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                                <div class="notification is-white is-bordered">
+                                    <div class="columns is-mobile">
+                                        <div class="column member-photo">
+                                            <p class="image is-70x70 is-rounded-image">
+                                                <img src="/file/<?=$col_file_img?>">
+                                            </p>
+                                        </div>
+                                        <div class="column">
+                                            <p class="is-member-p">
+                                                <span class="title is-size-6"><?=$col_prs_name?></span>
+                                                <span class="title is-size-7">/ <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <?=$col_prs_mobile?>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                                <span class="tag is-small"><?=$col_prs_extension?></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <? } ?>
+                    </div>
+                </div>
+                <div class="is-member-depth-1">
+                    <a name="VID 2 Team"  style="cursor: default">
+                    <div class="title is-team-title is-size-6">
+                       VID 2 Team
+                        <?
+                        $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('VID 2 Team')";
+                        $rs  = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $cnt = $record['CNT']; ?>
+                            (<?=$cnt?>) <?}?>
+                    </div>
 
-						if ($col_prs_position1 == $col_prs_position2)
-						{
-							$col_prs_position = $col_prs_position2;
-						}
-						else
-						{
-							$col_prs_position = $col_prs_position2 ." / ". $col_prs_position1;
-						}
+                    <div class="columns is-multiline">
+                        <?
+                        $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281)
+                                   AND A.PRS_TEAM IN ('VID 2 Team')  ORDER BY B.SEQNO, A.PRS_ID";
 
-						$df_cnt[$div_team2]++;
-						$df_cnt[$team_team2]++;
-						$group_cnt[$i]++;
-?>
+                        $rs = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
+                            ?>
+                            <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                                <div class="notification is-white is-bordered">
+                                    <div class="columns is-mobile">
+                                        <div class="column member-photo">
+                                            <p class="image is-70x70 is-rounded-image">
+                                                <img src="/file/<?=$col_file_img?>">
+                                            </p>
+                                        </div>
+                                        <div class="column">
+                                            <p class="is-member-p">
+                                                <span class="title is-size-6"><?=$col_prs_name?></span>
+                                                <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <?=$col_prs_mobile?>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                                <span class="tag is-small"><?=$col_prs_extension?></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <? } ?>
+                    </div>
+                </div>
 
-										<td class="leader">
-											<ul>
-												<li>
-													<?=getProfileImg($col_file_img,78,'person',$col_prs_id);?>
-													<br><br><span><?=$col_prs_name?></span><br><?=$col_prs_position?><br>(내선 <?=$col_prs_extension?>)
-												</li>
-											</ul>
-										</td>
-										<td class="list1">
-											<ul>
-<?
-						$sql = "SELECT PRS_ID, PRS_NAME, PRS_POSITION1, PRS_POSITION2, PRS_EXTENSION, FILE_IMG FROM DF_PERSON WITH(NOLOCK) WHERE PRS_TEAM = '". $team_team ."' $where AND PRS_POSITION2 = '매니저'". $orderbycase;
-						$rs = sqlsrv_query($dbConn, $sql);
+                <div class="is-member-depth-1">
+                    <a name="LAB"  style="cursor: default">
+                    <div class="title is-team-title is-size-6">
+                        LAB
+                        <?
+                        $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('LAB')";
+                        $rs  = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $cnt = $record['CNT']; ?>
+                            (<?=$cnt?>) <?}?>
+                    </div>
+                    <div class="columns is-multiline">
+                        <?
+                        $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281)
+                                   AND A.PRS_TEAM IN ('LAB')  ORDER BY B.SEQNO, A.PRS_ID";
 
-						While ($record = sqlsrv_fetch_array($rs))
-						{
-							$col_prs_id = $record['PRS_ID'];
-							$col_prs_name = $record['PRS_NAME'];
-							$col_prs_position1 = $record['PRS_POSITION1'];
-							$col_prs_position2 = $record['PRS_POSITION2'];
-							$col_prs_extension = $record['PRS_EXTENSION'];
-							$col_file_img = $record['FILE_IMG'];
+                        $rs = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
+                            ?>
+                            <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                                <div class="notification is-white is-bordered">
+                                    <div class="columns is-mobile">
+                                        <div class="column member-photo">
+                                            <p class="image is-70x70 is-rounded-image">
+                                                <img src="/file/<?=$col_file_img?>">
+                                            </p>
+                                        </div>
+                                        <div class="column">
+                                            <p class="is-member-p">
+                                                <span class="title is-size-6"><?=$col_prs_name?></span>
+                                                <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <?=$col_prs_mobile?>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                                <span class="tag is-small"><?=$col_prs_extension?></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <? } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- VID 끝 -->
 
-							if ($col_prs_position1 == $col_prs_position2)
-							{
-								$col_prs_position = $col_prs_position2;
-							}
-							else
-							{
-								$col_prs_position = $col_prs_position2 ." / ". $col_prs_position1;
-							}
+<!-- BST-->
+        <a name="BST"  style="cursor: default">
+        <div class="content">
+            <div class="title is-size-5">
+                BST
+                <?
+                $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Business Support Team')";
+                $rs  = sqlsrv_query($dbConn, $sql);
+                While ($record = sqlsrv_fetch_array($rs)) {
+                    $cnt = $record['CNT']; ?>
+                    (<?=$cnt?>) <?}?>
+            </div>
+        </div>
+        <div class="content">
+            <!-- 팀장포함 팀원-->
+            <div class="is-team">
+                <div class="is-member-depth-1-line"></div>
+                <div class="is-member-depth-1">
+                    <a name="Business Support Team"  style="cursor: default">
+                    <div class="title is-team-title is-size-6">
+                        Business Support Team
+                        <?
+                        $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Business Support Team')";
+                        $rs  = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $cnt = $record['CNT']; ?>
+                            (<?=$cnt?>) <?}?>
+                    </div>
+                    <div class="columns is-multiline">
+                        <?
+                        $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281) 
+                                   AND A.PRS_TEAM IN ('Business Support Team')  ORDER BY B.SEQNO, A.PRS_ID";
+                        $rs = sqlsrv_query($dbConn, $sql);
+                        While ($record = sqlsrv_fetch_array($rs)) {
+                            $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
 
-							$df_cnt[$div_team2]++;
-							$df_cnt[$team_team2]++;
-							$group_cnt[$i]++;
-?>
-												<li>
-													<?=getProfileImg($col_file_img,78,'person',$col_prs_id);?>
-													<br><br><span><?=$col_prs_name?></span><br><?=$col_prs_position?><br>(내선 <?=$col_prs_extension?>)
-												</li>
-<?
-						}
-?>								
-											</ul>
-										</td>
-									</tr>
-							</table>
-<?
-						$j++;
-					}
-?>
-							</td>
-<?
-				}
-			}
-?>
-						</tr>
-					</tbody>
-				</table>
-<?
-		}
-	}
-?>
-				<script type="text/javascript">
-					$("#df_ceo_cnt").text("<?=$df_cnt['ceo']?>");	
-				<?
-					$teamSql = "SELECT TEAM FROM DF_TEAM_2018 WITH(NOLOCK) ORDER BY SORT";
-					$teamRs = sqlsrv_query($dbConn, $teamSql);
-					
-					$i = 0;
+                            ?>
+                            <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                                <div class="notification is-white is-bordered">
+                                    <div class="columns is-mobile">
+                                        <div class="column member-photo">
+                                            <p class="image is-70x70 is-rounded-image">
+                                                <img src="/file/<?=$col_file_img?>">
+                                            </p>
+                                        </div>
+                                        <div class="column">
+                                            <p class="is-member-p">
+                                                <span class="title is-size-6"><?=$col_prs_name?></span>
+                                                <span class="title is-size-7">/ <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <?=$col_prs_mobile?>
+                                            </p>
+                                            <p class="is-member-p">
+                                                <span class="tag is-small"><?=$col_prs_email?>@designfever.com</span>
+                                                <span class="tag is-small"><?=$col_prs_extension?></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <? } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-					while($teamRecord = sqlsrv_fetch_array($teamRs))
-					{
-						$col_team = $teamRecord['TEAM'];
-						$col_team2 = str_replace(" ","",$col_team);
-				?>
-					$("#df_<?=$col_team2?>_cnt").text("<?=$df_cnt[$col_team2]?>");	
-				<?
-					}
-					$cnt1 = $df_cnt['CreativePlanningDivision'] + $df_cnt['CreativePlanning1Team'] + $df_cnt['CreativePlanning2Team'];
-					$cnt2 = $df_cnt['Design1Division'] + $df_cnt['Design1Division1Team'];
-					$cnt3 = $df_cnt['Design2Division'] + $df_cnt['Design2Division1Team'] + $df_cnt['Design2Division2Team'];
-					$cnt4 = $df_cnt['MotionDivision'] + $df_cnt['Motion1Team'];
-					$cnt5 = $df_cnt['VisualInteractionDevelopment'] + $df_cnt['VID1Team'] + $df_cnt['VID2Team'];
-				?>
-				<?
-					for ($i=1; $i<=5; $i++)
-					{
-				?>
-					$("#df_group<?=$i?>_cnt").text("<?=$group_cnt[$i]?>");	
-				<?
-					}
-				?>
-				</script>
 
-				<table class="notable work_stats3" width="100%" id="경비실">
-					<thead>
-						<tr>
-							<th class="team">경비실</td>
-						</tr>
-					</thead>
-					<tbody> 
-						<tr>
-							<td class="list1">
-								<ul>
-									<li>
-										소장님 (내선 313)
-									</li>
-								</ul>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+        <div class="columns is-multiline">
 
-			</div>
-
-				<table class="notable work_stats3" width="100%">
-					<tbody> 
-						<tr class="plural">
-							<th class="team" style="border-bottom-style:hidden;"></th>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			</div>
-		</div>
+            <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
+                <div class="notification is-white is-bordered">
+                    <div class="columns is-mobile">
+                        <div class="column member-photo">
+                            <p class="image is-70x70 is-rounded-image">
+                            </p>
+                        </div>
+                        <div class="column">
+                            <p class="is-member-p">
+                                <span class="title is-size-6">소장님</span>
+                            </p>
+                            <p class="is-member-p">
+                            </p>
+                            <p class="is-member-p">
+                                <span class="tag is-small">401</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- BST 끝-->
+        <hr>
+</section>
 </form>
 <? include INC_PATH."/bottom.php"; ?>
-
-<div class="person_pop_detail" id="popup" style="display:none;">
-
-	<div class="person_pop work_team_pop" style="border:0px; margin-top:-170px;">
-		<div class="pop_top">
-			<p class="pop_title">개인 프로필</p>
-			<span id="btnClose1" class="close" name="btnClose">닫기</span>
-		</div>
-		<div class="pop_body">
-			<div class="prs_wrap">
-				<table class="notable prs_table"  width="100%">
-					<summary></summary>
-					<colgroup><col width="25%" /><col width="20%" /><col width="*" /></colgroup>
-					<tr>
-						<td rowspan="9" class="img" id="pop_img"></th>
-						<th>아이디</th>
-						<td id="pop_id"></td>
-					</tr>
-					
-					<tr>
-						<th>이름</th>
-						<td id="pop_name"></td>
-					</tr>
-					
-					<tr>
-						<th>생일</th>
-						<td id="pop_birth"></td>
-					</tr>
-
-					<tr>
-						<th>핸드폰</th>
-						<td colspan="2" id="pop_mobile"></td>
-					</tr>
-					
-					<tr>
-						<th>소속부서</th>
-						<td colspan="2" id="pop_team"></td>
-					</tr>
-					
-					<tr>
-						<th>직책 / 직급</th>
-						<td colspan="2" id="pop_position"></td>
-					</tr>
-
-					<tr>
-						<th>DF E-mail</th>
-						<td colspan="2" id="pop_email"></td>
-					</tr>
-
-					<tr>
-						<th>직통번호</th>
-						<td colspan="2" id="pop_tel"></td>
-					</tr>
-
-					<tr class="last">
-						<th>내선번호</th>
-						<td colspan="2" id="pop_extension"></td>
-					</tr>
-				</table>
-				
-			</div>
-			<div class="prs_btn">
-				<img src="../img/btn_ok.gif" alt="ok" id="btnClose2" name="btnClose" />
-			</div>
-		</div>
-	</div>
-
-</div>
-</div>
 </body>
 </html>

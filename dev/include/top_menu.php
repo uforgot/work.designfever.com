@@ -46,90 +46,102 @@
        <div class="navbar-menu">
             <div class="navbar-end">
                 <div class="navbar-item is-size-7">
-                      <? if ($today_checktime1 != "" && $today_datekind == "BIZ") { ?>
-                      퇴근 가능 시간은&nbsp;<strong><?=substr($checkout,0,2)?>:<?=substr($checkout,2,2)?> </strong>&nbsp;입니다.
-                      <? } ?>
+                    <? if ($today_gubun1 >= 10){?>
+                        휴가계를 제출하셨습니다.<br>출퇴근체크를 원하시면 휴가계 삭제를 요청해 주세요.
+                      <? }else if ($today_checktime1 != "" && $today_datekind == "BIZ") { ?>
+                            퇴근 가능 시간은&nbsp;<strong><?=substr($checkout,0,2)?>:<?=substr($checkout,2,2)?> </strong>&nbsp;입니다.
+                      <? }else{}
+
+                       ?>
                     </div>
                 <div class="navbar-item">
                     <div class="field is-grouped">
                     	
                     	<!--퇴근 하기 버튼 출력부분-->
                     	<?
-													if ($off_check == "Y")
-														{
-															if ($last_off_endtime == "") 
-															{ $end_check = "N"; }
-															else
-															{ $end_check = "Y"; }
-														}
-														else{ $end_check = "Y"; }																																											 	
-													//퇴근 버튼 출력
-																				/* 
-																					출근체크가 안됐으면 일단 무조건 퇴근체크도 막아야 한다 하지만 
-																						조건1. 전일 출근체크가 되어있고
-																						조건2. 자정넘어 아침8시 이전이고
-																						조건3. 자정넘어 출근체크가 안되어있고
-																						조건4. 자정넘어 출근체크가 되어 있어도 휴가여야
-																					이때는 퇴근체크가 가능하게끔 로직 설정
-																				*/
-																				$gbArray1 = array(4,8,6,10,11,12,13,14,15,16,17,18,19,20,21);
-																				$gbArray2 = array(5,9);
-												
-																				$chk_gb1 = in_array($today_gubun1,$gbArray1);
-																				$chk_gb2 = in_array($today_gubun2,$gbArray2);
-																				if ($end_check == "Y")
-																				{
-																					if ($today_checktime2 != "")												//퇴근 중복체크
-																					{
-																						
-	                                          echo "<p class='control'>
-											                           	 	<a href=javascript:leave_office(2,'". $today_checktime1 ."','". $totaltime ."'); class='button' href='#'>
-											                                <span>퇴근하기</span>
-											                            	</a>
-											                        		</p>";
-																					}																					
-																					else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 == "" && $time_gubun == "before")	//어제 퇴근체크 - 오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 X, 08:00이전(조건2)
-																					{																						
-                                    				echo "<p class='control'>
-								                            				<a href=javascript:leave_office(3,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button' href='#'>
-								                                			<span>퇴근하기</span>
-								                            				</a>
-								                        				</p>";			
-																					}
-																					else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 != "" && $time_gubun == "before")	//어제 퇴근 중복체크 - 오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 O, 08:00이전(조건2)
-																					{																																												
-                                        		echo "<p class='control'>
-										                            		<a href=javascript:leave_office(4,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button' href='#'>
-										                                	<span>퇴근하기</span>
-										                            		</a>
-										                        			</p>";
-																					}																					
-																					else if (($chk_gb1 == 1 || $chk_gb2 == 1) && $yesterday_checktime1 != "" && $yesterday_checktime2 == "" && $time_gubun == "before")	//어제 퇴근체크 - 오늘 휴가, 어제 출근체크 O, 어제 퇴근체크 X, 08:00이전(조건4)
-																					{
-                                        		echo "<p class='control'>
-										                            		<a href=javascript:leave_office(3,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button' href='#'>
-										                                	<span>퇴근하기</span>
-										                            		</a>
-										                        			</p>";
-																					}
-																					else if (($chk_gb1 == 1 || $chk_gb2 == 1) && $yesterday_checktime1 != "" && $yesterday_checktime2 != "" && $time_gubun == "before")	//어제 퇴근 중복체크 - 오늘 휴가, 어제 출근체크 O, 어제 퇴근체크 O, 08:00이전(조건4)
-																					{
-                                        		echo "<p class='control'>
-										                            <a href=javascript:leave_office(4,'". $yesterday_checktime1 ."','". $totaltime ."');class='button'>
-										                                <span>퇴근하기</span>
-										                            </a>
-										                        		</p>";						
-																					}
-																					else if ($today_checktime1 != "" && $today_checktime2 == "")		//퇴근체크 - 오늘 출근체크 O, 오늘 퇴근체크 X
-																					{																						
-                                        		echo "<p class='control'>
-										                           		 <a href=javascript:leave_office(1,'". $today_checktime1 ."','". $totaltime ."'); class='button' >
-										                                 <span>퇴근하기</span>
-										                            	 </a>
-										                        			</p>";						
-																					}																				
-																				}																				  
-																		?>   
+                    if ($off_check == "Y")
+                        {
+                            if ($last_off_endtime == "")
+                            { $end_check = "N"; }
+                            else
+                            { $end_check = "Y"; }
+                        }
+                        else{ $end_check = "Y"; }
+                    //퇴근 버튼 출력
+                                        /*
+                                출근체크가 안됐으면 일단 무조건 퇴근체크도 막아야 한다 하지만
+                                    조건1. 전일 출근체크가 되어있고
+                                    조건2. 자정넘어 아침8시 이전이고
+                                    조건3. 자정넘어 출근체크가 안되어있고
+                                    조건4. 자정넘어 출근체크가 되어 있어도 휴가여야
+                                이때는 퇴근체크가 가능하게끔 로직 설정
+                            */
+                            $gbArray1 = array(4,8,6,10,11,12,13,14,15,16,17,18,19,20,21);
+                            $gbArray2 = array(5,9);
+
+                            $chk_gb1 = in_array($today_gubun1,$gbArray1);
+                            $chk_gb2 = in_array($today_gubun2,$gbArray2);
+                            if ($end_check == "Y")
+                            {
+
+                                if ($today_gubun1 >= 10){
+                                 ?>
+                                    <!--휴가일경우 버튼 막음-->
+                                <? }else if ($today_checktime2 != "")												//퇴근 중복체크
+                                {
+
+                                    echo "<p class='control'>
+                                            <a href=javascript:leave_office(2,'". $today_checktime1 ."','". $totaltime ."'); class='button' href='#'>
+                                                <span>퇴근하기</span>
+                                            </a>
+                                          </p>";
+                                }
+                                else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 == "" && $time_gubun == "before")	//어제 퇴근체크 - 오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 X, 08:00이전(조건2)
+                                {
+                                    echo "<p class='control'>
+                                                <a href=javascript:leave_office(3,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button' href='#'>
+                                                    <span>퇴근하기</span>
+                                                </a>
+                                        </p>";
+                                }
+                                else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 != "" && $time_gubun == "before")	//어제 퇴근 중복체크 - 오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 O, 08:00이전(조건2)
+                                {
+                                    echo "<p class='control'>
+                                                <a href=javascript:leave_office(4,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button' href='#'>
+                                                    <span>퇴근하기</span>
+                                                </a>
+                                            </p>";
+                                }
+                                else if (($chk_gb1 == 1 || $chk_gb2 == 1) && $yesterday_checktime1 != "" && $yesterday_checktime2 == "" && $time_gubun == "before")	//어제 퇴근체크 - 오늘 휴가, 어제 출근체크 O, 어제 퇴근체크 X, 08:00이전(조건4)
+                                {
+                                    echo "<p class='control'>
+                                                <a href=javascript:leave_office(3,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button' href='#'>
+                                                    <span>퇴근하기</span>
+                                                </a>
+                                            </p>";
+                                }
+                                else if (($chk_gb1 == 1 || $chk_gb2 == 1) && $yesterday_checktime1 != "" && $yesterday_checktime2 != "" && $time_gubun == "before")	//어제 퇴근 중복체크 - 오늘 휴가, 어제 출근체크 O, 어제 퇴근체크 O, 08:00이전(조건4)
+                                {
+                                    echo "<p class='control'>
+                                            <a href=javascript:leave_office(4,'". $yesterday_checktime1 ."','". $totaltime ."');class='button'>
+                                                <span>퇴근하기</span>
+                                            </a>
+                                        </p>";
+                                }
+                                else if ($today_checktime1 != "" && $today_checktime2 == "")		//퇴근체크 - 오늘 출근체크 O, 오늘 퇴근체크 X
+                                {
+                                    echo "<p class='control'>
+                                             <a href=javascript:leave_office(1,'". $today_checktime1 ."','". $totaltime ."'); class='button' >
+                                                 <span>퇴근하기</span>
+                                             </a>
+                                        </p>";
+                                }
+                            }else if ($today_gubun1 >= 10)
+                            {
+                                echo "<p class='control'>                                                                                          
+                                        </p>";
+                            }
+                    ?>
 																		                 	                        
                         	<p class="control">
                             <a class="button is-primary" href="javascript:logout();">

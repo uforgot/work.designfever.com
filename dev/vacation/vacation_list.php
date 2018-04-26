@@ -73,8 +73,7 @@
                             </select>
                         </div>
                     </div>
-    
-                    <progress class="progress is-danger" value="19" max="100">19%</progress>
+                    <progress class="progress is-danger" value="<? echo $vacation1+$vacation2+$vacation3; ?>" max="<?=doubleval($vacation_total)?>">19%</progress>
                 </div>
                 <div class="card-footer">
                     <div class="card-footer-item">
