@@ -6461,17 +6461,27 @@ label.panel-block {
         color: #4880db; }
     .datepicker .calendar.is-large {
       max-width: 100%; }
-      .datepicker .calendar.is-large .calendar-body .calendar-date {
-        border-bottom: none;
-        border-right: none;
-        display: flex;
-        flex-direction: column;
-        height: 11rem;
+      .datepicker .calendar.is-large .calendar-header {
         padding: 0; }
-        .datepicker .calendar.is-large .calendar-body .calendar-date:nth-child(7n) {
-          border-right: 0; }
-        .datepicker .calendar.is-large .calendar-body .calendar-date:nth-last-child(-n+7) {
-          border-bottom: 0; }
+        .datepicker .calendar.is-large .calendar-header .calendar-date {
+          font-size: 0.75rem; }
+      .datepicker .calendar.is-large .calendar-body {
+        padding: 0; }
+        .datepicker .calendar.is-large .calendar-body .calendar-date {
+          border-bottom: 1px solid #cdcdcd;
+          border-right: 1px solid #cdcdcd;
+          display: flex;
+          flex-direction: column;
+          height: 10rem;
+          padding: 0; }
+          .datepicker .calendar.is-large .calendar-body .calendar-date:nth-child(-n+7) {
+            border-top: 1px solid #cdcdcd; }
+          .datepicker .calendar.is-large .calendar-body .calendar-date:nth-child(7n + 1) {
+            border-left: 1px solid #cdcdcd; }
+          .datepicker .calendar.is-large .calendar-body .calendar-date:nth-child(7n) {
+            background: #f4f4f4; }
+          .datepicker .calendar.is-large .calendar-body .calendar-date:nth-child(7n+1) {
+            background: #f4f4f4; }
       .datepicker .calendar.is-large .date-item {
         align-self: flex-end;
         height: 2.2rem;
@@ -6494,7 +6504,7 @@ label.panel-block {
         border-radius: 2px;
         color: white;
         display: block;
-        font-size: 1rem;
+        font-size: 0.75rem;
         margin: 0.2rem auto;
         overflow: hidden;
         padding: 0.3rem 0.4rem;
@@ -6665,17 +6675,27 @@ label.panel-block {
       color: #4880db; }
   .calendar.is-large {
     max-width: 100%; }
-    .calendar.is-large .calendar-body .calendar-date {
-      border-bottom: none;
-      border-right: none;
-      display: flex;
-      flex-direction: column;
-      height: 11rem;
+    .calendar.is-large .calendar-header {
       padding: 0; }
-      .calendar.is-large .calendar-body .calendar-date:nth-child(7n) {
-        border-right: 0; }
-      .calendar.is-large .calendar-body .calendar-date:nth-last-child(-n+7) {
-        border-bottom: 0; }
+      .calendar.is-large .calendar-header .calendar-date {
+        font-size: 0.75rem; }
+    .calendar.is-large .calendar-body {
+      padding: 0; }
+      .calendar.is-large .calendar-body .calendar-date {
+        border-bottom: 1px solid #cdcdcd;
+        border-right: 1px solid #cdcdcd;
+        display: flex;
+        flex-direction: column;
+        height: 10rem;
+        padding: 0; }
+        .calendar.is-large .calendar-body .calendar-date:nth-child(-n+7) {
+          border-top: 1px solid #cdcdcd; }
+        .calendar.is-large .calendar-body .calendar-date:nth-child(7n + 1) {
+          border-left: 1px solid #cdcdcd; }
+        .calendar.is-large .calendar-body .calendar-date:nth-child(7n) {
+          background: #f4f4f4; }
+        .calendar.is-large .calendar-body .calendar-date:nth-child(7n+1) {
+          background: #f4f4f4; }
     .calendar.is-large .date-item {
       align-self: flex-end;
       height: 2.2rem;
@@ -6698,7 +6718,7 @@ label.panel-block {
       border-radius: 2px;
       color: white;
       display: block;
-      font-size: 1rem;
+      font-size: 0.75rem;
       margin: 0.2rem auto;
       overflow: hidden;
       padding: 0.3rem 0.4rem;

@@ -1,3 +1,5 @@
+$calendar-large-border: 1px solid #cdcdcd
+
 .df-commuting
   .is-vacation-title
     border-bottom: 1px solid #cdcdcd
@@ -7,3 +9,39 @@
     box-shadow: none
     border: 1px solid #dbdbdb
     background: $white-ter
+  .commuting-data
+    font-size: 1rem
+    padding: 0.5rem
+    .columns
+      background: #cccccc
+
+  .calendar
+    .date
+      font-size: 1rem
+      align-self: flex-start
+      //height: 3rem
+      margin-left: 1rem
+      margin-top: 1rem
+      +breakpoint(mobile)
+        width: 3rem
+        height: 2.8rem
+        align-self: flex-start
+        margin-left: 0
+    .calendar-events
+      text-align: left
+      .tag
+        margin: 0.1rem
+      +breakpoint(mobile)
+        //margin-left: 1rem
+    +breakpoint(mobile)
+      .calendar-date
+        flex-basis: 100%
+        max-width: none
+        height: auto !important
+        flex-direction: row !important
+        border-left: $calendar-large-border
+        border-top: $calendar-large-border
+        border-right: $calendar-large-border
+        border-bottom: none !important
+        &.is-disabled
+          display: none

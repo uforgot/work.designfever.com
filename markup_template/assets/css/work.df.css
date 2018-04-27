@@ -68,12 +68,22 @@
   padding: 0;
   padding-left: 0.75rem;
   overflow: hidden; }
+  .df-org .notification .tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0; }
   .df-org .notification .column {
     padding: 0.75rem; }
     .df-org .notification .column:last-child {
       margin-top: 0.8rem; }
-.df-org .is-member-p {
-  margin: 0 !important; }
+    .df-org .notification .column p {
+      margin: 0; }
+    .df-org .notification .column .is-member-phone {
+      font-size: 1rem; }
+    .df-org .notification .column .is-member-email {
+      font-size: 0.5rem !important;
+      color: #888888; }
 .df-org .is-70x70 {
   height: 100px !important;
   width: 100px !important;
@@ -103,9 +113,7 @@
 .df-org .is-member .column {
   padding: 0.5rem !important; }
 .df-org .is-absent {
-  box-shadow: none;
-  background: #fff;
-  border: dotted 1px #cccccc; }
+  box-shadow: none; }
   .df-org .is-absent img {
     filter: grayscale(1); }
 
@@ -117,6 +125,38 @@
   box-shadow: none;
   border: 1px solid #dbdbdb;
   background: whitesmoke; }
+.df-commuting .commuting-data {
+  font-size: 1rem;
+  padding: 0.5rem; }
+  .df-commuting .commuting-data .columns {
+    background: #cccccc; }
+.df-commuting .calendar .date {
+  font-size: 1rem;
+  align-self: flex-start;
+  margin-left: 1rem;
+  margin-top: 1rem; }
+  @media screen and (max-width: 767px) {
+    .df-commuting .calendar .date {
+      width: 3rem;
+      height: 2.8rem;
+      align-self: flex-start;
+      margin-left: 0; } }
+.df-commuting .calendar .calendar-events {
+  text-align: left; }
+  .df-commuting .calendar .calendar-events .tag {
+    margin: 0.1rem; }
+@media screen and (max-width: 767px) {
+  .df-commuting .calendar .calendar-date {
+    flex-basis: 100%;
+    max-width: none;
+    height: auto !important;
+    flex-direction: row !important;
+    border-left: 1px solid #cdcdcd;
+    border-top: 1px solid #cdcdcd;
+    border-right: 1px solid #cdcdcd;
+    border-bottom: none !important; }
+    .df-commuting .calendar .calendar-date.is-disabled {
+      display: none; } }
 
 body {
   font-family: "Nanum Gothic";

@@ -6,12 +6,24 @@
     padding: 0
     padding-left: 0.75rem
     overflow: hidden
+    .tag
+      position: absolute
+      top: 0
+      right: 0
+      border-radius: 0
+
     .column
       padding: 0.75rem
       &:last-child
         margin-top: 0.8rem
-  .is-member-p
-    margin: 0 !important
+      p
+        margin: 0
+      .is-member-info
+      .is-member-phone
+        font-size: 1.0rem
+      .is-member-email
+        font-size: 0.5rem !important
+        color: #888888
   .is-70x70
     height: 100px !important
     width: 100px !important
@@ -50,7 +62,5 @@
 
   .is-absent
     box-shadow: none
-    background: #fff
-    border: dotted 1px #cccccc
     img
       filter: grayscale(1.0)
