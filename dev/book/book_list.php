@@ -194,9 +194,7 @@
         <div class="columns is-vcentered">
             <!-- Left side -->
             <div class="column">
-                <!-- todo 0413 구조 변경 -->
                     <div class="field is-grouped">
-                    	
                     		<? if ($board == "ilab") { ?>
                     		<div class="control select">
 														<select name="subject" id="subject">
@@ -275,7 +273,7 @@
             </div>
         </div>
 
-        <table class="table is-fullwidth is-hoverable type-common">
+        <table class="table is-fullwidth is-hoverable is-resize">
             <colgroup>
                 <col width="8%">
                 <col width="*">

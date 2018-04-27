@@ -42,6 +42,8 @@
 	$sheet->getColumnDimension('E')->setAutoSize(true);	
 	$sheet->getColumnDimension('F')->setAutoSize(true);
 	$sheet->getColumnDimension('G')->setAutoSize(true);
+	$sheet->getColumnDimension('H')->setAutoSize(true);
+	$sheet->getColumnDimension('I')->setAutoSize(true);
 
 	// Set document properties
 	$objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
@@ -60,7 +62,8 @@
 				->setCellValue('E1','내선번호')
 				->setCellValue('F1','DF E-mail')
 				->setCellValue('G1','핸드폰')
-				->setCellValue('H1','생년월일');
+				->setCellValue('H1','생년월일')
+				->setCellValue('I1','영문명');
 
 	$orderby1 = "";
 	$orderby2 = "";
@@ -97,7 +100,7 @@
 	$orderbycase .= " ORDER BY CASE ". $orderby1 . " END, CASE ". $orderby2 . " END, CASE ". $orderby3 . " END, PRS_NAME";
 
 	$sql = "SELECT 
-				PRS_ID, PRS_NAME, PRS_TEAM, PRS_POSITION1, PRS_POSITION2, PRS_EMAIL, PRS_EXTENSION, PRS_MOBILE, PRS_BIRTH, PRS_BIRTH_TYPE
+				PRS_ID, PRS_NAME, PRS_TEAM, PRS_POSITION1, PRS_POSITION2, PRS_EMAIL, PRS_EXTENSION, PRS_MOBILE, PRS_BIRTH, PRS_BIRTH_TYPE, PRS_EN_LASTNAME, PRS_EN_FIRSTNAME
 			FROM 
 				DF_PERSON WITH(NOLOCK)
 			WHERE 
@@ -119,11 +122,15 @@
 		$col_mobile = $record['PRS_MOBILE'];
 		$col_birth = $record['PRS_BIRTH'];
 		$col_birth_type = iconv('EUC-KR','UTF-8',$record['PRS_BIRTH_TYPE']);
+		$col_en_lastname = iconv('EUC-KR','UTF-8',$record['PRS_EN_LASTNAME']);
+		$col_en_firstname = iconv('EUC-KR','UTF-8',$record['PRS_EN_FIRSTNAME']);
 
 		if ($col_birth_type == "음력") 
 		{
 			$col_birth = $col_birth ."(음)";
 		}
+
+		$col_ename = $col_en_lastname ." ". $col_en_firstname;
 
 		$objPHPExcel->setActiveSheetIndex(0)
 					->setCellValue("A$i",$col_name)
@@ -133,7 +140,8 @@
 					->setCellValue("E$i",$col_extension)
 					->setCellValue("F$i",$col_email)
 					->setCellValue("G$i",$col_mobile)
-					->setCellValue("H$i",$col_birth);
+					->setCellValue("H$i",$col_birth)
+					->setCellValue("I$i",$col_ename);
 		$i++;
 	}
 
