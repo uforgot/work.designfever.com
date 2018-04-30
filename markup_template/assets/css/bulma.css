@@ -6438,7 +6438,7 @@ label.panel-block {
           background: #4880db;
           border-color: #4880db;
           color: #fff; }
-      .datepicker .calendar .calendar-date.is-disabled .date-item, .datepicker .calendar .calendar-date.is-disabled .calendar-event, .datepicker .calendar .calendar-date[disabled] .date-item, .datepicker .calendar .calendar-date[disabled] .calendar-event {
+      .datepicker .calendar .calendar-date.is-disabled .date-item, .datepicker .calendar .calendar-date.is-disabled .calendar-event, .datepicker .calendar .calendar-date.is-disabled .date, .datepicker .calendar .calendar-date[disabled] .date-item, .datepicker .calendar .calendar-date[disabled] .calendar-event, .datepicker .calendar .calendar-date[disabled] .date {
         cursor: default;
         opacity: 0.25;
         pointer-events: none; }
@@ -6472,16 +6472,12 @@ label.panel-block {
           border-right: 1px solid #cdcdcd;
           display: flex;
           flex-direction: column;
-          height: 10rem;
+          height: 12rem;
           padding: 0; }
           .datepicker .calendar.is-large .calendar-body .calendar-date:nth-child(-n+7) {
             border-top: 1px solid #cdcdcd; }
           .datepicker .calendar.is-large .calendar-body .calendar-date:nth-child(7n + 1) {
             border-left: 1px solid #cdcdcd; }
-          .datepicker .calendar.is-large .calendar-body .calendar-date:nth-child(7n) {
-            background: #f4f4f4; }
-          .datepicker .calendar.is-large .calendar-body .calendar-date:nth-child(7n+1) {
-            background: #f4f4f4; }
       .datepicker .calendar.is-large .date-item {
         align-self: flex-end;
         height: 2.2rem;
@@ -6652,7 +6648,7 @@ label.panel-block {
         background: #4880db;
         border-color: #4880db;
         color: #fff; }
-    .calendar .calendar-date.is-disabled .date-item, .calendar .calendar-date.is-disabled .calendar-event, .calendar .calendar-date[disabled] .date-item, .calendar .calendar-date[disabled] .calendar-event {
+    .calendar .calendar-date.is-disabled .date-item, .calendar .calendar-date.is-disabled .calendar-event, .calendar .calendar-date.is-disabled .date, .calendar .calendar-date[disabled] .date-item, .calendar .calendar-date[disabled] .calendar-event, .calendar .calendar-date[disabled] .date {
       cursor: default;
       opacity: 0.25;
       pointer-events: none; }
@@ -6686,16 +6682,12 @@ label.panel-block {
         border-right: 1px solid #cdcdcd;
         display: flex;
         flex-direction: column;
-        height: 10rem;
+        height: 12rem;
         padding: 0; }
         .calendar.is-large .calendar-body .calendar-date:nth-child(-n+7) {
           border-top: 1px solid #cdcdcd; }
         .calendar.is-large .calendar-body .calendar-date:nth-child(7n + 1) {
           border-left: 1px solid #cdcdcd; }
-        .calendar.is-large .calendar-body .calendar-date:nth-child(7n) {
-          background: #f4f4f4; }
-        .calendar.is-large .calendar-body .calendar-date:nth-child(7n+1) {
-          background: #f4f4f4; }
     .calendar.is-large .date-item {
       align-self: flex-end;
       height: 2.2rem;

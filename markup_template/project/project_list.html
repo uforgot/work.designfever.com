@@ -16,37 +16,56 @@
 <div id="sub-menu-5"></div>
 
 <!-- 본문 시작 -->
-<section class="section is-resize">
+<section class="section df-project">
     <div class="container">
+
         <div class="content">
-            <div class="box">
-                <div class="columns is-column-marginless">
-                    <div class="column">
-                        <div class="field has-addons">
-                            <div class="control is-expanded">
-                                <input class="input" placeholder="2018년 4월 17일">
+            <div class="card">
+                <div class="card-content">
+
+                <div class="columns">
+                    <div class="column" style="display:inline-block;flex-grow:0;flex-basis:auto;">
+                        <div class="field is-group">
+                            <div class="control select">
+                                <select name="fr_year" id="fr_year">
+                                    <option value='2013'>2013년</option><option value='2014'>2014년</option><option value='2015'>2015년</option><option value='2016'>2016년</option><option value='2017'>2017년</option><option value='2018' selected>2018년</option><option value='2019'>2019년</option>                                    </select>
                             </div>
-                            <div class="control">
-                                <a class="button is-static">
-                                    부터
-                                </a>
+                            <div class="control select">
+                                <select name="fr_month" id="fr_month">
+                                    <option value='01'>1월</option><option value='02'>2월</option><option value='03'>3월</option><option value='04' selected>4월</option><option value='05'>5월</option><option value='06'>6월</option><option value='07'>7월</option><option value='08'>8월</option><option value='09'>9월</option><option value='10'>10월</option><option value='11'>11월</option><option value='12'>12월</option>                                    </select>
+                            </div>
+                            <div class="control select">
+                                <select name="fr_day" id="fr_day">
+                                    <option value='01' selected>1일</option><option value='02'>2일</option><option value='03'>3일</option><option value='04'>4일</option><option value='05'>5일</option><option value='06'>6일</option><option value='07'>7일</option><option value='08'>8일</option><option value='09'>9일</option><option value='10'>10일</option><option value='11'>11일</option><option value='12'>12일</option><option value='13'>13일</option><option value='14'>14일</option><option value='15'>15일</option><option value='16'>16일</option><option value='17'>17일</option><option value='18'>18일</option><option value='19'>19일</option><option value='20'>20일</option><option value='21'>21일</option><option value='22'>22일</option><option value='23'>23일</option><option value='24'>24일</option><option value='25'>25일</option><option value='26'>26일</option><option value='27'>27일</option><option value='28'>28일</option><option value='29'>29일</option><option value='30'>30일</option><option value='31'>31일</option>                                    </select>
+                            </div>
+                            <div class="button">
+                                <input type="hidden" id="fr_date" class="datepicker">
+                                <i class="fa fa-calendar-plus"></i>
                             </div>
                         </div>
                     </div>
                     <div class="column">
-                        <div class="field has-addons">
-                            <div class="control is-expanded">
-                                <input class="input" placeholder="2018년 4월 17일">
+                        <div class="field is-group">
+                            <div class="control select">
+                                <select name="to_year" id="to_year">
+                                    <option value='2013'>2013년</option><option value='2014'>2014년</option><option value='2015'>2015년</option><option value='2016'>2016년</option><option value='2017'>2017년</option><option value='2018' selected>2018년</option><option value='2019'>2019년</option>                                    </select>
                             </div>
-
-                            <div class="control">
-                                <a class="button is-static">
-                                    까지
-                                </a>
+                            <div class="control select">
+                                <select name="to_month" id="to_month">
+                                    <option value='01'>1월</option><option value='02'>2월</option><option value='03'>3월</option><option value='04' selected>4월</option><option value='05'>5월</option><option value='06'>6월</option><option value='07'>7월</option><option value='08'>8월</option><option value='09'>9월</option><option value='10'>10월</option><option value='11'>11월</option><option value='12'>12월</option>                                    </select>
+                            </div>
+                            <div class="control select">
+                                <select name="to_day" id="to_day">
+                                    <option value='01'>1일</option><option value='02'>2일</option><option value='03'>3일</option><option value='04'>4일</option><option value='05'>5일</option><option value='06'>6일</option><option value='07'>7일</option><option value='08'>8일</option><option value='09'>9일</option><option value='10'>10일</option><option value='11'>11일</option><option value='12'>12일</option><option value='13'>13일</option><option value='14'>14일</option><option value='15'>15일</option><option value='16'>16일</option><option value='17'>17일</option><option value='18'>18일</option><option value='19'>19일</option><option value='20'>20일</option><option value='21'>21일</option><option value='22'>22일</option><option value='23'>23일</option><option value='24'>24일</option><option value='25'>25일</option><option value='26'>26일</option><option value='27' selected>27일</option><option value='28'>28일</option><option value='29'>29일</option><option value='30'>30일</option><option value='31'>31일</option>                                    </select>
+                            </div>
+                            <div class="button">
+                                <input type="hidden" id="fr_date" class="datepicker">
+                                <i class="fa fa-calendar-plus"></i>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="field is-grouped">
                     <div class="control select">
                         <select>
@@ -56,7 +75,7 @@
                             <option value="3">등록자</option>
                         </select>
                     </div>
-                    <div class="control is-expanded">
+                    <div class="control">
                         <input class="input" type="text" placeholder="">
                     </div>
                     <div class="control">
@@ -77,6 +96,10 @@
                     </div>
                 </div>
             </div>
+            </div>
+        </div>
+
+        <div class="content">
             <div class="control is-hidden-tablet">
                 <a href="project_write.html" class="button is-danger is-fullwidth">
                     <span class="icon is-small">
@@ -106,7 +129,7 @@
                 </div>
             </div>
             <hr>
-            <table class="table is-fullwidth is-hoverable">
+            <table class="table is-fullwidth is-hoverable is-resize">
                 <colgroup>
                     <col width="8%">
                     <col width="*">
@@ -258,6 +281,7 @@
                 </tbody>
             </table>
         </div>
+
         <nav class="pagination" role="navigation" aria-label="pagination">
             <a class="pagination-previous">이전</a>
             <a class="pagination-next">다음</a>

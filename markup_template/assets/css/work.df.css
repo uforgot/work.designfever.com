@@ -117,6 +117,17 @@
   .df-org .is-absent img {
     filter: grayscale(1); }
 
+.modal-commuting-modify {
+  min-width: 100%; }
+  .modal-commuting-modify .column:first-child {
+    padding-right: 0; }
+  .modal-commuting-modify .column:last-child {
+    padding-left: 0; }
+  .modal-commuting-modify .control {
+    margin-right: 0.25rem !important; }
+
+.df-commuting .textarea {
+  min-width: auto; }
 .df-commuting .is-vacation-title {
   border-bottom: 1px solid #cdcdcd;
   padding-bottom: 0.3rem;
@@ -133,30 +144,59 @@
 .df-commuting .calendar .date {
   font-size: 1rem;
   align-self: flex-start;
-  margin-left: 1rem;
+  width: 2.5rem;
+  height: 1.9rem;
+  margin-left: 0;
   margin-top: 1rem; }
   @media screen and (max-width: 767px) {
     .df-commuting .calendar .date {
-      width: 3rem;
-      height: 2.8rem;
+      margin-top: 0.8rem;
+      font-size: 0.75rem;
+      width: 1.5rem;
       align-self: flex-start;
-      margin-left: 0; } }
+      margin-left: 0.6rem; } }
 .df-commuting .calendar .calendar-events {
+  color: #cccccc;
   text-align: left; }
   .df-commuting .calendar .calendar-events .tag {
-    margin: 0.1rem; }
+    margin: 0.1rem;
+    vertical-align: middle; }
+  .df-commuting .calendar .calendar-events .button {
+    width: 4rem; }
+  @media screen and (max-width: 767px) {
+    .df-commuting .calendar .calendar-events {
+      padding-top: 0rem !important; } }
+.df-commuting .calendar .calendar-date.is-today {
+  background: rgba(15, 159, 241, 0.25); }
+.df-commuting .calendar .calendar-date.is-vacation {
+  background: #e1fcca; }
+.df-commuting .calendar .calendar-date.is-holiday {
+  color: #f00;
+  background: #fcfcfc; }
+.df-commuting .calendar .calendar-date .mark {
+  position: absolute;
+  align-self: flex-end;
+  padding: 0.75rem; }
+  .df-commuting .calendar .calendar-date .mark .is-static {
+    background: none !important;
+    border: none !important; }
+  @media screen and (max-width: 767px) {
+    .df-commuting .calendar .calendar-date .mark {
+      margin-top: -0.3rem;
+      margin-left: 0.3rem; } }
 @media screen and (max-width: 767px) {
   .df-commuting .calendar .calendar-date {
     flex-basis: 100%;
     max-width: none;
     height: auto !important;
-    flex-direction: row !important;
     border-left: 1px solid #cdcdcd;
     border-top: 1px solid #cdcdcd;
     border-right: 1px solid #cdcdcd;
     border-bottom: none !important; }
     .df-commuting .calendar .calendar-date.is-disabled {
-      display: none; } }
+      display: none; }
+    .df-commuting .calendar .calendar-date.is-last {
+      border-bottom: 1px solid #cdcdcd !important; } }
 
 body {
   font-family: "Nanum Gothic";

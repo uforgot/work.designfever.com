@@ -1,8 +1,20 @@
 $calendar-large-border: 1px solid #cdcdcd
 
+.modal-commuting-modify
+  min-width: 100%
+  .column
+    &:first-child
+      padding-right: 0
+    &:last-child
+      padding-left: 0
+  .control
+    margin-right: 0.25rem !important
+
 .df-commuting
+  .textarea
+    min-width: auto
   .is-vacation-title
-    border-bottom: 1px solid #cdcdcd
+    border-bottom: $calendar-large-border
     padding-bottom: 0.3rem
     margin-bottom: 0.5rem
   .box
@@ -14,34 +26,59 @@ $calendar-large-border: 1px solid #cdcdcd
     padding: 0.5rem
     .columns
       background: #cccccc
-
   .calendar
     .date
       font-size: 1rem
       align-self: flex-start
-      //height: 3rem
-      margin-left: 1rem
+      width: 2.5rem
+      height: 1.9rem
+      margin-left: 0
       margin-top: 1rem
       +breakpoint(mobile)
-        width: 3rem
-        height: 2.8rem
+        margin-top: 0.8rem
+        font-size: 0.75rem
+        width: 1.5rem
         align-self: flex-start
-        margin-left: 0
+        margin-left: 0.6rem
     .calendar-events
+      color: #cccccc
       text-align: left
       .tag
         margin: 0.1rem
+        vertical-align: middle
+      .button
+        width: 4rem
       +breakpoint(mobile)
-        //margin-left: 1rem
-    +breakpoint(mobile)
-      .calendar-date
+        padding-top: 0rem !important
+    .calendar-date
+      &.is-today
+        //color: #fff
+        background: rgba(15, 159, 241, 0.25)
+      &.is-vacation
+        background: #e1fcca
+      &.is-holiday
+        color: #f00
+        background: #fcfcfc
+      .mark
+        position: absolute
+        align-self: flex-end
+        padding: 0.75rem
+        .is-static
+          background: none !important
+          border: none !important
+        +breakpoint(mobile)
+          margin-top: -0.3rem
+          margin-left: 0.3rem
+      +breakpoint(mobile)
         flex-basis: 100%
         max-width: none
         height: auto !important
-        flex-direction: row !important
+        //flex-direction: row !important
         border-left: $calendar-large-border
         border-top: $calendar-large-border
         border-right: $calendar-large-border
         border-bottom: none !important
         &.is-disabled
           display: none
+        &.is-last
+          border-bottom: $calendar-large-border !important

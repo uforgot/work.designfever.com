@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>designfever intranet</title>
     <link rel="stylesheet" href="/assets/css/work.df.css">
-    
+
     <script src="/assets/js/jquery-1.11.0.min.js"></script>
     <script defer src="/assets/js/all.js"></script>
     <script defer src="/assets/js/bulma-calendar.min.js"></script>
@@ -22,13 +22,13 @@
             <div class="calendar is-large">
                 <div class="calendar-nav">
                     <div class="calendar-nav-previous-month">
-                        <button class="button is-text">
+                        <button class="button is-text is-small is-primary">
                             <i class="fa fa-chevron-left"></i>
                         </button>
                     </div>
-                    <div>March 2017</div>
+                    <div><span class="title is-6 has-text-white">2018년 4월</span></div>
                     <div class="calendar-nav-next-month">
-                        <button class="button is-text">
+                        <button class="button is-text is-small is-primary">
                             <i class="fa fa-chevron-right"></i>
                         </button>
                     </div>
@@ -73,53 +73,47 @@
                     </div>
                 </div>
             </div>
-            <div>
-                <div>
-                    <div class="column is-one-quarter-mobile">
-                        <div class="content" style="width:100%;">
-                            <div class="is-size-7 has-text-centered is-vacation-title">
-                                총 근무시간
-                            </div>
-                            <div class="title is-size-6 has-text-centered">56:25</div>
-                        </div>
-                    </div>
-                    <div class="column is-one-quarter-mobile m">
-                        <div class="content" style="width:100%;">
-                            <div class="is-size-7 has-text-centered is-vacation-title">
-                                평균 출근시간
-                            </div>
-                            <div class="title is-size-6 has-text-centered">08:34</div>
-                        </div>
-                    </div>
-                    <div class="column is-one-quarter-mobile">
-                        <div class="content" style="width:100%;">
-                            <div class="is-size-7 has-text-centered is-vacation-title">
-                                평균 퇴근시간
-                            </div>
-                            <div class="title is-size-6 has-text-centered">19:51</div>
-                        </div>
-                    </div>
-                    <div class="column is-one-quarter-mobile">
-                        <div class="content" style="width:100%;">
-                            <div class="is-size-7 has-text-centered is-vacation-title">
-                                평균 근무시간
-                            </div>
-                            <div class="title is-size-6 has-text-centered">11:17</div>
-                        </div>
-                    </div>
-                    <div class="column is-one-quarter-mobile">
-                        <div class="content" style="width:100%;">
-                            <div class="is-size-7 has-text-centered is-vacation-title">
-                                초과 근무시간
-                            </div>
-                            <div class="title is-size-6 has-text-centered">12:04</div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </div>
 
+        <div class="content is-hidden-mobile">
+
+            <div class="field is-grouped is-grouped-multiline">
+                <div class="control">
+                    <div class="tags has-addons">
+                        <span class="tag">총 근무시간</span>
+                        <span class="tag is-primary">56:25</span>
+                    </div>
+                </div>
+                <div class="control">
+                    <div class="tags has-addons">
+                        <span class="tag">평균 출근시간</span>
+                        <span class="tag is-primary">56:25</span>
+                    </div>
+                </div>
+                <div class="control">
+
+                    <div class="tags has-addons">
+                        <span class="tag">평균 퇴근시간</span>
+                        <span class="tag is-primary">56:25</span>
+                    </div>
+                </div>
+                <div class="control">
+
+                    <div class="tags has-addons">
+                        <span class="tag">평균 근무시간</span>
+                        <span class="tag is-primary">56:25</span>
+                    </div>
+                </div>
+                <div class="control">
+
+                    <div class="tags has-addons">
+                        <span class="tag">초과 근무시간</span>
+                        <span class="tag is-primary">56:25</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
         <div class="content">
             <div class="calendar is-large">
@@ -135,73 +129,142 @@
                         <div class="calendar-date">SAT</div>
                     </div>
                     <div class="calendar-body">
-                        <div class="calendar-date is-disabled"><div class="date">26</div></div>
+                        <div class="calendar-date is-disabled is-holiday"><div class="date">26</div></div>
                         <div class="calendar-date is-disabled"><div class="date">27</div></div>
                         <div class="calendar-date is-disabled"><div class="date">28</div></div>
                         <div class="calendar-date"><div class="date">1</div></div>
                         <div class="calendar-date"><div class="date">2</div></div>
                         <div class="calendar-date"><div class="date">3</div></div>
-                        <div class="calendar-date"><div class="date">4</div></div>
-                        <div class="calendar-date"><div class="date">5</div></div>
-                        <div class="calendar-date"><div class="date">6</div></div>
-                        <div class="calendar-date">
+                        <div class="calendar-date is-holiday">
+                            <div class="date">4</div>
+                        </div>
+                        <div class="calendar-date is-holiday">
+                            <div class="date">5</div>
+                        </div>
+                        <div class="calendar-date is-vacation">
+                            <div class="date">6</div>
+                            <div class="mark">
+                                <span class="button is-small is-static">휴가</span>
+                            </div>
+                        </div>
+                        <div class="calendar-date is-vacation">
                             <div class="date">7</div>
+                            <div class="mark">
+                                <span class="button is-small is-static">휴가</span>
+                            </div>
                         </div>
                         <div class="calendar-date">
                             <div class="date">8</div>
-                            <!--<div class="date-item badge">8</div>-->
+                            <div class="mark">
+                                <a class="button is-small is-primary">
+                                    수정요청
+                                </a>
+                            </div>
                             <div class="calendar-events">
-                                <!--<span class="calendar-event"></span>-->
-                                <!--<span class="calendar-event is-danger">외출 02:27</span>-->
-                                <span class="tag is-light">출근 08:24</span>
-                                <span class="tag is-light">퇴근 19:51</span>
-                                <span class="tag is-danger">
-                                    외출 02:27
-                                </span>
-                                <br><span class="tag is-info">
+                                <span class="tag is-light">출근 08:24</span> -
+                                <span class="tag is-light">퇴근 08:24</span>
+                                <span class="tag is-info">
                                     <span class="icon">
                                         <i class="fas fa-utensils"></i>
                                     </span>
-                                </span><span class="tag is-info">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="calendar-date">
+                            <div class="date">9</div>
+                            <div class="mark">
+                                <a class="button is-small is-static">
+                                    처리중
+                                </a>
+                            </div>
+                            <div class="calendar-events">
+                                <span class="tag is-light">출근 08:24</span> -
+                                <span class="tag is-light">퇴근 08:24</span>
+                                <span class="tag is-info">
+                                    <span class="icon">
+                                        <i class="fas fa-utensils"></i>
+                                    </span>
+                                </span>
+                                <span class="tag is-info">
                                     <span class="icon">
                                         <i class="fas fa-taxi"></i>
                                     </span>
-                                </span><span class="tag is-info">
+                                </span>
+                                <span class="tag is-info">
                                     <span class="icon">
                                         <i class="fas fa-coffee"></i>
                                     </span>
                                 </span>
-
+                                <span class="tag is-danger">외출 02:27</span>
                             </div>
                         </div>
-                        <div class="calendar-date"><div class="date">9</div></div>
-                        <div class="calendar-date"><div class="date">10</div></div>
-                        <div class="calendar-date"><div class="date">11</div></div>
                         <div class="calendar-date">
-                            <div class="date">12</div>
+                            <div class="date">10</div>
+                            <div class="mark">
+                                <a class="button is-small is-primary">
+                                    수정요청
+                                </a>
+                            </div>
                             <div class="calendar-events">
-                                <a class="calendar-event">Default event</a>
+                                <span class="tag is-light">출근 08:24</span> -
+                                <span class="tag is-danger">퇴근 미체크</span>
+                                <span class="tag is-info">
+                                    <span class="icon">
+                                        <i class="fas fa-utensils"></i>
+                                    </span>
+                                </span>
+                                <span class="tag is-info">
+                                    <span class="icon">
+                                        <i class="fas fa-taxi"></i>
+                                    </span>
+                                </span>
+                                <span class="tag is-info">
+                                    <span class="icon">
+                                        <i class="fas fa-coffee"></i>
+                                    </span>
+                                </span>
                             </div>
                         </div>
-                        <div class="calendar-date"><div class="date">13</div></div>
+                        <div class="calendar-date is-holiday"><div class="date">11</div></div>
+                        <div class="calendar-date is-holiday">
+                            <div class="date">12</div>
+                            <div class="mark">
+                            </div>
+                            <div class="calendar-events">
+                                <span class="tag is-light">출근 08:24</span> -
+                                <span class="tag is-light">퇴근 08:24</span>
+                                <span class="tag is-info">
+                                    <span class="icon">
+                                        <i class="fas fa-utensils"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="calendar-date is-today"><div class="date">13</div>
+                            <div class="mark">
+                            </div>
+                            <div class="calendar-events">
+                                <span class="tag is-light">출근 08:24</span> -
+                            </div>
+                        </div>
                         <div class="calendar-date"><div class="date">14</div></div>
                         <div class="calendar-date"><div class="date">15</div></div>
                         <div class="calendar-date"><div class="date">16</div></div>
                         <div class="calendar-date"><div class="date">17</div></div>
-                        <div class="calendar-date"><div class="date">18</div></div>
-                        <div class="calendar-date"><div class="date">19</div></div>
+                        <div class="calendar-date is-holiday"><div class="date">18</div></div>
+                        <div class="calendar-date is-holiday"><div class="date">19</div></div>
                         <div class="calendar-date"><div class="date">20</div></div>
                         <div class="calendar-date"><div class="date">21</div></div>
                         <div class="calendar-date"><div class="date">22</div></div>
                         <div class="calendar-date"><div class="date">23</div></div>
                         <div class="calendar-date"><div class="date">24</div></div>
-                        <div class="calendar-date"><div class="date">25</div></div>
-                        <div class="calendar-date"><div class="date">26</div></div>
+                        <div class="calendar-date is-holiday"><div class="date">25</div></div>
+                        <div class="calendar-date is-holiday"><div class="date">26</div></div>
                         <div class="calendar-date"><div class="date">27</div></div>
                         <div class="calendar-date"><div class="date">28</div></div>
                         <div class="calendar-date"><div class="date">29</div></div>
                         <div class="calendar-date"><div class="date">30</div></div>
-                        <div class="calendar-date"><div class="date">31</div></div>
+                        <div class="calendar-date is-last"><div class="date">31</div></div>
                         <div class="calendar-date is-disabled"><div class="date">1</div></div>
                     </div>
                 </div>
@@ -209,8 +272,193 @@
         </div>
 
     </div>
+
 </section>
 <!-- 본문 끌 -->
+
+
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title is-size-6">4월 20일 근태 수정</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+
+        <section class="modal-card-body modal-commuting-modify">
+
+            <div class="content">
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">출근</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-grouped">
+                                    <div class="control select">
+                                        <select>
+                                            <option value="00">00</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10" selected="">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                        </select>
+                                    </div>
+                                    <div class="control select">
+                                        <select>
+                                            <option value="00">00</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10" selected="">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">퇴근</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-grouped">
+                                    <div class="control select">
+                                        <select>
+                                            <option value="00">00</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10" selected="">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                        </select>
+                                    </div>
+                                    <div class="control select">
+                                        <select>
+                                            <option value="00">00</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10" selected="">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <textarea class="textarea" placeholder="사유" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <textarea class="textarea" placeholder="결과" rows="2"></textarea>
+                            </div>
+                            <p class="help is-danger">
+                                * 정상 출퇴근이 아니면, 게시판에 요청 요망
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="modal-card-foot">
+            <button class="button is-primary">확인</button>
+            <button class="button">취소</button>
+        </footer>
+    </div>
+</div>
 
 <script src="/assets/js/include.js"></script>
 </body>
