@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>designfever intranet</title>
+    <link rel="stylesheet" href="/assets/css/work.df.css">
+    
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script defer src="/assets/js/all.js"></script>
+    <script defer src="/assets/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+
+<div id="top"></div>
+<div id="sub-menu-7"></div>
+
+<!-- 본문 시작 -->
+<section class="section df-weekly">
+    <div class="container">
+
+        <div class="content">
+            <div class="card">
+                <div class="card-content">
+                <div class="columns">
+                    <!-- Left side -->
+                    <div class="column last-button">
+                        <div class="field">
+                            <div class="control select">
+                                <select name="fr_year" id="fr_year">
+                                    <option value='2013'>2013년</option><option value='2014'>2014년</option><option value='2015'>2015년</option><option value='2016'>2016년</option><option value='2017'>2017년</option><option value='2018' selected>2018년</option><option value='2019'>2019년</option>                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right side -->
+                    <div class="column">
+                        <div class="field">
+                            <div class="control select">
+                                <select>
+                                    <option>전직원</option>
+                                    <option value="CEO">CEO</option>
+                                    <option value="Planning">Planning</option>
+                                    <option value="Creative Planning Division">&nbsp;&nbsp;└ Creative Planning Division</option>
+                                    <option value="Creative Planning 1 Team">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Creative Planning 1 Team</option>
+                                    <option value="Creative Planning 2 Team">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Creative Planning 2 Team</option>
+                                    <option value="Marketing Planning Division">&nbsp;&nbsp;└ Marketing Planning Division</option>
+                                    <option value="Design">Design</option>
+                                    <option value="Design 1 Division">&nbsp;&nbsp;└ Design 1 Division</option>
+                                    <option value="Design 1 Division 1 Team">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Design 1 Division 1 Team</option>
+                                    <option value="Design 2 Division">&nbsp;&nbsp;└ Design 2 Division</option>
+                                    <option value="Design 2 Division 1 Team">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Design 2 Division 1 Team</option>
+                                    <option value="Design 2 Division 2 Team">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Design 2 Division 2 Team</option>
+                                    <option value="Motion">Motion</option>
+                                    <option value="Motion Division">&nbsp;&nbsp;└ Motion Division</option>
+                                    <option value="Motion 1 Team">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Motion 1 Team</option>
+                                    <option value="Art Division">&nbsp;&nbsp;└ Art Division</option>
+                                    <option value="Development">Development</option>
+                                    <option value="Visual Interaction Development">&nbsp;&nbsp;└ Visual Interaction Development</option>
+                                    <option value="VID 1 Team">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ VID 1 Team</option>
+                                    <option value="VID 2 Team">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ VID 2 Team</option>
+                                    <option value="LAB">&nbsp;&nbsp;└ LAB</option>
+                                    <option value="BST">BST</option>
+                                    <option value="Business Support Team">&nbsp;&nbsp;└ Business Support Team</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="columns is-hidden-mobile">
+                <!-- Left side -->
+                <div class="column">
+                    <p class="is-size-7">
+                        * 주간보고를 작성하지 않은 팀원은 목록에 나타나지 않습니다.
+                    </p>
+                </div>
+                <!-- Right side -->
+                <div class="column">
+
+                </div>
+            </div>
+            <hr>
+        </div>
+
+
+        <div class="content">
+            <table class="table is-fullwidth is-hoverable is-resize">
+                <colgroup>
+                    <col width="8%">
+                    <col width="*">
+                    <col width="10%">
+                    <col width="10%">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th><span class="is-hidden-mobile">주차</span></th>
+                    <th>주간보고서</th>
+                    <th class="has-text-centered">상태</th>
+                    <th class="has-text-centered"></th>
+                </tr>
+                </thead>
+                <!-- 일반 리스트 -->
+                <tbody class="list">
+                <tr>
+                    <td>18</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                 <a href="/weekly/weekly_list_division.html">
+                                    <span class="is-size-7">04월 5주차 주간보고</span>
+                                    <br>
+                                    <span></span>
+                                </a>
+                            </div>
+                            <div class="column last-button is-hidden-tablet">
+                                <div class="button is-info">완료</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">작성중</td>
+                    <td class="has-text-centered  is-hidden-mobile">
+                        <a class="button is-info">
+                            완료
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="/weekly/weekly_list_division.html">
+                                    <span class="is-size-7">04월 5주차 주간보고</span>
+                                    <br>
+                                    <span>한성백  김도훈  양경식  임종진  장명아  김명진  김자연  곽병준  이설란  </span>
+                                </a>
+                            </div>
+                            <div class="column last-button is-hidden-tablet">
+                                <div class="button is-danger">취소</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">완료</td>
+                    <td class="has-text-centered is-hidden-mobile">
+                        <a class="button is-danger">
+                            취소
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="/weekly/weekly_list_division.html">
+                                    <span class="is-size-7">04월 5주차 주간보고</span>
+                                    <br>
+                                    <span>한성백  김도훈  양경식  임종진  장명아  김명진  김자연  곽병준  이설란  </span>
+                                </a>
+                            </div>
+                            <div class="column last-button is-hidden-tablet">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">완료</td>
+                    <td class="has-text-centered">
+                    </td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="/weekly/weekly_list_division.html">
+                                    <span class="is-size-7">04월 5주차 주간보고</span>
+                                    <br>
+                                    <span>한성백  김도훈  양경식  임종진  장명아  김명진  김자연  곽병준  이설란  </span>
+                                </a>
+                            </div>
+                            <div class="column last-button is-hidden-tablet">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">완료</td>
+                    <td class="has-text-centered">
+                    </td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="/weekly/weekly_list_division.html">
+                                    <span class="is-size-7">04월 5주차 주간보고</span>
+                                    <br>
+                                    <span>한성백  김도훈  양경식  임종진  장명아  김명진  김자연  곽병준  이설란  </span>
+                                </a>
+                            </div>
+                            <div class="column last-button is-hidden-tablet">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">완료</td>
+                    <td class="has-text-centered">
+                    </td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="/weekly/weekly_list_division.html">
+                                    <span class="is-size-7">04월 5주차 주간보고</span>
+                                    <br>
+                                    <span>한성백  김도훈  양경식  임종진  장명아  김명진  김자연  곽병준  이설란  </span>
+                                </a>
+                            </div>
+                            <div class="column last-button is-hidden-tablet">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">완료</td>
+                    <td class="has-text-centered">
+                    </td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="/weekly/weekly_list_division.html">
+                                    <span class="is-size-7">04월 5주차 주간보고</span>
+                                    <br>
+                                    <span>한성백  김도훈  양경식  임종진  장명아  김명진  김자연  곽병준  이설란  </span>
+                                </a>
+                            </div>
+                            <div class="column last-button is-hidden-tablet">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">완료</td>
+                    <td class="has-text-centered">
+                    </td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="/weekly/weekly_list_division.html">
+                                    <span class="is-size-7">04월 5주차 주간보고</span>
+                                    <br>
+                                    <span>한성백  김도훈  양경식  임종진  장명아  김명진  김자연  곽병준  이설란  </span>
+                                </a>
+                            </div>
+                            <div class="column last-button is-hidden-tablet">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">완료</td>
+                    <td class="has-text-centered">
+                    </td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="/weekly/weekly_list_division.html">
+                                    <span class="is-size-7">04월 5주차 주간보고</span>
+                                    <br>
+                                    <span>한성백  김도훈  양경식  임종진  장명아  김명진  김자연  곽병준  이설란  </span>
+                                </a>
+                            </div>
+                            <div class="column last-button is-hidden-tablet">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">완료</td>
+                    <td class="has-text-centered">
+                    </td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="/weekly/weekly_list_division.html">
+                                    <span class="is-size-7">04월 5주차 주간보고</span>
+                                    <br>
+                                    <span>한성백  김도훈  양경식  임종진  장명아  김명진  김자연  곽병준  이설란  </span>
+                                </a>
+                            </div>
+                            <div class="column last-button is-hidden-tablet">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">완료</td>
+                    <td class="has-text-centered">
+                    </td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="/weekly/weekly_list_division.html">
+                                    <span class="is-size-7">04월 5주차 주간보고</span>
+                                    <br>
+                                    <span>한성백  김도훈  양경식  임종진  장명아  김명진  김자연  곽병준  이설란  </span>
+                                </a>
+                            </div>
+                            <div class="column last-button is-hidden-tablet">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">완료</td>
+                    <td class="has-text-centered">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <nav class="pagination" role="navigation" aria-label="pagination">
+            <a class="pagination-previous">이전</a>
+            <a class="pagination-next">다음</a>
+        
+            <ul class="pagination-list ">
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 1">1</a>
+                </li>
+                <li>
+                    <span class="pagination-ellipsis">&hellip;</span>
+                </li>
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 45">45</a>
+                </li>
+                <li>
+                    <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a>
+                </li>
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 47">47</a>
+                </li>
+                <li>
+                    <span class="pagination-ellipsis">&hellip;</span>
+                </li>
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 86">86</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+<!-- 본문 끌 -->
+
+<script src="/assets/js/include.js"></script>
+</body>
+</html>
