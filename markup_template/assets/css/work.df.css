@@ -202,4 +202,7 @@ body {
   font-family: "Nanum Gothic";
   font-weight: 600; }
 
+#navbar {
+  z-index: 50; }
+
 /*# sourceMappingURL=work.df.css.map */
