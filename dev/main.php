@@ -71,52 +71,52 @@ require_once CMN_PATH."/weekly_check.php";
 
     <? if (!in_array($prs_position,$positionS_arr)){ ?>
     $(document).ready(function(){
-        <? if ($alert_state1 == ""){ ?>
+        <? if ($alert_state1 == "inline"){ ?>
         if ($.cookie('check_todayView1') == "close")
         {
             //$("#popAlert1").css("display","none");
-            //$("#popAlert1").attr('class','modal');
+            $("#popAlert1").removeClass("is-active");
         }
         else
         {
-            //$("#popAlert1").css("display","");
-            $("#popAlert1").attr('class','modal is-active');
+            //$("#popAlert1").css("display","inline");
+            $("#popAlert1").addClass("modal is-active");
         }
         <? } else { ?>
-        //$("#popAlert1").css("display","none");
-        //$("#popAlert1").attr('class','modal');
+            //$("#popAlert1").css("display","none");
+            $("#popAlert1").removeClass("is-active");
         <? } ?>
 
         <? if ($alert_state2 == "inline"){ ?>
         if ($.cookie('check_todayView2') == "close")
         {
             //$("#popAlert2").css("display","none");
-            //$("#popAlert2").attr('class','modal');
+            $("#popAlert2").removeClass("is-active");
         }
         else
         {
-            //$("#popAlert2").css("display","");
-            $("#popAlert2").attr('class','modal is-active');
+            //$("#popAlert2").css("display","inline");
+            $("#popAlert2").addClass("modal is-active");
         }
         <? } else { ?>
-        //$("#popAlert2").css("display","none");
-        //$("#popAlert2").attr('class','modal');
+            //$("#popAlert2").css("display","none");
+            $("#popAlert2").removeClass("is-active");
         <? } ?>
 
-        <? if ($alert_state3 == ""){ ?>
+        <? if ($alert_state3 == "inline"){ ?>
         if ($.cookie('check_todayView3') == "close")
         {
             //$("#popAlert3").css("display","none");
-            //$("#popAlert1").attr('class','modal');
+            $("#popAlert3").removeClass("is-active");
         }
         else
         {
-            //$("#popAlert3").css("display","");
-            $("#popAlert1").attr('class','modal is-active');
+            //$("#popAlert3").css("display","inline");
+            $("#popAlert3").addClass("modal is-active");
         }
         <? } else { ?>
-        //$("#popAlert3").css("display","none");
-        //$("#popAlert2").attr('class','modal');
+            $("#popAlert3").css("display","none");
+            ("#popAlert3").removeClass("is-active");
         <? } ?>
     });
     <? } ?>
@@ -977,7 +977,6 @@ require_once CMN_PATH."/weekly_check.php";
         </footer>
     </div>
 </div>
-
 
 <!--new ÆË¾÷2-->
 <div id="popAlert2" class="modal">
