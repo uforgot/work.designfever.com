@@ -198,6 +198,8 @@
     .df-commuting .calendar .calendar-date.is-last {
       border-bottom: 1px solid #cdcdcd !important; } }
 
+.df-project .modal .last-button {
+  margin: auto; }
 .df-project .modal .panel {
   border-radius: 4px !important; }
 .df-project .modal .search-result {
