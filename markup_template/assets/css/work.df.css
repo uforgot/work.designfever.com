@@ -198,6 +198,31 @@
     .df-commuting .calendar .calendar-date.is-last {
       border-bottom: 1px solid #cdcdcd !important; } }
 
+.df-project .modal .panel {
+  border-radius: 4px !important; }
+.df-project .modal .search-result {
+  width: 100%;
+  height: 15rem;
+  overflow-y: scroll; }
+  .df-project .modal .search-result .search-member {
+    height: 2rem; }
+    .df-project .modal .search-result .search-member:not(:last-child) {
+      border-bottom: dotted 1px #dbdbdb; }
+.df-project .modal .card-content {
+  padding: 0.8rem; }
+.df-project .modal .member-result {
+  width: 100%;
+  height: 17rem;
+  overflow-x: hidden;
+  overflow-y: scroll; }
+  .df-project .modal .member-result p {
+    padding: 0.2rem; }
+  .df-project .modal .member-result .member-title {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-bottom: solid 1px #dbdbdb;
+    margin-bottom: 0.5rem; }
+
 .df-weekly .textarea {
   font-size: 0.75rem; }
 .df-weekly .is-report td, .df-weekly .is-report th {
