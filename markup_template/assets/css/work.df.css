@@ -198,6 +198,8 @@
     .df-commuting .calendar .calendar-date.is-last {
       border-bottom: 1px solid #cdcdcd !important; } }
 
+.df-weekly .textarea {
+  font-size: 0.75rem; }
 .df-weekly .is-report td, .df-weekly .is-report th {
   font-size: 0.8rem; }
 @media screen and (max-width: 767px) {
