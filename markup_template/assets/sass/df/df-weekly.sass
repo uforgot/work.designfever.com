@@ -1,0 +1,22 @@
+.df-weekly
+  .is-report
+    td, th
+      font-size: 0.8rem
+  +breakpoint(mobile)
+    .is-report
+      thead
+        display: none
+      tr
+      //border-bottom: 1px solid
+      td, th
+        display: block
+        border: none
+
+        border-bottom: 1px solid #dbdbdb
+
+        &:first-child
+          padding: 0.3rem 0 0.3rem 0.3rem
+          font-size: 0.8rem
+          background: #dbdbdb
+          border-bottom: 1px solid #dbdbdb
+          border-top: 1px solid #000

@@ -198,6 +198,22 @@
     .df-commuting .calendar .calendar-date.is-last {
       border-bottom: 1px solid #cdcdcd !important; } }
 
+.df-weekly .is-report td, .df-weekly .is-report th {
+  font-size: 0.8rem; }
+@media screen and (max-width: 767px) {
+  .df-weekly .is-report thead {
+    display: none; }
+  .df-weekly .is-report td, .df-weekly .is-report th {
+    display: block;
+    border: none;
+    border-bottom: 1px solid #dbdbdb; }
+    .df-weekly .is-report td:first-child, .df-weekly .is-report th:first-child {
+      padding: 0.3rem 0 0.3rem 0.3rem;
+      font-size: 0.8rem;
+      background: #dbdbdb;
+      border-bottom: 1px solid #dbdbdb;
+      border-top: 1px solid #000; } }
+
 body {
   font-family: "Nanum Gothic";
   font-weight: 600; }

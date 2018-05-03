@@ -68,12 +68,22 @@
   padding: 0;
   padding-left: 0.75rem;
   overflow: hidden; }
+  .df-org .notification .tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0; }
   .df-org .notification .column {
     padding: 0.75rem; }
     .df-org .notification .column:last-child {
       margin-top: 0.8rem; }
-.df-org .is-member-p {
-  margin: 0 !important; }
+    .df-org .notification .column p {
+      margin: 0; }
+    .df-org .notification .column .is-member-phone {
+      font-size: 1rem; }
+    .df-org .notification .column .is-member-email {
+      font-size: 0.5rem !important;
+      color: #888888; }
 .df-org .is-70x70 {
   height: 100px !important;
   width: 100px !important;
@@ -103,12 +113,21 @@
 .df-org .is-member .column {
   padding: 0.5rem !important; }
 .df-org .is-absent {
-  box-shadow: none;
-  background: #fff;
-  border: dotted 1px #cccccc; }
+  box-shadow: none; }
   .df-org .is-absent img {
     filter: grayscale(1); }
 
+.modal-commuting-modify {
+  min-width: 100%; }
+  .modal-commuting-modify .column:first-child {
+    padding-right: 0; }
+  .modal-commuting-modify .column:last-child {
+    padding-left: 0; }
+  .modal-commuting-modify .control {
+    margin-right: 0.25rem !important; }
+
+.df-commuting .textarea {
+  min-width: auto; }
 .df-commuting .is-vacation-title {
   border-bottom: 1px solid #cdcdcd;
   padding-bottom: 0.3rem;
@@ -117,9 +136,89 @@
   box-shadow: none;
   border: 1px solid #dbdbdb;
   background: whitesmoke; }
+.df-commuting .commuting-data {
+  font-size: 1rem;
+  padding: 0.5rem; }
+  .df-commuting .commuting-data .columns {
+    background: #cccccc; }
+.df-commuting .calendar .date {
+  font-size: 1rem;
+  align-self: flex-start;
+  width: 2.5rem;
+  height: 1.9rem;
+  margin-left: 0;
+  margin-top: 1rem; }
+  @media screen and (max-width: 767px) {
+    .df-commuting .calendar .date {
+      margin-top: 0.8rem;
+      font-size: 0.75rem;
+      width: 1.5rem;
+      align-self: flex-start;
+      margin-left: 0.6rem; } }
+.df-commuting .calendar .calendar-events {
+  color: #cccccc;
+  text-align: left; }
+  .df-commuting .calendar .calendar-events .tag {
+    margin: 0.1rem;
+    vertical-align: middle; }
+  .df-commuting .calendar .calendar-events .button {
+    width: 4rem; }
+  @media screen and (max-width: 767px) {
+    .df-commuting .calendar .calendar-events {
+      padding-top: 0rem !important; } }
+.df-commuting .calendar .calendar-date.is-today {
+  background: rgba(15, 159, 241, 0.25); }
+.df-commuting .calendar .calendar-date.is-vacation {
+  background: #e1fcca; }
+.df-commuting .calendar .calendar-date.is-holiday {
+  color: #f00;
+  background: #fcfcfc; }
+.df-commuting .calendar .calendar-date .mark {
+  position: absolute;
+  align-self: flex-end;
+  padding: 0.75rem; }
+  .df-commuting .calendar .calendar-date .mark .is-static {
+    background: none !important;
+    border: none !important; }
+  @media screen and (max-width: 767px) {
+    .df-commuting .calendar .calendar-date .mark {
+      margin-top: -0.3rem;
+      margin-left: 0.3rem; } }
+@media screen and (max-width: 767px) {
+  .df-commuting .calendar .calendar-date {
+    flex-basis: 100%;
+    max-width: none;
+    height: auto !important;
+    border-left: 1px solid #cdcdcd;
+    border-top: 1px solid #cdcdcd;
+    border-right: 1px solid #cdcdcd;
+    border-bottom: none !important; }
+    .df-commuting .calendar .calendar-date.is-disabled {
+      display: none; }
+    .df-commuting .calendar .calendar-date.is-last {
+      border-bottom: 1px solid #cdcdcd !important; } }
+
+.df-weekly .is-report td, .df-weekly .is-report th {
+  font-size: 0.8rem; }
+@media screen and (max-width: 767px) {
+  .df-weekly .is-report table thead {
+    display: none; }
+  .df-weekly .is-report table td, .df-weekly .is-report table th {
+    display: block;
+    border: none;
+    border-bottom: 1px solid #dbdbdb; }
+    .df-weekly .is-report table td:first-child, .df-weekly .is-report table th:first-child {
+      padding: 0.3rem 0 0.3rem 0.3rem;
+      font-size: 0.8rem;
+      background: #dbdbdb;
+      border-bottom: 1px solid #dbdbdb;
+      border-top: 1px solid #000; } }
 
 body {
   font-family: "Nanum Gothic";
   font-weight: 600; }
+
+#navbar {
+  z-index: 50; }
 
 /*# sourceMappingURL=work.df.css.map */
