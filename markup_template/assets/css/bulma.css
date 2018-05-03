@@ -7585,6 +7585,9 @@ section {
   .is-rounded-image img {
     width: 100%; }
 
+.is-bordered {
+  border: 1px #dddddd solid !important; }
+
 .column.last-button {
   flex-grow: 0; }
 .column.member-photo {
