@@ -1,5 +1,9 @@
 .df-project
   .modal
+    section
+      min-width: auto
+    .column-center
+      padding: 0
     .last-button
       margin: auto
     .panel
@@ -9,14 +13,17 @@
       height: 15rem
       overflow-y: scroll
       .search-member
+        padding-top: 0.2rem
         height: 2rem
         &:not(:last-child)
           border-bottom: dotted 1px #dbdbdb
+      +breakpoint(mobile)
+        height: 4rem
     .card-content
       padding: 0.8rem
     .member-result
       width: 100%
-      height: 17rem
+      height: 17.5rem
       overflow-x: hidden
       overflow-y: scroll
       p
@@ -26,3 +33,5 @@
         padding-bottom: 0.25rem
         border-bottom: solid 1px #dbdbdb
         margin-bottom: 0.5rem
+      +breakpoint(mobile)
+        height: 4rem
