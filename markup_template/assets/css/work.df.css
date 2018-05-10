@@ -254,6 +254,14 @@
       border-bottom: 1px solid #dbdbdb;
       border-top: 1px solid #000; } }
 
+.df-booking .modal-booking {
+  min-width: 100%; }
+  .df-booking .modal-booking .column:first-child {
+    padding-right: 0; }
+  .df-booking .modal-booking .column:last-child {
+    padding-left: 0; }
+  .df-booking .modal-booking .control {
+    margin-right: 0.25rem !important; }
 .df-booking table thead td {
   text-align: center;
   border-bottom: 2px solid #000; }
@@ -261,7 +269,11 @@
   text-align: center;
   font-size: 0.5rem;
   height: 2rem; }
+  @media screen and (max-width: 767px) {
+    .df-booking table tbody td {
+      display: none; } }
   .df-booking table tbody td.booking {
+    display: table-cell;
     border: 2px solid #fff !important;
     background: #4880db;
     color: #fff;

@@ -1,4 +1,14 @@
 .df-booking
+  .modal-booking
+    min-width: 100%
+    .column
+      &:first-child
+        padding-right: 0
+      &:last-child
+        padding-left: 0
+    .control
+      margin-right: 0.25rem !important
+
   table
     thead
       td
@@ -9,7 +19,10 @@
         text-align: center
         font-size: 0.5rem
         height: 2rem
+        +breakpoint(mobile)
+          display: none
         &.booking
+          display: table-cell
           border: 2px solid #fff !important
           background: #4880db
           color: #fff
