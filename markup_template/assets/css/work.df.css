@@ -254,6 +254,8 @@
       border-bottom: 1px solid #dbdbdb;
       border-top: 1px solid #000; } }
 
+.df-booking .btn-mobile {
+  padding-bottom: 1.75rem; }
 .df-booking .modal-booking {
   min-width: 100%; }
   .df-booking .modal-booking .column:first-child {
@@ -269,9 +271,6 @@
   text-align: center;
   font-size: 0.5rem;
   height: 2rem; }
-  @media screen and (max-width: 767px) {
-    .df-booking table tbody td {
-      display: none; } }
   .df-booking table tbody td.booking {
     display: table-cell;
     border: 2px solid #fff !important;
