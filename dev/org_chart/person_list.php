@@ -197,12 +197,12 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                     </div>
                     <div class="level-right is-hidden-mobile">
                         <? if ($prf_id == "4") { ?>
-                            <button class="button" alt="¿¢¼¿´Ù¿î·Îµå" id="btnExcel">
+                            <a class="button" alt="¿¢¼¿´Ù¿î·Îµå" id="btnExcel">
                                 <span class="icon is-small">
                                     <i class="fas fa-file-excel"></i>
                                 </span>
                                 <span>¿¢¼¿·Î ´Ù¿î·Îµå</span>
-                            </button>
+                            </a>
                         <? } ?>
                     </div>
                 </div>
@@ -899,7 +899,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
 
         </div>
         <div class="content">
-            <div class="title is-team-title is-size-6">
+            <div class="title is-size-5">
                 <a name="ArtDivision" style="color:#000; cursor:default;">Art Division</a>
                 <?
                 $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('Art Division')";
@@ -1114,10 +1114,11 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
         </div>
         </div>
 
-
         </div>
+
+
         <div class="content">
-            <div class="title is-team-title is-size-6">
+            <div class="title is-size-5">
                 <a name="LAB" style="color:#000; cursor:default;">LAB</a>
                 <?
                 $sql = "SELECT COUNT(PRS_ID)AS CNT FROM DF_PERSON  WHERE PRF_ID IN(5,4,3,2,1) AND PRS_TEAM IN ('LAB')";

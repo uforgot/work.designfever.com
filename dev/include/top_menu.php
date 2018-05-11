@@ -27,23 +27,23 @@
 		}else{
 			return;
 		}
-	}	
+	}
 </script>
 <div class="top">
-<!--최상단 직급이름 출/퇴근/외출/ 로그아웃 버튼 주간보고서 버튼-->
+
  <nav id="navbar" class="navbar has-shadow is-fixed-top">
     <div class="container">
-            <div class="navbar-brand">
-                <div class="navbar-item is-size-7">
+        <div class="navbar-brand">
+            <div class="navbar-item is-size-7">
                <?=$prs_team?>&nbsp;/&nbsp;<strong><?=$prs_position ?> <?=$prs_name ?></strong>
-              </div>
-                <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+           </div>
+            <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-       <div class="navbar-menu">
+        <div class="navbar-menu">
             <div class="navbar-end">
                 <div class="navbar-item is-size-7">
                     <? if ($today_gubun1 >= 10){?>
@@ -53,10 +53,9 @@
                       <? }else{}
 
                        ?>
-                    </div>
+                 </div>
                 <div class="navbar-item">
                     <div class="field is-grouped">
-                    	
                     	<!--퇴근 하기 버튼 출력부분-->
                     	<?
                     if ($off_check == "Y")
@@ -142,33 +141,34 @@
                                         </p>";
                             }
                     ?>
-																		                 	                        
-                        	<p class="control">
+
+                        <p class="control">
                             <a class="button is-primary" href="javascript:logout();">
                                 <span>로그아웃</span>
                              </a>
-                          </p>
+                        </p>
                       </div>
                   </div>
               </div>
           </div>
       </div>
-  </nav>	
-	<section class="section-fixed-margin"></section>
-	
-	<section class="hero is-link is-hidden-mobile">
-      <div class="hero-body">
-          <div class="container">
-              <div class="columns is-vcentered">
-                  <div class="column">
-                      <a href="/main.php"><img src="/assets/images/df_logo_w.svg" width="150"></a>
-                  </div>
-                  <div class="column is-narrow">
-                      <span class="is-size-6 is-italic">a difference that matters.</span>
-                  </div>
-              </div>
+  </nav>
 
-       </div>
+    <section class="section-fixed-margin"></section>
+
+    <section class="hero is-link is-hidden-mobile">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-vcentered">
+                    <div class="column">
+                        <a href="/main.php"><img src="/assets/images/df_logo_w.svg" width="120"></a>
+                    </div>
+                    <div class="column is-narrow">
+                        <span class="is-size-6 is-italic">a difference that matters.</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div class="hero-foot">
             <div class="container">
@@ -199,13 +199,13 @@
          </div>
         </div>
     </section>
-    
+
     <section class="hero is-link is-hidden-tablet">
         <div class="hero-body">
             <div class="container">
                 <div class="level is-mobile">
                     <div class="level-item level-left">
-                        <a href="main.php"><img src="/assets/images/df_logo_w.svg" width="50" style="vertical-align:middle;"></a>
+                        <a href="/main.php"><img src="/assets/images/df_logo_w.svg" width="50" style="vertical-align:middle;"></a>
                     </div>
                     <div class="level-item level-right is-expanded">
                         <span class="is-italic has-text-right is-fullwidth">a difference that matters.</span>
@@ -216,7 +216,3 @@
     </section>
 </div>
 </div>
-
-								
-												
-													

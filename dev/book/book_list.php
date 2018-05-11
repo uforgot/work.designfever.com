@@ -235,22 +235,23 @@
                              <input id="keyword" class="input" type="text" placeholder="" type="text" name ="keyword" value="<?=$keyword?>">			
                         </div>
                         <div class="control is-hidden-mobile">
-                            <button class="button is-link" id="btnSearch">
+                            <a class="button is-link" id="btnSearch">
                                 <span class="icon is-small">
                                     <i class="fas fa-search"></i>
                                 </span>
                                 <span>°Ë»ö</span>
-                            </button>
+                            </a>
                         </div>
     
       									<div class="control is-hidden-tablet">
-                             <button class="button is-link" >
+                             <a class="button is-link" >
                                 <span class="icon is-small">
                                     <i class="fas fa-search"></i>
-                                </span>                            
+                                </span>
+                             </a>
                         </div>
                         
-    										<div class="control is-hidden-tablet" >
+    					<div class="control is-hidden-tablet" >
                            <a href="javascript:funWrite();" class="button is-danger" id="btnWrite">
                                 <span class="icon is-small">
                                     <i class="fas fa-pencil-alt"></i>

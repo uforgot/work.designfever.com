@@ -430,11 +430,10 @@
                 </p>
             </div>
         </nav>
-        
-        
+
     </div>
 </section>
-<!--본문 끝-->		
+<!--본문 끝-->
 		
 </form>
 <? include INC_PATH."/bottom.php"; ?>
