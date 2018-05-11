@@ -1,6 +1,7 @@
 <?
 	require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
 	require_once CMN_PATH."/login_check.php";
+    require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
 
 <?
@@ -29,24 +30,27 @@
 	$record = sqlsrv_fetch_array($rs);
 	$last_week = $record['ORD'];
 
-	$week = isset($_REQUEST['week']) ? $_REQUEST['week'] : $last_week; 
-	$team = isset($_REQUEST['team']) ? $_REQUEST['team'] : $cur_team; 
+	$week = isset($_REQUEST['week']) ? $_REQUEST['week'] : $last_week;
+	$team = isset($_REQUEST['team']) ? $_REQUEST['team'] : $cur_team;
 
 	// 다음 주차 링크
 	$sql = "SELECT MIN(WEEK_ORD) AS ORD FROM DF_WEEKLY WHERE WEEK_ORD > '$week'";
 	$rs = sqlsrv_query($dbConn,$sql);
 	$record = sqlsrv_fetch_array($rs);
 	$next_week = $record['ORD'];
-	if($next_week) $next_link = "<a href='weekly_list_division.php?week=".$next_week."&team=".$team."'>▶</a>";
-	else $next_link = "▶";
-	
+	if($next_week) $next_link = "<a class='button is-text is-small is-primary' href='weekly_list_division.php?week=".$next_week."&team=".$team."'><i class='fa fa-chevron-right'></i></a>";
+	else $next_link = "<a class='button is-text is-small is-primary'><i class='fa fa-chevron-right'></i></a>";
+
+
 	// 이전 주차 링크
 	$sql = "SELECT MAX(WEEK_ORD) AS ORD FROM DF_WEEKLY WHERE WEEK_ORD < '$week'";
 	$rs = sqlsrv_query($dbConn,$sql);
 	$record = sqlsrv_fetch_array($rs);
 	$prev_week = $record['ORD'];
-	if($prev_week) $prev_link = "<a href='weekly_list_division.php?week=".$prev_week."&team=".$team."'>◀</a>";
-	else $prev_link = "◀";
+	if($prev_week) $prev_link = "<a class='button is-text is-small is-primary' href='weekly_list_division.php?week=".$prev_week."&team=".$team."'><i class='fa fa-chevron-left'></i></a>";
+	else $prev_link = "<a class='button is-text is-small is-primary'><i class='fa fa-chevron-left'></i>asdf</a>";
+
+
 
 	//참여프로젝트 리스트 추출
 	$searchSQL = " WHERE WEEK_ORD LIKE '$week%' AND A.PRS_ID IN (SELECT PRS_ID FROM DF_PERSON WHERE PRS_TEAM IN (SELECT TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE TEAM = '$team' OR R_SEQNO = (SELECT SEQNO FROM DF_TEAM_2018 WITH(NOLOCK) WHERE TEAM = '$team') OR R_SEQNO IN (SELECT SEQNO FROM DF_TEAM_2018 WITH(NOLOCK) WHERE R_SEQNO = (SELECT SEQNO FROM DF_TEAM_2018 WITH(NOLOCK) WHERE TEAM = '$team'))))";
@@ -77,7 +81,7 @@
 										);
 
 		//건의 및 기타사항
-		if($record['MEMO'] && !$memo) 
+		if($record['MEMO'] && !$memo)
 			$memo = nl2br(str_replace(" ", '&nbsp;',$record['MEMO']))."<br>";
 	}
 
@@ -99,178 +103,201 @@
 			alert('보고서 조회는 팀별로 가능합니다.\n팀명을 선택해 주세요!');
 			return;
 		}
-		
+
 		document.location.href = "./weekly_list_division.php?week=<?=$week?>&team=" + val;
 	}
 </script>
 </head>
 <body>
-<div class="wrapper">
+<? include INC_PATH."/top_menu.php"; ?>
 <form name="form" method="post">
 <input type="hidden" name="week" id="week" value="<?=$week?>">
 <input type="hidden" name="team" id="team" value="<?=$team?>">
+<? include INC_PATH."/weekly_menu.php"; ?>
 
-	<? include INC_PATH."/top_menu.php"; ?>
+    <!-- 본문 시작 -->
+    <section class="section df-weekly">
+        <div class="container">
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <p class="buttons">
+                        <a href="/weekly/weekly_list_team.php" class="button">
+                        <span class="icon is-small">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                            <span>목록</span>
+                        </a>
+                    </p>
+                </div>
+                <div class="level-right">
+                    <?
+                    if ($sel_view == 'Y')
+                    {
+                        ?>
+                        <div class="control select">
+                            <select name="team" onchange="javascript:teamSearch(this.value);">
+                                <?
+                                $selSQL = "SELECT STEP, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE VIEW_YN = 'Y' ORDER BY SORT";
+                                $selRs = sqlsrv_query($dbConn,$selSQL);
 
-		<div class="inner-home">
-			<? include INC_PATH."/weekly_menu.php"; ?>
+                                while ($selRecord = sqlsrv_fetch_array($selRs))
+                                {
+                                    $selStep = $selRecord['STEP'];
+                                    $selTeam = $selRecord['TEAM'];
 
-			<div class="work_wrap clearfix">
-
-				<div class="vacation_stats clearfix">
-					<table class="notable" width="100%">
-						<tr>
-							<th scope="row">&nbsp;</th>
-<!-- 							<th width="50%" scope="row">팀원 주간보고서</th> -->
-							<td>
-								<?
-									$week_titile = "[".$team."] ".substr($week,0,4)."년 ".substr($week,4,2)."월 ".substr($week,6,1)."주차 주간보고";
-								?>
-									<?=$prev_link?> <?=$week_titile?> <?=$next_link?>
-								<?
-									if ($sel_view == 'Y') 
-									{
-								?>
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								<select name="team" style="width:200px;" onchange="javascript:teamSearch(this.value);">
-								<?
-									$selSQL = "SELECT STEP, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE VIEW_YN = 'Y' ORDER BY SORT";
-									$selRs = sqlsrv_query($dbConn,$selSQL);
-
-									while ($selRecord = sqlsrv_fetch_array($selRs))
-									{
-										$selStep = $selRecord['STEP'];
-										$selTeam = $selRecord['TEAM'];
-										
-										if ($selStep == 2) {
-											$selTeam2 = $selTeam;
-										}
-										else if ($selStep == 3) {
-											$selTeam2 = "&nbsp;&nbsp;└ ". $selTeam;
-										}
-								?>
-										<option value="<?=$selTeam?>"<? if ($team == $selTeam){ echo " selected"; } ?>><?=$selTeam2?></option>
-								<?
-									}
-								?>
-								</select>
-								<?
-									}
-								?>
-							</td>
-						</tr>
-					</table>
-				</div>
+                                    if ($selStep == 2) {
+                                        $selTeam2 = $selTeam;
+                                    }
+                                    else if ($selStep == 3) {
+                                        $selTeam2 = "&nbsp;&nbsp;└ ". $selTeam;
+                                    }
+                                    ?>
+                                    <option value="<?=$selTeam?>"<? if ($team == $selTeam){ echo " selected"; } ?>><?=$selTeam2?></option>
+                                    <?
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <?
+                    }
+                    ?>
+                </div>
+            </nav>
+            <div class="content">
+                <div class="calendar is-large">
+                    <div class="calendar-nav">
+                        <div class="calendar-nav-previous-month">
+                            <?=$prev_link?>
+                        </div>
+                        <?$week_titile = substr($week,0,4)."년 ".substr($week,4,2)."월 ".substr($week,6,1)."주차 주간보고";?>
+                        <div>
+                            <span class="title is-size-5 has-text-white"><?=$week_titile?></span><br>
+                            <span class="title is-7 has-text-white"><?=$team?></span>
+                        </div>
+                        <div class="calendar-nav-next-month">
+                            <?=$next_link?>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
-				<table class="vacation notable work1 work_stats" width="100%" style="margin-bottom:10px;">
-					<caption>팀원 주간보고서 테이블</caption>
-					<colgroup>
-						<col width="*" />
-						<col width="10%" />
-						<col width="35%" />
-						<col width="35%" />
-					</colgroup>
+                    <?
+                    if (count($list)==0)
+                    {
+                        ?>
+                        <div class="content">
+                            <div class="calendar is-large">
+                                <div class="calendar">
+                                    <div>
+                                       해당 정보가 없습니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-					<thead>
-						<tr>
-							<th>프로젝트</th>
-							<th>참여자(참여비율)</th>
-							<th>금주 진행업무</th>
-							<th>차주 진행업무</th>
-						</tr>
-					</thead>
+                        <?
+                    }
+                    else
+                    {
+                    foreach($list as $key1 => $val1)
+                    {
+                    $searchSQL = " WHERE PROJECT_NO = '".$key1."'";
 
-					<tbody>
-<?
-	if (count($list)==0) 
-	{
-?>
-							<tr>
-								<td colspan="6" class="bold">해당 정보가 없습니다.</td>
-							</tr>
-<?
-	}
-	else
-	{
-		foreach($list as $key1 => $val1)
-		{
-			$searchSQL = " WHERE PROJECT_NO = '".$key1."'";
+                    $sql = "SELECT TITLE FROM DF_PROJECT $searchSQL";
+                    $rs = sqlsrv_query($dbConn,$sql);
+                    $record = sqlsrv_fetch_array($rs);
 
-			$sql = "SELECT TITLE FROM DF_PROJECT $searchSQL";
-			$rs = sqlsrv_query($dbConn,$sql);									
-			$record = sqlsrv_fetch_array($rs);
+                    if($record)	$project_name = $record['TITLE'];
+                    else if($key1 == "DF0000_ETC") $project_name = "기타업무";
 
-			if($record)	$project_name = $record['TITLE'];
-			else if($key1 == "DF0000_ETC") $project_name = "기타업무";
+                    $name = "";
+                    $contents = "";
+                    $line_cnt = count($val1);
+                    $cnt = 1;
 
-			$name = "";
-			$contents = "";
-			$line_cnt = count($val1);
-			$cnt = 1;
+                    foreach($val1 as $key2 => $val2)
+                    {
+                        if($cnt < $line_cnt) $border = "border-bottom:1px solid #e3e3e3;";
+                        else				 $border = "border-bottom:0px;";
 
-			foreach($val1 as $key2 => $val2)
-			{
-				if($cnt < $line_cnt) $border = "border-bottom:1px solid #e3e3e3;";
-				else				 $border = "border-bottom:0px;";
-				
 //				if($key1 == "DF0000_ETC") $name .= $val2['name']." (".$val2['this_ratio']."%)<br>";
 //				else					  $name .= $val2['name']." (".$val2['this_ratio']."%)<br>";
 
-				$contents .= "<tr>";
-				$contents .= "	<td width=12% style='text-align:left;vertical-align:top;$border'>".$val2['name']." (".$val2['this_ratio']."%)"."</td>";
-				$contents .= "	<td width=44% style='text-align:left;vertical-align:top;$border'>".nl2br(str_replace(" ", '&nbsp;',$val2['this_content']))."</td>";
-				$contents .= "	<td width=44% style='text-align:left;vertical-align:top;$border'>".nl2br(str_replace(" ", '&nbsp;',$val2['next_content']))."</td>";
-				$contents .= "</tr>";
+                        $contents .= "<tr>";
+                        $contents .= "	<td>".$val2['name']." (".$val2['this_ratio']."%)"."</td>";
+                        $contents .= "	<td>".nl2br(str_replace(" ", '&nbsp;',$val2['this_content']))."</td>";
+                        $contents .= "	<td>".nl2br(str_replace(" ", '&nbsp;',$val2['next_content']))."</td>";
+                        $contents .= "</tr>";
 
-				$cnt++;
-			}
+                        $cnt++;
+                    }
 
-			$contents = "<table style='width:100%;'>".$contents."</table>";
-?>
-							<!-- loop -->		
-							<tr>
-								<td><?=$project_name?></td>
-								<td colspan="3"><?=$contents?></td>
-							</tr>
-							<!-- loop -->		
-<?
-		}
-	}
-?>
-					</tbody>
-					<tfoot>
+                    //$contents = "<table style='width:100%;'>".$contents."</table>";
+                    ?>
+                <div class="content">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-header-title"><?=$project_name?></div>
+                            </div>
+                            <div class="card-content">
+                                <table class="table is-report">
+                                    <colgroup>
+                                        <col width="14%">
+                                        <col width="43%">
+                                        <col width="43%">
+                                    </colgroup>
+                                    <thead>
+                                    <th>참여자 (참여비율)</th>
+                                    <th>금주 진행업무</th>
+                                    <th>차주 진행업무</th>
+                                    </thead>
+                                    <?=$contents?>
+                                </table>
+                            </div>
+                        </div>
+                 </div>
+                        <?
+                      }
+                }
+                ?>
 
-					</tfoot>					
-				</table>
 
-				<br>
+            <div class="content">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title">건의 및 기타사항</div>
+                    </div>
+                    <div class="card-content">
+                        <table class="table is-report">
+                            <?=$memo?>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-				<table class="vacation notable work1 work_stats" width="100%" style="margin-bottom:10px;">
-					<caption>팀원 주간보고서 테이블</caption>
-					<colgroup>
-						<col width="*" />
-					</colgroup>
+            <hr class="hr-strong">
 
-					<thead>
-						<tr>
-							<th>건의 및 기타사항</th>
-						</tr>
-					</thead>
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <p class="buttons">
+                        <a href="/weekly/weekly_list_team.php" class="button">
+                        <span class="icon is-small">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                            <span>목록</span>
+                        </a>
+                    </p>
+                </div>
 
-					<tbody>
-						<tr>
-							<td style='height:100px;text-align:left;vertical-align:top;'><?=$memo?></td>
-						</tr>
-					</tbody>
-				</table>
+                <div class="level-right">
 
-				<span style="padding-left:40px;">
-					<b class="txt_left_p" style="margin-bottom:0px;">* 주간보고를 작성하지 않은 팀원은 목록에 나타나지 않습니다.</b>
-				</span>
+                </div>
+            </nav>
 
-			</div>
-		</div>
+        </div>
+    </section>
+    <!-- 본문 끌 -->
 </form>
 <? include INC_PATH."/bottom.php"; ?>
 </div>

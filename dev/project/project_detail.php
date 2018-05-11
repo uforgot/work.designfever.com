@@ -205,8 +205,8 @@ else
             </div>
             <div class="level-right">
                  <p class="buttons">
-            <? if ($type == "ING") { ?>
-               <? if ($prf_id == "4") { ?>
+         <? if ($type == "ING") { ?>
+             <? if ($prf_id == "4") { ?>
                     <a id="btnDelete" class="button is-danger">
                         <span class="icon is-small">
                             <i class="fas fa-times"></i>
@@ -214,7 +214,7 @@ else
                         <span>삭제</span>
                     </a>
                 <? } else { ?>
-                <span>삭제를 원하시면 경영지원팀 김숙진 팀장님께 문의 바랍니다.</span>
+                <span>삭제를 원하시면 경영지원팀 김숙진 팀장님께 문의 바랍니다.</span>&nbsp;&nbsp;&nbsp;
                 <? } ?>
                     <a id="btnModify" class="button is-danger">
                         <span class="icon is-small">
@@ -222,7 +222,18 @@ else
                         </span>
                         <span>수정</span>
                     </a>
-            <? } ?>
+            <? } else if ($type == "END") { ?>
+                     <? if ($prf_id == "4") { ?>
+                     <? } else { ?>
+                         프로젝트 완료취소를 원하시면 경영지원팀 김숙진 팀장님께 문의 바랍니다.&nbsp;&nbsp;&nbsp;&nbsp;
+                     <? } ?>
+             <a id="btnModify" class="button is-danger">
+                        <span class="icon is-small">
+                            <i class="fas fa-pencil-alt"></i>
+                        </span>
+                 <span>수정</span>
+             </a>
+         <? } ?>
                 </p>
              </div>
         </nav>
@@ -251,13 +262,15 @@ else
                         <span>&nbsp;&nbsp;프로젝트 완료&nbsp;&nbsp;</span>
                     </a>
                  <? } else if ($type == "END") { ?>
-                    <a id="btnEND" class="button is-info is-fullwidth">
+                    <? if ($prf_id == "4") { ?>
+                    <a id="btnING" class="button is-info is-fullwidth">
                         <span class="icon is-small">
                             <i class="fas fa-check"></i>
                         </span>
                         <span>&nbsp;&nbsp;프로젝트 완료 취소&nbsp;&nbsp;</span>
                     </a>
-                  <? } ?>
+                    <? } else { ?>
+                  <? } }?>
                 </div>
             </div>
             <hr>
@@ -411,7 +424,7 @@ else
                                 <span>삭제</span>
                             </a>
                         <? } else { ?>
-                            <span>삭제를 원하시면 경영지원팀 김숙진 팀장님께 문의 바랍니다.</span>
+                            <span>삭제를 원하시면 경영지원팀 김숙진 팀장님께 문의 바랍니다.</span>&nbsp;&nbsp;&nbsp;
                         <? } ?>
                             <a id="btnModify2" class="button is-danger">
                                 <span class="icon is-small">
@@ -452,14 +465,14 @@ else
         <div class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title">프로젝트 <span name="mode_title"></span></p>
-                <a id="popup_ok_close" class="close"><button class="delete" aria-label="close"></button></a>
+                <a id="popup_ok_close" class="close"></a>
             </header>
             <section class="modal-card-body">
                 프로젝트를 <span name="mode_title"></span> 하시겠습니까?
             </section>
             <footer class="modal-card-foot">
-                    <a id="popup_ok_ok"><button class="button is-success">확인</button></a>&nbsp;&nbsp;&nbsp;
-                    <a id="popup_ok_no"><button class="button is-error" >취소</button></a>
+                    <a id="popup_ok_ok" class="button is-success">확인</a>&nbsp;&nbsp;&nbsp;
+                    <a id="popup_ok_no" class="button is-error">취소</a>
             </footer>
         </div>
     </div>

@@ -183,7 +183,7 @@
 <? include INC_PATH."/project_menu.php"; ?>
 
     <!-- 본문 시작 -->
-    <section class="section is-resize">
+    <section class="section df-project">
         <div class="container">
             <div class="content">
                 <div class="card">
@@ -363,20 +363,20 @@
                                 <input id="name" name="name" nput class="input" type="text" placeholder="등록자" value="<?=$p_name?>">
                             </div>
                             <div class="control">
-                                <button class="button is-link" id="btnSearch" >
+                                <a class="button is-link" id="btnSearch" >
                                 <span class="icon is-small" >
                                     <i class="fas fa-search"></i>
                                 </span>
                                     <span>검색</span>
-                                </button>
+                                </a>
                             </div>
                             <div class="control">
-                                <button class="button is-danger" id="btnReset">
+                                <a class="button is-danger" id="btnReset">
                                 <span class="icon is-small">
                                     <i class="fas fa-times"></i>
                                 </span>
                                     <span>초기화</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -463,7 +463,7 @@
                         <td name="linkView"  title="<?=$project_no?>">
                                 <a><span class="is-size-7">[<?=$project_no?>] <?=$start_date?> - <?=$end_date?></span>
                                 <br>
-                                <span><?=$project_no?><?=getCutString($title,55);?></span>
+                                <span>[<?=$project_no?>]&nbsp;<?=getCutString($title,55);?></span>
                                 </a>
                         </td>
                         <td class="has-text-centered"><?=$position?> <?=$name?></td>

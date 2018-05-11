@@ -1,6 +1,7 @@
 <?
 	require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
 	require_once CMN_PATH."/login_check.php";
+    require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
 
 <?
@@ -41,7 +42,7 @@
 
 	//주간보고 기본데이터 추출
 	$sql = "SELECT 
-				WEEK_ORD, WEEK_AREA, TITLE, MEMO, PRS_ID, PRS_NAME, PRS_POSITION, COMPLETE_YN
+				WEEK_ORD, WEEK_AREA, TITLE, MEMO, PRS_ID, PRS_NAME, PRS_POSITION, COMPLETE_YN, PRS_TEAM
 			FROM 
 				DF_WEEKLY WITH(NOLOCK)
 			$searchSQL";								
@@ -68,6 +69,7 @@
 		$weekly_prs_pos = $record['PRS_POSITION'];
 		$weekly_complete_yn = $record['COMPLETE_YN'];							//팀장완료 여부
 		$weekly_edit_yn = ($weekly_prs_id == $prs_id) ? "Y" : "N";				//본인작성 여부
+        $weekly_prs_team = $record['PRS_TEAM'];
 
 
 		//참여프로젝트 리스트 추출
@@ -174,289 +176,392 @@
 </head>
 
 <body>
-<div class="wrapper">
+
 <form method="post" name="form" action="weekly_write_act.php">
 <input type="hidden" name="page" value="<?=$page?>">
 <input type="hidden" name="type" value="<?=$type?>">			<!-- 등록수정삭제구분 -->
 <input type="hidden" name="seqno" value="<?=$seqno?>">			<!-- 글번호 -->
 <input type="hidden" name="order" value="<?=$weekly_ord?>">		<!-- 주차정보 -->
 <input type="hidden" name="win" value="<?=$win?>">				<!-- 새창오픈여부 -->
-
-	<? include INC_PATH."/top_menu.php"; ?>
-
-		<div class="inner-home">
+    <? include INC_PATH . "/top_menu.php"; ?>
 			<? include INC_PATH."/weekly_menu.php"; ?>
 
-			<div class="work_wrap clearfix">
-				<div class="vacation_stats clearfix">
-					<table class="notable" width="100%">
-						<tr>
-							<th scope="row"><?=$weekly_prs_nm?><br>(<?=$weekly_str?>) <?=$weekly_title?> <?=$type_title1?></th>
-<!-- 							<th width="50%" scope="row">팀원 주간보고서</th> -->
-						</tr>
-					</table>
-				</div>
-				<span style="padding-left:38px;">
-					<b class="txt_left_p" style="margin-bottom:30px; margin-top:0px">
-						- 참여 중인 프로젝트가 없는 경우, 진행 중인 프로젝트에서 역할과 참여율을 등록한 후 주간보고서를 작성해 주세요.</br>
-						- 프로젝트 별 참여율의 합은 100% 입니다.</br>
-						- 팀 주간보고 작성완료를 한 경우에는 팀원들의 주간보고는 수정할 수 없습니다.</br>
-					</b>
-				</span>
+    <!-- 본문 시작 -->
+    <section class="section df-weekly">
+        <div class="container">
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <p class="buttons">
+                        <a href="/weekly/weekly_list.php?page=<?= $page ?>" class="button">
+                        <span class="icon is-small">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                            <span>목록</span>
+                        </a>
+                    </p>
+                </div>
 
-<!-- 프로젝트 리스트 시작 -->
-<?
-		$cnt = 0;
-		while ($record = sqlsrv_fetch_array($rs))
-		{
-			$project_no = $record['PROJECT_NO'];
-			$title = $record['TITLE'];
-			$part = $record['PART'];
 
-			//주간보고 수정, 열람
-			if ($type == "modify")
-			{
-				$searchSQL1 = " WHERE WEEKLY_NO = '$seqno' AND PROJECT_NO = '$project_no'";
+                <div class="level-right">
+                    <p class="buttons">
+                        <? if ($weekly_complete_yn != 'Y' && $weekly_edit_yn == 'Y') { ?>
+                            <a href="javascript:weeklyWrite();" class="button is-info" id="btnWrite">
+                                <span class="icon is-small">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </span>
+                                <span>작성</span>
+                            </a>
+                        <? } ?>
+                        <? if ($win == 'new') { ?>
+                            <a href="javascript:window.close();" class="button is-danger" id="btnCancel">
+                                <span class="icon is-small">
+                                    <i class="fas fa-times"></i>
+                                </span>
+                                <span>취소</span>
+                            </a>
+                        <? } else { ?>
+                            <a href="./weekly_list.php?page=<?= $page ?>" class="button is-danger" id="btnCancel">
+                                <span class="icon is-small">
+                                    <i class="fas fa-times"></i>
+                                </span>
+                                <span>취소</span>
+                            </a>
+                        <? } ?>
+                    </p>
+                </div>
+            </nav>
 
-				$sql1 = "SELECT
+            <div class="content">
+                <div class="calendar is-large">
+                    <div class="calendar-nav">
+                        <div class="calendar-nav-previous-month">
+                        </div>
+                        <div>
+                                <span class="title is-size-5 has-text-white">(<?= $weekly_str ?>
+                                    ) <?= $weekly_title ?> <?= $type_title1 ?></span><br>
+                                <span class="title is-7 has-text-white"><?= $weekly_prs_team ?>
+                                    - <?= $weekly_prs_nm ?></span>
+                        </div>
+                        <div class="calendar-nav-next-month">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <p class="is-size-7">
+                    - 참여 중인 프로젝트가 없는 경우, 진행 중인 프로젝트에서 역할과 참여율을 등록한 후 주간 보고서를 작성해 주세요.<br>
+                    - 프로젝트 별 참여율의 합은 100%입니다.<br>
+                    - 팀 주간보고 작성완료를 한 경우에는 팀원들의 주간보고는 수정할 수 없습니다.<br>
+                </p>
+            </div>
+
+            <!-- 프로젝트 리스트 시작 -->
+            <?
+            $cnt = 0;
+            while ($record = sqlsrv_fetch_array($rs)) {
+                $project_no = $record['PROJECT_NO'];
+                $title = $record['TITLE'];
+                $part = $record['PART'];
+
+                //주간보고 수정, 열람
+                if ($type == "modify") {
+                    $searchSQL1 = " WHERE WEEKLY_NO = '$seqno' AND PROJECT_NO = '$project_no'";
+
+                    $sql1 = "SELECT
 							THIS_WEEK_CONTENT, NEXT_WEEK_CONTENT, THIS_WEEK_RATIO, NEXT_WEEK_RATIO
 						FROM
 							DF_WEEKLY_DETAIL WITH(NOLOCK)
 						$searchSQL1";
-				$rs1 = sqlsrv_query($dbConn,$sql1);
+                    $rs1 = sqlsrv_query($dbConn, $sql1);
 
-				$record1 = sqlsrv_fetch_array($rs1);
-				if (sqlsrv_has_rows($rs1) > 0)
-				{
-					$this_week_content = $record1['THIS_WEEK_CONTENT'];
-					$next_week_content = $record1['NEXT_WEEK_CONTENT'];
-					$this_week_ratio = $record1['THIS_WEEK_RATIO'];
-					$next_week_ratio = $record1['NEXT_WEEK_RATIO'];
-				}
-				else
-				{
-					$this_week_content = "";
-					$next_week_content = "";
-					$this_week_ratio = "";
-					$next_week_ratio = "";
-				}
-			}
-?>
-				<!-- weekly routine 시작 -->
-				<div class="board_list" style="margin-bottom:40px;">
-					<table class="notable work3 board_list"  style="width:100%">
-						<caption>게시판 리스트 테이블</caption>
-						<colgroup>
-							<col width="49%" />
-							<col width="2%" />
-							<col width="*" />
-						</colgroup>
-						
-						<tbody class="p_detail">
-							<tr>
-								<td style="font-weight:bold;" colspan="3">* [<?=$project_no?>] <?=$title?> / <?=$part?></td>
-								<input type="hidden" name="project_no[]" value="<?=$project_no?>">
-							</tr>
-							<tr>
-								<td>금주 진행업무 
-									<select name="progress_this[]" class="percentage">
-										<?
-											for ($i=0; $i<=100; $i=$i+5) 
-											{
-												if ($i == $this_week_ratio) 
-												{ 
-													$selected = " selected"; 
-												}
-												else
-												{
-													$selected = "";
-												}
-												echo "<option value='".$i."'".$selected.">".$i."%</option>";
-											}
-										?>												
-									</select></td>
-								<td></td>
-								<td style="font-weight:bold;">차주 진행업무 
-									<select name="progress_next[]" class="percentage">
-										<?
-											for ($i=0; $i<=100; $i=$i+5) 
-											{
-												if ($i == $next_week_ratio) 
-												{ 
-													$selected = " selected"; 
-												}
-												else
-												{
-													$selected = "";
-												}
-												echo "<option value='".$i."'".$selected.">".$i."%</option>";
-											}
-										?>									
-									</select></td>
-							</tr>
-							<tr style="vertical-align:top;">
-								<td>
-									<textarea cols="30" rows="10" name="content_this[]" style="width:96%" class='normal'><?=$this_week_content?></textarea></td>
-								<td></td>
-								<td><textarea cols="30" rows="10" name="content_next[]" style="width:96%" class='normal'><?=$next_week_content?></textarea></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<!-- weekly routine 종료 -->
-<?
-			$cnt++;
-		}
-?>
-<!-- 프로젝트 리스트 종료 -->
+                    $record1 = sqlsrv_fetch_array($rs1);
+                    if (sqlsrv_has_rows($rs1) > 0) {
+                        $this_week_content = $record1['THIS_WEEK_CONTENT'];
+                        $next_week_content = $record1['NEXT_WEEK_CONTENT'];
+                        $this_week_ratio = $record1['THIS_WEEK_RATIO'];
+                        $next_week_ratio = $record1['NEXT_WEEK_RATIO'];
+                    } else {
+                        $this_week_content = "";
+                        $next_week_content = "";
+                        $this_week_ratio = "";
+                        $next_week_ratio = "";
+                    }
+                }
+                ?>
 
-<!-- 기타업무 항목 시작 -->
-<?
-		$project_no_etc = "DF0000_ETC"; //기타업무에 할당한 프로젝트 코드
+                <!-- weekly routine 시작 -->
+                <div class="content">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-title">[<?= $project_no ?>] <?= $title ?> / <?= $part ?></div>
+                            <input type="hidden" name="project_no[]" value="<?= $project_no ?>">
+                        </div>
+                        <div class="card-content">
 
-		//주간보고 수정, 열람
-		if ($type == "modify")
-		{
-			$searchSQL1 = " WHERE WEEKLY_NO = '$seqno' AND PROJECT_NO = '$project_no_etc'";
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="columns is-mobile">
+                                        <div class="column">
+                                            금주 진행 업무
+                                        </div>
+                                        <div class="column last-button">
+                                            <div class="field">
+                                                <div class="control select">
+                                                    <select name="progress_this[]" class="percentage">
+                                                        <?
+                                                        for ($i = 0; $i <= 100; $i = $i + 5) {
+                                                            if ($i == $this_week_ratio) {
+                                                                $selected = " selected";
+                                                            } else {
+                                                                $selected = "";
+                                                            }
+                                                            echo "<option value='" . $i . "'" . $selected . ">" . $i . "%</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="control">
+                                                <textarea class="textarea" placeholder="" name="content_this[]" rows="10"><?= $this_week_content ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="columns is-mobile">
+                                        <div class="column">
+                                            차주 진행 업무
+                                        </div>
+                                        <div class="column last-button">
+                                            <div class="field">
+                                                <div class="control select">
+                                                    <select name="progress_next[]" class="percentage">
+                                                        <?
+                                                        for ($i = 0; $i <= 100; $i = $i + 5) {
+                                                            if ($i == $next_week_ratio) {
+                                                                $selected = " selected";
+                                                            } else {
+                                                                $selected = "";
+                                                            }
+                                                            echo "<option value='" . $i . "'" . $selected . ">" . $i . "%</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="control">
+                                                <textarea class="textarea" name="content_next[]" placeholder="" rows="10"><?= $next_week_content ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?
+                $cnt++;
+            }
+            ?>
+            <!-- 프로젝트 리스트 종료 -->
 
-			$sql1 = "SELECT
+            <!-- 기타업무 항목 시작 -->
+            <?
+            $project_no_etc = "DF0000_ETC"; //기타업무에 할당한 프로젝트 코드
+
+            //주간보고 수정, 열람
+            if ($type == "modify") {
+                $searchSQL1 = " WHERE WEEKLY_NO = '$seqno' AND PROJECT_NO = '$project_no_etc'";
+
+                $sql1 = "SELECT
 						THIS_WEEK_CONTENT, NEXT_WEEK_CONTENT, THIS_WEEK_RATIO, NEXT_WEEK_RATIO
 					FROM
 						DF_WEEKLY_DETAIL WITH(NOLOCK)
 					$searchSQL1";
-			$rs1 = sqlsrv_query($dbConn,$sql1);
+                $rs1 = sqlsrv_query($dbConn, $sql1);
 
-			$record1 = sqlsrv_fetch_array($rs1);
-			if (sqlsrv_has_rows($rs1) > 0)
-			{
-				$this_week_content = $record1['THIS_WEEK_CONTENT'];
-				$next_week_content = $record1['NEXT_WEEK_CONTENT'];
-				$this_week_ratio = $record1['THIS_WEEK_RATIO'];
-				$next_week_ratio = $record1['NEXT_WEEK_RATIO'];
-			}
-		}
-?>
-				<div class="board_list" style="margin-bottom:40px;">
-					<table class="notable work3 board_list"  style="width:100%">
-						<caption>게시판 리스트 테이블</caption>
-						<colgroup>
-							<col width="49%" />
-							<col width="2%" />
-							<col width="*" />
-						</colgroup>
-						
-						<tbody class="p_detail">
-							<tr>
-								<td style="font-weight:bold;" colspan="3">* 기타업무(경영지원팀, 홍보팀, 기타 업무)</td>
-								<input type="hidden" name="project_no[]" value="DF0000_ETC">
-							</tr>
-							<tr>
-								<td>금주 진행업무 
-									<select name="progress_this[]" class="percentage">
-										<?
-											for ($i=0; $i<=100; $i=$i+5) 
-											{
-												if ($i == $this_week_ratio) 
-												{ 
-													$selected = " selected"; 
-												}
-												else
-												{
-													$selected = "";
-												}
-												echo "<option value='".$i."'".$selected.">".$i."%</option>";
-											}
-										?>	
-									</select></td>
-								<td></td>
-								<td style="font-weight:bold;">차주 진행업무 
-									<select name="progress_next[]" class="percentage">
-										<?
-											for ($i=0; $i<=100; $i=$i+5) 
-											{
-												if ($i == $next_week_ratio) 
-												{ 
-													$selected = " selected"; 
-												}
-												else
-												{
-													$selected = "";
-												}
-												echo "<option value='".$i."'".$selected.">".$i."%</option>";
-											}
-										?>	
-									</select></td>
-							</tr>
-							<tr style="vertical-align:top;">
-								<td><textarea cols="30" rows="10" name="content_this[]" style="width:96%" class='normal'><?=$this_week_content?></textarea></td>
-								<td></td>
-								<td><textarea cols="30" rows="10" name="content_next[]" style="width:96%" class='normal'><?=$next_week_content?></textarea></td>
-							</tr>
-						</tbody>
-					</table>
+                $record1 = sqlsrv_fetch_array($rs1);
+                if (sqlsrv_has_rows($rs1) > 0) {
+                    $this_week_content = $record1['THIS_WEEK_CONTENT'];
+                    $next_week_content = $record1['NEXT_WEEK_CONTENT'];
+                    $this_week_ratio = $record1['THIS_WEEK_RATIO'];
+                    $next_week_ratio = $record1['NEXT_WEEK_RATIO'];
+                }
+            }
+            ?>
+            <!-- 기타업무 시작 -->
+            <div class="content">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title">기타업무(경영지원팀, 홍보팀, 기타 업무)</div>
+                        <input type="hidden" name="project_no[]" value="DF0000_ETC">
+                    </div>
+                    <div class="card-content">
 
-					<!-- 필드배열 처리위한 더미 태그 -->
-					<input type="hidden" name="project_no[]">
-					<input type="hidden" name="progress_this[]">
-					<input type="hidden" name="progress_next[]">
-					<input type="hidden" name="content_this[]">
-					<input type="hidden" name="content_next[]">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="columns is-mobile">
+                                    <div class="column">
+                                        금주 진행 업무
+                                    </div>
+                                    <div class="column last-button">
+                                        <div class="field">
+                                            <div class="control select">
+                                                <select name="progress_this[]" class="percentage">
+                                                    <?
+                                                    for ($i = 0; $i <= 100; $i = $i + 5) {
+                                                        if ($i == $this_week_ratio) {
+                                                            $selected = " selected";
+                                                        } else {
+                                                            $selected = "";
+                                                        }
+                                                        echo "<option value='" . $i . "'" . $selected . ">" . $i . "%</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                            <textarea class="textarea" placeholder="" name="content_this[]"
+                                                      rows="10"><?= $this_week_content ?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="columns is-mobile">
+                                    <div class="column">
+                                        차주 진행 업무
+                                    </div>
+                                    <div class="column last-button">
+                                        <div class="field">
+                                            <div class="control select">
+                                                <select name="progress_next[]" class="percentage">
+                                                    <?
+                                                    for ($i = 0; $i <= 100; $i = $i + 5) {
+                                                        if ($i == $next_week_ratio) {
+                                                            $selected = " selected";
+                                                        } else {
+                                                            $selected = "";
+                                                        }
+                                                        echo "<option value='" . $i . "'" . $selected . ">" . $i . "%</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                            <textarea class="textarea" name="content_next[]" placeholder=""
+                                                      rows="10"><?= $next_week_content ?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 필드배열 처리위한 더미 태그 -->
+                <input type="hidden" name="project_no[]">
+                <input type="hidden" name="progress_this[]">
+                <input type="hidden" name="progress_next[]">
+                <input type="hidden" name="content_this[]">
+                <input type="hidden" name="content_next[]">
+            </div>
+            <!-- 기타업무 항목 종료 -->
 
-				</div>
-<!-- 기타업무 항목 종료 -->
+            <!-- (팀장)건의사항 항목 시작 -->
+            <?
+            if ($weekly_prs_pos == '팀장') {
+                ?>
 
-<!-- (팀장)건의사항 항목 시작 -->
-<?
-	if ($weekly_prs_pos == '팀장') {
-?>
-				<div class="board_list" style="margin-bottom:0px;">
-					<table class="notable work3 board_list"  style="width:100%">
-						<caption>게시판 리스트 테이블</caption>
-						<colgroup>
-							<col width="100%" />
-						</colgroup>
-						
-						<tbody class="p_detail">
-							<tr>
-								<td style="font-weight:bold;" colspan="3">* 건의 및 기타사항</td>
-							</tr>
-							<tr style="vertical-align:top;">
-								<td><textarea cols="30" rows="10" name="memo" style="width:98%" class='normal'><?=$weekly_memo?></textarea></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-<?
-	}
-?>
-<!-- (팀장)건의사항 항목 종료 -->
+                <div class="content">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-title">건의 및 기타사항</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="columns is-mobile">
+                                        <div class="column last-button">
+                                            <div class="field">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="control">
+                                            <textarea class="textarea" placeholder="" name="memo" rows="10"><?= $weekly_memo ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?
+            }
+            ?>
+            <!-- (팀장)건의사항 항목 종료 -->
 
-				<div class="project_reg clearfix" style="margin-bottom:40px;">
-					<!--div class="btns_wrap" style="float:left;margin-top:0px;">
-					<?/* if (in_array($weekly_edit_yn == 'Y') || in_array($prs_id,$weekly_arr)) { ?> 
-						<? if ($weekly_complete_yn != 'Y') { ?>						
-						<a href="javascript:weeklyComplete('complete');"><img src="/img/weekly/btn_weekly_team.png" alt="완료" id="btnComplete" style="cursor:pointer;"></a>					
-						<? } else { ?>
-						<a href="javascript:weeklyComplete('cancel');">[팀 주간보고서 완료 취소]</a>
-						<? } ?>
-					<? } */?>
-					</div-->
-					<div class="btns_wrap btn_right" style="margin-top:0px;">
-						<? if ($weekly_complete_yn != 'Y' && $weekly_edit_yn == 'Y') { ?>						
-						<a href="javascript:weeklyWrite();"><img src="/img/weekly/btn_save.gif" alt="등록" id="btnWrite" style="cursor:pointer;"></a>
-						<? } ?>
-						<? if ($win == 'new') { ?>						
-						<a href="javascript:window.close();"><img src="/img/weekly/btn_cancle.gif" alt="취소" id="btnCancel" style="cursor:pointer;"></a>
-						<? } else { ?>
-						<a href="./weekly_list.php?page=<?=$page?>"><img src="/img/weekly/btn_cancle.gif" alt="취소" id="btnCancel" style="cursor:pointer;"></a>
-						<? } ?>
-					</div>
-				</div>
+            <hr class="hr-strong">
 
-			</div>
-		</div>
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <p class="buttons">
+                        <a href="/weekly/weekly_list.php?page=<?= $page ?>" class="button">
+                        <span class="icon is-small">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                            <span>목록</span>
+                        </a>
+                    </p>
+                </div>
+
+                <div class="level-right">
+                    <p class="buttons">
+                        <? if ($weekly_complete_yn != 'Y' && $weekly_edit_yn == 'Y') { ?>
+                            <a href="javascript:weeklyWrite();" class="button is-info" id="btnWrite">
+                                <span class="icon is-small">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </span>
+                                <span>작성</span>
+                            </a>
+                        <? } ?>
+                        <? if ($win == 'new') { ?>
+                            <a href="javascript:window.close();" class="button is-danger" id="btnCancel">
+                                <span class="icon is-small">
+                                    <i class="fas fa-times"></i>
+                                </span>
+                                <span>취소</span>
+                            </a>
+                        <? } else { ?>
+                            <a href="./weekly_list.php?page=<?= $page ?>" class="button is-danger" id="btnCancel">
+                                <span class="icon is-small">
+                                    <i class="fas fa-times"></i>
+                                </span>
+                                <span>취소</span>
+                            </a>
+                        <? } ?>
+                    </p>
+
+                </div>
+            </nav>
+
+        </div>
+    </section>
+    <!-- 본문 끌 -->
+
+    <? include INC_PATH . "/bottom.php"; ?>
+    </div>
 </form>
-<? include INC_PATH."/bottom.php"; ?>
-</div>
 </body>
 </html>

@@ -2,6 +2,7 @@
 	require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
 	require_once CMN_PATH."/login_check.php";
 	require_once CMN_PATH."/weekly_check.php";
+    require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
 
 <?
@@ -116,202 +117,229 @@
 </script>
 </head>
 <body>
-<div class="wrapper">
+<? include INC_PATH."/top_menu.php"; ?>
 <form name="form" method="post">
 <input type="hidden" name="page" id="page" value="<?=$page?>">
 <input type="hidden" name="year" id="year" value="<?=$year?>">
 <input type="hidden" name="team" id="team" value="<?=$team?>">
+<? include INC_PATH."/weekly_menu.php"; ?>
 
-	<? include INC_PATH."/top_menu.php"; ?>
+    <section class="section df-weekly">
+        <div class="container">
+            <div class="content">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="columns">
+                            <!-- Left side -->
+                            <div class="column last-button">
+                                <div class="field">
+                                    <div class="control select">
+                                        <select name="year" onchange="javascript:yearSearch(this.value);">
+                                            <?
+                                            for ($i=2014; $i<=date("Y"); $i++)
+                                            {
+                                                if ($i == $year)
+                                                {
+                                                    $selected = " selected";
+                                                }
+                                                else
+                                                {
+                                                    $selected = "";
+                                                }
+                                                ?>
+                                                <option value="<?=$i?>" <?=$selected?>><?=$i?>년</option>
+                                                <?
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Right side -->
+                            <div class="column">
+                                <div class="field">
+                                    <div class="control select">
+                                        <?
+                                        if ($sel_view == 'Y')
+                                        {
+                                            ?>
+                                        <select name="team" onchange="javascript:teamSearch(this.value);">
+                                            <option>부서선택</option>
+                                            <?
+                                            $selSQL = "SELECT STEP, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE VIEW_YN = 'Y' ORDER BY SORT";
+                                            $selRs = sqlsrv_query($dbConn,$selSQL);
 
-		<div class="inner-home">
-			<? include INC_PATH."/weekly_menu.php"; ?>
+                                            while ($selRecord = sqlsrv_fetch_array($selRs))
+                                            {
+                                                $selStep = $selRecord['STEP'];
+                                                $selTeam = $selRecord['TEAM'];
 
-			<div class="work_wrap clearfix">
+                                                if ($selStep == 2) {
+                                                    $selTeam2 = $selTeam;
+                                                }
+                                                else if ($selStep == 3) {
+                                                    $selTeam2 = "&nbsp;&nbsp;└ ". $selTeam;
+                                                }
+                                                ?>
+                                                <option value="<?=$selTeam?>"<? if ($team == $selTeam){ echo " selected"; } ?>><?=$selTeam2?></option>
+                                                <?
+                                            }
+                                            ?>
+                                        </select>
+                                        <?
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-				<div class="vacation_stats clearfix">
-					<table class="notable" width="100%">
-						<tr>
-							<th scope="row">&nbsp;</th>
-<!-- 							<th width="50%" scope="row">팀원 주간보고서</th> -->
-							<td>
-								<select name="year" style="width:109px;" onchange="javascript:yearSearch(this.value);">
-									<?
-										for ($i=2014; $i<=date("Y"); $i++) 
-										{
-											if ($i == $year) 
-											{ 
-												$selected = " selected"; 
-											}
-											else
-											{
-												$selected = "";
-											}
-									?>
-											<option value="<?=$i?>" <?=$selected?>><?=$i?></option>
-									<?
-										}
-									?>
-								</select><span>년</span>
+            <div class="content">
+                <div class="columns is-hidden-mobile">
+                    <!-- Left side -->
+                    <div class="column">
+                        <p class="is-size-7">
+                            * 주간보고를 작성하지 않은 팀원은 목록에 나타나지 않습니다.
+                        </p>
+                    </div>
+                    <!-- Right side -->
+                    <div class="column">
 
-								<?
-									if ($sel_view == 'Y') 
-									{
-								?>
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								<select name="team" style="width:200px;" onchange="javascript:teamSearch(this.value);">
-								<?
-									$selSQL = "SELECT STEP, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE VIEW_YN = 'Y' ORDER BY SORT";
-									$selRs = sqlsrv_query($dbConn,$selSQL);
-
-									while ($selRecord = sqlsrv_fetch_array($selRs))
-									{
-										$selStep = $selRecord['STEP'];
-										$selTeam = $selRecord['TEAM'];
-										
-										if ($selStep == 2) {
-											$selTeam2 = $selTeam;
-										}
-										else if ($selStep == 3) {
-											$selTeam2 = "&nbsp;&nbsp;└ ". $selTeam;
-										}
-								?>
-										<option value="<?=$selTeam?>"<? if ($team == $selTeam){ echo " selected"; } ?>><?=$selTeam2?></option>
-								<?
-									}
-								?>
-								</select>
-								<?
-									}
-								?>
-							</td>
-						</tr>
-					</table>
-				</div>
+                    </div>
+                </div>
+                <hr>
+            </div>
 
 
-				<table class="vacation notable work1 work_stats" width="100%" style="margin-bottom:10px;">
-					<caption>팀원 주간보고서 테이블</caption>
-					<colgroup>
-						<col width="5%" />
-						<col width="15%" />
-						<col width="*" />
-						<col width="10%" />
-						<col width="15%" />
-					</colgroup>
+            <div class="content">
+                <table class="table is-fullwidth is-hoverable is-resize">
+                    <colgroup>
+                        <col width="8%">
+                        <col width="*">
+                        <col width="10%">
+                        <col width="10%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th><span class="is-hidden-mobile">주차</span></th>
+                        <th>주간보고서</th>
+                        <th class="has-text-centered">상태</th>
+                        <th class="has-text-centered"></th>
+                    </tr>
+                    </thead>
+                    <!-- 일반 리스트 -->
+                    <tbody class="list">
+                    <?
+                    $i = $total_cnt-($page-1)*$per_page;
+                    if ($i==0)
+                    {
+                        ?>
+                        <tr>
+                            <td colspan="6" class="has-text-centered">해당 정보가 없습니다.</td>
+                        </tr>
+                        <?
+                    }
+                    else
+                    {
+                    while ($record = sqlsrv_fetch_array($rs))
+                    {
+                    $ord_tot = $record['WEEK_ORD_TOT'];
+                    $ord = $record['WEEK_ORD'];
+                    $comp_yn = $record['COMPLETE_YN'];
 
-					<thead>
-						<tr>
-							<th>주차</th>
-							<th>제목</th>
-							<th>팀원</th>
-							<th>상태</th>
-							<th></th>
-						</tr>
-					</thead>
+                    //실장급 이상, 보고서 취합 링크
+                    $title = "<a class='has-text-grey-light' href='weekly_list_division.php?week=".$ord."&team=".$team."' target='_blank'>".$record['TITLE']."</a>";
 
-					<tbody>
-<?
-	$i = $total_cnt-($page-1)*$per_page;
-	if ($i==0) 
-	{
-?>
-							<tr>
-								<td colspan="6" class="bold">해당 정보가 없습니다.</td>
-							</tr>
-<?
-	}
-	else
-	{
-		while ($record = sqlsrv_fetch_array($rs))
-		{
-			$ord_tot = $record['WEEK_ORD_TOT'];
-			$ord = $record['WEEK_ORD'];
-			$comp_yn = $record['COMPLETE_YN'];
-			
-			//실장급 이상, 보고서 취합 링크
-			$title = "<a href='weekly_list_division.php?week=".$ord."&team=".$team."' target='_blank'>".$record['TITLE']."</a>";
+                    if ($comp_yn == 'Y')		$state = "완료";
+                    else if ($comp_yn == 'N')	$state = "작성중";
 
-			if ($comp_yn == 'Y')		$state = "완료";
-			else if ($comp_yn == 'N')	$state = "작성중";
+                    //주간보고 등록한 팀원 추출
+                    $searchSQL = " WHERE WEEK_ORD = '$ord' AND REG_DATE IS NOT NULL AND PRS_ID IN (SELECT PRS_ID FROM DF_PERSON WHERE PRS_TEAM IN (SELECT TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE TEAM = '$team' OR R_SEQNO = (SELECT SEQNO FROM DF_TEAM_2018 WITH(NOLOCK) WHERE TEAM = '$team') OR R_SEQNO IN (SELECT SEQNO FROM DF_TEAM_2018 WITH(NOLOCK) WHERE R_SEQNO = (SELECT SEQNO FROM DF_TEAM_2018 WITH(NOLOCK) WHERE TEAM = '$team'))))";
+                    //$searchSQL = " WHERE WEEK_ORD = '$ord' AND PRS_TEAM = '$team'";
 
-			//주간보고 등록한 팀원 추출
-			$searchSQL = " WHERE WEEK_ORD = '$ord' AND REG_DATE IS NOT NULL AND PRS_ID IN (SELECT PRS_ID FROM DF_PERSON WHERE PRS_TEAM IN (SELECT TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE TEAM = '$team' OR R_SEQNO = (SELECT SEQNO FROM DF_TEAM_2018 WITH(NOLOCK) WHERE TEAM = '$team') OR R_SEQNO IN (SELECT SEQNO FROM DF_TEAM_2018 WITH(NOLOCK) WHERE R_SEQNO = (SELECT SEQNO FROM DF_TEAM_2018 WITH(NOLOCK) WHERE TEAM = '$team'))))";
-			//$searchSQL = " WHERE WEEK_ORD = '$ord' AND PRS_TEAM = '$team'";
-
-			$per_sql = "SELECT 
-							SEQNO, PRS_NAME 
+                    $per_sql = "SELECT 
+							SEQNO, PRS_NAME ,PRS_ID
 					   FROM 
 							DF_WEEKLY WITH(NOLOCK)
 					   $searchSQL
-					   $orderbycase";		
-			$per_rs = sqlsrv_query($dbConn,$per_sql);
+					   $orderbycase";
+                    $per_rs = sqlsrv_query($dbConn,$per_sql);
 
-			$per_list = "";
-			while ($per_record = sqlsrv_fetch_array($per_rs))
-			{
-				$per_seqno = $per_record['SEQNO'];	
-				$per_name = $per_record['PRS_NAME'];	
-				$per_list .= "<a href='weekly_write.php?type=modify&seqno=$per_seqno&win=new' target='_blank'>".$per_name."</a>&nbsp;&nbsp;";
-			}
-?>
-							<!-- loop -->		
-							<tr>
-								<td><?=$ord_tot?></td>
-								<td><?=$title?></td>
-								<td style="text-align:left;"><?=$per_list?></td>
-								<td><?=$state?></td>
-								<td>
-							<? 
-								$cur_date = date("Y-m-d");
-								$ndate = date("Y-m-d");
-								$ydate = date("Y-m-d", strtotime("$cur_date -7 day"));
+                    $per_list = "";
+                    while ($per_record = sqlsrv_fetch_array($per_rs))
+                    {
+                        $per_seqno = $per_record['SEQNO'];
+                        $per_name = $per_record['PRS_NAME'];
+                        $per_id = $per_record['PRS_ID'];
+                        $per_list .= "<a href='weekly_write.php?type=modify&prs_id=$per_id&seqno=$per_seqno&win=new' target='_blank'>".$per_name."  </a>";
+                    }
+                    ?>
 
-								$ninfo = getWeekInfo($ndate);
-								$yinfo = getWeekInfo($ydate);
+                    <tr>
+                        <td><?=$ord_tot?></td>
+                        <td>
+                            <div class="columns is-mobile">
+                                <div class="column">
+                                    <span class="is-size-7"><?=$title?></span><br>
+                                    <span class="has-text-link"><?=$per_list?></span>
+                                </div>
+                                <div class="column last-button is-hidden-tablet">
+                                    <div class="button is-info">완료</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="has-text-centered"><?=$state?></td>
+                        <td class="has-text-centered  is-hidden-mobile">
+                            <?
+                            $cur_date = date("Y-m-d");
+                            $ndate = date("Y-m-d");
+                            $ydate = date("Y-m-d", strtotime("$cur_date -7 day"));
 
-//								if (in_array($prs_id,$weekly_arr))
-								if ($ord == $ninfo["cur_week"] || $ord == $yinfo["cur_week"]) 
-								{ 
-									if ($comp_yn == 'Y')
-									{
-							?> 
-									<a href="javascript:weeklyComplete('cancel','<?=$ord?>');">[팀 주간보고서 완료 취소]</a>
-							<?		
-									}
-									else
-									{
-							?> 
-									<a href="javascript:weeklyComplete('complete','<?=$ord?>');">[팀 주간보고서 완료]</a>
-							<?		
-									}
-								}
-							?>
-								</td>
-							</tr>
-							<!-- loop -->		
-<?
-			$i--;
-		}
-	}
-?>
-					</tbody>
-					<tfoot>
+                            $ninfo = getWeekInfo($ndate);
+                            $yinfo = getWeekInfo($ydate);
 
-					</tfoot>					
-				</table>
-				<span style="padding-left:40px;">
-					<b class="txt_left_p" style="margin-bottom:0px;">* 주간보고를 작성하지 않은 팀원은 목록에 나타나지 않습니다.</b>
-				</span>
+                            //								if (in_array($prs_id,$weekly_arr))
+                            if ($ord == $ninfo["cur_week"] || $ord == $yinfo["cur_week"])
+                            {
+                                if ($comp_yn == 'Y')
+                                {
+                                    ?>
+                                    <a class='button is-danger' href="javascript:weeklyComplete('cancel','<?=$ord?>');">팀 주간보고서 완료 취소</a>
+                                    <?
+                                }
+                                else
+                                {
+                                    ?>
+                                    <a class='button is-info' href="javascript:weeklyComplete('complete','<?=$ord?>');">&nbsp;&nbsp;&nbsp;&nbsp;팀 주간보고서 완료&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    <?
+                                }
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    <?
+                        $i--;
+                    }
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
 
-				<div class="page_num">
-				<?=getPaging($total_cnt,$page,$per_page);?>
-				</div>	
+            <!--페이징처리-->
+            <nav class="pagination" role="navigation" aria-label="pagination">
+                <?=getPaging($total_cnt,$page,$per_page);?>
+                </ul>
+            </nav>
+            <!--페이징처리-->
+        </div>
+    </section>
+    <!-- 본문 끌 -->
 
-			</div>
-		</div>
+    <? include INC_PATH."/bottom.php"; ?>
 </form>
-<? include INC_PATH."/bottom.php"; ?>
-</div>
 </body>
 </html>

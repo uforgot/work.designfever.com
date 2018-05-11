@@ -68,8 +68,8 @@
                         <div class="control select is-fullwidth">
                             <select name="year" onchange="javascript:funSearch(this.form);">
                               <? for ($i=2013; $i<=date("Y"); $i++) { ?>
-																<option value="<?=$i?>"<? if ($i == $year) { echo " selected"; } ?>><?=$i?>년 휴가사용 현황</option>
-															<? } ?>
+								<option value="<?=$i?>"<? if ($i == $year) { echo " selected"; } ?>><?=$i?>년 휴가사용 현황</option>
+                              <? } ?>
                             </select>
                         </div>
                     </div>
