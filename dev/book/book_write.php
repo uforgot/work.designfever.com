@@ -217,6 +217,30 @@
 		document.getElementById("filedel_"+file).value = "Y";
 	}
 
+    function minusFile(file)
+    {
+        if (file == 2)
+        {
+            document.getElementById("file_D2").style.display = "none"
+            document.getElementById("attachment_2").value="";
+            delFile(2);
+
+        }else if(file==3){
+            document.getElementById("file_D3").style.display = "none"
+            document.getElementById("attachment_3").value="";
+            delFile(3);
+        }else{}
+    }
+
+    function delFile(file)
+    {
+        document.getElementById("file_"+file).value = "";
+        document.getElementById("attachment_"+file).value = "";
+        document.getElementById("delfile_"+file).innerHTML = "";
+        document.getElementById("filedel_"+file).value = "Y";
+    }
+
+
 	$(document).ready(function(){
 		//선택된 파일명 표시
 		$("#file_1").change(function(){
@@ -277,159 +301,184 @@
 <!--본문 시작-->
 <section class="section is-subpage">
     <div class="container">
-        <nav class="level is-mobile">
-            <div class="level-left">
-                <p class="buttons">
-                    <a href="book_list.php" class="button">
+        <div class="content">
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <p class="buttons">
+                        <a href="book_list.php" class="button">
                         <span class="icon is-small">
                             <i class="fas fa-bars"></i>
                         </span>
-                        <span>목록</span>
-                    </a>
-                </p>
-            </div>                        						
-            
-            <div class="level-right">
-                <p class="buttons">
-                    <a href="javascript:funWrite();" class="button is-danger">
+                            <span>목록</span>
+                        </a>
+                    </p>
+                </div>
+
+                <div class="level-right">
+                    <p class="buttons">
+                        <a href="javascript:funWrite();" class="button is-danger">
                         <span class="icon is-small">
                             <i class="fas fa-pencil-alt"></i>
                         </span>
-                        <span>게시물 <?=$type_title?></span>
-                    </a>
-                </p>
+                            <span>게시물 <?=$type_title?></span>
+                        </a>
+                    </p>
+                </div>
+            </nav>
+
+            <div class="field-group">
+                <div class="field">
+                    <div class="control">
+                        <input name="title" class="input is-large" type="text" placeholder="제목을 입력하세요" value="<?=$book_title?>">
+                        <br>
+                        <? if ($board == "ilab") { ?>
+                            <br>
+                            <div class="control select">
+                                <select name="tmp1" id="tmp1">
+                                    <option value="IX"<? if ($book_tmp1 == "IX") { echo " selected"; } ?>>IX</option>
+                                    <option value="개발"<? if ($book_tmp1 == "개발") { echo " selected"; } ?>>개발</option>
+                                    <option value="디자인"<? if ($book_tmp1 == "디자인") { echo " selected"; } ?>>디자인</option>
+                                    <option value="모션"<? if ($book_tmp1 == "모션") { echo " selected"; } ?>>모션</option>
+                                    <option value="코딩"<? if ($book_tmp1 == "코딩") { echo " selected"; } ?>>코딩</option>
+                                    <option value="기획"<? if ($book_tmp1 == "기획") { echo " selected"; } ?>>기획</option>
+                                </select>
+                            </div>
+                            <br>
+                        <? } elseif ($board == "club") { ?>
+                            <br>
+                            <div class="control select">
+                                <select name="tmp1" id="tmp1">
+                                    <option value="">동호회 선택</option>
+                                    <option value="마포라이더스"<? if ($book_tmp1 == "마포라이더스") { echo " selected"; } ?>>마포라이더스</option>
+                                    <option value="윈터라이더스"<? if ($book_tmp1 == "윈터라이더스") { echo " selected"; } ?>>윈터라이더스</option>
+                                    <option value="클럽 겐세이"<? if ($book_tmp1 == "클럽 겐세이") { echo " selected"; } ?>>클럽 겐세이</option>
+                                    <option value="플레이그라운드"<? if ($book_tmp1 == "플레이그라운드") { echo " selected"; } ?>>플레이그라운드</option>
+                                    <option value="튼튼돼지"<? if ($book_tmp1 == "튼튼돼지") { echo " selected"; } ?>>튼튼돼지</option>
+                                    <option value="읽기와 쓰기"<? if ($book_tmp1 == "읽기와 쓰기") { echo " selected"; } ?>>읽기와 쓰기</option>
+                                    <option value="별이다섯개"<? if ($book_tmp1 == "별이다섯개") { echo " selected"; } ?>>별이다섯개</option>
+                                </select>
+                            </div>
+                            <br>
+                        <? } ?>
+                        <br>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <textarea name="contents" class="textarea" placeholder="10 lines of textarea" style="width:100%; height:100%"><?=$book_contents?></textarea>
+                    </div>
+                </div>
             </div>
-        </nav>
-        
-        <div class="field-group">
-            <div class="field">
-                <div class="control">
-                    <input name="title" class="input is-large" type="text" placeholder="제목을 입력하세요" value="<?=$book_title?>">                                        
-									<br>
-										<? if ($board == "ilab") { ?>
-										<br>
-											<div class="control select">							
-													<select name="tmp1" id="tmp1">										
-														<option value="IX"<? if ($book_tmp1 == "IX") { echo " selected"; } ?>>IX</option>
-														<option value="개발"<? if ($book_tmp1 == "개발") { echo " selected"; } ?>>개발</option>
-														<option value="디자인"<? if ($book_tmp1 == "디자인") { echo " selected"; } ?>>디자인</option>
-														<option value="모션"<? if ($book_tmp1 == "모션") { echo " selected"; } ?>>모션</option>
-														<option value="코딩"<? if ($book_tmp1 == "코딩") { echo " selected"; } ?>>코딩</option>
-														<option value="기획"<? if ($book_tmp1 == "기획") { echo " selected"; } ?>>기획</option>
-													</select>
-											</div>
-											<br>
-										<? } elseif ($board == "club") { ?>
-										<br>
-											<div class="control select">												
-													<select name="tmp1" id="tmp1">
-														<option value="">동호회 선택</option>							
-														<option value="마포라이더스"<? if ($book_tmp1 == "마포라이더스") { echo " selected"; } ?>>마포라이더스</option>
-														<option value="윈터라이더스"<? if ($book_tmp1 == "윈터라이더스") { echo " selected"; } ?>>윈터라이더스</option>
-														<option value="클럽 겐세이"<? if ($book_tmp1 == "클럽 겐세이") { echo " selected"; } ?>>클럽 겐세이</option>
-														<option value="플레이그라운드"<? if ($book_tmp1 == "플레이그라운드") { echo " selected"; } ?>>플레이그라운드</option>
-														<option value="튼튼돼지"<? if ($book_tmp1 == "튼튼돼지") { echo " selected"; } ?>>튼튼돼지</option>
-														<option value="읽기와 쓰기"<? if ($book_tmp1 == "읽기와 쓰기") { echo " selected"; } ?>>읽기와 쓰기</option>
-														<option value="별이다섯개"<? if ($book_tmp1 == "별이다섯개") { echo " selected"; } ?>>별이다섯개</option>
-													</select>
-											</div>
-											<br>
-											<? } ?>
-									<br>
-                </div>
-            </div>	
-            <div class="field">
-                <div class="control">
-                    <textarea name="contents" class="textarea" placeholder="10 lines of textarea" style="width:100%; height:100%"><?=$book_contents?></textarea>										
-                </div>
-            </div>
-        </div>
-               
-        	<!--파일업로드-->
-        	 <div class="box">
-            <div class="control has-add-button"><!-- 커스텀 클래스 : has-add-button -->          
-            	
-            	<!--파일1-->  	
-                <div class="file has-name is-right is-fullwidth" id="file_D1" name="file_D1">
-                    <label class="file-label">
-                        <input type="file" id="file_1" name="file_1" class="file-input" >                        
-                        <span class="file-cta">
-                              <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
-                              </span>
-                              <span class="file-label">파일찾기</span>
-                        </span>
-                        <input type="text" id="attachment_1" name="attachment_1"class="file-name" readonly>                                                          
-                    </label>
-                    <span class="buttons">
-                        	<a href="javascript:addFile();" class="button tag icon is-medium">                        		
-                          	<i class="fas fa-plus"></i>
-                         </a>
-                    </span>                                        
-                </div>
-                <div class="attached" id="delfile_1">
-												<? if ($type == "modify" && $book_file1 != "") { ?>	
-													&nbsp;&nbsp;<span><?=$book_file1?></span>
-													&nbsp;&nbsp;<a href="javascript:delFile(1);" class="tag is-danger">삭제</a>
-												<? } ?>
-								</div>
-            
-              <!--파일2-->  	
-                <div class="file has-name is-right is-fullwidth" id="file_D2" name="file_D2"<? if ($book_file2 == "") { ?> style="display:none;"<? } ?>>
-                    <label class="file-label">
-                        <input type="file" id="file_2" name="file_2" class="file-input" >                        
-                        <span class="file-cta">
-                              <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
-                              </span>
-                              <span class="file-label">파일찾기</span>
-                        </span>
-                        <input type="text" id="attachment_2" name="attachment_2"class="file-name" readonly>                                                          
-                    </label>
-                    <span class="buttons">
-                        	<a href="javascript:addFile();" class="button tag icon is-medium">                        		
-                          	<i class="fas fa-plus"></i>
-                         </a>
-                    </span>                                        
-                </div>
-                <div class="attached" id="delfile_2">
-												<? if ($type == "modify" && $book_file2 != "") { ?>	
-													&nbsp;&nbsp;<span><?=$book_file2?></span>
-													&nbsp;&nbsp;<a href="javascript:delFile(2);" class="tag is-danger">삭제</a>
-												<? } ?>
-								</div>
-                
-                <!--파일3-->  	
-                <div class="file has-name is-right is-fullwidth" id="file_D3" name="file_D3"<? if ($book_file2 == "") { ?> style="display:none;"<? } ?>>
-                    <label class="file-label">
-                        <input type="file" id="file_3" name="file_3" class="file-input" >                        
-                        <span class="file-cta">
-                              <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
-                              </span>
-                              <span class="file-label">파일찾기</span>
-                        </span>
-                        <input type="text" id="attachment_3" name="attachment_3"class="file-name" readonly>                                                          
-                    </label>
-                    <span class="buttons">
-                        	<a href="javascript:addFile();" class="button tag icon is-medium">                        		
-                          	<i class="fas fa-plus"></i>
-                         </a>
-                    </span>                                        
-                </div>
-                <div class="attached" id="delfile_3">
-												<? if ($type == "modify" && $book_file3 != "") { ?>	
-													&nbsp;&nbsp;<span><?=$book_file3?></span>
-													&nbsp;&nbsp;<a href="javascript:delFile(3);" class="tag is-danger">삭제</a>
-												<? } ?>
-								</div>
-                <p class="help is-dark">* 한번에 올릴 수 있는 파일 용량은 최대 10MB 입니다.</p>
-            </div>    
         </div>
 
-			<!--파일업로드-->								
-			
-        <nav class="level is-mobile">
+        <div class="content">
+        <div class="box">
+            <!--파일1-->
+            <div class="columns is-mobile">
+                <div class="column">
+                    <div class="file has-name is-fullwidth" id="file_D1" name="file_D1">
+                        <label class="file-label">
+                            <input class="file-input" type="file" id="file_1" name="file_1">
+                                <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fas fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">파일찾기</span>
+                                 </span>
+                            <input type="text" id="attachment_1" name="attachment_1"class="file-name" readonly>
+                        </label>
+                    </div>
+                </div>
+                <div class="column last-button">
+                            <span class="buttons">
+                                <a class="button is-fullwidth" href="javascript:addFile();">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                </a>
+                            </span>
+                </div>
+            </div>
+            <div class="attached" id="delfile_1">
+                <? if ($type == "modify" && $book_file1 != "") { ?>
+                    &nbsp;&nbsp;<span><?=$book_file1?></span>
+                    &nbsp;&nbsp;<a href="javascript:delFile(1);" class="tag is-danger">삭제</a>
+                <? } ?>
+            </div>
+
+            <!--파일2-->
+            <div class="columns is-mobile" id="file_D2" name="file_D2"<? if ($book_file2 == "") { ?> style="display:none;"<? } ?>>
+                <div class="column">
+                    <div class="file has-name is-fullwidth" >
+                        <label class="file-label">
+                            <input class="file-input" type="file" id="file_2" name="file_2">
+                                <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fas fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">파일찾기</span>
+                                 </span>
+                            <input type="text" id="attachment_2" name="attachment_2"class="file-name" readonly>
+                        </label>
+                    </div>
+                </div>
+                <div class="column last-button">
+                            <span class="buttons">
+                                <a class="button is-fullwidth" href="javascript:minusFile(2);">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-minus"></i>
+                                    </span>
+                                </a>
+                            </span>
+                </div>
+            </div>
+            <div class="attached" id="delfile_2">
+                <? if ($type == "modify" && $book_file2 != "") { ?>
+                    &nbsp;&nbsp;<span><?=$book_file2?></span>
+                    &nbsp;&nbsp;<a href="javascript:delFile(2);" class="tag is-danger">삭제</a>
+                <? } ?>
+            </div>
+
+            <!--파일3-->
+            <div class="columns is-mobile" id="file_D3" name="file_D3"<? if ($book_file3 == "") { ?> style="display:none;"<? } ?>>
+                <div class="column">
+                    <div class="file has-name is-fullwidth" >
+                        <label class="file-label">
+                            <input class="file-input" type="file" id="file_3" name="file_3">
+                                <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fas fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">파일찾기</span>
+                                 </span>
+                            <input type="text" id="attachment_3" name="attachment_3"class="file-name" readonly>
+                        </label>
+                    </div>
+                </div>
+                <div class="column last-button">
+                            <span class="buttons">
+                                <a class="button is-fullwidth" href="javascript:minusFile(3);">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-minus"></i>
+                                    </span>
+                                </a>
+                            </span>
+                </div>
+            </div>
+            <div class="attached" id="delfile_3">
+                <? if ($type == "modify" && $book_file3 != "") { ?>
+                    &nbsp;&nbsp;<span><?=$book_file3?></span>
+                    &nbsp;&nbsp;<a href="javascript:delFile(3);" class="tag is-danger">삭제</a>
+                <? } ?>
+            </div>
+
+            <p class="help is-dark">* 한번에 올릴 수 있는 파일 용량은 최대 10MB 입니다.</p>
+        </div>
+    </div>
+
+    <!--파일업로드-->
+
+    <nav class="level is-mobile">
             <div class="level-left">
                 <p class="buttons">
                     <a href="book_list.php" class="button">

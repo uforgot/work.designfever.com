@@ -393,7 +393,7 @@
                 </div>
                 <div class="field">
                     <p class="control">                    
-                        <button class="button"><a href="javascript:writeReply();">댓글 작성</a></button>
+                        <a class="button" href="javascript:writeReply();">댓글 작성</a>
                     </p>
                 </div>
             </div>
@@ -483,7 +483,7 @@
 	                </div>
 	                <div class="field">
 	                    <p class="control">
-	                        <button class="button" id="reply_btn_<?=$reply_no?>"><a href="javascript:modifyReply('<?=$reply_no?>')">수정</a></button>
+	                        <a id="reply_btn_<?=$reply_no?>" class="button" href="javascript:modifyReply('<?=$reply_no?>')">수정</a>
 	                    </p>
 	                </div>	                
 	            	</div>        																	 										

@@ -71,52 +71,52 @@ require_once CMN_PATH."/weekly_check.php";
 
     <? if (!in_array($prs_position,$positionS_arr)){ ?>
     $(document).ready(function(){
-        <? if ($alert_state1 == ""){ ?>
+        <? if ($alert_state1 == "inline"){ ?>
         if ($.cookie('check_todayView1') == "close")
         {
             //$("#popAlert1").css("display","none");
-            //$("#popAlert1").attr('class','modal');
+            $("#popAlert1").removeClass("is-active");
         }
         else
         {
-            //$("#popAlert1").css("display","");
-            $("#popAlert1").attr('class','modal is-active');
+            //$("#popAlert1").css("display","inline");
+            $("#popAlert1").addClass("modal is-active");
         }
         <? } else { ?>
-        //$("#popAlert1").css("display","none");
-        //$("#popAlert1").attr('class','modal');
+            //$("#popAlert1").css("display","none");
+            $("#popAlert1").removeClass("is-active");
         <? } ?>
 
         <? if ($alert_state2 == "inline"){ ?>
         if ($.cookie('check_todayView2') == "close")
         {
             //$("#popAlert2").css("display","none");
-            //$("#popAlert2").attr('class','modal');
+            $("#popAlert2").removeClass("is-active");
         }
         else
         {
-            //$("#popAlert2").css("display","");
-            $("#popAlert2").attr('class','modal is-active');
+            //$("#popAlert2").css("display","inline");
+            $("#popAlert2").addClass("modal is-active");
         }
         <? } else { ?>
-        //$("#popAlert2").css("display","none");
-        //$("#popAlert2").attr('class','modal');
+            //$("#popAlert2").css("display","none");
+            $("#popAlert2").removeClass("is-active");
         <? } ?>
 
-        <? if ($alert_state3 == ""){ ?>
+        <? if ($alert_state3 == "inline"){ ?>
         if ($.cookie('check_todayView3') == "close")
         {
             //$("#popAlert3").css("display","none");
-            //$("#popAlert1").attr('class','modal');
+            $("#popAlert3").removeClass("is-active");
         }
         else
         {
-            //$("#popAlert3").css("display","");
-            $("#popAlert1").attr('class','modal is-active');
+            //$("#popAlert3").css("display","inline");
+            $("#popAlert3").addClass("modal is-active");
         }
         <? } else { ?>
-        //$("#popAlert3").css("display","none");
-        //$("#popAlert2").attr('class','modal');
+            $("#popAlert3").css("display","none");
+            ("#popAlert3").removeClass("is-active");
         <? } ?>
     });
     <? } ?>
@@ -961,7 +961,7 @@ require_once CMN_PATH."/weekly_check.php";
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">알림</p>
-            <a href="javascript:HidePop('Alert1');"><button class="delete" aria-label="close"></button></a>
+            <a href="javascript:HidePop('Alert1');" class="delete" aria-label="close"></a>
         </header>
         <section class="modal-card-body" style="text-align:center">
             <? if ($prf_id == 7) { ?>
@@ -971,13 +971,12 @@ require_once CMN_PATH."/weekly_check.php";
             <? } ?>
         </section>
         <footer class="modal-card-foot">
-            <a href="javascript:CheckPop('check_todayView1','commuting');"><button class="button is-success">확인</button></a>
-            <input type="checkbox" id="check_todayView1" name="check_todayView1" style="vertical-align: middle;">
+            <a href="javascript:CheckPop('check_todayView1','commuting');" class="button is-success">확인</a>
+            &nbsp;<input type="checkbox" id="check_todayView1" name="check_todayView1" style="vertical-align: middle;">&nbsp;
             <label for="check_todayView1" style="cursor:pointer;">&nbsp;오늘 하루 더 이상 보지 않기</label>
         </footer>
     </div>
 </div>
-
 
 <!--new 팝업2-->
 <div id="popAlert2" class="modal">
@@ -985,7 +984,7 @@ require_once CMN_PATH."/weekly_check.php";
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">알림</p>
-            <a href="javascript:HidePop('Alert2');"><button class="delete" aria-label="close"></button></a>
+            <a href="javascript:HidePop('Alert2');" class="delete" aria-label="close"></a>
         </header>
         <section class="modal-card-body">
             <? if ($prf_id == 7) { ?>
@@ -996,8 +995,8 @@ require_once CMN_PATH."/weekly_check.php";
             <? } ?>
         </section>
         <footer class="modal-card-foot">
-            <a href="javascript:CheckPop('check_todayView2','commuting');"><button class="button is-success">확인</button></a>
-            <input type="checkbox" id="check_todayView2" name="check_todayView2" style="vertical-align: middle;">
+            <a href="javascript:CheckPop('check_todayView2','commuting');"class="button is-success">확인</a>
+            &nbsp;<input type="checkbox" id="check_todayView2" name="check_todayView2" style="vertical-align: middle;">&nbsp;
             <label for="check_todayView2" style="cursor:pointer;">&nbsp;오늘 하루 더 이상 보지 않기</label>
         </footer>
     </div>
@@ -1009,7 +1008,7 @@ require_once CMN_PATH."/weekly_check.php";
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">알림</p>
-            <a href="javascript:HidePop('Alert3');" class="close"><button class="delete" aria-label="close"></button></a>
+            <a href="javascript:HidePop('Alert3');" class="close"></a>
         </header>
         <section class="modal-card-body">
             <? if ($prf_id == 7) { ?>
@@ -1021,11 +1020,11 @@ require_once CMN_PATH."/weekly_check.php";
         </section>
         <footer class="modal-card-foot">
             <? if ($prf_id == 7) { ?>
-                <a href="javascript:CheckPop('check_todayView3','commuting');"><button class="button is-success">확인</button></a>
+                <a href="javascript:CheckPop('check_todayView3','commuting');"class="button is-success">확인</a>
             <? } else { ?>
-                <a href="javascript:CheckPop('check_todayView3','edit');"><button class="button is-success">확인</button></a>
+                <a href="javascript:CheckPop('check_todayView3','edit');" class="button is-success">확인</a>
             <?}?>
-            <input type="checkbox" id="check_todayView3" name="check_todayView3" style="vertical-align: middle;">
+            &nbsp;<input type="checkbox" id="check_todayView3" name="check_todayView3" style="vertical-align: middle;">&nbsp;
             <label for="check_todayView3" style="cursor:pointer;">&nbsp;오늘 하루 더 이상 보지 않기</label>
         </footer>
     </div>

@@ -1,6 +1,7 @@
 <?
 	require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
 	require_once CMN_PATH."/login_check.php";
+    require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
 
 <?
@@ -66,9 +67,10 @@
 			$booking_time = date("H:i",strtotime($booking_stime)+(1800*$i));
 	
 			if($i==0) {
-				$booking_info = "<a href=\"./booking_write.php?type=modify&date=$date&seqno=$booking_seqno\"><span style='color:#000;font-weight:bold;'>".$booking_stime." ~ ".$booking_etime."</span>";
-				$booking_info.= "&nbsp;(예약자: ".$booking_name.")";
-				$booking_memo = "+ ".$booking_title;
+				//$booking_info = "<a href=\"./booking_write.php?type=modify&date=$date&seqno=$booking_seqno\"><span style='color:#000;font-weight:bold;'>".$booking_stime." ~ ".$booking_etime."</span>";
+                //$booking_info.= "&nbsp;(예약자: ".$booking_name.")";
+                //$booking_memo = "+ ".$booking_title;
+                $booking_info = "<a href='./booking_write.php?type=modify&date=$date&seqno=$booking_seqno'><span class='booking tooltip' data-tooltip='예약자 $booking_name'  style='height:12rem'><p>$booking_title</p></span></a>";
 				$booking_start = true;
 			} else {
 				$booking_info = "";
@@ -97,8 +99,13 @@
 		return $info."<br>".$memo."</a>";
 	}
 ?>
+<!--<td class='booking tooltip' data-tooltip='예약자 정지민'  style='height:12rem'>
+                                <p>+ Flexible UX 시나리오 내부 회의</p>
+                            </td>
+-->
 
 <? include INC_PATH."/top.php"; ?>
+
 
 <script type="text/javascript">
 	function sSubmit(f)
@@ -123,284 +130,289 @@
 	 }
 </script>
 </head>
-
 <body>
-<div class="wrapper">
 <form method="get" name="form">
-	<? include INC_PATH."/top_menu.php"; ?>
+    <? include INC_PATH."/top_menu.php"; ?>
+    <? include INC_PATH."/booking_menu.php"; ?>
 
-		<div class="inner-home">
-			<? include INC_PATH."/booking_menu.php"; ?>
+    <!-- 본문 시작 -->
+    <section class="section df-booking">
+        <div class="container">
+            <div class="content">
+                <div class="calendar is-large">
+                    <div class="calendar-nav">
+                        <div class="calendar-nav-previous-month">
+                            <a href="javascript:preDay();" class="button is-text is-small is-primary">
+                                <i class="fa fa-chevron-left"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <div class="field is-group">
+                                <div class="control select">
+                                    <select name="year" onchange='sSubmit(this.form)'>
+                                        <?
+                                        for ($i=$startYear; $i<=($p_year+1); $i++)
+                                        {
+                                            if ($i == $p_year)
+                                            {
+                                                $selected = " selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
 
-			<div class="work_wrap clearfix">
-				<div class="cal_top clearfix">
-					<a href="javascript:preDay();" class="prev"><img src="../img/btn_prev.gif" alt="전일보기" /></a>
-					<div>
-					<select name="year" onchange='sSubmit(this.form)'>
-					<?
-						for ($i=$startYear; $i<=($p_year+1); $i++) 
-						{
-							if ($i == $p_year) 
-							{ 
-								$selected = " selected"; 
-							}
-							else
-							{
-								$selected = "";
-							}
+                                            echo "<option value='".$i."'".$selected.">".$i."</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="month" onchange='sSubmit(this.form)'>
+                                        <?
+                                        for ($i=1; $i<=12; $i++)
+                                        {
+                                            if (strlen($i) == "1")
+                                            {
+                                                $j = "0".$i;
+                                            }
+                                            else
+                                            {
+                                                $j = $i;
+                                            }
 
-							echo "<option value='".$i."'".$selected.">".$i."</option>";
-						}
-					?>
-					</select>
-					<span>년</span></div>
-					<div>
-					<select name="month" onchange='sSubmit(this.form)'>
-					<?
-						for ($i=1; $i<=12; $i++) 
-						{
-							if (strlen($i) == "1") 
-							{
-								$j = "0".$i;
-							}
-							else
-							{
-								$j = $i;
-							}
+                                            if ($j == $p_month)
+                                            {
+                                                $selected = " selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
 
-							if ($j == $p_month)
-							{
-								$selected = " selected";
-							}
-							else
-							{
-								$selected = "";
-							}
+                                            echo "<option value='".$j."'".$selected.">".$i."</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="day" onchange='sSubmit(this.form)'>
+                                        <?
+                                        $last_day = date("t", mktime(0, 0, 0, $p_month, '01', $p_year));
 
-							echo "<option value='".$j."'".$selected.">".$i."</option>";
-						}
-					?>
-					</select>
-					<span>월</span></div>
-					<div>
-					<select name="day" onchange='sSubmit(this.form)'>
-					<?
-						$last_day = date("t", mktime(0, 0, 0, $p_month, '01', $p_year));
+                                        for ($i=1; $i<=$last_day; $i++)
+                                        {
+                                            if (strlen($i) == "1")
+                                            {
+                                                $j = "0".$i;
+                                            }
+                                            else
+                                            {
+                                                $j = $i;
+                                            }
 
-						for ($i=1; $i<=$last_day; $i++) 
-						{
-							if (strlen($i) == "1") 
-							{
-								$j = "0".$i;
-							}
-							else
-							{
-								$j = $i;
-							}
+                                            if ($j == $p_day)
+                                            {
+                                                $selected = " selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
 
-							if ($j == $p_day)
-							{
-								$selected = " selected";
-							}
-							else
-							{
-								$selected = "";
-							}
+                                            echo "<option value='".$j."'".$selected.">".$i."</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="calendar-nav-next-month">
+                            <a href="javascript:nextDay();" class="button is-text is-small is-primary">
+                                <i class="fa fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-							echo "<option value='".$j."'".$selected.">".$i."</option>";
-						}
-					?>
-					</select>
-					<span>일</span></div>
-					<a href="javascript:nextDay();" class="next"><img src="../img/btn_next.gif" alt="다음일보기" /></a>
-				</div>
-				<table class="notable work2" style="margin-bottom:50px;" width="100%">
-					<summary></summary>
-					<colgroup><col width="*" /><col width="18%" /><col width="18%" /><col width="18%" /><col width="18%" /><col width="18%" /></colgroup>
-					<tr>
-						<th class="gray">총 예약건수</th>
-						<th>회의실1 (3F)</th>
-						<th>회의실2 (3F)</th>
-						<th>회의실3 (2F)</th>
-						<th>회의실4 (2F)</th>
-						<th>회의실5 (B1F)</th>
-					</tr>
-					<tr>
-						<td><?=$total?></td>
-						<td><?=$total_room1?></td> 
-						<td><?=$total_room2?></td>
-						<td><?=$total_room3?></td>
-						<td><?=$total_room4?></td>
-						<td><?=$total_room5?></td>
-					</tr>
-					<tr>
-						<th>위치</th>
-						<td><img src="../img/booking/room_01.jpg"></td> 
-						<td><img src="../img/booking/room_02.jpg"></td>
-						<td><img src="../img/booking/room_03.jpg"></td>
-						<td><img src="../img/booking/room_04.jpg"></td>
-						<td><img src="../img/booking/room_05.jpg"></td>
-					</tr>
-				</table>
-			</div>
-			<div class="calender_wrap clearfix">
+            <hr class="hr-strong">
 
-				<table class="notable work5 project_detail board_list" width="100%" style="margin-bottom:10px;">
-					<caption>팀원 주간보고서 테이블</caption>
-					<colgroup>
-						<col width="*" />
-						<col width="18%" />
-						<col width="18%" />
-						<col width="18%" />
-						<col width="18%" />
-						<col width="18%" />
-					</colgroup>
+            <div class="content">
+                <div class="columns">
+                    <div class="column">
+                        <table class="table is-fullwidth is-hoverable">
+                            <thead>
+                            <td>
+                                <p><img src="/assets/images/room_01.jpg"></p>
+                                <p class="title is-size-6">회의실 1</p>
+                            </td>
+                            </thead>
+                            <tbody>
+                            <?
+                            for($i=1441580400; $i<=1441635400; $i=$i+1800)
+                            {
+                            $time = date("H:i",$i);
 
-					<thead>
-						<tr>
-							<th>시간</th>
-							<th>회의실1 (3F)</th>
-							<th>회의실2 (3F)</th>
-							<th>회의실3 (2F)</th>
-							<th>회의실4 (2F)</th>
-							<th>회의실5 (B1F)</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="booking_none">08:00<!--&nbsp;&nbsp;<? if($NowDate <= $date) { ?><a href="./booking_write.php?date=<?=$date?>&time=08:00"><img src="../img/project/btn_plus.gif" alt="추가" id="addTime"></a><? } else { ?>&nbsp;&nbsp;&nbsp;<? } ?>--></td>
-							<td colspan="5" rowspan="33">
-								<table class="notable work6 board_list" width="100%" style="margin-top:0px;">
-							<?
-								for($i=1441580400; $i<=1441635400; $i=$i+1800)
-								{
-									$time = date("H:i",$i);
+                            $room1_style = "booking_none";
 
-									$room1_style = "booking_none";
-									$room2_style = "booking_none";
-									$room3_style = "booking_none";
-									$room4_style = "booking_none";
-									$room5_style = "booking_none";
+                                    $room1_btn = "";
+                                    $room1_info = "";
 
-									$room1_btn = "";
-									$room2_btn = "";
-									$room3_btn = "";
-									$room4_btn = "";
-									$room5_btn = "";
+                                if($Data['ROOM1'][$time]['seqno']) {
+                                    $room1_style = "booking";
+                                    if($Data['ROOM1'][$time]['start']) {
+                                        $room1_style = " booking_first";
+                                        $room1_line = $Data['ROOM1'][$time]['line'];
+                                        $room1_info = getBookingInfo($Data['ROOM1'][$time]['info'],$Data['ROOM1'][$time]['memo'],$room1_line);
+                                    }
+                                } else {
+                                    if($NowDate <= $date) {
+                                        $room1_btn = "onclick=\"location.href='./booking_write.php?type=write&date=$date&time=$time&room=ROOM1';\"";
+                                        $room1_style .=" cursor";
+                                    }
+                                }
+                            ?>
+                                <tr>
+                                    <!--<td width="20%" class="<?=$room1_style?>" <?=$room1_btn?> style="position:relative; cursor: pointer;"><div style="position:absolute; z-index:10; top:1px; left:10px;"><?=$time?><?=$room1_info?></div></td>-->
+                                    <td style="position:relative; cursor: pointer;"><?=$time?><?=$room1_info?></td>
+                                </tr>
+                            <? } ?>
+                            </tbody>
+                        </table>
+                    </div>
 
-									$room1_info = "";
-									$room2_info = "";
-									$room3_info = "";
-									$room4_info = "";
-									$room5_info = "";
+                    <div class="column">
+                        <table class="table is-fullwidth is-hoverable">
+                            <thead>
+                            <td>
+                                <p><img src="/assets/images/room_02.jpg"></p>
+                                <p class="title is-size-6">회의실 1</p>
+                            </td>
+                            </thead>
+                            <tbody>
+                            <?
+                            for($i=1441580400; $i<=1441635400; $i=$i+1800)
+                            {
+                            $time = date("H:i",$i);
 
-									if($Data['ROOM1'][$time]['seqno']) {
-										$room1_style = "booking";
-										if($Data['ROOM1'][$time]['start']) {
-											$room1_style = " booking_first";
-											$room1_line = $Data['ROOM1'][$time]['line'];
-											$room1_info = getBookingInfo($Data['ROOM1'][$time]['info'],$Data['ROOM1'][$time]['memo'],$room1_line);
-										}
-									} else {
-										if($NowDate <= $date) {
-											$room1_btn = "onclick=\"location.href='./booking_write.php?type=write&date=$date&time=$time&room=ROOM1';\"";
-											$room1_style .=" cursor";
-										}
-									}
-									if($Data['ROOM2'][$time]['seqno']) {
-										$room2_style = "booking";
-										if($Data['ROOM2'][$time]['start']) {
-											$room2_style = " booking_first";
-											$room2_line = $Data['ROOM2'][$time]['line'];
-											$room2_info = getBookingInfo($Data['ROOM2'][$time]['info'],$Data['ROOM2'][$time]['memo'],$room2_line);
-										}
-									} else {
-										if($NowDate <= $date) {
-											$room2_btn = "onclick=\"location.href='./booking_write.php?type=write&date=$date&time=$time&room=ROOM2';\"";
-											$room2_style .=" cursor";
-										}
-									}
-									if($Data['ROOM3'][$time]['seqno']) {
-										$room3_style = "booking";
-										if($Data['ROOM3'][$time]['start']) {
-											$room3_style = " booking_first";
-											$room3_line = $Data['ROOM3'][$time]['line'];
-											$room3_info = getBookingInfo($Data['ROOM3'][$time]['info'],$Data['ROOM3'][$time]['memo'],$room3_line);
-										}
-									} else {
-										if($NowDate <= $date) {
-											$room3_btn = "onclick=\"location.href='./booking_write.php?type=write&date=$date&time=$time&room=ROOM3';\"";
-											$room3_style .=" cursor";
-										}
-									}
-									if($Data['ROOM4'][$time]['seqno']) {
+                            $room2_style = "booking_none";
+                            $room2_btn = "";
+                            $room2_info = "";
+
+
+                            if($Data['ROOM2'][$time]['seqno']) {
+                                $room2_style = "booking";
+                                if($Data['ROOM2'][$time]['start']) {
+                                    $room2_style = " booking_first";
+                                    $room2_line = $Data['ROOM2'][$time]['line'];
+                                    $room2_info = getBookingInfo($Data['ROOM2'][$time]['info'],$Data['ROOM2'][$time]['memo'],$room2_line);
+                                }
+                            } else {
+                                if($NowDate <= $date) {
+                                    $room2_btn = "onclick=\"location.href='./booking_write.php?type=write&date=$date&time=$time&room=ROOM2';\"";
+                                    $room2_style .=" cursor";
+                                }
+                            }
+                            ?>
+                            <tr>
+                                <td width="20%" class="<?=$room2_style?>" <?=$room2_btn?> style="position:relative;"><div style="position:absolute; z-index:10; top:1px; left:10px;"><?=$time?><?=$room2_info?></div></td>
+                            </tr>
+                            <? } ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="column">
+                        <table class="table is-fullwidth is-hoverable">
+                            <thead>
+                            <td>
+                                <p><img src="/assets/images/room_03.jpg"></p>
+                                <p class="title is-size-6">회의실 1</p>
+                            </td>
+                            </thead>
+                            <tbody>
+                            <?
+                            for($i=1441580400; $i<=1441635400; $i=$i+1800)
+                            {
+                            $time = date("H:i",$i);
+
+                            $room3_style = "booking_none";
+                            $room3_btn = "";
+                            $room3_info = "";
+
+                            if($Data['ROOM3'][$time]['seqno']) {
+                                $room3_style = "booking";
+                                if($Data['ROOM3'][$time]['start']) {
+                                    $room3_style = " booking_first";
+                                    $room3_line = $Data['ROOM3'][$time]['line'];
+                                    $room3_info = getBookingInfo($Data['ROOM3'][$time]['info'],$Data['ROOM3'][$time]['memo'],$room3_line);
+                                }
+                            } else {
+                                if($NowDate <= $date) {
+                                    $room3_btn = "onclick=\"location.href='./booking_write.php?type=write&date=$date&time=$time&room=ROOM3';\"";
+                                    $room3_style .=" cursor";
+                                }
+                            }
+
+                            ?>
+                            <tr>
+                                <td width="20%" class="<?=$room3_style?>" <?=$room3_btn?> style="position:relative;"><div style="position:absolute; z-index:10; top:1px; left:10px;"><?=$time?><?=$room3_info?></div></td>
+                            </tr>
+                            <? } ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="column">
+                        <table class="table is-fullwidth is-hoverable">
+                            <thead>
+                            <td>
+                                <p><img src="/assets/images/room_04.jpg"></p>
+                                <p class="title is-size-6">회의실 1</p>
+                            </td>
+                            </thead>
+                            <tbody>
+                            <?
+                            for($i=1441580400; $i<=1441635400; $i=$i+1800)
+                            {
+                            $time = date("H:i",$i);
+
+                            $room4_style = "booking_none";
+                            $room4_btn = "";
+                            $room4_info = "";
+
+
+                            if($Data['ROOM4'][$time]['seqno']) {
 										$room4_style = "booking";
 										if($Data['ROOM4'][$time]['start']) {
-											$room4_style = " booking_first";
-											$room4_line = $Data['ROOM4'][$time]['line'];
-											$room4_info = getBookingInfo($Data['ROOM4'][$time]['info'],$Data['ROOM4'][$time]['memo'],$room4_line);
-										}
+                                            $room4_style = " booking_first";
+                                            $room4_line = $Data['ROOM4'][$time]['line'];
+                                            $room4_info = getBookingInfo($Data['ROOM4'][$time]['info'],$Data['ROOM4'][$time]['memo'],$room4_line);
+                                        }
 									} else {
-										if($NowDate <= $date) {
-											$room4_btn = "onclick=\"location.href='./booking_write.php?type=write&date=$date&time=$time&room=ROOM4';\"";
-											$room4_style .=" cursor";
-										}
-									}
-									if($Data['ROOM5'][$time]['seqno']) {
-										$room5_style = "booking";
-										if($Data['ROOM5'][$time]['start']) {
-											$room5_style = " booking_first";
-											$room5_line = $Data['ROOM5'][$time]['line'];
-											$room5_info = getBookingInfo($Data['ROOM5'][$time]['info'],$Data['ROOM5'][$time]['memo'],$room5_line);
-										}
-									} else {
-										if($NowDate <= $date) {
-											$room5_btn = "onclick=\"location.href='./booking_write.php?type=write&date=$date&time=$time&room=ROOM5';\"";
-											$room5_style .=" cursor";
-										}
-									}
-							?>
-									<tr>
-										<td width="20%" class="<?=$room1_style?>" <?=$room1_btn?> style="position:relative;"><div style="position:absolute; z-index:10; top:1px; left:10px;"><?=$room1_info?></div></td>
-										<td width="20%" class="<?=$room2_style?>" <?=$room2_btn?> style="position:relative;"><div style="position:absolute; z-index:10; top:1px; left:10px;"><?=$room2_info?></div></td>
-										<td width="20%" class="<?=$room3_style?>" <?=$room3_btn?> style="position:relative;"><div style="position:absolute; z-index:10; top:1px; left:10px;"><?=$room3_info?></div></td>
-										<td width="20%" class="<?=$room4_style?>" <?=$room4_btn?> style="position:relative;"><div style="position:absolute; z-index:10; top:1px; left:10px;"><?=$room4_info?></div></td>
-										<td width="20%" class="<?=$room5_style?>" <?=$room5_btn?> style="position:relative;"><div style="position:absolute; z-index:10; top:1px; left:10px;"><?=$room5_info?></div></td>
-									</tr>
-							<?
-								}
-							?>
-								</table>					
+                                if($NowDate <= $date) {
+                                    $room4_btn = "onclick=\"location.href='./booking_write.php?type=write&date=$date&time=$time&room=ROOM4';\"";
+                                    $room4_style .=" cursor";
+                                }
+                            }
+                            ?>
+                            <tr>
+                                <td width="20%" class="<?=$room4_style?>" <?=$room4_btn?> style="position:relative;"><div style="position:absolute; z-index:10; top:1px; left:10px;"><?=$time?><?=$room4_info?></div></td>
+                            </tr>
+                            <? } ?>
 
-							</td>
-						</tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-				<?
-					for($i=1441582200; $i<=1441637200; $i=$i+1800)
-					{
-						$time = date("H:i",$i);
-						
-						/*
-						if($NowDate > $date) {
-							$booking_btn = "&nbsp;&nbsp;&nbsp;";
-						} else {			
-							$booking_btn = "<a href=\"./booking_write.php?date=$date&time=$time\"><img src=\"../img/project/btn_plus.gif\" alt=\"추가\" id=\"addTime\"></a>";
-						}
-						*/
-				?>
+        </div>
+    </section>
+    <!-- 본문 끌 -->
 
-						<tr>
-							<td class="time"><?=$time?><!--&nbsp;&nbsp;<?=$booking_btn?>--></td>
-						</tr>
 
-				<?
-					}
-				?>
-					</tbody>
-				</table>
-
-			</div>
-		</div>
 </form>
 
 <form method="get" name="form1">

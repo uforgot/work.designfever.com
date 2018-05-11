@@ -11,7 +11,7 @@ $startYear = 2013;
 <head>
 <title><?=HEAD_TITLE?></title>
 <meta http-equiv="Content-Type" content="text/html" charset="euc-kr"> 
-<meta name="viewport" content="width=device-width, initial-scale=1">    
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/assets/css/work.df.css">
 <link rel="stylesheet" href="/assets/css/jquery-ui.css" />
 <script src="/assets/js/jquery-1.11.0.min.js"></script>

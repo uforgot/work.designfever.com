@@ -194,9 +194,7 @@
         <div class="columns is-vcentered">
             <!-- Left side -->
             <div class="column">
-                <!-- todo 0413 구조 변경 -->
                     <div class="field is-grouped">
-                    	
                     		<? if ($board == "ilab") { ?>
                     		<div class="control select">
 														<select name="subject" id="subject">
@@ -237,22 +235,23 @@
                              <input id="keyword" class="input" type="text" placeholder="" type="text" name ="keyword" value="<?=$keyword?>">			
                         </div>
                         <div class="control is-hidden-mobile">
-                            <button class="button is-link" id="btnSearch">
+                            <a class="button is-link" id="btnSearch">
                                 <span class="icon is-small">
                                     <i class="fas fa-search"></i>
                                 </span>
                                 <span>검색</span>
-                            </button>
+                            </a>
                         </div>
     
       									<div class="control is-hidden-tablet">
-                             <button class="button is-link" >
+                             <a class="button is-link" >
                                 <span class="icon is-small">
                                     <i class="fas fa-search"></i>
-                                </span>                            
+                                </span>
+                             </a>
                         </div>
                         
-    										<div class="control is-hidden-tablet" >
+    					<div class="control is-hidden-tablet" >
                            <a href="javascript:funWrite();" class="button is-danger" id="btnWrite">
                                 <span class="icon is-small">
                                     <i class="fas fa-pencil-alt"></i>
@@ -275,7 +274,7 @@
             </div>
         </div>
 
-        <table class="table is-fullwidth is-hoverable type-common">
+        <table class="table is-fullwidth is-hoverable is-resize">
             <colgroup>
                 <col width="8%">
                 <col width="*">

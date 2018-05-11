@@ -23,8 +23,9 @@
 
 	$page = isset($_REQUEST['page']) ? $_REQUEST['page'] : 1; 
 	$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : "write";  
-	$win = isset($_REQUEST['win']) ? $_REQUEST['win'] : null;  
-	$year = isset($_REQUEST['year']) ? $_REQUEST['year'] : date("Y"); 
+	$win = isset($_REQUEST['win']) ? $_REQUEST['win'] : null;
+	$year = isset($_REQUEST['year']) ? $_REQUEST['year'] : date("Y");
+    $prs_id = isset($_REQUEST['prs_id']) ? $_REQUEST['prs_id'] : null;
 
 	$seqno = isset($_REQUEST['seqno']) ? $_REQUEST['seqno'] : null;
 	$order = isset($_REQUEST['order']) ? $_REQUEST['order'] : null;  
@@ -109,7 +110,7 @@
 	else if ($type == "modify")
 	{
 		$type_title = "¼öÁ¤";
-		$retUrl = $ret_page."?type=". $type."&seqno=". $seqno."&page=". $page."&win=". $win;
+		$retUrl = $ret_page."?type=". $type."&prs_id=". $prs_id."&seqno=". $seqno."&page=". $page."&win=". $win;
 
 		$sql = "UPDATE DF_WEEKLY SET
 					MEMO = '$memo', REG_DATE = getdate()
