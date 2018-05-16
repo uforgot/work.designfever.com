@@ -1,7 +1,7 @@
 <?
 	require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
 	require_once CMN_PATH."/login_check.php";
-		require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
+	require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
 
 <?
@@ -232,13 +232,6 @@
         }else{}
     }
 
-    function delFile(file)
-    {
-        document.getElementById("file_"+file).value = "";
-        document.getElementById("attachment_"+file).value = "";
-        document.getElementById("delfile_"+file).innerHTML = "";
-        document.getElementById("filedel_"+file).value = "Y";
-    }
 
 
 	$(document).ready(function(){

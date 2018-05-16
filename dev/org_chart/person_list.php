@@ -326,7 +326,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                 </div>
                 <div class="columns is-multiline">
                     <?
-                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281) 
+                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5) AND A.PRS_ID NOT IN(102,281) 
                                                       AND A.PRS_TEAM IN ('Creative Planning 1 Team')  ORDER BY B.SEQNO, A.PRS_ID";
                     $rs = sqlsrv_query($dbConn, $sql);
                     While ($record = sqlsrv_fetch_array($rs)) {
@@ -375,7 +375,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
 
             <div class="columns is-multiline">
                 <?
-                $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281)
+                $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5) AND A.PRS_ID NOT IN(102,281)
                                                       AND A.PRS_TEAM IN ('Creative Planning 2 Team')  ORDER BY B.SEQNO, A.PRS_ID";
 
                 $rs = sqlsrv_query($dbConn, $sql);
@@ -476,7 +476,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                 </div>
                 <div class="columns is-multiline">
                     <?
-                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,7) AND A.PRS_ID NOT IN(102,281)
+                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3) AND A.PRS_ID NOT IN(102,281)
                                                             AND A.PRS_TEAM IN ('Marketing Planning Division')  ORDER BY B.SEQNO, A.PRS_ID";
                     $rs = sqlsrv_query($dbConn, $sql);
                     While ($record = sqlsrv_fetch_array($rs)) {
@@ -593,7 +593,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                 </div>
                 <div class="columns is-multiline">
                     <?
-                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281) 
+                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5) AND A.PRS_ID NOT IN(102,281) 
                                                                   AND A.PRS_TEAM IN ('Design 1 Division 1 Team')  ORDER BY B.SEQNO, A.PRS_ID";
                     $rs = sqlsrv_query($dbConn, $sql);
                     While ($record = sqlsrv_fetch_array($rs)) {
@@ -694,7 +694,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                 </div>
                 <div class="columns is-multiline">
                     <?
-                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,7) AND A.PRS_ID NOT IN(102,281) 
+                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3) AND A.PRS_ID NOT IN(102,281) 
                                                                     AND A.PRS_TEAM IN ('Design 2 Division 1 Team')  ORDER BY B.SEQNO, A.PRS_ID";
                     $rs = sqlsrv_query($dbConn, $sql);
                     While ($record = sqlsrv_fetch_array($rs)) {
@@ -743,7 +743,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
 
             <div class="columns is-multiline">
                 <?
-                $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281)
+                $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5) AND A.PRS_ID NOT IN(102,281)
                                                                   AND A.PRS_TEAM IN ('Design 2 Division 2 Team')  ORDER BY B.SEQNO, A.PRS_ID";
 
                 $rs = sqlsrv_query($dbConn, $sql);
@@ -860,7 +860,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                 </div>
                 <div class="columns is-multiline">
                     <?
-                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281) 
+                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5) AND A.PRS_ID NOT IN(102,281) 
                                                                             AND A.PRS_TEAM IN ('Motion 1 Team')  ORDER BY B.SEQNO, A.PRS_ID";
                     $rs = sqlsrv_query($dbConn, $sql);
                     While ($record = sqlsrv_fetch_array($rs)) {
@@ -910,7 +910,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
             </div>
             <div class="columns is-multiline">
                 <?
-                $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281)
+                $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5) AND A.PRS_ID NOT IN(102,281)
                                                                     AND A.PRS_TEAM IN ('Art Division')  ORDER BY B.SEQNO, A.PRS_ID";
 
                 $rs = sqlsrv_query($dbConn, $sql);
@@ -1027,7 +1027,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                 </div>
                 <div class="columns is-multiline">
                     <?
-                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281) 
+                    $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5) AND A.PRS_ID NOT IN(102,281) 
                                                                                       AND A.PRS_TEAM IN ('VID 1 Team')  ORDER BY B.SEQNO, A.PRS_ID";
                     $rs = sqlsrv_query($dbConn, $sql);
                     While ($record = sqlsrv_fetch_array($rs)) {
@@ -1076,7 +1076,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
 
             <div class="columns is-multiline">
                 <?
-                $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281)
+                $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5) AND A.PRS_ID NOT IN(102,281)
                                                                                       AND A.PRS_TEAM IN ('VID 2 Team')  ORDER BY B.SEQNO, A.PRS_ID";
 
                 $rs = sqlsrv_query($dbConn, $sql);
@@ -1129,7 +1129,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
             </div>
             <div class="columns is-multiline">
                 <?
-                $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281)
+                $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION 	 WHERE A.PRF_ID IN (1,2,3,4,5) AND A.PRS_ID NOT IN(102,281)
                                                                                     AND A.PRS_TEAM IN ('LAB')  ORDER BY B.SEQNO, A.PRS_ID";
 
                 $rs = sqlsrv_query($dbConn, $sql);
@@ -1196,7 +1196,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                     </div>
                     <div class="columns is-multiline">
                         <?
-                        $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5,7) AND A.PRS_ID NOT IN(102,281) 
+                        $sql = "SELECT A.PRS_ID , A.PRS_NAME , A.PRS_POSITION1, A.PRS_POSITION2, A.PRS_EXTENSION, A.FILE_IMG, A.PRS_EMAIL, A.PRS_MOBILE FROM DF_PERSON A WITH (NOLOCK) INNER JOIN DF_POSITION_CODE B WITH (NOLOCK) ON A.PRS_POSITION = B.POSITION WHERE A.PRF_ID IN (1,2,3,4,5) AND A.PRS_ID NOT IN(102,281) 
                                                                                           AND A.PRS_TEAM IN ('Business Support Team')  ORDER BY B.SEQNO, A.PRS_ID";
                         $rs = sqlsrv_query($dbConn, $sql);
                         While ($record = sqlsrv_fetch_array($rs)) {

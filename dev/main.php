@@ -115,8 +115,8 @@ require_once CMN_PATH."/weekly_check.php";
             $("#popAlert3").addClass("modal is-active");
         }
         <? } else { ?>
-            $("#popAlert3").css("display","none");
-            ("#popAlert3").removeClass("is-active");
+            //$("#popAlert3").css("display","none");
+            $("#popAlert3").removeClass("is-active");
         <? } ?>
     });
     <? } ?>

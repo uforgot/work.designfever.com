@@ -139,7 +139,7 @@
 		});
 
 		//µî·Ï
-		/*		
+
 		$("#btnWrite").attr("style","cursor:pointer;").click(function(){			
 			$("#page").val("1");
 			$("#subject").val("");
@@ -149,7 +149,7 @@
 			$("#form").attr("action","book_write.php"); 
 			$("#form").submit();
 		});
-		*/
+
 	});
 
 	function funWrite(){		

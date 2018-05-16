@@ -22,7 +22,7 @@
 		if(confirm(msg)){
 			frm = document.form;
 			frm.target	= "hdnFrame";
-			frm.action = "commuting/commute_check_act2.php";
+			frm.action = "/commuting/commute_check_act2.php";
 			frm.submit();
 		}else{
 			return;

@@ -159,8 +159,11 @@
   color: #cccccc;
   text-align: left; }
   .df-commuting .calendar .calendar-events .tag {
-    margin: 0.1rem;
-    vertical-align: middle; }
+    border-radius: 2px;
+    font-size: 0.5rem;
+    vertical-align: middle;
+    padding-left: 0.3em;
+    padding-right: 0.3em; }
   .df-commuting .calendar .calendar-events .button {
     width: 4rem; }
   @media screen and (max-width: 767px) {
@@ -198,21 +201,94 @@
     .df-commuting .calendar .calendar-date.is-last {
       border-bottom: 1px solid #cdcdcd !important; } }
 
+.df-project .modal section {
+  min-width: auto; }
+.df-project .modal .column-center {
+  padding: 0; }
+.df-project .modal .last-button {
+  margin: auto; }
+.df-project .modal .panel {
+  border-radius: 4px !important; }
+.df-project .modal .search-result {
+  width: 100%;
+  height: 15rem;
+  overflow-y: scroll; }
+  .df-project .modal .search-result .search-member {
+    padding-top: 0.2rem;
+    height: 2rem; }
+    .df-project .modal .search-result .search-member:not(:last-child) {
+      border-bottom: dotted 1px #dbdbdb; }
+  @media screen and (max-width: 767px) {
+    .df-project .modal .search-result {
+      height: 4rem; } }
+.df-project .modal .card-content {
+  padding: 0.8rem; }
+.df-project .modal .member-result {
+  width: 100%;
+  height: 17.5rem;
+  overflow-x: hidden;
+  overflow-y: scroll; }
+  .df-project .modal .member-result p {
+    padding: 0.2rem; }
+  .df-project .modal .member-result .member-title {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-bottom: solid 1px #dbdbdb;
+    margin-bottom: 0.5rem; }
+  @media screen and (max-width: 767px) {
+    .df-project .modal .member-result {
+      height: 4rem; } }
+
+.df-weekly .textarea {
+  font-size: 0.75rem; }
 .df-weekly .is-report td, .df-weekly .is-report th {
   font-size: 0.8rem; }
 @media screen and (max-width: 767px) {
-  .df-weekly .is-report table thead {
+  .df-weekly .is-report thead {
     display: none; }
-  .df-weekly .is-report table td, .df-weekly .is-report table th {
+  .df-weekly .is-report td, .df-weekly .is-report th {
     display: block;
     border: none;
     border-bottom: 1px solid #dbdbdb; }
-    .df-weekly .is-report table td:first-child, .df-weekly .is-report table th:first-child {
+    .df-weekly .is-report td:first-child, .df-weekly .is-report th:first-child {
       padding: 0.3rem 0 0.3rem 0.3rem;
       font-size: 0.8rem;
       background: #dbdbdb;
       border-bottom: 1px solid #dbdbdb;
       border-top: 1px solid #000; } }
+
+.df-booking .btn-mobile {
+  padding-bottom: 1.75rem; }
+.df-booking .modal-booking {
+  min-width: 100%; }
+  .df-booking .modal-booking .column:first-child {
+    padding-right: 0; }
+  .df-booking .modal-booking .column:last-child {
+    padding-left: 0; }
+  .df-booking .modal-booking .control {
+    margin-right: 0.25rem !important; }
+.df-booking table thead td {
+  text-align: center;
+  border-bottom: 2px solid #000; }
+.df-booking table tbody td {
+  text-align: center;
+  font-size: 0.5rem;
+  height: 2rem; }
+  .df-booking table tbody td.booking {
+    display: table-cell;
+    border: 2px solid #fff !important;
+    background: #4880db;
+    color: #fff;
+    text-align: left;
+    font-size: 0.75rem; }
+    .df-booking table tbody td.booking p {
+      margin-bottom: 0; }
+.df-booking table tbody tr {
+  color: #dbdbdb; }
+.df-booking table tbody tr:nth-child(2n  +1) {
+  color: #000; }
+.df-booking table tbody tr:last-child {
+  border-bottom: 2px solid #000; }
 
 body {
   font-family: "Nanum Gothic";

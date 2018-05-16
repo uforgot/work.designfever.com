@@ -199,65 +199,6 @@
 								<tr>
 									<td colspan="5" style="has-text-centered">등록된 휴가계가 없습니다.</td>
 								</tr>
-								
-								<!--                                
-                <tr>
-                    <td>3</td>
-                    <td>
-                        <div class="level is-mobile">
-                            <div class="level-left">
-                                2018-03-15
-                            </div>
-                            <div class="level-right is-hidden-tablet">
-                                <div class="button">연차휴가계</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="has-text-centered">오전반차</td>
-                    <td class="has-text-centered is-hidden-mobile">
-                        <div class="button">연차휴가계</div>
-                    </td>
-                    <td class="has-text-centered">
-                        결제
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>
-                        <div class="level is-mobile">
-                            <div class="level-left">
-                                2018-03-15
-                            </div>
-                            <div class="level-right is-hidden-tablet">
-                                <div class="button is-static">자동반차</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="has-text-centered">오전반차</td>
-                    <td class="has-text-centered is-hidden-mobile">
-                        <div class="button is-static">자동반차</div>
-                    </td>
-                    <td class="has-text-centered">-</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>
-                        <div class="level is-mobile">
-                            <div class="level-left">
-                                2018-03-15
-                            </div>
-                            <div class="level-right is-hidden-tablet">
-                                <div class="button is-static">자동반차</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="has-text-centered">오전반차</td>
-                    <td class="has-text-centered is-hidden-mobile">
-                        <div class="button is-static">자동반차</div>
-                    </td>
-                    <td class="has-text-centered">-</td>
-                </tr>
-                -->
             <?
 									}
 									else
@@ -399,5 +340,26 @@
 </section>
 <? include INC_PATH."/bottom.php"; ?>
 </form>
+
+
+
+<div id="popDetail" class="approval-popup2" style="display:none;">
+    <div class="title">
+        <h3 class="aaa">휴가계</h3>
+        <a href="javascript:HidePop('Detail');"><img src="/img/btn_popup_close.gif" alt=""></a>
+    </div>
+
+    <div class="content-title" style="height:10px;">
+    </div>
+
+    <div class="content-wrap" id="pop_detail_content">
+
+    </div>
+
+    <div class="btn-wrap" id="pop_detail_modify">
+    </div>
+</div>
+
+
 </body>
 </html>

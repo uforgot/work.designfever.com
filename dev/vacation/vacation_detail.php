@@ -1,10 +1,11 @@
 <?
-	require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
-	require_once CMN_PATH."/login_check.php";
+    require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
+    require_once CMN_PATH."/login_check.php";
+    require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
 
 <?
-	$doc_no = isset($_REQUEST['doc_no']) ? $_REQUEST['doc_no'] : null; 
+	$doc_no = isset($_REQUEST['doc_no']) ? $_REQUEST['doc_no'] : null;
 
 	if ($doc_no == "")
 	{
@@ -63,7 +64,7 @@
 				$file2 = $record['FILE_2'];
 				$file3 = $record['FILE_3'];
 
-				if ($v == 0) 
+				if ($v == 0)
 				{
 					$vacation .= "연차 휴가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ". $start_date ." - ". $end_date ." (". $use_day ."일)<br>";
 				}
@@ -71,7 +72,7 @@
 				{
 					$vacation .= "프로젝트 휴가 : ". $start_date ." - ". $end_date ." (". floatval($use_day) ."일)<br>";
 				}
-				
+
 				$v++;
 			}
 			$form_title = "연프";
@@ -143,7 +144,7 @@
 		else
 		{
 			$record = sqlsrv_fetch_array($rs);
-			
+
 			$title = $record['TITLE'];
 			$contents = $record['CONTENTS'];
 			$approval_date = $record['APPROVAL_DATE'];
@@ -162,7 +163,7 @@
 			$file1 = $record['FILE_1'];
 			$file2 = $record['FILE_2'];
 			$file3 = $record['FILE_3'];
-			
+
 			$vacation .= $start_date ." - ". $end_date ." (". floatval($use_day) ."일)";
 
 			$writer_team = $team;
@@ -177,7 +178,7 @@
 ?>
 
 <? include INC_PATH."/top.php"; ?>
-<script src="/js/approval.js"></script>
+<script src="/assets/js/approval.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -267,7 +268,7 @@
 			$to_signThis = explode("##",$to_signArr);
 			$to_signpwdThis = explode("##",$to_signpwdArr);
 			$to_status_prevThis = explode("##",$to_status_prevArr);
-	
+
 			$ArrCount = count($to_orderThis);
 		?>
 		content_html = content_html + "							<tr style=\"height:30px\">";
@@ -347,7 +348,7 @@
 		<?
 			$sql = "SELECT C_PRS_ID, C_PRS_NAME, C_PRS_POSITION FROM DF_APPROVAL_CC WITH(NOLOCK) WHERE DOC_NO = '$doc_no' ORDER BY C_ORDER";
 			$rs = sqlsrv_query($dbConn, $sql);
-	
+
 			$i = 0;
 			while ($record = sqlsrv_fetch_array($rs))
 			{
@@ -374,7 +375,7 @@
 				}
 				$i++;
 			}
-		?>	
+		?>
 		content_html = content_html + "					</td>";
 		content_html = content_html + "				</tr>";
 		content_html = content_html + "				<tr>";
@@ -397,7 +398,7 @@
 		content_html = content_html + "				</tr>";
 		content_html = content_html + "			</tbody>";
 		content_html = content_html + "		</table>";
-		
+
 		content_html = content_html + "		<div class=\"editor-txt\"><?=$contents?></div>";
 
 		content_html = content_html + "		<table class=\"editor-table2\" width=\"100%\">";
