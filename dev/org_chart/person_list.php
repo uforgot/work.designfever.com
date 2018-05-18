@@ -232,7 +232,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?= $col_prs_name ?></span>
-                                    <span class="title is-size-7">/ 대표</span>
+                                    <span class="title is-size-7"> 대표</span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?= $col_prs_mobile ?>
@@ -295,7 +295,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?= $col_prs_name ?></span>
-                                    <span class="title is-size-7">/ <?=$col_prs_position1?></span>
+                                    <span class="title is-size-7"> <?=$col_prs_position1?></span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?= $col_prs_mobile ?>
@@ -332,6 +332,16 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                     While ($record = sqlsrv_fetch_array($rs)) {
                     $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
                     $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+
+                    if ($col_prs_position2 == $col_prs_position1)
+                    {
+                        $div_prs_position = $col_prs_position2;
+                    }
+                    else
+                    {
+                        $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                    }
+
                     ?>
                     <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                         <!--<div class="notification is-white">-->
@@ -346,7 +356,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?=$col_prs_name?></span>
-                                    <span class="title is-size-7">/ <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                    <span class="title is-size-7"> <?=$div_prs_position?></span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?=$col_prs_mobile?>
@@ -382,6 +392,14 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                 While ($record = sqlsrv_fetch_array($rs)) {
                 $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
                 $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+                if ($col_prs_position2 == $col_prs_position1)
+                {
+                    $div_prs_position = $col_prs_position2;
+                }
+                else
+                {
+                    $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                }
                 ?>
                 <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                     <!--<div class="notification is-white ">-->
@@ -396,7 +414,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                         <div class="column">
                             <p class="is-member-info">
                                 <span class="title is-size-6"><?=$col_prs_name?></span>
-                                <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                <span class="title is-size-7"> <?=$div_prs_position?></span>
                             </p>
                             <p class="is-member-phone">
                                 <?=$col_prs_mobile?>
@@ -421,6 +439,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
         While ($record = sqlsrv_fetch_array($rs)) {
             $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
             $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+
             ?>
 
             <div class="content">
@@ -448,7 +467,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?= $col_prs_name ?></span>
-                                    <span class="title is-size-7">/ <?=$col_prs_position1?></span>
+                                    <span class="title is-size-7"> <?=$col_prs_position1?></span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?= $col_prs_mobile ?>
@@ -482,6 +501,14 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                     While ($record = sqlsrv_fetch_array($rs)) {
                     $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
                     $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+                    if ($col_prs_position2 == $col_prs_position1)
+                    {
+                        $div_prs_position = $col_prs_position2;
+                    }
+                    else
+                    {
+                        $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                    }
                     ?>
                     <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                         <!--<div class="notification is-white ">-->
@@ -496,7 +523,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?=$col_prs_name?></span>
-                                    <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                    <span class="title is-size-7"> <?=$div_prs_position?></span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?=$col_prs_mobile?>
@@ -536,6 +563,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
         While ($record = sqlsrv_fetch_array($rs)) {
             $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
             $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+
             ?>
             <div class="content">
                 <div class="title is-size-6">
@@ -562,7 +590,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?= $col_prs_name ?></span>
-                                    <span class="title is-size-7">/ <?=$col_prs_position1?></span>
+                                    <span class="title is-size-7"> <?=$col_prs_position1?></span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?= $col_prs_mobile ?>
@@ -599,6 +627,14 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                     While ($record = sqlsrv_fetch_array($rs)) {
                     $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
                     $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+                    if ($col_prs_position2 == $col_prs_position1)
+                    {
+                        $div_prs_position = $col_prs_position2;
+                    }
+                    else
+                    {
+                        $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                    }
                     ?>
                     <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                         <!--<div class="notification is-white ">-->
@@ -613,7 +649,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?=$col_prs_name?></span>
-                                    <span class="title is-size-7">/ <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                    <span class="title is-size-7"> <?=$div_prs_position?></span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?=$col_prs_mobile?>
@@ -663,7 +699,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?= $col_prs_name ?></span>
-                                    <span class="title is-size-7">/ <?=$col_prs_position1?></span>
+                                    <span class="title is-size-7"> <?=$col_prs_position1?></span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?= $col_prs_mobile ?>
@@ -700,6 +736,14 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                     While ($record = sqlsrv_fetch_array($rs)) {
                     $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
                     $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+                    if ($col_prs_position2 == $col_prs_position1)
+                    {
+                        $div_prs_position = $col_prs_position2;
+                    }
+                    else
+                    {
+                        $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                    }
                     ?>
                     <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                         <!--<div class="notification is-white ">-->
@@ -714,7 +758,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?=$col_prs_name?></span>
-                                    <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                    <span class="title is-size-7"> <?=$div_prs_position?></span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?=$col_prs_mobile?>
@@ -750,6 +794,14 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                 While ($record = sqlsrv_fetch_array($rs)) {
                 $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
                 $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+                if ($col_prs_position2 == $col_prs_position1)
+                {
+                    $div_prs_position = $col_prs_position2;
+                }
+                else
+                {
+                    $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                }
                 ?>
                 <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                     <!--<div class="notification is-white ">-->
@@ -764,7 +816,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                         <div class="column">
                             <p class="is-member-info">
                                 <span class="title is-size-6"><?=$col_prs_name?></span>
-                                <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                <span class="title is-size-7"> <?=$div_prs_position?></span>
                             </p>
                             <p class="is-member-phone">
                                 <?=$col_prs_mobile?>
@@ -829,7 +881,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?= $col_prs_name ?></span>
-                                    <span class="title is-size-7">/ <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                    <span class="title is-size-7"> <?=$col_prs_position2?> </span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?= $col_prs_mobile ?>
@@ -866,6 +918,14 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                     While ($record = sqlsrv_fetch_array($rs)) {
                     $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
                     $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+                    if ($col_prs_position2 == $col_prs_position1)
+                    {
+                        $div_prs_position = $col_prs_position2;
+                    }
+                    else
+                    {
+                        $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                    }
                     ?>
                     <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                         <!--<div class="notification is-white ">-->
@@ -880,7 +940,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?=$col_prs_name?></span>
-                                    <span class="title is-size-7">/ <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                    <span class="title is-size-7"> <?=$div_prs_position?></span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?=$col_prs_mobile?>
@@ -917,6 +977,14 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                 While ($record = sqlsrv_fetch_array($rs)) {
                 $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
                 $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+                if ($col_prs_position2 == $col_prs_position1)
+                {
+                    $div_prs_position = $col_prs_position2;
+                }
+                else
+                {
+                    $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                }
                 ?>
                 <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                     <!--<div class="notification is-white ">-->
@@ -931,7 +999,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                         <div class="column">
                             <p class="is-member-info">
                                 <span class="title is-size-6"><?=$col_prs_name?></span>
-                                <span class="title is-size-7"> / <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                <span class="title is-size-7"> <?=$div_prs_position?></span>
                             </p>
                             <p class="is-member-phone">
                                 <?=$col_prs_mobile?>
@@ -996,7 +1064,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?= $col_prs_name ?></span>
-                                    <span class="title is-size-7">/ <?=$col_prs_position2?></span>
+                                    <span class="title is-size-7"> <?=$col_prs_position2?></span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?= $col_prs_mobile ?>
@@ -1033,6 +1101,15 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                     While ($record = sqlsrv_fetch_array($rs)) {
                     $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
                     $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+                    if ($col_prs_position2 == $col_prs_position1)
+                    {
+                        $div_prs_position = $col_prs_position2;
+                    }
+                    else
+                    {
+                        $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                    }
+
                     ?>
                     <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                         <!--<div class="notification is-white ">-->
@@ -1047,7 +1124,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                             <div class="column">
                                 <p class="is-member-info">
                                     <span class="title is-size-6"><?=$col_prs_name?></span>
-                                    <span class="title is-size-7">/ <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                    <span class="title is-size-7"> <?=$div_prs_position?></span>
                                 </p>
                                 <p class="is-member-phone">
                                     <?=$col_prs_mobile?>
@@ -1083,6 +1160,14 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                 While ($record = sqlsrv_fetch_array($rs)) {
                 $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
                 $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+                if ($col_prs_position2 == $col_prs_position1)
+                {
+                    $div_prs_position = $col_prs_position2;
+                }
+                else
+                {
+                    $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                }
                 ?>
                 <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                     <!--<div class="notification is-white ">-->
@@ -1097,7 +1182,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                         <div class="column">
                             <p class="is-member-info">
                                 <span class="title is-size-6"><?=$col_prs_name?></span>
-                                <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                <span class="title is-size-7"> <?=$div_prs_position?></span>
                             </p>
                             <p class="is-member-phone">
                                 <?=$col_prs_mobile?>
@@ -1135,6 +1220,14 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                 $rs = sqlsrv_query($dbConn, $sql);
                 While ($record = sqlsrv_fetch_array($rs)) {
                 $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
+                if ($col_prs_position2 == $col_prs_position1)
+                {
+                    $div_prs_position = $col_prs_position2;
+                }
+                else
+                {
+                    $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                }
                 ?>
                 <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                     <!--<div class="notification is-white ">-->
@@ -1149,7 +1242,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                         <div class="column">
                             <p class="is-member-info">
                                 <span class="title is-size-6"><?=$col_prs_name?></span>
-                                <span class="title is-size-7"> <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                <span class="title is-size-7"> <?=$div_prs_position?></span>
                             </p>
                             <p class="is-member-phone">
                                 <?=$col_prs_mobile?>
@@ -1202,6 +1295,14 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                         While ($record = sqlsrv_fetch_array($rs)) {
                         $col_prs_id = $record['PRS_ID']; $col_prs_name = $record['PRS_NAME']; $col_prs_position1 = $record['PRS_POSITION1']; $col_prs_position2 = $record['PRS_POSITION2']; $col_prs_extension = $record['PRS_EXTENSION']; $col_file_img = $record['FILE_IMG']; $col_prs_email = $record['PRS_EMAIL']; $col_prs_mobile = $record['PRS_MOBILE'];
                         $div_style= getMemberCheck($col_prs_id, $now_date,$yesterday_date);
+                        if ($col_prs_position2 == $col_prs_position1)
+                        {
+                            $div_prs_position = $col_prs_position2;
+                        }
+                        else
+                        {
+                            $div_prs_position = $col_prs_position2 ." | ". $col_prs_position1;
+                        }
                         ?>
                         <div class="column is-one-third-desktop is-half-tablet is-one-quarter-fullhd">
                             <!--<div class="notification is-white ">-->
@@ -1216,7 +1317,7 @@ $orderbycase .= " ORDER BY CASE " . $orderby1 . " END, CASE " . $orderby2 . " EN
                                 <div class="column">
                                     <p class="is-member-info">
                                         <span class="title is-size-6"><?=$col_prs_name?></span>
-                                        <span class="title is-size-7">/ <?=$col_prs_position2?> | <?=$col_prs_position1?></span>
+                                        <span class="title is-size-7"> <?=$div_prs_position?></span>
                                     </p>
                                     <p class="is-member-phone">
                                         <?=$col_prs_mobile?>

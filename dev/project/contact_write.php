@@ -283,7 +283,37 @@
                 <div class="field-group">
                     <div class="field">
                         <div class="control">
-                            <input name="title" class="input is-large" type="text" placeholder="제목을 입력하세요" value="<?=$book_title?>">
+                            <input name="title" class="input is-large" type="text" placeholder="프로젝트" value="<?=$book_title?>">
+                            <br>
+                            <br>
+                        </div>
+                        <div class="control">
+                            <input name="title" class="input is-large" type="text" placeholder="프로젝트" value="<?=$book_title?>">
+                            <br>
+                            <br>
+                        </div>
+                        <div class="control">
+                            <input name="title" class="input is-large" type="text" placeholder="프로젝트" value="<?=$book_title?>">
+                            <br>
+                            <br>
+                        </div>
+                        <div class="control">
+                            <input name="title" class="input is-large" type="text" placeholder="프로젝트" value="<?=$book_title?>">
+                            <br>
+                            <br>
+                        </div>
+                        <div class="control">
+                            <input name="title" class="input is-large" type="text" placeholder="프로젝트" value="<?=$book_title?>">
+                            <br>
+                            <br>
+                        </div>
+                        <div class="control">
+                            <input name="title" class="input is-large" type="text" placeholder="프로젝트" value="<?=$book_title?>">
+                            <br>
+                            <br>
+                        </div>
+                        <div class="control">
+                            <input name="title" class="input is-large" type="text" placeholder="프로젝트" value="<?=$book_title?>">
                             <br>
                             <br>
                         </div>

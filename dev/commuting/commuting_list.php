@@ -85,10 +85,9 @@ if (sizeof($record) > 0)
     $mark4 ="";
     $mark5 ="";
     $mark6 ="";
-    $mark7 ="";
-    $mark8 ="";
-    $mark9 ="";
-    $mark10 ="";
+    $mark6_1="";
+    $mark6_2="";
+
 
     $calendar_events1 =""; //출근시간
     $calendar_events2 =""; //퇴근시간
@@ -96,14 +95,11 @@ if (sizeof($record) > 0)
     $calendar_events4 ="";
     $calendar_events5 ="";
     $calendar_events6 ="";
-    $calendar_events7 ="";
-    $calendar_events8 ="";
-    $calendar_events9 ="";
-    $calendar_events10 ="";
 
     $icon1="";
     $icon2="";
     $icon3="";
+    $icon4="";
 
 }
 ?>
@@ -142,12 +138,20 @@ if (sizeof($record) > 0)
     function ShowPopCustom(id,pid,y,m,d,mode)
     {
         var date = y+"-"+m+"-"+d;
+        $("#pop"+id).addClass("modal is-active");
+        $("#popDayEditFrm").attr("src","commuting_request_pop.php?mode="+mode+"&id="+pid+"&date="+date);
+
         $("#t_month").text(m);
         $("#t_day").text(d);
 
-        $("#popDayEditFrm").attr("src","commuting_request_pop.php?mode="+mode+"&id="+pid+"&date="+date);
-        $("#pop"+id).attr("style","display:inline");
     }
+
+    function closePop(id){
+        $("#pop"+id).removeClass("is-active");
+        $("#hdnFrame").attr("src","");
+    }
+
+
 </script>
 </head>
 
@@ -340,202 +344,294 @@ if (sizeof($record) > 0)
 
                             while ($record = sqlsrv_fetch_array($rs))
                             {
-                                $count++;
+                                        $count++;
 
-                                $col_date = $record['DATE'];								//날짜
-                                $col_datekind = $record['DATEKIND'];				        //공휴일 여부
-                                $col_day = $record['DAY'];									//요일
-                                $col_date_name = $record['DATE_NAME'];			            //기념일
-                                $col_gubun = $record['GUBUN'];							    //출퇴근구분
-                                $col_gubun1 = $record['GUBUN1'];						    //출근구분
-                                $col_gubun2 = $record['GUBUN2'];						    //퇴근구분
-                                $col_checktime1 = $record['CHECKTIME1'];		            //출근시간
-                                $col_checktime2 = $record['CHECKTIME2'];		            //퇴근시간
-                                $col_totaltime = $record['TOTALTIME'];			            //근무시간
-                                $col_overtime = $record['OVERTIME'];			            //초과근무
-                                $col_undertime = $record['UNDERTIME'];			            //미만근무
-                                $col_pay1 = $record['PAY1'];					            //점심식비
-                                $col_pay2 = $record['PAY2'];					            //저녁식비
-                                $col_pay3 = $record['PAY3'];					            //간식비
-                                $col_pay4 = $record['PAY4'];					            //야근교통비
-                                $col_pay5 = $record['PAY5'];					            //파견교통비(출근)
-                                $col_pay6 = $record['PAY6'];					            //파견교통비(퇴근)
-                                $col_out = $record['OUT_CHK'];					            //파견여부
-                                $col_off_time = $record['OFF_TIME'];			            //외출시간시
-                                $col_off_minute = $record['OFF_MINUTE'];		            //외출시간분
-                                $col_yesterday_overtime = $record['YESTERDAY_OVERTIME'];	//전일 연장근무시간
-                                $col_yesterday_datekind = $record['YESTERDAY_DATEKIND'];	//전일 근무일 구분
+                                        $col_date = $record['DATE'];								//날짜
+                                        $col_datekind = $record['DATEKIND'];				        //공휴일 여부
+                                        $col_day = $record['DAY'];									//요일
+                                        $col_date_name = $record['DATE_NAME'];			            //기념일
+                                        $col_gubun = $record['GUBUN'];							    //출퇴근구분
+                                        $col_gubun1 = $record['GUBUN1'];						    //출근구분
+                                        $col_gubun2 = $record['GUBUN2'];						    //퇴근구분
+                                        $col_checktime1 = $record['CHECKTIME1'];		            //출근시간
+                                        $col_checktime2 = $record['CHECKTIME2'];		            //퇴근시간
+                                        $col_totaltime = $record['TOTALTIME'];			            //근무시간
+                                        $col_overtime = $record['OVERTIME'];			            //초과근무
+                                        $col_undertime = $record['UNDERTIME'];			            //미만근무
+                                        $col_pay1 = $record['PAY1'];					            //점심식비
+                                        $col_pay2 = $record['PAY2'];					            //저녁식비
+                                        $col_pay3 = $record['PAY3'];					            //간식비
+                                        $col_pay4 = $record['PAY4'];					            //야근교통비
+                                        $col_pay5 = $record['PAY5'];					            //파견교통비(출근)
+                                        $col_pay6 = $record['PAY6'];					            //파견교통비(퇴근)
+                                        $col_out = $record['OUT_CHK'];					            //파견여부
+                                        $col_off_time = $record['OFF_TIME'];			            //외출시간시
+                                        $col_off_minute = $record['OFF_MINUTE'];		            //외출시간분
+                                        $col_yesterday_overtime = $record['YESTERDAY_OVERTIME'];	//전일 연장근무시간
+                                        $col_yesterday_datekind = $record['YESTERDAY_DATEKIND'];	//전일 근무일 구분
 
-                                $col_edit_status = $record['EDIT_STATUS'];		//수정요청상태
+                                        $col_edit_status = $record['EDIT_STATUS'];		//수정요청상태
 
-                                if (strlen($col_off_time) == 1) { $col_off_time = "0".$col_off_time; }
-                                if (strlen($col_off_minute) == 1) { $col_off_minute = "0".$col_off_minute; }
+                                        if (strlen($col_off_time) == 1) { $col_off_time = "0".$col_off_time; }
+                                        if (strlen($col_off_minute) == 1) { $col_off_minute = "0".$col_off_minute; }
 
-                                $checktime1 = substr($col_checktime1,8,2) .":". substr($col_checktime1,10,2);
-                                if ($checktime1 == ":") { $checktime1 = ""; }
+                                        $checktime1 = substr($col_checktime1,8,2) .":". substr($col_checktime1,10,2);
+                                        if ($checktime1 == ":") { $checktime1 = ""; }
 
-                                if (strlen($count) == 1)
-                                { $replace_count = "0".$count; }
-                                else
-                                { $replace_count = $count; }
+                                        if (strlen($count) == 1)
+                                        { $replace_count = "0".$count; }
+                                        else
+                                        { $replace_count = $count; }
 
-                                if (strlen($p_month) == 1)
-                                { $replace_Month = "0".$nowMonth; }
-                                else
-                                { $replace_Month = $nowMonth; }
+                                        if (strlen($p_month) == 1)
+                                        { $replace_Month = "0".$nowMonth; }
+                                        else
+                                        { $replace_Month = $nowMonth; }
 
-                                $dt1 = new DateTime($col_date);
-                                $dt2 = new DateTime($nowYear.$nowMonth.$nowDay);
-                                $interval = $dt1->diff($dt2);
+                                        $dt1 = new DateTime($col_date);
+                                        $dt2 = new DateTime($nowYear.$nowMonth.$nowDay);
+                                        $interval = $dt1->diff($dt2);
 
-                                //시작날짜 앞 빈공간 체크 (
-                                if ($count == 1)
-                                {
-                                    switch($col_day)
-                                    {
-                                        case "SUN" : $day_cnt = 0; break;
-                                        case "MON" : $day_cnt = 1; break;
-                                        case "TUE" : $day_cnt = 2; break;
-                                        case "WED" : $day_cnt = 3; break;
-                                        case "THU" : $day_cnt = 4; break;
-                                        case "FRI" : $day_cnt = 5; break;
-                                        case "SAT" : $day_cnt = 6; break;
+                                        //시작날짜 앞 빈공간 체크 (
+                                        if ($count == 1)
+                                        {
+                                            switch($col_day)
+                                            {
+                                                case "SUN" : $day_cnt = 0; break;
+                                                case "MON" : $day_cnt = 1; break;
+                                                case "TUE" : $day_cnt = 2; break;
+                                                case "WED" : $day_cnt = 3; break;
+                                                case "THU" : $day_cnt = 4; break;
+                                                case "FRI" : $day_cnt = 5; break;
+                                                case "SAT" : $day_cnt = 6; break;
+                                            }
+                                            for ($i=0; $i<$day_cnt; $i++)
+                                            {
+                                                echo "<div class='calendar-date is-disabled'><div class='date'></div></div>";
+                                                $lastday++;
+                                            }
+                                        }
+
+                                    if ($col_date == $nowYear.$nowMonth.$nowDay)  { //오늘 날짜 표시
+                                        $div_class1=" is-today";
+                                    }else if($col_date_name != "") { //공휴일 표시
+                                        $div_class2=" is-holiday";
+                                        $div_class3="";
+                                        $mark1 ="<span class='button is-small is-static'>". $col_date_name ."</span>";
+                                    } else if ($col_day == "SAT" || $col_day == "SUN") { //토 일요일
+                                        $div_class2=" is-holiday";
+                                        $div_class3="";
+                                        $mark1 = "";
+                                    }else if ($col_gubun1 == "10") {	//휴가 - 출근/퇴근 시간 표시 안함 - 당일 00:00출근 24:00퇴근으로 설정되어 있음
+                                        $div_class2= "";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>휴가</span>";
+                                    }else if ($col_gubun1 == "11") {	//병가
+                                        $div_class2= "";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>병가</span>";
+                                    }else if ($col_gubun1 == "12") {	//경조사
+                                        $div_class2="";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>경조사</span>";
+                                    }else if ($col_gubun1 == "13") { //기타
+                                        $div_class2="";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>기타</span>";
+                                    }else if ($col_gubun1 == "14") { //결근
+                                        $div_class2="";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>결근</span>";
+                                    }else if ($col_gubun1 == "15") {	//교육/훈련
+                                        $div_class2="";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>교육/훈련</span>";
+                                    }else if ($col_gubun1 == "16") {	//프로젝트 휴가
+                                        $div_class2="";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>프로젝트 휴가</span>";
+                                    }else if ($col_gubun1 == "17") {	//리프레시 휴가
+                                        $div_class2="";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>리프레시 휴가</span>";
+                                    }else if ($col_gubun1 == "18") {	//무급 휴가
+                                        $div_class2="";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>무급 휴가</span>";
+                                    }else if ($col_gubun1 == "19") {	//민방위/예비군
+                                        $div_class2="";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>민방위/예비군</span>";
+                                    }else if ($col_gubun1 == "20") {	//출산휴가
+                                        $div_class2="";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>출산휴가</span>";
+                                    }else if ($col_gubun1 == "21") {	//육아휴직
+                                        $div_class2="";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'>육아휴직</span>";
+                                    }else if ($col_gubun1 == "0") {//오후반차 제출. 출퇴근체크 X
+                                        $div_class2="";
+                                        $div_class3=" is-vacation";
+                                        $mark1="<span class='button is-small is-static'></span>";
+                                    }else{
+                                        $div_class1="";
+                                        $div_class2="";
+                                        $div_class3="";
+                                        $mark1 ="";
                                     }
-                                    for ($i=0; $i<$day_cnt; $i++)
+
+                                //근태현황
+                                    //출근인정시간대(0800-1100) but, 전일 연장근로시간 5시간 이후 1시간씩 최대 3시간까지 조정(0800-1400)
+                                    //1.출근인정시간대 - 출근시간 출력
+                                    //2.출근인정시간대 이후 출근 - 출근시간 1300 표시 오전반차 처리.실제 출근시간 출력
+                                    //3.출근인정시간대 이전 출근 - 출근시간 0800 표시.실제 출근시간 출력
+                                    //정상근무시간(0900) but, 전일 연장근로 5시간 이후 1시간씩 최대 3시간까지 조정(0600)
+                                    //4.정상근무시간 이상 근무 후 퇴근 - 퇴근시간 출력.초과근무시간 출력
+                                    //5.정상근무시간 미만 근무 후 퇴근 - 퇴근시간 출력.부족근무시간 출력
+                                    //휴가 등(GUBUN2 = 10~18)은 시간 안보이게끔 처리
+
+                                    //출근시간
+                                    $checktime1 = substr($col_checktime1,8,2) .":". substr($col_checktime1,10,2);
+                                    if ($checktime1 == ":") { $checktime1 = ""; }
+
+                                    if ($col_gubun1 == "1")			//출근
                                     {
-                                        echo "<div class='calendar-date is-disabled'><div class='date'></div></div>";
-                                        $lastday++;
+
+                                        if ($checktime1 != "" && substr($checktime1,0,2) < "08") {
+                                            $calendar_events1 ="<p class='calendar-event is-light'>출근 <font color='#00aa00'>08:00</font> $checktime1 </p>";
+                                        } else  {
+                                            $calendar_events1 ="<p class='calendar-event is-light'>출근 $checktime1 </p>";
+                                        }
+
+                                    }else if ($col_gubun1 == "4")	//프로젝트 오전 반차
+                                    {
+                                        $calendar_events1 ="<p class='calendar-event is-primary'>프로젝트 오전반차 <font color='#00aa00'>08:00</font> $checktime1 </p>";
                                     }
-                                }
+                                    else if ($col_gubun1 == "6")	//외근
+                                    {
+                                        $calendar_events1 ="<p class='calendar-event is-warning'>외근 <font color='#00aa00'>08:00</font> $checktime1 </p>";
+                                    }
+                                    else if ($col_gubun1 == "7")	//지각
+                                    {
+                                        $calendar_events1 ="<p class='calendar-event is-danger'>지각 <font color='#00aa00'>08:00</font> $checktime1 </p>";
+                                    }
+                                    else if ($col_gubun1 == "8")	//오전 반차
+                                    {
+                                        $calendar_events1 ="<p class='calendar-event is-primary'>오전 반차 <font color='#00aa00'>08:00</font> $checktime1 </p>";
+                                    }else{
+                                        $calendar_events1 ="";
+                                    }
 
-                            if ($col_date == $nowYear.$nowMonth.$nowDay)  { //오늘 날짜 표시
-                                $div_class1=" is-today";
-                            }else if($col_date_name != "") { //공휴일 표시
-                                $div_class2=" is-holiday";
-                                $div_class3="";
-                                $mark1 ="<span class='button is-small is-static'>". $col_date_name ."</span>";
-                            } else if ($col_day == "SAT" || $col_day == "SUN") { //토 일요일
-                                $div_class2=" is-holiday";
-                                $div_class3="";
-                                $mark1 = "";
-                            }else if ($col_gubun1 == "10") {	//휴가 - 출근/퇴근 시간 표시 안함 - 당일 00:00출근 24:00퇴근으로 설정되어 있음
-                                $div_class2= "";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>휴가</span>";
-                            }else if ($col_gubun1 == "11") {	//병가
-                                $div_class2= "";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>병가</span>";
-                            }else if ($col_gubun1 == "12") {	//경조사
-                                $div_class2="";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>경조사</span>";
-                            }else if ($col_gubun1 == "13") { //기타
-                                $div_class2="";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>기타</span>";
-                            }else if ($col_gubun1 == "14") { //결근
-                                $div_class2="";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>결근</span>";
-                            }else if ($col_gubun1 == "15") {	//교육/훈련
-                                $div_class2="";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>교육/훈련</span>";
-                            }else if ($col_gubun1 == "16") {	//프로젝트 휴가
-                                $div_class2="";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>프로젝트 휴가</span>";
-                            }else if ($col_gubun1 == "17") {	//리프레시 휴가
-                                $div_class2="";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>리프레시 휴가</span>";
-                            }else if ($col_gubun1 == "18") {	//무급 휴가
-                                $div_class2="";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>무급 휴가</span>";
-                            }else if ($col_gubun1 == "19") {	//민방위/예비군
-                                $div_class2="";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>민방위/예비군</span>";
-                            }else if ($col_gubun1 == "20") {	//출산휴가
-                                $div_class2="";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>출산휴가</span>";
-                            }else if ($col_gubun1 == "21") {	//육아휴직
-                                $div_class2="";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'>육아휴직</span>";
-                            }else if ($col_gubun1 == "0") {//오후반차 제출. 출퇴근체크 X
-                                $div_class2="";
-                                $div_class3=" is-vacation";
-                                $mark1="<span class='button is-small is-static'></span>";
-                            }else{
-                                $div_class1="";
-                                $div_class2="";
-                                $div_class3="";
-                                $mark1 ="";
-                            }
+                                    //퇴근시간
+                                    $checktime2 = substr($col_checktime2,8,2) .":". substr($col_checktime2,10,2);
+                                    if ($checktime2 == ":") { $checktime2 = ""; }
 
-                            if ($col_gubun1 == "1")			//출근
-                            {
-                               
-                                if ($checktime1 != "" && substr($checktime1,0,2) < "08") {
+                                    if ($col_gubun2 == "2" || $col_gubun2 == "3" || $col_gubun2 == "5" || $col_gubun2 == "6" || $col_gubun2 == "9" || $col_gubun2 == "0")
+                                    {
+                                        if ($col_gubun2 == "2" || $col_gubun2 == "3")
+                                        {
+                                            $calendar_events2= "<p class='calendar-event is-light'>퇴근 $checktime2 </p>";
+                                        } else if ($col_gubun2 == "5")	//프로젝트 오후 반차
+                                        {
+                                            $calendar_events2= "<p class='calendar-event is-primary'>프로젝트 오후반차 $checktime2 </p>";
+                                        } else if ($col_gubun2 == "6")	//외근
+                                        {
+                                            $calendar_events2= "<p class='calendar-event is-warning'>외근 $checktime2 </p>";
+                                        } else if ($col_gubun2 == "9")	//오후 반차
+                                        {
+                                            $calendar_events2= "<p class='calendar-event is-primary'>오후 반차 $checktime2 </p>";
+                                        } else if ($col_gubun2 == "0")	//오전반차 제출. 출퇴근체크 X
+                                        {
+                                            $calendar_events2= "<p class='calendar-event is-light'>퇴근 $checktime2 </p>";
+                                        }else{
+                                            $calendar_events2="";
+                                        }
 
-                                } else  {
+                                        if ($checktime1 !== "" && $checktime2 !== "")
+                                        {
+                                            if ($col_undertime > "0000")
+                                            {
+                                                $calendar_events3= "<p class='calendar-event is-danger'>미만근무시간 ". substr($col_undertime,0,2) .":". substr($col_undertime,2,2) ."</p>";
+                                            } else {
+                                                if ($col_overtime > "0000")
+                                                {
+                                                    $calendar_events3= "<p class='calendar-event is-success'>초과 근무시간 ". substr($col_overtime,0,2) .":". substr($col_overtime,2,2) ."</p>";
+                                                } else {
+                                                    //$calendar_events3= "<p class='calendar-event is-success'>00:00</p>";
+                                                    $calendar_events3= ""; //초과 근무시간 없을경우 그냥 출력안함
+                                                }
+                                            }
+                                        }else{
+                                            $calendar_events3= "";
+                                        }
+                                    }else{
+                                        $calendar_events2= "";
+                                        $calendar_events3= "";
+                                    }
 
-                                }
+                                   //점심 저녁 간식 교통비 및 파견 교통비 출력
+                                    if ($col_pay1 == "Y") { $icon1 = " <span class='tag is-info'><span class='icon'><i class='fas fa-utensils'></i></span></span>"; }else{ $icon1=""; }		//점심
+                                    if ($col_pay2 == "Y") { $icon2 = " <span class='tag is-info'><span class='icon'><i class='fas fa-utensils'></i></span></span>"; }else{ $icon2=""; }	//저녁
+                                    if ($col_pay3 == "Y") { $icon3 = " <span class='tag is-info'><span class='icon'><i class='fas fa-coffee'></i></span></span>"; }else{ $icon3=""; }		//간식
+                                    if ($col_pay4 == "Y") { $icon4 = " <span class='tag is-info'><span class='icon'><i class='fas fa-taxi'></i></span></span>"; }else{ $icon4=""; }		//야근교통비
+                                    if ($col_pay5 == "Y" && $col_pay6 == "Y") {
+                                        $calendar_events6 = "<p class='calendar-event is-info'> 파견교통비 : (출근) (퇴근)</p>";
+                                        }else if ($col_pay5 == "Y") {
+                                        $calendar_events6 = "<p class='calendar-event is-info'> 파견교통비 : (출근) </p>";
+                                        }else if ($col_pay6 == "Y") {
+                                        $calendar_events6 = "<p class='calendar-event is-info'> 파견교통비 : (퇴근) </p>";
+                                    }else{
+                                        $calendar_events6 = "";
+                                    }
 
-                            }
+                                   //외출시간
+                                    if ($prf_id != 7) {
+                                        if ($col_off_time > 0 || $col_off_minute > 0) {
+                                            $calendar_events5 ="<p class='calendar-event is-warning'>총 외출시간 ". $col_off_time .":". $col_off_minute ."</p>";
+                                        }else{
+                                            $calendar_events5 ="";
+                                        }
+                                    }
 
-                            if($end_day == $count) { //마지막날 div 클래스 표시
-                                $div_class4 = " is-last";
-                            }
+                                   //마지막날 div 클래스 표시
+                                    if($end_day == $count) {
+                                        $div_class4 = " is-last";
+                                    }
 
-                            //근태수정 버튼 추가(최근 일주일 출력)
-                            if($interval->days <= 7 && $col_date <= $nowYear.$nowMonth.$nowDay)
-                            {
-                                if (!$col_edit_status)
-                                {
+                                    //근태수정 버튼 추가(최근 일주일 출력)
+                                    if($interval->days <= 7 && $col_date <= $nowYear.$nowMonth.$nowDay)
+                                    {
+                                        if (!$col_edit_status)
+                                        {
+                                            $mark2= "<a class='button is-small is-primary' href=\"javascript:ShowPopCustom('DayEdit','".$prs_id."','".$p_year."','".$p_month."','".str_pad($count,"2","0",STR_PAD_LEFT)."','INSERT');\">수정요청</a>";
+                                        } else if ($col_edit_status == "ING"){	// 요청중
+                                            $mark2= "<a class='button is-small is-primary' href=\"javascript:ShowPopCustom('DayEdit','".$prs_id."','".$p_year."','".$p_month."','".str_pad($count,"2","0",STR_PAD_LEFT)."','VIEW');\">요청중</a>";
+                                        } else if ($col_edit_status == "CANCEL"){	// 반려
+                                            $mark2= "<a class='button is-small is-static' href=\"javascript:ShowPopCustom('DayEdit','".$prs_id."','".$p_year."','".$p_month."','".str_pad($count,"2","0",STR_PAD_LEFT)."','VIEW');\">반려</a>";
+                                            $mark2= "<a class='button is-small is-primary' href=\"javascript:ShowPopCustom('DayEdit','".$prs_id."','".$p_year."','".$p_month."','".str_pad($count,"2","0",STR_PAD_LEFT)."','INSERT');\">재요청</a>";
+                                        } else if ($col_edit_status == "OK"){	// 승인
+                                            $mark2= "<a class='button is-small is-primary' href=\"javascript:ShowPopCustom('DayEdit','".$prs_id."','".$p_year."','".$p_month."','".str_pad($count,"2","0",STR_PAD_LEFT)."','VIEW');\">승인</a>";
+                                        } else {
+                                            $mark2= "";
+                                        }
+                                    }else{
+                                        $mark2="";
+                                    }
 
-                                    $mark2= "<a class='button is-small is-primary' href=\"javascript:ShowPopCustom('DayEdit','".$prs_id."','".$p_year."','".$p_month."','".str_pad($count,"2","0",STR_PAD_LEFT)."','INSERT');\">수정요청</a>";
-                                }
-                                else if ($col_edit_status == "ING")	// 요청중
-                                {
-
-                                    $mark2= "<a class='button is-small is-primary' href=\"javascript:ShowPopCustom('DayEdit','".$prs_id."','".$p_year."','".$p_month."','".str_pad($count,"2","0",STR_PAD_LEFT)."','VIEW');\">요청중</a>";
-                                }
-                                else if ($col_edit_status == "CANCEL")	// 반려
-                                {
-
-                                    $mark2= "<a class='button is-small is-primary' href=\"javascript:ShowPopCustom('DayEdit','".$prs_id."','".$p_year."','".$p_month."','".str_pad($count,"2","0",STR_PAD_LEFT)."','VIEW');\">반려</a>";
-
-                                    $mark2= "<a class='button is-small is-primary' href=\"javascript:ShowPopCustom('DayEdit','".$prs_id."','".$p_year."','".$p_month."','".str_pad($count,"2","0",STR_PAD_LEFT)."','INSERT');\">재요청</a>";
-                                }
-                                else if ($col_edit_status == "OK")	// 승인
-                                {
-
-                                    $mark2= "<a class='button is-small is-primary' href=\"javascript:ShowPopCustom('DayEdit','".$prs_id."','".$p_year."','".$p_month."','".str_pad($count,"2","0",STR_PAD_LEFT)."','VIEW');\">승인</a>";
-
-                                    //echo "<a href=\"javascript:ShowPopCustom('DayEdit','".$prs_id."','".$p_year."','".$p_month."','".str_pad($count,"2","0",STR_PAD_LEFT)."','INSERT');\"><span class='day_edit_btn' style='left:45px; background:#000; color:#FFF;'>재요청</span></a>";
-                                }
-                            }else{
-                                $mark2="";
-                            }
-
-                            /*날짜 출력 부분*/
-                            echo "<div class='calendar-date " . $div_class1 . $div_class2 . $div_class3 . $div_class4 ."'>
-                                    <div class='date'>". $count ."</div>
-                                        <div class='mark'>
-                                            ". $mark1 . $mark2 . $mark3 . $mark4 . $mark5 . $mark6 . $mark7 . $mark8 . $mark9 . $mark10 ."
-                                        </div>
-                                        <div class='calendar-events'>
-                                            ". $calendar_events1 . $calendar_events2 . $calendar_events3 . $calendar_events4 . $calendar_events5 . $calendar_events6 . $calendar_events7 . $calendar_events8 . $calendar_events9 . $calendar_events10 ."
-                                            ". $icon1 . $icon2 . $icon3 ."
-                                        </div>
-                                       
-                                   </div>";
-                             /*날짜 출력 부분*/
+                                    /*날짜 출력 부분*/
+                                    echo "<div class='calendar-date " . $div_class1 . $div_class2 . $div_class3 . $div_class4 ."'>
+                                            <div class='date'>". $count ."</div>
+                                                <div class='mark'>
+                                                    ". $mark1 . $mark2 . $mark3 . $mark4 . $mark5 . $mark6 . "
+                                                </div>
+                                                <div class='calendar-events'>
+                                                    ". $calendar_events1 . $calendar_events2 . $calendar_events3 . $calendar_events4 . $calendar_events5 . $calendar_events6 ."
+                                                    ". $icon1 . $icon2 . $icon3 . $icon4 ."
+                                                </div>
+                                               
+                                           </div>";
+                                     /*날짜 출력 부분*/
 
                             }//배열 끝
 
@@ -563,196 +659,99 @@ if (sizeof($record) > 0)
         </div>
         <!--컨텐츠 끝-->
 
+<?
+        $mode = isset($_REQUEST['mode']) ? $_REQUEST['mode'] : null;
+        $p_date = isset($_REQUEST['date']) ? $_REQUEST['date'] : null;
+        $p_id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
+
+        // 기존근태 등록 데이터
+        $sql = "SELECT 
+				GUBUN, GUBUN1, GUBUN2, CHECKTIME1, CHECKTIME2
+			FROM 
+				DF_CHECKTIME WITH(NOLOCK)
+			WHERE 
+				PRS_ID = '$p_id' AND DATE = '$p_date'";
+        $rs = sqlsrv_query($dbConn, $sql);
+
+        $record = sqlsrv_fetch_array($rs);
+        if (sizeof($record) > 0)
+        {
+            $md_gubun = $record['GUBUN'];
+            $md_gubun1 = $record['GUBUN1'];
+            $md_gubun2 = $record['GUBUN2'];
+            $md_checktime1 = $record['CHECKTIME1'];
+            $md_checktime2 = $record['CHECKTIME2'];
+        }
+
+        // 근태수정 요청 데이터
+        $sql = "SELECT 
+				TOP 1 *, CONVERT(CHAR(19), REGDATE, 20) as REGDATE, CONVERT(CHAR(19), OK_DATE, 20) as OK_DATE
+
+			FROM 
+				DF_CHECKTIME_REQUEST WITH(NOLOCK)
+			WHERE 
+				PRS_ID = '$p_id' AND DATE = '$p_date'
+			ORDER BY
+				SEQNO DESC";
+        $rs = sqlsrv_query($dbConn, $sql);
+
+        $record = sqlsrv_fetch_array($rs);
+        if (sizeof($record) > 0)
+        {
+            $rd_seqno = $record['SEQNO'];
+            $rd_name = $record['PRS_NAME'];
+            $rd_login = $record['PRS_LOGIN'];
+            $rd_gubun = $record['GUBUN'];
+            $rd_gubun1 = $record['GUBUN1'];
+            $rd_gubun2 = $record['GUBUN2'];
+            $rd_checktime1 = $record['CHECKTIME1'];
+            $rd_checktime2 = $record['CHECKTIME2'];
+            $rd_memo = $record['MEMO'];
+            $rd_answer = $record['ANSWER'];
+            $rd_regdate = $record['REGDATE'];
+            $rd_status = $record['STATUS'];
+            $rd_ok_date = $record['OK_DATE'];
+            $rd_ok_name = $record['OK_NAME'];
+
+            $status_str = array('ING'=>'처리중', 'CANCEL'=>'반려', 'OK'=>'승인');
+        }
+
+        if($mode == "VIEW") {
+            $gubun1_disabled = " disabled='disabled'";
+            $gubun2_disabled = " disabled='disabled'";
+            $memo_disabled = " disabled";
+        }
+
+        if(!$rd_gubun1) $rd_gubun1 = $md_gubun1;
+        if(!$rd_gubun2) $rd_gubun2 = $md_gubun2;
+        if(!$rd_checktime1) $rd_checktime1 = $md_checktime1;
+        if(!$rd_checktime2) $rd_checktime2 = $md_checktime2;
+        ?>
 <!--근태 수정 모달 팝업-->
-        <div class="modal">
+        <form class="inlp" method='post' name='form'>
+        <input type="hidden" name="prs_login" value="<?=$prs_login?>">
+        <input type="hidden" name="prs_name" value="<?=$prs_name?>">
+        <input type="hidden" name="id" value="<?=$p_id?>">
+        <input type="hidden" name="date" value="<?=$p_date?>">
+        <input type="hidden" name="flag">
+        <input type="hidden" name="mode">
+        <input type="hidden" name="gubun" value="">
+        <input type="hidden" name="gubun1" value="">
+        <input type="hidden" name="gubun1_prev" value="<?=$rd_checktime1?>">
+        <div class="modal" id="popDayEdit">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <p class="modal-card-title is-size-6">4월 20일 근태 수정</p>
-                    <button class="delete" aria-label="close"></button>
+                    <p class="modal-card-title is-size-6"><span id="t_month"></span>월 <span id="t_day"></span>&nbsp;근태 수정</p>
+                    <a class="delete" aria-label="close" href="javascript:closePop('DayEdit');" ></a>
                 </header>
-
-                <section class="modal-card-body modal-commuting-modify">
-
-                    <div class="content">
-                        <div class="columns is-mobile">
-                            <div class="column">
-                                <div class="field is-horizontal">
-                                    <div class="field-label is-normal">
-                                        <label class="label">출근</label>
-                                    </div>
-                                    <div class="field-body">
-                                        <div class="field is-grouped">
-                                            <div class="control select">
-                                                <select>
-                                                    <option value="00">00</option>
-                                                    <option value="01">01</option>
-                                                    <option value="02">02</option>
-                                                    <option value="03">03</option>
-                                                    <option value="04">04</option>
-                                                    <option value="05">05</option>
-                                                    <option value="06">06</option>
-                                                    <option value="07">07</option>
-                                                    <option value="08">08</option>
-                                                    <option value="09">09</option>
-                                                    <option value="10" selected="">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
-                                                    <option value="13">13</option>
-                                                    <option value="14">14</option>
-                                                    <option value="15">15</option>
-                                                    <option value="16">16</option>
-                                                    <option value="17">17</option>
-                                                    <option value="18">18</option>
-                                                    <option value="19">19</option>
-                                                    <option value="20">20</option>
-                                                    <option value="21">21</option>
-                                                    <option value="22">22</option>
-                                                    <option value="23">23</option>
-                                                </select>
-                                            </div>
-                                            <div class="control select">
-                                                <select>
-                                                    <option value="00">00</option>
-                                                    <option value="01">01</option>
-                                                    <option value="02">02</option>
-                                                    <option value="03">03</option>
-                                                    <option value="04">04</option>
-                                                    <option value="05">05</option>
-                                                    <option value="06">06</option>
-                                                    <option value="07">07</option>
-                                                    <option value="08">08</option>
-                                                    <option value="09">09</option>
-                                                    <option value="10" selected="">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
-                                                    <option value="13">13</option>
-                                                    <option value="14">14</option>
-                                                    <option value="15">15</option>
-                                                    <option value="16">16</option>
-                                                    <option value="17">17</option>
-                                                    <option value="18">18</option>
-                                                    <option value="19">19</option>
-                                                    <option value="20">20</option>
-                                                    <option value="21">21</option>
-                                                    <option value="22">22</option>
-                                                    <option value="23">23</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="field is-horizontal">
-                                    <div class="field-label is-normal">
-                                        <label class="label">퇴근</label>
-                                    </div>
-                                    <div class="field-body">
-                                        <div class="field is-grouped">
-                                            <div class="control select">
-                                                <select>
-                                                    <option value="00">00</option>
-                                                    <option value="01">01</option>
-                                                    <option value="02">02</option>
-                                                    <option value="03">03</option>
-                                                    <option value="04">04</option>
-                                                    <option value="05">05</option>
-                                                    <option value="06">06</option>
-                                                    <option value="07">07</option>
-                                                    <option value="08">08</option>
-                                                    <option value="09">09</option>
-                                                    <option value="10" selected="">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
-                                                    <option value="13">13</option>
-                                                    <option value="14">14</option>
-                                                    <option value="15">15</option>
-                                                    <option value="16">16</option>
-                                                    <option value="17">17</option>
-                                                    <option value="18">18</option>
-                                                    <option value="19">19</option>
-                                                    <option value="20">20</option>
-                                                    <option value="21">21</option>
-                                                    <option value="22">22</option>
-                                                    <option value="23">23</option>
-                                                </select>
-                                            </div>
-                                            <div class="control select">
-                                                <select>
-                                                    <option value="00">00</option>
-                                                    <option value="01">01</option>
-                                                    <option value="02">02</option>
-                                                    <option value="03">03</option>
-                                                    <option value="04">04</option>
-                                                    <option value="05">05</option>
-                                                    <option value="06">06</option>
-                                                    <option value="07">07</option>
-                                                    <option value="08">08</option>
-                                                    <option value="09">09</option>
-                                                    <option value="10" selected="">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
-                                                    <option value="13">13</option>
-                                                    <option value="14">14</option>
-                                                    <option value="15">15</option>
-                                                    <option value="16">16</option>
-                                                    <option value="17">17</option>
-                                                    <option value="18">18</option>
-                                                    <option value="19">19</option>
-                                                    <option value="20">20</option>
-                                                    <option value="21">21</option>
-                                                    <option value="22">22</option>
-                                                    <option value="23">23</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="field is-horizontal">
-                            <div class="field-body">
-                                <div class="field">
-                                    <div class="control">
-                                        <textarea class="textarea" placeholder="사유" rows="2"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="field is-horizontal">
-                            <div class="field-body">
-                                <div class="field">
-                                    <div class="control">
-                                        <textarea class="textarea" placeholder="결과" rows="2"></textarea>
-                                    </div>
-                                    <p class="help is-danger">
-                                        * 정상 출퇴근이 아니면, 게시판에 요청 요망
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <input type="hidden" id="cal_value" name="cal_value" value="">  	<!--마지막뒤 빈공간 채우기용 값-->
-                </section>
-
-                <footer class="modal-card-foot">
-                    <button class="button is-primary">확인</button>
-                    <button class="button">취소</button>
-                </footer>
+                <iframe id="popDayEditFrm"  style="border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;" height="371" scrolling="no" frameborder="0"></iframe>
             </div>
         </div>
-
     </section>
+    </form>
     <!-- 본문 끌 -->
-
-
-    <? include INC_PATH."/bottom.php"; ?>
+ <? include INC_PATH."/bottom.php"; ?>
     </div>
 </form>
 </body>

@@ -35,7 +35,7 @@
     <div class="container">
         <div class="navbar-brand">
             <div class="navbar-item is-size-7">
-               <?=$prs_team?>&nbsp;/&nbsp;<strong><?=$prs_position ?> <?=$prs_name ?></strong>
+               <?=$prs_team?>&nbsp;/&nbsp;<strong><?=$prs_position2 ?> <?=$prs_name ?></strong>
            </div>
             <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
                 <span></span>

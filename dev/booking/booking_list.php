@@ -380,7 +380,7 @@ $booking_position = $prs_position;
                             <thead>
                             <td>
                                 <p><img src="/assets/images/room_03.jpg"></p>
-                                <p class="title is-size-6">회의실 3</p>
+                                <p class="title is-size-6">회의실 3 (2F)</p>
                             </td>
                             </thead>
                             <tbody>
@@ -434,7 +434,7 @@ $booking_position = $prs_position;
                             <thead>
                             <td>
                                 <p><img src="/assets/images/room_04.jpg"></p>
-                                <p class="title is-size-6">회의실 4</p>
+                                <p class="title is-size-6">회의실 4 (2F)</p>
                             </td>
                             </thead>
                             <tbody>
@@ -488,7 +488,7 @@ $booking_position = $prs_position;
                             <thead>
                             <td>
                                 <p><img src="/assets/images/room_01.jpg"></p>
-                                <p class="title is-size-6">회의실 1</p>
+                                <p class="title is-size-6">회의실 1 (3F)</p>
                             </td>
                             </thead>
                             <tbody>
@@ -542,7 +542,7 @@ $booking_position = $prs_position;
                             <thead>
                             <td>
                                 <p><img src="/assets/images/room_02.jpg"></p>
-                                <p class="title is-size-6">회의실 2</p>
+                                <p class="title is-size-6">회의실 2 (4F)</p>
                             </td>
                             </thead>
                             <tbody>
