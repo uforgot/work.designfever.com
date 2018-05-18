@@ -290,6 +290,26 @@
 .df-booking table tbody tr:last-child {
   border-bottom: 2px solid #000; }
 
+.df-equipment table th {
+  font-size: 0.75rem; }
+.df-equipment .is-total td, .df-equipment .is-total th {
+  text-align: center; }
+.df-equipment .is-total .cat-device {
+  font-size: 0.75rem; }
+.df-equipment .is-data {
+  font-size: 0.8rem; }
+  .df-equipment .is-data tr {
+    height: 40px; }
+    .df-equipment .is-data tr td, .df-equipment .is-data tr th {
+      text-align: center;
+      vertical-align: middle; }
+  .df-equipment .is-data .short-txt {
+    font-size: 0.8rem;
+    max-width: 500px; }
+    .df-equipment .is-data .short-txt p {
+      height: 18px;
+      overflow: hidden; }
+
 body {
   font-family: "Nanum Gothic";
   font-weight: 600; }
