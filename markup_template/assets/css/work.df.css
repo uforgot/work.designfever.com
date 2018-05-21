@@ -64,7 +64,7 @@
   background: whitesmoke; }
 
 .df-org .notification {
-  box-shadow: 2px 3px 5px rgba(10, 10, 10, 0.05), 0 0 0 1px rgba(10, 10, 10, 0.05);
+  border-radius: 0;
   padding: 0;
   padding-left: 0.75rem;
   overflow: hidden; }
@@ -126,6 +126,17 @@
   .modal-commuting-modify .control {
     margin-right: 0.25rem !important; }
 
+.df-commuting .is-member {
+  font-size: 0.75rem; }
+  .df-commuting .is-member .first {
+    width: 100px; }
+  .df-commuting .is-member .name {
+    width: 100px; }
+  .df-commuting .is-member thead th, .df-commuting .is-member tfoot th {
+    font-size: 0.5rem;
+    text-align: center; }
+  .df-commuting .is-member tbody td {
+    text-align: center; }
 .df-commuting .textarea {
   min-width: auto; }
 .df-commuting .is-vacation-title {

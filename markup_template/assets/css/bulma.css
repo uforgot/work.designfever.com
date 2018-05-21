@@ -7588,6 +7588,14 @@ section {
 .is-bordered {
   border: 1px #dddddd solid !important; }
 
+.table-holder {
+  overflow-y: scroll;
+  overflow-x: scroll; }
+  @media screen and (max-width: 1279px) {
+    .table-holder table {
+      min-width: 1279px;
+      padding-right: 1rem; } }
+
 .column.last-button {
   flex-grow: 0; }
 .column.member-photo {
