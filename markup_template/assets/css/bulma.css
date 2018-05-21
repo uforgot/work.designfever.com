@@ -7593,7 +7593,7 @@ section {
   overflow-x: scroll; }
   @media screen and (max-width: 1279px) {
     .table-holder table {
-      min-width: 1279px;
+      min-width: 1000px;
       padding-right: 1rem; } }
 
 .column.last-button {
@@ -7611,6 +7611,8 @@ section {
   border-color: #000; }
 .table tbody td {
   vertical-align: middle; }
+.table tbody tr:last-child {
+  border-bottom: 1px solid #dbdbdb; }
 .table.is-resize tbody.notice td,
 .table.is-resize tbody.notice th {
   background: #fafafa;

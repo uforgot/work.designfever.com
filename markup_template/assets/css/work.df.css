@@ -212,6 +212,9 @@
     .df-commuting .calendar .calendar-date.is-last {
       border-bottom: 1px solid #cdcdcd !important; } }
 
+.df-approval .table .last {
+  text-align: center; }
+
 .df-project .modal section {
   min-width: auto; }
 .df-project .modal .column-center {
