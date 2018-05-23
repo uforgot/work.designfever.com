@@ -1,85 +1,86 @@
-<?
-	require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
-	require_once CMN_PATH."/login_check.php";
+a<?
+    require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
+    require_once CMN_PATH."/login_check.php";
+    require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
 
 <?
-	//권한 체크
-	if ($prf_id != "4") 
-	{ 
-?>
-	<script type="text/javascript">
-		alert("해당페이지는 임원,관리자만 확인 가능합니다.");
-		location.href="commuting_list.php";
-	</script>
-<?
-		exit;
-	}
+//권한 체크
+if ($prf_id != "4")
+{
+    ?>
+    <script type="text/javascript">
+        alert("해당페이지는 임원,관리자만 확인 가능합니다.");
+        location.href="commuting_list.php";
+    </script>
+    <?
+    exit;
+}
 
-	$page = isset($_REQUEST['page']) ? $_REQUEST['page'] : 1; 
+$page = isset($_REQUEST['page']) ? $_REQUEST['page'] : 1;
 
-	$sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : "name"; 
+$sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : "name";
 
-	$nowYear = date("Y");
-	$nowMonth = date("m");
+$nowYear = date("Y");
+$nowMonth = date("m");
 
-	$p_year = isset($_REQUEST['year']) ? $_REQUEST['year'] : null; 
+$p_year = isset($_REQUEST['year']) ? $_REQUEST['year'] : null;
 
-	if ($p_year == "") {
-		if ($nowMonth == 1) {
-			$p_year = $nowYear - 1;	
-		} 
-		else {
-			$p_year = $nowYear;	
-		}
-	}
+if ($p_year == "") {
+    if ($nowMonth == 1) {
+        $p_year = $nowYear - 1;
+    }
+    else {
+        $p_year = $nowYear;
+    }
+}
 
-	if ($p_year == $nowYear && $nowMonth == 1) {
-?>
-		<script>
-			alert("<?=$nowYear?>의 근태 통계는 2월 이후에 보실 수 있습니다.");
-			location.href = "commuting_total_year.php?year=<?=$nowYear-1?>";
-		</script>
-<?
-		exit;
-	}
-	else if ($p_year > $nowYear) {
-?>
-		<script>
-			alert("<?=$nowYear?>년 이후의 연별 근태 통계는 보실 수 없습니다.");
-			location.href = "commuting_total_year.php?year=<?=$nowYear?>";
-		</script>
-<?
-		exit;
-	}
+if ($p_year == $nowYear && $nowMonth == 1) {
+    ?>
+    <script>
+        alert("<?=$nowYear?>의 근태 통계는 2월 이후에 보실 수 있습니다.");
+        location.href = "commuting_total_year.php?year=<?=$nowYear-1?>";
+    </script>
+    <?
+    exit;
+}
+else if ($p_year > $nowYear) {
+    ?>
+    <script>
+        alert("<?=$nowYear?>년 이후의 연별 근태 통계는 보실 수 없습니다.");
+        location.href = "commuting_total_year.php?year=<?=$nowYear?>";
+    </script>
+    <?
+    exit;
+}
 
-	$per_page = 20;
+$per_page = 20;
 
-	$sql = "SELECT SEQNO, POSITION FROM DF_POSITION_CODE WITH(NOLOCK) ORDER BY SEQNO";
-	$rs = sqlsrv_query($dbConn,$sql);
+$sql = "SELECT SEQNO, POSITION FROM DF_POSITION_CODE WITH(NOLOCK) ORDER BY SEQNO";
+$rs = sqlsrv_query($dbConn,$sql);
 
-	while($record=sqlsrv_fetch_array($rs))
-	{
-		$orderby .= "WHEN PRS_POSITION='". $record['POSITION'] ."' THEN ". $record['SEQNO'] ." ";
-	}
+while($record=sqlsrv_fetch_array($rs))
+{
+    $orderby .= "WHEN PRS_POSITION='". $record['POSITION'] ."' THEN ". $record['SEQNO'] ." ";
+}
 
-	switch($sort)
-	{
-		case "name" : 
-			$orderbycase = "ORDER BY PRS_NAME";
-			break;
-		case "position" : 
-			$orderbycase = "ORDER BY CASE ". $orderby . " END, PRS_NAME";
-			break;
-		case "avg" : 
-			$orderbycase = "ORDER BY AVG_TIME DESC, AVG_MINUTE DESC, PRS_NAME";
-			break;
-		case "over" : 
-			$orderbycase = "ORDER BY REAL_OVER DESC";
-			break;
-	}
+switch($sort)
+{
+    case "name" :
+        $orderbycase = "ORDER BY PRS_NAME";
+        break;
+    case "position" :
+        $orderbycase = "ORDER BY CASE ". $orderby . " END, PRS_NAME";
+        break;
+    case "avg" :
+        $orderbycase = "ORDER BY AVG_TIME DESC, AVG_MINUTE DESC, PRS_NAME";
+        break;
+    case "over" :
+        $orderbycase = "ORDER BY REAL_OVER DESC";
+        break;
+}
 
-	$sql = "SELECT 
+$sql = "SELECT 
 				COUNT(DISTINCT P.PRS_ID) 
 			FROM 
 				DF_PERSON P WITH(NOLOCK) INNER JOIN DF_CHECKTIME B WITH(NOLOCK) 
@@ -89,12 +90,12 @@
 				P.PRF_ID IN (1,2,3,4,5) AND P.PRS_ID NOT IN (15,22,24,87,102,148)
 				AND SUBSTRING(P.PRS_JOIN,1,4) <= '$p_year'
 				AND B.DATE LIKE '$date%'";
-	$rs = sqlsrv_query($dbConn,$sql);
+$rs = sqlsrv_query($dbConn,$sql);
 
-	$record = sqlsrv_fetch_array($rs);
-	$total_cnt = $record[0];
+$record = sqlsrv_fetch_array($rs);
+$total_cnt = $record[0];
 
-	$sql = "SELECT 
+$sql = "SELECT 
 				R.PRS_LOGIN, R.PRS_ID, R.PRS_NAME, R.PRS_TEAM, R.PRS_POSITION, 
 				R.AVGTIME1, R.AVGMINUTE1, R.AVGTIME2, R.AVGMINUTE2, R.REAL_AVG, R.AVG_TIME, R.AVG_MINUTE, 
 				R.REAL_OVER, R.TOTAL_TIME, R.TOTAL_MINUTE, 
@@ -225,309 +226,334 @@
 			) R
 			WHERE
 				R.ROWNUM BETWEEN(($page-1) * $per_page)+1 AND ($page * $per_page)";
-	$rs = sqlsrv_query($dbConn,$sql);
+$rs = sqlsrv_query($dbConn,$sql);
 ?>
 
 <? include INC_PATH."/top.php"; ?>
 
 <script type="text/javascript">
-	function sSubmit(f)
-	{
-		f.page.value = "1";
-		f.sort.value = "name";
-		f.target="_self";
-		f.action = "<?=CURRENT_URL?>";
-		f.submit();
-	}
+    function sSubmit(f)
+    {
+        f.page.value = "1";
+        f.sort.value = "name";
+        f.target="_self";
+        f.action = "<?=CURRENT_URL?>";
+        f.submit();
+    }
 
-	function eSubmit(f)
-	{
-		if(event.keyCode ==13)
-			sSubmit(f);
-	}
+    function eSubmit(f)
+    {
+        if(event.keyCode ==13)
+            sSubmit(f);
+    }
 
-	function excel_download()
-	{
-		var frm = document.form;
-		frm.target = "hdnFrame";
-		frm.action = "excel_total_year.php";
-		frm.submit();
-	}
+    function excel_download()
+    {
+        var frm = document.form;
+        frm.target = "hdnFrame";
+        frm.action = "excel_total_year.php";
+        frm.submit();
+    }
 
-	function chgSort(idx)
-	{
-		var frm = document.form;
-		frm.target="_self";
-		frm.page.value = "1";
-		frm.sort.value = idx;
-		frm.action = "<?=CURRENT_URL?>";
-		frm.submit();
-	}
+    function chgSort(idx)
+    {
+        var frm = document.form;
+        frm.target="_self";
+        frm.page.value = "1";
+        frm.sort.value = idx;
+        frm.action = "<?=CURRENT_URL?>";
+        frm.submit();
+    }
 </script>
 </head>
 
 <body>
-<div class="wrapper">
 <form method="post" name="form">
-<input type="hidden" name="page" value="<?=$page?>">
-<input type="hidden" name="sort" value="<?=$sort?>">
-	<? include INC_PATH."/top_menu.php"; ?>
+    <input type="hidden" name="page" value="<?=$page?>">
+    <input type="hidden" name="sort" value="<?=$sort?>">
+    <? include INC_PATH."/top_menu.php"; ?>
+    <? include INC_PATH."/commuting_menu.php"; ?>
 
-		<div class="inner-home">
-			<? include INC_PATH."/commuting_menu.php"; ?>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <!-- Left side -->
+                <div class="column">
+                    <!-- todo 0413 구조 변경 -->
+                    <div class="field is-grouped">
+                        <div class="control select">
+                            <select name="year" onChange="sSubmit(this.form)">
+                                <?
+                                for ($i=$startYear; $i<=$nowYear; $i++)
+                                {
+                                    if ($i == $p_year)
+                                    {
+                                        $selected = " selected";
+                                    }
+                                    else
+                                    {
+                                        $selected = "";
+                                    }
 
-			<div class="work_wrap clearfix">
-				<div class="work_stats_search clearfix">
-					<table class="notable" width="100%" border=0>
-						<tr>
-							<th scope="row">검색</th>
-							<td>
-								<select name="year" style="width:109px;">
-								<?
-									for ($i=$startYear; $i<=$nowYear; $i++) 
-									{
-										if ($i == $p_year) 
-										{ 
-											$selected = " selected"; 
-										}
-										else
-										{
-											$selected = "";
-										}
+                                    echo "<option value='".$i."'".$selected.">".$i."</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="control is-hidden-mobile">
+                            <a href="javascript:sSubmit(this.form);" class="button is-link" id="btnSearch">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                <span>검색</span>
+                            </a>
+                        </div>
+                        <div class="column is-hidden-mobile">
+                            <div class="control has-text-right">
+                                <a href="javascript:excel_download();" class="button is-link">
+                                    <span>엑셀 다운로드</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-grouped">
+                <div class="control is-hidden-mobile">
+                    <a href="javascript:chgSort('name');" class="button is-link">
+                        <span>이름순</span>
+                    </a>
+                </div>
+                <div class="control is-hidden-mobile">
+                    <a href="javascript:chgSort('position');" class="button is-link" id="btnSearch">
+                        <span>직급순</span>
+                    </a>
+                </div>
+                <div class="control is-hidden-mobile">
+                    <a href="javascript:chgSort('avg');" class="button is-link">
+                        <span>평균근무시간순</span>
+                    </a>
+                </div>
+                <div class="control is-hidden-mobile">
+                    <a href="javascript:chgSort('over');" class="button is-link">
+                        <span>초과근무시간순</span>
+                    </a>
+                </div>
+            </div>
 
-										echo "<option value='".$i."'".$selected.">".$i."</option>";
-									}
-								?>
-								</select>년&nbsp; 
-								<a href="javascript:sSubmit(this.form);"><img src="../img/btn_search.gif" alt="검색" /></a>
-							</td>
-							<td align="right">
-								<a href="javascript:excel_download();"><img src="../img/btn_excell.gif" alt="엑셀다운로드" /></a>
-							</td>
-						</tr>
-						<tr>
-							<th style="padding-top: 5px;" scope="row">정렬</th>
-							<td style="padding-top: 5px;">
-								<a href="javascript:chgSort('name');"><span style="padding:5px 40px; border:3px solid #000; font-weight:bold; color:#000; background:#fff;">이름순</span></a>&nbsp;&nbsp;&nbsp;
-								<a href="javascript:chgSort('position');"><span style="padding:5px 40px; border:3px solid #000; font-weight:bold; color:#000; background:#fff;">직급순</span></a>&nbsp;&nbsp;&nbsp;
-								<a href="javascript:chgSort('avg');"><span style="padding:5px 40px; border:3px solid #000; font-weight:bold; color:#000; background:#fff;">평균근무시간순</span></a>&nbsp;&nbsp;&nbsp;
-								<a href="javascript:chgSort('over');"><span style="padding:5px 40px; border:3px solid #000; font-weight:bold; color:#000; background:#fff;">연장근무시간순</span></a>
-							</td>
-						</tr>
-					</table>
-				</div>
+            <table class="table is-fullwidth is-hoverable is-resize">
+                <colgroup>
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="*" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                    <col width="5%" />
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="has-text-centered">no.</th>
+                    <th class="has-text-centered">이름</th>
+                    <th class="has-text-centered">직급</th>
+                    <th class="has-text-centered">부서</th>
+                    <th class="has-text-centered">평균<br>출근시간</th>
+                    <th class="has-text-centered">평균<br>퇴근시간</th>
+                    <th class="has-text-centered">평균<br>근무시간</th>
+                    <th class="has-text-centered">연장<br>근무시간</th>
+                    <th class="has-text-centered">총<br>근무시간</th>
+                    <th class="has-text-centered">평일<br>근무일</th>
+                    <th class="has-text-centered">휴일<br>근무일</th>
+                    <th class="has-text-centered">정상근무<br>미만일</th>
+                    <th class="has-text-centered">총<br>근무일</th>
+                    <th class="has-text-centered">연차</th>
+                    <th class="has-text-centered">반차</th>
+                    <th class="has-text-centered">프로젝트<br>휴가</th>
+                    <th class="has-text-centered">기타<br>휴가</th>
+                    <th class="has-text-centered">총<br>사용휴가</th>
+                    <th class="has-text-centered">총 근무시간-연장 근무시간</th>
+                    <th class="has-text-centered">연장 근무시간-프로젝트 휴가</th>
+                </tr>
+                </thead>
+                <!-- 일반 리스트 -->
+                <tbody class="list">
+                <?
+                $i = ($page-1)*$per_page+1;
 
-				<table class="notable work1 work_stats"  width="100%" border="0">
-					<caption>근태&휴가 통계 테이블</caption>
-					<colgroup>
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="*" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />
-						<col width="5%" />				
-						<col width="5%" />				
-						<col width="5%" />				
-					</colgroup>
-					<thead>
-						<tr>
-							<th>no.</th>
-							<th>이름</th>
-							<th>직급</th>
-							<th>부서</th>
-							<th>평균<br>출근시간</th>
-							<th>평균<br>퇴근시간</th>
-							<th>평균<br>근무시간</th>
-							<th>연장<br>근무시간</th>
-							<th>총<br>근무시간</th>					
-							<th>평일<br>근무일</th>
-							<th>휴일<br>근무일</th>
-							<th>정상근무<br>미만일</th>
-							<th>총<br>근무일</th>
-							<th>연차</th>
-							<th>반차</th>
-							<th>프로젝트<br>휴가</th>
-							<th>기타<br>휴가</th>
-							<th>총<br>사용휴가</th>
-							<th>총 근무시간-연장 근무시간</th>
-							<th>연장 근무시간-프로젝트 휴가</th>
-						</tr>
-					</thead>
-					<tbody>
-<?
-		$i = ($page-1)*$per_page+1;
+                while ($record = sqlsrv_fetch_array($rs))
+                {
+                    $login = $record['PRS_LOGIN'];
+                    $id = $record['PRS_ID'];
+                    $name = $record['PRS_NAME'];
+                    $team = $record['PRS_TEAM'];
+                    $position = $record['PRS_POSITION'];
 
-		while ($record = sqlsrv_fetch_array($rs))
-		{
-			$login = $record['PRS_LOGIN'];
-			$id = $record['PRS_ID'];
-			$name = $record['PRS_NAME'];
-			$team = $record['PRS_TEAM'];
-			$position = $record['PRS_POSITION'];
+                    $avgtime1 = $record['AVGTIME1'];				//평균출근시
+                    $avgminute1 = $record['AVGMINUTE1'];			//평균출근분
+                    $avgtime2 = $record['AVGTIME2'];				//평균퇴근시
+                    $avgminute2 = $record['AVGMINUTE2'];			//평균퇴근분
+                    $real_avg = $record['REAL_AVG'];				//평균근무시간분단위
+                    $avg_time = $record['AVG_TIME'];				//평균근무시간시
+                    $avg_minute = $record['AVG_MINUTE'];			//평균근무시간분
+                    $real_over = $record['REAL_OVER'];				//연장근무시간분단위
+                    $total_time = $record['TOTAL_TIME'];			//총근무시간시
+                    $total_minute = $record['TOTAL_MINUTE'];		//총근무시간분
+                    $biz_commute = $record['BIZ_COMMUTE'];			//평일근무일
+                    $law_commute = $record['LAW_COMMUTE'];			//휴일근무일
+                    $under_commute = $record['UNDER_COMMUTE'];		//정상근무 미만일
+                    $pay = $record['PAY'];							//식대지급횟수
+                    $vacation = $record['VACATION'];				//휴가지급일
+                    $vacation1 = $record['VACATION1'];				//연차
+                    $subvacation1 = $record['SUBVACATION1'];		//반차
+                    $vacation2 = $record['VACATION2'];				//프로젝트 휴가
+                    $subvacation2 = $record['SUBVACATION2'];		//프로젝트 반차
+                    $vacation3 = $record['VACATION3'];				//기타 휴가
+                    $off_time = $record['OFF_TIME'];				//외출 시
+                    $off_minute = $record['OFF_MINUTE'];			//외출 분
+                    $real_off = $record['REAL_OFF'];				//평균외출시간분단위
 
-			$avgtime1 = $record['AVGTIME1'];				//평균출근시
-			$avgminute1 = $record['AVGMINUTE1'];			//평균출근분
-			$avgtime2 = $record['AVGTIME2'];				//평균퇴근시
-			$avgminute2 = $record['AVGMINUTE2'];			//평균퇴근분
-			$real_avg = $record['REAL_AVG'];				//평균근무시간분단위
-			$avg_time = $record['AVG_TIME'];				//평균근무시간시
-			$avg_minute = $record['AVG_MINUTE'];			//평균근무시간분
-			$real_over = $record['REAL_OVER'];				//연장근무시간분단위
-			$total_time = $record['TOTAL_TIME'];			//총근무시간시
-			$total_minute = $record['TOTAL_MINUTE'];		//총근무시간분
-			$biz_commute = $record['BIZ_COMMUTE'];			//평일근무일
-			$law_commute = $record['LAW_COMMUTE'];			//휴일근무일
-			$under_commute = $record['UNDER_COMMUTE'];		//정상근무 미만일
-			$pay = $record['PAY'];							//식대지급횟수
-			$vacation = $record['VACATION'];				//휴가지급일
-			$vacation1 = $record['VACATION1'];				//연차
-			$subvacation1 = $record['SUBVACATION1'];		//반차
-			$vacation2 = $record['VACATION2'];				//프로젝트 휴가
-			$subvacation2 = $record['SUBVACATION2'];		//프로젝트 반차
-			$vacation3 = $record['VACATION3'];				//기타 휴가
-			$off_time = $record['OFF_TIME'];				//외출 시
-			$off_minute = $record['OFF_MINUTE'];			//외출 분
-			$real_off = $record['REAL_OFF'];				//평균외출시간분단위
+                    $real_biz_commute = $biz_commute + ($subvacation1 * 0.5) + ($subvacation2 * 0.5);		//평일근무일
+                    $total_commute = $real_biz_commute + $law_commute;										//총근무일
+                    $real_vacation = $vacation1 + ($subvacation1 * 0.5);									//연차
+                    $project_vacation = $vacation2 + ($subvacation2 * 0.5);									//프로젝트휴가
+                    $total_vacation = $real_vacation + $project_vacation + $vacation3;						//총사용휴가
 
-			$real_biz_commute = $biz_commute + ($subvacation1 * 0.5) + ($subvacation2 * 0.5);		//평일근무일
-			$total_commute = $real_biz_commute + $law_commute;										//총근무일
-			$real_vacation = $vacation1 + ($subvacation1 * 0.5);									//연차
-			$project_vacation = $vacation2 + ($subvacation2 * 0.5);									//프로젝트휴가
-			$total_vacation = $real_vacation + $project_vacation + $vacation3;						//총사용휴가
+                    if ($avgtime1 == "") { $avgtime1 = "0"; }
+                    if ($avgminute1 == "") { $avgminute1 = "0"; }
+                    if ($avgtime2 == "") { $avgtime2 = "0"; }
+                    if ($avgminute2 == "") { $avgminute2 = "0"; }
+                    if ($avg_time == "") { $avg_time = "0"; }
+                    if ($avg_minute == "") { $avg_minute = "0"; }
+                    if ($over == "") { $over = "0"; }
+                    if ($total_time == "") { $total_time = "0"; }
+                    if ($total_minute == "") { $total_minute = "0"; }
+                    if ($real_over == "") { $real_over = "0"; }
+                    if ($real_under == "") { $real_under = "0"; }
+                    if ($off_time == "") { $off_time = "0"; }
+                    if ($off_minute == "") { $off_minute = "0"; }
+                    if ($real_avg == "") { $real_avg = "0"; }
+                    if ($real_off == "") { $real_off = "0"; }
 
-			if ($avgtime1 == "") { $avgtime1 = "0"; }
-			if ($avgminute1 == "") { $avgminute1 = "0"; }
-			if ($avgtime2 == "") { $avgtime2 = "0"; }
-			if ($avgminute2 == "") { $avgminute2 = "0"; }
-			if ($avg_time == "") { $avg_time = "0"; }
-			if ($avg_minute == "") { $avg_minute = "0"; }
-			if ($over == "") { $over = "0"; }
-			if ($total_time == "") { $total_time = "0"; }
-			if ($total_minute == "") { $total_minute = "0"; }
-			if ($real_over == "") { $real_over = "0"; }
-			if ($real_under == "") { $real_under = "0"; }
-			if ($off_time == "") { $off_time = "0"; }
-			if ($off_minute == "") { $off_minute = "0"; }
-			if ($real_avg == "") { $real_avg = "0"; }
-			if ($real_off == "") { $real_off = "0"; }
+                    //외출시간 제외한 총 근무 시간 계산
+                    if ($total_minute < $off_minute)
+                    {
+                        $total_minute = $total_minute - $off_minute + 60;
+                        $total_time = $total_time - $off_time - 1;
+                    }
+                    else
+                    {
+                        $total_minute = $total_minute - $off_minute;
+                        $total_time = $total_time - $off_time - 1;
+                    }
+                    //
 
-			//외출시간 제외한 총 근무 시간 계산
-			if ($total_minute < $off_minute)
-			{
-				$total_minute = $total_minute - $off_minute + 60;
-				$total_time = $total_time - $off_time - 1;
-			}
-			else
-			{
-				$total_minute = $total_minute - $off_minute;
-				$total_time = $total_time - $off_time - 1;
-			}
-			//
+                    if (strlen($avgtime1) == 1) { $avgtime1 = "0".$avgtime1; }
+                    if (strlen($avgminute1) == 1) { $avgminute1 = "0".$avgminute1; }
+                    if (strlen($avgtime2) == 1) { $avgtime2 = "0".$avgtime2; }
+                    if (strlen($avgminute2) == 1) { $avgminute2 = "0".$avgminute2; }
+                    if (strlen($avg_time) == 1) { $avg_time = "0".$avg_time; }
+                    if (strlen($avg_minute) == 1) { $avg_minute = "0".$avg_minute; }
+                    if (strlen($total_time) == 1) { $total_time = "0".$total_time; }
+                    if (strlen($total_minute) == 1) { $total_minute = "0".$total_minute; }
 
-			if (strlen($avgtime1) == 1) { $avgtime1 = "0".$avgtime1; }
-			if (strlen($avgminute1) == 1) { $avgminute1 = "0".$avgminute1; }
-			if (strlen($avgtime2) == 1) { $avgtime2 = "0".$avgtime2; }
-			if (strlen($avgminute2) == 1) { $avgminute2 = "0".$avgminute2; }
-			if (strlen($avg_time) == 1) { $avg_time = "0".$avg_time; }
-			if (strlen($avg_minute) == 1) { $avg_minute = "0".$avg_minute; }
-			if (strlen($total_time) == 1) { $total_time = "0".$total_time; }
-			if (strlen($total_minute) == 1) { $total_minute = "0".$total_minute; }
+                    $flag1 = "&nbsp;";
+                    if (substr($real_over,0,1) == "-")
+                    {
+                        $flag1 = "-";
+                        $real_over = substr($real_over,1,strlen($real_over));
+                    }
 
-			$flag1 = "&nbsp;";
-			if (substr($real_over,0,1) == "-") 
-			{
-				$flag1 = "-";
-				$real_over = substr($real_over,1,strlen($real_over));
-			}
+                    $over_time = intval($real_over / 60);
+                    $over_minute = $real_over % 60;
 
-			$over_time = intval($real_over / 60);
-			$over_minute = $real_over % 60;
+                    $over = $over_time . $over_minute;
+                    $total = $total_time . $total_minute;
 
-			$over = $over_time . $over_minute;
-			$total = $total_time . $total_minute;
+                    if ($total_minute >= $over_minute)
+                    {
+                        $etc1_time = $total_time - $over_time;
+                        $etc1_minute = $total_minute - $over_minute;
+                    }
+                    else if ($over_minute > $total_minute)
+                    {
+                        $etc1_time = $total_time - $over_time - 1;
+                        $etc1_minute = $total_minute + 60 - $over_minute;
+                    }
+                    else
+                    {
+                        $etc1_time = "0";
+                        $etc1_minute = "0";
+                    }
 
-			if ($total_minute >= $over_minute)
-			{
-				$etc1_time = $total_time - $over_time;
-				$etc1_minute = $total_minute - $over_minute;
-			}
-			else if ($over_minute > $total_minute)
-			{
-				$etc1_time = $total_time - $over_time - 1;
-				$etc1_minute = $total_minute + 60 - $over_minute;
-			}
-			else
-			{
-				$etc1_time = "0";
-				$etc1_minute = "0";
-			}
+                    $etc2_time = $over_time - ($project_vacation * 8);
+                    $flag2 = "&nbsp;";
+                    if (substr($etc2_time,0,1) == "-")
+                    {
+                        $flag2 = "-";
+                        $etc2_time = substr($etc2_time,1,strlen($etc2_time));
+                    }
+                    if ($flag1 == "-")
+                    {
+                        $flag2 = "-";
+                    }
 
-			$etc2_time = $over_time - ($project_vacation * 8);
-			$flag2 = "&nbsp;";
-			if (substr($etc2_time,0,1) == "-") 
-			{
-				$flag2 = "-";
-				$etc2_time = substr($etc2_time,1,strlen($etc2_time));
-			}
-			if ($flag1 == "-")
-			{
-				$flag2 = "-";
-			}
-
-			if (strlen($over_time) == 1) { $over_time = "0".$over_time; }
-			if (strlen($over_minute) == 1) { $over_minute = "0".$over_minute; }
-			if (strlen($etc1_time) == 1) { $etc1_time = "0".$etc1_time; }
-			if (strlen($etc1_minute) == 1) { $etc1_minute = "0".$etc1_minute; }
-			if (strlen($etc2_time) == 1) { $etc2_time = "0".$etc2_time; }
-			if (strlen($etc2_minute) == 1) { $etc2_minute = "0".$etc2_minute; }
-?>
-						<tr>
-							<td><?=$i?></td>
-							<td class="bold"><?=$name?></td>
-							<td><?=$position?></td>
-							<td><?=$team?></td>
-							<td><?=$avgtime1?> : <?=$avgminute1?></td>
-							<td><?=$avgtime2?> : <?=$avgminute2?></td>
-							<td><?=$avg_time?> : <?=$avg_minute?></td>
-							<td><?=$flag1?><?=$over_time?> : <?=$over_minute?></td>
-							<td><?=$total_time?> : <?=$total_minute?></td>
-							<td><?=$real_biz_commute?></td>
-							<td><?=$law_commute?></td>
-							<td><?=$under_commute?></td>
-							<td><?=$total_commute?></td>
-							<td><?=doubleval($vacation)?> / <?=$real_vacation?></td>
-							<td><?=$subvacation1?> / <?=$subvacation1 * 0.5?></td>
-							<td><?=$project_vacation?></td>
-							<td><?=$vacation3?></td>
-							<td><?=$total_vacation?></td>
-							<td><?=$etc1_time?> : <?=$etc1_minute;?></td>
-							<td><?=$flag2?><?=$etc2_time?> : <?=$over_minute?></td>
-						</tr>
-<?
-			$i++;
-		}
-?>
-					</tbody>
-				</table>
-				<div class="page_num">
-				<?=getPaging($total_cnt,$page,$per_page);?>
-				</div>
-			</div>
-		</div>
+                    if (strlen($over_time) == 1) { $over_time = "0".$over_time; }
+                    if (strlen($over_minute) == 1) { $over_minute = "0".$over_minute; }
+                    if (strlen($etc1_time) == 1) { $etc1_time = "0".$etc1_time; }
+                    if (strlen($etc1_minute) == 1) { $etc1_minute = "0".$etc1_minute; }
+                    if (strlen($etc2_time) == 1) { $etc2_time = "0".$etc2_time; }
+                    if (strlen($etc2_minute) == 1) { $etc2_minute = "0".$etc2_minute; }
+                    ?>
+                    <tr>
+                        <td class="has-text-centered"><?=$i?></td>
+                        <td class="has-text-centered"><?=$name?></td>
+                        <td class="has-text-centered"><?=$position?></td>
+                        <td class="has-text-centered"><?=$team?></td>
+                        <td class="has-text-centered"><?=$avgtime1?> : <?=$avgminute1?></td>
+                        <td class="has-text-centered"><?=$avgtime2?> : <?=$avgminute2?></td>
+                        <td class="has-text-centered"><?=$avg_time?> : <?=$avg_minute?></td>
+                        <td class="has-text-centered"><?=$flag1?><?=$over_time?> : <?=$over_minute?></td>
+                        <td class="has-text-centered"><?=$total_time?> : <?=$total_minute?></td>
+                        <td class="has-text-centered"><?=$real_biz_commute?></td>
+                        <td class="has-text-centered"><?=$law_commute?></td>
+                        <td class="has-text-centered"><?=$under_commute?></td>
+                        <td class="has-text-centered"><?=$total_commute?></td>
+                        <td class="has-text-centered"><?=doubleval($vacation)?> / <?=$real_vacation?></td>
+                        <td class="has-text-centered"><?=$subvacation1?> / <?=$subvacation1 * 0.5?></td>
+                        <td class="has-text-centered"><?=$project_vacation?></td>
+                        <td class="has-text-centered"><?=$vacation3?></td>
+                        <td class="has-text-centered"><?=$total_vacation?></td>
+                        <td class="has-text-centered"><?=$etc1_time?> : <?=$etc1_minute;?></td>
+                        <td class="has-text-centered"><?=$flag2?><?=$etc2_time?> : <?=$over_minute?></td>
+                    </tr>
+                    <?
+                    $i++;
+                }
+                ?>
+                </tbody>
+            </table>
+            <!--페이징처리-->
+            <nav class="pagination" role="navigation" aria-label="pagination">
+                <?=getPaging($total_cnt,$page,$per_page);?>
+                </ul>
+            </nav>
+            <!--페이징처리-->
+        </div>
+    </section>
 </form>
 <? include INC_PATH."/bottom.php"; ?>
-</div>
 </body>
 </html>

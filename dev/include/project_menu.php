@@ -14,6 +14,7 @@
 				<a class="navbar-item is-tab" href="/project/project_list.php?type=END">완료 프로젝트</a>
 			<? } ?>
 				<? if (substr(CURRENT_URL,8,18) == "/project_total.php") { ?> <a class="navbar-item is-tab is-active" href="/project/project_total.php"> 통계<? } else { ?><a class="navbar-item is-tab" href="/project/project_total.php"> 통계<? } ?></a>
+<!--
 			<? if ($prf_id == 4) { ?>
 				<? if (substr(CURRENT_URL,8,20) == "/project_collect.php" || substr(CURRENT_URL,8,19) == "/project_income.php" || substr(CURRENT_URL,8,20) == "/project_expense.php") { ?><a class="navbar-item is-tab is-active" href="/project/project_collect.php"> 프로젝트 수금내역<? } else { ?><a class="navbar-item is-tab" href="/project/project_collect.php"> 프로젝트 수금내역<? } ?></a>
 			<? } ?>
@@ -24,6 +25,7 @@
 					<a class="navbar-item is-tab" href="/project/contact_list.php">의뢰 프로젝트</a>
 				<? } ?>
 			<? } ?>
+-->
             </div>
         </div>
     </nav>

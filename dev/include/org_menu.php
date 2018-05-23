@@ -9,11 +9,12 @@
                     <a class="navbar-item is-tab" href="person_list.php">炼流档
                 <? } ?>
                     </a>
-                <? if (substr(CURRENT_URL,10,12) == "/person_addr") { ?>
+               <!-- <? if (substr(CURRENT_URL,10,12) == "/person_addr") { ?>
 				    <a class="navbar-item is-tab is-active"  href="person_addr.php">林家废
                 <? } else { ?>
                     <a class="navbar-item is-tab" href="person_addr.php">林家废
                 <? } ?></a>
+                -->
             </div>
         </div>
     </nav>

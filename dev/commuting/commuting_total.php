@@ -1,6 +1,7 @@
 <?
 	require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
 	require_once CMN_PATH."/login_check.php";
+    require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
 
 <?
@@ -409,736 +410,785 @@
 	}
 </script>
 </head>
-
 <body>
-<div class="wrapper">
 <form method="post" name="form">
 <input type="hidden" name="page" value="<?=$page?>">
 <input type="hidden" name="sort" value="<?=$sort?>">
 	<? include INC_PATH."/top_menu.php"; ?>
-
-		<div class="inner-home">
 			<? include INC_PATH."/commuting_menu.php"; ?>
+            <section class="section">
+                <div class="container">
+                    <div class="columns is-vcentered">
+                        <!-- Left side -->
+                        <div class="column">
+                            <!-- todo 0413 구조 변경 -->
+                            <div class="field is-grouped">
+                                <div class="control select">
+                                    <select name="type" onchange="javascript:searchType();">
+                                        <option value="person" selected>직원별</option>
+                                        <option value="team">부서별</option>
+                                    </select>
+                                </div>
+                                <div class="control">
+                                    <input type="text" name="name" class="input" placeholder="직원명" style="width:140px" value="<?=$p_name?>" onkeypress="eSubmit(this.form);">
+                                </div>
+                                <div class="control select">
+                                    <select name="period"  onchange="javascript:sSubmit(this.form);" >
+                                        <option value="day"<? if ($p_period == "day") { echo " selected"; }?>>일별</option>
+                                        <option value="month"<? if ($p_period == "month") { echo " selected"; }?>>월별</option>
+                                    </select>
+                                </div>
+                            <? if ($p_period == "day") { ?>
+                                <div class="control select">
+                                    <select name="fr_year">
+                                        <?
+                                        for ($i=$startYear; $i<=$nowYear; $i++)
+                                        {
+                                            if ($i == $p_fr_year)
+                                            {
+                                                $selected = " selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
 
-			<div class="work_wrap clearfix">
-				<div class="work_stats_search clearfix">
-					<table class="notable" width="100%" border=0>
-						<tr>
-							<th scope="row">검색</th>
-							<td>
-								<select name="type" onchange="javascript:searchType();" style="width:109px;">
-	                         		<option value="person" selected>직원별</option>
-	                         		<option value="team">부서별</option>
-								</select>
-								<input type="text" name="name" style="width:109px; " value="<?=$p_name?>" onkeypress="eSubmit(this.form);">
-								<select name="period"  onchange="javascript:sSubmit(this.form);" style="width:109px;"> 
-									<option value="day"<? if ($p_period == "day") { echo " selected"; }?>>일별</option>			
-									<option value="month"<? if ($p_period == "month") { echo " selected"; }?>>월별</option>			
-									<!--option value="year"<? if ($p_period == "year") { echo " selected"; }?>>연별</option-->
-								</select>
-							<? if ($p_period == "day") { ?>
-								<select name="fr_year" style="width:70px;">
-								<?
-									for ($i=$startYear; $i<=$nowYear; $i++) 
-									{
-										if ($i == $p_fr_year) 
-										{ 
-											$selected = " selected"; 
-										}
-										else
-										{
-											$selected = "";
-										}
+                                            echo "<option value='".$i."'".$selected.">".$i."년</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="Fr_Month">
+                                        <?
+                                        for ($i=1; $i<=12; $i++)
+                                        {
+                                            if (strlen($i) == "1")
+                                            {
+                                                $j = "0".$i;
+                                            }
+                                            else
+                                            {
+                                                $j = $i;
+                                            }
 
-										echo "<option value='".$i."'".$selected.">".$i."</option>";
-									}
-								?>
-								</select>년
-								<select name="fr_month" style="width:70px;">
-								<?
-									for ($i=1; $i<=12; $i++) 
-									{
-										if (strlen($i) == "1") 
-										{
-											$j = "0".$i;
-										}
-										else
-										{
-											$j = $i;
-										}
+                                            if ($j == $p_fr_month)
+                                            {
+                                                $selected = " selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
 
-										if ($j == $p_fr_month)
-										{
-											$selected = " selected";
-										}
-										else
-										{
-											$selected = "";
-										}
+                                            echo "<option value='".$j."'".$selected.">".$i."월</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="fr_day">
+                                    <?
+                                    for ($i=1; $i<=31; $i++)
+                                    {
+                                        if (strlen($i) == "1")
+                                        {
+                                            $j = "0".$i;
+                                        }
+                                        else
+                                        {
+                                            $j = $i;
+                                        }
 
-										echo "<option value='".$j."'".$selected.">".$i."</option>";
-									}
-								?>
-								</select>월
-								<select name="fr_day" style="width:70px;">
-								<?
-									for ($i=1; $i<=31; $i++) 
-									{
-										if (strlen($i) == "1") 
-										{
-											$j = "0".$i;
-										}
-										else
-										{
-											$j = $i;
-										}
+                                        if ($j == $p_fr_day)
+                                        {
+                                            $selected = " selected";
+                                        }
+                                        else
+                                        {
+                                            $selected = "";
+                                        }
 
-										if ($j == $p_fr_day)
-										{
-											$selected = " selected";
-										}
-										else
-										{
-											$selected = "";
-										}
+                                        echo "<option value='".$j."'".$selected.">".$i."일</option>";
+                                    }
+                                    ?>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="to_year">
+                                        <?
+                                        for ($i=$startYear; $i<=$nowYear; $i++)
+                                        {
+                                            if ($i == $p_to_year)
+                                            {
+                                                $selected = " selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
 
-										echo "<option value='".$j."'".$selected.">".$i."</option>";
-									}
-								?>
-								</select>일
-								~&nbsp;
-								<select name="to_year" style="width:70px;">
-								<?
-									for ($i=$startYear; $i<=$nowYear; $i++) 
-									{
-										if ($i == $p_to_year) 
-										{ 
-											$selected = " selected"; 
-										}
-										else
-										{
-											$selected = "";
-										}
+                                            echo "<option value='".$i."'".$selected.">".$i."년</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                 </div>
+                                <div class="control select">
+                                    <select name="to_month">
+                                        <?
+                                        for ($i=1; $i<=12; $i++)
+                                        {
+                                            if (strlen($i) == "1")
+                                            {
+                                                $j = "0".$i;
+                                            }
+                                            else
+                                            {
+                                                $j = $i;
+                                            }
 
-										echo "<option value='".$i."'".$selected.">".$i."</option>";
-									}
-								?>
-								</select>년
-								<select name="to_month" style="width:70px;">
-								<?
-									for ($i=1; $i<=12; $i++) 
-									{
-										if (strlen($i) == "1") 
-										{
-											$j = "0".$i;
-										}
-										else
-										{
-											$j = $i;
-										}
+                                            if ($j == $p_to_month)
+                                            {
+                                                $selected = " selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
 
-										if ($j == $p_to_month)
-										{
-											$selected = " selected";
-										}
-										else
-										{
-											$selected = "";
-										}
+                                            echo "<option value='".$j."'".$selected.">".$i."월</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                  </div>
+                                <div class="control select">
+                                    <select name="to_day">
+                                        <?
+                                        for ($i=1; $i<=31; $i++)
+                                        {
+                                            if (strlen($i) == "1")
+                                            {
+                                                $j = "0".$i;
+                                            }
+                                            else
+                                            {
+                                                $j = $i;
+                                            }
 
-										echo "<option value='".$j."'".$selected.">".$i."</option>";
-									}
-								?>
-								</select>월
-								<select name="to_day" style="width:70px;">
-								<?
-									for ($i=1; $i<=31; $i++) 
-									{
-										if (strlen($i) == "1") 
-										{
-											$j = "0".$i;
-										}
-										else
-										{
-											$j = $i;
-										}
+                                            if ($j == $p_to_day)
+                                            {
+                                                $selected = " selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
 
-										if ($j == $p_to_day)
-										{
-											$selected = " selected";
-										}
-										else
-										{
-											$selected = "";
-										}
+                                            echo "<option value='".$j."'".$selected.">".$i."일</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="gubun1" style="width:130px;">
+                                        <option value="">출근상태</option>
+                                        <option value="1"<? if ($p_gubun1 == "1") { echo " selected"; } ?>>출근</option>
+                                        <option value="4"<? if ($p_gubun1 == "4") { echo " selected"; } ?>>프로젝트오전반차</option>
+                                        <option value="6"<? if ($p_gubun1 == "6") { echo " selected"; } ?>>외근</option>
+                                        <option value="8"<? if ($p_gubun1 == "8") { echo " selected"; } ?>>오전반차</option>
+                                        <option value="15"<? if ($p_gubun1 == "15") { echo " selected"; } ?>>교육/훈련</option>
+                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="gubun2" style="width:130px;">
+                                        <option value="">퇴근상태</option>
+                                        <option value="2"<? if ($p_gubun2 == "2") { echo " selected"; } ?>>퇴근</option>
+                                        <option value="3"<? if ($p_gubun2 == "3") { echo " selected"; } ?>>연장근무</option>
+                                        <option value="5"<? if ($p_gubun2 == "5") { echo " selected"; } ?>>프로젝트오후반차</option>
+                                        <option value="6"<? if ($p_gubun2 == "6") { echo " selected"; } ?>>외근</option>
+                                        <option value="9"<? if ($p_gubun2 == "9") { echo " selected"; } ?>>오후반차</option>
+                                        <option value="15"<? if ($p_gubun2 == "15") { echo " selected"; } ?>>교육/훈련</option>
+                                    </select>
+                                </div>
+                            <? } else { ?>
+                                <div class="control select">
+                                    <select name="year">
+                                        <?
+                                        for ($i=$startYear; $i<=$nowYear; $i++)
+                                        {
+                                            if ($i == $p_year)
+                                            {
+                                                $selected = " selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
 
-										echo "<option value='".$j."'".$selected.">".$i."</option>";
-									}
-								?>
-								</select>일
-								<select name="gubun1" style="width:100px;">
-									<option value="">출근 상태</option>
-									<option value="1"<? if ($p_gubun1 == "1") { echo " selected"; } ?>>출근</option>
-									<option value="4"<? if ($p_gubun1 == "4") { echo " selected"; } ?>>프로젝트오전반차</option>
-									<option value="6"<? if ($p_gubun1 == "6") { echo " selected"; } ?>>외근</option>
-									<option value="8"<? if ($p_gubun1 == "8") { echo " selected"; } ?>>오전반차</option>
-									<option value="15"<? if ($p_gubun1 == "15") { echo " selected"; } ?>>교육/훈련</option>
-								</select>
-								<select name="gubun2" style="width:100px;">
-									<option value="">퇴근 상태</option>
-									<option value="2"<? if ($p_gubun2 == "2") { echo " selected"; } ?>>퇴근</option>
-									<option value="3"<? if ($p_gubun2 == "3") { echo " selected"; } ?>>연장근무</option>
-									<option value="5"<? if ($p_gubun2 == "5") { echo " selected"; } ?>>프로젝트오후반차</option>
-									<option value="6"<? if ($p_gubun2 == "6") { echo " selected"; } ?>>외근</option>
-									<option value="9"<? if ($p_gubun2 == "9") { echo " selected"; } ?>>오후반차</option>
-									<option value="15"<? if ($p_gubun2 == "15") { echo " selected"; } ?>>교육/훈련</option>
-								</select>
-							<? } else { ?>
-								<select name="year" style="width:109px;">
-								<?
-									for ($i=$startYear; $i<=$nowYear; $i++) 
-									{
-										if ($i == $p_year) 
-										{ 
-											$selected = " selected"; 
-										}
-										else
-										{
-											$selected = "";
-										}
+                                            echo "<option value='".$i."'".$selected.">".$i."년</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                 <? if ($p_period == "month") { ?>
+                                <div class="control select">
+                                    <select name="month">
+                                        <?
+                                        for ($i=1; $i<=12; $i++)
+                                        {
+                                            if ($i == $p_month)
+                                            {
+                                                $selected = " selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
 
-										echo "<option value='".$i."'".$selected.">".$i."</option>";
-									}
-								?>
-								</select>년
-								<? if ($p_period == "month") { ?>
-								<select name="month" style="width:109px;">
-								<?
-									for ($i=1; $i<=12; $i++) 
-									{
-										if ($i == $p_month) 
-										{ 
-											$selected = " selected"; 
-										}
-										else
-										{
-											$selected = "";
-										}
+                                            echo "<option value='".$i."'".$selected.">".$i."월</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                         <? }
+                        } ?>
+                                <div class="control is-hidden-mobile">
+                                    <a href="javascript:sSubmit(this.form);" class="button is-link" id="btnSearch">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                        <span>검색</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right side -->
 
-										echo "<option value='".$i."'".$selected.">".$i."</option>";
-									}
-								?>
-								</select>월
-								<? } ?>
-							<? } ?>
-								<a href="javascript:sSubmit(this.form);"><img src="../img/btn_search.gif" alt="검색" /></a>
-							</td>
-							<td align="right">
-							<? if ($p_period == "month") { ?>
-								<a href="javascript:excel_download();"><img src="../img/btn_excell.gif" alt="엑셀다운로드" /></a>
-							<? } ?>
-							</td>
-						</tr>
-						<tr>
-							<th style="padding-top: 5px;" scope="row">정렬</th>
-							<td style="padding-top: 5px;">
-								<a href="javascript:chgSort('name');"><span style="padding:5px 40px; border:3px solid #000; font-weight:bold; color:#000; background:#fff;">이름순</span></a>&nbsp;&nbsp;&nbsp;
-								<a href="javascript:chgSort('position');"><span style="padding:5px 40px; border:3px solid #000; font-weight:bold; color:#000; background:#fff;">직급순</span></a>&nbsp;&nbsp;&nbsp;
-					<? if ($p_period == "day") { ?>
-								<a href="javascript:chgSort('checktime1');"><span style="padding:5px 40px; border:3px solid #000; font-weight:bold; color:#000; background:#fff;">출근시간순</span></a>&nbsp;&nbsp;&nbsp;
-					<? } else { ?>
-								<a href="javascript:chgSort('avg');"><span style="padding:5px 40px; border:3px solid #000; font-weight:bold; color:#000; background:#fff;">평균근무시간순</span></a>&nbsp;&nbsp;&nbsp;
-								<a href="javascript:chgSort('over');"><span style="padding:5px 40px; border:3px solid #000; font-weight:bold; color:#000; background:#fff;">초과근무시간순</span></a>
-					<? } ?>
-							</td>
-						</tr>
-					</table>
-				</div>
-			<? if ($p_period == "day") { ?>
-				<table class="notable work1 work_stats"  width="100%">
-					<caption>근태통계 일별 테이블</caption>
-					<colgroup>
-						<col width="5%" />
-						<col width="8%" />
-						<col width="8%" />
-						<col width="8%" />
-						<col width="15%" />
-						<col width="7%" />
-						<col width="7%" />
-						<col width="17%" />
-						<col width="8%" />
-						<col width="8%" />
-						<col width="9%" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th>no.</th>
-							<th>날짜</th>
-							<th>이름</th>
-							<th>직급</th>
-							<th>부서</th>
-							<th>출근</th>
-							<th>퇴근</th>
-							<th>상태</th>
-							<th>총근무시간</th>
-							<th>초과근무시간</th>
-							<th>비고</th>
-						</tr>
-					</thead>
-					<tbody>
-<?
-	while ($record = sqlsrv_fetch_array($rs))
-	{
-		$team_login = $team_login. $record['PRS_LOGIN'] . "##";
-		$team_id = $team_id. $record['PRS_ID'] . "##";
-		$team_name = $team_name. $record['PRS_NAME'] . "##";
-		$team_team = $team_team. $record['PRS_TEAM'] . "##";
-		$team_position = $team_position. $record['PRS_POSITION'] . "##";
-		if ($p_period == "day") 
-		{
-			$team_date = $team_date. $record['DATE'] . "##";
-		}
-	}
+                    </div>
+                    <div class="field is-grouped">
+                        <div class="control is-hidden-mobile">
+                            <a href="javascript:chgSort('name');" class="button is-link">
+                                <span>이름순</span>
+                            </a>
+                        </div>
+                        <div class="control is-hidden-mobile">
+                            <a href="javascript:chgSort('position');" class="button is-link" id="btnSearch">
+                                <span>직급순</span>
+                            </a>
+                        </div>
+                    <? if ($p_period == "day") { ?>
+                        <div class="control is-hidden-mobile">
+                            <a href="javascript:chgSort('checktime1');" class="button is-link">
+                                <span>출근시간순</span>
+                            </a>
+                        </div>
+                    <? } else { ?>
+                        <div class="control is-hidden-mobile">
+                            <a href="javascript:chgSort('avg');" class="button is-link">
+                                <span>평균근무시간순</span>
+                            </a>
+                        </div>
+                        <div class="control is-hidden-mobile">
+                            <a href="javascript:chgSort('over');" class="button is-link">
+                                <span>초과근무시간순</span>
+                            </a>
+                        </div>
+                    <? } ?>
+                        <? if ($p_period == "month") { ?>
+                            <div class="column is-hidden-mobile">
+                                <div class="control has-text-right">
+                                    <a href="javascript:excel_download();" class="button is-link">
+                                        <span>엑셀 다운로드</span>
+                                    </a>
+                                </div>
+                            </div>
+                        <? } ?>
+                    </div>
 
-	$team_login_ex = explode("##",$team_login);
-	$team_id_ex = explode("##",$team_id);
-	$team_name_ex = explode("##",$team_name);
-	$team_team_ex = explode("##",$team_team);
-	$team_position_ex = explode("##",$team_position);
-	$team_date_ex = explode("##",$team_date);
+            <? if ($p_period == "day") { ?>
+                    <table class="table is-fullwidth is-hoverable is-resize">
+                        <colgroup>
+                            <col width="5%">
+                            <col width="9%">
+                            <col width="8%">
+                            <col width="7%">
+                            <col width="*%">
+                            <col width="8%">
+                            <col width="8%">
+                            <col width="10%">
+                            <col width="8%">
+                            <col width="9%">
+                            <col width="11%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="has-text-centered">No.</th>
+                            <th class="has-text-centered">날짜</th>
+                            <th class="has-text-centered">이름</th>
+                            <th class="has-text-centered">직급</th>
+                            <th class="has-text-centered">부서</th>
+                            <th class="has-text-centered">출근</th>
+                            <th class="has-text-centered">퇴근</th>
+                            <th class="has-text-centered">상태</th>
+                            <th class="has-text-centered">총근무시간</th>
+                            <th class="has-text-centered">초과근무시간</th>
+                            <th class="has-text-centered">비고</th>
+                        </tr>
+                        </thead>
+                        <!-- 일반 리스트 -->
+                        <tbody class="list">
+                    <?
+                    while ($record = sqlsrv_fetch_array($rs))
+                    {
+                        $team_login = $team_login. $record['PRS_LOGIN'] . "##";
+                        $team_id = $team_id. $record['PRS_ID'] . "##";
+                        $team_name = $team_name. $record['PRS_NAME'] . "##";
+                        $team_team = $team_team. $record['PRS_TEAM'] . "##";
+                        $team_position = $team_position. $record['PRS_POSITION'] . "##";
+                        if ($p_period == "day")
+                        {
+                            $team_date = $team_date. $record['DATE'] . "##";
+                        }
+                    }
 
-	if (sizeof($team_id_ex) == 1)
-	{
-?>
-						<tr>
-							<td colspan="11" height="30" align="center">검색된 데이터가 없습니다.</td>
-						</tr>
-<?
-	}
-	else
-	{
-		for ($i=0; $i<sizeof($team_id_ex); $i++)
-		{
+                    $team_login_ex = explode("##",$team_login);
+                    $team_id_ex = explode("##",$team_id);
+                    $team_name_ex = explode("##",$team_name);
+                    $team_team_ex = explode("##",$team_team);
+                    $team_position_ex = explode("##",$team_position);
+                    $team_date_ex = explode("##",$team_date);
 
-			$gubun1 = "";
-			$gubun2 = "";
-			$checktime1 = "";
-			$checktime2 = "";
-			$totaltime = "";
-			$overtime = "";
-			$undertime = "";
-			$memo = "";
+                    if (sizeof($team_id_ex) == 1)
+                    {
+                    ?>
+                        <tr>
+                            <td colspan="11" height="30" class="has-text-centered">검색된 데이터가 없습니다.</td>
+                        </tr>
+                        <?
+                    }
+                    else
+                    {
+                    for ($i=0; $i<sizeof($team_id_ex); $i++)
+                    {
 
-			$gubun1_ex = "";
-			$gubun2_ex = "";
-			$checktime1_ex = "";
-			$checktime2_ex = "";
-			$totaltime_ex = "";
-			$overtime_ex = "";
-			$undertime_ex = "";
-			if ($team_id_ex[$i] != "")
-			{
+                    $gubun1 = "";
+                    $gubun2 = "";
+                    $checktime1 = "";
+                    $checktime2 = "";
+                    $totaltime = "";
+                    $overtime = "";
+                    $undertime = "";
+                    $memo = "";
 
-				$sql = "SELECT 
+                    $gubun1_ex = "";
+                    $gubun2_ex = "";
+                    $checktime1_ex = "";
+                    $checktime2_ex = "";
+                    $totaltime_ex = "";
+                    $overtime_ex = "";
+                    $undertime_ex = "";
+                    if ($team_id_ex[$i] != "")
+                    {
+
+                    $sql = "SELECT 
 							GUBUN1, GUBUN2, CHECKTIME1, CHECKTIME2, TOTALTIME, OVERTIME, UNDERTIME 
 						FROM 
 							DF_CHECKTIME WITH(NOLOCK)
 						WHERE 
 							PRS_ID = '$team_id_ex[$i]' AND DATE = '$team_date_ex[$i]'";
-				$rs = sqlsrv_query($dbConn,$sql);
+                    $rs = sqlsrv_query($dbConn,$sql);
 
-				$record = sqlsrv_fetch_array($rs);
-				if (sizeof($record) > 0)
-				{
-					$gubun1 = $record['GUBUN1'];				//출근상태
-					$gubun2 = $record['GUBUN2'];				//퇴근상태
-					$checktime1 = $record['CHECKTIME1'];		//출근시간
-					$checktime2 = $record['CHECKTIME2'];		//퇴근시간
-					$totaltime = $record['TOTALTIME'];			//총근무시간
-					$overtime = $record['OVERTIME'];			//초과근무시간
-					$undertime = $record['UNDERTIME'];			//미만근무시간
-		
-					if ($checktime1 == "") {
-						$checktime1_ex = "-";
-					} else { 
-						$checktime1_ex = substr($checktime1,8,2) ." : ". substr($checktime1,10,2);				//출근시간
-					}
-					if ($checktime2 == "") {
-						$checktime2_ex = "-";
-					} else { 
-						$checktime2_ex = substr($checktime2,8,2) ." : ". substr($checktime2,10,2);	//퇴근시간
-					}
+                    $record = sqlsrv_fetch_array($rs);
+                    if (sizeof($record) > 0)
+                    {
+                        $gubun1 = $record['GUBUN1'];				//출근상태
+                        $gubun2 = $record['GUBUN2'];				//퇴근상태
+                        $checktime1 = $record['CHECKTIME1'];		//출근시간
+                        $checktime2 = $record['CHECKTIME2'];		//퇴근시간
+                        $totaltime = $record['TOTALTIME'];			//총근무시간
+                        $overtime = $record['OVERTIME'];			//초과근무시간
+                        $undertime = $record['UNDERTIME'];			//미만근무시간
 
-					$memo = "";		//비고, 총근무시간, 초과근무시간
-					if ($gubun1 == "10" || $gubun2 == "10") { $memo = "휴가"; $totaltime = "0000"; $overtime = "0000"; }
-					if ($gubun1 == "11" || $gubun2 == "11") { $memo = "병가"; $totaltime = "0000"; $overtime = "0000"; }
-					if ($gubun1 == "12" || $gubun2 == "12") { $memo = "경조사"; $totaltime = "0000"; $overtime = "0000"; }
-					if ($gubun1 == "13" || $gubun2 == "13") { $memo = "기타"; $totaltime = "0000"; $overtime = "0000"; }
-					if ($gubun1 == "14" || $gubun2 == "14") { $memo = "결근"; $totaltime = "0000"; $overtime = "0000"; }
-					if ($gubun1 == "15" || $gubun2 == "15") { $memo = "교육/훈련"; $totaltime = "0000"; $overtime = "0000"; }
-					if ($gubun1 == "16" || $gubun2 == "16") { $memo = "프로젝트휴가"; $totaltime = "0000"; $overtime = "0000"; }
-					if ($gubun1 == "17" || $gubun2 == "17") { $memo = "리프레시휴가"; $totaltime = "0000"; $overtime = "0000"; }
-					if ($gubun1 == "18" || $gubun2 == "18") { $memo = "무급휴가"; $totaltime = "0000"; $overtime = "0000"; }
-					if ($gubun1 == "19" || $gubun2 == "19") { $memo = "예비군"; $totaltime = "0000"; $overtime = "0000"; }
-					if ($gubun1 == "20" || $gubun2 == "20") { $memo = "출산휴가"; $totaltime = "0000"; $overtime = "0000"; }
-					if ($gubun1 == "21" || $gubun2 == "21") { $memo = "육아휴직"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($checktime1 == "") {
+                            $checktime1_ex = "-";
+                        } else {
+                            $checktime1_ex = substr($checktime1,8,2) ." : ". substr($checktime1,10,2);				//출근시간
+                        }
+                        if ($checktime2 == "") {
+                            $checktime2_ex = "-";
+                        } else {
+                            $checktime2_ex = substr($checktime2,8,2) ." : ". substr($checktime2,10,2);	//퇴근시간
+                        }
 
-					if ($totaltime == "0000") {
-						$totaltime_ex = "";
-					} else {
-						$totaltime_ex = substr($totaltime,0,2) .":". substr($totaltime,2,2);
-					}
-					if ($overtime == "0000") {
-						$overtime_ex = "";
-					} else {
-						$overtime_ex = substr($overtime,0,2) .":". substr($overtime,2,2);
-					}
-					if ($undertime == "0000") {
-						$undertime_ex = "";
-					} else {
-						$undertime_ex = substr($undertime,0,2) .":". substr($undertime,2,2);
-					}
+                        $memo = "";		//비고, 총근무시간, 초과근무시간
+                        if ($gubun1 == "10" || $gubun2 == "10") { $memo = "휴가"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($gubun1 == "11" || $gubun2 == "11") { $memo = "병가"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($gubun1 == "12" || $gubun2 == "12") { $memo = "경조사"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($gubun1 == "13" || $gubun2 == "13") { $memo = "기타"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($gubun1 == "14" || $gubun2 == "14") { $memo = "결근"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($gubun1 == "15" || $gubun2 == "15") { $memo = "교육/훈련"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($gubun1 == "16" || $gubun2 == "16") { $memo = "프로젝트휴가"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($gubun1 == "17" || $gubun2 == "17") { $memo = "리프레시휴가"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($gubun1 == "18" || $gubun2 == "18") { $memo = "무급휴가"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($gubun1 == "19" || $gubun2 == "19") { $memo = "예비군"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($gubun1 == "20" || $gubun2 == "20") { $memo = "출산휴가"; $totaltime = "0000"; $overtime = "0000"; }
+                        if ($gubun1 == "21" || $gubun2 == "21") { $memo = "육아휴직"; $totaltime = "0000"; $overtime = "0000"; }
 
-					//출근상태
-					switch($gubun1)
-					{
-						case "1" :
-							$gubun1_ex = "출근";
-							break;
-						case "4" :
-							$gubun1_ex = "프로젝트 반차";
-							break;
-						case "6" :
-							$gubun1_ex = "외근";
-							break;
-						case "7" :
-							$gubun1_ex = "지각";
-							break;
-						case "8" :
-							$gubun1_ex = "반차";
-							break;
-						case "10" :
-							$gubun1_ex = "휴가";
-							$checktime1_ex = "-";
-							break;
-						case "11" :
-							$gubun1_ex = "병가";
-							$checktime1_ex = "-";
-							break;
-						case "12" :
-							$gubun1_ex = "경조사";
-							$checktime1_ex = "-";
-							break;
-						case "13" :
-							$gubun1_ex = "기타";
-							$checktime1_ex = "-";
-							break;
-						case "14" :
-							$gubun1_ex = "결근";
-							$checktime1_ex = "-";
-							break;
-						case "15" :
-							$gubun1_ex = "교육/훈련";
-							$checktime1_ex = "-";
-							break;
-						case "16" :
-							$gubun1_ex = "프로젝트휴가";
-							$checktime1_ex = "-";
-							break;
-						case "17" :
-							$gubun1_ex = "리프레시휴가";
-							$checktime1_ex = "-";
-							break;
-						case "18" :
-							$gubun1_ex = "무급휴가";
-							$checktime1_ex = "-";
-							break;
-						case "19" :
-							$gubun1_ex = "예비군";
-							$checktime1_ex = "-";
-							break;
-						case "20" :
-							$gubun1_ex = "출산휴가";
-							$checktime1_ex = "-";
-							break;
-						case "21" :
-							$gubun1_ex = "육아휴직";
-							$checktime1_ex = "-";
-							break;
-						default : 
-							$gubun1_ex = "";
-							break;
-					}
+                        if ($totaltime == "0000") {
+                            $totaltime_ex = "";
+                        } else {
+                            $totaltime_ex = substr($totaltime,0,2) .":". substr($totaltime,2,2);
+                        }
+                        if ($overtime == "0000") {
+                            $overtime_ex = "";
+                        } else {
+                            $overtime_ex = substr($overtime,0,2) .":". substr($overtime,2,2);
+                        }
+                        if ($undertime == "0000") {
+                            $undertime_ex = "";
+                        } else {
+                            $undertime_ex = substr($undertime,0,2) .":". substr($undertime,2,2);
+                        }
 
-					//퇴근상태
-					switch($gubun2)
-					{
-						case "2" :
-							$gubun2_ex = "퇴근";
-							break;
-						case "3" :
-							$gubun2_ex = "연장근무";
-							break;
-						case "5" :
-							$gubun2_ex = "프로젝트 반차";
-							break;
-						case "6" :
-							$gubun2_ex = "외근";
-							break;
-						case "9" :
-							$gubun2_ex = "반차";
-							break;
-						case "10" :
-							$gubun2_ex = "휴가";
-							$checktime2_ex = "-";
-							break;
-						case "11" :
-							$gubun2_ex = "병가";
-							$checktime2_ex = "-";
-							break;
-						case "12" :
-							$gubun2_ex = "경조사";
-							$checktime2_ex = "-";
-							break;
-						case "13" :
-							$gubun2_ex = "기타";
-							$checktime2_ex = "-";
-							break;
-						case "14" :
-							$gubun2_ex = "결근";
-							$checktime2_ex = "-";
-							break;
-						case "15" :
-							$gubun2_ex = "교육/훈련";
-							$checktime2_ex = "-";
-							break;
-						case "16" :
-							$gubun2_ex = "프로젝트휴가";
-							$checktime2_ex = "-";
-							break;
-						case "17" :
-							$gubun2_ex = "리프레시휴가";
-							$checktime2_ex = "-";
-							break;
-						case "18" :
-							$gubun2_ex = "무급휴가";
-							$checktime2_ex = "-";
-							break;
-						case "19" :
-							$gubun2_ex = "예비군";
-							$checktime2_ex = "-";
-							break;
-						case "20" :
-							$gubun2_ex = "출산휴가";
-							$checktime2_ex = "-";
-							break;
-						case "21" :
-							$gubun2_ex = "육아휴직";
-							$checktime2_ex = "-";
-							break;
-						default : 
-							$gubun2_ex = "";
-							break;
-					}
-				}
-?>
-						<tr>
-							<td><?=($page-1)*$per_page+($i+1)?></td>
-							<td><?=$team_date_ex[$i]?></td>
-							<td class="bold"><?=$team_name_ex[$i]?></td>
-							<td><?=$team_position_ex[$i]?></td>
-							<td><?=$team_team_ex[$i]?></td>
-							<td><?=$checktime1_ex?></td>
-							<td><?=$checktime2_ex?></td>
-							<td class="bold"><?=$gubun1_ex?> / <strong class="color_o"><?=$gubun2_ex?></strong></td>
-							<td class="bold"><?=$totaltime_ex?></td>
-							<td class="bold"><?=$overtime_ex?></td>
-							<td><?=$memo?></td>
-						</tr>
-<?
-			}
-		}
-	}
-?>
-					</tbody>
-				</table>
-			<? } else { ?>
-				<table class="notable work1 work_stats"  width="100%">
-					<caption>근태통계 월별/연별 테이블</caption>
-					<colgroup>
-						<col width="5%" />
-						<col width="6%" />
-						<col width="6%" />
-						<col width="15%" />
-						<col width="7%" />
-						<col width="6%" />
-						<col width="6%" />
-						<col width="8%" />
-						<col width="8%" />
-						<col width="8%" />
-						<col width="9%" />
-						<col width="9%" />
-						<col width="7%" />
-						
-					</colgroup>
-					<thead>
-						<tr>
-							<th>no.</th>
-							<th>이름</th>
-							<th>직급</th>
-							<th>부서</th>
-							<th>정상근무</th>
-							<th>휴가</th>
-							<th>반차</th>
-							<th>평균출근시간</th>
-							<th>평균퇴근시간</th>
-							<th>평균근무시간</th>
-							<th>총근무시간</th>
-							<th>총초과근무시간</th>
-							<th>총초과일수</th>
-						</tr>
-					</thead>
-					<tbody>
-<?
-	if (sizeof($team_id_ex) == 1)
-	{
-?>
-						<tr>
-							<td colspan="11" height="30" align="center">검색된 데이터가 없습니다.</td>
-						</tr>
-<?
-	}
-	else
-	{
-		$i = ($page-1)*$per_page+1;
+                        //출근상태
+                        switch($gubun1)
+                        {
+                            case "1" :
+                                $gubun1_ex = "출근";
+                                break;
+                            case "4" :
+                                $gubun1_ex = "프로젝트 반차";
+                                break;
+                            case "6" :
+                                $gubun1_ex = "외근";
+                                break;
+                            case "7" :
+                                $gubun1_ex = "지각";
+                                break;
+                            case "8" :
+                                $gubun1_ex = "반차";
+                                break;
+                            case "10" :
+                                $gubun1_ex = "휴가";
+                                $checktime1_ex = "-";
+                                break;
+                            case "11" :
+                                $gubun1_ex = "병가";
+                                $checktime1_ex = "-";
+                                break;
+                            case "12" :
+                                $gubun1_ex = "경조사";
+                                $checktime1_ex = "-";
+                                break;
+                            case "13" :
+                                $gubun1_ex = "기타";
+                                $checktime1_ex = "-";
+                                break;
+                            case "14" :
+                                $gubun1_ex = "결근";
+                                $checktime1_ex = "-";
+                                break;
+                            case "15" :
+                                $gubun1_ex = "교육/훈련";
+                                $checktime1_ex = "-";
+                                break;
+                            case "16" :
+                                $gubun1_ex = "프로젝트휴가";
+                                $checktime1_ex = "-";
+                                break;
+                            case "17" :
+                                $gubun1_ex = "리프레시휴가";
+                                $checktime1_ex = "-";
+                                break;
+                            case "18" :
+                                $gubun1_ex = "무급휴가";
+                                $checktime1_ex = "-";
+                                break;
+                            case "19" :
+                                $gubun1_ex = "예비군";
+                                $checktime1_ex = "-";
+                                break;
+                            case "20" :
+                                $gubun1_ex = "출산휴가";
+                                $checktime1_ex = "-";
+                                break;
+                            case "21" :
+                                $gubun1_ex = "육아휴직";
+                                $checktime1_ex = "-";
+                                break;
+                            default :
+                                $gubun1_ex = "";
+                                break;
+                        }
 
-		while ($record = sqlsrv_fetch_array($rs))
-		{
-			$team_login = $record['PRS_LOGIN'];
-			$team_id = $record['PRS_ID'];
-			$team_name = $record['PRS_NAME'];
-			$team_team = $record['PRS_TEAM'];
-			$team_position = $record['PRS_POSITION'];
+                        //퇴근상태
+                        switch($gubun2)
+                        {
+                            case "2" :
+                                $gubun2_ex = "퇴근";
+                                break;
+                            case "3" :
+                                $gubun2_ex = "연장근무";
+                                break;
+                            case "5" :
+                                $gubun2_ex = "프로젝트 반차";
+                                break;
+                            case "6" :
+                                $gubun2_ex = "외근";
+                                break;
+                            case "9" :
+                                $gubun2_ex = "반차";
+                                break;
+                            case "10" :
+                                $gubun2_ex = "휴가";
+                                $checktime2_ex = "-";
+                                break;
+                            case "11" :
+                                $gubun2_ex = "병가";
+                                $checktime2_ex = "-";
+                                break;
+                            case "12" :
+                                $gubun2_ex = "경조사";
+                                $checktime2_ex = "-";
+                                break;
+                            case "13" :
+                                $gubun2_ex = "기타";
+                                $checktime2_ex = "-";
+                                break;
+                            case "14" :
+                                $gubun2_ex = "결근";
+                                $checktime2_ex = "-";
+                                break;
+                            case "15" :
+                                $gubun2_ex = "교육/훈련";
+                                $checktime2_ex = "-";
+                                break;
+                            case "16" :
+                                $gubun2_ex = "프로젝트휴가";
+                                $checktime2_ex = "-";
+                                break;
+                            case "17" :
+                                $gubun2_ex = "리프레시휴가";
+                                $checktime2_ex = "-";
+                                break;
+                            case "18" :
+                                $gubun2_ex = "무급휴가";
+                                $checktime2_ex = "-";
+                                break;
+                            case "19" :
+                                $gubun2_ex = "예비군";
+                                $checktime2_ex = "-";
+                                break;
+                            case "20" :
+                                $gubun2_ex = "출산휴가";
+                                $checktime2_ex = "-";
+                                break;
+                            case "21" :
+                                $gubun2_ex = "육아휴직";
+                                $checktime2_ex = "-";
+                                break;
+                            default :
+                                $gubun2_ex = "";
+                                break;
+                        }
+                    }
+                    ?>
+                        <tr>
+                            <td class="has-text-centered"><?=($page-1)*$per_page+($i+1)?></td>
+                            <td class="has-text-centered"><?=$team_date_ex[$i]?></td>
+                            <td class="has-text-centered"><?=$team_name_ex[$i]?></td>
+                            <td class="has-text-centered"><?=$team_position_ex[$i]?></td>
+                            <td class="has-text-centered"><?=$team_team_ex[$i]?></td>
+                            <td class="has-text-centered"><?=$checktime1_ex?></td>
+                            <td class="has-text-centered"><?=$checktime2_ex?></td>
+                            <td class="has-text-centered"><?=$gubun1_ex?> / <?=$gubun2_ex?></td>
+                            <td class="has-text-centered"><?=$totaltime_ex?></td>
+                            <td class="has-text-centered"><?=$overtime_ex?></td>
+                            <td class="has-text-centered"><?=$memo?></td>
+                        </tr>
+                <?
+                    }
+                 } }
+                ?>
+                        </tbody>
+                    </table>
+            <? } else { ?>
+                    <table class="table is-fullwidth is-hoverable is-resize">
+                        <colgroup>
+                            <col width="5%">
+                            <col width="9%">
+                            <col width="8%">
+                            <col width="*%">
+                            <col width="5%">
+                            <col width="5%">
+                            <col width="5%">
+                            <col width="8%">
+                            <col width="8%">
+                            <col width="9%">
+                            <col width="7%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th class="has-text-centered">No.</th>
+                            <th class="has-text-centered">이름</th>
+                            <th class="has-text-centered">직급</th>
+                            <th class="has-text-centered">부서</th>
+                            <th class="has-text-centered">정상근무</th>
+                            <th class="has-text-centered">휴가</th>
+                            <th class="has-text-centered">반차</th>
+                            <th class="has-text-centered">평균<br>출근시간</th>
+                            <th class="has-text-centered">평균<br>퇴근시간</th>
+                            <th class="has-text-centered">평균<br>근무시간</th>
+                            <th class="has-text-centered">총<br>근무시간</th>
+                            <th class="has-text-centered">총초과<br>근무시간</th>
+                            <th class="has-text-centered">총초과일수</th>
+                        </tr>
+                        </thead>
+                        <!-- 일반 리스트 -->
+                        <tbody class="list">
+                        <?
+                        if (sizeof($team_id_ex) == 1)
+                        {
+                        ?>
+                        <tr>
+                            <td colspan="11" height="30" align="center">검색된 데이터가 없습니다.</td>
+                        </tr>
+                  <?
+                    }
+                    else
+                    {
+                        $i = ($page-1)*$per_page+1;
+                    while ($record = sqlsrv_fetch_array($rs))
+                    {
+                        $team_login = $record['PRS_LOGIN'];
+                        $team_id = $record['PRS_ID'];
+                        $team_name = $record['PRS_NAME'];
+                        $team_team = $record['PRS_TEAM'];
+                        $team_position = $record['PRS_POSITION'];
 
-			$biz_commute_count = $record['BIZ_COMMUTE'];	//평일정상출근
-			$lateness_count = $record['LATENESS'];			//지각
-			$vacation_count = $record['VACATION'];			//휴가
-			$commute_day = $record['COMMUTE_DATE'];			//근무일수
-			$subvacation1_count = $record['SUBVACATION1'];	//오전반차
-			$subvacation2_count = $record['SUBVACATION2'];	//오후반차
-			$avgtime1 = $record['AVGTIME1'];				//평균출근시
-			$avgminute1 = $record['AVGMINUTE1'];			//평균출근분
-			$avgtime2 = $record['AVGTIME2'];				//평균퇴근시
-			$avgminute2 = $record['AVGMINUTE2'];			//평균퇴근분
-			$avg_time = $record['AVG_TIME'];				//평균근무시간시
-			$avg_minute = $record['AVG_MINUTE'];			//평균근무시간분
-			$biz_total_time = $record['BIZ_TOTAL_TIME'];		//평일총근무시간시
-			$biz_total_minuate = $record['BIZ_TOTAL_MINUTE'];	//평일총근무시간분
-			$total_time = $record['TOTAL_TIME'];			//총근무시간시
-			$total_minute = $record['TOTAL_MINUTE'];		//총근무시간분
-			$over_time = $record['OVER_TIME'];				//초과근무시간시 - 하루 9시간 이상 근무한 내역에 대한 월 총합시간
-			$over_minute = $record['OVER_MINUTE'];			//초과근무시간분 - 하루 9시간 이상 근무한 내역에 대한 월 총합시간
-			$over_day = $record['OVER_DATE'];				//초과일수
-			$off_time = $record['OFF_TIME'];				//외출 시
-			$off_minute = $record['OFF_MINUTE'];			//외출 분
-			$biz_off_time = $record['BIZ_OFF_TIME'];		//평일외출 시
-			$biz_off_minute = $record['BIZ_OFF_MINUTE'];	//평일외출 분
-			$real_over = $record['REAL_OVER'];				//연장근무시간분단위
-			$real_avg = $record['REAL_AVG'];				//평균근무시간분단위
-			$real_off = $record['REAL_OFF'];				//평균외출시간분단위
+                        $biz_commute_count = $record['BIZ_COMMUTE'];	//평일정상출근
+                        $lateness_count = $record['LATENESS'];			//지각
+                        $vacation_count = $record['VACATION'];			//휴가
+                        $commute_day = $record['COMMUTE_DATE'];			//근무일수
+                        $subvacation1_count = $record['SUBVACATION1'];	//오전반차
+                        $subvacation2_count = $record['SUBVACATION2'];	//오후반차
+                        $avgtime1 = $record['AVGTIME1'];				//평균출근시
+                        $avgminute1 = $record['AVGMINUTE1'];			//평균출근분
+                        $avgtime2 = $record['AVGTIME2'];				//평균퇴근시
+                        $avgminute2 = $record['AVGMINUTE2'];			//평균퇴근분
+                        $avg_time = $record['AVG_TIME'];				//평균근무시간시
+                        $avg_minute = $record['AVG_MINUTE'];			//평균근무시간분
+                        $biz_total_time = $record['BIZ_TOTAL_TIME'];		//평일총근무시간시
+                        $biz_total_minuate = $record['BIZ_TOTAL_MINUTE'];	//평일총근무시간분
+                        $total_time = $record['TOTAL_TIME'];			//총근무시간시
+                        $total_minute = $record['TOTAL_MINUTE'];		//총근무시간분
+                        $over_time = $record['OVER_TIME'];				//초과근무시간시 - 하루 9시간 이상 근무한 내역에 대한 월 총합시간
+                        $over_minute = $record['OVER_MINUTE'];			//초과근무시간분 - 하루 9시간 이상 근무한 내역에 대한 월 총합시간
+                        $over_day = $record['OVER_DATE'];				//초과일수
+                        $off_time = $record['OFF_TIME'];				//외출 시
+                        $off_minute = $record['OFF_MINUTE'];			//외출 분
+                        $biz_off_time = $record['BIZ_OFF_TIME'];		//평일외출 시
+                        $biz_off_minute = $record['BIZ_OFF_MINUTE'];	//평일외출 분
+                        $real_over = $record['REAL_OVER'];				//연장근무시간분단위
+                        $real_avg = $record['REAL_AVG'];				//평균근무시간분단위
+                        $real_off = $record['REAL_OFF'];				//평균외출시간분단위
 
-			$subvacation_count = $subvacation1_count + $subvacation2_count;
+                        $subvacation_count = $subvacation1_count + $subvacation2_count;
 
-			if ($avgtime1 == "") { $avgtime1 = "0"; }
-			if ($avgminute1 == "") { $avgminute1 = "0"; }
-			if ($avgtime2 == "") { $avgtime2 = "0"; }
-			if ($avgminute2 == "") { $avgminute2 = "0"; }
-			if ($avg_time == "") { $avg_time = "0"; }
-			if ($avg_minute == "") { $avg_minute = "0"; }
-			if ($biz_total_time == "") { $biz_total_time = "0"; }
-			if ($biz_total_minute == "") { $biz_total_minute = "0"; }
-			if ($total_time == "") { $total_time = "0"; }
-			if ($total_minute == "") { $total_minute = "0"; }
-			if ($over_time == "") { $over_time = "0"; }
-			if ($over_minute == "") { $over_minute = "0"; }
-			if ($off_time == "") { $off_time = "0"; }
-			if ($off_minute == "") { $off_minute = "0"; }
-			if ($biz_off_time == "") { $biz_off_time = "0"; }
-			if ($biz_off_minute == "") { $biz_off_minute = "0"; }
+                        if ($avgtime1 == "") { $avgtime1 = "0"; }
+                        if ($avgminute1 == "") { $avgminute1 = "0"; }
+                        if ($avgtime2 == "") { $avgtime2 = "0"; }
+                        if ($avgminute2 == "") { $avgminute2 = "0"; }
+                        if ($avg_time == "") { $avg_time = "0"; }
+                        if ($avg_minute == "") { $avg_minute = "0"; }
+                        if ($biz_total_time == "") { $biz_total_time = "0"; }
+                        if ($biz_total_minute == "") { $biz_total_minute = "0"; }
+                        if ($total_time == "") { $total_time = "0"; }
+                        if ($total_minute == "") { $total_minute = "0"; }
+                        if ($over_time == "") { $over_time = "0"; }
+                        if ($over_minute == "") { $over_minute = "0"; }
+                        if ($off_time == "") { $off_time = "0"; }
+                        if ($off_minute == "") { $off_minute = "0"; }
+                        if ($biz_off_time == "") { $biz_off_time = "0"; }
+                        if ($biz_off_minute == "") { $biz_off_minute = "0"; }
 
-			//외출시간 제외한 총 근무 시간 계산
-			if ($off_time > 0 && $off_minute > 0)
-			{
-				if ($total_minute < $off_minute)
-				{
-					$total_minute = $total_minute - $off_minute + 60;
-					$total_time = $total_time - $off_time - 1;
-				}
-				else
-				{
-					$total_minute = $total_minute - $off_minute;
-					$total_time = $total_time - $off_time - 1;
-				}
-				if ($total_time == -1)
-				{
-					$total_time = 0;
-				}
-			}
-			//
+                        //외출시간 제외한 총 근무 시간 계산
+                        if ($off_time > 0 && $off_minute > 0)
+                        {
+                            if ($total_minute < $off_minute)
+                            {
+                                $total_minute = $total_minute - $off_minute + 60;
+                                $total_time = $total_time - $off_time - 1;
+                            }
+                            else
+                            {
+                                $total_minute = $total_minute - $off_minute;
+                                $total_time = $total_time - $off_time - 1;
+                            }
+                            if ($total_time == -1)
+                            {
+                                $total_time = 0;
+                            }
+                        }
+                        //
 
-			if (substr($real_over,0,1) == "-") 
-			{
-				$flag1 = "-";
-				$real_over = substr($real_over,1,strlen($real_over));
-			}
+                        if (substr($real_over,0,1) == "-")
+                        {
+                            $flag1 = "-";
+                            $real_over = substr($real_over,1,strlen($real_over));
+                        }
 
-			$over_time = intval($real_over / 60);
-			$over_minute = $real_over % 60;
+                        $over_time = intval($real_over / 60);
+                        $over_minute = $real_over % 60;
 
-			$over = $over_time . $over_minute;
-			$total = $total_time . $total_minute;
+                        $over = $over_time . $over_minute;
+                        $total = $total_time . $total_minute;
 
-			if (strlen($avgtime1) == 1) { $avgtime1 = "0".$avgtime1; }
-			if (strlen($avgminute1) == 1) { $avgminute1 = "0".$avgminute1; }
-			if (strlen($avgtime2) == 1) { $avgtime2 = "0".$avgtime2; }
-			if (strlen($avgminute2) == 1) { $avgminute2 = "0".$avgminute2; }
-			if (strlen($avg_time) == 1) { $avg_time = "0".$avg_time; }
-			if (strlen($avg_minute) == 1) { $avg_minute = "0".$avg_minute; }
-			if (strlen($total_time) == 1) { $total_time = "0".$total_time; }
-			if (strlen($total_minute) == 1) { $total_minute = "0".$total_minute; }
-			if (strlen($over_time) == 1) { $over_time = "0".$over_time; }
-			if (strlen($over_minute) == 1) { $over_minute = "0".$over_minute; }
-?>
-						<tr>
-							<td><?=$i?></td>
-							<td class="bold"><?=$team_name?></td>
-							<td><?=$team_position?></td>
-							<td><?=$team_team?></td>
-							<td class="bold"><?=$biz_commute_count?></td>
-							<td class="bold"><?=$vacation_count?></td>
-							<td class="bold"><?=$subvacation_count?></td>
-							<td><?=$avgtime1?> : <?=$avgminute1?></td>
-							<td><?=$avgtime2?> : <?=$avgminute2?></td>
-							<td><?=$avg_time?> : <?=$avg_minute?></td>
-							<td><?=$total_time?> : <?=$total_minute?></td>
-							<td><?=$over_time?> : <?=$over_minute?></td>
-							<td><?=$over_day?></td>
-						</tr>
-<?
-			$i++;
-		}
-	}
-?>
-					</tbody>
-				</table>
-			<? } ?>
-				<div class="page_num">
-				<?=getPaging($total_cnt,$page,$per_page);?>
-				</div>
-			</div>
-		</div>
+                        if (strlen($avgtime1) == 1) { $avgtime1 = "0".$avgtime1; }
+                        if (strlen($avgminute1) == 1) { $avgminute1 = "0".$avgminute1; }
+                        if (strlen($avgtime2) == 1) { $avgtime2 = "0".$avgtime2; }
+                        if (strlen($avgminute2) == 1) { $avgminute2 = "0".$avgminute2; }
+                        if (strlen($avg_time) == 1) { $avg_time = "0".$avg_time; }
+                        if (strlen($avg_minute) == 1) { $avg_minute = "0".$avg_minute; }
+                        if (strlen($total_time) == 1) { $total_time = "0".$total_time; }
+                        if (strlen($total_minute) == 1) { $total_minute = "0".$total_minute; }
+                        if (strlen($over_time) == 1) { $over_time = "0".$over_time; }
+                        if (strlen($over_minute) == 1) { $over_minute = "0".$over_minute; }
+                        ?>
+                        <tr>
+                            <td class="has-text-centered"><?=$i?></td>
+                            <td class="has-text-centered"><?=$team_name?></td>
+                            <td class="has-text-centered"><?=$team_position?></td>
+                            <td class="has-text-centered"><?=$team_team?></td>
+                            <td class="has-text-centered"><?=$biz_commute_count?></td>
+                            <td class="has-text-centered"><?=$vacation_count?></td>
+                            <td class="has-text-centered"><?=$subvacation_count?></td>
+                            <td class="has-text-centered"><?=$avgtime1?> : <?=$avgminute1?></td>
+                            <td class="has-text-centered"><?=$avgtime2?> : <?=$avgminute2?></td>
+                            <td class="has-text-centered"><?=$avgtime2?> : <?=$avgminute2?></td>
+                            <td class="has-text-centered"><?=$total_time?> : <?=$total_minute?></td>
+                            <td class="has-text-centered"><?=$over_time?> : <?=$over_minute?></td>
+                            <td class="has-text-centered"><?=$over_day?></td>
+                        </tr>
+                    <?
+                            $i++;
+                            }
+                        }
+                     ?>
+
+                        </tbody>
+                    </table>
+            <? } ?>
+
+                        <!--페이징처리-->
+                    <nav class="pagination" role="navigation" aria-label="pagination">
+                        <?=getPaging($total_cnt,$page,$per_page);?>
+                        </ul>
+                    </nav>
+                    <!--페이징처리-->
+                </div>
+            </section>
 </form>
 <? include INC_PATH."/bottom.php"; ?>
-</div>
 </body>
 </html>

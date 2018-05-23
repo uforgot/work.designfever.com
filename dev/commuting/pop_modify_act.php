@@ -1861,7 +1861,8 @@
 	}
 ?>
 	<script language="javascript">
-		var frm = top.opener.document.form;
+		//var frm = top.opener.document.form;
+        var frm = parent.parent.document.form;
 		var year = frm.year.value;
 		var month = frm.month.value;
 		var type = frm.type.value;
@@ -1870,23 +1871,27 @@
 		alert("근태기록이 수정되었습니다.");
 
 	<? if ($prs_id == "79") { ?>
-		top.opener.location.href = "commuting_member2.php?year="+year+"&month="+month;
+		//top.opener.location.href = "commuting_member2.php?year="+year+"&month="+month;
+		parent.parent.location.href = "commuting_member2.php?year="+year+"&month="+month;
 	<? } else { ?>
 		if (type == "team")
 		{
 			var team = frm.team.value;
-			top.opener.location.href = "commuting_member.php?year="+year+"&month="+month+"&type="+type+"&team="+team+"&page="+page;
+			//top.opener.location.href = "commuting_member.php?year="+year+"&month="+month+"&type="+type+"&team="+team+"&page="+page;
+            parent.parent.location.href = "commuting_member.php?year="+year+"&month="+month+"&type="+type+"&team="+team+"&page="+page;
 		}
 		else if (type == "person")
 		{
 			var name = frm.name.value;
-			top.opener.location.href = "commuting_member.php?year="+year+"&month="+month+"&type="+type+"&name="+name+"&page="+page;
+			//top.opener.location.href = "commuting_member.php?year="+year+"&month="+month+"&type="+type+"&name="+name+"&page="+page;
+            parent.parent.location.href = "commuting_member.php?year="+year+"&month="+month+"&type="+type+"&name="+name+"&page="+page;
 		}
 		else
 		{
-			top.opener.location.href = "commuting_member3.php?year="+year+"&month="+month;
+			//top.opener.location.href = "commuting_member3.php?year="+year+"&month="+month;
+            parent.parent.location.href = "commuting_member3.php?year="+year+"&month="+month;
 		}
 	<? } ?>
 
-		top.close();
+		//top.close();
 	</script>

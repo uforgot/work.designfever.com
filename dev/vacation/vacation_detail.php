@@ -3,7 +3,9 @@
     require_once CMN_PATH."/login_check.php";
     require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
-
+<link rel="stylesheet" href="/assets/css/common.css" />
+<link rel="stylesheet" href="/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="/assets/css/style_20180406.css" />
 <?
 	$doc_no = isset($_REQUEST['doc_no']) ? $_REQUEST['doc_no'] : null;
 

@@ -36,6 +36,12 @@
                     <? } else { ?>
                         <a class="navbar-item is-tab" href="commuting_approval.php">휴가/외근/출장 현황</a>
                     <? } ?>
+                    <? if (substr(CURRENT_URL,10,23) == "/commuting_leave.php") { ?>
+                        <a class="navbar-item is-tab is-active" href="commuting_leave.php">퇴사자 근태 기록</a>
+                    <? } else { ?>
+                        <a class="navbar-item is-tab" href="commuting_leave.php">퇴사자 근태 기록</a>
+                    <? } ?>
+
 		    <?	}	?>
 <!--
 	<?
