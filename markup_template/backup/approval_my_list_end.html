@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>designfever intranet</title>
+    <link rel="stylesheet" href="/assets/css/work.df.css">
+
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script defer src="/assets/js/all.js"></script>
+    <script defer src="/assets/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+
+<div id="top"></div>
+<div id="sub-menu-4"></div>
+
+<!-- 본문 시작 -->
+<section class="section df-approval">
+
+    <div class="container">
+        <aside class="menu" style="width:200px; display:inline-block; padding-right:2rem; vertical-align: top;">
+            <p class="menu-label">
+                결제문서함
+            </p>
+            <ul class="menu-list">
+                <li><a>미결재문서</a></li>
+                <li><a>결재완료</a></li>
+            </ul>
+            <p class="menu-label">
+                개인 문서함
+            </p>
+            <ul class="menu-list">
+                <li><a>상신문서</a></li>
+                <li><a>임시저장</a></li>
+                <li><a>반려문서</a></li>
+                <li><a class="is-active">결제완료</a></li>
+            </ul>
+            <p class="menu-label">
+                <hr>
+            </p>
+            <ul class="menu-list">
+                <li><a>참조 문서함</a></li>
+                <li><a>동반 문서함</a></li>
+            </ul>
+        </aside>
+        <div style="width:calc(100% - 210px); display: inline-block;">
+            <div class="content">
+                <div class="table-holder">
+                    <table class="table is-hoverable is-resize">
+                        <colgroup>
+                            <col width="4%">
+                            <!--<col width="10%">-->
+                            <!--<col width="10%">-->
+                            <!--<col width="10%">-->
+                            <col width="*">
+                            <!--<col width="6%">-->
+                            <!--<col width="6%">-->
+                            <!--<col width="6%">-->
+                            <col width="6%">
+                        </colgroup>
+
+                        <thead>
+                        <tr>
+                            <th>No.</th>
+                            <!--<th>문서번호</th>-->
+                            <!--<th>기안일자</th>-->
+                            <!--<th>문서종류</th>-->
+                            <th>문서명</th>
+                            <th>상태</th>
+                            <th>의견</th>
+                            <th>지급</th>
+                            <th class="last">재상신</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td>10</td>
+                            <!--<td>1805-0108</td>-->
+                            <!--<td>2018.05.14</td>-->
+                            <!--<td>연차 휴가계</td>-->
+                            <!--<td><a href="javascript:funView('1805-0108');">[신형주 휴가계] 2018년 6월 15일. ~ 6월 19일 </a></td>-->
+                            <!--<td>결재</td>-->
+                            <!--<td>0 개</td>-->
+                            <!--<td></td>-->
+                            <td>
+                                <a href="project_detail.html">
+                                    <span class="is-size-7">[1805-0108] &nbsp; 2018.05.14</span>
+                                    <br>
+                                    <span>[신형주 휴가계] 2018년 6월 15일. ~ 6월 19일</span>
+                                </a>
+                            </td>
+                            <td>결재</td>
+                            <td>0 개</td>
+                            <td><a class="button is-static">지급완료</a></td>
+                            <td class="last">
+                                <a href="#" class="button">재상신</a>
+                            </td>
+                        </tr>
+<!--
+                        <tr>
+                            <td>9</td>
+                            <td>1805-0038</td>
+                            <td>2018.05.08</td>
+                            <td>외근계/파견계</td>
+                            <td><a href="javascript:funView('1805-0038');">[신형주 외근계] 5. 4일 제일기획 강남 </a></td>
+                            <td>결재</td>
+                            <td>0 개</td>
+                            <td>								</td>
+                            <td class="last">
+                                <a href="#" class="button">재상신</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>8</td>
+                            <td>1805-0018</td>
+                            <td>2018.05.03</td>
+                            <td>연차 휴가계</td>
+                            <td><a href="javascript:funView('1805-0018');">[신형주 연차 휴가] 2018.7.9 ~ 7.11</a></td>
+                            <td>결재</td>
+                            <td>0 개</td>
+                            <td></td>
+                            <td class="last">
+                                <a href="#" class="button">재상신</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>7</td>
+                            <td>1804-0016</td>
+                            <td>2018.04.03</td>
+                            <td>외근계/파견계</td>
+                            <td><a href="javascript:funView('1804-0016');">[신형주 외근계] 4.3일 SKT 블록체인 UI/UX 제안 OT</a></td>
+                            <td>결재</td>
+                            <td>1 개</td>
+                            <td>								</td>
+                            <td class="last">
+                                <a href="#" class="button">재상신</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>6</td>
+                            <td>1804-0001</td>
+                            <td>2018.04.02</td>
+                            <td>비용품의서</td>
+                            <td><a href="javascript:funView('1804-0001');">[비용품의서] lg 4k 모니터 파워 어댑터 구매</a></td>
+                            <td>결재</td>
+                            <td>0 개</td>
+                            <td><a class="button is-static">지급완료</a></td>
+                            <td class="last">
+                                <a href="#" class="button">재상신</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>5</td>
+                            <td>1803-0128</td>
+                            <td>2018.03.14</td>
+                            <td>외근계/파견계</td>
+                            <td><a href="javascript:funView('1803-0128');">[신형주 외근계] 쟈니브로스 인수 인계 </a></td>
+                            <td>결재</td>
+                            <td>0 개</td>
+                            <td>								</td>
+                            <td class="last">
+                                <a href="#" class="button">재상신</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td>1802-0068</td>
+                            <td>2018.02.08</td>
+                            <td>연차 휴가계</td>
+                            <td><a href="javascript:funView('1802-0068');">[신형주 연차 휴가] 2월 14일 연차 휴가</a></td>
+                            <td>결재</td>
+                            <td>0 개</td>
+                            <td></td>
+                            <td class="last">
+                                <a href="#" class="button">재상신</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>1801-0273</td>
+                            <td>2018.01.25</td>
+                            <td>외근계/파견계</td>
+                            <td><a href="javascript:funView('1801-0273');">[신형주 외근계] 제일기획 공정거래 협약 공유회</a></td>
+                            <td>결재</td>
+                            <td>0 개</td>
+                            <td>								</td>
+                            <td class="last">
+                                <a href="#" class="button">재상신</a>
+                            </td>
+                        </tr>
+                        -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <nav class="pagination" role="navigation" aria-label="pagination">
+                <a class="pagination-previous">이전</a>
+                <a class="pagination-next">다음</a>
+
+                <ul class="pagination-list ">
+                    <li>
+                        <a class="pagination-link" aria-label="Goto page 1">1</a>
+                    </li>
+                    <li>
+                        <span class="pagination-ellipsis">&hellip;</span>
+                    </li>
+                    <li>
+                        <a class="pagination-link" aria-label="Goto page 45">45</a>
+                    </li>
+                    <li>
+                        <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a>
+                    </li>
+                    <li>
+                        <a class="pagination-link" aria-label="Goto page 47">47</a>
+                    </li>
+                    <li>
+                        <span class="pagination-ellipsis">&hellip;</span>
+                    </li>
+                    <li>
+                        <a class="pagination-link" aria-label="Goto page 86">86</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</section>
+<!-- 본문 끌 -->
+
+<script src="/assets/js/include.js"></script>
+</body>
+</html>

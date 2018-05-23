@@ -19,206 +19,551 @@
 <section class="section df-approval">
 
     <div class="container">
-        <aside class="menu" style="width:200px; display:inline-block; padding-right:2rem; vertical-align: top;">
-            <p class="menu-label">
-                결제문서함
-            </p>
-            <ul class="menu-list">
-                <li><a>미결재문서</a></li>
-                <li><a>결재완료</a></li>
+
+        <div class="tabs is-boxed">
+            <ul>
+                <li class="is-active">
+                    <a>
+                        <span>미결재문서</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span>결재완료</span>
+                    </a>
+                </li>
+                <li>
+                    <span class="has-text-grey-light">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a>
+                        <span>상신문서</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span>임시저장</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span>반려문서</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span>결제완료</span>
+                    </a>
+                </li>
+                <li>
+                    <span class="has-text-grey-light">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a>
+                        <span>참조 문서함</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span>동반 문서함</span>
+                    </a>
+                </li>
+
+
             </ul>
-            <p class="menu-label">
-                개인 문서함
-            </p>
-            <ul class="menu-list">
-                <li><a>상신문서</a></li>
-                <li><a>임시저장</a></li>
-                <li><a>반려문서</a></li>
-                <li><a class="is-active">결제완료</a></li>
-            </ul>
-            <p class="menu-label">
-                <hr>
-            </p>
-            <ul class="menu-list">
-                <li><a>참조 문서함</a></li>
-                <li><a>동반 문서함</a></li>
-            </ul>
-        </aside>
-        <div style="width:calc(100% - 210px); display: inline-block;">
-            <div class="content">
-                <div class="table-holder">
-                    <table class="table is-hoverable">
-                        <colgroup>
-                            <col width="4%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="*">
-                            <col width="6%">
-                            <col width="6%">
-                            <col width="6%">
-                            <col width="6%">
-                        </colgroup>
+        </div>
 
-                        <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>문서번호</th>
-                            <th>기안일자</th>
-                            <th>문서종류</th>
-                            <th>문서명</th>
-                            <th>상태</th>
-                            <th>의견</th>
-                            <th>지급</th>
-                            <th class="last">재상신</th>
-                        </tr>
-                        </thead>
+        <div class="content">
+            <div class="card">
 
-                        <tbody>
-                        <tr>
-                            <td>10</td>
-                            <td>1805-0108</td>
-                            <td>2018.05.14</td>
-                            <td>연차 휴가계</td>
-                            <td><a href="javascript:funView('1805-0108');">[신형주 휴가계] 2018년 6월 15일. ~ 6월 19일 </a></td>
-                            <td>결재</td>
-                            <td>0 개</td>
-                            <td></td>
-                            <td class="last">
-                                <a href="#" class="button">재상신</a>
-                            </td>
-                        </tr>
+                <div class="card-content">
 
-                        <tr>
-                            <td>9</td>
-                            <td>1805-0038</td>
-                            <td>2018.05.08</td>
-                            <td>외근계/파견계</td>
-                            <td><a href="javascript:funView('1805-0038');">[신형주 외근계] 5. 4일 제일기획 강남 </a></td>
-                            <td>결재</td>
-                            <td>0 개</td>
-                            <td>								</td>
-                            <td class="last">
-                                <a href="#" class="button">재상신</a>
-                            </td>
-                        </tr>
+                    <div class="columns">
+                        <div class="column" style="display:inline-block;flex-grow:0;flex-basis:auto;">
+                            <div class="field is-group">
+                                <div class="control select">
+                                    <select name="fr_year" id="fr_year">
+                                        <option value='2013'>2013년</option><option value='2014'>2014년</option><option value='2015'>2015년</option><option value='2016'>2016년</option><option value='2017'>2017년</option><option value='2018' selected>2018년</option><option value='2019'>2019년</option>                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="fr_month" id="fr_month">
+                                        <option value='01'>1월</option><option value='02'>2월</option><option value='03'>3월</option><option value='04' selected>4월</option><option value='05'>5월</option><option value='06'>6월</option><option value='07'>7월</option><option value='08'>8월</option><option value='09'>9월</option><option value='10'>10월</option><option value='11'>11월</option><option value='12'>12월</option>                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="fr_day" id="fr_day">
+                                        <option value='01' selected>1일</option><option value='02'>2일</option><option value='03'>3일</option><option value='04'>4일</option><option value='05'>5일</option><option value='06'>6일</option><option value='07'>7일</option><option value='08'>8일</option><option value='09'>9일</option><option value='10'>10일</option><option value='11'>11일</option><option value='12'>12일</option><option value='13'>13일</option><option value='14'>14일</option><option value='15'>15일</option><option value='16'>16일</option><option value='17'>17일</option><option value='18'>18일</option><option value='19'>19일</option><option value='20'>20일</option><option value='21'>21일</option><option value='22'>22일</option><option value='23'>23일</option><option value='24'>24일</option><option value='25'>25일</option><option value='26'>26일</option><option value='27'>27일</option><option value='28'>28일</option><option value='29'>29일</option><option value='30'>30일</option><option value='31'>31일</option>                                    </select>
+                                </div>
+                                <div class="button">
+                                    <input type="hidden" id="fr_date" class="datepicker">
+                                    <i class="fa fa-calendar-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field is-group">
+                                <div class="control select">
+                                    <select name="to_year" id="to_year">
+                                        <option value='2013'>2013년</option><option value='2014'>2014년</option><option value='2015'>2015년</option><option value='2016'>2016년</option><option value='2017'>2017년</option><option value='2018' selected>2018년</option><option value='2019'>2019년</option>                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="to_month" id="to_month">
+                                        <option value='01'>1월</option><option value='02'>2월</option><option value='03'>3월</option><option value='04' selected>4월</option><option value='05'>5월</option><option value='06'>6월</option><option value='07'>7월</option><option value='08'>8월</option><option value='09'>9월</option><option value='10'>10월</option><option value='11'>11월</option><option value='12'>12월</option>                                    </select>
+                                </div>
+                                <div class="control select">
+                                    <select name="to_day" id="to_day">
+                                        <option value='01'>1일</option><option value='02'>2일</option><option value='03'>3일</option><option value='04'>4일</option><option value='05'>5일</option><option value='06'>6일</option><option value='07'>7일</option><option value='08'>8일</option><option value='09'>9일</option><option value='10'>10일</option><option value='11'>11일</option><option value='12'>12일</option><option value='13'>13일</option><option value='14'>14일</option><option value='15'>15일</option><option value='16'>16일</option><option value='17'>17일</option><option value='18'>18일</option><option value='19'>19일</option><option value='20'>20일</option><option value='21'>21일</option><option value='22'>22일</option><option value='23'>23일</option><option value='24'>24일</option><option value='25'>25일</option><option value='26'>26일</option><option value='27' selected>27일</option><option value='28'>28일</option><option value='29'>29일</option><option value='30'>30일</option><option value='31'>31일</option>                                    </select>
+                                </div>
+                                <div class="button">
+                                    <input type="hidden" id="fr_date" class="datepicker">
+                                    <i class="fa fa-calendar-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                        <tr>
-                            <td>8</td>
-                            <td>1805-0018</td>
-                            <td>2018.05.03</td>
-                            <td>연차 휴가계</td>
-                            <td><a href="javascript:funView('1805-0018');">[신형주 연차 휴가] 2018.7.9 ~ 7.11</a></td>
-                            <td>결재</td>
-                            <td>0 개</td>
-                            <td></td>
-                            <td class="last">
-                                <a href="#" class="button">재상신</a>
-                            </td>
-                        </tr>
+                    <div class="field is-grouped is-grouped-multiline">
+                        <div class="control select">
+                            <select>
+                                <option value="">전체</option>
+                                <option value="입사승인계">입사승인계</option>
+                                <option value="품의서">품의서</option>
+                                <option value="외근계/파견계">외근계/파견계</option>
+                                <option value="휴가계">휴가계</option>
+                                <option value="출장계">출장계</option>
+                                <option value="사유서">사유서</option>
+                                <option value="시말서">시말서</option>
+                                <option value="조퇴계">조퇴계</option>
+                            </select>
+                        </div>
+                        <div class="control select">
+                            <select>
+                                <option>기안자</option>
+                                <option value="1">제목</option>
+                                <option value="2">내용</option>
+                            </select>
+                        </div>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="">
+                        </div>
 
-                        <tr>
-                            <td>7</td>
-                            <td>1804-0016</td>
-                            <td>2018.04.03</td>
-                            <td>외근계/파견계</td>
-                            <td><a href="javascript:funView('1804-0016');">[신형주 외근계] 4.3일 SKT 블록체인 UI/UX 제안 OT</a></td>
-                            <td>결재</td>
-                            <td>1 개</td>
-                            <td>								</td>
-                            <td class="last">
-                                <a href="#" class="button">재상신</a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>6</td>
-                            <td>1804-0001</td>
-                            <td>2018.04.02</td>
-                            <td>비용품의서</td>
-                            <td><a href="javascript:funView('1804-0001');">[비용품의서] lg 4k 모니터 파워 어댑터 구매</a></td>
-                            <td>결재</td>
-                            <td>0 개</td>
-                            <td><img src="/img/state_okPay.gif" alt="">								</td>
-                            <td class="last">
-                                <a href="#" class="button">재상신</a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>5</td>
-                            <td>1803-0128</td>
-                            <td>2018.03.14</td>
-                            <td>외근계/파견계</td>
-                            <td><a href="javascript:funView('1803-0128');">[신형주 외근계] 쟈니브로스 인수 인계 </a></td>
-                            <td>결재</td>
-                            <td>0 개</td>
-                            <td>								</td>
-                            <td class="last">
-                                <a href="#" class="button">재상신</a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>4</td>
-                            <td>1802-0068</td>
-                            <td>2018.02.08</td>
-                            <td>연차 휴가계</td>
-                            <td><a href="javascript:funView('1802-0068');">[신형주 연차 휴가] 2월 14일 연차 휴가</a></td>
-                            <td>결재</td>
-                            <td>0 개</td>
-                            <td></td>
-                            <td class="last">
-                                <a href="#" class="button">재상신</a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>1801-0273</td>
-                            <td>2018.01.25</td>
-                            <td>외근계/파견계</td>
-                            <td><a href="javascript:funView('1801-0273');">[신형주 외근계] 제일기획 공정거래 협약 공유회</a></td>
-                            <td>결재</td>
-                            <td>0 개</td>
-                            <td>								</td>
-                            <td class="last">
-                                <a href="#" class="button">재상신</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                        <div class="control">
+                            <button class="button is-link">
+                                <span class="icon is-small">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                                <span>검색</span>
+                            </button>
+                            <button class="button is-danger">
+                                <span class="icon is-small">
+                                    <i class="fas fa-times"></i>
+                                </span>
+                                <span>초기화</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <nav class="pagination" role="navigation" aria-label="pagination">
-                <a class="pagination-previous">이전</a>
-                <a class="pagination-next">다음</a>
-
-                <ul class="pagination-list ">
-                    <li>
-                        <a class="pagination-link" aria-label="Goto page 1">1</a>
-                    </li>
-                    <li>
-                        <span class="pagination-ellipsis">&hellip;</span>
-                    </li>
-                    <li>
-                        <a class="pagination-link" aria-label="Goto page 45">45</a>
-                    </li>
-                    <li>
-                        <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a>
-                    </li>
-                    <li>
-                        <a class="pagination-link" aria-label="Goto page 47">47</a>
-                    </li>
-                    <li>
-                        <span class="pagination-ellipsis">&hellip;</span>
-                    </li>
-                    <li>
-                        <a class="pagination-link" aria-label="Goto page 86">86</a>
-                    </li>
-                </ul>
-            </nav>
         </div>
+
+        <!-- 미결재문서 -->
+        <div class="content">
+            <table class="table is-hoverable is-resize">
+                <colgroup>
+                    <col width="4%">
+
+                    <col width="*">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="6%">
+                </colgroup>
+
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>문서명</th>
+                    <th class="has-text-centered">기안자</th>
+                    <th class="has-text-centered">이전결재자</th>
+                    <th class="has-text-centered">다음결재자</th>
+                    <th class="has-text-centered">의견</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>10</td>
+                    <td>
+                        <a href="project_detail.html">
+                            <span class="is-size-7">[1805-0108] &nbsp; 2018.05.14 &nbsp; 연차휴가계</span>
+                            <br>
+                            <span>[신형주 휴가계] 2018년 6월 15일. ~ 6월 19일</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">신형주</td>
+                    <td class="has-text-centered"><span class="is-hidden-tablet">이전 : </span>이주환</td>
+                    <td class="has-text-centered"><span class="is-hidden-tablet">다음 : </span>박수천</td>
+                    <td class="has-text-centered">2</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 결재완료 -->
+        <div class="content">
+            <table class="table is-hoverable is-resize">
+                <colgroup>
+                    <col width="4%">
+
+                    <col width="*">
+                    <col width="6%">
+                    <col width="6%">
+                    <col width="6%">
+                </colgroup>
+
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>문서명</th>
+                    <th class="has-text-centered">상태</th>
+                    <th class="has-text-centered">의견</th>
+                    <th class="has-text-centered">지급</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>10</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="project_detail.html">
+                                    <span class="is-size-7">[1805-0108] &nbsp; 2018.05.14 &nbsp; 연차휴가계</span>
+                                    <br>
+                                    <span>[신형주 휴가계] 2018년 6월 15일. ~ 6월 19일</span>
+                                </a>
+                            </div>
+                            <div class="column is-hidden-tablet last-button">
+                                <div class="field is-grouped">
+                                    <a class="button is-static">지급완료</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">결재</td>
+                    <td class="has-text-centered">0 개</td>
+                    <td class="has-text-centered is-hidden-mobile"><a class="button is-static">지급완료</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 상신문서 -->
+        <div class="content">
+            <table class="table is-hoverable is-resize">
+                <colgroup>
+                    <col width="4%">
+
+                    <col width="*">
+                    <col width="6%">
+                    <col width="6%">
+                    <col width="6%">
+                    <col width="6%">
+                </colgroup>
+
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>문서명</th>
+                    <th class="has-text-centered">상태</th>
+                    <th class="has-text-centered">의견</th>
+                    <th class="has-text-centered">재상신</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>10</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="project_detail.html">
+                                    <span class="is-size-7">[1805-0108] &nbsp; 2018.05.14 &nbsp; 연차휴가계</span>
+                                    <br>
+                                    <span>[신형주 휴가계] 2018년 6월 15일. ~ 6월 19일</span>
+                                </a>
+                            </div>
+                            <div class="column is-hidden-tablet last-button">
+                                <div class="field is-grouped">
+                                    <a href="#" class="button">재상신</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">결재</td>
+                    <td class="has-text-centered">0 개</td>
+                    <td class="has-text-centered is-hidden-mobile">
+                        <a href="#" class="button">재상신</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 임시문서 -->
+        <div class="content">
+            <table class="table is-hoverable is-resize">
+                <colgroup>
+                    <col width="4%">
+
+                    <col width="*">
+                    <col width="18%">
+                </colgroup>
+
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>문서명</th>
+                    <th class="has-text-centered">수정/삭제</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>10</td>
+                    <td class="is-last">
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="project_detail.html">
+                                    <span class="is-size-7">[1805-0108] &nbsp; 2018.05.14 &nbsp; 연차휴가계</span>
+                                    <br>
+                                    <span>[신형주 휴가계] 2018년 6월 15일. ~ 6월 19일</span>
+                                </a>
+                            </div>
+                            <div class="column is-hidden-tablet last-button">
+                                <div class="field is-grouped">
+                                    <a href="#" class="button">수정</a>&nbsp;<a href="#" class="button">삭제</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered is-hidden-mobile"><a href="#" class="button">수정</a>&nbsp;<a href="#" class="button">삭제</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 반려문서 -->
+        <div class="content">
+            <table class="table is-hoverable is-resize">
+                <colgroup>
+                    <col width="4%">
+
+                    <col width="*">
+                    <col width="6%">
+                </colgroup>
+
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>문서명</th>
+                    <th class="has-text-centered">재상신</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>10</td>
+                    <td class="is-last">
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="project_detail.html">
+                                    <span class="is-size-7">[1805-0108] &nbsp; 2018.05.14 &nbsp; 연차휴가계</span>
+                                    <br>
+                                    <span>[신형주 휴가계] 2018년 6월 15일. ~ 6월 19일</span>
+                                </a>
+                            </div>
+                            <div class="column is-hidden-tablet last-button">
+                                <div class="field is-grouped">
+                                    <a href="#" class="button">재상신</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered is-hidden-mobile"><a href="#" class="button">재상신</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 결재완료 -->
+        <div class="content">
+            <table class="table is-hoverable is-resize">
+                <colgroup>
+                    <col width="4%">
+
+                    <col width="*">
+                    <col width="6%">
+                    <col width="6%">
+                    <col width="6%">
+                    <col width="6%">
+                </colgroup>
+
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>문서명</th>
+                    <th class="has-text-centered">상태</th>
+                    <th class="has-text-centered">의견</th>
+                    <th class="has-text-centered">지급</th>
+                    <th class="has-text-centered">재상신</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>10</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="project_detail.html">
+                                    <span class="is-size-7">[1805-0108] &nbsp; 2018.05.14 &nbsp; 연차휴가계</span>
+                                    <br>
+                                    <span>[신형주 휴가계] 2018년 6월 15일. ~ 6월 19일</span>
+                                </a>
+                            </div>
+                            <div class="column is-hidden-tablet last-button">
+                                <div class="field is-grouped">
+                                    <a class="button is-static">지급완료</a>&nbsp;<a href="#" class="button">재상신</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">결재</td>
+                    <td class="has-text-centered">0 개</td>
+                    <td class="has-text-centered is-hidden-mobile"><a class="button is-static">지급완료</a></td>
+                    <td class="has-text-centered is-hidden-mobile">
+                        <a href="#" class="button">재상신</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 참조 문서함 -->
+        <div class="content">
+            <table class="table is-hoverable is-resize">
+                <colgroup>
+                    <col width="4%">
+
+                    <col width="*">
+                    <col width="6%">
+                    <col width="6%">
+                    <col width="6%">
+                </colgroup>
+
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>문서명</th>
+                    <th class="has-text-centered">상태</th>
+                    <th class="has-text-centered">의견</th>
+                    <th class="has-text-centered">지급</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>10</td>
+                    <td>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <a href="project_detail.html">
+                                    <span class="is-size-7">[1805-0108] &nbsp; 2018.05.14 &nbsp; 연차휴가계</span>
+                                    <br>
+                                    <span>[신형주 휴가계] 2018년 6월 15일. ~ 6월 19일</span>
+                                </a>
+                            </div>
+                            <div class="column is-hidden-tablet last-button">
+                                <div class="field is-grouped">
+                                    <a class="button is-static">지급완료</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="has-text-centered">결재</td>
+                    <td class="has-text-centered">0 개</td>
+                    <td class="has-text-centered is-hidden-mobile"><a class="button is-static">지급완료</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 동반 문서함 -->
+        <div class="content">
+            <table class="table is-hoverable is-resize">
+                <colgroup>
+                    <col width="4%">
+
+                    <col width="*">
+                    <col width="6%">
+                    <col width="6%">
+                </colgroup>
+
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>문서명</th>
+                    <th class="has-text-centered">상태</th>
+                    <th class="has-text-centered">의견</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>10</td>
+                    <td>
+                                <a href="project_detail.html">
+                                    <span class="is-size-7">[1805-0108] &nbsp; 2018.05.14 &nbsp; 연차휴가계</span>
+                                    <br>
+                                    <span>[신형주 휴가계] 2018년 6월 15일. ~ 6월 19일</span>
+                                </a>
+
+                    </td>
+                    <td class="has-text-centered">결재</td>
+                    <td class="has-text-centered">0 개</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <nav class="pagination" role="navigation" aria-label="pagination">
+            <a class="pagination-previous">이전</a>
+            <a class="pagination-next">다음</a>
+
+            <ul class="pagination-list ">
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 1">1</a>
+                </li>
+                <li>
+                    <span class="pagination-ellipsis">&hellip;</span>
+                </li>
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 45">45</a>
+                </li>
+                <li>
+                    <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a>
+                </li>
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 47">47</a>
+                </li>
+                <li>
+                    <span class="pagination-ellipsis">&hellip;</span>
+                </li>
+                <li>
+                    <a class="pagination-link" aria-label="Goto page 86">86</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 
 </section>
