@@ -121,130 +121,144 @@
 </head>
 
 <body>
-<div class="wrapper">
 <form method="post" name="form">
 <input type="hidden" name="page" value="<?=$page?>">
-	<? include INC_PATH."/top_menu.php"; ?>
+<? include INC_PATH."/top_menu.php"; ?>
+<? include INC_PATH."/commuting_menu.php"; ?>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <!-- Left side -->
+                <div class="column">
+                    <!-- todo 0413 구조 변경 -->
+                    <div class="field is-grouped">
+                        <div class="control select">
+                            <select name="team" onChange="sSubmit(this.form)">
+                                <option value=""<? if ($p_team == ""){ echo " selected"; } ?>>전직원</option>
+                                <?
+                                $selSQL = "SELECT STEP, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE VIEW_YN = 'Y' ORDER BY SORT";
+                                $selRs = sqlsrv_query($dbConn,$selSQL);
 
-		<div class="inner-home">
-			<? include INC_PATH."/commuting_menu.php"; ?>
+                                while ($selRecord = sqlsrv_fetch_array($selRs))
+                                {
+                                    $selStep = $selRecord['STEP'];
+                                    $selTeam = $selRecord['TEAM'];
 
-			<div class="work_wrap clearfix">
-				<div class="work_stats_search clearfix">
-					<table class="notable" width="100%">
-						<tr>
-							<th scope="row">검색</th>
-							<td>
-								<select name="team" onChange="sSubmit(this.form)">			
-									<option value=""<? if ($p_team == ""){ echo " selected"; } ?>>전직원</option>
-							<?
-								$selSQL = "SELECT STEP, TEAM FROM DF_TEAM_2018 WITH(NOLOCK) WHERE VIEW_YN = 'Y' ORDER BY SORT";
-								$selRs = sqlsrv_query($dbConn,$selSQL);
+                                    if ($selStep == 2) {
+                                        $selTeam2 = $selTeam;
+                                    }
+                                    else if ($selStep == 3) {
+                                        $selTeam2 = "&nbsp;&nbsp;└ ". $selTeam;
+                                    }
 
-								while ($selRecord = sqlsrv_fetch_array($selRs))
-								{
-									$selStep = $selRecord['STEP'];
-									$selTeam = $selRecord['TEAM'];
-									
-									if ($selStep == 2) {
-										$selTeam2 = $selTeam;
-									}
-									else if ($selStep == 3) {
-										$selTeam2 = "&nbsp;&nbsp;└ ". $selTeam;
-									}
+                                    ?>
+                                    <option value="<?=$selTeam?>"<? if ($p_team == $selTeam){ echo " selected"; } ?>><?=$selTeam2?></option>
+                                    <?
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="control select">
+                            <select name="year" value="<?=$p_year?>" onChange='sSubmit(this.form);'>
+                                <?
+                                for ($i=$startYear; $i<=($nowYear); $i++)
+                                {
+                                    if ($i == $p_year)
+                                    {
+                                        $selected = " selected";
+                                    }
+                                    else
+                                    {
+                                        $selected = "";
+                                    }
 
-							?>
-									<option value="<?=$selTeam?>"<? if ($p_team == $selTeam){ echo " selected"; } ?>><?=$selTeam2?></option>
-							<?
-								}
-							?>
-								</select>
-								<select name="year" value="<?=$p_year?>" style="width:109px;" onChange='sSubmit(this.form);'>
-								<?
-									for ($i=$startYear; $i<=($nowYear); $i++) 
-									{
-										if ($i == $p_year) 
-										{ 
-											$selected = " selected"; 
-										}
-										else
-										{
-											$selected = "";
-										}
+                                    echo "<option value='".$i."'".$selected.">".$i."년</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="control select">
+                            <select name="month" value="<?=$p_month?>" onChange='sSubmit(this.form);'>
+                                <?
+                                for ($i=1; $i<=12; $i++)
+                                {
+                                    if (strlen($i) == "1")
+                                    {
+                                        $j = "0".$i;
+                                    }
+                                    else
+                                    {
+                                        $j = $i;
+                                    }
 
-										echo "<option value='".$i."'".$selected.">".$i."</option>";
-									}
-								?>
-								</select>년
-								<select name="month" value="<?=$p_month?>" style="width:109px;" onChange='sSubmit(this.form);'>
-								<?
-									for ($i=1; $i<=12; $i++) 
-									{
-										if (strlen($i) == "1") 
-										{
-											$j = "0".$i;
-										}
-										else
-										{
-											$j = $i;
-										}
+                                    if ($j == $p_month)
+                                    {
+                                        $selected = " selected";
+                                    }
+                                    else
+                                    {
+                                        $selected = "";
+                                    }
 
-										if ($j == $p_month)
-										{
-											$selected = " selected";
-										}
-										else
-										{
-											$selected = "";
-										}
+                                    echo "<option value='".$j."'".$selected.">".$i."월</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="control is-hidden-mobile">
+                            <a href="javascript:sSubmit(this.form);" class="button is-link" id="btnSearch">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                <span>검색</span>
+                            </a>
+                        </div>
+                        <div class="column is-hidden-mobile">
+                            <div class="control has-text-right">
+                                <a href="javascript:excel_download();" class="button is-link">
+                                    <span>엑셀 다운로드</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-										echo "<option value='".$j."'".$selected.">".$i."</option>";
-									}
-								?>
-								</select>월
-								<a href="javascript:sSubmit(this.form);"><img src="../img/btn_search.gif" alt="검색" /></a>
-							</td>
-							<td align="right">
-								<a href="javascript:excel_download();"><img src="../img/btn_excell.gif" alt="엑셀다운로드" /></a>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<table class="notable work1 work_stats"  width="100%">
-					<caption>비용정산 테이블</caption>
-					<colgroup>
-						<col width="10%" />
-						<col width="10%" />
-						<col width="10%" />
-						<col width="*" />
-						<col width="10%"/>
-						<col width="10%" />
-						<col width="10%" />
-						<col width="10%" />
-						<col width="10%" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th>no.</th>
-							<th>이름</th>
-							<th>직급</th>
-							<th>부서</th>
-							<th>점심식비</th>
-							<th>저녁식비</th>
-							<th>간식비</th>
-							<th>파견교통비</th>
-							<th>수당 합계</th>
-						</tr>
-					</thead>
-					<tbody>
-<?
-	$no = $total_cnt-($page-1)*$per_page;
+            <table class="table is-fullwidth is-hoverable is-resize">
+                <colgroup>
+                    <col width="10%" />
+                    <col width="10%" />
+                    <col width="10%" />
+                    <col width="*" />
+                    <col width="10%"/>
+                    <col width="10%" />
+                    <col width="10%" />
+                    <col width="10%" />
+                    <col width="10%" />
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="has-text-centered">no.</th>
+                    <th class="has-text-centered">이름</th>
+                    <th class="has-text-centered">직급</th>
+                    <th class="has-text-centered">부서</th>
+                    <th class="has-text-centered">점심식비</th>
+                    <th class="has-text-centered">저녁식비</th>
+                    <th class="has-text-centered">간식비</th>
+                    <th class="has-text-centered">파견교통비</th>
+                    <th class="has-text-centered">수당 합계</th>
+                </tr>
+                </thead>
+                <!-- 일반 리스트 -->
+                <tbody class="list">
+                <?
+                $no = $total_cnt-($page-1)*$per_page;
 
-	for ($i=0; $i<sizeof($id_ex); $i++)
-	{
-		if ($id_ex[$i] != "")
-		{
-			$sql = "SELECT 
+                for ($i=0; $i<sizeof($id_ex); $i++)
+                {
+                if ($id_ex[$i] != "")
+                {
+                $sql = "SELECT 
 						T.PAY1, T.PAY2, T.PAY3, T.PAY4, T.PAY5, T.PAY6
 					FROM 
 					(
@@ -272,64 +286,66 @@
 						WHERE
 							P.PRS_ID = $id_ex[$i]
 					) T";
-			$rs = sqlsrv_query($dbConn, $sql);
+                $rs = sqlsrv_query($dbConn, $sql);
 
-			$record = sqlsrv_fetch_array($rs);
-			if (sizeof($record) > 0)
-			{
-				$pay1 = $record['PAY1'];	//점심식비
-				$pay2 = $record['PAY2'];	//저녁식비
-				$pay3 = $record['PAY3'];	//간식비
-				$pay4 = $record['PAY4'];	//교통비
-				$pay5 = $record['PAY5'];	//파견교통비(출근)
-				$pay6 = $record['PAY6'];	//파견교통비(퇴근)
+                $record = sqlsrv_fetch_array($rs);
+                if (sizeof($record) > 0)
+                {
+                    $pay1 = $record['PAY1'];	//점심식비
+                    $pay2 = $record['PAY2'];	//저녁식비
+                    $pay3 = $record['PAY3'];	//간식비
+                    $pay4 = $record['PAY4'];	//교통비
+                    $pay5 = $record['PAY5'];	//파견교통비(출근)
+                    $pay6 = $record['PAY6'];	//파견교통비(퇴근)
 
-				$pay_t = $pay5 + $pay6;
+                    $pay_t = $pay5 + $pay6;
 
-				if ($pay1+$pay2+$pay3+$pay5+$pay6 > 0)
-				{
-					$pay_total = "\\". number_format($pay1*6000+$pay2*6000+$pay3*3000+$pay5*2000+$pay6*2000);
-				}
-				else
-				{
-					$pay_total = "";
-				}
-?>
-						<tr>
-							<td><?=$no?></td>
-							<td class="bold"><?=$name_ex[$i]?></td>
-							<td><?=$position_ex[$i]?></td>
-							<td><?=$team_ex[$i]?></td>
-							<td><?=$pay1?></td>
-							<td><?=$pay2?></td>
-							<td><?=$pay3?></td>
-							<td><?=$pay5+$pay6?></td>
-							<td>
-							<?
-								if ($pay1+$pay2+$pay3+$pay5+$pay6 > 0)
-								{
-									//echo "\\". number_format($pay1*6000+$pay2*6000+$pay3*3000);
-									echo "\\". number_format($pay1*6000+$pay2*6000+$pay3*3000+$pay5*2000+$pay6*2000);
-								}
-							?>
-							</td>
-						</tr>
-<?
-			}
-		}
-		$no--;
-	}
-?>
-					</tbody>
-				</table>
-				<div class="page_num">
-				<?=getPaging($total_cnt,$page,$per_page);?>
-				</div>
-			</div>
-		</div>
+                    if ($pay1+$pay2+$pay3+$pay5+$pay6 > 0)
+                    {
+                        $pay_total = "\\". number_format($pay1*6000+$pay2*6000+$pay3*3000+$pay5*2000+$pay6*2000);
+                    }
+                    else
+                    {
+                        $pay_total = "";
+                    }
+                    ?>
+                    <tr>
+                        <td class="has-text-centered"><?=$no?></td>
+                        <td class="has-text-centered"><?=$name_ex[$i]?></td>
+                        <td class="has-text-centered"><?=$position_ex[$i]?></td>
+                        <td class="has-text-centered"><?=$team_ex[$i]?></td>
+                        <td class="has-text-centered"><?=$pay1?></td>
+                        <td class="has-text-centered"><?=$pay2?></td>
+                        <td class="has-text-centered"><?=$pay3?></td>
+                        <td class="has-text-centered"><?=$pay5+$pay6?></td>
+                        <td class="has-text-centered">
+                            <?
+                            if ($pay1+$pay2+$pay3+$pay5+$pay6 > 0)
+                            {
+                                //echo "\\". number_format($pay1*6000+$pay2*6000+$pay3*3000);
+                                echo "\\". number_format($pay1*6000+$pay2*6000+$pay3*3000+$pay5*2000+$pay6*2000);
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    <?
+                }
+                }
+                    $no--;
+                }
+                ?>
 
+                </tbody>
+            </table>
+            <!--페이징처리-->
+            <nav class="pagination" role="navigation" aria-label="pagination">
+                <?=getPaging($total_cnt,$page,$per_page);?>
+                </ul>
+            </nav>
+            <!--페이징처리-->
+        </div>
+    </section>
 </form>
 <? include INC_PATH."/bottom.php"; ?>
-</div>
 </body>
 </html>

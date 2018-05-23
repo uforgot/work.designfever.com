@@ -1,6 +1,7 @@
 <?
 	require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
 	require_once CMN_PATH."/login_check.php";
+    require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
 
 <?
@@ -10,7 +11,7 @@
 ?>
 	<script type="text/javascript">
 		alert("해당페이지는 임원,관리자만 확인 가능합니다.");
-		location.href="commuting_approval.php";
+		location.href="/main.php";
 	</script>
 <?
 		exit;
@@ -72,84 +73,78 @@
 		frm.submit();
 	 }
 </script>
-<script src="/js/approval.js"></script>
+<script src="/assets/js/approval.js"></script>
 
 </head>
 
 <body>
-<div class="wrapper">
 <form method="post" name="form">
 	<? include INC_PATH."/top_menu.php"; ?>
-
-		<div class="inner-home">
 			<? include INC_PATH."/commuting_menu.php"; ?>
-
-			<div class="work_wrap clearfix">
-				<div class="cal_top clearfix">
-					<a href="javascript:preMonth();" class="prev"><img src="../img/btn_prev.gif" alt="전월보기" /></a>
-					<div>
-					<select name="year" value="<?=$p_year?>" onchange='sSubmit(this.form)'>
-					<?
-						for ($i=$startYear; $i<=($nowYear+1); $i++) 
-						{
-							if ($i == $p_year) 
-							{ 
-								$selected = " selected"; 
-							}
-							else
-							{
-								$selected = "";
-							}
-
-							echo "<option value='".$i."'".$selected.">".$i."</option>";
-						}
-					?>
-					</select>
-					<span>년</span></div>
-					<div>
-					<select name="month" value="<?=$p_month?>" onchange='sSubmit(this.form)'>
-					<?
-						for ($i=1; $i<=12; $i++) 
-						{
-							if (strlen($i) == "1") 
-							{
-								$j = "0".$i;
-							}
-							else
-							{
-								$j = $i;
-							}
-
-							if ($j == $p_month)
-							{
-								$selected = " selected";
-							}
-							else
-							{
-								$selected = "";
-							}
-
-							echo "<option value='".$j."'".$selected.">".$i."</option>";
-						}
-					?>
-					</select>
-					<span>월</span></div>
-					<a href="javascript:nextMonth();" class="next"><img src="../img/btn_next.gif" alt="다음월보기" /></a>
-				</div>
-			</div>
-			<div class="calender_wrap clearfix">
-				<table class="notable calender" width="100%">
-					<summary></summary>
-					<colgroup><col width="14.2%" /><col width="14.2%" /><col width="14.2%" /><col width="14.2%" /><col width="14.2%" /><col width="14.2%" /><col width="14.2%" /></colgroup>
-					<tr>
-						<th>SUN</th>
-						<th>MON</th>
-						<th>TUE</th>
-						<th>WED</th>
-						<th>THU</th>
-						<th>FRI</th>
-						<th class="last">SAT</th>					
-					</tr>
+    <section class="section">
+        <div class="container">
+            <div class="content">
+                <div class="calendar is-large">
+                    <div class="calendar-nav">
+                        <div class="calendar-nav-previous-month">
+                            <a href="javascript:preMonth();" class="button is-text is-small is-primary">
+                                <i class="fa fa-chevron-left"></i>
+                            </a>
+                        </div>
+                        <div><span class="title is-6 has-text-white">
+                          <div class="control select">
+                            <select name="year" value="<?=$p_year?>" onchange='sSubmit(this.form)'>
+                                    <?
+                                    for ($i=$startYear; $i<=($nowYear+1); $i++)
+                                    {
+                                        if ($i == $p_year)
+                                        { $selected = " selected"; }
+                                        else
+                                        { $selected = ""; }
+                                        echo "<option value='".$i."'".$selected.">".$i."년</option>";
+                                    }
+                                    ?>
+                             </select>
+                           </div>
+                           <div class="control select">
+                               <select name="month" value="<?=$p_month?>" onchange='sSubmit(this.form)'>
+                                        <?
+                                        for ($i=1; $i<=12; $i++)
+                                        {
+                                            if (strlen($i) == "1")
+                                            { $j = "0".$i; }
+                                            else
+                                            { $j = $i; }
+                                            if ($j == $p_month)
+                                            { $selected = " selected"; }
+                                            else
+                                            { $selected = ""; }
+                                            echo "<option value='".$j."'".$selected.">".$i."월</option>";
+                                        }
+                                        ?>
+                                </select>
+                           </div>
+                            </span></div>
+                        <div class="calendar-nav-next-month">
+                            <a href="javascript:nextMonth();" class="button is-text is-small is-primary">
+                                <i class="fa fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="calendar is-large">
+                    <div class="calendar-container">
+                        <div class="calendar-header is-hidden-mobile">
+                            <div class="calendar-date">SUN</div>
+                            <div class="calendar-date">MON</div>
+                            <div class="calendar-date">TUE</div>
+                            <div class="calendar-date">WED</div>
+                            <div class="calendar-date">THU</div>
+                            <div class="calendar-date">FRI</div>
+                            <div class="calendar-date">SAT</div>
+                        </div>
 			<?
 				$count = 0;
 				$lastday = 0;

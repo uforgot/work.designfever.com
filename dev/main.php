@@ -806,7 +806,7 @@ require_once CMN_PATH."/weekly_check.php";
                                             </span>
                                     <span class="main-card-title">최신소식</span>
                                 </p>
-                                <a href="book/book_list.php">
+                                <a href="book/board_list.php">
                                     <p class="card-header-icon">
                                             <span class="icon is-small">
                                                 <i class="fas fa-plus"></i>

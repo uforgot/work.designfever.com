@@ -1,9 +1,9 @@
 <?
 require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
 require_once CMN_PATH."/login_check.php";
-$mode = isset($_REQUEST['mode']) ? $_REQUEST['mode'] : null;
-$p_date = isset($_REQUEST['date']) ? $_REQUEST['date'] : null;
-$p_id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
+    $mode = isset($_REQUEST['mode']) ? $_REQUEST['mode'] : null;
+    $p_date = isset($_REQUEST['date']) ? $_REQUEST['date'] : null;
+    $p_id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 
 // 기존근태 등록 데이터
 $sql = "SELECT 

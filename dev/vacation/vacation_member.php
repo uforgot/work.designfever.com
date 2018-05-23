@@ -103,6 +103,10 @@
 ?>
 
 <? include INC_PATH."/top.php"; ?>
+<!--기존에 쓰이던 CSS-->
+<link rel="stylesheet" href="/assets/css/style_20180406.css" />
+<link rel="stylesheet" href="/assets/css/jquery-ui.css" />
+<!--기존에 쓰이던 CSS-->
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#fr_date").val($("#fr_month").val()+"/"+$("#fr_day").val()+"/"+$("#fr_year").val());
@@ -503,5 +507,21 @@
 <!-- 본문 끌 -->
 <? include INC_PATH."/bottom.php"; ?>
 </form>
+<div id="popDetail" class="approval-popup2" style="display:none;">
+    <div class="title">
+        <h3 class="aaa">휴가계</h3>
+        <a href="javascript:HidePop('Detail');"><img src="/img/btn_popup_close.gif" alt=""></a>
+    </div>
+
+    <div class="content-title" style="height:10px;">
+    </div>
+
+    <div class="content-wrap" id="pop_detail_content">
+
+    </div>
+
+    <div class="btn-wrap" id="pop_detail_modify">
+    </div>
+</div>
 </body>
 </html>

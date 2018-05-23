@@ -1,7 +1,7 @@
 <?
-require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
-require_once CMN_PATH."/login_check.php";
-require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
+    require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
+    require_once CMN_PATH."/login_check.php";
+    require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 
 $prs_position_tmp = (in_array($prs_id,$positionC_arr)) ? "팀장" : "";	//팀장대리 판단
 
@@ -73,34 +73,6 @@ if (sizeof($record) > 0)
     if (strlen($total_minute) == 1) { $total_minute = "0".$total_minute; }
     if (strlen($over_time) == 1) { $over_time = "0".$over_time; }
     if (strlen($over_minute) == 1) { $over_minute = "0".$over_minute; }
-
-    $div_class1 =""; //오늘
-    $div_class2 =""; //공휴일
-    $div_class3 =""; //휴가
-    $div_class4 =""; //마지막날
-
-    $mark1 ="";
-    $mark2 ="";
-    $mark3 ="";
-    $mark4 ="";
-    $mark5 ="";
-    $mark6 ="";
-    $mark6_1="";
-    $mark6_2="";
-
-
-    $calendar_events1 =""; //출근시간
-    $calendar_events2 =""; //퇴근시간
-    $calendar_events3 ="";
-    $calendar_events4 ="";
-    $calendar_events5 ="";
-    $calendar_events6 ="";
-
-    $icon1="";
-    $icon2="";
-    $icon3="";
-    $icon4="";
-
 }
 ?>
 
@@ -138,17 +110,20 @@ if (sizeof($record) > 0)
     function ShowPopCustom(id,pid,y,m,d,mode)
     {
         var date = y+"-"+m+"-"+d;
-        $("#pop"+id).addClass("modal is-active");
         $("#popDayEditFrm").attr("src","commuting_request_pop.php?mode="+mode+"&id="+pid+"&date="+date);
-
+        $("#pop"+id).addClass("modal is-active");
         $("#t_month").text(m);
         $("#t_day").text(d);
+
+
+
+
 
     }
 
     function closePop(id){
-        $("#pop"+id).removeClass("is-active");
         $("#hdnFrame").attr("src","");
+        $("#pop"+id).removeClass("is-active");
     }
 
 
@@ -412,65 +387,104 @@ if (sizeof($record) > 0)
                                             }
                                         }
 
-                                    if ($col_date == $nowYear.$nowMonth.$nowDay)  { //오늘 날짜 표시
+                                            $div_class1 =""; //오늘
+                                            $div_class2 =""; //공휴일
+                                            $div_class3 =""; //휴가
+                                            $div_class4 =""; //마지막날
+                                                $mark1 ="";
+                                                $mark2 ="";
+                                                $mark3 ="";
+                                                $mark4 ="";
+                                                $mark5 ="";
+                                                $mark6 ="";
+                                                $mark6_1="";
+                                                $mark6_2="";
+                                                    $calendar_events1 =""; //출근시간
+                                                    $calendar_events2 =""; //퇴근시간
+                                                    $calendar_events3 ="";
+                                                    $calendar_events4 ="";
+                                                    $calendar_events5 ="";
+                                                    $calendar_events6 ="";
+                                                        $icon1="";
+                                                        $icon2="";
+                                                        $icon3="";
+                                                        $icon4="";
+
+
+                                if ($col_date == $nowYear.$nowMonth.$nowDay)  { //오늘 날짜 표시
                                         $div_class1=" is-today";
                                     }else if($col_date_name != "") { //공휴일 표시
+                                        $div_class1="";
                                         $div_class2=" is-holiday";
                                         $div_class3="";
-                                        $mark1 ="<span class='button is-small is-static'>". $col_date_name ."</span>";
+                                        $calendar_events4= "<p class='calendar-event is-dark'>". $col_date_name ."</p>";
                                     } else if ($col_day == "SAT" || $col_day == "SUN") { //토 일요일
+                                        $div_class1="";
                                         $div_class2=" is-holiday";
                                         $div_class3="";
                                         $mark1 = "";
                                     }else if ($col_gubun1 == "10") {	//휴가 - 출근/퇴근 시간 표시 안함 - 당일 00:00출근 24:00퇴근으로 설정되어 있음
+                                        $div_class1="";
                                         $div_class2= "";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>휴가</span>";
                                     }else if ($col_gubun1 == "11") {	//병가
+                                        $div_class1="";
                                         $div_class2= "";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>병가</span>";
                                     }else if ($col_gubun1 == "12") {	//경조사
+                                        $div_class1="";
                                         $div_class2="";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>경조사</span>";
                                     }else if ($col_gubun1 == "13") { //기타
+                                        $div_class1="";
                                         $div_class2="";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>기타</span>";
                                     }else if ($col_gubun1 == "14") { //결근
+                                        $div_class1="";
                                         $div_class2="";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>결근</span>";
                                     }else if ($col_gubun1 == "15") {	//교육/훈련
+                                        $div_class1="";
                                         $div_class2="";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>교육/훈련</span>";
                                     }else if ($col_gubun1 == "16") {	//프로젝트 휴가
+                                        $div_class1="";
                                         $div_class2="";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>프로젝트 휴가</span>";
                                     }else if ($col_gubun1 == "17") {	//리프레시 휴가
+                                        $div_class1="";
                                         $div_class2="";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>리프레시 휴가</span>";
                                     }else if ($col_gubun1 == "18") {	//무급 휴가
+                                        $div_class1="";
                                         $div_class2="";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>무급 휴가</span>";
                                     }else if ($col_gubun1 == "19") {	//민방위/예비군
+                                        $div_class1="";
                                         $div_class2="";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>민방위/예비군</span>";
                                     }else if ($col_gubun1 == "20") {	//출산휴가
+                                        $div_class1="";
                                         $div_class2="";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>출산휴가</span>";
                                     }else if ($col_gubun1 == "21") {	//육아휴직
+                                        $div_class1="";
                                         $div_class2="";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'>육아휴직</span>";
                                     }else if ($col_gubun1 == "0") {//오후반차 제출. 출퇴근체크 X
+                                        $div_class1="";
                                         $div_class2="";
                                         $div_class3=" is-vacation";
                                         $mark1="<span class='button is-small is-static'></span>";
@@ -506,19 +520,19 @@ if (sizeof($record) > 0)
 
                                     }else if ($col_gubun1 == "4")	//프로젝트 오전 반차
                                     {
-                                        $calendar_events1 ="<p class='calendar-event is-primary'>프로젝트 오전반차 <font color='#00aa00'>08:00</font> $checktime1 </p>";
+                                        $calendar_events1 ="<p class='calendar-event is-primary'>프로젝트 오전반차 $checktime1 </p>";
                                     }
                                     else if ($col_gubun1 == "6")	//외근
                                     {
-                                        $calendar_events1 ="<p class='calendar-event is-warning'>외근 <font color='#00aa00'>08:00</font> $checktime1 </p>";
+                                        $calendar_events1 ="<p class='calendar-event is-warning'>외근 $checktime1 </p>";
                                     }
                                     else if ($col_gubun1 == "7")	//지각
                                     {
-                                        $calendar_events1 ="<p class='calendar-event is-danger'>지각 <font color='#00aa00'>08:00</font> $checktime1 </p>";
+                                        $calendar_events1 ="<p class='calendar-event is-danger'>지각 $checktime1 </p>";
                                     }
                                     else if ($col_gubun1 == "8")	//오전 반차
                                     {
-                                        $calendar_events1 ="<p class='calendar-event is-primary'>오전 반차 <font color='#00aa00'>08:00</font> $checktime1 </p>";
+                                        $calendar_events1 ="<p class='calendar-event is-primary'>오전 반차 $checktime1 </p>";
                                     }else{
                                         $calendar_events1 ="";
                                     }
@@ -571,10 +585,10 @@ if (sizeof($record) > 0)
                                     }
 
                                    //점심 저녁 간식 교통비 및 파견 교통비 출력
-                                    if ($col_pay1 == "Y") { $icon1 = " <span class='tag is-info'><span class='icon'><i class='fas fa-utensils'></i></span></span>"; }else{ $icon1=""; }		//점심
-                                    if ($col_pay2 == "Y") { $icon2 = " <span class='tag is-info'><span class='icon'><i class='fas fa-utensils'></i></span></span>"; }else{ $icon2=""; }	//저녁
-                                    if ($col_pay3 == "Y") { $icon3 = " <span class='tag is-info'><span class='icon'><i class='fas fa-coffee'></i></span></span>"; }else{ $icon3=""; }		//간식
-                                    if ($col_pay4 == "Y") { $icon4 = " <span class='tag is-info'><span class='icon'><i class='fas fa-taxi'></i></span></span>"; }else{ $icon4=""; }		//야근교통비
+                                    if ($col_pay1 == "Y") { $icon1 = " <span class='tag is-info tooltip' data-tooltip='점심' ><span class='icon'><i class='fas fa-utensils'></i></span></span>"; }else{ $icon1=""; }		//점심
+                                    if ($col_pay2 == "Y") { $icon2 = " <span class='tag is-info tooltip' data-tooltip='저녁'><span class='icon'><i class='fas fa-utensils'></i></span></span>"; }else{ $icon2=""; }	//저녁
+                                    if ($col_pay3 == "Y") { $icon3 = " <span class='tag is-info tooltip' data-tooltip='간식'><span class='icon'><i class='fas fa-coffee'></i></span></span>"; }else{ $icon3=""; }		//간식
+                                    if ($col_pay4 == "Y") { $icon4 = " <span class='tag is-info tooltip' data-tooltip='야근교통비'><span class='icon'><i class='fas fa-taxi'></i></span></span>"; }else{ $icon4=""; }		//야근교통비
                                     if ($col_pay5 == "Y" && $col_pay6 == "Y") {
                                         $calendar_events6 = "<p class='calendar-event is-info'> 파견교통비 : (출근) (퇴근)</p>";
                                         }else if ($col_pay5 == "Y") {
@@ -626,7 +640,7 @@ if (sizeof($record) > 0)
                                                     ". $mark1 . $mark2 . $mark3 . $mark4 . $mark5 . $mark6 . "
                                                 </div>
                                                 <div class='calendar-events'>
-                                                    ". $calendar_events1 . $calendar_events2 . $calendar_events3 . $calendar_events4 . $calendar_events5 . $calendar_events6 ."
+                                                    ". $calendar_events4 . $calendar_events1 . $calendar_events2 . $calendar_events3 . $calendar_events5 . $calendar_events6 ."
                                                     ". $icon1 . $icon2 . $icon3 . $icon4 ."
                                                 </div>
                                                

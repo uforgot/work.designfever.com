@@ -51,6 +51,9 @@
 
 <? include INC_PATH."/top.php"; ?>
 <script src="/assets/js/vacation.js"></script>
+<!--기존에 쓰이던 CSS-->
+<link rel="stylesheet" href="/assets/css/style_20180406.css" />
+<!--기존에 쓰이던 CSS-->
 </head>
 <body>
 <? include INC_PATH."/top_menu.php"; ?>		
