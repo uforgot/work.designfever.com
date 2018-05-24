@@ -299,7 +299,7 @@
         <div class="container">
             <div class="columns is-vcentered">
                 <!-- Left side -->
-                <div class="card">
+              <div class="card">
                 <div class="column">
                     <!-- todo 0413 ±¸Á¶ º¯°æ -->
 
@@ -391,18 +391,21 @@
                                 <span>°Ë»ö</span>
                             </a>
                         </div>
-
-                        <div class="column is-hidden-mobile">
-                            <div class="control has-text-right">
-                                <a href="javascript:excel_download();" class="button is-link">
-                                    <span>¿¢¼¿ ´Ù¿î·Îµå</span>
-                                </a>
-                            </div>
-                        </div>
                     </div>
+                    </div>
+               </div>
+                <div class="column is-hidden-mobile">
+                    <div class="control has-text-right">
+                        <a href="javascript:excel_download();" class="button">
+                            <span class="icon is-small">
+                                        <i class="fas fa-file-excel"></i>
+                            </span>
+                            <span>¿¢¼¿·Î ´Ù¿î·Îµå</span>
+                        </a>
                     </div>
                 </div>
-            </div>
+              </div>
+
             <div class="field is-grouped">
                 <div class="control is-hidden-mobile">
                     <a href="javascript:chgSort('name');" class="button is-link">

@@ -4,7 +4,6 @@
     require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
 ?>
 <link rel="stylesheet" href="/assets/css/common.css" />
-<link rel="stylesheet" href="/assets/css/jquery-ui.css" />
 <link rel="stylesheet" href="/assets/css/style_20180406.css" />
 <?
 	$doc_no = isset($_REQUEST['doc_no']) ? $_REQUEST['doc_no'] : null;
@@ -514,7 +513,7 @@
 		content_html = content_html + "					<th>의견등록</th>";
 		content_html = content_html + "					<td><input name=\"reply_contents\" id=\"w_comment\" onkeyup=\"textcounter(this.form.reply_contents, this.form.remlen,200);\" onkeydown=\"textcounter(this.form.reply_contents, this.form.remlen,200);\">";
 		content_html = content_html + "						<input type=\"hidden\" readonly name=\"remlen\" size=\"3\" maxlength=\"3\" value=\"200\">";
-		content_html = content_html + "						<div id=\"reply_btn\"><a href=\"javascript:writeReply();\"><img src=\"/img/btn_insert.gif\" alt=\"\"></a></div>";
+		content_html = content_html + "						<div id=\"reply_btn\"><a href=\"javascript:writeReply();\" class='button is-small'>등록</a></div>";
 		content_html = content_html + "					</td>";
 		content_html = content_html + "				</tr>";
 		<? } ?>

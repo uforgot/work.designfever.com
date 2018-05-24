@@ -700,8 +700,11 @@
                         <? if ($p_period == "month") { ?>
                             <div class="column is-hidden-mobile">
                                 <div class="control has-text-right">
-                                    <a href="javascript:excel_download();" class="button is-link">
-                                        <span>¿¢¼¿ ´Ù¿î·Îµå</span>
+                                    <a href="javascript:excel_download();" class="button">
+                                         <span class="icon is-small">
+                                            <i class="fas fa-file-excel"></i>
+                                        </span>
+                                        <span>¿¢¼¿·Î ´Ù¿î·Îµå</span>
                                     </a>
                                 </div>
                             </div>

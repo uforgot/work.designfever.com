@@ -325,12 +325,13 @@ function closePop(id){
                     </div>
                 </div>
             </div>
+          <div class="card">
+          <div class="column">
             <div class="content">
                 <div class="level">
                     <? if ($prf_id == "4") { ?>
-                    <div class="level-left">
-                        <div class="field is-grouped is-multiline">
-
+                     <div class="level-left">
+                         <div class="field is-grouped is-multiline">
                             <div class="control select">
                                 <select name="type" onChange="sSubmit(this.form)">
                                     <option value="team"<? if ($p_type == "team"){ echo " selected"; } ?>>ºÎ¼­º°</option>
@@ -398,6 +399,9 @@ function closePop(id){
                     <? } ?>
                 </div>
             </div>
+           </div>
+          </div>
+            <br>
             <div class="content">
                 <div class="table-holder">
                     <table class="table is-member">

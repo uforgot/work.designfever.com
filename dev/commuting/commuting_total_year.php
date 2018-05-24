@@ -1,4 +1,4 @@
-a<?
+<?
     require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
     require_once CMN_PATH."/login_check.php";
     require_once CMN_PATH."/checkout_check.php"; //퇴근시간 출력을 위해 추가(모든페이지 공통 들어가야할듯) ksyang
@@ -266,18 +266,17 @@ $rs = sqlsrv_query($dbConn,$sql);
     }
 </script>
 </head>
-
 <body>
 <form method="post" name="form">
     <input type="hidden" name="page" value="<?=$page?>">
     <input type="hidden" name="sort" value="<?=$sort?>">
     <? include INC_PATH."/top_menu.php"; ?>
     <? include INC_PATH."/commuting_menu.php"; ?>
-
     <section class="section">
         <div class="container">
             <div class="columns is-vcentered">
                 <!-- Left side -->
+              <div class="card">
                 <div class="column">
                     <!-- todo 0413 구조 변경 -->
                     <div class="field is-grouped">
@@ -308,13 +307,17 @@ $rs = sqlsrv_query($dbConn,$sql);
                                 <span>검색</span>
                             </a>
                         </div>
-                        <div class="column is-hidden-mobile">
-                            <div class="control has-text-right">
-                                <a href="javascript:excel_download();" class="button is-link">
-                                    <span>엑셀 다운로드</span>
-                                </a>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+               </div>
+                <div class="column is-hidden-mobile">
+                    <div class="control has-text-right">
+                        <a href="javascript:excel_download();" class="button">
+                            <span class="icon is-small">
+                                  <i class="fas fa-file-excel"></i>
+                             </span>
+                            <span>엑셀로 다운로드</span>
+                        </a>
                     </div>
                 </div>
             </div>

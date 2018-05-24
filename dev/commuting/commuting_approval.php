@@ -621,8 +621,8 @@
 
 <div id="popDetail" class="approval-popup2" style="display:none;">
     <div class="title">
-        <h3 class="aaa">결재문서 보기</h3>
-        <a href="javascript:HidePop('Detail');"><img src="/img/btn_popup_close.gif" alt=""></a>
+        <h3 class="aaa">결재문서 보기<a href="javascript:HidePop('Detail');"><img src="/img/btn_popup_close.gif" alt=""></a></h3>
+
     </div>
 
     <div class="content-title ">
@@ -644,8 +644,8 @@
 
 <div id="popLog" class="approval-popup4" style="display:none">
     <div class="pop_top">
-        <p class="pop_title">결재로그</p>
-        <a href="javascript:HidePop('Log');" class="close"><img src="/img/btn_popup_close.gif" alt="닫기">닫기</a>
+        <p class="pop_title">결재로그 <a href="javascript:HidePop('Log');" class="close"><img src="/img/btn_popup_close.gif" ></a></p>
+
     </div>
     <div class="pop_body" id="pop_log_body">
     </div>

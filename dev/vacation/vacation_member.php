@@ -509,8 +509,8 @@
 </form>
 <div id="popDetail" class="approval-popup2" style="display:none;">
     <div class="title">
-        <h3 class="aaa">ÈÞ°¡°è</h3>
-        <a href="javascript:HidePop('Detail');"><img src="/img/btn_popup_close.gif" alt=""></a>
+        <h3 class="aaa">ÈÞ°¡°è <a href="javascript:HidePop('Detail');"><img src="/img/btn_popup_close.gif" alt=""></a></h3>
+
     </div>
 
     <div class="content-title" style="height:10px;">

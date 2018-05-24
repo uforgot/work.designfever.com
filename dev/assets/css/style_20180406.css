@@ -1029,7 +1029,8 @@ table.work8 span.total { font-weight:bold; color:orange; }
 .approval-popup4 { position:absolute; left:50%; top:50%; width:525px; height:286px; margin:-100px 0 0 -262px; border:1px solid #000; background:#fff; z-index:100; }
 .approval-popup4 .pop_top {position:ralative; height:39px; line-height:39px; background:#000; color:#fff}
 .approval-popup4 .pop_top .pop_title { margin-left:20px;}
-.approval-popup4 .pop_top .close { position:absolute; display:block; width:17px; height:17px;  top:11px; right:13px; text-indent:-5000px; background:url('../img/btn_x.gif') 0 0 no-repeat;}
+/*.approval-popup4 .pop_top .close { position:absolute; display:block; width:17px; height:17px;  top:11px; right:13px; text-indent:-5000px; background:url('../img/btn_x.gif') 0 0 no-repeat;}*/
+.approval-popup4 .pop_top .close { position:absolute; display:block; width:17px; height:17px;  top:4px; right:13px;  background:url('../img/btn_x.gif') 0 0 no-repeat;}
 .approval-popup4 .pop_body { padding:15px 15px; }
 .approval-popup4 .pop_body table { border-top:3px solid #000; }
 .approval-popup4 .pop_body table tr { text-align:left; line-height:40px; border-bottom:1px solid #b2b2b2; }

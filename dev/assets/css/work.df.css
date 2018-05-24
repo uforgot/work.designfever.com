@@ -212,8 +212,17 @@
     .df-commuting .calendar .calendar-date.is-last {
       border-bottom: 1px solid #cdcdcd !important; } }
 
+.df-approval .table th {
+  text-align: center; }
 .df-approval .table .last {
   text-align: center; }
+.df-approval .table td.is-last {
+  padding-bottom: 1rem !important; }
+
+.approval-popup, .approval-popup2, .approval-popup3, .approval-popup4, .approval-popup5, .approval-popup6 {
+  font-size: 12px; }
+  .approval-popup td, .approval-popup th, .approval-popup2 td, .approval-popup2 th, .approval-popup3 td, .approval-popup3 th, .approval-popup4 td, .approval-popup4 th, .approval-popup5 td, .approval-popup5 th, .approval-popup6 td, .approval-popup6 th {
+    vertical-align: middle; }
 
 .df-project .modal section {
   min-width: auto; }
