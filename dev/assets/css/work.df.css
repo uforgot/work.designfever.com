@@ -126,6 +126,17 @@
   .modal-commuting-modify .control {
     margin-right: 0.25rem !important; }
 
+.df-commuting .is-member {
+  font-size: 0.75rem; }
+  .df-commuting .is-member .first {
+    width: 100px; }
+  .df-commuting .is-member .name {
+    width: 100px; }
+  .df-commuting .is-member thead th, .df-commuting .is-member tfoot th {
+    font-size: 0.5rem;
+    text-align: center; }
+  .df-commuting .is-member tbody td {
+    text-align: center; }
 .df-commuting .textarea {
   min-width: auto; }
 .df-commuting .is-vacation-title {
@@ -200,6 +211,9 @@
       display: none; }
     .df-commuting .calendar .calendar-date.is-last {
       border-bottom: 1px solid #cdcdcd !important; } }
+
+.df-approval .table .last {
+  text-align: center; }
 
 .df-project .modal section {
   min-width: auto; }

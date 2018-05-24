@@ -2,7 +2,9 @@
 	require_once $_SERVER['DOCUMENT_ROOT']."/common/global.php";
 	require_once CMN_PATH."/login_check.php";
 ?>
-
+<link rel="stylesheet" href="/assets/css/common.css" />
+<link rel="stylesheet" href="/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="/assets/css/style_20180406.css" />
 <?
 	$doc_no = isset($_REQUEST['doc_no']) ? $_REQUEST['doc_no'] : null; 
 

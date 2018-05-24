@@ -57,8 +57,6 @@
             f.team.style.display = "none";
             f.vacation.style.display = "none";
 
-
-
         }
 		else if (f.mode.value == "team")
 		{

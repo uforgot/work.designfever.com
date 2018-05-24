@@ -420,9 +420,11 @@
                 <div class="container">
                     <div class="columns is-vcentered">
                         <!-- Left side -->
-                        <div class="column">
+                        <div class="card">
+                            <div class="column">
                             <!-- todo 0413 구조 변경 -->
                             <div class="field is-grouped">
+
                                 <div class="control select">
                                     <select name="type" onchange="javascript:searchType();">
                                         <option value="person" selected>직원별</option>
@@ -650,8 +652,8 @@
                                         ?>
                                     </select>
                                 </div>
-                         <? }
-                        } ?>
+                                 <? }
+                                } ?>
                                 <div class="control is-hidden-mobile">
                                     <a href="javascript:sSubmit(this.form);" class="button is-link" id="btnSearch">
                                         <span class="icon is-small">
@@ -660,6 +662,7 @@
                                         <span>검색</span>
                                     </a>
                                 </div>
+                            </div>
                             </div>
                         </div>
                         <!-- Right side -->
@@ -723,8 +726,8 @@
                         <thead>
                         <tr>
                             <th class="has-text-centered">No.</th>
-                            <th class="has-text-centered">날짜</th>
                             <th class="has-text-centered">이름</th>
+                            <th class="has-text-centered">날짜</th>
                             <th class="has-text-centered">직급</th>
                             <th class="has-text-centered">부서</th>
                             <th class="has-text-centered">출근</th>
@@ -995,8 +998,8 @@
                     ?>
                         <tr>
                             <td class="has-text-centered"><?=($page-1)*$per_page+($i+1)?></td>
-                            <td class="has-text-centered"><?=$team_date_ex[$i]?></td>
                             <td class="has-text-centered"><?=$team_name_ex[$i]?></td>
+                            <td class="has-text-centered"><?=$team_date_ex[$i]?></td>
                             <td class="has-text-centered"><?=$team_position_ex[$i]?></td>
                             <td class="has-text-centered"><?=$team_team_ex[$i]?></td>
                             <td class="has-text-centered"><?=$checktime1_ex?></td>

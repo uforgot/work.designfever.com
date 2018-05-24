@@ -14,6 +14,7 @@ $startYear = 2013;
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/assets/css/work.df.css">
 <link rel="stylesheet" href="/assets/css/jquery-ui.css" />
+
 <script src="/assets/js/jquery-1.11.0.min.js"></script>
 <script defer src="/assets/js/all.js"></script>
 <script defer src="/assets/js/bulma-calendar.min.js"></script>

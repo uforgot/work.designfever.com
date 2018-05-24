@@ -299,8 +299,10 @@
         <div class="container">
             <div class="columns is-vcentered">
                 <!-- Left side -->
+                <div class="card">
                 <div class="column">
                     <!-- todo 0413 구조 변경 -->
+
                     <div class="field is-grouped">
                         <div class="control select">
                             <select name="type" onchange="javascript:searchType();">
@@ -389,6 +391,7 @@
                                 <span>검색</span>
                             </a>
                         </div>
+
                         <div class="column is-hidden-mobile">
                             <div class="control has-text-right">
                                 <a href="javascript:excel_download();" class="button is-link">
@@ -396,6 +399,7 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

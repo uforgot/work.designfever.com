@@ -5,6 +5,8 @@
 		<script type="text/javascript">
 			alert("로그인 상태가 아닙니다.");
 			location.href="<?=LOGIN_URL.CURRENT_URL?>";
+            parent.location.href="<?=LOGIN_URL.CURRENT_URL?>";
+            parent.parent.location.href="<?=LOGIN_URL.CURRENT_URL?>";
 		</script>
 <?
 		exit;
@@ -20,6 +22,9 @@
 		<script type="text/javascript">
 			alert("로그인 상태가 아닙니다.");
 			location.href="<?=LOGIN_URL.CURRENT_URL?>";
+            parent.location.href="<?=LOGIN_URL.CURRENT_URL?>";
+            parent.parent.location.href="<?=LOGIN_URL.CURRENT_URL?>";
+
 		</script>
 <?
 		exit;
@@ -45,6 +50,8 @@
 		<script type="text/javascript">
 			alert("탈퇴회원 이용불가 페이지입니다.");
 			location.href="/main.php";
+            parent.location.href="/main.php";
+            parent.parent.location.href="/main.php";
 		</script>
 <?
 		exit;
