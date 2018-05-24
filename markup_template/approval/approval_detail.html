@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>designfever intranet</title>
+    <link rel="stylesheet" href="/assets/css/work.df.css">
+    <link rel="stylesheet" href="/assets/css/style_20180406.css">
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script defer src="/assets/js/all.js"></script>
+    <script defer src="/assets/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+
+<div id="popDetail" class="approval-popup2 ui-draggable" style="display:inline">
+    <div class="title ui-draggable-handle">
+        <h3 class="aaa">결재문서 보기</h3>
+        <a href="javascript:HidePop('Detail');"><img src="/img/btn_popup_close.gif" alt=""></a>
+    </div>
+    <div class="content-title ">
+        <table class="" width="100%">
+            <tbody>
+            <tr>
+                <th scope="row" id="pop_detail_title">연차</th>
+                <td style="float:right;" id="pop_detail_log"><a href="javascript:funLog('1805-0014');" class="button is-small">결제로그</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="content-wrap" id="pop_detail_content">
+        <input type="hidden" name="doc_no" value="1805-0014">		<input type="hidden" name="type" value="">
+        <table class="content-table" width="100%">
+            <colgroup>
+                <col width="13%">
+                <col width="37%">
+                <col width="13%">
+                <col width="37%">
+            </colgroup>
+            <tbody class="">
+            <tr>
+                <th class="gray">문서번호</th>
+                <td>1805-0014</td>
+                <th class="gray" rowspan="2">결재</th>
+                <td rowspan="2" style="padding:0;">
+                    <table class="sign" width="100%">
+                        <tbody>
+                        <tr style="height:30px">
+                            <td width="20%">책임</td>
+                            <td width="20%">팀장</td>
+                            <td width="20%"></td>
+                            <td width="20%"></td>
+                            <td width="20%" class="last"></td>
+                        </tr>
+                        <tr style="height:65px">
+                            <td>									<span class="signature">양경식</span>								</td>
+                            <td>									<span class="signature">한성백</span>								</td>
+                            <td></td>
+                            <td></td>
+                            <td class="last"></td>
+                        </tr>
+                        <tr style="height:30px" class="last">
+                            <td><span class="signature_state">05/03결재</span></td>
+                            <td><span class="signature_state">05/03결재</span></td>
+                            <td></td>
+                            <td></td>
+                            <td class="last"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th class="gray">문서종류</th>
+                <td>연차</td>
+            </tr>
+            <tr>
+                <th class="gray">기안일</th>
+                <td>2018년 05월 03일</td>
+                <th class="gray">수신참조</th>
+                <td>						책임 장명아					</td>
+            </tr>
+            <tr>
+                <th class="gray">부서</th>
+                <td colspan="3">VID 2 Team</td>
+            </tr>
+            <tr>
+                <th class="gray">이름</th>
+                <td>책임 양경식</td>
+                <th class="gray">공개여부</th>
+                <td>공개</td>
+            </tr>
+            <tr>
+                <th class="gray">제목</th>
+                <td colspan="3">5월 2일 연차휴가 상신합니다.</td>
+            </tr>
+            <tr>
+                <th class="gray">기간</th>
+                <td colspan="3">2018.05.02 - 2018.05.02 (1일)</td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <div class="editor-txt">
+                        <p>아래와 같은 사유로 인하여 연차 휴가계를 제출하오니 재가 바랍니다.</p>
+                        <p>&nbsp;</p>
+                        <p>- 아&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 래 -</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <table border="1" cellpadding="0" cellspacing="0">
+                            <tbody>
+                            <tr>
+                                <td style="background-color:transparent; height:23.85pt; width:99pt">
+                                    <p><strong>행선지</strong></p>
+                                </td>
+                                <td colspan="3" style="background-color:transparent; border-color:windowtext windowtext windowtext rgb(236, 233, 216); height:23.85pt; width:324pt">
+                                    <p>&nbsp;국내</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext; height:23.85pt; width:99pt">
+                                    <p><strong>사유</strong></p>
+                                </td>
+                                <td colspan="3" style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext rgb(236, 233, 216); height:23.85pt; width:324pt">
+                                    <p>&nbsp;연차휴가</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext; height:23.85pt; width:99pt">
+                                    <p><strong>비상 연락처</strong></p>
+                                </td>
+                                <td colspan="3" style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext rgb(236, 233, 216); height:23.85pt; width:324pt">&nbsp;010-4467-3719</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p><br>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>끝.</p>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="editor-txt"></div>
+        <table class="editor-table2" width="100%">
+            <colgroup>
+                <col width="10%">
+                <col width="90%">
+            </colgroup>
+            <tbody class="">
+            <tr class="idea-add">
+                <th>의견등록</th>
+                <td colspan="3">
+                    <input name="reply_contents" id="w_comment" onkeyup="textcounter(this.form.reply_contents, this.form.remlen,200);" onkeydown="textcounter(this.form.reply_contents, this.form.remlen,200);">						<input type="hidden" readonly="" name="remlen" size="3" maxlength="3" value="200">
+                    <div id="reply_btn"><a href="javascript:writeReply();" class="button is-small">등록</a></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="btn-wrap" id="pop_detail_modify"></div>
+</div>
+</body>
+</html>

@@ -6,10 +6,14 @@
                 <div class="navbar-item is-size-7">
                     Visual Interaction Development / <strong>이사 신형주</strong>
                 </div>
-                <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+
+                <div class="navbar-menu" id="navMenu">
+                    <!-- navbar-start, navbar-end... -->
                 </div>
             </div>
             <div class="navbar-menu">
@@ -34,68 +38,70 @@
                 </div>
             </div>
         </div>
-        <div id="navMenuDocumentation" class="navbar-menu is-active" style="display:none">
-            <div class="navbar-start">
-                <a class="navbar-item   is-active" href="#">
-                    <span>홈</span>
-                </a>
 
-                <a class="navbar-item " href="#">
-                    <span>근태</span>
-                </a>
+    </nav>
 
-                <a class="navbar-item" href="#">
-                    <span>휴가</span>
-                </a>
-                <a class="navbar-item " href="#">
-                    <span>전자결재</span>
-                </a>
-                <a class="navbar-item " href="#">
-                    <span>프로젝트</span>
-                </a>
-                <a class="navbar-item " href="#">
-                    <span>주간보고서</span>
-                </a>
+    <div id="navMenuDocumentation" class="navbar-menu is-active" style="display:none">
+        <div class="navbar-start">
+            <a class="navbar-item   is-active" href="#">
+                <span>홈</span>
+            </a>
 
-                <a class="navbar-item " href="#">
-                    <span>공지사항</span>
-                </a>
-                <a class="navbar-item " href="#">
-                    <span>게시판</span>
-                </a>
-                <a class="navbar-item " href="#">
-                    <span>예약</span>
-                </a>
-                <a class="navbar-item " href="#">
-                    <span>조직도</span>
-                </a>
-                <a class="navbar-item " href="#">
-                    <span>장비관리</span>
-                </a>
+            <a class="navbar-item " href="#">
+                <span>근태</span>
+            </a>
+
+            <a class="navbar-item" href="#">
+                <span>휴가</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>전자결재</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>프로젝트</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>주간보고서</span>
+            </a>
+
+            <a class="navbar-item " href="#">
+                <span>공지사항</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>게시판</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>예약</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>조직도</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>장비관리</span>
+            </a>
 
 
+        </div>
+
+        <hr>
+        <div class="navbar-end">
+            <div class="navbar-item is-size-7">
+                퇴근 가능시간은 <strong>18:53</strong> 입니다.
             </div>
+            <div class="navbar-item">
+                <p class="control">
+                    <a class="button" href="https://github.com/jgthms/bulma/releases/download/0.7.1/bulma-0.7.1.zip">
+                        <strong>퇴근하기</strong>
+                    </a>
+                    <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.7.1/bulma-0.7.1.zip">
+                        <strong>로그아웃</strong>
+                    </a>
 
-            <hr>
-            <div class="navbar-end">
-                <div class="navbar-item is-size-7">
-                    퇴근 가능시간은 <strong>18:53</strong> 입니다.
-                </div>
-                <div class="navbar-item">
-                        <p class="control">
-                            <a class="button" href="https://github.com/jgthms/bulma/releases/download/0.7.1/bulma-0.7.1.zip">
-                                <strong>퇴근하기</strong>
-                            </a>
-                            <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.7.1/bulma-0.7.1.zip">
-                                <strong>로그아웃</strong>
-                            </a>
-
-                        </p>
-                </div>
+                </p>
             </div>
         </div>
-    </nav>
-    
+    </div>
+
     <section class="section-fixed-margin"></section>
     
     <section class="hero is-link is-hidden-mobile">
@@ -252,5 +258,4 @@
     </nav>
     <!-- 서브 네비게이션 끝-->
 </div>
-
 
