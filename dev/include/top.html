@@ -6,10 +6,14 @@
                 <div class="navbar-item is-size-7">
                     Visual Interaction Development / <strong>이사 신형주</strong>
                 </div>
-                <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+
+                <div class="navbar-menu" id="navMenu">
+                    <!-- navbar-start, navbar-end... -->
                 </div>
             </div>
             <div class="navbar-menu">
@@ -25,7 +29,7 @@
                                 </a>
                             </p>
                             <p class="control">
-                                <a class="button is-primary" href="index.html">
+                                <a class="button is-primary" href="/index.html">
                                     <span>로그아웃</span>
                                 </a>
                             </p>
@@ -34,8 +38,70 @@
                 </div>
             </div>
         </div>
+
     </nav>
-    
+
+    <div id="navMenuDocumentation" class="navbar-menu is-active" style="display:block">
+        <div class="navbar-start">
+            <a class="navbar-item   is-active" href="#">
+                <span>홈</span>
+            </a>
+
+            <a class="navbar-item " href="#">
+                <span>근태</span>
+            </a>
+
+            <a class="navbar-item" href="#">
+                <span>휴가</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>전자결재</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>프로젝트</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>주간보고서</span>
+            </a>
+
+            <a class="navbar-item " href="#">
+                <span>공지사항</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>게시판</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>예약</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>조직도</span>
+            </a>
+            <a class="navbar-item " href="#">
+                <span>장비관리</span>
+            </a>
+
+
+        </div>
+
+        <hr>
+        <div class="navbar-end">
+            <div class="navbar-item is-size-7">
+                퇴근 가능시간은 <strong>18:53</strong> 입니다.
+            </div>
+            <div class="navbar-item">
+                <p class="control">
+                    <a class="button" href="https://github.com/jgthms/bulma/releases/download/0.7.1/bulma-0.7.1.zip">
+                        <strong>퇴근하기</strong>
+                    </a>
+                    <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.7.1/bulma-0.7.1.zip">
+                        <strong>로그아웃</strong>
+                    </a>
+
+                </p>
+            </div>
+        </div>
+    </div>
+
     <section class="section-fixed-margin"></section>
     
     <section class="hero is-link is-hidden-mobile">
@@ -43,7 +109,7 @@
             <div class="container">
                 <div class="columns is-vcentered">
                     <div class="column">
-                        <a href="index.html"><img src="assets/images/df_logo_w.svg" width="150"></a>
+                        <img src="/assets/images/df_logo_w.svg" width="120">
                     </div>
                     <div class="column is-narrow">
                         <span class="is-size-6 is-italic">a difference that matters.</span>
@@ -56,16 +122,17 @@
             <div class="container">
                 <nav class="tabs is-boxed is-fullwidth">
                     <ul>
-                        <li class="is-active"><a href="main.html">홈</a></li>
-                        <li><a href="commuting_list.html">근태</a></li>
-                        <li><a href="#">휴가</a></li>
-                        <li><a href="#">전자결재</a></li>
-                        <li><a href="#">프로젝트</a></li>
-                        <li><a href="#">주간보고서</a></li>
-                        <li><a href="board_list.html">공지사항</a></li>
-                        <li><a href="#">게시판</a></li>
-                        <li><a href="#">예약</a></li>
-                        <li><a href="#">조직도</a></li>
+                        <li class="is-active"><a href="/main.html">홈</a></li>
+                        <li><a href="/commuting/commuting_list.html">근태</a></li>
+                        <li><a href="/vacation/vacation_list.html">휴가</a></li>
+                        <li><a href="/approval/approval_my_list_end.html">전자결재</a></li>
+                        <li><a href="/project/project_list.html">프로젝트</a></li>
+                        <li><a href="/weekly/weekly_list_team.html">주간보고서</a></li>
+                        <li><a href="/board/board_list.html">공지사항</a></li>
+                        <li><a href="/board/board_list.html">게시판</a></li>
+                        <li><a href="/booking/booking_list.html">예약</a></li>
+                        <li><a href="/org_chart/person_list.html">조직도</a></li>
+                        <li><a href="/equipment/info_workdevice.html">장비관리</a></li>
                     </ul>
                 </nav>
             </div>
@@ -78,7 +145,7 @@
             <div class="container">
                 <div class="level is-mobile">
                     <div class="level-item level-left">
-                        <a href="index.html"><img src="assets/images/df_logo_w.svg" width="50" style="vertical-align:middle;"></a>
+                        <img src="/assets/images/df_logo_w.svg" width="50" style="vertical-align:middle;">
                     </div>
                     <div class="level-item level-right is-expanded">
                         <span class="is-italic has-text-right is-fullwidth">a difference that matters.</span>
@@ -95,7 +162,7 @@
         <div class="container">
             <div class="navbar-tabs">
                 <a class="navbar-item is-tab is-active" href="#">근태 현황</a>
-                <a class="navbar-item is-tab " href="#">실/팀원 근태현황</a>
+                <a class="navbar-item is-tab " href="/commuting/commuting_member.html">실/팀원 근태현황</a>
                 <a class="navbar-item is-tab " href="#">일/월별 근태통계</a>
                 <a class="navbar-item is-tab " href="#">연별 근태통계</a>
                 <a class="navbar-item is-tab " href="#">비용정산</a>
@@ -105,6 +172,68 @@
     </nav>
     <!-- 서브 네비게이션 끝-->
 </div>
+
+<div class="sub-menu-3">
+    <!-- 서브 네비게이션 시작 -->
+    <nav class="navbar has-shadow is-size-7-mobile">
+        <div class="container">
+            <div class="navbar-tabs">
+                <a class="navbar-item is-tab is-active" href="/vacation/vacation_list.html">휴가내역</a>
+                <a class="navbar-item is-tab " href="/vacation/vacation_member.html">휴가사용현황</a>
+                <a class="navbar-item is-tab " href="/vacation/vacation_total.html">휴가통계</a>
+            </div>
+        </div>
+    </nav>
+    <!-- 서브 네비게이션 끝-->
+</div>
+
+<div class="sub-menu-4">
+    <!-- 서브 네비게이션 시작 -->
+    <nav class="navbar has-shadow is-size-7-mobile">
+        <div class="container">
+            <div class="navbar-tabs">
+                <a class="navbar-item is-tab is-active" href="#">전자결재작성</a>
+                <a class="navbar-item is-tab " href="/approval/approval_my_list_end.html">전자결재문서함</a>
+                <a class="navbar-item is-tab " href="#">전자결재리스트</a>
+                <a class="navbar-item is-tab " href="#">서명,비밀번호등록</a>
+            </div>
+        </div>
+    </nav>
+    <!-- 서브 네비게이션 끝-->
+</div>
+
+
+
+<div class="sub-menu-5">
+    <!-- 서브 네비게이션 시작 -->
+    <nav class="navbar has-shadow is-size-7-mobile">
+        <div class="container">
+            <div class="navbar-tabs">
+                <a class="navbar-item is-tab is-active" href="/project/project_list.html">진행 프로젝트</a>
+                <a class="navbar-item is-tab " href="#">완료 프로젝트</a>
+                <a class="navbar-item is-tab " href="#">통계</a>
+                <a class="navbar-item is-tab " href="/project/project_collect.html">프로젝트 수금내역</a>
+                <a class="navbar-item is-tab " href="#">의뢰 프로젝트</a>
+            </div>
+        </div>
+    </nav>
+    <!-- 서브 네비게이션 끝-->
+</div>
+
+<div class="sub-menu-6">
+    <!-- 서브 네비게이션 시작 -->
+    <nav class="navbar has-shadow is-size-7-mobile">
+        <div class="container">
+            <div class="navbar-tabs">
+                <a class="navbar-item is-tab is-active" href="/weekly/weekly_list_division.html">실/팀원 주간보고서</a>
+                <a class="navbar-item is-tab" href="/weekly/weekly_list_team.html">실/팀원 주간보고서 관리</a>
+                <a class="navbar-item is-tab" href="/weekly/weekly_list_write.html">실/팀원 주간보고서 작성하기</a>
+            </div>
+        </div>
+    </nav>
+    <!-- 서브 네비게이션 끝-->
+</div>
+
 
 <div class="sub-menu-7">
     <!-- 서브 네비게이션 시작 -->
@@ -117,3 +246,16 @@
     </nav>
     <!-- 서브 네비게이션 끝-->
 </div>
+
+<div class="sub-menu-9">
+    <!-- 서브 네비게이션 시작 -->
+    <nav class="navbar has-shadow is-size-7-mobile">
+        <div class="container">
+            <div class="navbar-tabs">
+                <a class="navbar-item is-tab is-active" href="#">회의실 예약</a>
+            </div>
+        </div>
+    </nav>
+    <!-- 서브 네비게이션 끝-->
+</div>
+

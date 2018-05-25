@@ -269,16 +269,17 @@
 <input type="hidden" name="writer_id" value="<?=$board_id?>">	<!-- 글작성자 prs_id -->
 <input type="hidden" name="modify_contents" id="modify_contents">
 <? include INC_PATH."/top_menu.php"; ?>
-<!--navigation-->
-<nav class="navbar has-shadow">
-    <div class="container">
-        <div class="navbar-tabs">
-            <a class="navbar-item is-tab is-active" href="board_list.php?board=default">공지사항</a>
-        </div>
+    <!-- 서브 네비게이션 시작 -->
+    <div class="sub-menu-7">
+        <nav class="navbar has-shadow is-size-7-mobile">
+            <div class="container">
+                <div class="navbar-tabs">
+                    <a class="navbar-item is-tab is-active" href="board_list.php">공지사항</a>
+                </div>
+            </div>
+        </nav>
     </div>
-</nav>
-<!--navigation-->
-</div>
+    <!-- 서브 네비게이션 끝-->
 <!-- 본문 시작 -->
 <section class="section is-subpage">
   <div class="container">

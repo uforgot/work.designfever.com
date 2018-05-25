@@ -208,12 +208,19 @@
 	}
 	<? } ?>
 
+<? if ($prf_id == "2" || $prf_id == "3") { ?>
 	//근태수정팝업 띄우기(팀/실장)
 	function goModify2(date,checktime1,id,checktime2){
 		//MM_openBrWindow('pop_modify2.php?date='+date+'&checktime1='+checktime1+'&id='+id+'&checktime2='+checktime2,'','width=565 ,height=645,scrollbars=no, scrolling=no');
         $("#popDayEditFrm").attr("src","pop_modify2.php?date="+date+'&checktime1='+checktime1+'&id='+id+'&checktime2='+checktime2);
         $("#popDayEdit").addClass("modal is-active");
 	}
+<? }else{?>
+//근태수정팝업 띄우기(팀/실장)
+function goModify2(date,checktime1,id,checktime2){
+    alert("해당내용은 팀/실장 이상만 확인 가능합니다.");
+}
+<? } ?>
 
 	function excel_download()
 	{

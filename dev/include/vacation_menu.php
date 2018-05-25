@@ -1,5 +1,5 @@
 <!-- 서브 네비게이션 시작 -->
-<div class="sub-menu-7">
+<div class="sub-menu-3">
     <nav class="navbar has-shadow is-size-7-mobile">
         <div class="container">
             <div class="navbar-tabs">

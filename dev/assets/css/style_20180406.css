@@ -979,7 +979,8 @@ table.work8 span.total { font-weight:bold; color:orange; }
 .approval-popup2 { position:absolute; left:50%; top:170px; margin:0 0 0 -400px; width:800px; background:#fff; z-index:100000; border:1px solid #000; }	/* position:absolute; top:50%; margin:-550px 0 0 -400px; */
 .approval-popup2 .title { height:39px; background:#000; }
 .approval-popup2 .title h3 { padding:14px 0 0 22px; font-family:dotum; font-size:12px; color:#fff; }
-.approval-popup2 .title a { position:absolute; right:11px; top:11px; }
+/*.approval-popup2 .title a { position:absolute; right:11px; top:11px; }*/
+.approval-popup2 .title a { position:absolute; right:11px; top:-1px; }
 .approval-popup2 .content-title { width:718px; height:44px; margin:30px auto 0px; }
 .approval-popup2 .content-title tr { border:0; }
 .approval-popup2 .content-title tr th { line-height:27px; text-align:left;}

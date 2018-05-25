@@ -11,6 +11,7 @@
 	<script type="text/javascript">
 		alert("해당페이지는 팀/실장 이상만 확인 가능합니다.");
 		top.close();
+        parent.parent.closePop('DayEdit');
 	</script>
 <?
 		exit;
