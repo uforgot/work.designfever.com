@@ -340,4 +340,44 @@ body {
 #navbar {
   z-index: 50; }
 
+#work-menu {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  z-index: 10000; }
+  #work-menu .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    opacity: 0.8; }
+  #work-menu .menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top: 1px solid #dbdbdb;
+    background: #fff;
+    height: 100vh;
+    width: 250px; }
+    #work-menu .menu .navbar-brand {
+      border-bottom: 1px solid #f4f4f4; }
+      #work-menu .menu .navbar-brand .navbar-item {
+        padding-left: 1rem; }
+    #work-menu .menu .content {
+      padding: 1rem; }
+      #work-menu .menu .content .navbar-item {
+        border-bottom: 1px solid #f4f4f4; }
+      #work-menu .menu .content .column:first-child {
+        padding-right: 0.1rem; }
+      #work-menu .menu .content .column:nth-child(2) {
+        padding-left: 0.1rem; }
+  #work-menu.is-active {
+    display: block; }
+  #work-menu hr {
+    margin: 0.5rem 0; }
+
 /*# sourceMappingURL=work.df.css.map */

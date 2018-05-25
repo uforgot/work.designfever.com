@@ -26,3 +26,44 @@ body
 
 #navbar
   z-index: 50
+
+#work-menu
+  display: none
+  position: fixed
+  width: 100vw
+  left: 0
+  top: 0
+  z-index: 10000
+  .background
+    position: absolute
+    left: 0
+    top: 0
+    width: 100vw
+    height: 100vh
+    background: #000
+    opacity: 0.8
+  .menu
+    position: absolute
+    top: 0
+    right: 0
+    border-top: 1px solid #dbdbdb
+    background: #fff
+    height: 100vh
+    width: 250px
+    .navbar-brand
+      border-bottom: 1px solid #f4f4f4
+      .navbar-item
+        padding-left: 1rem
+    .content
+      padding: 1rem
+      .navbar-item
+        border-bottom: 1px solid #f4f4f4
+      .column
+        &:first-child
+          padding-right: 0.1rem
+        &:nth-child(2)
+          padding-left: 0.1rem
+  &.is-active
+    display: block
+  hr
+    margin: 0.5rem 0
