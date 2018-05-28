@@ -21,8 +21,6 @@ var Menu = (function() {
         if(winW > 1087) {
             closeMenu();
         }
-
-        console.log('resize');
     };
 
     var onResize = function(){
@@ -30,12 +28,10 @@ var Menu = (function() {
     };
 
     var openMenu = function() {
-        console.log('open');
         menuEl.addClass('is-active');
     };
 
     var closeMenu = function() {
-        console.log('close');
         menuEl.removeClass('is-active');
     };
 
@@ -43,10 +39,6 @@ var Menu = (function() {
         $(window).on('resize', onResize);
         menuOpenBtEl.on('click', openMenu);
         menuCloseBtEl.on('click', closeMenu);
-
-        console.log($('#top'));
-        console.log($('#menu'));
-        console.log($('#menuBt'));
     };
 
     /*=========================================================== [ init ] =====================================================================*/
