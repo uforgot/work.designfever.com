@@ -276,7 +276,7 @@ $rs = sqlsrv_query($dbConn,$sql);
         <div class="container">
             <div class="columns is-vcentered">
                 <!-- Left side -->
-              <div class="card">
+              <div class="card navbar-tabs">
                 <div class="column">
                     <!-- todo 0413 구조 변경 -->
                     <div class="field is-grouped">
@@ -299,7 +299,7 @@ $rs = sqlsrv_query($dbConn,$sql);
                                 ?>
                             </select>
                         </div>
-                        <div class="control is-hidden-mobile">
+                        <div class="control ">
                             <a href="javascript:sSubmit(this.form);" class="button is-link" id="btnSearch">
                                         <span class="icon is-small">
                                             <i class="fas fa-search"></i>
@@ -309,6 +309,30 @@ $rs = sqlsrv_query($dbConn,$sql);
                         </div>
                     </div>
                 </div>
+                  <div class="column">
+                      <div class="field is-grouped">
+                          <div class="control ">
+                              <a href="javascript:chgSort('name');" class="button is-link">
+                                  <span>이름순</span>
+                              </a>
+                          </div>
+                          <div class="control ">
+                              <a href="javascript:chgSort('position');" class="button is-link" id="btnSearch">
+                                  <span>직급순</span>
+                              </a>
+                          </div>
+                          <div class="control ">
+                              <a href="javascript:chgSort('avg');" class="button is-link">
+                                  <span>평균근무시간순</span>
+                              </a>
+                          </div>
+                          <div class="control ">
+                              <a href="javascript:chgSort('over');" class="button is-link">
+                                  <span>초과근무시간순</span>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
                </div>
                 <div class="column is-hidden-mobile">
                     <div class="control has-text-right">
@@ -321,29 +345,6 @@ $rs = sqlsrv_query($dbConn,$sql);
                     </div>
                 </div>
             </div>
-            <div class="field is-grouped">
-                <div class="control is-hidden-mobile">
-                    <a href="javascript:chgSort('name');" class="button is-link">
-                        <span>이름순</span>
-                    </a>
-                </div>
-                <div class="control is-hidden-mobile">
-                    <a href="javascript:chgSort('position');" class="button is-link" id="btnSearch">
-                        <span>직급순</span>
-                    </a>
-                </div>
-                <div class="control is-hidden-mobile">
-                    <a href="javascript:chgSort('avg');" class="button is-link">
-                        <span>평균근무시간순</span>
-                    </a>
-                </div>
-                <div class="control is-hidden-mobile">
-                    <a href="javascript:chgSort('over');" class="button is-link">
-                        <span>초과근무시간순</span>
-                    </a>
-                </div>
-            </div>
-
             <table class="table is-fullwidth is-hoverable is-resize">
                 <colgroup>
                     <col width="5%" />

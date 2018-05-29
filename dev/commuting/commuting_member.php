@@ -332,7 +332,7 @@ else
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card navbar-tabs">
                 <div class="column">
                     <div class="content">
                         <div class="level">

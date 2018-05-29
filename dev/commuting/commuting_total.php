@@ -420,7 +420,7 @@
                 <div class="container">
                     <div class="columns is-vcentered">
                         <!-- Left side -->
-                        <div class="card">
+                        <div class="card navbar-tabs">
                             <div class="column">
                             <!-- todo 0413 구조 변경 -->
                             <div class="field is-grouped">
