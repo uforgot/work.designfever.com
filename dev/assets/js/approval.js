@@ -208,7 +208,8 @@
 	}
 
 	//댓글 달기
-	function writeReply(){ 
+	function writeReply(){
+
 		var frm = document.form2;
 		if(frm.reply_contents.value.length < 1){
 			alert("내용을 입력해주세요");
@@ -225,7 +226,6 @@
 	function mod_Reply(replyno){	
 		var frm = document.form2;
 		var text = document.getElementById("c_text_"+replyno);
-
 		frm.reply_contents.value = text.innerHTML;
 		frm.reply_contents.focus();
 		document.all("reply_btn").innerHTML = "<a href='javascript:modifyReply("+replyno+");'><img src=\"/img/btn_popup_modify.gif\" alt=\"\"></a>";

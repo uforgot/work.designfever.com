@@ -386,7 +386,7 @@
             <div class="content">
 
                 <hr>
-                <table class="table is-fullwidth is-hoverable">
+                <table class="table is-fullwidth is-hoverable is-resize">
                     <colgroup>
                         <col width="6%">
                         <col width="*">

@@ -194,6 +194,7 @@
 
 		content_html = content_html + "		<form name=\"form2\" method=\"post\">";
 		content_html = content_html + "		<input type=\"hidden\" name=\"doc_no\" value=\"<?=$doc_no?>\">";
+        content_html = content_html + "		<input type=\"hidden\" name=\"type\" value=\"<?=$type?>\">";
 		content_html = content_html + "		<table class=\"content-table\" width=\"100%\">";
 		content_html = content_html + "			<colgroup>";
 		content_html = content_html + "				<col width=\"13%\" />";

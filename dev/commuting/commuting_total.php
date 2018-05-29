@@ -654,7 +654,7 @@
                                 </div>
                                  <? }
                                 } ?>
-                                <div class="control is-hidden-mobile">
+                                <div class="control">
                                     <a href="javascript:sSubmit(this.form);" class="button is-link" id="btnSearch">
                                         <span class="icon is-small">
                                             <i class="fas fa-search"></i>
@@ -669,29 +669,29 @@
 
                     </div>
                     <div class="field is-grouped">
-                        <div class="control is-hidden-mobile">
+                        <div class="control ">
                             <a href="javascript:chgSort('name');" class="button is-link">
                                 <span>이름순</span>
                             </a>
                         </div>
-                        <div class="control is-hidden-mobile">
+                        <div class="control ">
                             <a href="javascript:chgSort('position');" class="button is-link" id="btnSearch">
                                 <span>직급순</span>
                             </a>
                         </div>
                     <? if ($p_period == "day") { ?>
-                        <div class="control is-hidden-mobile">
+                        <div class="control ">
                             <a href="javascript:chgSort('checktime1');" class="button is-link">
                                 <span>출근시간순</span>
                             </a>
                         </div>
                     <? } else { ?>
-                        <div class="control is-hidden-mobile">
+                        <div class="control ">
                             <a href="javascript:chgSort('avg');" class="button is-link">
                                 <span>평균근무시간순</span>
                             </a>
                         </div>
-                        <div class="control is-hidden-mobile">
+                        <div class="control ">
                             <a href="javascript:chgSort('over');" class="button is-link">
                                 <span>초과근무시간순</span>
                             </a>

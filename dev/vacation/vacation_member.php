@@ -505,7 +505,6 @@
     </div>
 </section>
 <!-- º»¹® ²ø -->
-<? include INC_PATH."/bottom.php"; ?>
 </form>
 <div id="popDetail" class="approval-popup2" style="display:none;">
     <div class="title">
@@ -523,5 +522,6 @@
     <div class="btn-wrap" id="pop_detail_modify">
     </div>
 </div>
+<? include INC_PATH."/bottom.php"; ?>
 </body>
 </html>

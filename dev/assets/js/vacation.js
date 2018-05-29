@@ -93,7 +93,7 @@
 	}
 
 	//댓글 textarea글자수 200자 제한 스크립트
-	function textcounter(field, countfield, maxlimit) { 
+	function textcounter(field, countfield, maxlimit) {
 		  tempstr = field.value;
 		  countfield.value = maxlimit - tempstr.length;
 			if (maxlimit - tempstr.length < 0) {
@@ -112,17 +112,16 @@
 			alert("내용을 입력해주세요");
 			frm.reply_contents.focus();
 			return;
-		}	
+		}
 		frm.target = 'hdnFrame';
 		frm.type.value = 'write_reply';
 		frm.action = '/approval/approval_reply_act.php';
 		frm.submit();
 	}; 
 	//댓글 수정 (댓글번호)
-	function mod_Reply(replyno){	
+	function mod_Reply(replyno){
 		var frm = document.form2;
 		var text = document.getElementById("c_text_"+replyno);
-
 		frm.reply_contents.value = text.innerHTML;
 		frm.reply_contents.focus();
 		document.all("reply_btn").innerHTML = "<a href='javascript:modifyReply("+replyno+");'><img src=\"/img/btn_popup_modify.gif\" alt=\"\"></a>";
@@ -134,10 +133,13 @@
 			alert("내용을 입력해주세요");
 			frm.reply_contents.focus();
 			return;
-		}	
+		}
 		frm.target = 'hdnFrame';
+        frm.type.value = 'modify_reply';
 		frm.action = '/approval/approval_reply_act.php?reply_no='+replyno+'&type=modify_reply';
 		frm.submit();
+
+
 	}
 	//댓글 삭제
 	function delReply(replyno){ 
@@ -148,6 +150,7 @@
 		else
 		{		
 			frm.target = 'hdnFrame';
+            frm.type.value = 'delete_reply';
 			frm.action = '/approval/approval_reply_act.php?reply_no='+replyno+'&type=delete_reply';
 			frm.submit();
 		}

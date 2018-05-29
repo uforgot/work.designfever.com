@@ -226,11 +226,11 @@ if (sizeof($record) > 0)
                     </div>
                 </div>
             </div>
-            <div class="content is-hidden-mobile">
+            <div class="content">
                 <div class="field is-grouped is-grouped-multiline">
                     <div class="control">
                         <div class="tags has-addons">
-                            <span class="tag">총 근무시간</span>
+                            <span class="tag"> 근무시간 총합</span>
                             <span class="tag is-primary"><?=$total_time?> : <?=$total_minute?></span>
                         </div>
                     </div>
