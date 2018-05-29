@@ -333,6 +333,10 @@
       height: 18px;
       overflow: hidden; }
 
+.df-member table td, .df-member table th {
+  border-bottom: none;
+  padding: 0; }
+
 body {
   font-family: "Nanum Gothic";
   font-weight: 600; }
