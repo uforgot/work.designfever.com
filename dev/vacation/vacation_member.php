@@ -351,7 +351,7 @@
                 </div>
             </div>
         </div>
-        <div class="content">
+        <div class="content navbar-tabs">
       	<!--검색 영역-->
             <table class="table is-fullwidth is-hoverable is-resize">
                 <colgroup>

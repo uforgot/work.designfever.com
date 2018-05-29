@@ -181,7 +181,7 @@
     <section class="section is-resize">
         <div class="container">
             <div class="content">
-                <div class="card">
+                <div class="card navbar-tabs">
                     <div class="card-content">
                         <div class="columns">
                             <div class="column" style="display:inline-block;flex-grow:0;flex-basis:auto;">
