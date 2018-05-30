@@ -3,7 +3,7 @@
 ?>
 
 <?
-	$strLogin = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : null; 
+	$strLogin = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : null;
 
 	$strMSG = "";
 	$strMSG1 = "";
@@ -30,9 +30,9 @@
 
 <script type="text/JavaScript">
 	function fct_IDPut(strSelectedID) {
-		
+
 		var id_return = eval("opener.document.form.login");
-		
+
 		id_return.value = strSelectedID;
 		opener.document.form.IdCheck.value="<?=$returnMSG?>";
 		this.close();
