@@ -22,7 +22,7 @@
 
         <div class="tabs is-boxed">
             <ul>
-                <li class="is-active">
+                <li>
                     <a href="/approval/approval_write_1.html">
                         <span>입사승인계</span>
                     </a>
@@ -32,7 +32,7 @@
                         <span>프로젝트 휴가 승인계</span>
                     </a>
                 </li>
-                <li>
+                <li class="is-active">
                     <a href="/approval/approval_write_3.html">
                         <span>비용품의서</span>
                     </a>
@@ -289,98 +289,160 @@
                 <table class="content-table" width="100%">
                     <tbody>
                     <tr style="border-bottom:2px solid;">
-                        <th width="100" class="gray">항목①</th>
+                        <th width="100" class="gray">항목 ①</th>
                         <td style="padding:0;">
 
                             <table width="100%" class="content-sub-table">
                                 <tbody><tr>
                                     <th class="gray2">청구</th>
                                     <td colspan="3">
-                                        <input type="radio" name="type_0" value="1" onclick="alertType(this);">실비청구
-                                        <input type="radio" name="type_0" value="2" onclick="alertType(this);">미청구
-                                        <input type="radio" name="type_0" value="3" onclick="alertType(this);">운영
+
+                                        <div class="field">
+                                            <input class="is-checkradio" id="type_0_1" type="radio" name="type_0" checked="checked">
+                                            <label for="type_0_1">실비청구</label>
+                                            <input class="is-checkradio" id="type_0_2" type="radio" name="type_0">
+                                            <label for="type_0_2">미청구</label>
+                                            <input class="is-checkradio" id="type_0_3" type="radio" name="type_0">
+                                            <label for="type_0_3">운영</label>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="gray2">금액</th>
+                                    <th class="gray2" rowspan="2">금액</th>
                                     <td colspan="3">
-                                        <input type="text" name="money_0" class="input money_" style="ime-mode:disabled;width:100px;" onkeypress="if (event.keyCode < 48 || event.keyCode > 57) { event.returnValue = false; }" onkeyup="javascript:checkThousand(this,this.value);sumPayment();" value="">원
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <input type="radio" name="tax_0" value="1">면세
-                                        <input type="radio" name="tax_0" value="2">부가세포함
-                                        <input type="radio" name="tax_0" value="3">부가세 별도
-                                        <input type="radio" name="tax_0" value="4">제세공과금 포함
-                                        <input type="radio" name="tax_0" value="5">제세공과금 별도
+                                        <div class="field is-grouped">
+                                            <div class="control">
+                                                <input type="text" name="money_0" class="input money_" style="ime-mode:disabled;width:150px;" onkeypress="if (event.keyCode < 48 || event.keyCode > 57) { event.returnValue = false; }" onkeyup="javascript:checkThousand(this,this.value);sumPayment();" value="">
+                                            </div>
+                                            <div class="control">
+                                                <input type="text" class="input is-static" value="원" size="4" readonly>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="field">
+                                            <input class="is-checkradio" id="tax_0_1" type="radio" name="tax_0" checked="checked">
+                                            <label for="tax_0_1">면세</label>
+                                            <input class="is-checkradio" id="tax_0_2" type="radio" name="tax_0">
+                                            <label for="tax_0_2">부가세포함</label>
+                                            <input class="is-checkradio" id="tax_0_3" type="radio" name="tax_0">
+                                            <label for="tax_0_3">부가세 별도</label>
+                                            <input class="is-checkradio" id="tax_0_4" type="radio" name="tax_0">
+                                            <label for="tax_0_4">재세공과금 포함</label>
+                                            <input class="is-checkradio" id="tax_0_5" type="radio" name="tax_0">
+                                            <label for="tax_0_5">제세공과금 별도</label>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th class="gray2">대상</th>
                                     <td colspan="3">
-                                        <input type="radio" name="target_0" value="1">외주사
-                                        <input type="radio" name="target_0" value="2">용역(프리랜서)
-                                        <input type="radio" name="target_0" value="3">이미지,영상,음원
-                                        <input type="radio" name="target_0" value="4">이벤트경품
-                                        <input type="radio" name="target_0" value="5">어워드
-                                        <input type="radio" name="target_0" value="6">기타
+                                        <div class="field">
+                                            <input class="is-checkradio" id="target_0_1" type="radio" name="target_0" checked="checked">
+                                            <label for="target_0_1">외주사</label>
+                                            <input class="is-checkradio" id="target_0_2" type="radio" name="target_0">
+                                            <label for="target_0_2">용역(프리랜서)</label>
+                                            <input class="is-checkradio" id="target_0_3" type="radio" name="target_0">
+                                            <label for="target_0_3">이미지,영상,음원</label>
+                                            <input class="is-checkradio" id="target_0_4" type="radio" name="target_0">
+                                            <label for="target_0_4">이벤트경품</label>
+                                            <input class="is-checkradio" id="target_0_5" type="radio" name="target_0">
+                                            <label for="target_0_5">어워드</label>
+                                            <input class="is-checkradio" id="target_0_6" type="radio" name="target_0">
+                                            <label for="target_0_6">기타</label>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr class="last">
                                     <th class="gray2">결제정보</th>
-                                    <td colspan="3" style="padding-left:1px;">
-                                        <table width="100%">
+                                    <td colspan="3" style="padding:0">
+                                        <table width="100%" class="content-sub-table">
                                             <tbody><tr>
                                                 <td class="gray2">결제방법</td>
                                                 <td>
-															<span data-no="0">
-																<input type="radio" class="pay_type" name="pay_type_0" value="B" checked="">계좌이체
-																<input type="radio" class="pay_type" name="pay_type_0" value="C">카드결제
-																<input type="radio" class="pay_type" name="pay_type_0" value="P">개인경비
-																<input type="radio" class="pay_type" name="pay_type_0" value="A" onchange="alertPaytype(this);">자동이체
-																<input type="radio" class="pay_type" name="pay_type_0" value="H">현금결제
-															</span>
+                                                    <div class="field">
+                                                        <input class="is-checkradio" id="pay_type_0_1" type="radio" name="pay_type_0" checked="checked">
+                                                        <label for="pay_type_0_1">계좌이체</label>
+                                                        <input class="is-checkradio" id="pay_type_0_2" type="radio" name="pay_type_0">
+                                                        <label for="pay_type_0_2">카드결제</label>
+                                                        <input class="is-checkradio" id="pay_type_0_3" type="radio" name="pay_type_0">
+                                                        <label for="pay_type_0_3">개인경비</label>
+                                                        <input class="is-checkradio" id="pay_type_0_4" type="radio" name="pay_type_0">
+                                                        <label for="pay_type_0_4">자동이체</label>
+                                                        <input class="is-checkradio" id="pay_type_0_5" type="radio" name="pay_type_0">
+                                                        <label for="pay_type_0_5">현금결제</label>
+                                                    </div>
                                                 </td>
                                             </tr>
-                                            </tbody></table>
-                                        <table width="100%" id="paytype_B_0">
-                                            <tbody><tr>
+                                            <tr>
                                                 <td class="gray2">계산서</td>
-                                                <td colspan="6">
-                                                    <input type="radio" name="pay_info_0" value="1">세금계산서
-                                                    <input type="radio" name="pay_info_0" value="2">계산서
-                                                    <input type="radio" name="pay_info_0" value="3">사업자지출증빙(현금영수증)
-                                                    <input type="radio" name="pay_info_0" value="4">프리랜서사업소득
+                                                <td>
+                                                   <div class="field">
+                                                       <input class="is-checkradio" id="pay_info_0_1" type="radio" name="pay_info_0" checked="checked">
+                                                       <label for="pay_info_0_1">세금계산서</label>
+                                                       <input class="is-checkradio" id="pay_info_0_2" type="radio" name="pay_info_0">
+                                                       <label for="pay_info_0_2">계산서</label>
+                                                       <input class="is-checkradio" id="pay_info_0_3" type="radio" name="pay_info_0">
+                                                       <label for="pay_info_0_3">사업자지출증빙(현금영수증)</label>
+                                                       <input class="is-checkradio" id="pay_info_0_4" type="radio" name="pay_info_0">
+                                                       <label for="pay_info_0_4">프리랜서사업소득</label>
+                                                   </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="gray2">업체명</td>
-                                                <td colspan="6"><input type="text" class="input" style="width:150px;" name="company_0" maxlength="20"></td>
+                                                <td><input type="text" class="input" style="width:150px;" name="company_0" maxlength="20"></td>
                                             </tr>
                                             <tr>
                                                 <td class="gray2">담당자</td>
-                                                <td colspan="6"><input type="text" class="input" style="width:150px;" name="manager_0" maxlength="10"></td>
+                                                <td><input type="text" class="input" style="width:150px;" name="manager_0" maxlength="10"></td>
                                             </tr>
                                             <tr>
                                                 <td class="gray2">연락처</td>
-                                                <td colspan="6"><input type="text" class="input" style="width:150px;" name="contact_0" maxlength="20"></td>
+                                                <td><input type="text" class="input" style="width:150px;" name="contact_0" maxlength="20"></td>
                                             </tr>
                                             <tr>
-                                                <td>업체계좌정보</td>
-                                                <td>은행명</td>
-                                                <td><input type="text" class="input"  style="width:100px;" name="bank_name_0" maxlength="10"></td>
-                                                <td>계좌번호</td>
-                                                <td><input type="text" class="input" style="width:120px;" name="bank_num_0" maxlength="30"></td>
-                                                <td>예금주</td>
-                                                <td><input type="text" class="input" style="width:100px;" name="bank_user_0" maxlength="10"></td>
+                                                <td class="gray2">업체계좌정보</td>
+                                                <td>
+                                                    <div class="field is-grouped">
+                                                        <div class="control">
+                                                            <input type="text" class="input is-static" value="은행명" size="5" readonly>
+                                                        </div>
+                                                        <div class="control">
+                                                            <input type="text" class="input"  style="width:100px;" name="bank_name_0" maxlength="10">
+                                                        </div>
+                                                        <div class="control">
+                                                            <input type="text" class="input is-static" value="계좌번호" size="6" readonly>
+                                                        </div>
+                                                        <div class="control">
+                                                            <input type="text" class="input"  style="width:100px;" name="bank_name_0" maxlength="10">
+                                                        </div>
+                                                        <div class="control">
+                                                            <input type="text" class="input is-static" value="예금주" size="5" readonly>
+                                                        </div>
+                                                        <div class="control">
+                                                            <input type="text" class="input"  style="width:100px;" name="bank_name_0" maxlength="10">
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr style="border-bottom:0px;">
                                                 <td class="gray2">지급일자</td>
-                                                <td colspan="6">
-                                                    <input type="radio" name="pay_date_0" value="1">보름
-                                                    <input type="radio" name="pay_date_0" value="2">말일
-                                                    <input type="radio" name="pay_date_0" value="3" onchange="alertPaydate(this)">기안결제 완료 즉시
+                                                <td>
+                                                    <div class="field">
+                                                        <input class="is-checkradio" id="pay_date_0_1" type="radio" name="pay_date_0" checked="checked">
+                                                        <label for="pay_date_0_1">보름</label>
+                                                        <input class="is-checkradio" id="pay_date_0_2" type="radio" name="pay_date_0">
+                                                        <label for="pay_date_0_2">말일</label>
+                                                        <input class="is-checkradio" id="pay_date_0_2" type="radio" name="pay_date_0">
+                                                        <label for="pay_date_0_2">기안결제 완료 즉시</label>
+                                                    </div>
                                                 </td>
                                             </tr>
-                                            </tbody></table>
+                                            </tbody>
+                                        </table>
                                         <table width="100%" id="paytype_C_0" style="display:none;">
                                             <tbody><tr style="border-bottom:0px;">
                                                 <td class="gray2">결제구분</td>

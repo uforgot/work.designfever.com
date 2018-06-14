@@ -296,6 +296,10 @@
     vertical-align: middle; }
   .df-approval .content-sub-table tr td {
     text-align: left; }
+  .df-approval .content-sub-table tr .gray2 {
+    text-align: center;
+    background: #f3f3f3;
+    border-left: 1px solid #dbdbdb; }
 
 .approval-popup, .approval-popup2, .approval-popup3, .approval-popup4, .approval-popup5, .approval-popup6 {
   font-size: 12px; }
