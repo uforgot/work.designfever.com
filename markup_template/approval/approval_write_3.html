@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>designfever intranet</title>
+    <link rel="stylesheet" href="/assets/css/work.df.css">
+    <link rel="stylesheet" href="/assets/css/style_20180406.css">
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script defer src="/assets/js/all.js"></script>
+    <script defer src="/assets/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+
+<div id="top"></div>
+<div id="sub-menu-4"></div>
+
+<!-- 본문 시작 -->
+<section class="section df-approval">
+
+    <div class="container">
+
+        <div class="tabs is-boxed">
+            <ul>
+                <li class="is-active">
+                    <a href="/approval/approval_write_1.html">
+                        <span>입사승인계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_2.html">
+                        <span>프로젝트 휴가 승인계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_3.html">
+                        <span>비용품의서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_4.html">
+                        <span>외근계/파견계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write.html">
+                        <span>휴가계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_5.html">
+                        <span>출장계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_6.html">
+                        <span>사유서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_7.html">
+                        <span>시말서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_8.html">
+                        <span>조퇴계함</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- 미결재문서 -->
+        <div class="content">
+            <div class="table-holder">
+                <table class="content-table" width="100%">
+                    <colgroup>
+                        <col width="5%">
+                        <col width="45%">
+                        <col width="5%">
+                        <col width="45%">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th class="gray">문서번호</th>
+                        <td>1806-XXXX<input type="hidden" name="doc_no" value="1806-XXXX"></td>
+                        <th class="gray" rowspan="3">결재</th>
+                        <td rowspan="3" class="app-td">
+                            <div class="columns is-mobile">
+                                <div class="column">
+                                    <table style="float:left; border-right:1px solid #dbdbdb">
+                                        <tbody><tr><td id="to_position_0">이사</td></tr>
+                                        <tr><td id="to_name_0">신형주</td></tr>
+                                        <tr style="border:0;"><td id="to_del_0"></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="column">
+                                    <table style="float:left; border-right:1px solid #dbdbdb">
+                                        <tbody><tr><td id="to_position_1">대표</td></tr>
+                                        <tr><td id="to_name_1">노진영</td></tr>
+                                        <tr style="border:0;"><td id="to_del_1"><a class="button is-small" href="javascript:toAdd();">변경</a></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="column">
+                                    <table style="float:left; border-right:1px solid #dbdbdb">
+                                        <tbody><tr><td id="to_position_2">&nbsp;</td></tr>
+                                        <tr><td id="to_name_2"><a class="button is-small" href="javascript:toAdd();">지정</a></td></tr>
+                                        <tr style="border:0;"><td id="to_del_2">&nbsp;</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="column">
+                                    <table width="20%" style="float:left; border-right:1px solid #dbdbdb">
+                                        <tbody><tr><td id="to_position_3">&nbsp;</td></tr>
+                                        <tr><td id="to_name_3"><a class="button is-small" href="javascript:toAdd();">지정</a></td></tr>
+                                        <tr style="border:0;"><td id="to_del_3">&nbsp;</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="column">
+                                    <table width="20%" style="float:left; border-right:1px solid #dbdbdb">
+                                        <tbody><tr><td id="to_position_4">&nbsp;</td></tr>
+                                        <tr><td id="to_name_4"><a class="button is-small" href="javascript:toAdd();">지정</a></td></tr>
+                                        <tr style="border:0;"><td id="to_del_4">&nbsp;</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <input type="hidden" name="to_id" id="to_id" value="79,22,">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="gray">문서종류</th>
+                        <td>
+                            <input type="hidden" name="form_no" value="25">
+                            <div class="control select">
+                                <select name="form_title" onchange="javascript:selDocument(this.form);" style="width:120px;">
+                                    <option value="연차" selected="">연차</option>
+                                    <option value="프로젝트">프로젝트</option>
+                                    <option value="오전반차">오전반차</option>
+                                    <option value="오후반차">오후반차</option>
+                                    <option value="프로젝트 오전반차">프로젝트 오전반차</option>
+                                    <option value="프로젝트 오후반차">프로젝트 오후반차</option>
+                                    <option value="병가">병가</option>
+                                    <option value="리프레쉬">리프레쉬</option>
+                                    <option value="무급">무급</option>
+                                    <option value="경조사">경조사</option>
+                                    <option value="예비군/민방위">예비군/민방위</option>
+                                    <option value="기타">기타</option>
+                                    <option value="휴가 소진시">휴가 소진시</option>
+                                    <option value="휴가 소진시 오전반차">휴가 소진시 오전반차</option>
+                                    <option value="휴가 소진시 오후반차">휴가 소진시 오후반차</option>
+                                    <option value="출산휴가">출산휴가</option>
+                                    <option value="육아휴직">육아휴직</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="gray">공개여부</th>
+                        <td>
+                            <div class="control select">
+                                <select name="open_yn">
+                                    <option value="Y">공개</option>
+                                    <option value="N">비공개</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="gray">기안일</th>
+                        <td>
+                            <input type="hidden" name="up_year" id="up_year" value="2018">
+                            <input type="hidden" name="up_month" id="up_month" value="06">
+                            <input type="hidden" name="up_day" id="up_day" value="11">
+                            <span>2018년 06월 11일</span>
+                        </td>
+                        <th class="gray">수신참조</th>
+                        <td class="appoint">
+                            <input type="hidden" name="cc_id" id="cc_id" value="">
+                            <span><input class="input"  name="cc" id="cc" readonly="" value=""></span>
+                            <a class="button is-link" href="javascript:ccAdd();">참조자 지정</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="gray">부서</th>
+                        <td colspan="3">Visual Interaction Development</td>
+                    </tr>
+                    <tr>
+                        <th class="gray">이름</th>
+                        <td colspan="3">이사 신형주</td>
+                    </tr>
+                    <tr class="last">
+                        <th class="gray">제목</th>
+                        <td colspan="3"><input class="input" type="text" name="title" value=""></td>
+                    </tr>
+
+
+
+                    <tr class="period">
+                        <th class="gray">프로젝트</th>
+                        <td colspan="3" class="last">
+                            <div class="select">
+                                <select name="project_no" style="width:500px;">
+                                    <option value=""></option>
+                                    <option value="DF2018_022">[DF2018_022] Samsung UNPK Crown</option>
+                                    <option value="DF2018_021">[DF2018_021] Samsung UNPK Crown_RSVP</option>
+                                    <option value="DF2018_020">[DF2018_020] Samsung WC AR Pin Promotion </option>
+                                    <option value="DF2018_017">[DF2018_017] 삼성 메모리 사업부 마컴 제작 연간 대행 운영</option>
+                                    <option value="DF2018_016">[DF2018_016] SKT 음악서비스 UXD</option>
+                                    <option value="DF2018_015">[DF2018_015] CMS EDU_Virtual Cording Service UX Design</option>
+                                    <option value="DF2018_014">[DF2018_014] NCSOFT Brand Identity 제안</option>
+                                    <option value="DF2018_012">[DF2018_012] 삼성 Flexible Mobile 선행 UX 디자인</option>
+                                    <option value="DF2018_010">[DF2018_010] AIA Vitality</option>
+                                    <option value="DF2018_009">[DF2018_009] [Clash Royale] Asia Pro League website</option>
+                                    <option value="DF2018_008">[DF2018_008] Samsung UNPK Star_China</option>
+                                    <option value="DF2018_007">[DF2018_007] Samsung History Wall_MWC/Frankfurt/Paris</option>
+                                    <option value="DF2018_006">[DF2018_006] 디자인삼성 </option>
+                                    <option value="DF2018_005">[DF2018_005] DF 인트라넷</option>
+                                    <option value="DF2018_004">[DF2018_004] 2018 렉서스 디지털 마케팅 (중고차 포함)</option>
+                                    <option value="DF2018_003">[DF2018_003] DFH 운영 </option>
+                                    <option value="DF2018_002">[DF2018_002] DF 운영 </option>
+                                    <option value="DF2018_001">[DF2018_001] 2018 슈퍼셀 디지털 마케팅</option>
+                                    <option value="DF2017_043">[DF2017_043] Samsung UNPK Star</option>
+                                    <option value="DF2017_041">[DF2017_041] 그룹웨어 유지보수 및 기능추가 작업</option>
+                                    <option value="DF2017_040">[DF2017_040] 그룹웨어 스마트폰(Android / IOS) 앱  개발</option>
+                                    <option value="DF2017_039">[DF2017_039] Samsung CES 2018 Press Conference</option>
+                                    <option value="DF2017_038">[DF2017_038] 삼성닷컴 퀵드라이브 큐레이션 컨텐츠 제작</option>
+                                    <option value="DF2017_037">[DF2017_037] 삼성 GDA 영상 제작</option>
+                                    <option value="DF2017_035">[DF2017_035] Samsung Developer Conference 2017 </option>
+                                    <option value="DF2017_033">[DF2017_033] Samsung Mobility Vision for CES 2018</option>
+                                    <option value="DF2017_031">[DF2017_031] 삼성전자 WA KV/LSI 제안</option>
+                                    <option value="DF2017_030">[DF2017_030] ZANYBROS Official homepage</option>
+                                    <option value="DF2017_029">[DF2017_029] Samsung UNPK Great_CHINA</option>
+                                    <option value="DF2017_028">[DF2017_028] 2017_삼성_VR_ViralFilm</option>
+                                    <option value="DF2017_026">[DF2017_026] Samsung Note8 UNPK App</option>
+                                    <option value="DF2017_025">[DF2017_025] SS IFA Press Conference</option>
+                                    <option value="DF2017_022">[DF2017_022] Samsung UNPK Great</option>
+                                    <option value="DF2017_021">[DF2017_021] Samsung Interactive Table for Galaxy Note 8 Unpack</option>
+                                    <option value="DF2017_020">[DF2017_020] AIA Vitality IMC 캠페인 제안</option>
+                                    <option value="DF2017_019">[DF2017_019] Samsung.com VS 6000</option>
+                                    <option value="DF2017_018">[DF2017_018] SS_UNPCK2017_CHINA</option>
+                                    <option value="DF2017_016">[DF2017_016] Samsung.com OMC</option>
+                                    <option value="DF2017_008">[DF2017_008] 디자인삼성</option>
+                                    <option value="DF2017_004-1">[DF2017_004-1] 슈퍼셀 하반기 굿즈 디자인 및 제작</option>
+                                    <option value="DF2017_004">[DF2017_004] 2017 슈퍼셀 디지털 마케팅 </option>
+                                    <option value="DF2017_002">[DF2017_002] DF 인트라넷 </option>
+                                    <option value="DF2017_001-4">[DF2017_001-4] 렉서스 인스타그램 운영</option>
+                                    <option value="DF2017_001-3">[DF2017_001-3] 렉서스 커넥트투</option>
+                                    <option value="DF2017_001-2">[DF2017_001-2] 렉서스 전시장 사이니지 </option>
+                                    <option value="DF2017_001">[DF2017_001] 2017 렉서스 디지털 마케팅  (중고차 포함)</option>
+                                    <option value="DF2016_046">[DF2016_046] Samsung Unpacked Dream</option>
+                                    <option value="DF2016_041">[DF2016_041] 2016_삼성전자_Intelligent UX Design</option>
+                                    <option value="DF2016_040-1">[DF2016_040-1] EPIC 디자인 스토리 필름</option>
+                                    <option value="DF2016_039">[DF2016_039] 삼성전자 AIO PC 영상 제작</option>
+                                    <option value="DF2016_036-1">[DF2016_036-1] 삼성전자 전사 Voice UX 고도화</option>
+                                    <option value="DF2016_036">[DF2016_036] 삼성전자 전사 Voice UX</option>
+                                    <option value="DF2016_034">[DF2016_034] 삼성 터치스크린 캠페인</option>
+                                    <option value="DF2016_032">[DF2016_032] 삼성 desktop 홍보 영상 제작</option>
+                                    <option value="DF2016_031">[DF2016_031] 제주스피릿콘서트 포스터 제작</option>
+                                    <option value="DF2016_029">[DF2016_029] 제주삼다수 마스터스대회</option>
+                                    <option value="DF2016_023">[DF2016_023] 삼성 PC마케팅 그룹 BBY 영상 </option>
+                                    <option value="DF2016_020-1">[DF2016_020-1] One Samsung UX 비쥬얼 프로토타입 개발</option>
+                                    <option value="DF2016_010">[DF2016_010] 삼성생명 제안</option>
+                                    <option value="DF2016_001">[DF2016_001] 2016 렉서스 운영 (중고차 포함)</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="total" style="border-bottom:2px solid;">
+                        <th class="gray">총금액</th>
+                        <td colspan="3">
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <input class="input total-value" size="30" value="0" readonly>
+                                </div>
+                                <div class="control">
+                                    <input class="input is-static" size="30" value="원 - 자동입력" readonly>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <table class="content-table" width="100%">
+                    <tbody>
+                    <tr style="border-bottom:2px solid;">
+                        <th width="100" class="gray">항목①</th>
+                        <td style="padding:0;">
+
+                            <table width="100%" class="content-sub-table">
+                                <tbody><tr>
+                                    <th class="gray2">청구</th>
+                                    <td colspan="3">
+                                        <input type="radio" name="type_0" value="1" onclick="alertType(this);">실비청구
+                                        <input type="radio" name="type_0" value="2" onclick="alertType(this);">미청구
+                                        <input type="radio" name="type_0" value="3" onclick="alertType(this);">운영
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="gray2">금액</th>
+                                    <td colspan="3">
+                                        <input type="text" name="money_0" class="input money_" style="ime-mode:disabled;width:100px;" onkeypress="if (event.keyCode < 48 || event.keyCode > 57) { event.returnValue = false; }" onkeyup="javascript:checkThousand(this,this.value);sumPayment();" value="">원
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="tax_0" value="1">면세
+                                        <input type="radio" name="tax_0" value="2">부가세포함
+                                        <input type="radio" name="tax_0" value="3">부가세 별도
+                                        <input type="radio" name="tax_0" value="4">제세공과금 포함
+                                        <input type="radio" name="tax_0" value="5">제세공과금 별도
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="gray2">대상</th>
+                                    <td colspan="3">
+                                        <input type="radio" name="target_0" value="1">외주사
+                                        <input type="radio" name="target_0" value="2">용역(프리랜서)
+                                        <input type="radio" name="target_0" value="3">이미지,영상,음원
+                                        <input type="radio" name="target_0" value="4">이벤트경품
+                                        <input type="radio" name="target_0" value="5">어워드
+                                        <input type="radio" name="target_0" value="6">기타
+                                    </td>
+                                </tr>
+                                <tr class="last">
+                                    <th class="gray2">결제정보</th>
+                                    <td colspan="3" style="padding-left:1px;">
+                                        <table width="100%">
+                                            <tbody><tr>
+                                                <td class="gray2">결제방법</td>
+                                                <td>
+															<span data-no="0">
+																<input type="radio" class="pay_type" name="pay_type_0" value="B" checked="">계좌이체
+																<input type="radio" class="pay_type" name="pay_type_0" value="C">카드결제
+																<input type="radio" class="pay_type" name="pay_type_0" value="P">개인경비
+																<input type="radio" class="pay_type" name="pay_type_0" value="A" onchange="alertPaytype(this);">자동이체
+																<input type="radio" class="pay_type" name="pay_type_0" value="H">현금결제
+															</span>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                        <table width="100%" id="paytype_B_0">
+                                            <tbody><tr>
+                                                <td class="gray2">계산서</td>
+                                                <td colspan="6">
+                                                    <input type="radio" name="pay_info_0" value="1">세금계산서
+                                                    <input type="radio" name="pay_info_0" value="2">계산서
+                                                    <input type="radio" name="pay_info_0" value="3">사업자지출증빙(현금영수증)
+                                                    <input type="radio" name="pay_info_0" value="4">프리랜서사업소득
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="gray2">업체명</td>
+                                                <td colspan="6"><input type="text" class="input" style="width:150px;" name="company_0" maxlength="20"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="gray2">담당자</td>
+                                                <td colspan="6"><input type="text" class="input" style="width:150px;" name="manager_0" maxlength="10"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="gray2">연락처</td>
+                                                <td colspan="6"><input type="text" class="input" style="width:150px;" name="contact_0" maxlength="20"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>업체계좌정보</td>
+                                                <td>은행명</td>
+                                                <td><input type="text" class="input"  style="width:100px;" name="bank_name_0" maxlength="10"></td>
+                                                <td>계좌번호</td>
+                                                <td><input type="text" class="input" style="width:120px;" name="bank_num_0" maxlength="30"></td>
+                                                <td>예금주</td>
+                                                <td><input type="text" class="input" style="width:100px;" name="bank_user_0" maxlength="10"></td>
+                                            </tr>
+                                            <tr style="border-bottom:0px;">
+                                                <td class="gray2">지급일자</td>
+                                                <td colspan="6">
+                                                    <input type="radio" name="pay_date_0" value="1">보름
+                                                    <input type="radio" name="pay_date_0" value="2">말일
+                                                    <input type="radio" name="pay_date_0" value="3" onchange="alertPaydate(this)">기안결제 완료 즉시
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                        <table width="100%" id="paytype_C_0" style="display:none;">
+                                            <tbody><tr style="border-bottom:0px;">
+                                                <td class="gray2">결제구분</td>
+                                                <td>
+                                                    <input type="radio" name="pay_info_0" value="5">온라인
+                                                    <input type="radio" name="pay_info_0" value="6">방문결제
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                        <table width="100%" id="paytype_P_0" style="display:none;">
+                                            <tbody><tr style="border-bottom:0px;">
+                                                <td class="gray2">결제구분</td>
+                                                <td>
+                                                    <input type="radio" name="pay_info_0" value="7">개인카드
+                                                    <input type="radio" name="pay_info_0" value="8">개인현금
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                        <table width="100%" id="paytype_A_0" style="display:none;">
+                                            <tbody><tr style="border-bottom:0px;">
+                                                <td class="gray2">이체일자</td>
+                                                <td>
+                                                    <input type="radio" name="pay_info_0" value="9">5일
+                                                    <input type="radio" name="pay_info_0" value="10">10일
+                                                    <input type="radio" name="pay_info_0" value="11">15일
+                                                    <input type="radio" name="pay_info_0" value="12">20일 / 자동이체 신규 신청시 경영지원팀 확인 후 등록
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                        <table width="100%" id="paytype_H_0" style="display:none;">
+                                            <tbody><tr style="border-bottom:0px;">
+                                                <td class="gray2">수령</td>
+                                                <td>경영지원팀 확인 후 직접 수령</td>
+                                            </tr>
+                                            </tbody></table>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom:0px;">
+                                    <th class="gray2">활용내용</th>
+                                    <td colspan="3"><input type="text" class="input" name="memo_0" style="width:100%;"></td>
+                                </tr>
+                                </tbody></table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+        <div class="content">
+            <a href="#" class="button is-fullwidth is-medium is-light is-bordered">
+                <span>항목 추가하기</span>
+            </a>
+        </div>
+
+
+        <div class="content">
+            <div>
+                <table class="content-table" width="100%">
+                    <colgroup>
+                        <col width="5%">
+                        <col width="45%">
+                        <col width="5%">
+                        <col width="45%">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th class="gray">상세</th>
+                        <td colspan="3" style="padding:10px;">
+                            <img src="/assets/images/dummy_textarea.png" width="712px">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--</div>-->
+
+            <input type="hidden" name="idx_0" value="0">
+
+        </div>
+
+        <div class="content">
+            <div class="box">
+                <!--- 04/18 파일 찾기 태그 수정 start -->
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="file has-name is-fullwidth is-right">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">파일찾기</span>
+                                </span>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column last-button">
+                        <span class="buttons">
+                            <a class="button is-fullwidth">
+                                <span class="icon is-small">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="file has-name is-fullwidth is-right">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">파일찾기</span>
+                                </span>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column last-button">
+                        <span class="buttons">
+                            <a class="button is-fullwidth">
+                                <span class="icon is-small">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <!--- 04/18 파일 찾기 태그 수정 start -->
+            </div>
+        </div>
+
+        <nav class="level is-mobile">
+            <div class="level-left">
+                <p class="buttons">
+                    <a href="board_list.html" class="button">
+                        <span class="icon is-small">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                        <span>임시저장</span>
+                    </a>
+                </p>
+            </div>
+
+            <div class="level-right">
+                <p class="buttons">
+                    <a href="board_list.html" class="button is-danger">
+                        <span class="icon is-small">
+                            <i class="fas fa-pencil-alt"></i>
+                        </span>
+                        <span>등록</span>
+                    </a>
+                </p>
+            </div>
+        </nav>
+    </div>
+
+
+</section>
+<!-- 본문 끌 -->
+
+<script>_isMarkup=true;</script><script src="/assets/js/menu.js"></script>
+</body>
+</html>

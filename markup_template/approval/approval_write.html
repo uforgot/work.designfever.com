@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>designfever intranet</title>
+    <link rel="stylesheet" href="/assets/css/work.df.css">
+    <link rel="stylesheet" href="/assets/css/style_20180406.css">
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script defer src="/assets/js/all.js"></script>
+    <script defer src="/assets/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+
+<div id="top"></div>
+<div id="sub-menu-4"></div>
+
+<!-- 본문 시작 -->
+<section class="section df-approval">
+
+    <div class="container">
+
+        <div class="tabs is-boxed">
+            <ul>
+                <li>
+                    <a href="/approval/approval_write_1.html">
+                        <span>입사승인계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_2.html">
+                        <span>프로젝트 휴가 승인계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_3.html">
+                        <span>비용품의서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_4.html">
+                        <span>외근계/파견계</span>
+                    </a>
+                </li>
+                <li class="is-active">
+                    <a href="/approval/approval_write.html">
+                        <span>휴가계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_5.html">
+                        <span>출장계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_6.html">
+                        <span>사유서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_7.html">
+                        <span>시말서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_8.html">
+                        <span>조퇴계함</span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+
+        <!-- 미결재문서 -->
+        <div class="content">
+            <div class="table-holder">
+                <table class="content-table" width="100%">
+                    <colgroup>
+                        <col width="5%">
+                        <col width="45%">
+                        <col width="5%">
+                        <col width="45%">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th class="gray">문서번호</th>
+                        <td>1806-XXXX<input type="hidden" name="doc_no" value="1806-XXXX"></td>
+                        <th class="gray" rowspan="3">결재</th>
+                        <td rowspan="3" class="app-td">
+                            <div class="columns is-mobile">
+                                <div class="column">
+                                    <table style="float:left; border-right:1px solid #dbdbdb">
+                                        <tbody><tr><td id="to_position_0">이사</td></tr>
+                                        <tr><td id="to_name_0">신형주</td></tr>
+                                        <tr style="border:0;"><td id="to_del_0"></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="column">
+                                    <table style="float:left; border-right:1px solid #dbdbdb">
+                                        <tbody><tr><td id="to_position_1">대표</td></tr>
+                                        <tr><td id="to_name_1">노진영</td></tr>
+                                        <tr style="border:0;"><td id="to_del_1"><a class="button is-small" href="javascript:toAdd();">변경</a></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="column">
+                                    <table style="float:left; border-right:1px solid #dbdbdb">
+                                        <tbody><tr><td id="to_position_2">&nbsp;</td></tr>
+                                        <tr><td id="to_name_2"><a class="button is-small" href="javascript:toAdd();">지정</a></td></tr>
+                                        <tr style="border:0;"><td id="to_del_2">&nbsp;</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="column">
+                                    <table width="20%" style="float:left; border-right:1px solid #dbdbdb">
+                                        <tbody><tr><td id="to_position_3">&nbsp;</td></tr>
+                                        <tr><td id="to_name_3"><a class="button is-small" href="javascript:toAdd();">지정</a></td></tr>
+                                        <tr style="border:0;"><td id="to_del_3">&nbsp;</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="column">
+                                    <table width="20%" style="float:left; border-right:1px solid #dbdbdb">
+                                        <tbody><tr><td id="to_position_4">&nbsp;</td></tr>
+                                        <tr><td id="to_name_4"><a class="button is-small" href="javascript:toAdd();">지정</a></td></tr>
+                                        <tr style="border:0;"><td id="to_del_4">&nbsp;</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <input type="hidden" name="to_id" id="to_id" value="79,22,">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="gray">문서종류</th>
+                        <td>
+                            <input type="hidden" name="form_no" value="25">
+                            <div class="control select">
+                                <select name="form_title" onchange="javascript:selDocument(this.form);" style="width:120px;">
+                                    <option value="연차" selected="">연차</option>
+                                    <option value="프로젝트">프로젝트</option>
+                                    <option value="오전반차">오전반차</option>
+                                    <option value="오후반차">오후반차</option>
+                                    <option value="프로젝트 오전반차">프로젝트 오전반차</option>
+                                    <option value="프로젝트 오후반차">프로젝트 오후반차</option>
+                                    <option value="병가">병가</option>
+                                    <option value="리프레쉬">리프레쉬</option>
+                                    <option value="무급">무급</option>
+                                    <option value="경조사">경조사</option>
+                                    <option value="예비군/민방위">예비군/민방위</option>
+                                    <option value="기타">기타</option>
+                                    <option value="휴가 소진시">휴가 소진시</option>
+                                    <option value="휴가 소진시 오전반차">휴가 소진시 오전반차</option>
+                                    <option value="휴가 소진시 오후반차">휴가 소진시 오후반차</option>
+                                    <option value="출산휴가">출산휴가</option>
+                                    <option value="육아휴직">육아휴직</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="gray">공개여부</th>
+                        <td>
+                            <div class="control select">
+                                <select name="open_yn">
+                                    <option value="Y">공개</option>
+                                    <option value="N">비공개</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="gray">기안일</th>
+                        <td>
+                            <input type="hidden" name="up_year" id="up_year" value="2018">
+                            <input type="hidden" name="up_month" id="up_month" value="06">
+                            <input type="hidden" name="up_day" id="up_day" value="11">
+                            <span>2018년 06월 11일</span>
+                        </td>
+                        <th class="gray">수신참조</th>
+                        <td class="appoint">
+                            <input type="hidden" name="cc_id" id="cc_id" value="">
+                            <span><input class="input"  name="cc" id="cc" readonly="" value=""></span>
+                            <a class="button is-link" href="javascript:ccAdd();">참조자 지정</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="gray">부서</th>
+                        <td colspan="3">Visual Interaction Development</td>
+                    </tr>
+                    <tr>
+                        <th class="gray">이름</th>
+                        <td colspan="3">이사 신형주</td>
+                    </tr>
+                    <tr class="last">
+                        <th class="gray">제목</th>
+                        <td colspan="3"><input class="input" type="text" name="title" value=""></td>
+                    </tr>
+
+
+
+                    <tr class="period">
+                        <th class="gray">기간</th>
+                        <td colspan="3" class="last">
+                            <div class="columns">
+                                <div class="column" style="display:inline-block;flex-grow:0;flex-basis:auto;">
+                                    <div class="field is-group">
+                                        <div class="control select">
+                                            <select name="fr_year" id="fr_year">
+                                                <option value='2013'>2013년</option><option value='2014'>2014년</option><option value='2015'>2015년</option><option value='2016'>2016년</option><option value='2017'>2017년</option><option value='2018' selected>2018년</option><option value='2019'>2019년</option>                                    </select>
+                                        </div>
+                                        <div class="control select">
+                                            <select name="fr_month" id="fr_month">
+                                                <option value='01'>1월</option><option value='02'>2월</option><option value='03'>3월</option><option value='04' selected>4월</option><option value='05'>5월</option><option value='06'>6월</option><option value='07'>7월</option><option value='08'>8월</option><option value='09'>9월</option><option value='10'>10월</option><option value='11'>11월</option><option value='12'>12월</option>                                    </select>
+                                        </div>
+                                        <div class="control select">
+                                            <select name="fr_day" id="fr_day">
+                                                <option value='01' selected>1일</option><option value='02'>2일</option><option value='03'>3일</option><option value='04'>4일</option><option value='05'>5일</option><option value='06'>6일</option><option value='07'>7일</option><option value='08'>8일</option><option value='09'>9일</option><option value='10'>10일</option><option value='11'>11일</option><option value='12'>12일</option><option value='13'>13일</option><option value='14'>14일</option><option value='15'>15일</option><option value='16'>16일</option><option value='17'>17일</option><option value='18'>18일</option><option value='19'>19일</option><option value='20'>20일</option><option value='21'>21일</option><option value='22'>22일</option><option value='23'>23일</option><option value='24'>24일</option><option value='25'>25일</option><option value='26'>26일</option><option value='27'>27일</option><option value='28'>28일</option><option value='29'>29일</option><option value='30'>30일</option><option value='31'>31일</option>                                    </select>
+                                        </div>
+                                        <div class="button">
+                                            <input type="hidden" id="fr_date" class="datepicker">
+                                            <i class="fa fa-calendar-plus"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field is-group">
+                                        <div class="control select">
+                                            <select name="to_year" id="to_year">
+                                                <option value='2013'>2013년</option><option value='2014'>2014년</option><option value='2015'>2015년</option><option value='2016'>2016년</option><option value='2017'>2017년</option><option value='2018' selected>2018년</option><option value='2019'>2019년</option>                                    </select>
+                                        </div>
+                                        <div class="control select">
+                                            <select name="to_month" id="to_month">
+                                                <option value='01'>1월</option><option value='02'>2월</option><option value='03'>3월</option><option value='04' selected>4월</option><option value='05'>5월</option><option value='06'>6월</option><option value='07'>7월</option><option value='08'>8월</option><option value='09'>9월</option><option value='10'>10월</option><option value='11'>11월</option><option value='12'>12월</option>                                    </select>
+                                        </div>
+                                        <div class="control select">
+                                            <select name="to_day" id="to_day">
+                                                <option value='01'>1일</option><option value='02'>2일</option><option value='03'>3일</option><option value='04'>4일</option><option value='05'>5일</option><option value='06'>6일</option><option value='07'>7일</option><option value='08'>8일</option><option value='09'>9일</option><option value='10'>10일</option><option value='11'>11일</option><option value='12'>12일</option><option value='13'>13일</option><option value='14'>14일</option><option value='15'>15일</option><option value='16'>16일</option><option value='17'>17일</option><option value='18'>18일</option><option value='19'>19일</option><option value='20'>20일</option><option value='21'>21일</option><option value='22'>22일</option><option value='23'>23일</option><option value='24'>24일</option><option value='25'>25일</option><option value='26'>26일</option><option value='27' selected>27일</option><option value='28'>28일</option><option value='29'>29일</option><option value='30'>30일</option><option value='31'>31일</option>                                    </select>
+                                        </div>
+                                        <div class="button">
+                                            <input type="hidden" id="fr_date" class="datepicker">
+                                            <i class="fa fa-calendar-plus"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="gray">상세</th>
+                        <td colspan="3" style="padding:10px;">
+                            <img src="/assets/images/dummy_textarea.png" width="712px">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--</div>-->
+        </div>
+
+        <div class="content">
+            <div class="box">
+                <!--- 04/18 파일 찾기 태그 수정 start -->
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="file has-name is-fullwidth is-right">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">파일찾기</span>
+                                </span>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column last-button">
+                        <span class="buttons">
+                            <a class="button is-fullwidth">
+                                <span class="icon is-small">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="file has-name is-fullwidth is-right">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">파일찾기</span>
+                                </span>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column last-button">
+                        <span class="buttons">
+                            <a class="button is-fullwidth">
+                                <span class="icon is-small">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <!--- 04/18 파일 찾기 태그 수정 start -->
+            </div>
+        </div>
+        <nav class="level is-mobile">
+            <div class="level-left">
+                <p class="buttons">
+                    <a href="board_list.html" class="button">
+                        <span class="icon is-small">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                        <span>임시저장</span>
+                    </a>
+                </p>
+            </div>
+
+            <div class="level-right">
+                <p class="buttons">
+                    <a href="board_list.html" class="button is-danger">
+                        <span class="icon is-small">
+                            <i class="fas fa-pencil-alt"></i>
+                        </span>
+                        <span>등록</span>
+                    </a>
+                </p>
+            </div>
+        </nav>
+    </div>
+
+
+</section>
+<!-- 본문 끌 -->
+
+<script>_isMarkup=true;</script><script src="/assets/js/menu.js"></script>
+</body>
+</html>

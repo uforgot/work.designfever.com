@@ -7595,7 +7595,7 @@ section {
   overflow-y: scroll;
   overflow-x: scroll; }
   @media screen and (max-width: 1279px) {
-    .table-holder table {
+    .table-holder > table {
       min-width: 1000px;
       padding-right: 1rem; } }
 

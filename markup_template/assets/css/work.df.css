@@ -212,12 +212,90 @@
     .df-commuting .calendar .calendar-date.is-last {
       border-bottom: 1px solid #cdcdcd !important; } }
 
+.df-approval .table-holder > table {
+  min-width: 1000px; }
 .df-approval .table th {
   text-align: center; }
 .df-approval .table .last {
   text-align: center; }
 .df-approval .table td.is-last {
   padding-bottom: 1rem !important; }
+.df-approval .content-table {
+  min-width: 960px;
+  position: relative;
+  border-top: 3px solid #000; }
+  .df-approval .content-table .app-td {
+    text-align: center;
+    padding: 0; }
+    .df-approval .content-table .app-td .columns {
+      padding: 0;
+      margin: 0; }
+    .df-approval .content-table .app-td .column {
+      padding: 0;
+      margin: 0; }
+  .df-approval .content-table tr {
+    height: 55px;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb; }
+  .df-approval .content-table tr.last input:not([type=radio]):not([type=checkbox]) {
+    width: 100%; }
+  .df-approval .content-table tr.total input {
+    width: auto; }
+  .df-approval .content-table .appoint, .df-approval .content-table .partner {
+    position: relative; }
+    .df-approval .content-table .appoint span, .df-approval .content-table .partner span {
+      width: auto;
+      padding: 0 100px 0 0;
+      display: block; }
+      .df-approval .content-table .appoint span input, .df-approval .content-table .partner span input {
+        width: 100%; }
+    .df-approval .content-table .appoint a, .df-approval .content-table .partner a {
+      position: absolute;
+      top: 8px;
+      right: 0;
+      @-moz-document url-prefix(); }
+  .df-approval .content-table th.gray {
+    min-width: 120px;
+    text-align: center;
+    font-weight: bold;
+    background: #ebebeb;
+    vertical-align: middle !important; }
+  .df-approval .content-table td {
+    text-align: left;
+    vertical-align: middle !important;
+    line-height: 18px;
+    color: #000; }
+  .df-approval .content-table th.gray2 {
+    width: 100px;
+    padding-left: 0;
+    text-align: center;
+    line-height: 18px;
+    background: #efefef; }
+  .df-approval .content-table table {
+    margin-bottom: 0 !important; }
+    .df-approval .content-table table td {
+      text-align: center; }
+    .df-approval .content-table table.sign tr {
+      padding: 0;
+      border-bottom: 1px solid #dbdbdb; }
+    .df-approval .content-table table.sign tr.last {
+      border-bottom: 0; }
+    .df-approval .content-table table.sign td {
+      color: gray;
+      padding: 0;
+      border-right: 1px solid #dbdbdb;
+      text-align: center; }
+.df-approval .content-sub-table tr {
+  height: 55px;
+  vertical-align: middle;
+  text-align: center;
+  border-bottom: 1px solid #dbdbdb; }
+  .df-approval .content-sub-table tr th {
+    padding: 0;
+    vertical-align: middle; }
+  .df-approval .content-sub-table tr td {
+    text-align: left; }
 
 .approval-popup, .approval-popup2, .approval-popup3, .approval-popup4, .approval-popup5, .approval-popup6 {
   font-size: 12px; }

@@ -1,4 +1,6 @@
 .df-approval
+  .table-holder > table
+    min-width: 1000px
   .table
     th
       text-align: center
@@ -8,6 +10,89 @@
       &.is-last
         padding-bottom: 1rem !important
 
+  .content-table
+    min-width: 960px
+    position: relative
+    border-top: 3px solid #000
+    .app-td
+      text-align: center
+      padding: 0
+      .columns
+        padding: 0
+        margin: 0
+      .column
+        padding: 0
+        margin: 0
+    tr
+      height: 55px
+      vertical-align: middle
+      text-align: center
+      border-bottom: 1px solid rgb(219, 219, 219)
+    tr.last
+      input:not([type=radio]):not([type=checkbox])
+        width: 100%
+    tr.total
+      input
+        width: auto
+    .appoint, .partner
+      position: relative
+      span
+        width: auto
+        padding: 0 100px 0 0
+        display: block
+        input
+          width: 100%
+      a
+        position: absolute
+        top: 8px
+        right: 0
+        @-moz-document url-prefix()
+
+    th.gray
+      min-width: 120px
+      text-align: center
+      font-weight: bold
+      background: #ebebeb
+      vertical-align: middle !important
+    td
+      text-align: left
+      vertical-align: middle !important
+      line-height: 18px
+      color: #000
+    th.gray2
+      width: 100px
+      padding-left: 0
+      text-align: center
+      line-height: 18px
+      background: #efefef
+    table
+      margin-bottom: 0 !important
+      td
+        text-align: center
+      &.sign
+        tr
+          padding: 0
+          border-bottom: 1px solid rgb(219, 219, 219)
+        tr.last
+          border-bottom: 0
+        td
+          color: gray
+          padding: 0
+          border-right: 1px solid rgb(219, 219, 219)
+          text-align: center
+
+  .content-sub-table
+    //font-size: 0.75rem
+    tr
+      height: 55px
+      vertical-align: middle
+      text-align: center
+      border-bottom: 1px solid rgb(219, 219, 219)
+      th
+        padding: 0
+        vertical-align: middle
+      td
+        text-align: left
 .approval-popup, .approval-popup2, .approval-popup3, .approval-popup4, .approval-popup5, .approval-popup6
   font-size: 12px
   td,th
