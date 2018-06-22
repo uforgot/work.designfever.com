@@ -2,6 +2,8 @@
 /*! 나눔 고딕 폰트 */
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(bulma.css);
+.df-main table tr:last-child {
+  border-bottom: none; }
 .df-main .card-header-title .icon {
   margin-right: 0.5rem; }
 .df-main .clock {
@@ -126,6 +128,9 @@
   .modal-commuting-modify .control {
     margin-right: 0.25rem !important; }
 
+.df-commuting .is-approval .calendar-body .calendar-date {
+  height: unset !important;
+  min-height: 12rem; }
 .df-commuting .is-member {
   font-size: 0.75rem; }
   .df-commuting .is-member .first {
@@ -133,7 +138,7 @@
   .df-commuting .is-member .name {
     width: 100px; }
   .df-commuting .is-member thead th, .df-commuting .is-member tfoot th {
-    font-size: 0.5rem;
+    font-size: 0.75rem;
     text-align: center; }
   .df-commuting .is-member tbody td {
     text-align: center; }
@@ -171,7 +176,7 @@
   text-align: left; }
   .df-commuting .calendar .calendar-events .tag {
     border-radius: 2px;
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     vertical-align: middle;
     padding-left: 0.3em;
     padding-right: 0.3em; }
