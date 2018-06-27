@@ -428,6 +428,11 @@ body {
   font-family: "Nanum Gothic";
   font-weight: 600; }
 
+#shader-box {
+  position: absolute;
+  left: 0;
+  top: 0; }
+
 #navbar {
   z-index: 50; }
 

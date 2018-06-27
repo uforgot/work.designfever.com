@@ -6,19 +6,25 @@
     <title>designfever intranet</title>
     <link rel="stylesheet" href="assets/css/work.df.css">
     <script defer src="assets/js/all.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/three.min.js"></script>
+    <script id="vertexShader" type="x-shader/x-vertex">
+
+    </script>
+    <script id="fragmentShader" type="x-shader/x-fragment">
+
+    </script>
+
 </head>
 <body>
 <section class="hero is-dark is-fullheight">
     <div class="hero-body">
+        <div id="shader-box"></div>
         <div class="container">
             <div class="columns">
                 <div class="column is-one-third is-offset-one-third is-vcentered">
                     <div class="box">
-                        <div class="image login-image">
-                            <img src="assets/images/df_logo_b.svg">
-                        </div>
-                        <hr/>
-                        
                         <div class="field">
                             <div class="control has-icons-left has-icons-right">
                                 <input class="input" type="text" placeholder="id" value="">
@@ -76,6 +82,8 @@
         </footer>
     </div>
 </div>
+
+<script type="text/javascript" src="assets/js/shader.js"></script>
 
 </body>
 </html>
