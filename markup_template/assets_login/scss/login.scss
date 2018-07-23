@@ -1,0 +1,10 @@
+.wrapper {
+
+  main{
+
+    @import "login/login_form";
+    @import "login/login_info";
+    @import "login/login_bg";
+
+  }
+}

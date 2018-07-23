@@ -1,0 +1,22 @@
+/*icon*/
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+/*font*/
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+/*  KO */
+:lang(ko) {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+/* Japan */
+:lang(ja) {
+  /*font-family: 'Noto Sans JP', sans-serif;*/
+}
+/* China */
+:lang(zh-Hans) {
+  /*font-family: 'Noto Sans SC', sans-serif;*/
+}
+
+html,
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
