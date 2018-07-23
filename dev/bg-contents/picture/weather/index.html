@@ -116,7 +116,7 @@
 
     var params = Util.getParams();
     var weathercode = params.weathercode || "800"
-    var dataImage = data.video[weathercode] || data.video["800"];
+    var dataImage = data.images[weathercode] || data.images["800"];
 
     var gallery = new ImageGallery(dataImage);
     gallery.init();
