@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!--<link rel="manifest" href="">-->
+    <link rel="stylesheet" type="text/css" href="../../common/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/contents.css" />
+
+    <title>Background Contents - Weather(Image Type)</title>
+
+</head>
+
+
+<body>
+
+<div class="container-wrapper">
+    <!--<div class="img-wrapper">
+        <div class="img-content show" style='background-image: url("../../../common/img/wp_1.jpg")'></div>
+        <div class="img-content" style='background-image: url("../../../common/img/wp_2.jpg")'></div>
+        <div class="img-content" style='background-image: url("../../../common/img/wp_3.jpg")'></div>
+        <div class="img-content" style='background-image: url("../../../common/img/wp_4.jpeg")'></div>
+    </div>-->
+</div>
+
+</body>
+
+<script src="../../common/js/common.js"></script>
+<script src="../common/js/imageGallery.js"></script>
+<script>
+    var data = {
+        "images" : {
+            "200" :{
+                "title":"Thunderstorm",
+                "default" :[
+                    "./images/200/200_00.jpg",
+                    "./images/200/200_01.jpg",
+                    "./images/200/200_02.jpg"
+                ],
+                "low" :[]
+            },
+            "300" :{
+                "title":"Drizzle",
+                "default" :[
+                    "./images/300/300_00.jpg",
+                    "./images/300/300_01.jpg",
+                    "./images/300/300_02.jpg",
+                    "./images/300/300_03.jpg",
+                    "./images/300/300_04.jpg"
+                ],
+                "low" :[]
+            },
+            "500" :{
+                "title":"Rain",
+                "default" :[
+                    "./images/500/500_00.jpg",
+                    "./images/500/500_01.jpg",
+                    "./images/500/500_02.jpg",
+                    "./images/500/500_03.jpg"
+                ],
+                "low" :[]
+            },
+            "600" :{
+                "title":"Snow",
+                "default" :[
+                    "./images/600/600_00.jpg",
+                    "./images/600/600_01.jpg",
+                    "./images/600/600_02.jpg",
+                    "./images/600/600_03.jpg"
+                ],
+                "low" :[]
+            },
+            "700" :{
+                "title":"Atmosphere",
+                "default" :[
+                    "./images/700/700_00.jpg",
+                    "./images/700/700_01.jpg",
+                    "./images/700/700_02.jpg",
+                    "./images/700/700_03.jpg",
+                    "./images/700/700_04.jpg",
+                    "./images/700/700_05.jpg",
+                ],
+                "low" :[]
+            },
+            "800" :{
+                "title":"Clear",
+                "default" :[
+                    "./images/800/800_00.jpg",
+                    "./images/800/800_01.jpg",
+                    "./images/800/800_02.jpg",
+                    "./images/800/800_03.jpg",
+                    "./images/800/800_04.jpg",
+                    "./images/800/800_05.jpg",
+                ],
+                "low" :[]
+            },
+            "801" :{
+                "title":"Clouds",
+                "default" :[
+                    "./images/801/801_00.jpg",
+                    "./images/801/801_01.jpg",
+                    "./images/801/801_02.jpg",
+                    "./images/801/801_03.jpg",
+                    "./images/801/801_04.jpg",
+                    "./images/801/801_05.jpg",
+                ],
+                "low" :[]
+            }
+
+        }
+
+    };
+
+    var params = Util.getParams();
+    var weathercode = params.weathercode || "800"
+    var dataImage = data.video[weathercode] || data.video["800"];
+
+    var gallery = new ImageGallery(dataImage);
+    gallery.init();
+
+
+
+</script>
+
+</html>

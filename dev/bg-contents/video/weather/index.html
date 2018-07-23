@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!--<link rel="manifest" href="">-->
+    <link rel="stylesheet" type="text/css" href="../../common/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../common/css/contents.css" />
+
+    <title>Background Contents - Weather(Video Type)</title>
+</head>
+
+<body>
+
+<div class="container-wrapper">
+    <div class="video-wrapper">
+        <!--<video autoplay muted loop>
+            <source src="./video/200/200_00.mp4" type="video/mp4">
+        </video>-->
+        <div class="dimmed"></div>
+    </div>
+</div>
+
+</body>
+
+
+
+<script src="../../common/js/common.js"></script>
+<script src="../common/js/VideoPlayer.js"></script>
+<script>
+
+    var data = {
+        "video" : {
+            "200" :{
+                "title":"Thunderstorm",
+                "default" :[
+                    "./video/200/200_00.mp4"
+                ],
+                "low" :[]
+            },
+            "300" :{
+                "title":"Drizzle",
+                "default" :[
+                    "./video/300/300_00.mp4"
+                ],
+                "low" :[]
+            },
+            "500" :{
+                "title":"Rain",
+                "default" :[
+                    "./video/500/500_00.mp4"
+                ],
+                "low" :[]
+            },
+            "600" :{
+                "title":"Snow",
+                "default" :[
+                    "./video/600/600_00.mp4"
+                ],
+                "low" :[]
+            },
+            "700" :{
+                "title":"Atmosphere",
+                "default" :[
+                    "./video/700/700_00.mp4"
+                ],
+                "low" :[]
+            },
+            "800" :{
+                "title":"Clear",
+                "default" :[
+                    "./video/800/800_00.mp4",
+                    "./video/800/800_01.mp4"
+                ],
+                "low" :[]
+            },
+            "801" :{
+                "title":"Clouds",
+                "default" :[
+                    "./video/801/801_00.mp4"
+                ],
+                "low" :[]
+            }
+
+        }
+
+    };
+
+
+    var params = Util.getParams();
+    var weathercode = params.weathercode || "800";
+    var dataImage = data.video[weathercode] || data.video["800"];
+
+    var videoPlayer = new VideoPlayer(dataImage);
+    videoPlayer.setting();
+    videoPlayer.init();
+
+
+
+</script>
+
+</html>

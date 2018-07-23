@@ -1,0 +1,9 @@
+https://openweathermap.org/weather-conditions
+
+Group 2xx: Thunderstorm - 뇌우
+Group 3xx: Drizzle - 이슬비
+Group 5xx: Rain - 비
+Group 6xx: Snow - 눈
+Group 7xx: Atmosphere - 대기, 기운
+Group 800: Clear - 화창
+Group 8xx: Clouds - 구름
