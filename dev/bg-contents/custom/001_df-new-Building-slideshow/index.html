@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!--<link rel="manifest" href="">-->
+    <link rel="stylesheet" type="text/css" href="../../common/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/contents.css" />
+
+    <title>Background Contents - df building Slide Show</title>
+
+</head>
+
+
+<body class="slide-show">
+
+<div class="container-wrapper">
+    <!--<div class="img-wrapper">
+        <div class="img-content show" style='background-image: url("../../../common/img/wp_1.jpg")'></div>
+        <div class="img-content" style='background-image: url("../../../common/img/wp_2.jpg")'></div>
+        <div class="img-content" style='background-image: url("../../../common/img/wp_3.jpg")'></div>
+        <div class="img-content" style='background-image: url("../../../common/img/wp_4.jpeg")'></div>
+    </div>-->
+</div>
+
+</body>
+
+<script src="../../common/js/common.js"></script>
+<script src="../../common/js/imageGallery.js"></script>
+<script>
+
+    var data = ["./images/df_building_00.jpg",
+        "./images/df_building_01.jpg"];
+
+    var gallery = new ImageGallery(data);
+    gallery.init();
+
+</script>
+
+</html>
