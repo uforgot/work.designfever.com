@@ -8,12 +8,12 @@
     <!--<link rel="manifest" href="">-->
     <link rel="stylesheet" type="text/css" href="../../common/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="../../common/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="../common/css/contents.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/contents.css" />
 
-    <title>Background Contents - Weather(Video Type)</title>
+    <title>Background Contents - Weather Video</title>
 </head>
 
-<body>
+<body class="video-player">
 
 <div class="container-wrapper">
     <div class="video-wrapper">
@@ -29,7 +29,7 @@
 
 
 <script src="../../common/js/common.js"></script>
-<script src="../common/js/VideoPlayer.js"></script>
+<script src="../../common/js/VideoPlayer.js"></script>
 <script>
 
     var data = {
@@ -94,7 +94,7 @@
     var weathercode = params.weathercode || "800";
     var dataImage = data.video[weathercode] || data.video["800"];
 
-    var videoPlayer = new VideoPlayer(dataImage);
+    var videoPlayer = new VideoPlayer(dataImage.default, dataImage.low);
     videoPlayer.setting();
     videoPlayer.init();
 

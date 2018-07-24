@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!--<link rel="manifest" href="">-->
+    <link rel="stylesheet" type="text/css" href="../../common/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/contents.css" />
+
+    <title>Background Contents - BirthDay Video</title>
+</head>
+
+<body class="video-player">
+
+<div class="container-wrapper">
+    <div class="video-wrapper">
+        <!--<video autoplay muted loop>
+            <source src="./video/200/200_00.mp4" type="video/mp4">
+        </video>-->
+        <div class="dimmed"></div>
+    </div>
+</div>
+
+</body>
+
+
+
+<script src="../../common/js/common.js"></script>
+<script src="../../common/js/VideoPlayer.js"></script>
+<script>
+
+    var data = [
+        "./video/birthday_01.mp4"
+        ];
+
+
+    var videoPlayer = new VideoPlayer(data);
+    videoPlayer.setting();
+    videoPlayer.init();
+
+
+
+</script>
+
+</html>

@@ -8,14 +8,14 @@
     <!--<link rel="manifest" href="">-->
     <link rel="stylesheet" type="text/css" href="../../common/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="../../common/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="../common/css/contents.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/contents.css" />
 
-    <title>Background Contents - Weather(Image Type)</title>
+    <title>Background Contents - Weather Slide show</title>
 
 </head>
 
 
-<body>
+<body class="slide-show">
 
 <div class="container-wrapper">
     <!--<div class="img-wrapper">
@@ -29,7 +29,7 @@
 </body>
 
 <script src="../../common/js/common.js"></script>
-<script src="../common/js/imageGallery.js"></script>
+<script src="../../common/js/imageGallery.js"></script>
 <script>
     var data = {
         "images" : {
@@ -118,7 +118,8 @@
     var weathercode = params.weathercode || "800"
     var dataImage = data.images[weathercode] || data.images["800"];
 
-    var gallery = new ImageGallery(dataImage);
+    // var gallery = new ImageGallery(dataImage);
+    var gallery = new ImageGallery(dataImage.default, dataImage.low);
     gallery.init();
 
 

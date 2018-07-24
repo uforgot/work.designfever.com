@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- viewport for mobile device / REF : http://aboooks.tistory.com/352 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Background Contents - Gooey Effect</title>
+    <!-- PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="http://dev.designfever.com/lab/manifest.json">
+
+    <link rel="stylesheet" type="text/css" href="../../common/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/base.css" />
+
+    <style>
+        body { background: #eeeeee; }
+        #root, .app-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #dddddd;
+        }
+
+        /*svg { position:fixed; top:0; left:0; height:100%; width:100% }*/
+    </style>
+</head>
+<body>
+<div id="app" class="app-container">
+
+    <div id="root" class="">
+
+        <svg class="texteffect" width="100vw" height="100vh" viewBox="0 0 400 400">
+
+            <defs>
+                <filter id="displacement" filterUnits="objectBoundingBox">
+                    <feTurbulence type="turbulence" baseFrequency=".01" numOctaves="10" result="turb"/>
+
+                    <feColorMatrix in="turb" result="huedturb" type="hueRotate" values="0">
+                        <animate id="color-ani" attributeType="XML" attributeName="values" values="0;180;360" dur="2s"
+                                 repeatCount="indefinite"/>
+                    </feColorMatrix>
+
+                    <feDisplacementMap id="displacement-map" in="SourceGraphic" in2="huedturb" scale="20"
+                                       result="displace" xChannelSelector="R"/>
+                </filter>
+            </defs>
+            <text class="test" x="10%" y="75%" font-weight="bold" filter="url(#displacement)" font-size="280"
+                  fill="white">df
+            </text>
+            <!-- filter="url(#displacement)"  -->
+            <!--<text class="test" x="0" y="200" width="100%" height="200" filter="url(#displacement)" font-weight="bold" font-size="100">HiHigh</text>-->
+        </svg>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/main.js"></script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
