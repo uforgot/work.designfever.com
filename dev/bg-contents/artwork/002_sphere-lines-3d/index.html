@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- viewport for mobile device / REF : http://aboooks.tistory.com/352 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Background Contents - Sphere Lines 3D</title>
+    <!-- PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="http://dev.designfever.com/lab/manifest.json">
+
+    <link rel="stylesheet" type="text/css" href="../../common/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/base.css" />
+
+    <script src="./js/common.bundle.js"></script>
+
+    <style>
+        html,body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background: #0035ff;
+        }
+
+        .container{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /*background: #1ed36f;*/
+        }
+
+        .img-con{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.7;
+            box-sizing: border-box;
+            padding: 5%;
+            pointer-events: none;
+        }
+        .img-logo{
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-position: 50%;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+    <script type="x-shader/x-vertex" id="vertexshader">
+		attribute float visible;
+		varying float vVisible;
+		attribute vec3 vertColor;
+		varying vec3 vColor;
+		void main() {
+			vColor = vertColor;
+			vVisible = visible;
+			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+		}
+	</script>
+    <script type="x-shader/x-fragment" id="fragmentshader">
+		varying float vVisible;
+		varying vec3 vColor;
+		void main() {
+			if ( vVisible > 0.0 ) {
+				gl_FragColor = vec4( vColor, 1.0 );
+			} else {
+				discard;
+			}
+		}
+	</script>
+</head>
+<body>
+<div id="app" class="app-container">
+    <section id="sec_0" class="container"></section>
+    <div class="img-con">
+        <div class="img-logo" style="background-image: url('img/df_logo_100_76.svg')"><span class="blind">DF</span></div>
+    </div>
+</div>
+
+
+
+<script src="./js/threejs/three.min.js"></script>
+<script src="./js/threejs/Detector.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+    var html = document.getElementsByTagName('html');
+    var isApple = df.lab.Util.hasClass(html[0], 'ios') || df.lab.Util.hasClass(html[0], 'desktop');
+
+    var sphere = new Sphere3D_line(document.getElementById('sec_0'), isApple);
+    sphere.init();
+</script>
+<script>
+    var stats = new Stats();
+    animate_stats();
+    function animate_stats(time) {
+        requestAnimationFrame(animate_stats);
+        stats.update();
+    }
+    //document.body.appendChild(stats.dom);
+    stats.dom.style.position = "absolute";
+    stats.dom.style.top = "auto";
+    stats.dom.style.bottom = "0";
+</script>
+</body>
+</html>
