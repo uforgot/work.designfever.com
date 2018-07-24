@@ -1,0 +1,65 @@
+{
+  "info": {
+    "date":{
+      "YY": 2018, "MM": 6, "DD": 25, "DW": 5,
+      "hh": 15, "mm": 17, "ss": 59
+    },
+    "weather":{},
+    "birthday":{},
+    "today":{
+      "bg_contents": [
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0}
+      ]
+    }
+  },
+
+  "preset":{
+    "bg_contents": {
+      "weather": {
+        "group": "01",
+        "list": [
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0}
+        ]
+      },
+      "birthday": {
+        "group": "02",
+        "list": [
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0}
+        ]
+      },
+      "artwork": {
+        "group": "03",
+        "list": [
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0}
+        ]
+      },
+      "custom": {
+        "group": "04",
+        "list": [
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0},
+          {"seq":"0005", "cat": "001", "url": "bg.html", "color_mode": 0}
+        ]
+      }
+    }
+  }
+}
