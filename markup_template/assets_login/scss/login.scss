@@ -1,4 +1,25 @@
+html, body {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-weight: 700;
+  height: 100%;
+  min-height: 700px;
+}
+
 .wrapper {
+  header{
+
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+
+    .wrapper-logo{
+      margin: 5vh auto 0;
+      //height: 5vh;
+      width: 6.25vh;
+    }
+  }
 
   main{
 
