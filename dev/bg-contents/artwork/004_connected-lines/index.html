@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- viewport for mobile device / REF : http://aboooks.tistory.com/352 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Background Contents - Connected Lines | DF Lab</title>
+    <!-- PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="http://dev.designfever.com/lab/manifest.json">
+
+    <link rel="stylesheet" type="text/css" href="../../common/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../../common/css/base.css" />
+
+    <script src="./js/common_withPixi.bundle.js"></script>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        .app-container{
+            width: 100%;
+            height: 100%;
+        }
+        .site-wrapper{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="app-container">
+    <div id="container" class="site-wrapper"></div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+    var obj_stage = document.getElementById("container");
+    var preset = {
+        objectName:"conected_lines",
+        stageWidth:obj_stage.offsetWidth,
+        stageHeight:obj_stage.offsetHeight,
+        container: obj_stage,
+    };
+
+    var lines = new ConnectedLines(preset);
+    lines.init();
+
+    var oW=obj_stage.offsetWidth, oH=obj_stage.offsetHeight;
+    var ID_timeout = 0;
+
+    window.onresize = function(event) {
+        //console.log(obj_stage.offsetWidth);
+        checkSize();
+    };
+
+    window.addEventListener("orientationchange", function() {
+        clearTimeout(ID_timeout);
+        ID_timeout = setTimeout(checkSize, 1000);
+    }, false);
+
+    function checkSize(){
+        if(oW != obj_stage.offsetWidth ||oH != obj_stage.offsetHeight) {
+            oW = obj_stage.offsetWidth;
+            oH = obj_stage.offsetHeight;
+            lines.resetSize(obj_stage.offsetWidth, obj_stage.offsetHeight);
+        }
+    }
+</script>
+
+
+</body>
+</html>
