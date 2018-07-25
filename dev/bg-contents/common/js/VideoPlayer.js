@@ -1,21 +1,23 @@
-var VideoPlayer = function(defaultData, lowData){
+var VideoPlayer = function(dataObj){
 
-    var videoData = defaultData;
-    var videoLowData = lowData;
+    var videoData = dataObj.videodata;
+    var videoLowData = dataObj.videodata_low || [];
+    var videoIndex = dataObj.videoindex || parseInt(Math.random() * videoData.length);
 
     var isMobile = document.querySelector("html").classList.contains("mobile");
 
     var _setting = function(){
+
         _setElement();
+
     };
 
     var _setElement = function(){
 
-        var ranNum = parseInt(Math.random() * videoData.length);
-        var defaultData = videoData[ranNum];
-        var lowData = videoLowData || [];
+        var defaultData = videoData[videoIndex] || videoData[0];
+        var lowData = videoLowData[videoIndex] || videoData[0];
 
-        if(isMobile && lowData.length) defaultData = lowData;
+        if(isMobile && lowData) defaultData = lowData;
 
         var video = document.createElement('video');
         video.src = defaultData;

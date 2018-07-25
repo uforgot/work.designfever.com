@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- viewport for mobile device / REF : http://aboooks.tistory.com/352 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Block | Physics Engine</title>
+
+    <!-- PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="http://dev.designfever.com/lab/manifest.json">
+
+    <link rel="stylesheet" type="text/css" href="../../common/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <!--<script type="text/javascript" src="../../../common/js/common.bundle.js"></script>-->
+
+</head>
+<style>
+    body {background: 0; width: 100%; height:100%; overflow: hidden}
+    #draw-canvas {background: #ffffff!important;}
+</style>
+
+<body>
+
+<div id="app" class="app-container">
+    <canvas id="draw-canvas" ></canvas>
+</div>
+
+<script src="js/matter.js"></script>
+<script src="js/main.js"></script>
+
+
+<!-- monitoring -->
+<script>
+
+    var oW=window.innerWidth;
+    var oH=window.innerHeight;
+    var ID_timeout = 0;
+
+    var app;
+    window.onload = function () {
+        app = new BomberPhysics(document.getElementById('draw-canvas'));
+        app.init(oW, oH);
+
+        window.addEventListener("resize", checkSize);
+        window.addEventListener("orientationchange", function(e) {
+            clearTimeout(ID_timeout);
+            ID_timeout = setTimeout(checkSize, 1000);
+        }, false);
+    };
+
+    function checkSize(e){
+
+        var tW = window.innerWidth;
+        var tH = window.innerHeight;
+
+        if(oW != tW ||oH != tH) {
+            oW = tW;
+            oH = tH;
+            app.resize(tW, tH);
+        }
+    }
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

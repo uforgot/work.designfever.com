@@ -32,12 +32,12 @@
 <script src="../../common/js/VideoPlayer.js"></script>
 <script>
 
-    var data = [
-        "./video/birthday_01.mp4"
-        ];
+    var dataOjb = {
+        "videodata" : ["./video/birthday_01.mp4"]
+    };
 
 
-    var videoPlayer = new VideoPlayer(data);
+    var videoPlayer = new VideoPlayer(dataOjb);
     videoPlayer.setting();
     videoPlayer.init();
 

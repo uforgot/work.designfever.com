@@ -44,14 +44,17 @@
             "300" :{
                 "title":"Drizzle",
                 "default" :[
-                    "./video/300/300_00.mp4"
+                    "./video/300/300_00.mp4",
+                    "./video/300/300_01.mp4"
                 ],
                 "low" :[]
             },
             "500" :{
                 "title":"Rain",
                 "default" :[
-                    "./video/500/500_00.mp4"
+                    "./video/500/500_00.mp4",
+                    "./video/500/500_01.mp4",
+                    "./video/500/500_02.mp4"
                 ],
                 "low" :[]
             },
@@ -92,9 +95,16 @@
 
     var params = Util.getParams();
     var weathercode = params.weathercode || "800";
-    var dataImage = data.video[weathercode] || data.video["800"];
+    var videoindex = params.videoindex;
+    var dataVideo = data.video[weathercode] || data.video["800"];
 
-    var videoPlayer = new VideoPlayer(dataImage.default, dataImage.low);
+    var dataOjb = {
+        "videodata" : dataVideo.default,
+        "videodata_low" : dataVideo.low,
+        "videoindex" : videoindex
+    }
+
+    var videoPlayer = new VideoPlayer(dataOjb);
     videoPlayer.setting();
     videoPlayer.init();
 
