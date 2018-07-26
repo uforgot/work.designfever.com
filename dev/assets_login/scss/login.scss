@@ -3,7 +3,10 @@ html, body {
   color: #FFFFFF;
   font-weight: 700;
   height: 100%;
-  min-height: 700px;
+  //min-height: 700px;
+
+  width: 100%;
+  overflow: hidden;
 }
 
 .wrapper {
