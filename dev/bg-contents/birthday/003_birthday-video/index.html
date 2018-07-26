@@ -5,21 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
-    <!--<link rel="manifest" href="">-->
-    <link rel="stylesheet" type="text/css" href="../../common/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="../../common/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="../../common/css/contents.css" />
 
     <title>Background Contents - BirthDay Video</title>
+
+    <style>
+
+        .video-player .video-wrapper {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -100;
+
+            background-position: center center;
+            background-size: cover;
+        }
+        .video-player .video-wrapper video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: auto;
+            min-width: 100%;
+            min-height: 100%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+        }
+
+        .video-player .dimmed {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+    </style>
 </head>
 
 <body class="video-player">
 
 <div class="container-wrapper">
     <div class="video-wrapper">
-        <!--<video autoplay muted loop>
-            <source src="./video/200/200_00.mp4" type="video/mp4">
-        </video>-->
+        <video autoplay muted loop>
+            <source src="" type="video/mp4">
+        </video>
         <div class="dimmed"></div>
     </div>
 </div>
@@ -32,14 +65,18 @@
 <script src="../../common/js/VideoPlayer.js"></script>
 <script>
 
-    var dataOjb = {
-        "videodata" : ["./video/birthday_01.mp4"]
-    };
+    /* video_url : video url
+    image_url : video 재생 불가 할시 나오는 이미지
+    only_video : 강제 비디오 재생 */
 
+    var dataOjb = {
+        "video_url" : "./video/birthday_01.mp4",
+        "image_url" : "./video/birthday_00.jpg",
+        "only_video" : false
+    };
 
     var videoPlayer = new VideoPlayer(dataOjb);
     videoPlayer.setting();
-    videoPlayer.init();
 
 
 
