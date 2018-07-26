@@ -28,4 +28,19 @@ html, body {
     @import "login/login_bg";
 
   }
+
+  footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+
+    .wrapper-copyright{
+      margin: 0 auto 1.5rem;
+      text-align: center;
+
+      .area-txt{
+        font-size: 0.5rem;
+      }
+    }
+  }
 }
