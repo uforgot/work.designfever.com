@@ -1,0 +1,86 @@
+.sec-info{
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 14vh 0 0;
+
+  .wrapper-info {
+    position: absolute;
+    width: 100%;
+
+    .wrapper-clock {
+      margin: 0 auto;
+      width: 90vw;
+      height: 90vw;
+      max-width: 50vh;
+      max-height: 50vh;
+      pointer-events: none;
+      overflow: hidden;
+
+      //background: rgba(255,255,255,0.1);
+
+      .container-clock{
+        //position: absolute;
+        width: 100%;
+        height: 100%;
+        //background: #eaad9a;
+      }
+
+    }
+    .wrapper-date {
+      margin: 0 auto;
+      .area-txt{
+        margin: 1.375rem 0 0;
+        font-size: 0.75rem;
+      }
+    }
+    .wrapper-weather {
+      margin: 0 auto;
+      .area-txt{
+        margin: 1.375rem 0 0;
+      }
+    }
+
+    .wrapper-notice {
+      margin: 0 auto;
+      .area-txt{
+        margin: 2rem 0 0;
+
+        .txt-notice{
+          font-size: 4.125rem;
+          line-height: 4.375rem;
+        }
+
+        .txt-sub{
+          font-size: 1.25rem;
+          line-height: 1.625rem;
+        }
+
+      }
+    }
+
+
+    transform: translateX(100%);
+    &:first-child{
+      transform: translateX(0);
+    }
+
+    transition: transform 400ms ease-in-out;
+
+    &.in{
+      transform: translateX(0);
+    }
+    &.out-left{
+      transform: translateX(-100%);
+    }
+    &.out-right{
+      transform: translateX(100%);
+    }
+  }
+}
