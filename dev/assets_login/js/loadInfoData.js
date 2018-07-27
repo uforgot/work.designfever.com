@@ -18,12 +18,15 @@ var GlobalVars = {};
     }
 
     function init() {
+
+        console.log("[ loadInfoData.js ]");
+
         loadJSON(url_json, function(response) {
             // Parse JSON string into object
             var actual_JSON = JSON.parse(response);
 
-            console.log("json_url : ", url_json);
-            console.log(actual_JSON);
+            console.log("[ loadInfoData.js ] : ", "json_url : ", url_json);
+            console.log("[ loadInfoData.js ] : ", actual_JSON);
 
             GlobalVars.infoData = actual_JSON;
         });

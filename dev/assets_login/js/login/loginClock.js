@@ -219,9 +219,8 @@ var DF_Clock = function(con){
         _pixi.graphics.moveTo(center_x, center_y);
         _pixi.graphics.lineTo(point_hh.x, point_hh.y);
 
-
-        _pixi.txt_hh.text = Math.round(((_vars.count*0.2) + 90)%360) + "°";
-        _pixi.txt_mm.text = Math.round(((_vars.count*0.5) + 90)%360) + "°";
+        _pixi.txt_hh.text = Math.floor((((_vars.count*0.2) + 90)%360) / 360 * 12); //    Math.round(((_vars.count*0.2) + 90)%360) + "°";
+        _pixi.txt_mm.text = Math.floor((((_vars.count*0.5) + 90)%360) / 360 * 60 );
 
         point_hh.x = center_x +  Math.cos(angle_hh) * (half_mm + 20) - (_pixi.txt_hh.width/2);
         point_hh.y = center_y +  Math.sin(angle_hh) * (half_mm + 20) - (_pixi.txt_hh.height/2);
