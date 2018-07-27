@@ -13,8 +13,16 @@ var VideoPlayer = function(dataObj){
             // play video
             var video = document.querySelector("video");
             video.style.opacity = 1;
-            video.src = video_url;
-            video.play();
+
+            var source = document.querySelector("video source");
+            source.src = video_url;
+            // video.src = video_url;
+            // video.crossOrigin = 'anonymous';
+            video.oncanplay = function() {
+                video.play();
+            };
+
+
         } else {
             //show image
             var wrapper = document.querySelector(".video-player .video-wrapper");
