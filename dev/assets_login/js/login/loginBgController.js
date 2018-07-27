@@ -15,7 +15,7 @@ var loginBgController = function(con_iframe){
             console.log("[ loadBgController.js ] : ",  "loaded json : ", GlobalVars.infoData);
             console.log("[ loadBgController.js ] : ",  "iframe url : ", url);
 
-            set_iframe(url);
+            //set_iframe(url);
 
         }
     }
