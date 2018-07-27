@@ -1,28 +1,33 @@
 
 
-var loginBgController = function(con_iframe){
+var loginBgController = function(con_iframe, json_data){
 
-    var iframe = con_iframe;
+    var con_iframe = con_iframe;
 
     function init(){
 
-        console.log("[ loadBgController.js ] : init - iframe : ", iframe);
+        console.log("[ loadBgController.js ] : init - iframe : ", con_iframe);
+        console.log("[ loadBgController.js ] : init - json_data : ", json_data);
 
-        if(GlobalVars.infoData){
+        if(json_data){
 
-            var url = GlobalVars.infoData.info.today.bg_contents[0].url;
+            var url = json_data.info.today.bg_contents[0].url;
 
-            console.log("[ loadBgController.js ] : ",  "loaded json : ", GlobalVars.infoData);
+            console.log("[ loadBgController.js ] : ",  "loaded json : ", json_data);
             console.log("[ loadBgController.js ] : ",  "iframe url : ", url);
 
-            //set_iframe(url);
+            set_iframe(url);
 
         }
     }
 
     function set_iframe(url){
-        if(iframe) {
-            iframe.src = url;
+
+        if(con_iframe) {
+            var ifrm = document.createElement("iframe");
+            ifrm.setAttribute("src", url);
+            ifrm.setAttribute("name", "iframe-bg");
+            con_iframe.appendChild(ifrm);
         }
     }
 

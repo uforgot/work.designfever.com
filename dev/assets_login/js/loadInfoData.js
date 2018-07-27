@@ -1,6 +1,5 @@
 var GlobalVars = {
     isLoaded: false,
-    eventBus: {},
     eventType: {
         "ON_LOAD_JSON": "onLoadJson"
     }
@@ -8,8 +7,6 @@ var GlobalVars = {
 
 (function(){
     var url_json = "assets_login/temp/df_info_data.json" + "?uniq=" + new Date().getTime();
-
-    var arr_loadedCall = [];
 
     function loadJSON(url, callback) {
 
@@ -27,23 +24,21 @@ var GlobalVars = {
 
     function init() {
 
-        console.log("[ loadInfoData.js ]");
+        console.log("[ loadInfoData.js ] : ", "json_url : ", url_json);
 
-        GlobalVars.eventBus.addEventListener('onLoadJson', onLoadJson);
+        document.addEventListener(GlobalVars.eventType.ON_LOAD_JSON, onLoadJson);
 
         loadJSON(url_json, function(response) {
             // Parse JSON string into object
             var actual_JSON = JSON.parse(response);
 
-            console.log("[ loadInfoData.js ] : ", "json_url : ", url_json);
-            console.log("[ loadInfoData.js ] : ", actual_JSON);
-
+            //console.log("[ loadInfoData.js ] : ", actual_JSON);
 
             GlobalVars.isLoaded = true;
             GlobalVars.infoData = actual_JSON;
 
             var event = new Event(GlobalVars.eventType.ON_LOAD_JSON);
-            GlobalVars.eventBus.dispatchEvent(event);
+            document.dispatchEvent(event);
         });
     }
 

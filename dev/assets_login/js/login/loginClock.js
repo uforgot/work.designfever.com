@@ -1,4 +1,4 @@
-var DF_Clock = function(con){
+var DF_Clock = function(con, json_data){
 
     var _con = con;
 
@@ -18,7 +18,12 @@ var DF_Clock = function(con){
     var _vars = {
         count: 0,
         oW: 0,
-        oH: 0
+        oH: 0,
+        clock:{
+            hh:0,
+            mm:0,
+            ss:0
+        }
     };
 
     var _pixi = {
@@ -33,13 +38,14 @@ var DF_Clock = function(con){
 
     var ID_timeout = null;
 
-    function init(){
+    function init(today){
         console.log("container : ", _con);
         _setting({
             container : _con,
             stageWidth:_con.offsetWidth,
             stageHeight:_con.offsetHeight
         });
+        _updateToday(today);
         _addEvent();
         _start();
     }
@@ -60,6 +66,7 @@ var DF_Clock = function(con){
         _pixi.render.autoStart = true;
 
         _pixi.graphics = new PIXI.Graphics();
+        _pixi.graphics.alpha = 0;
 
         _settingTxt();
 
@@ -110,7 +117,7 @@ var DF_Clock = function(con){
             // wordWrapWidth: 440
         });
 
-        _pixi.txt_hh = new PIXI.Text('8', style_hh);
+        _pixi.txt_hh = new PIXI.Text('00', style_hh);
 
         var style_mm = new PIXI.TextStyle({
             fontFamily: 'NanumSquareRound',
@@ -118,7 +125,20 @@ var DF_Clock = function(con){
             fontWeight: '700',
             fill: ['#ffffff'],
         });
-        _pixi.txt_mm = new PIXI.Text('05', style_mm);
+
+        _pixi.txt_mm = new PIXI.Text('00', style_mm);
+
+        var style_ss = new PIXI.TextStyle({
+            fontFamily: 'NanumSquareRound',
+            fontSize: 14,
+            fontWeight: '700',
+            fill: ['#ff0000'],
+        });
+        _pixi.txt_ss = new PIXI.Text('00', style_ss);
+
+        _pixi.txt_hh.alpha = 0;
+        _pixi.txt_mm.alpha = 0;
+        _pixi.txt_ss.alpha = 0;
     };
 
     var _resetSize = function(w, h){
@@ -150,10 +170,17 @@ var DF_Clock = function(con){
     };
 
     var _start = function(){
+
         _pixi.mainContainer.addChild(_pixi.graphics);
         _pixi.mainContainer.addChild(_pixi.txt_hh);
         _pixi.mainContainer.addChild(_pixi.txt_mm);
+        _pixi.mainContainer.addChild(_pixi.txt_ss);
         _drawCanvas();
+
+        TweenMax.to(_pixi.graphics, 1, {alpha:1, ease:Cubic.easeOut, delay:5});
+        TweenMax.to(_pixi.txt_hh, 1, {alpha:1, ease:Cubic.easeOut, delay:5});
+        TweenMax.to(_pixi.txt_mm, 1, {alpha:1, ease:Cubic.easeOut, delay:3});
+        TweenMax.to(_pixi.txt_ss, 1, {alpha:1, ease:Cubic.easeOut, delay:1});
     };
 
     var _drawCanvas = function () {
@@ -169,11 +196,19 @@ var DF_Clock = function(con){
 
     var _updateTime = function(){
 
-        var angle_hh = Math.radians((_vars.count*0.2)%360);
-        //var angle_hh = Math.radians(240 - 90);
-        var angle_mm = Math.radians((_vars.count*0.5)%360);
-        //var angle_mm = Math.radians(15 - 90);
-        var angle_ss = Math.radians((_vars.count*1)%360);
+        var angle_hh = 0; //Math.radians((_vars.count*0.2)%360);
+        var angle_mm = 0; //Math.radians((_vars.count*0.5)%360);
+        var angle_ss = 0; //Math.radians((_vars.count*1)%360);
+
+
+        var degree_s = (_vars.clock.ss/60) * 360;
+        angle_ss = Math.radians((degree_s - 90)%360);
+
+        var degree_m = (_vars.clock.mm/60) * 360;
+        angle_mm = Math.radians((degree_m - 90)%360);
+
+        var degree_h = ((_vars.clock.hh%12)/12) * 360 + ((_vars.clock.mm/60) * (360 / 12));
+        angle_hh = Math.radians((degree_h - 90)%360);
 
         _pixi.graphics.clear();
 
@@ -184,43 +219,48 @@ var DF_Clock = function(con){
 
         var half_hh = half - 92;
         var half_mm = half - 58;
+        var half_ss = half - 58;
 
-        _pixi.graphics.beginFill(0xFF00FF, 0.0);
-        _pixi.graphics.drawCircle(center_x, center_y, half_mm);
-        _pixi.graphics.endFill();
-
-        _pixi.graphics.beginFill(0xFF0000, 0.0);
-        _pixi.graphics.drawCircle(center_x, center_y, half_hh);
-        _pixi.graphics.endFill();
+        // _pixi.graphics.beginFill(0xFF00FF, 0.0);
+        // _pixi.graphics.drawCircle(center_x, center_y, half_mm);
+        // _pixi.graphics.endFill();
+        //
+        // _pixi.graphics.beginFill(0xFF0000, 0.0);
+        // _pixi.graphics.drawCircle(center_x, center_y, half_hh);
+        // _pixi.graphics.endFill();
 
         var point_hh = new PIXI.Point();
         var point_mm = new PIXI.Point();
         var point_ss = new PIXI.Point();
 
+        // bar
         point_hh.x = center_x +  Math.cos(angle_hh) * half_hh;
         point_hh.y = center_y +  Math.sin(angle_hh) * half_hh;
 
         point_mm.x = center_x +  Math.cos(angle_mm) * half_mm;
         point_mm.y = center_y +  Math.sin(angle_mm) * half_mm;
 
-        point_ss.x = center_x +  Math.cos(angle_ss) * half_mm;
-        point_ss.y = center_y +  Math.sin(angle_ss) * half_mm;
+        point_ss.x = center_x +  Math.cos(angle_ss) * half_ss;
+        point_ss.y = center_y +  Math.sin(angle_ss) * half_ss;
 
         _pixi.graphics.lineJoin = _pixi.graphics.lineCap = 'round';
-        _pixi.graphics.lineStyle(2, 0xFF0000, 1);
-        _pixi.graphics.moveTo(center_x, center_y);
-        _pixi.graphics.lineTo(point_ss.x, point_ss.y);
-
-        _pixi.graphics.lineStyle(4, 0xFFFFFF, 1);
-        _pixi.graphics.moveTo(center_x, center_y);
-        _pixi.graphics.lineTo(point_mm.x, point_mm.y);
 
         _pixi.graphics.lineStyle(4, 0xFFFFFF, 1);
         _pixi.graphics.moveTo(center_x, center_y);
         _pixi.graphics.lineTo(point_hh.x, point_hh.y);
 
-        _pixi.txt_hh.text = Math.floor((((_vars.count*0.2) + 90)%360) / 360 * 12); //    Math.round(((_vars.count*0.2) + 90)%360) + "°";
-        _pixi.txt_mm.text = Math.floor((((_vars.count*0.5) + 90)%360) / 360 * 60 );
+        _pixi.graphics.lineStyle(4, 0xFFFFFF, 1);
+        _pixi.graphics.moveTo(center_x, center_y);
+        _pixi.graphics.lineTo(point_mm.x, point_mm.y);
+
+        _pixi.graphics.lineStyle(2, 0xFF0000, 1);
+        _pixi.graphics.moveTo(center_x, center_y);
+        _pixi.graphics.lineTo(point_ss.x, point_ss.y);
+
+        // txt
+        _pixi.txt_hh.text = (_vars.clock.hh%12);
+        _pixi.txt_mm.text = _vars.clock.mm < 10 ? '0'+_vars.clock.mm : _vars.clock.mm;
+        _pixi.txt_ss.text = _vars.clock.ss < 10 ? '0'+_vars.clock.ss : _vars.clock.ss;
 
         point_hh.x = center_x +  Math.cos(angle_hh) * (half_mm + 20) - (_pixi.txt_hh.width/2);
         point_hh.y = center_y +  Math.sin(angle_hh) * (half_mm + 20) - (_pixi.txt_hh.height/2);
@@ -233,9 +273,25 @@ var DF_Clock = function(con){
 
         _pixi.txt_mm.x = point_mm.x;
         _pixi.txt_mm.y = point_mm.y;
+
+        point_ss.x = center_x +  Math.cos(angle_ss) * (half_ss + 44) - (_pixi.txt_ss.width/2);
+        point_ss.y = center_y +  Math.sin(angle_ss) * (half_ss + 44) - (_pixi.txt_ss.height/2);
+
+        _pixi.txt_ss.x = point_ss.x;
+        _pixi.txt_ss.y = point_ss.y;
     };
 
+    function _updateToday(today){
+
+        _vars.clock.hh = today.hh;
+        _vars.clock.mm = today.mm;
+        _vars.clock.ss = today.ss;
+
+        //console.log(_vars.clock.hh, " : ", _vars.clock.mm, " : ", _vars.clock.ss);
+    }
+
     return {
-        init: init
+        init: init,
+        updateToday: _updateToday
     }
 };
