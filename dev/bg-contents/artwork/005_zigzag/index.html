@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- viewport for mobile device / REF : http://aboooks.tistory.com/352 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>00. distottion ZigZag Effect | Transition Frame</title>
+
+    <!-- PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="http://dev.designfever.com/lab/manifest.json">
+
+    <script src="./js/common_withPixi.bundle.js"></script>
+
+    <style>
+        body {margin: 0; background-color: #1a1a1a}
+        .app-container {position: absolute; width: 100%; height: 100%; overflow: hidden}
+        canvas { position: absolute; top: 0; left: 0; z-index: -1; width: 110%; opacity: 0; transform: translate3d(-5%,0,0)}
+        .btn-next {position:fixed; right: 0; top: 50%; opacity: 0.5; display: none}
+    </style>
+</head>
+<body>
+<div id="app" class="app-container">
+    <div id="root" class="">
+        <button class="btn-next"><i class="material-icons" style="font-size: 50px; transform: translateY(-25px)">arrow_forward_ios</i><span class="blind">next</span></button>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/main.js"></script>
+
+<script>
+    var stageW = window.innerWidth;
+    var stageH = window.innerHeight;
+
+    window.onresize = function(event) {
+        stageW = window.innerWidth;
+        stageH = window.innerHeight;
+        app.resize();
+    };
+
+    var app = new ZigZag();
+    app.setting();
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
