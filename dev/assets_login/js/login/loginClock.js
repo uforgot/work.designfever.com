@@ -30,6 +30,13 @@ var DF_Clock = function(con, json_data){
         render: {},
         app: {},
         mainContainer: {},
+        clockContainer: {},
+        clockGraphic: {
+            bar_hh: {},
+            bar_mm: {},
+            bar_ss: {}
+        },
+
         graphics: {},
         txt_hh: {},
         txt_mm: {},
@@ -60,6 +67,7 @@ var DF_Clock = function(con, json_data){
         _setPixi();
 
         _pixi.mainContainer   = new PIXI.Container();
+        _pixi.clockContainer   = new PIXI.Container();
         _pixi.app.stage.addChild( _pixi.mainContainer );
 
         _pixi.render = new PIXI.ticker.Ticker();
@@ -68,11 +76,46 @@ var DF_Clock = function(con, json_data){
         _pixi.graphics = new PIXI.Graphics();
         _pixi.graphics.alpha = 0;
 
+        _pixi.clockGraphic.bar_hh = new PIXI.Graphics();
+        _pixi.clockGraphic.bar_mm = new PIXI.Graphics();
+        _pixi.clockGraphic.bar_ss = new PIXI.Graphics();
+
         _settingTxt();
 
         _resetSize(_opts.stageWidth, _opts.stageHeight);
 
         _opts.container.appendChild( _pixi.app.view );
+    };
+
+    var _drawBar = function(){
+
+        var center_x = _opts.stageWidth/2;
+        var center_y = _opts.stageHeight/2;
+
+        _pixi.clockContainer.x  = center_x;
+        _pixi.clockContainer.y  = center_y;
+
+        var half = Math.min(center_x, center_y);
+
+        var half_hh = half - 92;
+        var half_mm = half - 58;
+        var half_ss = half - 58;
+
+        _pixi.clockGraphic.bar_hh.clear();
+        _pixi.clockGraphic.bar_hh.beginFill(0x0000FF);
+        _pixi.clockGraphic.bar_hh.drawRect(-2,-2,half_hh + 2, 4);
+        _pixi.clockGraphic.bar_hh.endFill();
+
+        _pixi.clockGraphic.bar_mm.clear();
+        _pixi.clockGraphic.bar_mm.beginFill(0x00FF00);
+        _pixi.clockGraphic.bar_mm.drawRect(-2,-2,half_mm + 2, 4);
+        _pixi.clockGraphic.bar_mm.endFill();
+
+        _pixi.clockGraphic.bar_ss.clear();
+        _pixi.clockGraphic.bar_ss.beginFill(0xFF0000);
+        _pixi.clockGraphic.bar_ss.drawRect(-1,-1,half_ss + 1, 2);
+        _pixi.clockGraphic.bar_ss.endFill();
+
     };
 
     var _addEvent = function(){
@@ -148,6 +191,8 @@ var DF_Clock = function(con, json_data){
         _pixi.app.view.style.width = _opts.stageWidth+"px";
         _pixi.app.view.style.height = _opts.stageHeight+"px";
 
+        _drawBar();
+
         _pixi.app.renderer.resize(_opts.stageWidth, _opts.stageHeight);   // * PIXI.settings.RESOLUTION)
     };
 
@@ -171,10 +216,18 @@ var DF_Clock = function(con, json_data){
 
     var _start = function(){
 
+        _pixi.mainContainer.addChild(_pixi.clockContainer);
+        _pixi.clockContainer.addChild(_pixi.clockGraphic.bar_hh);
+        _pixi.clockContainer.addChild(_pixi.clockGraphic.bar_mm);
+        _pixi.clockContainer.addChild(_pixi.clockGraphic.bar_ss);
+
         _pixi.mainContainer.addChild(_pixi.graphics);
         _pixi.mainContainer.addChild(_pixi.txt_hh);
         _pixi.mainContainer.addChild(_pixi.txt_mm);
         _pixi.mainContainer.addChild(_pixi.txt_ss);
+
+
+
         _drawCanvas();
 
         TweenMax.to(_pixi.graphics, 1, {alpha:1, ease:Cubic.easeOut, delay:5});
