@@ -1,0 +1,128 @@
+body {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.container .bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+
+    opacity: 0.5;
+    transform: scale(1);
+
+    transition: all 600ms ease-out;
+}
+
+.over .container .bg{
+    transform: scale(1.5);
+    opacity: 0.3;
+}
+
+.container canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+
+    transition: opacity 1200ms ease-out;
+}
+
+.over .container canvas {
+    opacity: 1;
+}
+
+.content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.content .bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    opacity: 0.5;
+
+}
+
+.content .txt{
+    position: absolute;
+    top:50%;
+    width:100%;
+    text-align: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    margin-top: -18vw;
+
+}
+.content .txt span{
+    color: #FFFFFF;
+    font-size: 12vw;
+    font-weight: 600;
+    line-height: 15vw;
+    opacity: 1;
+    transition: opacity 1200ms ease-out, color 1200ms ease-out;
+}
+.content .txt span.trans{
+    opacity: 0;
+}
+
+.over .content .txt span{
+    opacity: 1;
+    color: #000000;
+}
+
+.content .txt span.semi{
+    opacity: 0.5;
+    color: #00FFFF;
+}
+
+.link{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+
+}
+.link a{
+    /*text-decoration: line-through #FFFF00;*/
+}
+.link span{
+    color: #FFFFFF;
+    font-weight: 200;
+    font-size: 0.75rem;
+    transition: color 1200ms ease-out;
+}
+
+.over .link span {
+    color: #00FFFF;
+}
+
+.dim{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,1);
+    opacity: 0.1;
+    transition: opacity 2s ease-in-out 0.5s;
+    pointer-events: none;
+}
+.dim.show{
+    opacity: 0;
+}
