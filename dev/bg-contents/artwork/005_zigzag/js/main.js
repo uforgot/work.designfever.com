@@ -68,6 +68,7 @@ var ZigZag = function(args){
     };
 
 
+
     var _loadImage = function(){
         isTrans = false;
         document.body.className = 'loading';
@@ -124,7 +125,7 @@ var ZigZag = function(args){
     };
 
     var imagePointRandom = function(){
-        var random = parseInt(Math.random() * 20 + 10);
+        var random = parseInt(Math.random() * 10 + 5);
         segment.randomize(random);
         autoRollingStart()
     };
@@ -212,7 +213,7 @@ class Segment {
 }
 
 
-const ease = Elastic.easeOut.config(5, 0.4);
+const ease = Elastic.easeOut.config(2, 0.4);
 
 class Point {
     constructor(indexX, indexY, x, y, options){

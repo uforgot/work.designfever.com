@@ -8,7 +8,7 @@
     "birthday":{},
     "today":{
       "bg_contents": [
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=300", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=801", "color_mode": 0},
         {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=300", "color_mode": 0}
       ]
     }

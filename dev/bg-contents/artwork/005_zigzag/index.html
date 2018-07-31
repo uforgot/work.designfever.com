@@ -21,12 +21,19 @@
         .app-container {position: absolute; width: 100%; height: 100%; overflow: hidden}
         canvas { position: absolute; top: 0; left: 0; z-index: -1; width: 110%; opacity: 0; transform: translate3d(-5%,0,0)}
         .btn-next {position:fixed; right: 0; top: 50%; opacity: 0.5; display: none}
+        .app-container .dimmed {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
 <div id="app" class="app-container">
     <div id="root" class="">
         <button class="btn-next"><i class="material-icons" style="font-size: 50px; transform: translateY(-25px)">arrow_forward_ios</i><span class="blind">next</span></button>
+        <div class="dimmed"></div>
     </div>
 </div>
 

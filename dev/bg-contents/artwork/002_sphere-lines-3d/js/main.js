@@ -3,10 +3,10 @@ var Sphere3D_line = function(container, isMore, preset_arg) {
     if (!Detector.webgl) Detector.addGetWebGLMessage();
 
     var _preset_def = {
-        NUM_LAT: isMore ? 100 : 50,
-        NUM_LNG: isMore ? 200 : 50,
+        NUM_LAT: isMore ? 50 : 50,
+        NUM_LNG: isMore ? 100 : 50,
         NUM_LINES_CULLED: 0,
-        CAMERA_Z: 3.5
+        CAMERA_Z: 4
     };
 
     var _preset = df.lab.Util.combine_object_value(preset_arg, _preset_def);
@@ -40,7 +40,7 @@ var Sphere3D_line = function(container, isMore, preset_arg) {
 
     function setStage(){
         renderer = new THREE.WebGLRenderer({antialias: true, alpha: false});
-        renderer.setClearColor(0x0035ff, 1);
+        renderer.setClearColor(0x000000, 1);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(_value.stageWidth, _value.stageHeight);
 

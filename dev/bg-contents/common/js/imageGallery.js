@@ -7,7 +7,7 @@ var ImageGallery = function(defaultData, lowData){
         _prevIndex = -1,
         _imgArr = [],
         _timer,
-        _loopTime = 6000;
+        _loopTime = 8000;
 
     var isMobile = document.querySelector("html").classList.contains("mobile");
 
