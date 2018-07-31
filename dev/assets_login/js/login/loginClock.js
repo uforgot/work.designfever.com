@@ -37,7 +37,6 @@ var DF_Clock = function(con, json_data){
             bar_ss: {}
         },
 
-        graphics: {},
         txt_hh: {},
         txt_mm: {},
         txt_ss: {}
@@ -68,17 +67,26 @@ var DF_Clock = function(con, json_data){
 
         _pixi.mainContainer   = new PIXI.Container();
         _pixi.clockContainer   = new PIXI.Container();
+        //_pixi.clockContainer.alpha = 0;
+
         _pixi.app.stage.addChild( _pixi.mainContainer );
 
         _pixi.render = new PIXI.ticker.Ticker();
         _pixi.render.autoStart = true;
 
-        _pixi.graphics = new PIXI.Graphics();
-        _pixi.graphics.alpha = 0;
-
         _pixi.clockGraphic.bar_hh = new PIXI.Graphics();
         _pixi.clockGraphic.bar_mm = new PIXI.Graphics();
         _pixi.clockGraphic.bar_ss = new PIXI.Graphics();
+
+
+        _pixi.clockContainer.rotation = Math.radians(-360);
+        _pixi.clockGraphic.bar_hh.alpha = 0;
+        _pixi.clockGraphic.bar_mm.alpha = 0;
+        _pixi.clockGraphic.bar_ss.alpha = 0;
+
+        _pixi.clockGraphic.bar_hh.scale.x = 0.1;
+        _pixi.clockGraphic.bar_mm.scale.x = 0.1;
+        _pixi.clockGraphic.bar_ss.scale.x = 0.1;
 
         _settingTxt();
 
@@ -102,18 +110,18 @@ var DF_Clock = function(con, json_data){
         var half_ss = half - 58;
 
         _pixi.clockGraphic.bar_hh.clear();
-        _pixi.clockGraphic.bar_hh.beginFill(0x0000FF);
-        _pixi.clockGraphic.bar_hh.drawRect(-2,-2,half_hh + 2, 4);
+        _pixi.clockGraphic.bar_hh.beginFill(0xFFFFFF);
+        _pixi.clockGraphic.bar_hh.drawRoundedRect(-2, -2, half_hh + 2, 4, 2);
         _pixi.clockGraphic.bar_hh.endFill();
 
         _pixi.clockGraphic.bar_mm.clear();
-        _pixi.clockGraphic.bar_mm.beginFill(0x00FF00);
-        _pixi.clockGraphic.bar_mm.drawRect(-2,-2,half_mm + 2, 4);
+        _pixi.clockGraphic.bar_mm.beginFill(0xFFFFFF);
+        _pixi.clockGraphic.bar_mm.drawRoundedRect(-2, -2, half_mm + 2, 4, 2);
         _pixi.clockGraphic.bar_mm.endFill();
 
         _pixi.clockGraphic.bar_ss.clear();
         _pixi.clockGraphic.bar_ss.beginFill(0xFF0000);
-        _pixi.clockGraphic.bar_ss.drawRect(-1,-1,half_ss + 1, 2);
+        _pixi.clockGraphic.bar_ss.drawRoundedRect(-1, -1, half_ss + 1, 2, 1);
         _pixi.clockGraphic.bar_ss.endFill();
 
     };
@@ -221,19 +229,24 @@ var DF_Clock = function(con, json_data){
         _pixi.clockContainer.addChild(_pixi.clockGraphic.bar_mm);
         _pixi.clockContainer.addChild(_pixi.clockGraphic.bar_ss);
 
-        _pixi.mainContainer.addChild(_pixi.graphics);
         _pixi.mainContainer.addChild(_pixi.txt_hh);
         _pixi.mainContainer.addChild(_pixi.txt_mm);
         _pixi.mainContainer.addChild(_pixi.txt_ss);
 
-
-
         _drawCanvas();
 
-        TweenMax.to(_pixi.graphics, 1, {alpha:1, ease:Cubic.easeOut, delay:5});
-        TweenMax.to(_pixi.txt_hh, 1, {alpha:1, ease:Cubic.easeOut, delay:5});
-        TweenMax.to(_pixi.txt_mm, 1, {alpha:1, ease:Cubic.easeOut, delay:3});
-        TweenMax.to(_pixi.txt_ss, 1, {alpha:1, ease:Cubic.easeOut, delay:1});
+        TweenMax.to(_pixi.clockContainer, 5, {rotation:0, ease:Expo.easeOut, delay:1});
+        TweenMax.to(_pixi.clockGraphic.bar_hh, 2.2, {alpha:1, ease:Expo.easeInOut, delay:1});
+        TweenMax.to(_pixi.clockGraphic.bar_mm, 2.2, {alpha:1, ease:Expo.easeInOut, delay:1.5});
+        TweenMax.to(_pixi.clockGraphic.bar_ss, 2.2, {alpha:1, ease:Expo.easeInOut, delay:2});
+
+        TweenMax.to(_pixi.clockGraphic.bar_hh.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:1});
+        TweenMax.to(_pixi.clockGraphic.bar_mm.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:1.5});
+        TweenMax.to(_pixi.clockGraphic.bar_ss.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:1.5});
+
+        TweenMax.to(_pixi.txt_hh, 1.2, {alpha:1, ease:Cubic.easeOut, delay:3});
+        TweenMax.to(_pixi.txt_mm, 1.2, {alpha:1, ease:Cubic.easeOut, delay:3.5});
+        TweenMax.to(_pixi.txt_ss, 1.2, {alpha:1, ease:Cubic.easeOut, delay:4});
     };
 
     var _drawCanvas = function () {
@@ -263,52 +276,22 @@ var DF_Clock = function(con, json_data){
         var degree_h = ((_vars.clock.hh%12)/12) * 360 + ((_vars.clock.mm/60) * (360 / 12));
         angle_hh = Math.radians((degree_h - 90)%360);
 
-        _pixi.graphics.clear();
+        _pixi.clockGraphic.bar_hh.rotation = angle_hh;
+        _pixi.clockGraphic.bar_mm.rotation = angle_mm;
+        _pixi.clockGraphic.bar_ss.rotation = angle_ss;
 
         var center_x = _opts.stageWidth/2;
         var center_y = _opts.stageHeight/2;
 
-        var half = _opts.stageWidth/2;
+        var half = Math.min(center_x, center_y);
 
-        var half_hh = half - 92;
+        //var half_hh = half - 92;
         var half_mm = half - 58;
         var half_ss = half - 58;
-
-        // _pixi.graphics.beginFill(0xFF00FF, 0.0);
-        // _pixi.graphics.drawCircle(center_x, center_y, half_mm);
-        // _pixi.graphics.endFill();
-        //
-        // _pixi.graphics.beginFill(0xFF0000, 0.0);
-        // _pixi.graphics.drawCircle(center_x, center_y, half_hh);
-        // _pixi.graphics.endFill();
 
         var point_hh = new PIXI.Point();
         var point_mm = new PIXI.Point();
         var point_ss = new PIXI.Point();
-
-        // bar
-        point_hh.x = center_x +  Math.cos(angle_hh) * half_hh;
-        point_hh.y = center_y +  Math.sin(angle_hh) * half_hh;
-
-        point_mm.x = center_x +  Math.cos(angle_mm) * half_mm;
-        point_mm.y = center_y +  Math.sin(angle_mm) * half_mm;
-
-        point_ss.x = center_x +  Math.cos(angle_ss) * half_ss;
-        point_ss.y = center_y +  Math.sin(angle_ss) * half_ss;
-
-        _pixi.graphics.lineJoin = _pixi.graphics.lineCap = 'round';
-
-        _pixi.graphics.lineStyle(4, 0xFFFFFF, 1);
-        _pixi.graphics.moveTo(center_x, center_y);
-        _pixi.graphics.lineTo(point_hh.x, point_hh.y);
-
-        _pixi.graphics.lineStyle(4, 0xFFFFFF, 1);
-        _pixi.graphics.moveTo(center_x, center_y);
-        _pixi.graphics.lineTo(point_mm.x, point_mm.y);
-
-        _pixi.graphics.lineStyle(2, 0xFF0000, 1);
-        _pixi.graphics.moveTo(center_x, center_y);
-        _pixi.graphics.lineTo(point_ss.x, point_ss.y);
 
         // txt
         _pixi.txt_hh.text = (_vars.clock.hh%12);
