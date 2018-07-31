@@ -4,6 +4,8 @@
   height: 100%;
   //background: #999999;
   overflow: hidden;
+  top: 0;
+  z-index: 100;
 
   iframe{
     width: 100%;

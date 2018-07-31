@@ -1,23 +1,39 @@
+@media (max-height:400px) {
+  //.sec-info{
+  //  display: none;
+  //}
+}
+
 .sec-info{
-  position: absolute;
-  overflow: hidden;
+  position: relative;
+  z-index: 1000;
   width: 100%;
-  height: 100%;
+  height: 60%;
+  overflow: hidden;
 
   box-sizing: border-box;
   text-align: center;
   color: white;
-  margin: 0;
-  padding: 14vh 0 0;
+
+  @media (max-width: $screen-md) and (max-height:$screen-min-height) {
+    display: none;
+  }
+
+  ul{
+    width: 100%;
+    height: 100%;
+  }
 
   .wrapper-info {
-    position: absolute;
+    display: none;
+    position: relative;
     width: 100%;
+    height: 100%;
 
     .wrapper-clock {
       margin: 0 auto;
-      width: 90vw;
-      height: 90vw;
+      //width: 90vw;
+      height: 83%;
       max-width: 50vh;
       max-height: 50vh;
       pointer-events: none;
@@ -34,9 +50,12 @@
 
     }
     .wrapper-date {
+      height:16%;
       margin: 0 auto;
+      padding: 1.375rem;
+      box-sizing: border-box;
       .area-txt{
-        margin: 1.375rem 0 0;
+        //margin: 1.375rem 0 0;
         font-size: 0.75rem;
       }
     }
@@ -68,6 +87,7 @@
 
     transform: translateX(100%);
     &:first-child{
+      display: block;
       transform: translateX(0);
     }
 

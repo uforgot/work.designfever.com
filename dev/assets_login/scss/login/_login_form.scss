@@ -1,16 +1,25 @@
 .sec-login{
 
-  position: absolute;
+  @media (max-width: $screen-md) and (max-height:$screen-min-height) {
+
+    margin: 10% 0 0;
+  }
+  position: relative;
+  z-index: 1000;
   width: 100%;
-  bottom: 0;
-  //top: 83vh;
+  padding: 2% 0;
+  //height: 20%;
+  //overflow: hidden;
+  //bottom: 0;
+
 
   .wrapper-login{
-    margin: 0 auto 45px;
-    width: 80%;
-    max-width: 180px;
-    padding: 1rem;
-    box-sizing: border-box;
+
+    //margin: 10px auto 10px;
+    //width: 80%;
+    //max-width: 180px;
+    //padding: 1rem;
+    //box-sizing: border-box;
 
     //background: #00b89c;
 
@@ -18,24 +27,26 @@
       width: 100%;
 
       .area-input, .area-btn {
-        margin: 0 0 0.75rem 0;
+        margin: 0.75rem 0;
         width: 100%;
 
         &.btn-login{
           width: 60%;
-          margin-bottom: 0;
+          margin: 0 0 0.75rem ;
         }
 
         &.btn-help {
-          width: 33.8%;
-          margin-bottom: 0;
+          width: 40%;
+          margin: 0 0 0.75rem ;
         }
       }
 
       .round-box {
         display: block;
         overflow: hidden;
-        width: 100%;
+        width: 36%;
+        max-width: 300px;
+        margin: 0 auto;
         padding: 0.5rem 0.75rem;
         background: #FFFFFF;
         box-sizing: border-box;
@@ -60,14 +71,22 @@
       }
 
       .wrapper-btn{
-        width: 100%;
+        width: 36%;
+        max-width: 300px;
+        margin: 0 auto;
 
         .btn-module{
           display: inline-block;
           float: left;
 
+          .round-box{
+            width: 100%;
+          }
+
           &.align-right{
             float: right;
+            padding: 0 0 0 0.45rem;
+            box-sizing: border-box;
           }
         }
       }
