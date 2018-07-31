@@ -1,17 +1,15 @@
 
 
 
-var ZigZag = function(){
+var ZigZag = function(args){
 
     let mesh;
     let segment;
-    /*let spacingX = 5;
-    let spacingY = spacingX;*/
-
     let resizePer = 1;
 
     let imgIndex = 0;
-    let imgurlArr = ['./images/df_building_00.jpg'];
+    let imgurlArr = [args.imageurl];
+    let contentOpacity = args.opacity || 1;
 
     let textureArr = [];
 
@@ -70,7 +68,6 @@ var ZigZag = function(){
     };
 
 
-
     var _loadImage = function(){
         isTrans = false;
         document.body.className = 'loading';
@@ -104,7 +101,7 @@ var ZigZag = function(){
         isTrans = true;
 
         var canvas = document.querySelector("canvas");
-        TweenMax.to(canvas, 1, {opacity:1});
+        TweenMax.to(canvas, 1, {opacity:contentOpacity});
         _update();
     };
 
@@ -122,12 +119,12 @@ var ZigZag = function(){
 
     var autoRollingStart = function(){
         clearTimeout(timer);
-        timer = setTimeout(imagePointRandom, 1500);
+        timer = setTimeout(imagePointRandom, options.pointCount);
 
     };
 
     var imagePointRandom = function(){
-        var random = parseInt(Math.random() * 10 + 10);
+        var random = parseInt(Math.random() * 20 + 10);
         segment.randomize(random);
         autoRollingStart()
     };
@@ -215,7 +212,7 @@ class Segment {
 }
 
 
-const ease = Elastic.easeOut.config(2, 0.4);
+const ease = Elastic.easeOut.config(5, 0.4);
 
 class Point {
     constructor(indexX, indexY, x, y, options){
@@ -250,7 +247,7 @@ class Point {
 
         let dist = Math.sqrt(dx * dx + dy * dy);
 
-        let delay = !force ? Math.random()*.1 : Math.random()*0.2;
+        let delay = !force ? Math.random()*.2 : Math.random()*0.2;
         let time = Math.min(1.25, Math.max(0.4, dist / 40) );
 
         TweenMax.killTweensOf(this);
