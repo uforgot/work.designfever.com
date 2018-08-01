@@ -9,7 +9,10 @@
     "today":{
       "bg_contents": [
         {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/005_zigzag/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=300", "color_mode": 0}
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/002_sphere-lines-3d/index.html", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/004_connected-lines/index.html", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=600", "color_mode": 0}
       ]
     }
   },
