@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- viewport for mobile device / REF : http://aboooks.tistory.com/352 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Animate Object | DF Lab</title>
+
+    <!-- PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="http://dev.designfever.com/lab/manifest.json">
+
+    <script type="text/javascript" src="./js/common_withPixi.bundle.js"></script>
+
+</head>
+<style>
+    body {background: 0; width: 100%; height:100%; overflow: hidden; margin: 0; }
+    main {width: 100%; height:100%}
+    .content {width: 100%; height:100%; position: fixed;}
+</style>
+
+<body>
+
+<div id="app" class="app-container site-wrapper">
+    <div class="content" id="obj_stage"></div>
+</div>
+
+<script src="js/pixi-filters.js"></script>
+<script src="js/gifuct-js.min.js"></script> <!-- gif load -->
+<script src="js/main.js?uniq=000"></script>
+<script>
+
+    var container = document.querySelector(".content");
+
+    var oW=window.innerWidth;
+    var oH=window.innerHeight;
+    var ID_timeout = 0;
+
+    var app;
+    window.onload = function () {
+        app = new AnimateSprite({
+            container:container,
+            stageWidth:container.offsetWidth,
+            stageHeight:container.offsetHeight
+        }, 0.5);
+        app.init();
+
+        window.addEventListener("resize", checkSize);
+        window.addEventListener("orientationchange", function(e) {
+            clearTimeout(ID_timeout);
+            ID_timeout = setTimeout(checkSize, 1000);
+        }, false);
+    };
+
+    function checkSize(e){
+
+        var tW = window.innerWidth;
+        var tH = window.innerHeight;
+
+        if(oW != tW ||oH != tH) {
+            oW = tW;
+            oH = tH;
+            app.resetSize(tW, tH);
+        }
+    }
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -32,6 +32,13 @@
             transform: scale(1.1);
             transition: opacity 3s, transform 30s;
         }
+
+        .container-wrapper .dimmed {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0);
+        }
     </style>
 
 </head>
@@ -57,7 +64,7 @@
     var data = ["./images/df_building_00.jpg",
         "./images/df_building_01.jpg"];
 
-    var gallery = new ImageGallery(data);
+    var gallery = new ImageGallery(data, [], 0.4);
     gallery.init();
 
 </script>

@@ -1,4 +1,4 @@
-var ImageGallery = function(defaultData, lowData){
+var ImageGallery = function(defaultData, lowData, dimmedOpacity){
 
     var imgData = defaultData;
     var imgLowData = lowData;
@@ -7,12 +7,14 @@ var ImageGallery = function(defaultData, lowData){
         _prevIndex = -1,
         _imgArr = [],
         _timer,
+        _dimmedOpacity = dimmedOpacity,
         _loopTime = 8000;
 
     var isMobile = document.querySelector("html").classList.contains("mobile");
 
     var _setting = function(){
         _setElement();
+        _makeDimmed();
     };
 
     var _setElement = function(){
@@ -34,7 +36,22 @@ var ImageGallery = function(defaultData, lowData){
 
         var container = document.querySelector(".container-wrapper");
         container.appendChild(wrapper);
+
+
     };
+
+    var _makeDimmed = function(){
+        var alpha = _dimmedOpacity || 0;
+        if(alpha == 0) return;
+
+        var dimmed = document.createElement("div");
+        dimmed.classList.add("dimmed");
+        dimmed.style.backgroundColor = "rgba(0,0,0,"+alpha+")";
+
+        var container = document.querySelector(".container-wrapper");
+        container.appendChild(dimmed);
+    };
+
 
     var _init = function(){
         _imgArr = document.querySelectorAll(".img-content");
