@@ -34,7 +34,7 @@ $bg_gra_color_B: 0;
                             rgba($bg_gra_color_R, $bg_gra_color_G, $bg_gra_color_B, 1.00) 66%,
                             rgba($bg_gra_color_R, $bg_gra_color_G, $bg_gra_color_B, 1.00) 100%);
 
-    transform: translateY(-67%);
+    transform: translateY(-66.6%);
     transition: transform 2000ms ease-in-out;
 
     &.show{

@@ -4,6 +4,7 @@
   //}
 }
 
+
 .sec-info{
   position: relative;
   z-index: 1000;
@@ -58,7 +59,15 @@
         //margin: 1.375rem 0 0;
         font-size: 0.75rem;
       }
+
+      @include mx_transform_transY(0, 10px);
+
+      &.show{
+        @include mx_transform_transY(1, 0);
+      }
     }
+
+
     .wrapper-weather {
       margin: 0 auto;
       .area-txt{

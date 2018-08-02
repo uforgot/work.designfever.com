@@ -1,0 +1,20 @@
+// Animation
+@mixin mx_transition($time, $property, $timing:"ease-out", $delay:"0"){
+  transition-duration: #{ $time };
+  transition-property: #{ $property };
+  transition-timing-function: #{ $timing };
+  transition-delay: #{ $delay };
+}
+
+@mixin mx_transform_transY($prop_opacity, $prop_y, $time:1000ms) {
+
+  opacity: $prop_opacity;
+
+  -webkit-transform: translateY($prop_y);
+  -moz-transform: translateY($prop_y);
+  -ms-transform: translateY($prop_y);
+  -o-transform: translateY($prop_y);
+  transform: translateY($prop_y);
+
+  @include mx_transition(#{ $time + "," $time }, "opacity, transform", "ease-out, ease-out");
+}

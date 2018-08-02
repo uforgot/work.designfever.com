@@ -8,10 +8,12 @@
   z-index: 1000;
   width: 100%;
   padding: 1% 0 1%;
-  //height: 20%;
-  //overflow: hidden;
-  //bottom: 0;
 
+  @include mx_transform_transY(0, -10px);
+
+  &.show{
+    @include mx_transform_transY(1, 0);
+  }
 
   &.big{
 
@@ -23,7 +25,6 @@
           font-size: 12px;
           padding: 0.75rem 1.25rem;
           vertical-align: middle;
-
         }
       }
     }

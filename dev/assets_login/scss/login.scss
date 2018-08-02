@@ -1,3 +1,4 @@
+@import "mixins";
 @import "vars";
 
 html, body {
@@ -39,6 +40,13 @@ a:focus, button:focus, input[type="submit"]:focus{
     padding: 5vh 0 0;
     box-sizing: border-box;
 
+    opacity: 0;
+    @include mx_transition("1000ms", "opacity", "ease-out");
+
+    &.show{
+      opacity: 1;
+    }
+
     @media (max-width: $screen-md) and (max-height:$screen-min-height) {
 
       height: 25%;
@@ -61,8 +69,14 @@ a:focus, button:focus, input[type="submit"]:focus{
     position: relative;
     z-index: 10000;
     width: 100%;
-
     box-sizing: border-box;
+
+    opacity: 0;
+    @include mx_transition("1000ms", "opacity", "ease-out");
+
+    &.show{
+      opacity: 1;
+    }
 
     .wrapper-copyright{
       margin: 1% auto 1%;

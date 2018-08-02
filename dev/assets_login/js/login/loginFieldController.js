@@ -1,31 +1,9 @@
-var LoginFieldController = (function(){
-
-    // var _init = function(){
-    //     _nextFieldController();
-    // };
-    //
-    // var _nextFieldController = function(){
-    //     _inputKeyController();
-    // }
-    //
-    // function _inputKeyController(){
-    //     $('#df-form').on('keydown', 'input', function (e) {
-    //         if (e.which == 13) {
-    //             e.preventDefault();
-    //             var $this = $(e.target);
-    //             var index = parseFloat($this.attr('tabindex'));
-    //             console.log(index);
-    //
-    //             $('[tabindex="' + (index + 1).toString() + '"]').focus();
-    //         }
-    //     });
-    // }
+var LoginFieldController = function(){
 
     var KEYBOARD_ENTER = 13;
     var KEYBOARD_TAB = 9;
     var id, pwd;
     var storageId, storagePw;
-
 
     var _init = function(){
         _inputKeyController();
@@ -44,7 +22,6 @@ var LoginFieldController = (function(){
 
         var frm = document.getElementById('id_login');
         frm.addEventListener( 'submit',  _onSubmit);
-
     }
 
     function _keypressId( $evt ) {
@@ -55,7 +32,6 @@ var LoginFieldController = (function(){
             case KEYBOARD_TAB :
                 console.log("ID");
                 break;
-
         }
     }
 
@@ -109,6 +85,5 @@ var LoginFieldController = (function(){
 
     return {
         init : _init
-    };
-
-})();
+    }
+};
