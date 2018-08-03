@@ -1,13 +1,45 @@
 {
+  "user":{},
   "info": {
     "date":{
-      "YY": 2018, "MM": 6, "DD": 25, "DW": 5,
-      "hh": 15, "mm": 17, "ss": 59
+      "server_time": 123456789
     },
-    "weather":{},
-    "birthday":{},
+    "weather":{
+      "id":201,
+      "main":"Rain",
+      "dec":"light rain",
+      "temp":286.164,
+      "sunrise":123456789,
+      "sunset":123456789
+    },
+    "birthday":[
+      {
+        "name":"박재형",
+        "team":"CEO",
+        "thumb":"thumb.jpg"
+      },
+      {
+        "name":"최동현",
+        "team":"CEO",
+        "thumb":"thumb.jpg"
+      }
+    ],
+
     "today":{
       "bg_contents": [
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=1", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=600", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/005_zigzag/index.html", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/002_sphere-lines-3d/index.html", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/004_connected-lines/index.html", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=600", "color_mode": 0}
+      ]
+    },
+    "test":{
+      "bg_contents": [
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=1", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=600", "color_mode": 0},
         {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/005_zigzag/index.html", "color_mode": 0},
         {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/002_sphere-lines-3d/index.html", "color_mode": 0},
         {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/004_connected-lines/index.html", "color_mode": 0},
@@ -16,7 +48,6 @@
       ]
     }
   },
-
   "preset":{
     "bg_contents": {
       "weather": {
@@ -64,9 +95,5 @@
         ]
       }
     }
-  },
-
-  "user":{
-
   }
 }

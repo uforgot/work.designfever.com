@@ -23,6 +23,14 @@ var DF_Login = function(json_data){
         _loginController.init();
 
         startMotion();
+        setFocus();
+    }
+
+    function setFocus(){
+        var input_user_id = document.getElementById('user_id');
+        input_user_id.focus();
+
+        console.log("focus: ", input_user_id);
     }
 
     function startMotion(){
