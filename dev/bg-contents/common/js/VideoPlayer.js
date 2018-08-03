@@ -24,6 +24,7 @@ var VideoPlayer = function(dataObj){
             source.src = _isMobile && video_low_url ? video_low_url : video_url;
             // video.src = video_url;
             // video.crossOrigin = 'anonymous';
+            video.play();
             video.oncanplay = function() {
                 video.play();
             };
