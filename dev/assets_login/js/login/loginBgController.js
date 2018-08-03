@@ -24,7 +24,6 @@ var loginBgController = function(con_iframe, json_data){
             var ran_index = Math.floor(json_data.info.test.bg_contents.length * Math.random());
             var url = json_data.info.test.bg_contents[ran_index].url;
 
-            console.log("[ loadBgController.js ] : ",  "loaded json : ", json_data);
             console.log("[ loadBgController.js ] : ",  "iframe url : ", url);
 
             set_iframe(url);

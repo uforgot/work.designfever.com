@@ -23,7 +23,10 @@ var DF_Login = function(json_data){
         _loginController.init();
 
         startMotion();
-        setFocus();
+
+        setTimeout(function(){
+            setFocus();
+        }, 1000);
     }
 
     function setFocus(){
@@ -68,3 +71,16 @@ var DF_Login = function(json_data){
         init: _init
     }
 };
+
+/*
+
+function getList_tmp(){
+var arr_list = document.querySelectorAll('table.work3 tbody tr td a'); var str_tmp=""; arr_list.forEach(function(element, index) {
+    if(index%3 == 0) str_tmp = str_tmp + '\n{"group": "04", "seq":"0005", "cat": "001", "url": "' + element.href + '", "color_mode": 0},';
+});console.log(str_tmp);}
+
+getList_tmp();
+
+*/
+
+
