@@ -107,7 +107,7 @@
                 <div class="wrapper">
                     <div class="field has-addons">
                         <div class="control is-expanded">
-                            <a class="button is-fullwidth is-info">
+                            <a class="button is-fullwidth">
                                 <span class="icon is-small is-hidden-tablet-only">
                                     <i class="fas fa-check"></i>
                                 </span>
@@ -200,40 +200,58 @@
                             <div class="tile is-parent is-vertical">
                                 <article class="tile is-child card">
                                     
-                                    <div class="clock">
-                                        
-                                        <div class="area">
-                                            <div class="title has-text-centered has-text-white txt">
-                                                <p class="now">17:56</p>
-                                                <p class="start">출근 09:20:12 - 퇴근 09:20:12</p>
-                                                <!--<p class="clock-txt-start">외출 09:20:12 - 09:30-12</p>-->
+                                    <div id="df-clock">
+                                        <div class="clock-header" id="df-clock-header">
+                                            <div class="date">
+                                                2018. 7. 26 <span>화요일</span>
                                             </div>
-                                        </div>
-                                        
-                                        <div class="field has-addons buttons">
-    
-                                            <!-- 출근 체크 전 일 경우
-                                            <div class="control is-expanded">
-                                                <a class="button is-fullwidth is-info clock-button">
-                                                    <div class="title is-5 has-text-white">출근</div>
-                                                </a>
+                                            <div class="menu">
+                                                <span>현재시간</span>
+                                                <span>남은시간</span>
                                             </div>
-                                            <!-- 출근 체크 전 일 경우 끝 -->
-    
-                                            <!-- 출근 체크 후 일 경우 -->
-                                            <div class="control is-expanded">
-                                                <a class="button is-fullwidth is-info clock-button">
-                                                    <div class="title is-5 has-text-white">퇴근</div>
-                                                </a>
-                                            </div>
-                                            <div class="control is-expanded">
-                                                <a class="button is-fullwidth is-primary clock-button">
-                                                    <span class="title is-5 has-text-white">외출</span>
-                                                </a>
-                                            </div>
-                                            <!-- 출근 체크 후 일 경우 끝 -->
                                         </div>
 
+                                        <div class="clock-body" id="df-clock-body">
+                                            <div class="clock-wrapper" id="df-clock-wrapper">
+                                                <span class="large" id="df-clock-hour">22:</span>
+                                                <span class="large" id="df-clock-minute">23</span>
+                                                <span class="small" id="df-clock-second">12</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="clock-footer" id="df-clock-footer">
+                                            <!--
+                                            <div class="notice">
+                                                출퇴근 체크는 사내에서만 가능합니다.
+                                            </div>
+                                            -->
+
+                                            <div class="info" id="df-clock-info">
+                                                <ul>
+                                                    <li>
+                                                        <dt>출근</dt>
+                                                        <dd>08:12</dd>
+                                                    </li>
+                                                    <li>
+                                                        <dt>외출</dt>
+                                                        <dd>08:12</dd>
+                                                    </li>
+                                                    <li>
+                                                        <dt>퇴근</dt>
+                                                        <dd>08:12</dd>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="clock-buttons">
+                                                <div class="button is-large is-link">
+                                                    출근
+                                                </div>
+                                                <div class="button is-large is-danger">
+                                                    퇴근
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
            
                                 </article>
@@ -249,7 +267,7 @@
                                                         <i class="fa fa-chevron-left"></i>
                                                     </button>
                                                 </div>
-                                                <div><span class="title is-6 has-text-white">2018년 4월</span></div>
+                                                <div class="calendar-title"><span class="title is-6 has-text-white">2018년 4월</span></div>
                                                 <div class="calendar-nav-next-month">
                                                     <button class="button is-text is-small is-primary">
                                                         <i class="fa fa-chevron-right"></i>
@@ -508,6 +526,8 @@
 </section>
 <!-- 본문 끌 -->
 
-<script>_isMarkup=true;</script><script src="/assets/js/menu.js"></script>
+<script>_isMarkup=true;</script>
+<script src="/assets/js/menu.js"></script>
+<script src="/assets/js/clock.js"></script>
 </body>
 </html>

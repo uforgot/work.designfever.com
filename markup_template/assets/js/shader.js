@@ -9,13 +9,15 @@ var Shader = (function(){
     var width;
     var height;
 
+    var isDrag;
+
     var container;
     var camera, scene, renderer;
     var uniforms;
 
     var _init = function ($vertexShader, $fragShader){
-        $(window).on('resize',onWindowResize);
         onWindowResize();
+        $(window).on('resize',onWindowResize);
         container = document.getElementById('shader-box');
 
         xhrFragmentShader = new XMLHttpRequest();
@@ -72,7 +74,8 @@ var Shader = (function(){
 
         uniforms = {
             u_time: { type: "f", value: 1.0 },
-            u_resolution: { type: "v2", value: new THREE.Vector2() }
+            u_resolution: { type: "v2", value: new THREE.Vector2() },
+            u_mouse: {type: "v2", value: new THREE.Vector2() }
         };
 
         var material = new THREE.ShaderMaterial( {
@@ -88,43 +91,46 @@ var Shader = (function(){
         // renderer.setPixelRatio( window.devicePixelRatio );
         container.appendChild( renderer.domElement );
 
-        // onWindowResize();
-        // window.addEventListener( 'resize', onWindowResize, false );
+        $(document).on('mousemove',onMouseMove);
         animate();
-
     };
 
-    function onWindowResize( event ) {
-        console.log('resize');
+    var onWindowResize = function( $event ) {
         width = $(window).width();
         height = $(window).height();
+    };
 
-    }
+    var onMouseMove = function( $event ) {
+        if (isDrag===true) {
+            uniforms.u_mouse.value.x = $event.pageX;
+            uniforms.u_mouse.value.y = $event.pageY;
+        }
+    };
 
-    function animate() {
+    var animate = function() {
         render();
         requestAnimationFrame( animate );
-    }
+    };
 
-    function render() {
+    var render = function() {
         renderer.setSize(width, height);
         uniforms.u_resolution.value.x = width;
         uniforms.u_resolution.value.y = height;
 
-        uniforms.u_time.value += 0.02;
+        uniforms.u_time.value += 0.03;
         renderer.render( scene, camera );
-    }
+    };
 
     return{
         init:_init
-    }
+    };
 
 })();
 
 
 $(window).on('load',function(){
     Shader.init(
-        '/assets/js/glsl/test.vs',
+        '/assets/js/glsl/default.vs',
         '/assets/js/glsl/drive.c'
     );
 });

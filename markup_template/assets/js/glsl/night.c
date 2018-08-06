@@ -183,23 +183,65 @@ vec3 Taillights(ray r, float t) {
     return vec3(1., .1, .03)*m;
 }
 
+vec2 Rain(vec2 uv, float t)
+{
+    t *= 40.;
+//    uv *= 3.;
+
+    vec2 a= vec2(3., 1.);
+    vec2 st = uv*a;
+
+    vec2 id = floor(st);
+    st.y += t*.22;
+
+    float n = fract(sin(id.x * 716.34)*768.34);
+    st.y +=n;
+    uv.y +=n;
+    id = floor(st);
+    st = fract(st)-.5;
+
+    t += fract(sin(id.x*76.34+id.y*1453.7)*768.34)*6.283;
+    float y = -sin(t + sin(t + sin(t)*.5))*.43;
+    vec2 p1 = vec2(0., y);
+    vec2 o1 = (st-p1)/a;
+    float d = length(o1);
+    float m1 = S(.07, .0, d);
+
+    vec2 o2 = (fract(uv*a.x*vec2(1.,2.))- .5) / vec2(1., 2.);
+    d = length(o2);
+
+    float m2 = S(.3*(.5-st.y), .0,d)* S(-.1, .1, st.y-p1.y);
+    //if(st.x>.46||st.y>.49) m1 = 1.;
+
+    return vec2(m1 * o1*30.+m2*o2*10.);
+}
+
 void main() {
     vec2 uv = gl_FragCoord.xy / u_resolution.xy;
     uv -= .5;
     uv.x *= u_resolution.x / u_resolution.y;
 
-    vec3 camPos = vec3(.5, .2, 0);
-    vec3 lookat = vec3(.5, .2, 1.);
-
-    ray r = GetRay(uv, camPos, lookat, 2.);
-
     float t = u_time*.1;
+    vec3 camPos = vec3(.3, -.09, 0);
+    vec3 lookat = vec3(.5, .0, 1.);
+
+
+    vec2 rainDistort = Rain(uv*5., t)*.5;
+    rainDistort += Rain(uv*6., t)*.5;
+
+    uv.x +=sin(uv.x*50.)*.002;
+    uv.y +=sin(uv.y*170.)*.002;
+    ray r = GetRay(uv-rainDistort, camPos, lookat, 2.);
+
+
     vec3 col = Streetlights(r,t);
     col += Headlights(r,t);
     col += Taillights(r,t);
     col += Envlights(r,t);
 
-    col += (r.d.y+.15)*vec3(.1,.1,.4);
+    col += (r.d.y+.15)*vec3(.2,.1,.2);
+
+//    col =vec3(rainDistort, 0.);
 
     // output
     gl_FragColor = vec4(col, 1.);

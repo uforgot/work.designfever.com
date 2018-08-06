@@ -17,73 +17,46 @@
     </script>
 
 </head>
-<body>
-<section class="hero is-dark is-fullheight">
+<body style="background:#000;">
+
+<section class="hero is-fullheight">
     <div class="hero-body">
         <div id="shader-box"></div>
         <div class="container">
-            <div class="columns">
-                <div class="column is-one-third is-offset-one-third is-vcentered">
-                    <div class="box">
+            <div class="df-login">
+                <div class="columns">
+                    <div class="column  is-four-fifths">
                         <div class="field">
-                            <div class="control has-icons-left has-icons-right">
+                            <div class="control">
                                 <input class="input" type="text" placeholder="id" value="">
-                                <span class="icon is-small is-left"><i class="fas fa-user"></i></span>
-                                <span class="icon is-small is-right"><i class="fas fa-check"></i></span>
                             </div>
                         </div>
-    
                         <div class="field">
-                            <div class="control has-icons-left has-icons-right">
+                            <div class="control">
                                 <input class="input" type="text" placeholder="password" value="">
-                                <span class="icon is-small is-left"><i class="fas fa-key"></i></span>
-                                <span class="icon is-small is-right"><i class="fas fa-check"></i></span>
                             </div>
                         </div>
-                        
-                        <div class="field is-centered">
-                            <a class="button is-medium is-fullwidth is-info" href="main.html">
-                                <span>Log-in</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-sign-in-alt"></i>
-                                </span>
-                            </a>
-                        </div>
-                        
-                        <div class="buttons is-right">
-                            <a class="button is-small is-text is-right" href="/member/join.html">
-                                    <span class="icon is-small">
-                                        <i class="fas fa-user-plus"></i>
-                                    </span>
-                                <span>회원가입</span>
-                            </a>
-                        </div>
-                        
                     </div>
+                    <div class="column">
+                        <div class="field login-field">
+                            <a class="button is-fullwidth is-info" href="main.html">
+                                <span>Log-in</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <a class="button is-small is-text is-right is-dark" href="/member/join.html">
+                        <span class="icon is-small">
+                            <i class="fas fa-user-plus"></i>
+                        </span>
+                        <span>회원가입</span>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<div class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">Modal title</p>
-            <button class="delete" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-        
-        </section>
-        <footer class="modal-card-foot">
-            <button class="button is-success">Save changes</button>
-            <button class="button">Cancel</button>
-        </footer>
-    </div>
-</div>
-
-<script type="text/javascript" src="assets/js/shader.js"></script>
-
 </body>
+<!--<script type="text/javascript" src="assets/js/shader.js"></script>-->
 </html>

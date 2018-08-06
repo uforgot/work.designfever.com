@@ -7559,7 +7559,7 @@ label.panel-block {
 
 section {
   min-width: 370px; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     section {
       padding: 1rem 1rem !important; } }
 
@@ -7569,14 +7569,14 @@ section {
 .section-fixed-margin {
   height: 3.3rem; }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .hero-body {
     padding: 1rem 0.5rem; } }
 
 .hr-strong {
   border: 1px solid #000000; }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .card-content {
     padding: 1rem !important; } }
 
@@ -7622,7 +7622,7 @@ section {
 .table.is-resize tbody tr:last-child th,
 .table.is-resize tbody tr:last-child td {
   border-bottom: 1px solid #dbdbdb; }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .table.is-resize thead tr th {
     display: none; }
   .table.is-resize thead tr th:first-child {

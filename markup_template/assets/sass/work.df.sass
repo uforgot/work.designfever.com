@@ -9,6 +9,7 @@
 @import "df/df-util"
 
 @import "df/df-main"
+@import "df/df-clock"
 @import "df/df-vacation"
 @import "df/df-org"
 @import "df/df-commuting"
@@ -25,11 +26,30 @@ body
   font-family: 'Nanum Gothic'
   font-weight: 600
 
+
 #shader-box
   position: absolute
+  text-align: center
   left: 0
   top: 0
+  font-size: 0
+  margin: 0 auto
 
+.df-login
+  width: 300px
+  margin: 0 auto
+  .field:not(:last-child)
+    margin-bottom: 0.5rem
+  .is-fullheight
+    height: 100% !important
+  .column
+    padding: 0.25rem
+  .login-field
+    height: 100%
+    .button
+      height: 100%
+  +breakpoint(mobile)
+    width: auto
 
 #navbar
   z-index: 50
@@ -74,3 +94,5 @@ body
     display: block
   hr
     margin: 0.5rem 0
+
+

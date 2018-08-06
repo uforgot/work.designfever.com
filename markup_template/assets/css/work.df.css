@@ -4,6 +4,8 @@
 @import url(bulma.css);
 .df-main table tr:last-child {
   border-bottom: none; }
+.df-main .calendar-nav .calendar-title {
+  margin-top: -0.2rem; }
 .df-main .card-header-title .icon {
   margin-right: 0.5rem; }
 .df-main .clock {
@@ -55,6 +57,87 @@
     width: 20%;
     height: 20%;
     margin: 2.5%; }
+
+#df-clock {
+  height: 100%;
+  color: #fff;
+  background: linear-gradient(to bottom, #4271d5 40%, #2154c4); }
+  #df-clock .clock-header {
+    font-size: 1rem;
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    #df-clock .clock-header .date {
+      position: relative;
+      padding-left: 0.2rem; }
+      @media (min-width: 769px) and (max-width: 890px) {
+        #df-clock .clock-header .date span {
+          display: none; } }
+    #df-clock .clock-header .menu {
+      font-size: 0.7rem;
+      font-weight: 800;
+      position: absolute;
+      top: 0.2rem;
+      right: 0;
+      padding: 0.8rem; }
+      #df-clock .clock-header .menu span:last-child {
+        margin-left: 1rem; }
+  #df-clock .clock-body {
+    margin: 0 auto;
+    text-align: center; }
+    #df-clock .clock-body .clock-wrapper {
+      display: inline-block;
+      padding: 0; }
+    #df-clock .clock-body .large {
+      font-size: 4rem;
+      line-height: 1em; }
+    #df-clock .clock-body .small {
+      font-size: 4rem;
+      opacity: 0.2; }
+  #df-clock .clock-footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    @media screen and (max-width: 768px) {
+      #df-clock .clock-footer {
+        position: relative; } }
+    #df-clock .clock-footer .notice {
+      padding: 1rem;
+      height: 6rem;
+      text-align: center;
+      line-height: 4rem; }
+    #df-clock .clock-footer .info {
+      padding: 1rem;
+      font-size: 0.7rem; }
+      @media (min-width: 769px) and (max-width: 890px) {
+        #df-clock .clock-footer .info {
+          visibility: hidden; } }
+      #df-clock .clock-footer .info ul li dt, #df-clock .clock-footer .info ul li dd {
+        position: relative;
+        display: inline-block;
+        line-height: 2em;
+        font-weight: 800; }
+      #df-clock .clock-footer .info ul li dt {
+        width: 2.5rem; }
+    #df-clock .clock-footer .clock-buttons {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      text-align: right; }
+      #df-clock .clock-footer .clock-buttons .button {
+        width: 6rem;
+        height: 4rem;
+        font-size: 1rem;
+        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1); }
+      @media (min-width: 769px) and (max-width: 890px) {
+        #df-clock .clock-footer .clock-buttons {
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          padding: 1rem;
+          text-align: center; }
+          #df-clock .clock-footer .clock-buttons .button {
+            width: 45%; } }
 
 .df-vacation .is-vacation-title {
   border-bottom: 1px solid #cdcdcd;
@@ -164,7 +247,7 @@
   height: 1.9rem;
   margin-left: 0;
   margin-top: 1rem; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     .df-commuting .calendar .date {
       margin-top: 0.8rem;
       font-size: 0.75rem;
@@ -182,7 +265,7 @@
     padding-right: 0.3em; }
   .df-commuting .calendar .calendar-events .button {
     width: 4rem; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     .df-commuting .calendar .calendar-events {
       padding-top: 0rem !important; } }
 .df-commuting .calendar .calendar-date.is-today {
@@ -199,11 +282,11 @@
   .df-commuting .calendar .calendar-date .mark .is-static {
     background: none !important;
     border: none !important; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     .df-commuting .calendar .calendar-date .mark {
       margin-top: -0.3rem;
       margin-left: 0.3rem; } }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .df-commuting .calendar .calendar-date {
     flex-basis: 100%;
     max-width: none;
@@ -328,7 +411,7 @@
     height: 2rem; }
     .df-project .modal .search-result .search-member:not(:last-child) {
       border-bottom: dotted 1px #dbdbdb; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     .df-project .modal .search-result {
       height: 4rem; } }
 .df-project .modal .card-content {
@@ -345,7 +428,7 @@
     padding-bottom: 0.25rem;
     border-bottom: solid 1px #dbdbdb;
     margin-bottom: 0.5rem; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     .df-project .modal .member-result {
       height: 4rem; } }
 
@@ -353,7 +436,7 @@
   font-size: 0.75rem; }
 .df-weekly .is-report td, .df-weekly .is-report th {
   font-size: 0.8rem; }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .df-weekly .is-report thead {
     display: none; }
   .df-weekly .is-report td, .df-weekly .is-report th {
@@ -430,8 +513,28 @@ body {
 
 #shader-box {
   position: absolute;
+  text-align: center;
   left: 0;
-  top: 0; }
+  top: 0;
+  font-size: 0;
+  margin: 0 auto; }
+
+.df-login {
+  width: 300px;
+  margin: 0 auto; }
+  .df-login .field:not(:last-child) {
+    margin-bottom: 0.5rem; }
+  .df-login .is-fullheight {
+    height: 100% !important; }
+  .df-login .column {
+    padding: 0.25rem; }
+  .df-login .login-field {
+    height: 100%; }
+    .df-login .login-field .button {
+      height: 100%; }
+  @media screen and (max-width: 768px) {
+    .df-login {
+      width: auto; } }
 
 #navbar {
   z-index: 50; }

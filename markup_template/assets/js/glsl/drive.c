@@ -23,6 +23,7 @@
 //
 
 uniform vec2    u_resolution;
+uniform vec2    u_mouse;
 uniform float   u_time;
 
 uniform float     alpha;
@@ -193,7 +194,6 @@ void CameraSetup(vec2 uv, vec3 pos, vec3 lookat, float zoom, float m) {
     #endif
     #endif
 
-
     vec3 center = ro + f*zoom;
     vec3 i = center + (uv.x-offs.x)*r + (uv.y-offs.y)*u;
 
@@ -323,7 +323,7 @@ void main()
     uv -= .5;
     uv.x *= u_resolution.x/u_resolution.y;
 
-//    vec2 mouse = iMouse.xy/u_resolution.xy;
+    vec2 mouse = u_mouse.xy/u_resolution.xy;
 
     vec3 pos = vec3(.3, .15, -1.);
 
@@ -340,10 +340,10 @@ void main()
     lookat = mix(lookat, lookat2, sin(t*.1)*.5+.5);
 
     uv.y += bumps*4.;
-    CameraSetup(uv, pos, lookat, 2., 0.);
+    CameraSetup(uv, pos, lookat, 2., mouse.x);
 
     t *= .02;
-//    t += mouse.x;
+    t += mouse.x;
 
     // fix for GLES devices by MacroMachines
     #ifdef GL_ES
