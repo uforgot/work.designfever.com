@@ -9,6 +9,7 @@
     <title>Background Contents - Weather Video</title>
 
     <style>
+        body {background-color: #000000; margin: 0}
 
         .video-player .video-wrapper {
             position: fixed;
@@ -41,7 +42,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(0,0,0,0);
         }
     </style>
 </head>
@@ -50,10 +51,14 @@
 
 <div class="container-wrapper">
     <div class="video-wrapper">
-        <video autoplay muted loop>
+        <video muted loop playsinline>
             <source src="" type="video/mp4">
         </video>
-        <div class="dimmed"></div>
+
+        <!--<video autoplay muted loop>
+            <source src="./video/800/800_00.mp4" type="video/mp4">
+        </video>-->
+        <!--<div class="dimmed"></div>-->
     </div>
 </div>
 
@@ -70,8 +75,7 @@
                 "type" :[
                     {
                         "video_url" : "./video/200/200_00.mp4",
-                        "image_url" : "./video/200/200_00.jpg",
-                        "only_video" : false
+                        "image_url" : "./video/200/200_00.jpg"
                     }
                 ]
             },
@@ -80,13 +84,11 @@
                 "type" :[
                     {
                         "video_url" : "./video/300/300_00.mp4",
-                        "image_url" : "./video/300/300_00.jpg",
-                        "only_video" : false
+                        "image_url" : "./video/300/300_00.jpg"
                     },
                     {
                         "video_url" : "./video/300/300_01.mp4",
-                        "image_url" : "./video/300/300_00.jpg",
-                        "only_video" : false
+                        "image_url" : "./video/300/300_00.jpg"
                     }
                 ]
             },
@@ -96,17 +98,17 @@
                     {
                         "video_url" : "./video/500/500_00.mp4",
                         "image_url" : "./video/500/500_00.jpg",
-                        "only_video" : false
+                        "dimmed_opacity" : 0
                     },
                     {
                         "video_url" : "./video/500/500_01.mp4",
+                        "video_low_url" : "./video/500/500_01_low.mp4",
                         "image_url" : "./video/500/500_00.jpg",
-                        "only_video" : false
+                        "dimmed_opacity" : 0
                     },
                     {
                         "video_url" : "./video/500/500_02.mp4",
-                        "image_url" : "./video/500/500_00.jpg",
-                        "only_video" : false
+                        "image_url" : "./video/500/500_00.jpg"
                     }
                 ]
             },
@@ -115,8 +117,7 @@
                 "type" :[
                     {
                         "video_url" : "./video/600/600_00.mp4",
-                        "image_url" : "./video/600/600_00.jpg",
-                        "only_video" : false
+                        "image_url" : "./video/600/600_00.jpg"
                     }
                 ]
             },
@@ -125,8 +126,11 @@
                 "type" :[
                     {
                         "video_url" : "./video/700/700_00.mp4",
-                        "image_url" : "./video/700/700_00.jpg",
-                        "only_video" : false
+                        "image_url" : "./video/700/700_00.jpg"
+                    },
+                    {
+                        "video_url" : "./video/700/700_01.mp4",
+                        "image_url" : "./video/700/700_00.jpg"
                     }
                 ]
             },
@@ -136,12 +140,11 @@
                     {
                         "video_url" : "./video/800/800_00.mp4",
                         "image_url" : "./video/800/800_00.jpg",
-                        "only_video" : false
+                        "dimmed_opacity" : 0
                     },
                     {
                         "video_url" : "./video/800/800_01.mp4",
-                        "image_url" : "./video/800/800_00.jpg",
-                        "only_video" : false
+                        "image_url" : "./video/800/800_00.jpg"
                     }
                 ]
             },
@@ -151,7 +154,7 @@
                     {
                         "video_url" : "./video/801/801_00.mp4",
                         "image_url" : "./video/801/801_00.jpg",
-                        "only_video" : false
+                        "dimmed_opacity" : 0
                     }
                 ]
             }
@@ -170,15 +173,22 @@
 
 
 
-    /* video_url : video url
-    image_url : video 재생 불가 할시 나오는 이미지
-    only_video : 강제 비디오 재생 */
+    /*
+        video_url : video url
+        video_low_url : video url low version (default : "")
+        image_url : video 재생 불가 할시 나오는 이미지 (default : "/common/img/default_bg_image.jpg)
+        only_video : 모바일에서 비디오 모드 ,false일시 안드로이드 && wifi 환경에서만 비디오 재생 (default : "true")
+        dimmed_opacity : dimmed opacity (default : "0.4")
+    */
 
     var dataOjb = {
         "video_url" : dataVideo.type[videoindex].video_url,
-        "image_url" : dataVideo.type[videoindex].image_url,
-        "only_video" : dataVideo.type[videoindex].only_video
+        "video_low_url" : dataVideo.type[videoindex].video_low_url,  //default : ""
+        "image_url" : dataVideo.type[videoindex].image_url,  //default : "/common/img/default_bg_image.jpg"
+        "only_video" : dataVideo.type[videoindex].only_video,  //default : "true"
+        "dimmed_opacity" : dataVideo.type[videoindex].dimmed_opacity  //default : "0.4"
     };
+
 
     var videoPlayer = new VideoPlayer(dataOjb);
     videoPlayer.setting();

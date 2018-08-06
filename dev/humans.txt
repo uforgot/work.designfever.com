@@ -1,0 +1,15 @@
+/* TEAM */
+
+    Interactive developer: Han Youngsu
+    Contact: vamstudio@designfever.com
+    From:Seoul, South of Korea
+
+  	Interactive developer: Park Hyunil
+  	From:Seoul, South of Korea
+
+/* THANKS */
+
+
+/* TECHNOLOGY COLOPHON */
+
+  HTML5, CSS3, Javascript

@@ -18,14 +18,15 @@ var loginBgController = function(con_iframe, json_data){
 
         if(json_data){
 
-            var ran_index = Math.floor(json_data.info.today.bg_contents.length * Math.random());
-            var url = json_data.info.today.bg_contents[ran_index].url;
+            //var ran_index = 0;//Math.floor(json_data.info.today.bg_contents.length * Math.random());
+            //var url = json_data.info.today.bg_contents[ran_index].url;
 
-            console.log("[ loadBgController.js ] : ",  "loaded json : ", json_data);
+            var ran_index = Math.floor(json_data.info.test.bg_contents.length * Math.random());
+            var url = json_data.info.test.bg_contents[ran_index].url;
+
             console.log("[ loadBgController.js ] : ",  "iframe url : ", url);
 
             set_iframe(url);
-
         }
     }
 

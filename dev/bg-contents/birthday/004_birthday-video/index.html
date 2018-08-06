@@ -9,6 +9,7 @@
     <title>Background Contents - BirthDay Video</title>
 
     <style>
+        body {background-color: #000000; margin: 0}
 
         .video-player .video-wrapper {
             position: fixed;
@@ -41,7 +42,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(0,0,0,0);
         }
     </style>
 </head>
@@ -50,10 +51,9 @@
 
 <div class="container-wrapper">
     <div class="video-wrapper">
-        <video autoplay muted loop>
+        <video muted loop playsinline>
             <source src="" type="video/mp4">
         </video>
-        <div class="dimmed"></div>
     </div>
 </div>
 
@@ -65,14 +65,17 @@
 <script src="../../common/js/VideoPlayer.js"></script>
 <script>
 
-    /* video_url : video url
-    image_url : video 재생 불가 할시 나오는 이미지
-    only_video : 강제 비디오 재생 */
+    /*
+        video_url : video url
+        video_low_url : video url low version (default : "")
+        image_url : video 재생 불가 할시 나오는 이미지 (default : "/common/img/default_bg_image.jpg)
+        only_video : 모바일에서 비디오 모드 ,false일시 안드로이드 && wifi 환경에서만 비디오 재생 (default : "true")
+        dimmed_opacity : dimmed opacity (default : "0.4")
+    */
 
     var dataOjb = {
         "video_url" : "./video/birthday_02.mp4",
-        "image_url" : "./video/birthday_00.jpg",
-        "only_video" : false
+        "image_url" : "./video/birthday_00.jpg"
     };
 
     var videoPlayer = new VideoPlayer(dataOjb);
