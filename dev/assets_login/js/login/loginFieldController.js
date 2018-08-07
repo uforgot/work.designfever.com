@@ -14,7 +14,7 @@ var LoginFieldController = function(){
         pwd = document.getElementById('user_pw');
 
         id.addEventListener( 'keypress', _keypressId );
-        pwd.addEventListener( 'keypress', _keypressPwd );
+        //pwd.addEventListener( 'keypress', _keypressPwd );
 
         if(storageId == null || storageId == undefined){
             id.focus();
@@ -55,7 +55,7 @@ var LoginFieldController = function(){
     function _loginCheck() {
         var frm = document.getElementById('id_login');
 
-         if( frm.user_id.value.length < 4 || frm.user_id.value.length > 16 ) {
+         if( frm.user_id.value.length < 3 || frm.user_id.value.length > 16 ) {
          alert("아이디가 존재하지 않습니다.");
          frm.user_id.focus();
          return false;
@@ -76,11 +76,97 @@ var LoginFieldController = function(){
         console.log("action : ", frm.action);
         console.log("target : ", frm.target);
 
-        alert("action : " + frm.action + "\ntarget : " + frm.target);
+        //alert("action : " + frm.action + "\ntarget : " + frm.target);
 
-        frm.submit();
+        var btn = document.getElementById('user_pw');
+        btn.blur();
 
+        //frm.submit();
+        loading();
+        ajaxPost(frm, onSubmit);
         return false;
+    }
+
+    function loading(){
+        var sec_login = document.querySelector('.sec-login');
+        df.lab.Util.addClass(sec_login, 'loading');
+
+        var inputs = sec_login.querySelectorAll('input');
+        inputs.forEach(function(el, index){
+            el.setAttribute("disabled", "");
+        });
+    }
+
+    function onSubmit(response){
+        console.log(response);
+        onLog();
+    }
+
+    function onLog(){
+        var sec_login = document.querySelector('.sec-login');
+        df.lab.Util.removeClass(sec_login, 'loading');
+        df.lab.Util.addClass(sec_login, 'logged');
+
+        var inputs = sec_login.querySelectorAll('input');
+        inputs.forEach(function(el, index){
+            el.removeAttribute("disabled");
+        });
+    }
+
+
+    function ajaxPost (form, callback) {
+        // Collect the form data while iterating over the inputs
+        var data = {};
+        for (var i = 0, ii = form.length; i < ii; ++i) {
+            var input = form[i];
+            if (input.name) {
+                data[input.name] = input.value;
+            }
+        }
+
+        // Construct an HTTP request
+        var xhr = new XMLHttpRequest();
+        xhr.open(form.method, form.action, true);
+        xhr.setRequestHeader('Accept', 'application/json; charset=utf-8');
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+        // Send the collected data as JSON
+        xhr.send(JSON.stringify(data));
+
+        // Callback function
+        xhr.onloadend = function (response) {
+
+            console.log("xhr.onloadend : " , response);
+
+            if (response.target.status === 0) {
+
+                // Failed XmlHttpRequest should be considered an undefined error.
+                console.log("xhr.onloadend (Failed) : " , xhr);
+
+            } else if (response.target.status === 400) {
+
+                // Bad Request
+                console.log("xhr.onloadend (Bad Request) : " , xhr);
+            } else if (response.target.status === 404) {
+
+                // Bad Request
+                console.log("xhr.onloadend (404 Not Found) : " , xhr);
+
+            } else if (response.target.status === 200) {
+
+                // Success
+                //console.log("xhr.onloadend (Success) : form.dataset.formSuccess" , form.dataset.formSuccess);
+                //console.log("xhr.onloadend (Success) response : " , response);
+                //console.log("xhr.onloadend (Success) xhr : " , xhr);
+                console.log("xhr.onloadend (Success) response : " , JSON.parse(response.target.responseText));
+
+                setTimeout(function(){
+                    callback(response);
+                }, 1000);
+                //callback(response);
+
+            }
+        };
     }
 
     return {

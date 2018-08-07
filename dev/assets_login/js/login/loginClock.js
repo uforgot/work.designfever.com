@@ -105,18 +105,19 @@ var DF_Clock = function(con, json_data){
 
         var half = Math.min(center_x, center_y);
 
-        var half_hh = half - 92;
-        var half_mm = half - 58;
+
         var half_ss = half - 58;
+        var half_mm = half - 58;
+        var half_hh = Math.round(half_mm * 0.74);
 
         _pixi.clockGraphic.bar_hh.clear();
         _pixi.clockGraphic.bar_hh.beginFill(0xFFFFFF);
-        _pixi.clockGraphic.bar_hh.drawRoundedRect(-2, -2, half_hh + 2, 4, 2);
+        _pixi.clockGraphic.bar_hh.drawRoundedRect(-3, -3, half_hh + 3, 6, 3);
         _pixi.clockGraphic.bar_hh.endFill();
 
         _pixi.clockGraphic.bar_mm.clear();
         _pixi.clockGraphic.bar_mm.beginFill(0xFFFFFF);
-        _pixi.clockGraphic.bar_mm.drawRoundedRect(-2, -2, half_mm + 2, 4, 2);
+        _pixi.clockGraphic.bar_mm.drawRoundedRect(-3, -3, half_mm + 3, 6, 3);
         _pixi.clockGraphic.bar_mm.endFill();
 
         _pixi.clockGraphic.bar_ss.clear();
@@ -154,7 +155,7 @@ var DF_Clock = function(con, json_data){
             //fontFamily: 'Arial',
             fontSize: 20,
             //fontStyle: 'italic',
-            fontWeight: '700',
+            fontWeight: '800',
             fill: ['#ffffff'],
             //fill: ['#ffffff', '#00ff99'], // gradient
             //stroke: '#4a1850',
@@ -173,7 +174,7 @@ var DF_Clock = function(con, json_data){
         var style_mm = new PIXI.TextStyle({
             fontFamily: 'NanumSquareRound',
             fontSize: 14,
-            fontWeight: '700',
+            fontWeight: '800',
             fill: ['#ffffff'],
         });
 
@@ -182,7 +183,7 @@ var DF_Clock = function(con, json_data){
         var style_ss = new PIXI.TextStyle({
             fontFamily: 'NanumSquareRound',
             fontSize: 14,
-            fontWeight: '700',
+            fontWeight: '800',
             fill: ['#ff0000'],
         });
         _pixi.txt_ss = new PIXI.Text('00', style_ss);
@@ -225,13 +226,13 @@ var DF_Clock = function(con, json_data){
     var _start = function(){
 
         _pixi.mainContainer.addChild(_pixi.clockContainer);
-        _pixi.clockContainer.addChild(_pixi.clockGraphic.bar_hh);
-        _pixi.clockContainer.addChild(_pixi.clockGraphic.bar_mm);
         _pixi.clockContainer.addChild(_pixi.clockGraphic.bar_ss);
+        _pixi.clockContainer.addChild(_pixi.clockGraphic.bar_mm);
+        _pixi.clockContainer.addChild(_pixi.clockGraphic.bar_hh);
 
         _pixi.mainContainer.addChild(_pixi.txt_hh);
         _pixi.mainContainer.addChild(_pixi.txt_mm);
-        _pixi.mainContainer.addChild(_pixi.txt_ss);
+        //_pixi.mainContainer.addChild(_pixi.txt_ss);
 
         _drawCanvas();
 

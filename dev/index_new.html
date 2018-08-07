@@ -36,7 +36,7 @@
     <link rel="image_src" href="assets_login/images/favicon/apple-icon.png">
 
     <link rel="stylesheet" type="text/css" href="assets_login/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="assets_login/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="assets_login/css/login.css?uniq=20180807" />
 
     <script src="assets_login/js/common_withPixi.bundle.js"></script>
     <script src="assets_login/js/loadInfoData.js"></script>
@@ -75,7 +75,8 @@
     </section>
     <section class="sec-login">
         <div class="wrapper-login">
-            <form id="id_login" name="user_info" method="POST" accept-charset="euc-kr" enctype="multipart/form-data" action="login.php" target="hdnFrame">
+            <form id="id_login" name="user_info" method="POST" accept-charset="euc-kr" enctype="multipart/form-data" autocomplete="off"
+                  action="assets_login/temp/df_info_data.json">
                 <fieldset class="login-form">
                     <legend class="blind">Login</legend>
                     <div class="area-input">
@@ -84,11 +85,13 @@
                                id="user_id" name="user_id" type="text"
                                placeholder="ID"
                                maxlength="15"
-                               pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,15}$"
+                               pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,15}$"
                                style="ime-mode:disabled;"
-                               autocomplete="on"
-                               title="아이디를 4자 이상 입력해 주세요. 공백이나 특수문자 등은 포함할 수 없습니다."
-                               required autofocus>
+                               autocomplete="false"
+                               title="아이디를 3자 이상 입력해 주세요. 공백이나 특수문자 등은 포함할 수 없습니다."
+                               tabindex="0" aria-label="아이디 입력"
+                               spellcheck="false"autocapitalize="off" autocorrect="off"
+                               required autofocus >
                     </div>
                     <div class="area-input">
                         <label for="user_pw" class="blind"><span>PW</span></label>
@@ -98,11 +101,12 @@
                                maxlength="15"
                                pattern=".{4,}"
                                title="비밀번호를 입력해 주세요. 4자 이상으로 된 영문소문자, 숫자, 언더스코어로만 구성할 수 있습니다."
+                               spellcheck="false"autocapitalize="off" autocorrect="off"
                                required >
                     </div>
                     <div class="wrapper-btn">
                         <div class="area-input btn-login btn-module">
-                            <input class="round-box btn-submit" form="id_login" type="submit" value="Login">
+                            <input class="round-box btn-submit"  id="user_login" form="id_login" type="submit" value="Login">
                         </div>
                         <div class="area-btn btn-help btn-module align-right">
                             <a class="round-box link-help" href="help.html" title="안내 데스크"><span>Help</span></a>
@@ -114,7 +118,8 @@
         <div class="wrapper-checkin">
             <div class="area-check-inout area-checkin">
                 <div class="btn-wrapper">
-                    <form id="id_checkin" name="user_checkin" method="POST" accept-charset="euc-kr" enctype="multipart/form-data" action="checkin.php" target="hdnFrame">
+                    <form id="id_checkin" name="user_checkin" method="POST" accept-charset="euc-kr" enctype="multipart/form-data"
+                          action="assets_login/temp/df_info_data.json">
                         <fieldset>
                             <legend class="blind">Checkin</legend>
                             <div class="area-input btn-checkin">
@@ -125,14 +130,16 @@
                 </div>
             </div>
             <div class="area-timebar">
-                <div><p>한영수 프로님</p></div>
+                <div class="txt-wrapper"><p><span>한영수 </span><span>프로님</span></p></div>
                 <div class="bar-wrapper">
                     <div class="bar-cur"></div>
                 </div>
+                <div class="txt-wrapper"><p><span>퇴근 가능시간 </span><span>19시 45분</span></p></div>
             </div>
             <div class="area-check-inout area-checkout">
                 <div class="btn-wrapper checkout">
-                    <form id="id_checkout" name="user_checkout" method="POST" accept-charset="euc-kr" enctype="multipart/form-data" action="checkout.php" target="hdnFrame">
+                    <form id="id_checkout" name="user_checkout" method="POST" accept-charset="euc-kr" enctype="multipart/form-data"
+                          action="assets_login/temp/df_info_data.json">
                         <fieldset>
                             <legend class="blind">Checkout</legend>
                             <div class="area-input btn-checkout">
@@ -151,11 +158,11 @@
     </footer>
 </div>
 <iframe name="hdnFrame" id="hdnFrame" width="0" height="0" style="border:0; visibility: hidden; top:0; position: fixed"></iframe>
-<script src="assets_login/js/login/loginBgController.js?uniq=20180803"></script>
-<script src="assets_login/js/login/loginClock.js?uniq=20180803"></script>
-<script src="assets_login/js/login/loginDate.js?uniq=20180803"></script>
-<script src="assets_login/js/login/loginFieldController.js?uniq=20180803"></script>
-<script src="assets_login/js/login.js?uniq=20180803_2"></script>
+<script src="assets_login/js/login/loginBgController.js?uniq=20180807"></script>
+<script src="assets_login/js/login/loginClock.js?uniq=20180807"></script>
+<script src="assets_login/js/login/loginDate.js?uniq=20180807"></script>
+<script src="assets_login/js/login/loginFieldController.js?uniq=20180807_2"></script>
+<script src="assets_login/js/login.js?uniq=20180807"></script>
 <script>
     if(GlobalVars.isLoaded) init();
     else                    document.addEventListener(GlobalVars.eventType.ON_LOAD_JSON, onLoadJson);
