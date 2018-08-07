@@ -73,6 +73,7 @@
         #df-clock .clock-header .date span {
           display: none; } }
     #df-clock .clock-header .menu {
+      display: inline-flex;
       font-size: 0.7rem;
       font-weight: 800;
       position: absolute;
@@ -85,11 +86,10 @@
     margin: 0 auto;
     text-align: center; }
     #df-clock .clock-body .clock-wrapper {
-      display: inline-block;
+      display: inline-flex;
       padding: 0; }
     #df-clock .clock-body .large {
-      font-size: 4rem;
-      line-height: 1em; }
+      font-size: 4rem; }
     #df-clock .clock-body .small {
       font-size: 4rem;
       opacity: 0.2; }
@@ -105,7 +105,7 @@
       padding: 1rem;
       height: 6rem;
       text-align: center;
-      line-height: 4rem; }
+      line-height: 2rem; }
     #df-clock .clock-footer .info {
       padding: 1rem;
       font-size: 0.7rem; }
@@ -121,6 +121,7 @@
         width: 2.5rem; }
     #df-clock .clock-footer .clock-buttons {
       position: absolute;
+      display: inline-flex;
       right: 1rem;
       bottom: 1rem;
       text-align: right; }
@@ -136,8 +137,12 @@
           width: 100%;
           padding: 1rem;
           text-align: center; }
-          #df-clock .clock-footer .clock-buttons .button {
-            width: 45%; } }
+          #df-clock .clock-footer .clock-buttons .field {
+            width: 100%; }
+            #df-clock .clock-footer .clock-buttons .field .control {
+              width: 48%; }
+              #df-clock .clock-footer .clock-buttons .field .control .button {
+                width: 100%; } }
 
 .df-vacation .is-vacation-title {
   border-bottom: 1px solid #cdcdcd;

@@ -10,22 +10,6 @@ require_once CMN_PATH."/weekly_check.php";
 <?	require_once CMN_PATH."/checkout_check.php";	?>
 
 <script type="text/javascript">
-
-    function startTime() {
-        var today = new Date();
-        var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
-        m = checkTime(m);
-        s = checkTime(s);
-        document.getElementById('clock').innerHTML =
-            h + ":" + m + ":" + s;
-        var t = setTimeout(startTime, 500);
-    }
-    function checkTime(i) {
-        if (i < 10) {i = "0" + i}; // 숫자가 10보다 작을 경우 앞에 0을 붙여줌
-        return i;
-    }
     //출근 체크
     function go_office(){
         frm = document.form;
@@ -122,7 +106,7 @@ require_once CMN_PATH."/weekly_check.php";
     <? } ?>
 </script>
 
-<body onload="startTime()">
+<body>
 <form method="post" name="form">
     <? include INC_PATH."/top_menu.php"; ?>
     <!-- 본문 시작 -->
@@ -257,7 +241,7 @@ require_once CMN_PATH."/weekly_check.php";
                                 }
                                 ?>
                                 <div class="control is-expanded">
-                                    <a class="button is-fullwidth is-info" href="/approval/approval_to_list.php">
+                                    <a class="button is-fullwidth" href="/approval/approval_to_list.php">
                                 <span class="icon is-small is-hidden-tablet-only">
                                     <i class="fas fa-check"></i>
                                 </span>
@@ -352,531 +336,170 @@ require_once CMN_PATH."/weekly_check.php";
                     <div class="tile is-ancestor">
                         <div class="tile is-vertical">
                             <div class="tile">
-                                <input type="hidden" name="time_gubun" id="time_gubun" value="<?=$time_gubun?>">
-                                <!--근태출력부분-->
+                                <!--근태체크-->
                                 <div class="tile is-parent is-vertical">
-                                    <article class="tile is-child card">
-                                        <div class="clock">
-                                            <div class="area">
-                                                <?
-                                                if (!in_array($prs_id,$NoCommuting_arr))
-                                                {
-                                                if ($today_gubun1 >= 10)
-                                                {
-                                                    ?>
-                                                    <div class="title has-text-centered has-text-white txt">
-                                                        <p class="now">
-                                                            <span id="clock"></span>		<!--시계-->
-                                                        </p>
-                                                        <p class="start"> 휴가계를 제출하셨습니다.<br>출퇴근체크를 원하시면 휴가계 삭제를 요청해 주세요.</p>
-                                                        <p class='start'></p>
-                                                    </div>
-                                                    <div class="field has-addons buttons">
-                                                        <div class='control is-expanded'>
-                                                            <a class='button is-static is-primary clock-button'>
-                                                                <div class='title is-5 has-text-white'>휴가</div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <?
-                                                }
-                                                else
-                                                {
-                                                if (in_array(REMOTE_IP, $ok_ip_arr))
-                                                {
-                                                ?>
+                                    <? include INC_PATH."/check.php"; ?>
+                                </div>
 
-                                                <div class="title has-text-centered has-text-white txt">
-                                                    <p class="now">
-                                                        <span id="clock"></span>		<!--시계-->
-                                                    </p>
-
-                                                    <!--시간 출력 부분 로직-->
-                                                    <? if (in_array(REMOTE_IP, $ok_ip_arr)){
-
-                                                        //출근 시간
-                                                        if ($time_gubun == "before")
-                                                        {
-                                                            if ($yesterday_checktime1 != "" && $yesterday_checktime2 == "")
-                                                            {
-                                                                echo " <p class='start'>출근 : ". substr($yesterday_checktime1,8,2) .":". substr($yesterday_checktime1,10,2) ."";
-                                                            }
-                                                            else
-                                                            {}
-                                                        }
-                                                        else
-                                                        {
-                                                            if ($today_checktime1 == "")
-                                                            {}
-                                                            else{
-                                                                echo " <p class='start'>출근 : ". substr($today_checktime1,8,2) .":". substr($today_checktime1,10,2) ."";
-                                                            }
-                                                        }
-
-                                                        //퇴근 시간
-                                                        if ($today_checktime2 != "")												//퇴근 중복체크
-                                                        {
-                                                            echo "&nbsp;&nbsp;퇴근 : ";
-                                                            echo substr($today_checktime2,8,2) .":". substr($today_checktime2,10,2);
-                                                        }
-                                                        else if ($today_checktime1 == "" && $yesterday_checktime1 == ""){}			//오늘 출근체크 X, 어제 출근체크 X
-                                                        else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 == "" && $time_gubun == "before"){}	//어제 퇴근체크 - 오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 X, 08:00이전
-                                                        else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 != "" && $time_gubun == "before"){}	//어제 퇴근 중복체크 - 오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 O, 08:00이전
-                                                        else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 != "" && $time_gubun == "after"){}	//오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 O, 08:00이후
-                                                        else if ($today_checktime1 != "" && $today_checktime2 == ""){}		//퇴근체크 - 오늘 출근체크 O, 오늘 퇴근체크 X
-                                                        else{}															//오늘 출근체크 X, 오늘 퇴근체크 X
-
-                                                        //외출 시간 출력
-                                                        if ($off_check == "Y")
-                                                        {
-                                                            if ($last_off_endtime == "")
-                                                            {
-                                                                //echo "<a href='javascript:off_office(\"comeback\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>복귀</span></a> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ --:--</span></a><br/>";
-                                                                //echo " <p class='clock-txt-start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
-                                                                echo " <p class='start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ."";
-                                                                echo "</p>";
-                                                            }
-                                                            else
-                                                            {
-                                                                //echo "<a href='javascript:off_office(\"goout\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."</span></a><br/>";
-                                                                //echo " <p class='clock-txt-start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ."";
-                                                                echo " <p class='start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
-                                                                echo "</p>";
-                                                            }
-                                                        }
-                                                        else
-                                                        {
-                                                            if ($today_checktime1 != "")
-                                                            {}
-                                                            else
-                                                            {
-                                                                //echo "<span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."</span><br/>";
-                                                                //echo " <p class='clock-txt-start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
-                                                                //echo " <p class='clock-txt-start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ."";
-                                                                echo "</p>";
-                                                            }
-                                                        }
-
-
-                                                        // 파견지 확인용 ip주소 분기처리
-                                                    }else if (REMOTE_IP == "0" || REMOTE_IP == "0")
-                                                    {
-                                                    //출근
-                                                    if ($time_gubun == "before")
-                                                    {
-                                                        if ($yesterday_checktime1 != "" && $yesterday_checktime2 == "")
-                                                        {
-                                                            echo " <p class='start'>출근 : ". substr($yesterday_checktime1,8,2) .":". substr($yesterday_checktime1,10,2) ."";
-                                                        }
-                                                        else
-                                                        {}
-                                                    }else{
-                                                        if ($today_checktime1 == "")
-                                                        {}
-                                                        else
-                                                        {
-                                                            echo " <p class='start'>출근 : ". substr($today_checktime1,8,2) .":". substr($today_checktime1,10,2) ."";
-                                                        }
-                                                    }
-
-                                                    //퇴근
-                                                    if ($today_checktime2 != "")												//퇴근 중복체크
-                                                    {
-                                                        echo "&nbsp;퇴근 : ";
-                                                        echo substr($today_checktime2,8,2) .":". substr($today_checktime2,10,2);
-                                                        echo "</p>";
-                                                    }
-                                                    else if ($today_checktime1 == "" && $yesterday_checktime1 == ""){}			//오늘 출근체크 X, 어제 출근체크 X
-                                                    else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 == "" && $time_gubun == "before"){}	//어제 퇴근체크 - 오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 X, 08:00이전
-                                                    else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 != "" && $time_gubun == "before"){}	//어제 퇴근 중복체크 - 오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 O, 08:00이전
-                                                    else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 != "" && $time_gubun == "after"){}	//오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 O, 08:00이후
-                                                    else if ($today_checktime1 != "" && $today_checktime2 == ""){}		//퇴근체크 - 오늘 출근체크 O, 오늘 퇴근체크 X
-                                                    else{}															//오늘 출근체크 X, 오늘 퇴근체크 X
-
-                                                    //외출 시간 출력
-                                                    if ($off_check == "Y")
-                                                    {
-                                                        if ($last_off_endtime == "")
-                                                        {
-                                                            //echo "<a href='javascript:off_office(\"comeback\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>복귀</span></a> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ --:--</span></a><br/>";
-                                                            echo " <p class='start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
-                                                            echo "</p>";
-                                                        }
-                                                        else
-                                                        {
-                                                            //echo "<a href='javascript:off_office(\"goout\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."</span></a><br/>";
-                                                            echo " <p class='start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
-                                                            echo "</p>";
-                                                        }
-                                                    }
-                                                    else
-                                                    {
-                                                        if ($today_checktime1 != "")
-                                                        {}
-                                                        else
-                                                        {
-                                                            //echo "<span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."</span><br/>";
-                                                            echo " <p class='start'>외출 : ". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."";
-                                                            //echo "</p>";
-                                                        }
-                                                    }
-                                                    ?>
-
-                                                </div>
-                                            <? }
-                                            else
-                                            { ?>
-                                                <p class="start">출퇴근 체크는 사내에서만 가능합니다.</p>
-                                            <? } ?>
-                                            </div>
-                                        </div>
-                                        <div class="field has-addons buttons">
-                                            <?
-                                            //출근 버튼 출력
-                                            if ($time_gubun == "before")
-                                            {
-                                                if ($yesterday_checktime1 != "" && $yesterday_checktime2 == "")
-                                                {
-                                                    echo	"<div class='control is-expanded'>
-                                                			<a href='javascript:go_office();' onClick='return !count++' class='button is-fullwidth is-info'>
-                                                    	        <div class='title is-5 has-text-white'>출근</div>
-                                                			</a>
-                                            			</div>";
-                                                }
-                                                else
-                                                {
-                                                    echo	"<div class='control is-expanded'>
-                                                			<a href='javascript:go_office();' onClick='return !count++' class='button is-fullwidth is-info'>
-                                                    			<div class='title is-5 has-text-white'>출근</div>
-                                                			</a>
-                                            			</div>";
-                                                }
-                                            }
-                                            else
-                                            {
-                                                if ($today_checktime1 == "")
-                                                {
-                                                    echo	"<div class='control is-expanded'>
-                                                			<a href='javascript:go_office();' onClick='return !count++' class='button is-fullwidth is-info clock-button'>
-                                                    			<div class='title is-5 has-text-white'>출근</div>
-                                                			</a>
-                                            			</div>";
-                                                }
-                                                else
-                                                {}
-                                            }
-
-                                            if ($off_check == "Y")
-                                            {
-                                                if ($last_off_endtime == "")
-                                                {
-                                                    $end_check = "N";
-                                                }
-                                                else
-                                                {
-                                                    $end_check = "Y";
-                                                }
-                                            }
-                                            else
-                                            {
-                                                $end_check = "Y";
-                                            }
-
-                                            //퇴근 버튼 출력
-                                            /*
-                                                출근체크가 안됐으면 일단 무조건 퇴근체크도 막아야 한다 하지만
-                                                    조건1. 전일 출근체크가 되어있고
-                                                    조건2. 자정넘어 아침8시 이전이고
-                                                    조건3. 자정넘어 출근체크가 안되어있고
-                                                    조건4. 자정넘어 출근체크가 되어 있어도 휴가여야
-                                                이때는 퇴근체크가 가능하게끔 로직 설정
-                                            */
-                                            $gbArray1 = array(4,8,6,10,11,12,13,14,15,16,17,18,19,20,21);
-                                            $gbArray2 = array(5,9);
-
-                                            $chk_gb1 = in_array($today_gubun1,$gbArray1);
-                                            $chk_gb2 = in_array($today_gubun2,$gbArray2);
-                                            if ($end_check == "Y")
-                                            {
-                                                if ($today_checktime2 != "")												//퇴근 중복체크
-                                                {
-                                                    echo	"<div class='control is-expanded'>
-                                                			<a href=javascript:leave_office(2,'". $today_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info'>
-                                                    			<div class='title is-5 has-text-white'>퇴근</div>
-                                                			</a>
-                                            			</div>";
-                                                }
-                                                else if ($today_checktime1 == "" && $yesterday_checktime1 == "")			//오늘 출근체크 X, 어제 출근체크 X
-                                                {
-                                                }
-                                                else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 == "" && $time_gubun == "before")	//어제 퇴근체크 - 오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 X, 08:00이전(조건2)
-                                                {
-                                                    echo	"<div class='control is-expanded'>
-                                                			<a href='javascript:leave_office(3,'". $yesterday_checktime1 ."','". $totaltime ."');' class='button is-fullwidth is-info clock-button'>
-                                                    			<div class='title is-5 has-text-white'>퇴근</div>
-                                                			</a>
-                                            			</div>";
-                                                }
-                                                else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 != "" && $time_gubun == "before")	//어제 퇴근 중복체크 - 오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 O, 08:00이전(조건2)
-                                                {
-
-                                                    echo	"<div class='control is-expanded'>
-                                                			<a href=javascript:leave_office(4,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info'>
-                                                    			<div class='title is-5 has-text-white'>퇴근</div>
-                                                			</a>
-                                            			</div>";
-                                                }
-                                                else if ($today_checktime1 == "" && $yesterday_checktime1 != "" && $yesterday_checktime2 != "" && $time_gubun == "after")	//오늘 출근체크 X, 어제 출근체크 O, 어제 퇴근체크 O, 08:00이후
-                                                {
-                                                }
-                                                else if (($chk_gb1 == 1 || $chk_gb2 == 1) && $yesterday_checktime1 != "" && $yesterday_checktime2 == "" && $time_gubun == "before")	//어제 퇴근체크 - 오늘 휴가, 어제 출근체크 O, 어제 퇴근체크 X, 08:00이전(조건4)
-                                                {
-                                                    echo	"<div class='control is-expanded'>
-                                                			<a href=javascript:leave_office(3,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info'>
-                                                    			<div class='title is-5 has-text-white'>퇴근</div>
-                                                			</a>
-                                            			</div>";
-                                                }
-                                                else if (($chk_gb1 == 1 || $chk_gb2 == 1) && $yesterday_checktime1 != "" && $yesterday_checktime2 != "" && $time_gubun == "before")	//어제 퇴근 중복체크 - 오늘 휴가, 어제 출근체크 O, 어제 퇴근체크 O, 08:00이전(조건4)
-                                                {
-                                                    echo	"<div class='control is-expanded'>
-                                                			<a href=javascript:leave_office(4,'". $yesterday_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info clock-button'>
-                                                    			<div class='title is-5 has-text-white'>퇴근</div>
-                                                			</a>
-                                            			</div>";
-                                                }
-                                                else if ($today_checktime1 != "" && $today_checktime2 == "")		//퇴근체크 - 오늘 출근체크 O, 오늘 퇴근체크 X
-                                                {
-                                                    echo	"<div class='control is-expanded'>
-                                                			<a href=javascript:leave_office(1,'". $today_checktime1 ."','". $totaltime ."'); class='button is-fullwidth is-info'>
-                                                    			<div class='title is-5 has-text-white'>퇴근</div>
-                                                			</a>
-                                            			</div>";
-                                                }
-                                                else	//오늘 출근체크 X, 오늘 퇴근체크 X
-                                                {}
-                                            }
-
-                                            //외출 버튼 출력
-                                            if ($off_check == "Y")
-                                            {
-                                                if ($last_off_endtime == "")
-                                                {
-                                                    //echo "<a href='javascript:off_office(\"comeback\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>복귀</span></a> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ --:--</span></a><br/>";
-                                                    echo	"<div class='control is-expanded'>
-                                                				<a href='javascript:off_office(\"comeback\");' class='button is-fullwidth is-primary '>
-                                                    			    <div class='title is-5 has-text-white'>외출</div>
-                                                				</a>
-                                            			</div>";
-                                                }
-                                                else
-                                                {
-                                                    //echo "<a href='javascript:off_office(\"goout\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."</span></a><br/>";
-                                                    echo	"<div class='control is-expanded'>
-                                                				<a href='javascript:off_office(\"goout\");' class='button is-fullwidth is-primary'>
-                                                    		    	<div class='title is-5 has-text-white'>외출</div>
-                                                				</a>
-                                            			</div>";
-                                                }
-                                            }
-                                            else
-                                            {
-                                                if ($today_checktime1 != "")
-                                                {
-                                                    //echo "<a href='javascript:off_office(\"goout\");'><span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span></a><br/>";
-                                                    echo	"<div class='control is-expanded'>
-                                                			<a href='javascript:off_office(\"goout\");' class='button is-fullwidth is-primary'>
-                                                    			<div class='title is-5 has-text-white'>외출</div>
-                                                			</a>
-                                            			</div>";
-                                                }
-                                                else
-                                                {
-                                                    //echo "<span style='margin:0; padding:8px 34px 10px 34px; border:2px solid #000; font-weight:bold; font-size:14px; color:#000; background:#fff;'>외출</span> <span>". substr($last_off_starttime,0,2) .":". substr($last_off_starttime,2,2) ." ~ ". substr($last_off_endtime,0,2) .":". substr($last_off_endtime,2,2) ."</span><br/>";
-                                                    //echo	"<div class='control is-expanded'>
-                                                    //			<a class='button is-fullwidth is-static clock-button'>
-                                                    //    	        <div class='title is-5 has-text-black'>외출</div>
-                                                    //			</a>
-                                                    //		</div>";
-                                                }
-                                            }
-
-                                            ?>
-                                        </div>
-                                        <?	}else{?>
-                                            <div class="title has-text-centered has-text-white txt">
-                                                <p class="now">
-                                                    <span id="clock"></span>		<!--시계-->
-                                                </p>
-                                                <p class="start"> 출퇴근 체크는 사내에서만 가능합니다.</p>
-                                            </div>
-                                        <?}
-                                        }
-                                        }
-                                        ?>
+                                <!--달력-->
+                                <div class="tile is-parent">
+                                    <? include INC_PATH."/calendar.php"; ?>
                                 </div>
                             </div>
-                        </div>
-                        </article>
-                    </div>
 
-                    <!--달력-->
-                    <div class="tile is-parent">
-                        <? include INC_PATH."/calendar.php"; ?>
-                    </div>
 
-                </div>
-                <!--공지사항 리스트-->
-                <div class="tile">
-                    <div class="tile is-parent">
-                        <article class="tile is-child card">
-                            <header class="card-header">
-                                <p class="card-header-title">
+                        <!--공지사항 리스트-->
+                        <div class="tile">
+                            <div class="tile is-parent">
+                                <article class="tile is-child card">
+                                    <header class="card-header">
+                                        <p class="card-header-title">
                                     <span class="icon is-small">
                                         <i class="fas fa-exclamation-circle"></i>
                                     </span>
-                                    <span class="main-card-title">공지사항</span>
-                                </p>
-                                <a href="board/board_list.php">
-                                    <p class="card-header-icon">
+                                            <span class="main-card-title">공지사항</span>
+                                        </p>
+                                        <a href="board/board_list.php">
+                                            <p class="card-header-icon">
                                     <span class="icon is-small">
                                         <i class="fas fa-plus"></i>
                                     </span>
-                                    </p>
-                                </a>
-                            </header>
-                            <div class="card-content">
-                                <table class="table is-fullwidth is-hoverable is-marginless">
-                                    <colgroup>
-                                        <col width="*">
-                                        <col width="30%">
-                                    </colgroup>
-                                    <tbody>
-                                    <?
-                                    //공지사항 리스트
-                                    $sql = "SELECT TOP 5 
+                                            </p>
+                                        </a>
+                                    </header>
+                                    <div class="card-content">
+                                        <table class="table is-fullwidth is-hoverable is-marginless">
+                                            <colgroup>
+                                                <col width="*">
+                                                <col width="30%">
+                                            </colgroup>
+                                            <tbody>
+                                            <?
+                                            //공지사항 리스트
+                                            $sql = "SELECT TOP 5 
                                                 SEQNO, PRS_ID, PRS_NAME, PRS_LOGIN, PRS_TEAM, PRS_POSITION, TITLE, HIT, REP_DEPTH, REG_DATE, FILE_1, FILE_2, FILE_3 
                                           FROM DF_BOARD WITH (NOLOCK) 
                                          WHERE TMP3 = 'default' AND NOTICE_YN = 'Y' 
                                         ORDER BY SEQNO DESC";
-                                    $rs = sqlsrv_query($dbConn, $sql);
+                                            $rs = sqlsrv_query($dbConn, $sql);
 
-                                    while ($record=sqlsrv_fetch_array($rs))
-                                    {
-                                        $col_seqno = $record['SEQNO'];
-                                        $col_prs_id = $record['PRS_ID'];
-                                        $col_prs_name = trim($record['PRS_NAME']);
-                                        $col_prs_login = trim($record['PRS_LOGIN']);
-                                        $col_prs_team = trim($record['PRS_TEAM']);
-                                        $col_prs_position = trim($record['PRS_POSITION']);
-                                        $col_title = trim($record['TITLE']);
-                                        $col_hit = $record['HIT'];
-                                        $col_rep_depth = $record['REP_DEPTH'];
-                                        $col_reg_date = $record['REG_DATE'];
-                                        $col_file_1 = trim($record['FILE_1']);
-                                        $col_file_2 = trim($record['FILE_2']);
-                                        $col_file_3 = trim($record['FILE_3']);
-                                        ?>
-                                        <tr>
-                                            <td>
-                                                <a href="javascript:funView('<?=$col_seqno?>','default');" style="cursor:hand">
-                                                    <?=getCutString($col_title,45);?>
-                                                    <? if ($col_file_1 != "" || $col_file_2 != "" || $col_file_3 != "") { echo "<span class='icon is-small td-icon'><i class='fas fa-file'></i></span>"; } ?>
-                                                    <? if ($col_rep_depth != "0") { echo "<span class='tag is-rounded td-tag'>". $col_rep_depth ."</span>"; } ?>
-                                                </a>
-                                            </td>
-                                            <td class="has-text-right"><?=$col_prs_position?> <?=$col_prs_name?></td>
-                                        </tr>
-                                    <?}?>
-                                    </tbody>
-                                </table>
+                                            while ($record=sqlsrv_fetch_array($rs))
+                                            {
+                                                $col_seqno = $record['SEQNO'];
+                                                $col_prs_id = $record['PRS_ID'];
+                                                $col_prs_name = trim($record['PRS_NAME']);
+                                                $col_prs_login = trim($record['PRS_LOGIN']);
+                                                $col_prs_team = trim($record['PRS_TEAM']);
+                                                $col_prs_position = trim($record['PRS_POSITION']);
+                                                $col_title = trim($record['TITLE']);
+                                                $col_hit = $record['HIT'];
+                                                $col_rep_depth = $record['REP_DEPTH'];
+                                                $col_reg_date = $record['REG_DATE'];
+                                                $col_file_1 = trim($record['FILE_1']);
+                                                $col_file_2 = trim($record['FILE_2']);
+                                                $col_file_3 = trim($record['FILE_3']);
+                                                ?>
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:funView('<?=$col_seqno?>','default');" style="cursor:hand">
+                                                            <?=getCutString($col_title,45);?>
+                                                            <? if ($col_file_1 != "" || $col_file_2 != "" || $col_file_3 != "") { echo "<span class='icon is-small td-icon'><i class='fas fa-file'></i></span>"; } ?>
+                                                            <? if ($col_rep_depth != "0") { echo "<span class='tag is-rounded td-tag'>". $col_rep_depth ."</span>"; } ?>
+                                                        </a>
+                                                    </td>
+                                                    <td class="has-text-right"><?=$col_prs_position?> <?=$col_prs_name?></td>
+                                                </tr>
+                                            <?}?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </article>
                             </div>
-                        </article>
-                    </div>
-                </div>
+                        </div>
 
-                <!--게시판 리스트-->
-                <div class="tile">
-                    <div class="tile is-parent">
-                        <article class="tile is-child card">
-                            <header class="card-header">
-                                <p class="card-header-title">
+                        <!--게시판 리스트-->
+                        <div class="tile">
+                            <div class="tile is-parent">
+                                <article class="tile is-child card">
+                                    <header class="card-header">
+                                        <p class="card-header-title">
                                             <span class="icon is-small">
                                                 <i class="fas fa-plus-circle"></i>
                                             </span>
-                                    <span class="main-card-title">최신소식</span>
-                                </p>
-                                <a href="board/board_list.php">
-                                    <p class="card-header-icon">
+                                            <span class="main-card-title">최신소식</span>
+                                        </p>
+                                        <a href="board/board_list.php">
+                                            <p class="card-header-icon">
                                             <span class="icon is-small">
                                                 <i class="fas fa-plus"></i>
                                             </span>
-                                    </p>
-                                </a>
-                            </header>
-                            <div class="card-content">
-                                <table class="table is-fullwidth is-hoverable is-marginless">
-                                    <colgroup>
-                                        <col width="*">
-                                        <col width="30%">
-                                    </colgroup>
-                                    <tbody>
-                                    <?
-                                    //게시물 리스트
-                                    if ($prf_id == 7)
-                                    {
-                                        $sql = "SELECT TOP 5 
+                                            </p>
+                                        </a>
+                                    </header>
+                                    <div class="card-content">
+                                        <table class="table is-fullwidth is-hoverable is-marginless">
+                                            <colgroup>
+                                                <col width="*">
+                                                <col width="30%">
+                                            </colgroup>
+                                            <tbody>
+                                            <?
+                                            //게시물 리스트
+                                            if ($prf_id == 7)
+                                            {
+                                                $sql = "SELECT TOP 5 
                                                     SEQNO, PRS_ID, PRS_NAME, PRS_LOGIN, PRS_TEAM, PRS_POSITION, TITLE, HIT, REP_DEPTH, REG_DATE, FILE_1, FILE_2, FILE_3, TMP3  
                                               FROM 
                                                     DF_BOARD WITH (NOLOCK) 
                                              WHERE TMP3 = 'default' AND NOTICE_YN NOT IN ('Y') 
                                           ORDER BY SEQNO DESC";
-                                    }
-                                    else
-                                    {
-                                        $sql = "SELECT TOP 5 
+                                            }
+                                            else
+                                            {
+                                                $sql = "SELECT TOP 5 
                                                     SEQNO, PRS_ID, PRS_NAME, PRS_LOGIN, PRS_TEAM, PRS_POSITION, TITLE, HIT, REP_DEPTH, REG_DATE, FILE_1, FILE_2, FILE_3, TMP3  
                                               FROM  DF_BOARD WITH (NOLOCK) 
                                              WHERE TMP3 IN ('default','book','free','club') AND NOTICE_YN NOT IN ('Y') 
                                              ORDER BY SEQNO DESC";
-                                    }
-                                    $rs = sqlsrv_query($dbConn, $sql);
+                                            }
+                                            $rs = sqlsrv_query($dbConn, $sql);
 
-                                    while ($record=sqlsrv_fetch_array($rs))
-                                    {
-                                        $col_seqno = $record['SEQNO'];
-                                        $col_prs_id = $record['PRS_ID'];
-                                        $col_prs_name = trim($record['PRS_NAME']);
-                                        $col_prs_login = trim($record['PRS_LOGIN']);
-                                        $col_prs_team = trim($record['PRS_TEAM']);
-                                        $col_prs_position = trim($record['PRS_POSITION']);
-                                        $col_title = trim($record['TITLE']);
-                                        $col_hit = $record['HIT'];
-                                        $col_rep_depth = $record['REP_DEPTH'];
-                                        $col_reg_date = $record['REG_DATE'];
-                                        $col_file_1 = trim($record['FILE_1']);
-                                        $col_file_2 = trim($record['FILE_2']);
-                                        $col_file_3 = trim($record['FILE_3']);
-                                        $col_tmp3 = trim($record['TMP3']);
-                                        ?>
-                                        <tr>
-                                            <td>
-                                                <a href="javascript:funView('<?=$col_seqno?>','<?=$col_tmp3?>');" style="cursor:hand">
-                                                    <?=getCutString($col_title,45);?>
-                                                    <? if ($col_file_1 != "" || $col_file_2 != "" || $col_file_3 != "") { echo "<span class='icon is-small td-icon'><i class='fas fa-file'></i></span>"; } ?>
-                                                    <? if ($col_rep_depth != "0") { echo "<span class='tag is-rounded td-tag'>". $col_rep_depth ."</span>"; } ?>
-                                                </a>
-                                            </td>
-                                            <td class="has-text-right"><?=$col_prs_position?> <?=$col_prs_name?></td>
-                                        </tr>
-                                        <?
-                                    }
-                                    ?>
-                                    </tbody>
-                                </table>
+                                            while ($record=sqlsrv_fetch_array($rs))
+                                            {
+                                                $col_seqno = $record['SEQNO'];
+                                                $col_prs_id = $record['PRS_ID'];
+                                                $col_prs_name = trim($record['PRS_NAME']);
+                                                $col_prs_login = trim($record['PRS_LOGIN']);
+                                                $col_prs_team = trim($record['PRS_TEAM']);
+                                                $col_prs_position = trim($record['PRS_POSITION']);
+                                                $col_title = trim($record['TITLE']);
+                                                $col_hit = $record['HIT'];
+                                                $col_rep_depth = $record['REP_DEPTH'];
+                                                $col_reg_date = $record['REG_DATE'];
+                                                $col_file_1 = trim($record['FILE_1']);
+                                                $col_file_2 = trim($record['FILE_2']);
+                                                $col_file_3 = trim($record['FILE_3']);
+                                                $col_tmp3 = trim($record['TMP3']);
+                                                ?>
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:funView('<?=$col_seqno?>','<?=$col_tmp3?>');" style="cursor:hand">
+                                                            <?=getCutString($col_title,45);?>
+                                                            <? if ($col_file_1 != "" || $col_file_2 != "" || $col_file_3 != "") { echo "<span class='icon is-small td-icon'><i class='fas fa-file'></i></span>"; } ?>
+                                                            <? if ($col_rep_depth != "0") { echo "<span class='tag is-rounded td-tag'>". $col_rep_depth ."</span>"; } ?>
+                                                        </a>
+                                                    </td>
+                                                    <td class="has-text-right"><?=$col_prs_position?> <?=$col_prs_name?></td>
+                                                </tr>
+                                                <?
+                                            }
+                                            ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </article>
                             </div>
-                        </article>
-                    </div>
+
                 </div>
 
                 <? if ($prf_id != 7) { ?>
@@ -1029,5 +652,7 @@ require_once CMN_PATH."/weekly_check.php";
         </footer>
     </div>
 </div>
+
+<script src="assets/js/clock.js"></script>
 
 </html>

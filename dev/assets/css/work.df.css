@@ -2,40 +2,44 @@
 /*! 나눔 고딕 폰트 */
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(bulma.css);
+.df-main table tr:last-child {
+  border-bottom: none; }
+.df-main .calendar-nav .calendar-title {
+  margin-top: -0.2rem; }
 .df-main .card-header-title .icon {
   margin-right: 0.5rem; }
 .df-main .clock {
   width: 100%;
   height: 100%;
   padding: 0.8rem; }
-  .df-main .clock .area {
-    height: 69%;
-    background: #bbbbbb;
-    margin-bottom: 2%;
-    border-radius: 0.25rem;
-    text-align: center; }
-    .df-main .clock .area:before {
-      display: inline-block;
-      content: "";
-      width: 1px;
-      height: 100%;
-      vertical-align: middle;
-      margin-left: -1px; }
-    .df-main .clock .area .txt {
-      text-align: center;
-      display: inline-block;
-      vertical-align: middle; }
-      .df-main .clock .area .txt .now {
-        font-size: 4rem; }
-      .df-main .clock .area .txt .start {
-        font-size: 1rem; }
-  .df-main .clock .buttons {
-    height: 29%; }
-    .df-main .clock .buttons .control {
-      height: 100% !important; }
-      .df-main .clock .buttons .control .button {
-        height: 100% !important;
-        padding: 1rem; }
+.df-main .clock .area {
+  height: 69%;
+  background: #bbbbbb;
+  margin-bottom: 2%;
+  border-radius: 0.25rem;
+  text-align: center; }
+.df-main .clock .area:before {
+  display: inline-block;
+  content: "";
+  width: 1px;
+  height: 100%;
+  vertical-align: middle;
+  margin-left: -1px; }
+.df-main .clock .area .txt {
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle; }
+.df-main .clock .area .txt .now {
+  font-size: 4rem; }
+.df-main .clock .area .txt .start {
+  font-size: 1rem; }
+.df-main .clock .buttons {
+  height: 29%; }
+.df-main .clock .buttons .control {
+  height: 100% !important; }
+.df-main .clock .buttons .control .button {
+  height: 100% !important;
+  padding: 1rem; }
 .df-main .mobile-profile-buttons {
   position: absolute;
   bottom: 4rem; }
@@ -43,16 +47,102 @@
   width: 28%;
   height: 28%;
   margin: 2.5%; }
-  .df-main .birthday-profile span {
-    display: inline-block;
-    margin-top: 0.3em;
-    font-size: 0.7rem;
+.df-main .birthday-profile span {
+  display: inline-block;
+  margin-top: 0.3em;
+  font-size: 0.7rem;
+  width: 100%;
+  line-height: 1.05em; }
+.df-main .birthday-profile.mobile {
+  width: 20%;
+  height: 20%;
+  margin: 2.5%; }
+
+#df-clock {
+  height: 100%;
+  color: #fff;
+  background: linear-gradient(to bottom, #4271d5 40%, #2154c4); }
+#df-clock .clock-header {
+  font-size: 1rem;
+  padding: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+#df-clock .clock-header .date {
+  position: relative;
+  padding-left: 0.2rem; }
+@media (min-width: 769px) and (max-width: 890px) {
+  #df-clock .clock-header .date span {
+    display: none; } }
+#df-clock .clock-header .menu {
+  display: inline-flex;
+  font-size: 0.7rem;
+  font-weight: 800;
+  position: absolute;
+  top: 0.2rem;
+  right: 0;
+  padding: 0.8rem; }
+#df-clock .clock-header .menu span:last-child {
+  margin-left: 1rem; }
+#df-clock .clock-body {
+  margin: 0 auto;
+  text-align: center; }
+#df-clock .clock-body .clock-wrapper {
+  display: inline-flex;
+  padding: 0; }
+#df-clock .clock-body .large {
+  font-size: 4rem; }
+#df-clock .clock-body .small {
+  font-size: 4rem;
+  opacity: 0.2; }
+#df-clock .clock-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); }
+@media screen and (max-width: 768px) {
+  #df-clock .clock-footer {
+    position: relative; } }
+#df-clock .clock-footer .notice {
+  padding: 1rem;
+  height: 6rem;
+  text-align: center;
+  line-height: 2rem; }
+#df-clock .clock-footer .info {
+  padding: 1rem;
+  font-size: 0.7rem; }
+@media (min-width: 769px) and (max-width: 890px) {
+  #df-clock .clock-footer .info {
+    visibility: hidden; } }
+#df-clock .clock-footer .info ul li dt, #df-clock .clock-footer .info ul li dd {
+  position: relative;
+  display: inline-block;
+  line-height: 2em;
+  font-weight: 800; }
+#df-clock .clock-footer .info ul li dt {
+  width: 2.5rem; }
+#df-clock .clock-footer .clock-buttons {
+  position: absolute;
+  display: inline-flex;
+  right: 1rem;
+  bottom: 1rem;
+  text-align: right; }
+#df-clock .clock-footer .clock-buttons .button {
+  width: 6rem;
+  height: 4rem;
+  font-size: 1rem;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1); }
+@media (min-width: 769px) and (max-width: 890px) {
+  #df-clock .clock-footer .clock-buttons {
+    right: 0;
+    bottom: 0;
     width: 100%;
-    line-height: 1.05em; }
-  .df-main .birthday-profile.mobile {
-    width: 20%;
-    height: 20%;
-    margin: 2.5%; }
+    padding: 1rem;
+    text-align: center; }
+  #df-clock .clock-footer .clock-buttons .field {
+    width: 100%; }
+  #df-clock .clock-footer .clock-buttons .field .control {
+    width: 48%; }
+  #df-clock .clock-footer .clock-buttons .field .control .button {
+    width: 100%; } }
 
 .df-vacation .is-vacation-title {
   border-bottom: 1px solid #cdcdcd;
@@ -68,22 +158,22 @@
   padding: 0;
   padding-left: 0.75rem;
   overflow: hidden; }
-  .df-org .notification .tag {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 0; }
-  .df-org .notification .column {
-    padding: 0.75rem; }
-    .df-org .notification .column:last-child {
-      margin-top: 0.8rem; }
-    .df-org .notification .column p {
-      margin: 0; }
-    .df-org .notification .column .is-member-phone {
-      font-size: 1rem; }
-    .df-org .notification .column .is-member-email {
-      font-size: 0.5rem !important;
-      color: #888888; }
+.df-org .notification .tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0; }
+.df-org .notification .column {
+  padding: 0.75rem; }
+.df-org .notification .column:last-child {
+  margin-top: 0.8rem; }
+.df-org .notification .column p {
+  margin: 0; }
+.df-org .notification .column .is-member-phone {
+  font-size: 1rem; }
+.df-org .notification .column .is-member-email {
+  font-size: 0.5rem !important;
+  color: #888888; }
 .df-org .is-70x70 {
   height: 100px !important;
   width: 100px !important;
@@ -114,29 +204,32 @@
   padding: 0.5rem !important; }
 .df-org .is-absent {
   box-shadow: none; }
-  .df-org .is-absent img {
-    filter: grayscale(1); }
+.df-org .is-absent img {
+  filter: grayscale(1); }
 
 .modal-commuting-modify {
   min-width: 100%; }
-  .modal-commuting-modify .column:first-child {
-    padding-right: 0; }
-  .modal-commuting-modify .column:last-child {
-    padding-left: 0; }
-  .modal-commuting-modify .control {
-    margin-right: 0.25rem !important; }
+.modal-commuting-modify .column:first-child {
+  padding-right: 0; }
+.modal-commuting-modify .column:last-child {
+  padding-left: 0; }
+.modal-commuting-modify .control {
+  margin-right: 0.25rem !important; }
 
+.df-commuting .is-approval .calendar-body .calendar-date {
+  height: unset !important;
+  min-height: 12rem; }
 .df-commuting .is-member {
   font-size: 0.75rem; }
-  .df-commuting .is-member .first {
-    width: 100px; }
-  .df-commuting .is-member .name {
-    width: 100px; }
-  .df-commuting .is-member thead th, .df-commuting .is-member tfoot th {
-    font-size: 0.5rem;
-    text-align: center; }
-  .df-commuting .is-member tbody td {
-    text-align: center; }
+.df-commuting .is-member .first {
+  width: 100px; }
+.df-commuting .is-member .name {
+  width: 100px; }
+.df-commuting .is-member thead th, .df-commuting .is-member tfoot th {
+  font-size: 0.75rem;
+  text-align: center; }
+.df-commuting .is-member tbody td {
+  text-align: center; }
 .df-commuting .textarea {
   min-width: auto; }
 .df-commuting .is-vacation-title {
@@ -150,8 +243,8 @@
 .df-commuting .commuting-data {
   font-size: 1rem;
   padding: 0.5rem; }
-  .df-commuting .commuting-data .columns {
-    background: #cccccc; }
+.df-commuting .commuting-data .columns {
+  background: #cccccc; }
 .df-commuting .calendar .date {
   font-size: 1rem;
   align-self: flex-start;
@@ -159,27 +252,27 @@
   height: 1.9rem;
   margin-left: 0;
   margin-top: 1rem; }
-  @media screen and (max-width: 767px) {
-    .df-commuting .calendar .date {
-      margin-top: 0.8rem;
-      font-size: 0.75rem;
-      width: 1.5rem;
-      align-self: flex-start;
-      margin-left: 0.6rem; } }
+@media screen and (max-width: 768px) {
+  .df-commuting .calendar .date {
+    margin-top: 0.8rem;
+    font-size: 0.75rem;
+    width: 1.5rem;
+    align-self: flex-start;
+    margin-left: 0.6rem; } }
 .df-commuting .calendar .calendar-events {
   color: #cccccc;
   text-align: left; }
-  .df-commuting .calendar .calendar-events .tag {
-    border-radius: 2px;
-    font-size: 0.5rem;
-    vertical-align: middle;
-    padding-left: 0.3em;
-    padding-right: 0.3em; }
-  .df-commuting .calendar .calendar-events .button {
-    width: 4rem; }
-  @media screen and (max-width: 767px) {
-    .df-commuting .calendar .calendar-events {
-      padding-top: 0rem !important; } }
+.df-commuting .calendar .calendar-events .tag {
+  border-radius: 2px;
+  font-size: 0.7rem;
+  vertical-align: middle;
+  padding-left: 0.3em;
+  padding-right: 0.3em; }
+.df-commuting .calendar .calendar-events .button {
+  width: 4rem; }
+@media screen and (max-width: 768px) {
+  .df-commuting .calendar .calendar-events {
+    padding-top: 0rem !important; } }
 .df-commuting .calendar .calendar-date.is-today {
   background: rgba(15, 159, 241, 0.25); }
 .df-commuting .calendar .calendar-date.is-vacation {
@@ -191,14 +284,14 @@
   position: absolute;
   align-self: flex-end;
   padding: 0.75rem; }
-  .df-commuting .calendar .calendar-date .mark .is-static {
-    background: none !important;
-    border: none !important; }
-  @media screen and (max-width: 767px) {
-    .df-commuting .calendar .calendar-date .mark {
-      margin-top: -0.3rem;
-      margin-left: 0.3rem; } }
-@media screen and (max-width: 767px) {
+.df-commuting .calendar .calendar-date .mark .is-static {
+  background: none !important;
+  border: none !important; }
+@media screen and (max-width: 768px) {
+  .df-commuting .calendar .calendar-date .mark {
+    margin-top: -0.3rem;
+    margin-left: 0.3rem; } }
+@media screen and (max-width: 768px) {
   .df-commuting .calendar .calendar-date {
     flex-basis: 100%;
     max-width: none;
@@ -207,22 +300,104 @@
     border-top: 1px solid #cdcdcd;
     border-right: 1px solid #cdcdcd;
     border-bottom: none !important; }
-    .df-commuting .calendar .calendar-date.is-disabled {
-      display: none; }
-    .df-commuting .calendar .calendar-date.is-last {
-      border-bottom: 1px solid #cdcdcd !important; } }
+  .df-commuting .calendar .calendar-date.is-disabled {
+    display: none; }
+  .df-commuting .calendar .calendar-date.is-last {
+    border-bottom: 1px solid #cdcdcd !important; } }
 
+.df-approval .table-holder > table {
+  min-width: 1000px; }
 .df-approval .table th {
   text-align: center; }
 .df-approval .table .last {
   text-align: center; }
 .df-approval .table td.is-last {
   padding-bottom: 1rem !important; }
+.df-approval .content-table {
+  min-width: 960px;
+  position: relative;
+  border-top: 3px solid #000; }
+.df-approval .content-table .app-td {
+  text-align: center;
+  padding: 0; }
+.df-approval .content-table .app-td .columns {
+  padding: 0;
+  margin: 0; }
+.df-approval .content-table .app-td .column {
+  padding: 0;
+  margin: 0; }
+.df-approval .content-table tr {
+  height: 55px;
+  vertical-align: middle;
+  text-align: center;
+  border-bottom: 1px solid #dbdbdb; }
+.df-approval .content-table tr.last input:not([type=radio]):not([type=checkbox]) {
+  width: 100%; }
+.df-approval .content-table tr.total input {
+  width: auto; }
+.df-approval .content-table .appoint, .df-approval .content-table .partner {
+  position: relative; }
+.df-approval .content-table .appoint span, .df-approval .content-table .partner span {
+  width: auto;
+  padding: 0 100px 0 0;
+  display: block; }
+.df-approval .content-table .appoint span input, .df-approval .content-table .partner span input {
+  width: 100%; }
+.df-approval .content-table .appoint a, .df-approval .content-table .partner a {
+  position: absolute;
+  top: 8px;
+  right: 0;
+@-moz-document url-prefix(); }
+.df-approval .content-table th.gray {
+  min-width: 120px;
+  text-align: center;
+  font-weight: bold;
+  background: #ebebeb;
+  vertical-align: middle !important; }
+.df-approval .content-table td {
+  text-align: left;
+  vertical-align: middle !important;
+  line-height: 18px;
+  color: #000; }
+.df-approval .content-table th.gray2 {
+  width: 100px;
+  padding-left: 0;
+  text-align: center;
+  line-height: 18px;
+  background: #efefef; }
+.df-approval .content-table table {
+  margin-bottom: 0 !important; }
+.df-approval .content-table table td {
+  text-align: center; }
+.df-approval .content-table table.sign tr {
+  padding: 0;
+  border-bottom: 1px solid #dbdbdb; }
+.df-approval .content-table table.sign tr.last {
+  border-bottom: 0; }
+.df-approval .content-table table.sign td {
+  color: gray;
+  padding: 0;
+  border-right: 1px solid #dbdbdb;
+  text-align: center; }
+.df-approval .content-sub-table tr {
+  height: 55px;
+  vertical-align: middle;
+  text-align: center;
+  border-bottom: 1px solid #dbdbdb; }
+.df-approval .content-sub-table tr th {
+  padding: 0;
+  vertical-align: middle; }
+.df-approval .content-sub-table tr td {
+  text-align: left; }
+.df-approval .content-sub-table tr .gray2 {
+  text-align: center;
+  background: #f3f3f3;
+  border-left: 1px solid #dbdbdb; }
 
 .approval-popup, .approval-popup2, .approval-popup3, .approval-popup4, .approval-popup5, .approval-popup6 {
   font-size: 12px; }
-  .approval-popup td, .approval-popup th, .approval-popup2 td, .approval-popup2 th, .approval-popup3 td, .approval-popup3 th, .approval-popup4 td, .approval-popup4 th, .approval-popup5 td, .approval-popup5 th, .approval-popup6 td, .approval-popup6 th {
-    vertical-align: middle; }
+.approval-popup td, .approval-popup th, .approval-popup2 td, .approval-popup2 th, .approval-popup3 td, .approval-popup3 th, .approval-popup4 td, .approval-popup4 th, .approval-popup5 td, .approval-popup5 th, .approval-popup6 td, .approval-popup6 th {
+  vertical-align: middle; }
 
 .df-project .modal section {
   min-width: auto; }
@@ -236,14 +411,14 @@
   width: 100%;
   height: 15rem;
   overflow-y: scroll; }
-  .df-project .modal .search-result .search-member {
-    padding-top: 0.2rem;
-    height: 2rem; }
-    .df-project .modal .search-result .search-member:not(:last-child) {
-      border-bottom: dotted 1px #dbdbdb; }
-  @media screen and (max-width: 767px) {
-    .df-project .modal .search-result {
-      height: 4rem; } }
+.df-project .modal .search-result .search-member {
+  padding-top: 0.2rem;
+  height: 2rem; }
+.df-project .modal .search-result .search-member:not(:last-child) {
+  border-bottom: dotted 1px #dbdbdb; }
+@media screen and (max-width: 768px) {
+  .df-project .modal .search-result {
+    height: 4rem; } }
 .df-project .modal .card-content {
   padding: 0.8rem; }
 .df-project .modal .member-result {
@@ -251,45 +426,45 @@
   height: 17.5rem;
   overflow-x: hidden;
   overflow-y: scroll; }
-  .df-project .modal .member-result p {
-    padding: 0.2rem; }
-  .df-project .modal .member-result .member-title {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    border-bottom: solid 1px #dbdbdb;
-    margin-bottom: 0.5rem; }
-  @media screen and (max-width: 767px) {
-    .df-project .modal .member-result {
-      height: 4rem; } }
+.df-project .modal .member-result p {
+  padding: 0.2rem; }
+.df-project .modal .member-result .member-title {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-bottom: solid 1px #dbdbdb;
+  margin-bottom: 0.5rem; }
+@media screen and (max-width: 768px) {
+  .df-project .modal .member-result {
+    height: 4rem; } }
 
 .df-weekly .textarea {
   font-size: 0.75rem; }
 .df-weekly .is-report td, .df-weekly .is-report th {
   font-size: 0.8rem; }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .df-weekly .is-report thead {
     display: none; }
   .df-weekly .is-report td, .df-weekly .is-report th {
     display: block;
     border: none;
     border-bottom: 1px solid #dbdbdb; }
-    .df-weekly .is-report td:first-child, .df-weekly .is-report th:first-child {
-      padding: 0.3rem 0 0.3rem 0.3rem;
-      font-size: 0.8rem;
-      background: #dbdbdb;
-      border-bottom: 1px solid #dbdbdb;
-      border-top: 1px solid #000; } }
+  .df-weekly .is-report td:first-child, .df-weekly .is-report th:first-child {
+    padding: 0.3rem 0 0.3rem 0.3rem;
+    font-size: 0.8rem;
+    background: #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    border-top: 1px solid #000; } }
 
 .df-booking .btn-mobile {
   padding-bottom: 1.75rem; }
 .df-booking .modal-booking {
   min-width: 100%; }
-  .df-booking .modal-booking .column:first-child {
-    padding-right: 0; }
-  .df-booking .modal-booking .column:last-child {
-    padding-left: 0; }
-  .df-booking .modal-booking .control {
-    margin-right: 0.25rem !important; }
+.df-booking .modal-booking .column:first-child {
+  padding-right: 0; }
+.df-booking .modal-booking .column:last-child {
+  padding-left: 0; }
+.df-booking .modal-booking .control {
+  margin-right: 0.25rem !important; }
 .df-booking table thead td {
   text-align: center;
   border-bottom: 2px solid #000; }
@@ -297,15 +472,15 @@
   text-align: center;
   font-size: 0.5rem;
   height: 2rem; }
-  .df-booking table tbody td.booking {
-    display: table-cell;
-    border: 2px solid #fff !important;
-    background: #4880db;
-    color: #fff;
-    text-align: left;
-    font-size: 0.75rem; }
-    .df-booking table tbody td.booking p {
-      margin-bottom: 0; }
+.df-booking table tbody td.booking {
+  display: table-cell;
+  border: 2px solid #fff !important;
+  background: #4880db;
+  color: #fff;
+  text-align: left;
+  font-size: 0.75rem; }
+.df-booking table tbody td.booking p {
+  margin-bottom: 0; }
 .df-booking table tbody tr {
   color: #dbdbdb; }
 .df-booking table tbody tr:nth-child(2n  +1) {
@@ -321,23 +496,92 @@
   font-size: 0.75rem; }
 .df-equipment .is-data {
   font-size: 0.8rem; }
-  .df-equipment .is-data tr {
-    height: 40px; }
-    .df-equipment .is-data tr td, .df-equipment .is-data tr th {
-      text-align: center;
-      vertical-align: middle; }
-  .df-equipment .is-data .short-txt {
-    font-size: 0.8rem;
-    max-width: 500px; }
-    .df-equipment .is-data .short-txt p {
-      height: 18px;
-      overflow: hidden; }
+.df-equipment .is-data tr {
+  height: 40px; }
+.df-equipment .is-data tr td, .df-equipment .is-data tr th {
+  text-align: center;
+  vertical-align: middle; }
+.df-equipment .is-data .short-txt {
+  font-size: 0.8rem;
+  max-width: 500px; }
+.df-equipment .is-data .short-txt p {
+  height: 18px;
+  overflow: hidden; }
+
+.df-member table td, .df-member table th {
+  border-bottom: none;
+  padding: 0; }
 
 body {
   font-family: "Nanum Gothic";
   font-weight: 600; }
 
+#shader-box {
+  position: absolute;
+  text-align: center;
+  left: 0;
+  top: 0;
+  font-size: 0;
+  margin: 0 auto; }
+
+.df-login {
+  width: 300px;
+  margin: 0 auto; }
+.df-login .field:not(:last-child) {
+  margin-bottom: 0.5rem; }
+.df-login .is-fullheight {
+  height: 100% !important; }
+.df-login .column {
+  padding: 0.25rem; }
+.df-login .login-field {
+  height: 100%; }
+.df-login .login-field .button {
+  height: 100%; }
+@media screen and (max-width: 768px) {
+  .df-login {
+    width: auto; } }
+
 #navbar {
   z-index: 50; }
+
+#work-menu {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  z-index: 10000; }
+#work-menu .background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  opacity: 0.8; }
+#work-menu .menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 1px solid #dbdbdb;
+  background: #fff;
+  height: 100vh;
+  width: 250px; }
+#work-menu .menu .navbar-brand {
+  border-bottom: 1px solid #f4f4f4; }
+#work-menu .menu .navbar-brand .navbar-item {
+  padding-left: 1rem; }
+#work-menu .menu .content {
+  padding: 1rem; }
+#work-menu .menu .content .navbar-item {
+  border-bottom: 1px solid #f4f4f4; }
+#work-menu .menu .content .column:first-child {
+  padding-right: 0.1rem; }
+#work-menu .menu .content .column:nth-child(2) {
+  padding-left: 0.1rem; }
+#work-menu.is-active {
+  display: block; }
+#work-menu hr {
+  margin: 0.5rem 0; }
 
 /*# sourceMappingURL=work.df.css.map */

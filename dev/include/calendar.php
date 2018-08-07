@@ -192,18 +192,18 @@
 
 												for ($i=0; $i<$day_cnt; $i++)
 												{
-													echo "<div id='cal' class='calendar-date is-disabled'><span class='day_num'><button class='date-item'></span></button></div>";
+													echo "<div class='calendar-date is-disabled'><span class='day_num'><button class='date-item'></span></button></div>";
 													$lastday++;																									 									   																																																					
 												}																										
 											}											
 										
 											if ($col_date == $nowYear.$nowMonth.$nowDay) //오늘 날짜 표시
 											{
-												echo "<div id='cal' class='calendar-date tooltip' data-tooltip='Today'><span class='day_num'><button class='date-item is-today'>". $count ."</span></button></div>";
+												echo "<div class='calendar-date tooltip' data-tooltip='Today'><span class='day_num'><button class='date-item is-today'>". $count ."</span></button></div>";
 											}											
 											else if($col_date_name != "") //공휴일 표시
 											{
-												echo "<div id='cal' class='calendar-date tooltip' data-tooltip='" .$col_date_name ."'><button class='date-item' style='background:#eeeeee'><span class='day_num' style='color:#ff0000;'>". $count ."</span></button></div>";
+												echo "<div class='calendar-date tooltip' data-tooltip='" .$col_date_name ."'><button class='date-item' style='background:#eeeeee'><span class='day_num' style='color:#ff0000;'>". $count ."</span></button></div>";
 											}
 											
 											else
@@ -211,10 +211,10 @@
 												
 												if ($col_day == "SAT" || $col_day == "SUN")	//일요일
 												{
-												echo "<div id='cal' class='calendar-date'><button class='date-item'><span class='day_num' style='color:#ff0000;'>". $count ."<br>".$col_date_name ."</span></button></div>";
+												echo "<div class='calendar-date'><button class='date-item'><span class='day_num' style='color:#ff0000;'>". $count ."<br>".$col_date_name ."</span></button></div>";
 												}else
 												{
-												echo "<div id='cal' class='calendar-date'><button class='date-item'><span class='day_num'>". $count ."<br>".$col_date_name ."</span></button></div>";
+												echo "<div class='calendar-date'><button class='date-item'><span class='day_num'>". $count ."<br>".$col_date_name ."</span></button></div>";
 												}
 											}																						
 											
@@ -238,7 +238,7 @@
 								$blank_day= $cal_day - $total_day;		
 								for ($i = 0; $i < $blank_day; $i++)
 								{
-									echo "<div id='cal' class='calendar-date is-disabled'><span class='day_num'><button class='date-item'></span></button></div>";
+									echo "<div class='calendar-date is-disabled'><span class='day_num'><button class='date-item'></span></button></div>";
 								}
 						}
 						else
@@ -247,7 +247,7 @@
 								$blank_day= $cal_day - $total_day;		
 								for ($i = 0; $i < $blank_day; $i++)
 								{
-									echo "<div id='cal' class='calendar-date is-disabled'><span class='day_num'><button class='date-item'></span></button></div>";
+									echo "<div class='calendar-date is-disabled'><span class='day_num'><button class='date-item'></span></button></div>";
 								}																		
 						}
 				?>				
