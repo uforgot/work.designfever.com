@@ -39,7 +39,7 @@
                     } else {
                         echo "<div class=\"info\" id=\"df-clock-info\">";
 
-                        if (in_array(REMOTE_IP, $ok_ip_arr)) {
+
 
                             echo "<ul>";
                             echo "<li><dt>출근</dt><dd>";
@@ -145,7 +145,7 @@
                                 echo "-- : --";
                             }
 
-                        }
+
                         echo "</dd></li>";
                         echo "</div>";
 
@@ -245,9 +245,8 @@
 
                                 }
                             }
-
                         } else {
-                            echo "출퇴근 체크는 사내에서만 가능합니다.";
+                            echo "<div style='margin-bottom:0.6rem'>출퇴근 체크는<br>사내에서만 가능합니다</div>";
                         }
 
                         echo "    </div>";
