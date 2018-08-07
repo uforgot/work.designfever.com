@@ -25,3 +25,5 @@ dev/board/beacon_service/asset/.DS_Store
 dev/board/beacon_service/asset/img/
 markup_template/outputxhtml.css
 work.designfever.com.iml
+
+markup_template/assets_login/css/

@@ -52,7 +52,8 @@ var DF_Date = function(con, json_data){
         _today.DD = today.DD;
         _today.DW = today.DW;
 
-        var MM = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        var MM_S = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        var MM = ['January', 'February ', 'March ', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var DW = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
         _el.txt_MM.textContent = MM[_today.MM];

@@ -1,9 +1,10 @@
 .sec-login{
 
-  @media (max-width: $screen-md) and (max-height:$screen-min-height) {
 
+  @media (max-width: $screen-md) and (max-height:$screen-min-height) {
     margin: 10% 0 0;
   }
+
   position: relative;
   z-index: 1000;
   width: 100%;
@@ -22,7 +23,8 @@
         .round-box {
           height: 40px;
           border-radius: 1.25rem;
-          font-size: 12px;
+          font-size: 0.75rem;
+          font-weight: 800;
           padding: 0.75rem 1.25rem;
           vertical-align: middle;
         }
@@ -31,14 +33,7 @@
   }
 
   .wrapper-login{
-
-    //margin: 10px auto 10px;
-    //width: 80%;
-    //max-width: 180px;
-    //padding: 1rem;
-    //box-sizing: border-box;
-
-    //background: #00b89c;
+    display: block;
 
     .login-form{
       width: 100%;
@@ -65,23 +60,24 @@
         overflow: hidden;
         height: 28px;
         width: 36%;
-        min-width: 200px;
-        max-width: 400px;
+        min-width: 150px;
+        max-width: 200px;
         margin: 0 auto;
-        padding: 0.5rem 0.75rem;
+        padding: 0 0.75rem;
         background: #FFFFFF;
         box-sizing: border-box;
         border-radius: 0.88rem;
         border: none;
 
         color: #000000;
-        font-size: 10px;
-        font-weight: 700;
+        font-size: 0.75rem;
+        font-weight: 800;
+        line-height: normal;
         text-align: left;
 
-        -webkit-box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.5);
-        -moz-box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.5);
-        box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.5);
+        -webkit-box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.2);
+        -moz-box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.2);
+        box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.2);
 
         &.btn-submit{
           min-width: auto;
@@ -113,8 +109,8 @@
 
       .wrapper-btn{
         width: 36%;
-        min-width: 200px;
-        max-width: 400px;
+        min-width: 150px;
+        max-width: 200px;
         margin: 0 auto;
 
         .btn-module{
@@ -132,7 +128,139 @@
           }
         }
       }
-
     }
   }
+
+  .wrapper-checkin{
+    display: none;
+    width: 100%;
+    text-align: center;
+    margin: 25px 0;
+
+    .area-check-inout{
+      position: relative;
+      display: inline-block;
+      width: 84px;
+      height: 84px;
+
+      overflow: hidden;
+      border-radius: 50% 50%;
+
+      .btn-wrapper{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 50% 50%;
+
+        background: #FF0000;
+        color: #000000;
+
+        &.checkout{
+          background: #223333;
+          color: #5BA1A9;
+        }
+
+        button{
+          width: 100%;
+          height: 100%;
+          background: none;
+          font-size: 1.75rem;
+          font-weight: 800;
+          color: inherit;
+          text-align: center;
+        }
+
+        form{
+          width: 100%;
+          height: 100%;
+          fieldset {
+            width: 100%;
+            height: 100%;
+            .area-input {
+              background: none;
+              text-align: center;
+              width: 100%;
+              height: 100%;
+              .btn-submit {
+                width: 100%;
+                height: 100%;
+                background: none;
+                font-size: 1.75rem;
+                font-weight: 800;
+                color: inherit;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .area-timebar{
+      position: relative;
+      display: inline-block;
+
+      width: 166px;
+      height: 84px;
+
+      overflow: hidden;
+
+      font-size: 0.75rem;
+      font-weight: 800;
+
+      .bar-wrapper{
+        position: absolute;
+        background : #292929;
+        width:88%;
+        height:4px;
+        border-radius: 2px 2px;
+        overflow: hidden;
+        margin: 40px 6%;
+        top: 0;
+
+        .bar-cur{
+          background : #009494;
+          width:50%;
+          height:100%;
+          border-radius: 2px 2px;
+        }
+      }
+
+      .txt-wrapper{
+        position: relative;
+        width:100%;
+        height:50%;
+        //background: #0f81cc;
+
+        display: table;
+
+        p {
+          display: table-cell;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  &.loading{
+    input {
+      pointer-events: none;
+    }
+  }
+
+  &.logged {
+
+    input {
+      pointer-events: auto;
+    }
+
+    .wrapper-login {
+      display: none;
+    }
+
+    .wrapper-checkin{
+      display: block;
+    }
+  }
+
 }
