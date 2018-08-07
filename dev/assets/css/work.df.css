@@ -394,77 +394,6 @@
   background: #f3f3f3;
   border-left: 1px solid #dbdbdb; }
 
-/* 추가(2018-08-07) 시작 */
-.df-approval .modal section {
-  min-width: auto; }
-.df-approval .modal .column-center {
-  padding: 0; }
-.df-approval .modal .last-button {
-  margin: auto; }
-.df-approval .modal .panel {
-  border-radius: 4px !important; }
-.df-approval .modal .search-result {
-  width: 100%;
-  height: 18.3rem;
-  overflow-y: scroll; }
-  .df-approval .modal .search-result .search-member {
-    padding-top: 0.2rem;
-    height: 2rem; }
-    .df-approval .modal .search-result .search-member:not(:last-child) {
-      border-bottom: dotted 1px #dbdbdb; }
-  @media screen and (max-width: 767px) {
-    .df-approval .modal .search-result {
-      height: 4rem; } }
-.df-approval .modal .card-content {
-  padding: 0.8rem; }
-.df-approval .modal .member-result {
-  width: 100%;
-  height: 8rem;
-  overflow-x: hidden;
-  overflow-y: scroll; }
-  .df-approval .modal .member-result p {
-    padding: 0.2rem; }
-  .df-approval .modal .member-result .member-title {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    border-bottom: solid 1px #dbdbdb;
-    margin-bottom: 0.5rem; }
-  @media screen and (max-width: 767px) {
-    .df-approval .modal .member-result {
-      height: 4rem; } }	
-.df-approval .modal .member-result2 {
-  width: 100%;
-  height: 17.5rem;
-  overflow-x: hidden;
-  overflow-y: scroll; }
-  .df-approval .modal .member-result2 p {
-    padding: 0.2rem; }
-  .df-approval .modal .member-result2 .member-title {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    border-bottom: solid 1px #dbdbdb;
-    margin-bottom: 0.5rem; }
-  @media screen and (max-width: 767px) {
-    .df-approval .modal .member-result {
-      height: 4rem; } }	
-
-/* 파일 첨부 */
-.df-approval .file-name > div {
-  padding-left: 60px; }
-.df-approval .file-name a.delete {
-  vertical-align: middle; }
-
-/* 서명 만들기 */
-.df-approval .signature { 
-  padding:3px; 
-  color:red; 
-  border:solid 1px red; 
-  border-radius:10px; }
-.df-approval .signature_state { 
-  font-size: 0.75rem; 
-  color:#4a4a4a; }
-/* 추가(2018-08-07) 종료 */
-
 .approval-popup, .approval-popup2, .approval-popup3, .approval-popup4, .approval-popup5, .approval-popup6 {
   font-size: 12px; }
 .approval-popup td, .approval-popup th, .approval-popup2 td, .approval-popup2 th, .approval-popup3 td, .approval-popup3 th, .approval-popup4 td, .approval-popup4 th, .approval-popup5 td, .approval-popup5 th, .approval-popup6 td, .approval-popup6 th {
@@ -582,6 +511,9 @@
 .df-member table td, .df-member table th {
   border-bottom: none;
   padding: 0; }
+
+html {
+  font-size: 14px; }
 
 body {
   font-family: "Nanum Gothic";
