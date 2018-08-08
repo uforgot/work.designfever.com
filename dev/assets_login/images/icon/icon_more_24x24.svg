@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="icon_more_24x24" transform="translate(-321 -685)">
+    <rect id="rectangle" class="cls-1" width="24" height="24" transform="translate(321 685)"/>
+    <path id="path" class="cls-2" d="M4,8H8V4H4V8Zm6,12h4V16H10v4ZM4,20H8V16H4v4Zm0-6H8V10H4v4Zm6,0h4V10H10v4ZM16,4V8h4V4ZM10,8h4V4H10V8Zm6,6h4V10H16v4Zm0,6h4V16H16v4Z" transform="translate(321 685)"/>
+  </g>
+</svg>
