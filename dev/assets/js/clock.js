@@ -6,7 +6,7 @@
  */
 
 var Clock = (function() {
-
+    var agent = navigator.userAgent.toLowerCase(); /*ie*/
     var winW, winH;
 
     var clockEl;
@@ -38,10 +38,17 @@ var Clock = (function() {
     ]
 
     /*=========================================================== [ event ] =====================================================================*/
+
+
+
     var resize = function() {
         winW = $(window).width();
         winH = $(window).height();
 
+        /*ie*/
+        if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+            clockEl.css('height', '25rem');
+        }
 
         if (winW < 769) {
             footerEl.css('position','relative');
@@ -49,10 +56,8 @@ var Clock = (function() {
             footerEl.css('position','absolute');
         }
 
-
         bodyWidth = clockEl.width();
         bodyHeight = clockEl.height() - headerHeight - footerEl.height();
-
 
         // console.log('-->' + bodyWidth);
         // 523 : 7 = w : x
@@ -64,7 +69,11 @@ var Clock = (function() {
 
         var marginTop = (bodyHeight - wrapperEl.height())/2;
         wrapperEl.css('margin-top',marginTop);
+
+
     };
+
+
 
     var setTime = function() {
         var today = new Date();
@@ -103,7 +112,12 @@ var Clock = (function() {
 
     var addEvent = function() {
         $(window).on('resize', onResize);
+        if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) { /*ie*/
+            $(window).on('load', onResize);
+        }
     };
+
+
 
     /*=========================================================== [ init ] =====================================================================*/
 
