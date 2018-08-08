@@ -1,8 +1,12 @@
 .sec-util {
+  margin-top: 0px;
+
   position: relative;
   z-index: 1000;
   width: 100%;
-  height: 80px;
+  //height: 80px;
+  height: 0;
+  opacity: 0;
   overflow: hidden;
 
   box-sizing: border-box;
@@ -15,12 +19,25 @@
   -webkit-justify-content: center;
   justify-content: center;
 
+   @include mx_transition("1000ms","opacity, height, margin-top", $vars_easeInOutCubic, "600ms 600ms 2000ms");
+
+  &.logged{
+    margin-top: -35px;
+    height: 80px;
+    opacity: 1;
+    .util-wrapper{
+      display: -webkit-flex;
+      display: flex;
+    }
+  }
+
   .util-wrapper{
     //background: #0f81cc;
     overflow: hidden;
 
-    display: -webkit-flex;
-    display: flex;
+    //display: -webkit-flex;
+    //display: flex;
+    display: none;
 
     .list-wrapper{
       display: -webkit-flex;

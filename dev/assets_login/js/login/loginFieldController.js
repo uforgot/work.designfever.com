@@ -92,9 +92,15 @@ var LoginFieldController = function(){
         df.lab.Util.addClass(sec_login, 'loading');
 
         var inputs = sec_login.querySelectorAll('input');
-        inputs.forEach(function(el, index){
-            el.setAttribute("disabled", "");
-        });
+
+        // inputs.forEach(function(el, index){
+        //     el.setAttribute("disabled", "");
+        // });
+
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].setAttribute("disabled", "");
+        }
+
     }
 
     function onSubmit(response){
@@ -108,11 +114,18 @@ var LoginFieldController = function(){
         df.lab.Util.addClass(sec_login, 'logged');
 
         var inputs = sec_login.querySelectorAll('input');
-        inputs.forEach(function(el, index){
-            el.removeAttribute("disabled");
-        });
-    }
+        // inputs.forEach(function(el, index){
+        //     el.removeAttribute("disabled");
+        // });
 
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].removeAttribute("disabled");
+        }
+
+
+        var sec_util = document.querySelector('.sec-util');
+        df.lab.Util.addClass(sec_util, 'logged');
+    }
 
     function ajaxPost (form, callback) {
         // Collect the form data while iterating over the inputs

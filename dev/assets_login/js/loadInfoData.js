@@ -5,6 +5,21 @@ var GlobalVars = {
     }
 };
 
+(function () {
+    if ( typeof window.CustomEvent === "function" ) return false; //If not IE
+
+    function CustomEvent ( event, params ) {
+        params = params || { bubbles: false, cancelable: false, detail: undefined };
+        var evt = document.createEvent( 'CustomEvent' );
+        evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+        return evt;
+    }
+
+    CustomEvent.prototype = window.Event.prototype;
+
+    window.CustomEvent = CustomEvent;
+})();
+
 (function(){
     var url_json = "assets_login/temp/df_info_data.json" + "?uniq=" + new Date().getTime();
 
@@ -37,7 +52,7 @@ var GlobalVars = {
             GlobalVars.isLoaded = true;
             GlobalVars.infoData = actual_JSON;
 
-            var event = new Event(GlobalVars.eventType.ON_LOAD_JSON);
+            var event = new CustomEvent(GlobalVars.eventType.ON_LOAD_JSON);
             document.dispatchEvent(event);
         });
     }

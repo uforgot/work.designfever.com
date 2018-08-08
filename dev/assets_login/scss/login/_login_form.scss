@@ -102,9 +102,11 @@
         }
 
 
-        &::-ms-input-placeholder { color: #8F8F8F; }
+        &:-ms-input-placeholder {color: #8F8F8F !important;}
+        &::-ms-input-placeholder {color: #8F8F8F; }
         &::-webkit-input-placeholder { color: #8F8F8F; }
         &::-moz-placeholder { color: #8F8F8F; }
+        &::placeholder { color: #8F8F8F; }
       }
 
       .wrapper-btn{
@@ -145,6 +147,7 @@
 
       overflow: hidden;
       border-radius: 50% 50%;
+      border: none;
 
       .btn-wrapper{
         position: absolute;
@@ -152,6 +155,7 @@
         height: 100%;
         overflow: hidden;
         border-radius: 50% 50%;
+        border: none;
 
         background: #FF0000;
         color: #000000;
@@ -169,6 +173,7 @@
           font-weight: 800;
           color: inherit;
           text-align: center;
+          border: none;
         }
 
         form{
@@ -189,6 +194,7 @@
                 font-size: 1.75rem;
                 font-weight: 800;
                 color: inherit;
+                border: none;
               }
             }
           }
