@@ -1,0 +1,43 @@
+.sec-date {
+
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+  height: 11%;
+  min-height: 80px;
+  overflow: hidden;
+
+  box-sizing: border-box;
+  text-align: center;
+
+  @media (max-width: $screen-md) and (max-height:$screen-min-height) {
+    display: none;
+  }
+
+  .wrapper-date {
+    position: absolute;
+    width:100%;
+    height:100%;
+    box-sizing: border-box;
+    @extend %flex-center;
+
+    .area-txt {
+      margin: 10px 0 0;
+      font-size: 0.875rem;
+      font-weight: 800;
+    }
+
+    @include mx_transform_transY(0, 10px);
+
+    &.show {
+      @include mx_transform_transY(1, 0);
+    }
+  }
+
+  .wrapper-weather {
+    margin: 0 auto;
+    .area-txt {
+      margin: 1.375rem 0 0;
+    }
+  }
+}

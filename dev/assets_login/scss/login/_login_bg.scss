@@ -10,6 +10,7 @@ $bg_gra_color_B: 0;
   overflow: hidden;
   top: 0;
   z-index: 100;
+  pointer-events: none;
 
   iframe{
     position: absolute;

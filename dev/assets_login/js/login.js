@@ -2,7 +2,7 @@ var DF_Login = function(json_data){
 
     var container_iframe = document.getElementById("id_bg_frame");
     var container_clock = document.getElementById("id_container_clock");
-    var container_date = document.querySelector(".wrapper-date");
+    var container_date = document.querySelector(".sec-date .wrapper-date");
 
     var _clock = new DF_Clock(container_clock, json_data);
     var _date = new DF_Date(container_date, json_data);

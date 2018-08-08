@@ -1,14 +1,20 @@
 .sec-login{
 
-
-  @media (max-width: $screen-md) and (max-height:$screen-min-height) {
-    margin: 10% 0 0;
-  }
-
   position: relative;
   z-index: 1000;
   width: 100%;
-  padding: 1% 0 1%;
+  height: 21%;
+  min-height: 158px;
+  overflow: hidden;
+
+  box-sizing: border-box;
+  text-align: center;
+
+  @extend %flex-center;
+
+  @media (max-width: $screen-md) and (max-height:$screen-min-height) {
+    margin: 5% 0 0;
+  }
 
   @include mx_transform_transY(0, -10px);
 
@@ -17,7 +23,6 @@
   }
 
   &.big{
-
     .wrapper-login{
       .login-form{
         .round-box {
@@ -101,7 +106,6 @@
           }
         }
 
-
         &:-ms-input-placeholder {color: #8F8F8F !important;}
         &::-ms-input-placeholder {color: #8F8F8F; }
         &::-webkit-input-placeholder { color: #8F8F8F; }
@@ -137,7 +141,7 @@
     display: none;
     width: 100%;
     text-align: center;
-    margin: 25px 0;
+    font-size: 0;
 
     .area-check-inout{
       position: relative;
@@ -195,6 +199,13 @@
                 font-weight: 800;
                 color: inherit;
                 border: none;
+
+                @include mx_transition("800ms", "color", $vars_easeOutCubic);
+
+                &:hover, &:focus{
+                  color: #FFFFFF;
+                  @include mx_transition("200ms", "color", $vars_easeOutCubic);
+                }
               }
             }
           }
@@ -206,7 +217,7 @@
       position: relative;
       display: inline-block;
 
-      width: 166px;
+      width: 168px;
       height: 84px;
 
       overflow: hidden;
@@ -217,12 +228,12 @@
       .bar-wrapper{
         position: absolute;
         background : #292929;
-        width:88%;
-        height:4px;
-        border-radius: 2px 2px;
+        width: 128px;
+        height: 6px;
+        border-radius: 3px 3px;
         overflow: hidden;
-        margin: 40px 6%;
-        top: 0;
+        margin: 39px 20px;
+        top:0;
 
         .bar-cur{
           background : #009494;
@@ -237,12 +248,10 @@
         width:100%;
         height:50%;
         //background: #0f81cc;
+        @extend %flex-center;
 
-        display: table;
-
-        p {
-          display: table-cell;
-          vertical-align: middle;
+        .limit-time-txt{
+          margin: 2px 0 0;
         }
       }
     }
