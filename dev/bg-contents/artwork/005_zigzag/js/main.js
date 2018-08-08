@@ -125,7 +125,7 @@ var ZigZag = function(args){
     };
 
     var imagePointRandom = function(){
-        var random = parseInt(Math.random() * 10 + 5);
+        var random = parseInt(Math.random() * 30 + 5);
         segment.randomize(random);
         autoRollingStart()
     };
