@@ -4,7 +4,7 @@
   "launch_path": "/index_new.html",
   "description": "This page is Workgroup of DF.",
   "icons": {
-    "192": "/assets_login/images/favicon/android-icon-192x192.png"
+    "192": "/assets_login/images/favicon/bg/android-icon-192x192.png"
   },
   "developer": {
     "name": "",

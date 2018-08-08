@@ -155,7 +155,7 @@ var DF_Clock = function(con, json_data){
             //fontFamily: 'Arial',
             fontSize: 20,
             //fontStyle: 'italic',
-            fontWeight: '800',
+            fontWeight: '700',
             fill: ['#ffffff'],
             //fill: ['#ffffff', '#00ff99'], // gradient
             //stroke: '#4a1850',
@@ -174,7 +174,7 @@ var DF_Clock = function(con, json_data){
         var style_mm = new PIXI.TextStyle({
             fontFamily: 'NanumSquareRound',
             fontSize: 14,
-            fontWeight: '800',
+            fontWeight: '700',
             fill: ['#ffffff'],
         });
 
@@ -183,7 +183,7 @@ var DF_Clock = function(con, json_data){
         var style_ss = new PIXI.TextStyle({
             fontFamily: 'NanumSquareRound',
             fontSize: 14,
-            fontWeight: '800',
+            fontWeight: '700',
             fill: ['#ff0000'],
         });
         _pixi.txt_ss = new PIXI.Text('00', style_ss);
