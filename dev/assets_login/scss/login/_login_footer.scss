@@ -11,7 +11,7 @@ footer{
 
   @include mx_transition("1000ms", "opacity", $vars_easeOutCubic);
 
-  &.show{
+  &.#{ $vars_class_showIn }{
     opacity: 1;
   }
 

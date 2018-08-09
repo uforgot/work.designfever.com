@@ -144,6 +144,10 @@
                             </div>
                         </fieldset>
                     </form>
+                    <div class="time-txt">
+                        <p class="txt-title"><span>출근시간</span></p>
+                        <p class="txt-time"><span id="id_checkin_time">오전 24시 59분</span></p>
+                    </div>
                 </div>
             </div>
             <div class="area-timebar">
@@ -154,7 +158,7 @@
                 <div class="txt-wrapper"><p class="limit-time-txt"><span>퇴근 가능시간 </span><span>19시 45분</span></p></div>
             </div>
             <div class="area-check-inout area-checkout">
-                <div class="btn-wrapper checkout">
+                <div class="btn-wrapper">
                     <form id="id_checkout" name="user_checkout" method="POST" accept-charset="EUC-KR" enctype="multipart/form-data" action="">
                         <fieldset>
                             <legend class="blind">Checkout</legend>
@@ -163,6 +167,10 @@
                             </div>
                         </fieldset>
                     </form>
+                    <div class="time-txt">
+                        <p class="txt-title"><span>퇴근시간</span></p>
+                        <p class="txt-time"><span id="id_checkout_time">오전 24시 59분</span></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -225,13 +233,14 @@
     </footer>
 </div>
 
-<script src="assets_login/js/login/loginBgController.js?uniq=20180807"></script>
-<script src="assets_login/js/login/loginClock.js?uniq=20180807"></script>
-<script src="assets_login/js/login/loginDate.js?uniq=20180807"></script>
+<script src="assets_login/js/login/loginBgController.js?uniq=20180808"></script>
+<script src="assets_login/js/login/loginClock.js?uniq=20180808"></script>
+<script src="assets_login/js/login/loginDate.js?uniq=20180808"></script>
 <script src="assets_login/js/login/loginFieldController.js?uniq=20180808"></script>
 <script src="assets_login/js/login/logoutController.js"></script>
 <script src="assets_login/js/login/checkinController.js"></script>
-<script src="assets_login/js/df.workgroup.login.js?uniq=20180808"></script>
+<script src="assets_login/js/login/loginUtilController.js"></script>
+<script src="assets_login/js/df.workgroup.login.js?uniq=20180808_2"></script>
 <script>
 
     console.log("[ index.html ] : ", "check load json");

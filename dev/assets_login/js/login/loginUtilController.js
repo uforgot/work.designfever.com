@@ -1,6 +1,6 @@
-var LogoutController = function(){
+var LoginUtilController = function(){
 
-    var CLASS_NAME = "[ LogoutController ]";
+    var CLASS_NAME = "[ LoginUtilController ]";
     var _form = document.getElementById('id_form_logout');
 
     function _init(){
@@ -47,7 +47,7 @@ var LogoutController = function(){
 
     function _showLogoutBtn(){
         var btn_logout = document.querySelector('header .wrapper-logout');
-        df.lab.Util.addClass(btn_logout, window.df.workgroup.Preset.class_name.showIn);
+        df.lab.Util.addClass(btn_logout, 'show');
     }
 
     function ajaxPost (form, callback) {

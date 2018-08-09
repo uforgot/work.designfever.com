@@ -5,6 +5,7 @@ window.df.workgroup.Preset = {
 
     "json_url":{
         "default": "http://dev3.designfever.com/assets_login/temp/df_info_data.json.php",
+        //"default": "assets_login/temp/df_info_data.json",
         "login": "assets_login/temp/df_info_data_01_login.json",
         "checkin": "assets_login/temp/df_info_data_02_checkin.json",
         "checkout": "assets_login/temp/df_info_data_03_checkout.json",
@@ -20,7 +21,16 @@ window.df.workgroup.Preset = {
     "main_url":"main.php",
 
     "eventType": {
-        "ON_LOAD_JSON": "onLoadJson"
+        "ON_LOAD_JSON": "onLoadJson",
+        "ON_LOGIN": "onLogin",
+        "ON_CHECKIN": "onCheckin",
+        "ON_CHECKOUT": "onCheckout",
+        "ON_LOGOUT": "onLogout"
+    },
+
+    "class_name":{
+        "showIn": "show-in",
+        "hideOut": "hide-out"
     },
 
     "isBgTest": false

@@ -34,16 +34,45 @@ var CheckinController = function(){
     }
 
     function loading(){
+        disable_input();
+    }
+
+    function disable_input(){
         var inputs = _form.querySelectorAll('input');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].setAttribute("disabled", "");
         }
     }
 
-    function onSubmit(response){
-        console.log(response);
-        //window.location.reload (true);
+    function able_input(){
+        var inputs = _form.querySelectorAll('input');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].removeAttribute("disabled");
+        }
     }
+
+    function onSubmit(response){
+        able_input();
+        _dispatchOnLoad();
+    }
+
+    function _dispatchOnLoad(){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_CHECKIN);
+        document.dispatchEvent(event);
+    }
+
+    function _showCheckinBtn(){
+        var wrapper_checkin = document.querySelector('.sec-login .wrapper-checkin');
+        df.lab.Util.addClass(wrapper_checkin, window.df.workgroup.Preset.class_name.showIn);
+    }
+
+    function _showCheckoutBtn(){
+        var wrapper_checkin = document.querySelector('.sec-login .wrapper-checkin');
+        df.lab.Util.addClass(wrapper_checkin, 'checked');
+        disable_input();
+    }
+
+
     function ajaxPost (form, callback) {
         // Collect the form data while iterating over the inputs
         var data = {};
@@ -63,7 +92,7 @@ var CheckinController = function(){
         var xhr = new XMLHttpRequest();
         xhr.open(params.method, params.action, true);
         xhr.setRequestHeader('Accept', 'application/json; charset=EUC-KR');
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=EUC-KR');
 
         // Send the collected data as JSON
         xhr.send(JSON.stringify(data));
@@ -82,16 +111,16 @@ var CheckinController = function(){
             if (response.target.status === 0) {
 
                 // Failed XmlHttpRequest should be considered an undefined error.
-                console.log(CLASS_NAME + " xhr.onloadend (Failed) : " , xhr);
+                //console.log(CLASS_NAME + " xhr.onloadend (Failed) : " , xhr);
 
             } else if (response.target.status === 400) {
 
                 // Bad Request
-                console.log(CLASS_NAME + " xhr.onloadend (Bad Request) : " , xhr);
+                //console.log(CLASS_NAME + " xhr.onloadend (Bad Request) : " , xhr);
             } else if (response.target.status === 404) {
 
                 // Bad Request
-                console.log(CLASS_NAME + " xhr.onloadend (404 Not Found) : " , xhr);
+                //console.log(CLASS_NAME + " xhr.onloadend (404 Not Found) : " , xhr);
 
             } else if (response.target.status === 200) {
 
@@ -110,6 +139,8 @@ var CheckinController = function(){
         };
     }
     return {
-        init: _init
+        init: _init,
+        showCheckinBtn: _showCheckinBtn,
+        showCheckoutBtn: _showCheckoutBtn
     }
 };

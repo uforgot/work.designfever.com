@@ -16,3 +16,21 @@
   -webkit-justify-content: center;
   justify-content: center;
 }
+
+%flex-top-center {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+%flex-bottom-center {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  -webkit-justify-content: center;
+  justify-content: center;
+}

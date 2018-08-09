@@ -101,10 +101,10 @@ window.df.workgroup.login.LoadInfoData = (function(){
             //return;
         }
 
-        dispatchOnLoad();
+        _dispatchOnLoad();
     }
 
-    function dispatchOnLoad(){
+    function _dispatchOnLoad(){
         var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOAD_JSON);
         document.dispatchEvent(event);
     }

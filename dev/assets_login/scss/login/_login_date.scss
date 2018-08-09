@@ -30,7 +30,7 @@
 
     @include mx_transform_transY(0, 10px);
 
-    &.show {
+    &.#{ $vars_class_showIn } {
       @include mx_transform_transY(1, 0);
     }
   }

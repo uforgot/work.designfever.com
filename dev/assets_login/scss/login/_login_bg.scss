@@ -38,7 +38,7 @@ $bg_gra_color_B: 0;
     transform: translateY(-66.6%);
     transition: transform 2000ms ease-in-out;
 
-    &.show{
+    &.#{ $vars_class_showIn }{
       transform: translateY(0);
     }
   }

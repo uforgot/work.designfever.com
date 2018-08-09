@@ -31,13 +31,12 @@ var LoginDate = function(con, json_data){
 
     function show(){
 
-        df.lab.Util.removeClass(_con, "show");
+        df.lab.Util.removeClass(_con, window.df.workgroup.Preset.class_name.showIn);
 
         clearTimeout(_ID_TIMEOUT);
         _ID_TIMEOUT = setTimeout(function(){
-            df.lab.Util.addClass(_con, "show");
+            df.lab.Util.addClass(_con, window.df.workgroup.Preset.class_name.showIn);
         }, 2000);
-
     }
 
     function _updateToday(today){

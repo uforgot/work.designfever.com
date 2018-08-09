@@ -9,7 +9,7 @@ header{
   opacity: 0;
   @include mx_transition("1000ms", "opacity", "ease-out");
 
-  &.show{
+  &.#{ $vars_class_showIn }{
     opacity: 1;
   }
 
@@ -42,7 +42,7 @@ header{
 
       @include mx_transition("1000ms","opacity, transform", $vars_easeOutCubic, "400ms");
 
-      &.show {
+      &.#{$vars_class_showIn} {
         opacity: 1;
         transform: translateX(0);
         transform: translate3d(0, 0, 0);

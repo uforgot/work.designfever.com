@@ -1,5 +1,5 @@
 .sec-util {
-  margin-top: -5vh;
+  margin-top: 0;
   transform: translateY(30px);
   transform: translate3d(0, 30px, 0);
 
@@ -19,10 +19,10 @@
 
   @extend %flex-center;
 
-   @include mx_transition("600ms","opacity, transform, height, min-height, max-height", $vars_easeInOutCubic, "200ms");
+   @include mx_transition("800ms","opacity, transform, height, min-height, max-height, margin-top", $vars_easeInOutCubic, "200ms");
 
-  &.logged{
-    //margin-top: -5vh;
+  &.#{ $vars_class_showIn }{
+    margin-top: -5vh;
 
     transform: translateY(0);
     transform: translate3d(0, 0, 0);
@@ -123,7 +123,6 @@
               }
             }
           }
-
         }
       }
     }

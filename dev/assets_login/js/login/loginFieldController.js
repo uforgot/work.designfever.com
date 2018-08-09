@@ -111,6 +111,10 @@ var LoginFieldController = function(){
     }
 
     function loading(){
+        disable_input();
+    }
+
+    function disable_input(){
         var sec_login = document.querySelector('.sec-login');
         df.lab.Util.addClass(sec_login, 'loading');
 
@@ -123,34 +127,34 @@ var LoginFieldController = function(){
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].setAttribute("disabled", "");
         }
-
     }
 
-    function onSubmit(response){
-        console.log(response);
-        onLog();
-    }
-
-    function onLog(){
+    function able_input(){
         var sec_login = document.querySelector('.sec-login');
         df.lab.Util.removeClass(sec_login, 'loading');
-        df.lab.Util.addClass(sec_login, 'logged');
 
         var inputs = sec_login.querySelectorAll('input');
-        // inputs.forEach(function(el, index){
-        //     el.removeAttribute("disabled");
-        // });
-
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].removeAttribute("disabled");
         }
+    }
 
+    function onSubmit(response){
+        able_input();
+        _dispatchOnLoad();
+    }
 
-        var sec_util = document.querySelector('.sec-util');
-        df.lab.Util.addClass(sec_util, 'logged');
+    function _dispatchOnLoad(){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOGIN);
+        document.dispatchEvent(event);
+    }
 
-        var btn_logout = document.querySelector('header .wrapper-logout');
-        df.lab.Util.addClass(btn_logout, 'show');
+    function _hideLoginFrom(){
+
+    }
+
+    function _showLoginFrom(){
+
     }
 
     function ajaxPost (form, callback) {
@@ -172,7 +176,7 @@ var LoginFieldController = function(){
         var xhr = new XMLHttpRequest();
         xhr.open(params.method, params.action, true);
         xhr.setRequestHeader('Accept', 'application/json; charset=EUC-KR');
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=EUC-KR');
 
         // Send the collected data as JSON
         xhr.send(JSON.stringify(data));
@@ -220,6 +224,7 @@ var LoginFieldController = function(){
     }
 
     return {
-        init : _init
+        init : _init,
+        hideLoginFrom: _hideLoginFrom
     }
 };
