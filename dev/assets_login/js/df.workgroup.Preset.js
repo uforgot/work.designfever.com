@@ -5,10 +5,10 @@ window.df.workgroup.Preset = {
 
     "json_url":{
         "default": "http://dev3.designfever.com/assets_login/temp/df_info_data.json.php",
-        "login": "http://dev3.designfever.com/assets_login/temp/df_info_data.json.php",
-        "checkin": "http://dev3.designfever.com/assets_login/temp/df_info_data.json.php",
-        "checkout": "http://dev3.designfever.com/assets_login/temp/df_info_data.json.php",
-        "logout": "http://dev3.designfever.com/assets_login/temp/df_info_data.json.php",
+        "login": "assets_login/temp/df_info_data_01_login.json",
+        "checkin": "assets_login/temp/df_info_data_02_checkin.json",
+        "checkout": "assets_login/temp/df_info_data_03_checkout.json",
+        "logout": "assets_login/temp/df_info_data_04_logout.json"
     },
 
     "document_url":{

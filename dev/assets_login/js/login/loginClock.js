@@ -1,4 +1,6 @@
-var DF_Clock = function(con, json_data){
+var LoginClock = function(con, json_data){
+
+    var CLASS_NAME = "[ LoginClock ]";
 
     var _con = con;
 
@@ -45,7 +47,7 @@ var DF_Clock = function(con, json_data){
     var ID_timeout = null;
 
     function init(today){
-        console.log("container : ", _con);
+        //console.log(CLASS_NAME + " container : ", _con);
         _setting({
             container : _con,
             stageWidth:_con.offsetWidth,

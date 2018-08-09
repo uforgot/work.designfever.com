@@ -1,7 +1,7 @@
-var loginBgController = function(con_iframe, json_data){
+var LoginBgController = function(con_iframe, json_data){
 
     var con_iframe = con_iframe;
-    var arr_bg_list = []
+    var arr_bg_list = [];
     var dim;
 
     function init(){

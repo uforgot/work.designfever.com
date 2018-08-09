@@ -1,25 +1,24 @@
 {
   "user":{
-    "isLoggedIn": false,
+    "isLoggedIn": true,
 
+    "name": "한영수",
+    "team": "LAB",
+    "position": "실장",
+    "img": "/file/small_sq_1.jpg",
 
-    "name": null,
-    "team": null,
-    "position": null,
-    "img": null,
+    "document_approval_num":12,
+    "document_approval_my_num":5,
+    "document_approval_cc_num":0,
 
-    "document_approval_num": null,
-    "document_approval_my_num": null,
-    "document_approval_cc_num": null,
+    "isNotCheckout_yesterday": false,
 
-    "isNotCheckout_yesterday": null,
+    "isCheckin": true,
+    "checkin_time": 1533780018351,
+    "checkin_timeText": "9시 59분",
 
-    "isCheckin": false,
-    "checkin_time": null,
-    "checkin_timeText": null,
-
-    "checkout_able_time": null,
-    "checkout_able_timeText": null,
+    "checkout_able_time": 1533780018351,
+    "checkout_able_timeText": "19시 59분",
 
     "isCheckout": false,
     "checkout_time": null,

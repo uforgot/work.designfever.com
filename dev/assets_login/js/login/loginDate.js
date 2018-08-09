@@ -1,4 +1,6 @@
-var DF_Date = function(con, json_data){
+var LoginDate = function(con, json_data){
+
+    var CLASS_NAME = "[ LoginDate ]";
 
     var _con = con;
 
@@ -17,7 +19,7 @@ var DF_Date = function(con, json_data){
     var _ID_TIMEOUT = '';
 
     function init(today){
-        //console.log("container : ", _con);
+        //console.log(CLASS_NAME + " container : ", _con);
 
         _el.txt_MM = document.getElementById("id_txt_MM");
         _el.txt_DD = document.getElementById("id_txt_DD");

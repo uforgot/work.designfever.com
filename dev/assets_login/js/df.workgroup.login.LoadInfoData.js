@@ -13,33 +13,61 @@
     window.CustomEvent = CustomEvent;
 })();
 
-
-
 window.df = window.df || {};
 window.df.workgroup = window.df.workgroup || {};
 window.df.workgroup.login = window.df.workgroup.login || {};
 
 window.df.workgroup.login.LoadInfoData = (function(){
 
+    var CLASS_NAME = "[ LoadInfoData ]";
     var url_json = window.df.workgroup.Preset.json_url.default + "?uniq=" + new Date().getTime();
 
     function loadJSON(url, callback) {
 
-        var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-        xobj.open('GET', url, true);
-        xobj.onreadystatechange = function () {
-            if (xobj.readyState == 4 && xobj.status == "200") {
-                // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-                callback(xobj.responseText);
-            }
+        var params = {
+            method: "GET",
+            action: url
         };
-        xobj.send(null);
+
+        var xhr = new XMLHttpRequest();
+        xhr.overrideMimeType("application/json");
+        xhr.open(params.method, params.action, true);
+        xhr.onreadystatechange = function () {
+
+            //console.log(CLASS_NAME + " xhr.readyState : ", xhr.readyState);
+            //console.log(CLASS_NAME + " xhr.status : ", xhr.status);
+
+            if (xhr.readyState == 4 && xhr.status == "200") {
+                // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+                callback(xhr.responseText);
+            }
+
+/*
+            if (response.target.status === 0) {
+
+                // Failed XmlHttpRequest should be considered an undefined error.
+                console.log("xhr.onloadend (Failed) : " , xhr);
+
+            } else if (response.target.status === 400) {
+
+                // Bad Request
+                console.log("xhr.onloadend (Bad Request) : " , xhr);
+            } else if (response.target.status === 404) {
+
+                // Bad Request
+                console.log("xhr.onloadend (404 Not Found) : " , xhr);
+
+            } else if (response.target.status === 200) {
+
+            }*/
+
+        };
+        xhr.send(null);
     }
 
     function init() {
 
-        console.log("[ loadInfoData.js ] : ", "json_url : ", url_json);
+        console.log(CLASS_NAME + " json_url : ", url_json);
 
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
 
@@ -47,7 +75,7 @@ window.df.workgroup.login.LoadInfoData = (function(){
             // Parse JSON string into object
             var actual_JSON = JSON.parse(response);
 
-            //console.log("[ loadInfoData.js ] : ", actual_JSON);
+            //console.log(CLASS_NAME + " ", actual_JSON);
 
             window.df.workgroup.GlobalVars.isLoaded = true;
             window.df.workgroup.GlobalVars.infoData = actual_JSON;
@@ -58,7 +86,7 @@ window.df.workgroup.login.LoadInfoData = (function(){
     }
 
     function onLoadJson(){
-        console.log("[ loadInfoData.js ] : ", "onLoadJson - " , window.df.workgroup.GlobalVars.infoData);
+        console.log(CLASS_NAME + " onLoadJson - " , window.df.workgroup.GlobalVars.infoData);
         document.removeEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
     }
 

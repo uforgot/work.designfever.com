@@ -2,7 +2,6 @@
   "user":{
     "isLoggedIn": false,
 
-
     "name": null,
     "team": null,
     "position": null,

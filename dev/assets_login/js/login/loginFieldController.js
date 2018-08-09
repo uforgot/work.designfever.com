@@ -5,9 +5,27 @@ var LoginFieldController = function(){
     var input_user_id, input_user_pw;
     var storageId, storagePw;
 
-    var _init = function(){
+    var CLASS_NAME = "[ LoginFieldController ]";
+    var _form = document.getElementById('id_login');
+
+    function _init(){
         _inputKeyController();
-    };
+        _setUrl();
+    }
+
+    function _setUrl(){
+        var json_data = window.df.workgroup.GlobalVars.infoData;
+        if(json_data.preset != undefined &&
+            json_data.preset.json_url != undefined &&
+            json_data.preset.json_url.login != undefined){
+
+            _form.action = json_data.preset.json_url.login;
+            console.log(CLASS_NAME + " action(server) : ", _form.action);
+        }else{
+            _form.action = window.df.workgroup.Preset.json_url.login;
+            console.log(CLASS_NAME + " action(local) : ", _form.action);
+        }
+    }
 
     function _inputKeyController(){
         input_user_id = document.getElementById('user_id');
@@ -16,8 +34,7 @@ var LoginFieldController = function(){
         input_user_id.addEventListener( 'keypress', _keypressId );
         //input_user_pw.addEventListener( 'keypress', _keypressPwd );
 
-        var frm = document.getElementById('id_login');
-        frm.addEventListener( 'submit',  _onSubmit);
+        _form.addEventListener( 'submit',  _onSubmit);
 
         setTimeout(function(){
             setFocus();
@@ -28,10 +45,8 @@ var LoginFieldController = function(){
 
         if(storageId == null || storageId == undefined){
             input_user_id.focus();
-            console.log("focus: ", input_user_id);
+            //console.log(CLASS_NAME + " focus: ", input_user_id);
         }
-
-        //console.log("focus: ", input_user_id);
     }
 
     function _keypressId( $evt ) {
@@ -63,17 +78,16 @@ var LoginFieldController = function(){
     }
 
     function _loginCheck() {
-        var frm = document.getElementById('id_login');
 
-         if( frm.user_id.value.length < 3 || frm.user_id.value.length > 16 ) {
+         if( _form.user_id.value.length < 3 || _form.user_id.value.length > 16 ) {
          alert("아이디가 존재하지 않습니다.");
-         frm.user_id.focus();
+         _form.user_id.focus();
          return false;
          }
 
-         if( frm.user_pw.value.length < 4 || frm.user_pw.value.length > 16) {
+         if( _form.user_pw.value.length < 4 || _form.user_pw.value.length > 16) {
          alert("잘못된 패스워드입니다. (4-16자리 가능)");
-         frm.user_pw.focus();
+         _form.user_pw.focus();
          return false;
          }
 
@@ -81,19 +95,18 @@ var LoginFieldController = function(){
     }
 
     function _submit(){
-        var frm = document.getElementById('id_login');
 
-        console.log("action : ", frm.action);
-        console.log("target : ", frm.target);
+        console.log("action : ", _form.action);
+        console.log("target : ", _form.target);
 
-        //alert("action : " + frm.action + "\ntarget : " + frm.target);
+        //alert("action : " + _form.action + "\ntarget : " + _form.target);
 
         var btn = document.getElementById('user_pw');
         btn.blur();
 
-        //frm.submit();
+        //_form.submit();
         loading();
-        ajaxPost(frm, onSubmit);
+        ajaxPost(_form, onSubmit);
         return false;
     }
 
@@ -135,6 +148,9 @@ var LoginFieldController = function(){
 
         var sec_util = document.querySelector('.sec-util');
         df.lab.Util.addClass(sec_util, 'logged');
+
+        var btn_logout = document.querySelector('header .wrapper-logout');
+        df.lab.Util.addClass(btn_logout, 'show');
     }
 
     function ajaxPost (form, callback) {
@@ -147,33 +163,44 @@ var LoginFieldController = function(){
             }
         }
 
+        var params = {
+            method: form.method,
+            action: form.action
+        };
+
         // Construct an HTTP request
         var xhr = new XMLHttpRequest();
-        xhr.open(form.method, form.action, true);
+        xhr.open(params.method, params.action, true);
         xhr.setRequestHeader('Accept', 'application/json; charset=utf-8');
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
         // Send the collected data as JSON
         xhr.send(JSON.stringify(data));
 
+        xhr.onreadystatechange = function () {
+
+            console.log("[LoginFieldController ] xhr.readyState : ", xhr.readyState);
+            console.log("[LoginFieldController ] xhr.status : ", xhr.status);
+        };
+
         // Callback function
         xhr.onloadend = function (response) {
 
-            console.log("xhr.onloadend : " , response);
+            console.log("[LoginFieldController ] xhr.onloadend : " , response);
 
             if (response.target.status === 0) {
 
                 // Failed XmlHttpRequest should be considered an undefined error.
-                console.log("xhr.onloadend (Failed) : " , xhr);
+                console.log("[LoginFieldController ] xhr.onloadend (Failed) : " , xhr);
 
             } else if (response.target.status === 400) {
 
                 // Bad Request
-                console.log("xhr.onloadend (Bad Request) : " , xhr);
+                console.log("[LoginFieldController ] xhr.onloadend (Bad Request) : " , xhr);
             } else if (response.target.status === 404) {
 
                 // Bad Request
-                console.log("xhr.onloadend (404 Not Found) : " , xhr);
+                console.log("[LoginFieldController ] xhr.onloadend (404 Not Found) : " , xhr);
 
             } else if (response.target.status === 200) {
 
@@ -181,13 +208,13 @@ var LoginFieldController = function(){
                 //console.log("xhr.onloadend (Success) : form.dataset.formSuccess" , form.dataset.formSuccess);
                 //console.log("xhr.onloadend (Success) response : " , response);
                 //console.log("xhr.onloadend (Success) xhr : " , xhr);
-                console.log("xhr.onloadend (Success) response : " , JSON.parse(response.target.responseText));
+                console.log("[LoginFieldController ] xhr.onloadend (Success) response : " , JSON.parse(response.target.responseText));
 
                 setTimeout(function(){
                     callback(response);
                 }, 1000);
-                //callback(response);
 
+                //callback(response);
             }
         };
     }

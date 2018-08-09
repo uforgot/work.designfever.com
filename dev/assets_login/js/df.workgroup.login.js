@@ -1,4 +1,9 @@
-var DF_Login = function(json_data){
+window.df = window.df || {};
+window.df.workgroup = window.df.workgroup || {};
+
+window.df.workgroup.login = function(json_data){
+
+    var CLASS_NAME = "[ login ]";
 
     var container_iframe = document.getElementById("id_bg_frame");
     var container_clock = document.getElementById("id_container_clock");
@@ -7,10 +12,13 @@ var DF_Login = function(json_data){
     var _json_data = json_data;
     var _offsetTime = 0;
 
-    var _clock = new DF_Clock(container_clock, _json_data);
-    var _date = new DF_Date(container_date, _json_data);
-    var _bgControll = new loginBgController(container_iframe, _json_data);
+    var _clock = new LoginClock(container_clock, _json_data);
+    var _date = new LoginDate(container_date, _json_data);
+
+    var _bgControll = new LoginBgController(container_iframe, _json_data);
+
     var _loginController = new LoginFieldController();
+    var _logoutController = new LogoutController();
 
     var _today = { YY:0, MM:0, DD:0, DW:0, hh:0, mm:0, ss:0 };
 
@@ -21,8 +29,8 @@ var DF_Login = function(json_data){
 
         if(_json_data.info != undefined && _json_data.info.date != undefined && _json_data.info.date.server_time != undefined){
             _offsetTime = _json_data.info.date.server_time - new Date().getTime();
-            console.log("[server time] : ", _json_data.info.date.server_time);
-            console.log("[client time] : ", new Date().getTime());
+            console.log(CLASS_NAME + " [server time] : ", _json_data.info.date.server_time);
+            console.log(CLASS_NAME + " [client time] : ", new Date().getTime());
         }
 
         _startTimer();
@@ -30,7 +38,9 @@ var DF_Login = function(json_data){
         _bgControll.init();
         _clock.init(_today);
         _date.init(_today);
+
         _loginController.init();
+        _logoutController.init();
 
         startMotion();
     }

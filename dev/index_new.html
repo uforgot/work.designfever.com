@@ -52,6 +52,19 @@
         <div class="wrapper-logo">
             <img class="img_logo" src="assets_login/images/logo/df_logo_w_242.svg">
         </div>
+        <div class="wrapper-btn">
+            <div class="wrapper-logout">
+                <form id="id_form_logout" name="user_logout" method="POST" accept-charset="utf-8" enctype="multipart/form-data" action="">
+                    <fieldset>
+                        <legend class="blind">Logout</legend>
+                        <div class="area-input btn-logout">
+                            <i class="material-icons">close</i>
+                            <input id="id_btn_logout" class="btn-submit" form="id_form_logout" type="submit" value="log out">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
     </header>
     <section class="sec-info">
         <ul>
@@ -81,8 +94,7 @@
     </section>
     <section class="sec-login">
         <div class="wrapper-login">
-            <form id="id_login" name="user_info" method="POST" accept-charset="euc-kr" enctype="multipart/form-data" autocomplete="off"
-                  action="assets_login/temp/df_info_data.json">
+            <form id="id_login" name="user_info" method="POST" accept-charset="utf-8" enctype="multipart/form-data" autocomplete="off" action="">
                 <fieldset class="login-form">
                     <legend class="blind">Login</legend>
                     <div class="area-input">
@@ -124,8 +136,7 @@
         <div class="wrapper-checkin">
             <div class="area-check-inout area-checkin">
                 <div class="btn-wrapper">
-                    <form id="id_checkin" name="user_checkin" method="POST" accept-charset="euc-kr" enctype="multipart/form-data"
-                          action="">
+                    <form id="id_checkin" name="user_checkin" method="POST" accept-charset="utf-8" enctype="multipart/form-data" action="">
                         <fieldset>
                             <legend class="blind">Checkin</legend>
                             <div class="area-input btn-checkin">
@@ -144,8 +155,7 @@
             </div>
             <div class="area-check-inout area-checkout">
                 <div class="btn-wrapper checkout">
-                    <form id="id_checkout" name="user_checkout" method="POST" accept-charset="euc-kr" enctype="multipart/form-data"
-                          action="assets_login/temp/df_info_data.json">
+                    <form id="id_checkout" name="user_checkout" method="POST" accept-charset="utf-8" enctype="multipart/form-data" action="">
                         <fieldset>
                             <legend class="blind">Checkout</legend>
                             <div class="area-input btn-checkout">
@@ -163,21 +173,32 @@
                 <li class="util-list">
                     <div class="circle-box">
                         <a href="approval/approval_to_list.php">
-                            <div class="icon"><span>icon</span><img src="assets_login/images/icon/icon_check_20x20.svg"></div><div class="txt"><span id="doc_0">12</span></div>
+                            <div class="icon">
+                                <i class="material-icons">check</i>
+                                <span>check icon</span>
+                                <img src="assets_login/images/icon/icon_check_20x20.svg">
+                            </div>
+                            <div class="txt"><span id="doc_0">12</span></div>
                         </a>
                     </div>
                 </li>
                 <li class="util-list">
                     <div class="circle-box">
                         <a href="approval/approval_my_list.php">
-                            <div class="icon"><span>icon</span><img src="assets_login/images/icon/icon_arrow_up_20x20.svg"></div><div class="txt"><span id="doc_1">5</span></div>
+                            <div class="icon">
+                                <i class="material-icons">arrow_upward</i>
+                            </div>
+                            <div class="txt"><span id="doc_1">5</span></div>
                         </a>
                     </div>
                 </li>
                 <li class="util-list">
                     <div class="circle-box">
                         <a href="approval/approval_cc_list.php">
-                            <div class="icon"><span>icon</span><img src="assets_login/images/icon/icon_plus_20x20.svg"></div><div class="txt"><span id="doc_2">0</span></div>
+                            <div class="icon">
+                                <i class="material-icons">add</i>
+                                </div>
+                            <div class="txt"><span id="doc_2">0</span></div>
                         </a>
                     </div>
                 </li>
@@ -186,7 +207,11 @@
                 <li class="util-list">
                     <div class="circle-box more">
                         <a href="main.php">
-                            <div class="icon"><span>icon</span><img src="assets_login/images/icon/icon_more_24x24.svg"></div><div class="txt"><span id="id_more">more</span></div>
+                            <div class="icon">
+                                <i class="material-icons">view_comfy</i>
+                                <!--<i class="material-icons">apps</i>-->
+                                </div>
+                            <div class="txt"><span id="id_more">more</span></div>
                         </a>
                     </div>
                 </li>
@@ -203,8 +228,9 @@
 <script src="assets_login/js/login/loginBgController.js?uniq=20180807"></script>
 <script src="assets_login/js/login/loginClock.js?uniq=20180807"></script>
 <script src="assets_login/js/login/loginDate.js?uniq=20180807"></script>
-<script src="assets_login/js/login/loginFieldController.js?uniq=20180807_2"></script>
-<script src="assets_login/js/df.workgroup.login.js?uniq=20180807"></script>
+<script src="assets_login/js/login/loginFieldController.js?uniq=20180808"></script>
+<script src="assets_login/js/login/logoutController.js"></script>
+<script src="assets_login/js/df.workgroup.login.js?uniq=20180808"></script>
 <script>
 
     console.log("[ index.html ] : ", "check load json");
@@ -221,7 +247,7 @@
     );
 
     function init(){
-        var login = new DF_Login(df.workgroup.GlobalVars.infoData);
+        var login = new window.df.workgroup.login(df.workgroup.GlobalVars.infoData);
         login.init();
     }
 </script>
