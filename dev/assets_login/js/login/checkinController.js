@@ -70,8 +70,14 @@ var CheckinController = function(){
         var wrapper_checkin = document.querySelector('.sec-login .wrapper-checkin');
         df.lab.Util.addClass(wrapper_checkin, 'checked');
         disable_input();
+
+        setTimeout(setTimeBar, 1000);
     }
 
+    function setTimeBar(){
+        var cur_bar = document.getElementById("id_per_time");
+        cur_bar.style.width = "75%";
+    }
 
     function ajaxPost (form, callback) {
         // Collect the form data while iterating over the inputs

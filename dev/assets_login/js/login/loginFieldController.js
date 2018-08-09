@@ -216,7 +216,7 @@ var LoginFieldController = function(){
 
                 setTimeout(function(){
                     callback(response);
-                }, 1000);
+                }, 100);
 
                 //callback(response);
             }

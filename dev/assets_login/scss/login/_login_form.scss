@@ -290,7 +290,7 @@
           width:0;
           height:100%;
           border-radius: 3px 3px;
-          @include mx_transition("1000ms","width, background", $vars_easeInOutCubic, "200ms");
+          @include mx_transition("1000ms","width, background", $vars_easeInOutCubic, "0");
         }
       }
 
