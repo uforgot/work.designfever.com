@@ -55,14 +55,20 @@
           height:100%;
           border-radius: 50%;
           overflow: hidden;
-          background: #333333;
-          color: #FFFFFF;
 
           a{
             display: block;
             width:100%;
             height:100%;
             text-align: center;
+            background: #333333;
+            color: #FFFFFF;
+
+            @include mx_transition("600ms", "background", $vars_easeOutCubic);
+
+            &:hover, &:focus{
+              background: #000000;
+            }
 
             .txt{
               font-size: 0.625rem;
@@ -94,8 +100,11 @@
           }
 
           &.more{
-            background: #666666;
             a{
+              background: #666666;
+              &:hover, &:focus{
+                background: #000000;
+              }
               .txt{
                 @extend %blind;
               }

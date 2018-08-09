@@ -22,6 +22,15 @@ window.df.workgroup.login.LoadInfoData = (function(){
     var CLASS_NAME = "[ LoadInfoData ]";
     var url_json = window.df.workgroup.Preset.json_url.default + "?uniq=" + new Date().getTime();
 
+
+    function init() {
+
+        console.log(CLASS_NAME + " json_url : ", url_json);
+
+        document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
+        loadJSON(url_json, onLoad);
+    }
+
     function loadJSON(url, callback) {
 
         var params = {
@@ -39,55 +48,88 @@ window.df.workgroup.login.LoadInfoData = (function(){
 
             if (xhr.readyState == 4 && xhr.status == "200") {
                 // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+
+                console.log(CLASS_NAME + " xhr : " , xhr);
                 callback(xhr.responseText);
             }
 
-/*
-            if (response.target.status === 0) {
+            /*
+                        if (response.target.status === 0) {
 
-                // Failed XmlHttpRequest should be considered an undefined error.
-                console.log("xhr.onloadend (Failed) : " , xhr);
+                            // Failed XmlHttpRequest should be considered an undefined error.
+                            console.log("xhr.onloadend (Failed) : " , xhr);
 
-            } else if (response.target.status === 400) {
+                        } else if (response.target.status === 400) {
 
-                // Bad Request
-                console.log("xhr.onloadend (Bad Request) : " , xhr);
-            } else if (response.target.status === 404) {
+                            // Bad Request
+                            console.log("xhr.onloadend (Bad Request) : " , xhr);
+                        } else if (response.target.status === 404) {
 
-                // Bad Request
-                console.log("xhr.onloadend (404 Not Found) : " , xhr);
+                            // Bad Request
+                            console.log("xhr.onloadend (404 Not Found) : " , xhr);
 
-            } else if (response.target.status === 200) {
+                        } else if (response.target.status === 200) {
 
-            }*/
+                        }*/
 
         };
         xhr.send(null);
     }
 
-    function init() {
+    function onLoad(response) {
+        var actual_JSON = JSON.parse(response);
+        window.df.workgroup.GlobalVars.isLoaded = true;
+        window.df.workgroup.GlobalVars.infoData = actual_JSON;
 
-        console.log(CLASS_NAME + " json_url : ", url_json);
+        var el_html = document.querySelector('html');
+        var isDesktop = window.df.lab.Util.hasClass(el_html, 'desktop');
 
-        document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
+        var isLoggedIn = false;
+        var json_data = window.df.workgroup.GlobalVars.infoData;
+        if(json_data.user != undefined &&
+            json_data.user.isLoggedIn != undefined ){
 
-        loadJSON(url_json, function(response) {
-            // Parse JSON string into object
-            var actual_JSON = JSON.parse(response);
+            if(json_data.user.isLoggedIn || json_data.user.isLoggedIn == "true") {
+                isLoggedIn = true;
+            }
+        }
 
-            //console.log(CLASS_NAME + " ", actual_JSON);
+        console.log(CLASS_NAME + " isDesktop : " , isDesktop, " / isLoggedIn : ", isLoggedIn);
 
-            window.df.workgroup.GlobalVars.isLoaded = true;
-            window.df.workgroup.GlobalVars.infoData = actual_JSON;
+        if(isDesktop && isLoggedIn){
+            redirectToMain();
+            //return;
+        }
 
-            var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOAD_JSON);
-            document.dispatchEvent(event);
-        });
+        dispatchOnLoad();
+    }
+
+    function dispatchOnLoad(){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOAD_JSON);
+        document.dispatchEvent(event);
     }
 
     function onLoadJson(){
         console.log(CLASS_NAME + " onLoadJson - " , window.df.workgroup.GlobalVars.infoData);
         document.removeEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
+    }
+
+    function redirectToMain(){
+
+        var url = "";
+        var json_data = window.df.workgroup.GlobalVars.infoData;
+        if(json_data.preset != undefined &&
+            json_data.preset.main_url != undefined){
+
+            url = json_data.preset.main_url;
+            console.log(CLASS_NAME + " go to main url (get server) : ", url);
+        }else{
+            url = window.df.workgroup.Preset.main_url;
+            console.log(CLASS_NAME + " go to main url (get local) : ", url);
+        }
+
+        //window.location.href = url;
+        return;
     }
 
     return {

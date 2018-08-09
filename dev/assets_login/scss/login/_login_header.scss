@@ -60,6 +60,14 @@ header{
         overflow: hidden;
         display: none;
 
+        @include mx_transition("400ms","background, transform", $vars_easeOutCubic, "0");
+
+        &:hover, &:focus{
+          background: rgba(0, 0, 0, 0.8);
+          transform: rotate(180deg);
+          transform-origin: center;
+        }
+
         .material-icons {
           position: absolute;
           font-size: 24px;

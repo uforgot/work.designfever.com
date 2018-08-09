@@ -1,7 +1,7 @@
-var LogoutController = function(){
+var CheckinController = function(){
 
-    var CLASS_NAME = "[ LogoutController ]";
-    var _form = document.getElementById('id_form_logout');
+    var CLASS_NAME = "[ CheckinController ]";
+    var _form = document.getElementById('id_checkin');
 
     function _init(){
         _setUrl();
@@ -12,12 +12,12 @@ var LogoutController = function(){
         var json_data = window.df.workgroup.GlobalVars.infoData;
         if(json_data.preset != undefined &&
             json_data.preset.json_url != undefined &&
-            json_data.preset.json_url.logout != undefined){
+            json_data.preset.json_url.checkin != undefined){
 
-            _form.action = json_data.preset.json_url.logout;
+            _form.action = json_data.preset.json_url.checkin;
             console.log(CLASS_NAME + " action(server) : ", _form.action);
         }else{
-            _form.action = window.df.workgroup.Preset.json_url.logout;
+            _form.action = window.df.workgroup.Preset.json_url.checkin;
             console.log(CLASS_NAME + " action(local) : ", _form.action);
         }
     }
@@ -42,7 +42,7 @@ var LogoutController = function(){
 
     function onSubmit(response){
         console.log(response);
-        window.location.reload (true);
+        //window.location.reload (true);
     }
     function ajaxPost (form, callback) {
         // Collect the form data while iterating over the inputs
@@ -56,7 +56,7 @@ var LogoutController = function(){
 
         var params = {
             method: form.method,
-            action: form.action + "?uniq=" + new Date().getTime()
+            action: form.action
         };
 
         // Construct an HTTP request

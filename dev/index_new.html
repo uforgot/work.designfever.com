@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" class="no-js">
 <head>
-    <meta charset="utf-8">
+    <meta charset="EUC-KR">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
@@ -54,12 +54,12 @@
         </div>
         <div class="wrapper-btn">
             <div class="wrapper-logout">
-                <form id="id_form_logout" name="user_logout" method="POST" accept-charset="utf-8" enctype="multipart/form-data" action="">
+                <form id="id_form_logout" name="user_logout" method="POST" accept-charset="EUC-KR" enctype="multipart/form-data" action="">
                     <fieldset>
                         <legend class="blind">Logout</legend>
-                        <div class="area-input btn-logout">
+                        <div class="area-input btn-logout" tabindex="0">
                             <i class="material-icons">close</i>
-                            <input id="id_btn_logout" class="btn-submit" form="id_form_logout" type="submit" value="log out">
+                            <input tabindex="-1" id="id_btn_logout" class="btn-submit" form="id_form_logout" type="submit" value="log out">
                         </div>
                     </fieldset>
                 </form>
@@ -76,8 +76,8 @@
             </li>
             <li class="wrapper-info">
                 <div class="wrapper-notice">
-                    <p class="area-txt"><span class="txt-notice">3ì¸µ ê°œìˆ˜ëŒ€ <br>ì‚¬ìš©ì„ <br>ê¸ˆí•©ë‹ˆë‹¤.</span></p>
-                    <p class="area-txt"><span class="txt-sub">8ì›” 3ì¼ê¹Œì§€ <br>ì‚¬ìš©ì„ ê¸ˆí•©ë‹ˆë‹¤. <br>- ê²½ì˜ì§€ì›íŒ€</span></p>
+                    <p class="area-txt"><span class="txt-notice">3Ãþ °³¼ö´ë <br>»ç¿ëÀ» <br>±ÝÇÕ´Ï´Ù.</span></p>
+                    <p class="area-txt"><span class="txt-sub">8¿ù 3ÀÏ±îÁö <br>»ç¿ëÀ» ±ÝÇÕ´Ï´Ù. <br>- °æ¿µÁö¿øÆÀ</span></p>
                 </div>
             </li>
         </ul>
@@ -94,7 +94,7 @@
     </section>
     <section class="sec-login">
         <div class="wrapper-login">
-            <form id="id_login" name="user_info" method="POST" accept-charset="utf-8" enctype="multipart/form-data" autocomplete="off" action="">
+            <form id="id_login" name="user_info" method="POST" accept-charset="EUC-KR" enctype="multipart/form-data" autocomplete="off" action="">
                 <fieldset class="login-form">
                     <legend class="blind">Login</legend>
                     <div class="area-input">
@@ -106,8 +106,8 @@
                                pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,15}$"
                                style="ime-mode:disabled;"
                                autocomplete="false"
-                               title="ì•„ì´ë””ë¥¼ 3ìž ì´ìƒ ìž…ë ¥í•´ ì£¼ì„¸ìš”. ê³µë°±ì´ë‚˜ íŠ¹ìˆ˜ë¬¸ìž ë“±ì€ í¬í•¨í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤."
-                               tabindex="0" aria-label="ì•„ì´ë”” ìž…ë ¥"
+                               title="¾ÆÀÌµð¸¦ 3ÀÚ ÀÌ»ó ÀÔ·ÂÇØ ÁÖ¼¼¿ä. °ø¹éÀÌ³ª Æ¯¼ö¹®ÀÚ µîÀº Æ÷ÇÔÇÒ ¼ö ¾ø½À´Ï´Ù."
+                               tabindex="0" aria-label="¾ÆÀÌµð ÀÔ·Â"
                                spellcheck="false" autocorrect="off"
                                required autofocus >
                     </div>
@@ -118,7 +118,7 @@
                                placeholder="Password"
                                maxlength="15"
                                pattern=".{4,}"
-                               title="ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•´ ì£¼ì„¸ìš”. 4ìž ì´ìƒìœ¼ë¡œ ëœ ì˜ë¬¸ì†Œë¬¸ìž, ìˆ«ìž, ì–¸ë”ìŠ¤ì½”ì–´ë¡œë§Œ êµ¬ì„±í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤."
+                               title="ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä. 4ÀÚ ÀÌ»óÀ¸·Î µÈ ¿µ¹®¼Ò¹®ÀÚ, ¼ýÀÚ, ¾ð´õ½ºÄÚ¾î·Î¸¸ ±¸¼ºÇÒ ¼ö ÀÖ½À´Ï´Ù."
                                spellcheck="false" autocorrect="off"
                                required >
                     </div>
@@ -127,7 +127,7 @@
                             <input class="round-box btn-submit"  id="user_login" form="id_login" type="submit" value="Login">
                         </div>
                         <div class="area-btn btn-help btn-module align-right">
-                            <a class="round-box link-help" href="help.html" title="ì•ˆë‚´ ë°ìŠ¤í¬"><span>Help</span></a>
+                            <a class="round-box link-help" href="help.html" title="¾È³» µ¥½ºÅ©"><span>Help</span></a>
                         </div>
                     </div>
                 </fieldset>
@@ -136,30 +136,30 @@
         <div class="wrapper-checkin">
             <div class="area-check-inout area-checkin">
                 <div class="btn-wrapper">
-                    <form id="id_checkin" name="user_checkin" method="POST" accept-charset="utf-8" enctype="multipart/form-data" action="">
+                    <form id="id_checkin" name="user_checkin" method="POST" accept-charset="EUC-KR" enctype="multipart/form-data" action="">
                         <fieldset>
                             <legend class="blind">Checkin</legend>
                             <div class="area-input btn-checkin">
-                                <input class="btn-submit" form="id_checkin" type="submit" value="ì¶œê·¼">
+                                <input class="btn-submit" form="id_checkin" type="submit" value="Ãâ±Ù">
                             </div>
                         </fieldset>
                     </form>
                 </div>
             </div>
             <div class="area-timebar">
-                <div class="txt-wrapper"><p><span>í•œì˜ìˆ˜ </span><span>í”„ë¡œë‹˜</span></p></div>
+                <div class="txt-wrapper"><p><span>ÇÑ¿µ¼ö </span><span>ÇÁ·Î´Ô</span></p></div>
                 <div class="bar-wrapper">
                     <div class="bar-cur"></div>
                 </div>
-                <div class="txt-wrapper"><p class="limit-time-txt"><span>í‡´ê·¼ ê°€ëŠ¥ì‹œê°„ </span><span>19ì‹œ 45ë¶„</span></p></div>
+                <div class="txt-wrapper"><p class="limit-time-txt"><span>Åð±Ù °¡´É½Ã°£ </span><span>19½Ã 45ºÐ</span></p></div>
             </div>
             <div class="area-check-inout area-checkout">
                 <div class="btn-wrapper checkout">
-                    <form id="id_checkout" name="user_checkout" method="POST" accept-charset="utf-8" enctype="multipart/form-data" action="">
+                    <form id="id_checkout" name="user_checkout" method="POST" accept-charset="EUC-KR" enctype="multipart/form-data" action="">
                         <fieldset>
                             <legend class="blind">Checkout</legend>
                             <div class="area-input btn-checkout">
-                                <input class="btn-submit" form="id_checkout" type="submit" value="í‡´ê·¼">
+                                <input class="btn-submit" form="id_checkout" type="submit" value="Åð±Ù">
                             </div>
                         </fieldset>
                     </form>
@@ -230,6 +230,7 @@
 <script src="assets_login/js/login/loginDate.js?uniq=20180807"></script>
 <script src="assets_login/js/login/loginFieldController.js?uniq=20180808"></script>
 <script src="assets_login/js/login/logoutController.js"></script>
+<script src="assets_login/js/login/checkinController.js"></script>
 <script src="assets_login/js/df.workgroup.login.js?uniq=20180808"></script>
 <script>
 

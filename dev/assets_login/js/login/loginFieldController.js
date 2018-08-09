@@ -165,13 +165,13 @@ var LoginFieldController = function(){
 
         var params = {
             method: form.method,
-            action: form.action
+            action: form.action + "?uniq=" + new Date().getTime()
         };
 
         // Construct an HTTP request
         var xhr = new XMLHttpRequest();
         xhr.open(params.method, params.action, true);
-        xhr.setRequestHeader('Accept', 'application/json; charset=utf-8');
+        xhr.setRequestHeader('Accept', 'application/json; charset=EUC-KR');
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
         // Send the collected data as JSON

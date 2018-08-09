@@ -226,6 +226,16 @@
       font-size: 0.75rem;
       font-weight: 700;
 
+
+      &.checkout{
+        .bar-wrapper {
+          .bar-cur {
+            background: #FFFFFF;
+            width: 100%;
+          }
+        }
+      }
+
       .bar-wrapper{
         position: absolute;
         background : #292929;
@@ -238,9 +248,10 @@
 
         .bar-cur{
           background : #009494;
-          width:50%;
+          width:0;
           height:100%;
-          border-radius: 2px 2px;
+          border-radius: 3px 3px;
+          @include mx_transition("1000ms","width, background", $vars_easeInOutCubic, "200ms");
         }
       }
 
