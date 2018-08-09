@@ -19,6 +19,7 @@
     margin-top: -5vh;
     height: 10.8%;
     min-height: 80px;
+    max-height: 100px;
     opacity: 1;
     .util-wrapper{
       @extend %flex-center;

@@ -11,6 +11,14 @@ window.df.workgroup.Preset = {
         "logout": "http://dev3.designfever.com/assets_login/temp/df_info_data.json.php",
     },
 
+    "document_url":{
+        "approval": "approval/approval_to_list.php",
+        "approval_my": "approval/approval_my_list.php",
+        "approval_cc": "approval/approval_cc_list.php"
+    },
+
+    "main_url":"main.php",
+
     "eventType": {
         "ON_LOAD_JSON": "onLoadJson"
     },
