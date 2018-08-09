@@ -1,77 +1,46 @@
 {
   "user":{
-    "logged": false
-  },
-  "info": {
-    "date":{
-      "server_time": 1533780018351
-    },
-    "weather":{
-      "id":201,
-      "main":"Rain",
-      "dec":"light rain",
-      "temp":286.164,
-      "sunrise":123456789,
-      "sunset":123456789
-    },
-    "birthday":[
-      {
-        "name":"박재형",
-        "team":"CEO",
-        "thumb":"thumb.jpg"
-      },
-      {
-        "name":"최동현",
-        "team":"CEO",
-        "thumb":"thumb.jpg"
-      }
-    ],
+    "isLoggedIn": true,
 
-    "today":{
-      "bg_contents": [
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0}
-      ]
-    },
-    "test":{
-      "bg_contents": [
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700&videoindex=1", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=801", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=800&videoindex=1", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=800&videoindex=0", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=600", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=2", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=1", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=0", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=300&videoindex=1", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=300&videoindex=0", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=200", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=801", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=800", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=700", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=600", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=500", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=300", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=200", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/birthday/004_birthday-video/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/birthday/003_birthday-video/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/birthday/002_birthday-video/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/birthday/001_birthday-slideshow/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/006_particle-line/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/005_zigzag/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/004_connected-lines/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/002_sphere-lines-3d/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/001_Gooey-df/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/004_2015-df-makeover-project-video/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/002_df-hyatt-dining-slideshow/index.html", "color_mode": 0},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/001_df-new-Building-slideshow/index.html", "color_mode": 0}
-      ]
-    }
+    "name": "한영수",
+    "team": "LAB",
+    "position": "실장",
+    "img": "/file/small_sq_1.jpg",
+
+    "document_approval_num":12,
+    "document_approval_my_num":5,
+    "document_approval_cc_num":0,
+
+    "isCheckin": true,
+    "checkin_time": 1533780018351,
+    "checkin_timeText": "9시 59분",
+
+    "isCheckout": true,
+    "checkout_time": 1533780018351,
+    "checkout_timeText": "19시 59분",
+
+    "checkout_able_time": 1533780018351,
+    "checkout_able_timeText": "19시 59분",
+
+    "isNotCheckout_yesterday": false
   },
+
   "preset":{
+    "json_url":{
+      "default": "assets_login/temp/df_info_data.json",
+      "login": "assets_login/temp/df_info_data.json",
+      "checkin": "assets_login/temp/df_info_data.json",
+      "checkout": "assets_login/temp/df_info_data.json",
+      "logout": "assets_login/temp/df_info_data.json"
+    },
+    "document_url":{
+      "approval": "approval/approval_to_list.php",
+      "approval_my": "approval/approval_my_list.php",
+      "approval_cc": "approval/approval_cc_list.php"
+    },
+
+    "main_url":"main.php",
+
     "bg_contents": {
       "weather": {
         "group": "01",
@@ -125,6 +94,45 @@
           {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/001_df-new-Building-slideshow/index.html", "color_mode": 0}
         ]
       }
+    }
+  },
+
+  "info": {
+    "weather":{
+      "id":201,
+      "main":"Rain",
+      "dec":"light rain",
+      "temp":286.164,
+      "sunrise":1533780018351,
+      "sunset":1533780018351
+    },
+    "birthday":[
+      {
+        "name":"박재형",
+        "team":"CEO",
+        "thumb":"thumb.jpg"
+      },
+      {
+        "name":"최동현",
+        "team":"CEO",
+        "thumb":"thumb.jpg"
+      }
+    ],
+
+    "today":{
+      "bg_contents": [
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0},
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0}
+      ]
+    },
+    "test":{
+      "bg_contents": [
+        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700&videoindex=1", "color_mode": 0}
+      ]
+    },
+    "date":{
+      "server_time": 1533780018351
     }
   }
 }
