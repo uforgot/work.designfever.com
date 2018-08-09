@@ -52,7 +52,7 @@ var BackgroundList = function(json_data){
             link.target = "_blank";
 
             var img = document.createElement('img');
-            img.src = "../bg-contents/artwork/001_Gooey-df/images/thumbnail-1200.jpg";
+            img.src = "../assets_login/images/bg/bg-thumb-default.png";
 
             link.appendChild(img);
             elem.appendChild(link);
