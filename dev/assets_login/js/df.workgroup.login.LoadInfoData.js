@@ -1,10 +1,3 @@
-var GlobalVars = {
-    isLoaded: false,
-    eventType: {
-        "ON_LOAD_JSON": "onLoadJson"
-    }
-};
-
 (function () {
     if ( typeof window.CustomEvent === "function" ) return false; //If not IE
 
@@ -20,8 +13,15 @@ var GlobalVars = {
     window.CustomEvent = CustomEvent;
 })();
 
-(function(){
-    var url_json = "assets_login/temp/df_info_data.json" + "?uniq=" + new Date().getTime();
+
+
+window.df = window.df || {};
+window.df.workgroup = window.df.workgroup || {};
+window.df.workgroup.login = window.df.workgroup.login || {};
+
+window.df.workgroup.login.LoadInfoData = (function(){
+
+    var url_json = window.df.workgroup.Preset.json_url.default + "?uniq=" + new Date().getTime();
 
     function loadJSON(url, callback) {
 
@@ -41,7 +41,7 @@ var GlobalVars = {
 
         console.log("[ loadInfoData.js ] : ", "json_url : ", url_json);
 
-        document.addEventListener(GlobalVars.eventType.ON_LOAD_JSON, onLoadJson);
+        document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
 
         loadJSON(url_json, function(response) {
             // Parse JSON string into object
@@ -49,18 +49,23 @@ var GlobalVars = {
 
             //console.log("[ loadInfoData.js ] : ", actual_JSON);
 
-            GlobalVars.isLoaded = true;
-            GlobalVars.infoData = actual_JSON;
+            window.df.workgroup.GlobalVars.isLoaded = true;
+            window.df.workgroup.GlobalVars.infoData = actual_JSON;
 
-            var event = new CustomEvent(GlobalVars.eventType.ON_LOAD_JSON);
+            var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOAD_JSON);
             document.dispatchEvent(event);
         });
     }
 
     function onLoadJson(){
-        console.log("[ loadInfoData.js ] : ", "onLoadJson");
+        console.log("[ loadInfoData.js ] : ", "onLoadJson - " , window.df.workgroup.GlobalVars.infoData);
+        document.removeEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
     }
 
-    init();
-
+    return {
+        init: init
+    }
 })();
+
+
+window.df.workgroup.login.LoadInfoData.init();

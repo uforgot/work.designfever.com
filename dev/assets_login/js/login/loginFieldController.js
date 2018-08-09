@@ -2,7 +2,7 @@ var LoginFieldController = function(){
 
     var KEYBOARD_ENTER = 13;
     var KEYBOARD_TAB = 9;
-    var id, pwd;
+    var input_user_id, input_user_pw;
     var storageId, storagePw;
 
     var _init = function(){
@@ -10,24 +10,34 @@ var LoginFieldController = function(){
     };
 
     function _inputKeyController(){
-        id = document.getElementById('user_id');
-        pwd = document.getElementById('user_pw');
+        input_user_id = document.getElementById('user_id');
+        input_user_pw = document.getElementById('user_pw');
 
-        id.addEventListener( 'keypress', _keypressId );
-        //pwd.addEventListener( 'keypress', _keypressPwd );
-
-        if(storageId == null || storageId == undefined){
-            id.focus();
-        }
+        input_user_id.addEventListener( 'keypress', _keypressId );
+        //input_user_pw.addEventListener( 'keypress', _keypressPwd );
 
         var frm = document.getElementById('id_login');
         frm.addEventListener( 'submit',  _onSubmit);
+
+        setTimeout(function(){
+            setFocus();
+        }, 500);
+    }
+
+    function setFocus(){
+
+        if(storageId == null || storageId == undefined){
+            input_user_id.focus();
+            console.log("focus: ", input_user_id);
+        }
+
+        //console.log("focus: ", input_user_id);
     }
 
     function _keypressId( $evt ) {
         switch( $evt.which ) {
             case KEYBOARD_ENTER :
-                pwd.focus();
+                input_user_pw.focus();
                 break;
             case KEYBOARD_TAB :
                 console.log("ID");

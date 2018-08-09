@@ -295,7 +295,7 @@ var DF_Clock = function(con, json_data){
         var point_ss = new PIXI.Point();
 
         // txt
-        _pixi.txt_hh.text = (_vars.clock.hh%12);
+        _pixi.txt_hh.text = (_vars.clock.hh%12) == 0 ? "12" : (_vars.clock.hh%12);
         _pixi.txt_mm.text = _vars.clock.mm < 10 ? '0'+_vars.clock.mm : _vars.clock.mm;
         _pixi.txt_ss.text = _vars.clock.ss < 10 ? '0'+_vars.clock.ss : _vars.clock.ss;
 

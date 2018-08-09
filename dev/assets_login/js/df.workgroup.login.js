@@ -4,9 +4,12 @@ var DF_Login = function(json_data){
     var container_clock = document.getElementById("id_container_clock");
     var container_date = document.querySelector(".sec-date .wrapper-date");
 
-    var _clock = new DF_Clock(container_clock, json_data);
-    var _date = new DF_Date(container_date, json_data);
-    var _bgControll = new loginBgController(container_iframe, json_data);
+    var _json_data = json_data;
+    var _offsetTime = 0;
+
+    var _clock = new DF_Clock(container_clock, _json_data);
+    var _date = new DF_Date(container_date, _json_data);
+    var _bgControll = new loginBgController(container_iframe, _json_data);
     var _loginController = new LoginFieldController();
 
     var _today = { YY:0, MM:0, DD:0, DW:0, hh:0, mm:0, ss:0 };
@@ -15,6 +18,13 @@ var DF_Login = function(json_data){
     var _ID_clock;
 
     function _init(){
+
+        if(_json_data.info != undefined && _json_data.info.date != undefined && _json_data.info.date.server_time != undefined){
+            _offsetTime = _json_data.info.date.server_time - new Date().getTime();
+            console.log("[server time] : ", _json_data.info.date.server_time);
+            console.log("[client time] : ", new Date().getTime());
+        }
+
         _startTimer();
 
         _bgControll.init();
@@ -23,17 +33,6 @@ var DF_Login = function(json_data){
         _loginController.init();
 
         startMotion();
-
-        setTimeout(function(){
-            setFocus();
-        }, 1000);
-    }
-
-    function setFocus(){
-        var input_user_id = document.getElementById('user_id');
-        input_user_id.focus();
-
-        console.log("focus: ", input_user_id);
     }
 
     function startMotion(){
@@ -49,7 +48,22 @@ var DF_Login = function(json_data){
     }
 
     function _startTimer(){
+
+        _updateTimer();
+
+    }
+
+    function _updateTimer(){
+        _setTimer();
+        _clock.updateToday(_today);
+        _date.updateToday(_today);
+    }
+
+    function _setTimer(){
+
         _date_now = new Date();
+        _date_now.setTime(_date_now.getTime() + _offsetTime);
+
         _today.YY = _date_now.getFullYear();
         _today.MM = _date_now.getMonth();
         _today.DD = _date_now.getDate();
@@ -58,29 +72,10 @@ var DF_Login = function(json_data){
         _today.mm = _date_now.getMinutes();
         _today.ss = _date_now.getSeconds();
 
-        _ID_clock = setTimeout(_updateTimeer, 500);
-    }
-
-    function _updateTimeer(){
-        _startTimer();
-        _clock.updateToday(_today);
-        _date.updateToday(_today);
+        _ID_clock = setTimeout(_updateTimer, 500);
     }
 
     return {
         init: _init
     }
 };
-
-/*
-
-function getList_tmp(){
-var arr_list = document.querySelectorAll('table.work3 tbody tr td a'); var str_tmp=""; arr_list.forEach(function(element, index) {
-    if(index%3 == 0) str_tmp = str_tmp + '\n{"group": "04", "seq":"0005", "cat": "001", "url": "' + element.href + '", "color_mode": 0},';
-});console.log(str_tmp);}
-
-getList_tmp();
-
-*/
-
-

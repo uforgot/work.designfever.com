@@ -39,7 +39,9 @@
     <link rel="stylesheet" type="text/css" href="assets_login/css/login.css?uniq=20180808_2" />
 
     <script src="assets_login/js/common_withPixi.bundle.js"></script>
-    <script src="assets_login/js/loadInfoData.js"></script>
+    <script src="assets_login/js/df.workgroup.Preset.js"></script>
+    <script src="assets_login/js/df.workgroup.GlobalVars.js"></script>
+    <script src="assets_login/js/df.workgroup.login.LoadInfoData.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -197,23 +199,29 @@
         </div>
     </footer>
 </div>
-<iframe name="hdnFrame" id="hdnFrame" width="0" height="0" style="border:0; visibility: hidden; top:0; position: fixed"></iframe>
+
 <script src="assets_login/js/login/loginBgController.js?uniq=20180807"></script>
 <script src="assets_login/js/login/loginClock.js?uniq=20180807"></script>
 <script src="assets_login/js/login/loginDate.js?uniq=20180807"></script>
 <script src="assets_login/js/login/loginFieldController.js?uniq=20180807_2"></script>
-<script src="assets_login/js/login.js?uniq=20180807"></script>
+<script src="assets_login/js/df.workgroup.login.js?uniq=20180807"></script>
 <script>
-    if(GlobalVars.isLoaded) init();
-    else                    document.addEventListener(GlobalVars.eventType.ON_LOAD_JSON, onLoadJson);
 
-    function onLoadJson(){
-        console.log("[ index.html ] : ", "onLoadJson");
+    console.log("[ index.html ] : ", "check load json");
+
+    if(df.workgroup.GlobalVars.isLoaded)    {
+        console.log("[ index.html ] : ", "onLoadJson already -> start init");
         init();
     }
+    else
+        document.addEventListener(df.workgroup.Preset.eventType.ON_LOAD_JSON, function(){
+            console.log("[ index.html ] : ", "onLoadJson -> start init");
+            init();
+        }
+    );
 
     function init(){
-        var login = new DF_Login(GlobalVars.infoData);
+        var login = new DF_Login(df.workgroup.GlobalVars.infoData);
         login.init();
     }
 </script>
