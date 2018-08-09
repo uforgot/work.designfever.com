@@ -2,9 +2,9 @@
   "user":{
     "isLoggedIn": true,
 
-    "name": "í•œì˜ìˆ˜",
+    "name": "ÇÑ¿µ¼ö",
     "team": "LAB",
-    "position": "ì‹¤ì¥",
+    "position": "½ÇÀå",
     "img": "/file/small_sq_1.jpg",
 
     "document_approval_num":12,
@@ -13,14 +13,14 @@
 
     "isCheckin": true,
     "checkin_time": 1533780018351,
-    "checkin_timeText": "9ì‹œ 59ë¶„",
+    "checkin_timeText": "9½Ã 59ºĞ",
 
     "isCheckout": true,
     "checkout_time": 1533780018351,
-    "checkout_timeText": "19ì‹œ 59ë¶„",
+    "checkout_timeText": "19½Ã 59ºĞ",
 
     "checkout_able_time": 1533780018351,
-    "checkout_able_timeText": "19ì‹œ 59ë¶„",
+    "checkout_able_timeText": "19½Ã 59ºĞ",
 
     "isNotCheckout_yesterday": false
   },
@@ -108,12 +108,12 @@
     },
     "birthday":[
       {
-        "name":"ë°•ì¬í˜•",
+        "name":"¹ÚÀçÇü",
         "team":"CEO",
         "thumb":"thumb.jpg"
       },
       {
-        "name":"ìµœë™í˜„",
+        "name":"ÃÖµ¿Çö",
         "team":"CEO",
         "thumb":"thumb.jpg"
       }
