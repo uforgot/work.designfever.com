@@ -21,19 +21,6 @@ var BackgroundList = function(json_data){
             // console.log(key, " / ", obj[key])
         }
         document.getElementById('list-wrapper').appendChild(wrap);
-
-        /*
-        var weather = _makeItem(_bg_contents_data.weather);
-        var birthday = _makeItem(_bg_contents_data.birthday);
-        var artwork = _makeItem(_bg_contents_data.artwork);
-        var custom = _makeItem(_bg_contents_data.custom);
-
-        wrap.appendChild(weather);
-        wrap.appendChild(birthday);
-        wrap.appendChild(artwork);
-        wrap.appendChild(custom);*/
-
-
     };
 
     var _makeItem = function(data){
@@ -52,7 +39,7 @@ var BackgroundList = function(json_data){
             link.target = "_blank";
 
             var img = document.createElement('img');
-            img.src = "../assets_login/images/bg/bg-thumb-default.png";
+            img.src = list.thumb;
 
             link.appendChild(img);
             elem.appendChild(link);

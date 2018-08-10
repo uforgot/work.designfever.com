@@ -7,26 +7,60 @@
     <meta name="mobile-web-app-capable" content="yes">
     <!--<link rel="manifest" href="">-->
     <link rel="stylesheet" type="text/css" href="./common/css/normalize.css" />
-    <!--<link rel="stylesheet" type="text/css" href="./common/css/base.css" />-->
+    <link rel="stylesheet" type="text/css" href="./common/css/base.css" />
 
     <title>Background Contents - list</title>
 </head>
 
 <style>
+    body {background-color: #333333}
 
-    section {
-        padding-left: 20px;
-        margin: 50px 0;
+    h1 {
+        text-align: center;
+        margin: 40px 0;
+        font-size: 40px;
     }
 
-    .contents-type{
-        padding-left: 20px;
+
+    #list-wrapper ul {
+        display: flex;
+        flex-wrap: wrap;
     }
 
-    .contents-type li{
-        line-height: 25px;
 
+    #list-wrapper .item {
+        flex-basis: 20%;
+        display: inline-block;
+        overflow: hidden;
     }
+
+    #list-wrapper .item img{
+        width: 100%;
+        display: block;
+        transition: transform 1s;
+    }
+
+    #list-wrapper .item:hover img{
+        transform: scale(1.2);
+        transition: transform 10s;
+    }
+
+    @media only screen and (max-width: 376px) {
+        #list-wrapper .item {
+            flex-basis: 100%;
+        }
+        h1 { font-size: 20px; }
+    }
+
+    /* Tablet Device */
+    @media all and (min-width:376px) and (max-width:1024px) {
+        #list-wrapper .item {
+            flex-basis: 33.3333%;
+        }
+
+        h1 { font-size: 30px; }
+    }
+
 
 
 </style>
@@ -34,97 +68,40 @@
 <body>
 
 <div class="container-wrapper">
-    <h1>BackGround Contents</h1>
-
-
-    <section>
-        <h2>Artwork</h2>
-        <div class="contents-type">
-            <ul>
-                <li><a href="./artwork/001_Gooey-df/index.html" target="_blank">001_Gooey-df</a></li>
-                <li><a href="./artwork/002_sphere-lines-3d/index.html" target="_blank">002_sphere-lines-3d</a></li>
-                <li><a href="./artwork/003_blockBox-df/index.html" target="_blank" style="text-decoration:line-through; pointer-events: none ">003_blockBox-df</a></li>
-                <li><a href="./artwork/004_connected-lines/index.html" target="_blank">004_connected-lines</a></li>
-                <li><a href="./artwork/005_zigzag/index.html" target="_blank">005_zigzag</a></li>
-                <li><a href="./artwork/006_particle-line/index.html" target="_blank">006_particle-line</a></li>
-                <li><a href="./artwork/007_animate_sprite/index.html" target="_blank">007_animate_sprite</a></li>
-            </ul>
-        </div>
-
-    </section>
-
-
-    <section>
-        <h2>BirthDay</h2>
-        <div class="contents-type">
-            <ul>
-                <li><a href="./birthday/001_birthday-slideshow/index.html" target="_blank">001_birthday-slideshow</a></li>
-                <li><a href="./birthday/002_birthday-video/index.html" target="_blank">002_birthday-video</a></li>
-                <li><a href="./birthday/003_birthday-video/index.html" target="_blank">003_birthday-video</a></li>
-                <li><a href="./birthday/004_birthday-video/index.html" target="_blank">004_birthday-video</a></li>
-            </ul>
-        </div>
-    </section>
-
-    <section>
-        <h2>Custom</h2>
-        <div class="contents-type">
-            <ul>
-                <li><a href="./custom/001_df-new-Building-slideshow/index.html" target="_blank">001_df-new-Building-slideshow</a></li>
-                <li><a href="./custom/002_df-hyatt-dining-slideshow/index.html" target="_blank">002_df-hyatt-dining-slideshow</a></li>
-                <li><a href="custom/003_2017-iF-design-award-slideshow/index.html" target="_blank">003_2017_iF_design_award-slideshow</a></li>
-                <li><a href="custom/004_2015-df-makeover-project-video/index.html" target="_blank">004_2015-df-makeover-project-video</a></li>
-            </ul>
-        </div>
-    </section>
-
-
-    <section>
-        <h2>Weather</h2>
-        <div class="contents-type">
-            <div>
-                <h3>Slide Show</h3>
-                <ul>
-                    <li><a href="./weather/001_weather-slideshow/index.html?weathercode=200" target="_blank">200_thunderstorm - 뇌우</a></li>
-                    <li><a href="./weather/001_weather-slideshow/index.html?weathercode=300" target="_blank">300_drizzle - 이슬비</a></li>
-                    <li><a href="./weather/001_weather-slideshow/index.html?weathercode=500" target="_blank">500_rain - 비</a></li>
-                    <li><a href="./weather/001_weather-slideshow/index.html?weathercode=600" target="_blank">600_snow - 눈</a></li>
-                    <li><a href="./weather/001_weather-slideshow/index.html?weathercode=700" target="_blank">700_atmosphere - 대기</a></li>
-                    <li><a href="./weather/001_weather-slideshow/index.html?weathercode=800" target="_blank">800_clear - 화창</a></li>
-                    <li><a href="./weather/001_weather-slideshow/index.html?weathercode=801" target="_blank">801_clouds - 구름</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Video</h3>
-                <ul>
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=200" target="_blank">200_thunderstorm - 뇌우</a></li>
-                    <!--<li><a href="./weather/002_weather-video/index.html?weathercode=300" target="_blank">300_drizzle - 이슬비</a></li>-->
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=300&videoindex=0" target="_blank">300_drizzle - 이슬비</a></li>
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=300&videoindex=1" target="_blank">300_drizzle - 이슬비</a></li>
-                    <!--<li><a href="./weather/002_weather-video/index.html?weathercode=500" target="_blank">500_rain - 비</a></li>-->
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=500&videoindex=0" target="_blank">500_rain - 비</a></li>
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=500&videoindex=1" target="_blank">500_rain - 비</a></li>
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=500&videoindex=2" target="_blank">500_rain - 비</a></li>
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=600" target="_blank">600_snow - 눈</a></li>
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=700&videoindex=0" target="_blank">700_atmosphere - 대기</a></li>
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=700&videoindex=1" target="_blank">700_atmosphere - 대기</a></li>
-                    <!--<li><a href="./weather/002_weather-video/index.html?weathercode=800" target="_blank">800_clear - 화창</a></li>-->
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=800&videoindex=0" target="_blank">800_clear - 화창</a></li>
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=800&videoindex=1" target="_blank">800_clear - 화창</a></li>
-                    <li><a href="./weather/002_weather-video/index.html?weathercode=801" target="_blank">801_clouds - 구름</a></li>
-                </ul>
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-
-
+    <!--<h1>BackGround Contents</h1>-->
+    <div id="list-wrapper">
+    </div>
 </div>
 
+<script src="../assets_login/js/common_withPixi.bundle.js"></script>
+<script src="../assets_login/js/df.workgroup.Preset.js"></script>
+<script src="../assets_login/js/df.workgroup.GlobalVars.js"></script>
+<script src="../assets_login/js/df.workgroup.login.LoadInfoData.js"></script>
+<script src="bg-list.js"></script>
+<script>
+
+    console.log("[ index.html ] : ", "check load json");
+
+    if(df.workgroup.GlobalVars.isLoaded)    {
+        console.log("[ index.html ] : ", "onLoadJson already -> start init");
+        init();
+    }
+    else
+        document.addEventListener(df.workgroup.Preset.eventType.ON_LOAD_JSON, function(){
+                console.log("[ index.html ] : ", "onLoadJson -> start init");
+                init();
+            }
+        );
+
+    function init(){
+        var bgList = new BackgroundList(df.workgroup.GlobalVars.infoData);
+        bgList.init();
+    }
+</script>
+
 </body>
+
+
+
 
 </html>
