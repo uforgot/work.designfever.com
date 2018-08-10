@@ -57,6 +57,7 @@ window.df.workgroup.login = function(json_data){
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOGIN, _onLogin);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHECKIN, _onCheckin);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHECKOUT, _onCheckout);
+        document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHANGE_STAGE_INFO, _onChange_stage_info);
     }
 
     function _onLogin(){
@@ -81,6 +82,10 @@ window.df.workgroup.login = function(json_data){
 
     function _onCheckout(){
         _checkinController.showCheckoutText();
+    }
+
+    function _onChange_stage_info(event){
+        console.log("_onChange_stage_info : stage_index - ", event.detail.curIndex);
     }
 
     function startMotion(){

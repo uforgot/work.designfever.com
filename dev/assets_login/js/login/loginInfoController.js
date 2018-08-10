@@ -218,6 +218,8 @@ var LoginInfoController = function(){
 
                     break;
             }
+
+            _dispatchEvent();
         }
     }
 
@@ -279,8 +281,17 @@ var LoginInfoController = function(){
         setTimeout(_showNotice, 600);
     }
 
-        return {
+    function _dispatchEvent(){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_CHANGE_STAGE_INFO, {
+            detail: {
+                curIndex: _curIndex
+            }});
+        document.dispatchEvent(event);
+    }
+
+    return {
         init: _init,
-        showNotice: _showNotice_auto
+        showNotice: _showNotice_auto,
+        changeStage: _changeStage
     }
 };
