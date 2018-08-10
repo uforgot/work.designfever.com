@@ -19,7 +19,7 @@
 
   @extend %flex-center;
 
-   @include mx_transition("800ms","opacity, transform, height, min-height, max-height, margin-top", $vars_easeInOutCubic, "200ms");
+  @include mx_transition("800ms","opacity, transform, height, min-height, max-height, margin-top", $vars_easeInOutCubic, "200ms");
 
   &.#{ $vars_class_showIn }{
     margin-top: -5vh;

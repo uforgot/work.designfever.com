@@ -4,8 +4,8 @@ window.df.workgroup = window.df.workgroup || {};
 window.df.workgroup.Preset = {
 
     "json_url":{
-        "default": "http://dev3.designfever.com/assets_login/temp/df_info_data.json.php",
-        //"default": "assets_login/temp/df_info_data.json",
+        //"default": "http://dev3.designfever.com/assets_login/temp/df_info_data.json.php",
+        "default": "assets_login/temp/df_info_data.json",
         "login": "assets_login/temp/df_info_data_01_login.json",
         "checkin": "assets_login/temp/df_info_data_02_checkin.json",
         "checkout": "assets_login/temp/df_info_data_03_checkout.json",

@@ -81,6 +81,9 @@ header{
           height:100%;
           opacity: 0;
           font-size: 10px;
+          &.disable{
+            pointer-events: none;
+          }
         }
       }
     }

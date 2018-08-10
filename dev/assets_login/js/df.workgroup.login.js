@@ -53,6 +53,7 @@ window.df.workgroup.login = function(json_data){
     function addEvent(){
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOGIN, _onLogin);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHECKIN, _onCheckin);
+        document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHECKOUT, _onCheckout);
     }
 
     function _onLogin(){
@@ -71,6 +72,10 @@ window.df.workgroup.login = function(json_data){
 
     function _onCheckin(){
         _checkinController.showCheckoutBtn();
+    }
+
+    function _onCheckout(){
+        _checkinController.showCheckoutText();
     }
 
     function startMotion(){

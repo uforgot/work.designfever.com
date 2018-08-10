@@ -209,10 +209,9 @@ var LoginFieldController = function(){
             } else if (response.target.status === 200) {
 
                 // Success
-                //console.log("xhr.onloadend (Success) : form.dataset.formSuccess" , form.dataset.formSuccess);
                 //console.log("xhr.onloadend (Success) response : " , response);
                 //console.log("xhr.onloadend (Success) xhr : " , xhr);
-                console.log("[LoginFieldController ] xhr.onloadend (Success) response : " , JSON.parse(response.target.responseText));
+                console.log("[LoginFieldController ] xhr.onloadend (Success) response.target.responseText : " , JSON.parse(response.target.responseText));
 
                 setTimeout(function(){
                     callback(response);

@@ -2,9 +2,9 @@
   "user":{
     "isLoggedIn": true,
 
-    "name": "ÇÑ¿µ¼ö",
+    "name": "í•œì˜ìˆ˜",
     "team": "LAB",
-    "position": "½ÇÀå",
+    "position": "ì‹¤ì¥",
     "img": "/file/small_sq_1.jpg",
 
     "document_approval_num":12,
@@ -108,12 +108,12 @@
     },
     "birthday":[
       {
-        "name":"¹ÚÀçÇü",
+        "name":"ë°•ì¬í˜•",
         "team":"CEO",
         "thumb":"thumb.jpg"
       },
       {
-        "name":"ÃÖµ¿Çö",
+        "name":"ìµœë™í˜„",
         "team":"CEO",
         "thumb":"thumb.jpg"
       }

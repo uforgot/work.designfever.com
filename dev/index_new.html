@@ -36,12 +36,12 @@
     <link rel="image_src" href="assets_login/images/favicon/apple-icon.png">
 
     <link rel="stylesheet" type="text/css" href="assets_login/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="assets_login/css/login.css?uniq=20180808_2" />
+    <link rel="stylesheet" type="text/css" href="assets_login/css/login.css?uniq=20180810" />
 
     <script src="assets_login/js/common_withPixi.bundle.js"></script>
-    <script src="assets_login/js/df.workgroup.Preset.js"></script>
-    <script src="assets_login/js/df.workgroup.GlobalVars.js"></script>
-    <script src="assets_login/js/df.workgroup.login.LoadInfoData.js"></script>
+    <script src="assets_login/js/df.workgroup.Preset.js?uniq=20180810"></script>
+    <script src="assets_login/js/df.workgroup.GlobalVars.js?uniq=20180810"></script>
+    <script src="assets_login/js/df.workgroup.login.LoadInfoData.js?uniq=20180810"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -155,7 +155,10 @@
                 <div class="bar-wrapper">
                     <div class="bar-cur" id="id_per_time"></div>
                 </div>
-                <div class="txt-wrapper"><p class="limit-time-txt"><span>퇴근 가능시간 </span><span>19시 45분</span></p></div>
+                <div class="txt-wrapper">
+                    <p class="limit-time-txt"><span>퇴근 가능시간 </span><span>19시 45분</span></p>
+                    <p class="limit-time-txt complete"><span>퇴근 완료</span></p>
+                </div>
             </div>
             <div class="area-check-inout area-checkout">
                 <div class="btn-wrapper">
@@ -167,10 +170,10 @@
                             </div>
                         </fieldset>
                     </form>
-                    <div class="time-txt">
+                    <button class="time-txt" title="다시 퇴근하기" id="id_btn_checkout_re" tabindex="-1">
                         <p class="txt-title"><span>퇴근시간</span></p>
-                        <p class="txt-time"><span id="id_checkout_time">오전 24시 59분</span></p>
-                    </div>
+                        <p class="txt-time"><span id="id_checkout_time">오후 24시 59분</span></p>
+                    </button>
                 </div>
             </div>
         </div>
@@ -233,14 +236,14 @@
     </footer>
 </div>
 
-<script src="assets_login/js/login/loginBgController.js?uniq=20180808"></script>
-<script src="assets_login/js/login/loginClock.js?uniq=20180808"></script>
-<script src="assets_login/js/login/loginDate.js?uniq=20180808"></script>
-<script src="assets_login/js/login/loginFieldController.js?uniq=20180808"></script>
-<script src="assets_login/js/login/logoutController.js"></script>
-<script src="assets_login/js/login/checkinController.js"></script>
-<script src="assets_login/js/login/loginUtilController.js"></script>
-<script src="assets_login/js/df.workgroup.login.js?uniq=20180808_2"></script>
+<script src="assets_login/js/login/loginBgController.js?uniq=20180810"></script>
+<script src="assets_login/js/login/loginClock.js?uniq=20180810"></script>
+<script src="assets_login/js/login/loginDate.js?uniq=20180810"></script>
+<script src="assets_login/js/login/loginFieldController.js?uniq=20180810"></script>
+<script src="assets_login/js/login/logoutController.js?uniq=20180810"></script>
+<script src="assets_login/js/login/checkinController.js?uniq=20180810"></script>
+<script src="assets_login/js/login/loginUtilController.js?uniq=20180810"></script>
+<script src="assets_login/js/df.workgroup.login.js?uniq=20180810"></script>
 <script>
 
     console.log("[ index.html ] : ", "check load json");

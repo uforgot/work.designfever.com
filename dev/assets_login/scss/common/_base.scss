@@ -138,3 +138,16 @@ button {
   padding: 0;
   border: none;
 }
+
+.mobile *:not(input):not(textarea),
+.tablet *:not(input):not(textarea) {
+  -webkit-user-select: none; /* disable selection/Copy of UIWebView */
+  -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
+}
+
+.mobile button:focus,
+.tablet button:focus {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;  /*i.e. Nexus5/Chrome and Kindle Fire HD 7'';*/
+}

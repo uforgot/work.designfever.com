@@ -37,11 +37,13 @@ var LogoutController = function(){
         var inputs = _form.querySelectorAll('input');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].setAttribute("disabled", "");
+
+            df.lab.Util.addClass(inputs[i],"disable");
         }
     }
 
     function onSubmit(response){
-        console.log(response);
+        //console.log(response);
         window.location.reload (true);
     }
 
