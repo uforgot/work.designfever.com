@@ -38,11 +38,18 @@ var BackgroundList = function(json_data){
             link.href = "../"+list.url;
             link.target = "_blank";
 
+            var title = document.createElement('p');
+            title.classList.add('item-title');
+            title.innerHTML = list.seq;
+
+
             var img = document.createElement('img');
-            img.src = list.thumb;
+            // img.src = list.bg_thumb;
+            img.src = list.bg_thumb_s;
 
             link.appendChild(img);
             elem.appendChild(link);
+            elem.appendChild(title);
             group.appendChild(elem);
         }
 

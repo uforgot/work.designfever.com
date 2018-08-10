@@ -30,9 +30,12 @@
 
     #list-wrapper .item {
         flex-basis: 20%;
-        display: inline-block;
+        display: flex;
         overflow: hidden;
+        justify-content: center;
+        flex-direction: column;
     }
+
 
     #list-wrapper .item img{
         width: 100%;
@@ -45,20 +48,43 @@
         transition: transform 10s;
     }
 
+    #list-wrapper .item:hover .item-title{
+        opacity: 1;
+
+    }
+
+    #list-wrapper .item .item-title{
+        position: absolute;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        font-size: 2vw;
+        width: 20%;
+        opacity: 0;
+        transition: opacity 0.2s;
+        pointer-events: none;
+        text-shadow:1px 1px 5px rgba(0,0,0, 0.2);
+
+    }
+
     @media only screen and (max-width: 376px) {
         #list-wrapper .item {
             flex-basis: 100%;
         }
-        h1 { font-size: 20px; }
+        #list-wrapper .item .item-title{
+            font-size: 8vw;
+            width: 100%;
+        }
     }
 
-    /* Tablet Device */
     @media all and (min-width:376px) and (max-width:1024px) {
         #list-wrapper .item {
             flex-basis: 33.3333%;
         }
-
-        h1 { font-size: 30px; }
+        #list-wrapper .item .item-title{
+            font-size: 3vw;
+            width: 33.3333%;
+        }
     }
 
 
@@ -70,6 +96,15 @@
 <div class="container-wrapper">
     <!--<h1>BackGround Contents</h1>-->
     <div id="list-wrapper">
+
+        <ul>
+            <li class="item">
+                <p class="item-title">01_weather_016</p>
+                <a href="../bg-contents/weather/002_weather-video/index.html?weathercode=700&amp;videoindex=1" target="_blank">
+                    <img src="http://dev3.designfever.com/assets_login/images/bg/thumbnail-1200_01.jpg">
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 
