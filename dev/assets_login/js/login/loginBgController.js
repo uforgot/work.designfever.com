@@ -30,10 +30,10 @@ var LoginBgController = function(con_iframe, json_data){
 
     function setArr_bgList(json) {
         if (json_data){
-            arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.weather.list);
+            //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.weather.list);
             arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.birthday.list);
-            arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.artwork.list);
-            arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.custom.list);
+            //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.artwork.list);
+            //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.custom.list);
         }
     }
 
