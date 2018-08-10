@@ -59,7 +59,6 @@
     }
 
     .wrapper-notice {
-      margin: 0 auto;
       .area-txt{
         margin: 4.07vh 0 0;
 
@@ -89,8 +88,10 @@
           margin: 7.24vw 0 0;
 
           .txt-notice{
-            font-size: 15.45vw;
-            line-height: 18.35vw;
+            //font-size: 15.45vw;
+            font-size: 12.36vw; // 80%
+            //line-height: 18.35vw;
+            line-height: 14.68vw; // 80%
           }
 
           .txt-sub{
@@ -108,7 +109,7 @@
       opacity: 1;
     }
 
-    @include mx_transition("800ms", "opacity, transform", $vars_easeInOutCubic, "0ms");
+    @include mx_transition("400ms", "opacity, transform", $vars_easeInOutCubic, "0ms");
 
     &.#{ $vars_class_showIn }{
       transform: translateX(0);

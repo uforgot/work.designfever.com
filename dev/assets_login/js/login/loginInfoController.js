@@ -54,7 +54,7 @@ var LoginInfoController = function(){
 
         console.log("onTouchStart_stage");
 
-        $evt.preventDefault();
+        //$evt.preventDefault();
         $evt.stopPropagation();
 
         _stage_con.addEventListener('touchmove',  onTouchMove_stage);
@@ -85,7 +85,7 @@ var LoginInfoController = function(){
 
         console.log("onTouchEnd_stage (document)");
 
-        $evt.preventDefault();
+        //$evt.preventDefault();
         $evt.stopPropagation();
 
         _stage_con.removeEventListener('touchmove',  onTouchMove_stage);
@@ -106,7 +106,7 @@ var LoginInfoController = function(){
     }
 
     function onTouchMove_stage($evt){
-        $evt.preventDefault();
+        //$evt.preventDefault();
         $evt.stopPropagation();
         //console.log("onTouchMove_stage");
 
