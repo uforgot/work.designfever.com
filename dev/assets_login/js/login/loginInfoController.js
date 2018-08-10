@@ -14,12 +14,20 @@ var LoginInfoController = function(){
 
     function addEvent(){
         _stage_clock.addEventListener('click',  _onClick_stage_clock);
+        _stage_clock.addEventListener('touchend',  _onTouchend_stage_clock);
         _stage_notice.addEventListener('click',  _onClick_stage_notice);
+        _stage_notice.addEventListener('touchend',  _onTouchend_stage_notice);
     }
 
     function _onClick_stage_clock($evt){
         $evt.preventDefault();
         console.log("_onClick_stage_clock");
+        _showNotice();
+    }
+
+    function _onTouchend_stage_clock($evt){
+        $evt.preventDefault();
+        console.log("_onTouchend_stage_clock");
         _showNotice();
     }
 
@@ -29,6 +37,14 @@ var LoginInfoController = function(){
 
         _showClock();
     }
+
+    function _onTouchend_stage_notice($evt){
+        $evt.preventDefault();
+        console.log("_onTouchend_stage_notice");
+
+        _showClock();
+    }
+
 
     function _showClock(){
         df.lab.Util.removeClass(_stage_clock, "out-left");
