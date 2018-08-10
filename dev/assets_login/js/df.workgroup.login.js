@@ -20,6 +20,7 @@ window.df.workgroup.login = function(json_data){
     var _loginController = new LoginFieldController();
     var _logoutController = new LogoutController();
     var _checkinController = new CheckinController();
+    var _loginInfoController = new LoginInfoController();
 
     var _today = { YY:0, MM:0, DD:0, DW:0, hh:0, mm:0, ss:0 };
 
@@ -44,6 +45,8 @@ window.df.workgroup.login = function(json_data){
         _loginController.init();
         _logoutController.init();
         _checkinController.init();
+        _loginInfoController.init();
+
 
         startMotion();
 
@@ -68,6 +71,8 @@ window.df.workgroup.login = function(json_data){
 
         var sec_util = document.querySelector('.sec-util');
         df.lab.Util.addClass(sec_util, window.df.workgroup.Preset.class_name.showIn);
+
+        _loginInfoController.showNotice();
     }
 
     function _onCheckin(){
