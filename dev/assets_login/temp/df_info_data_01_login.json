@@ -23,6 +23,7 @@
     "isCheckout": false,
     "checkout_time": null,
     "checkout_timeText": null
+
   },
 
   "preset":{

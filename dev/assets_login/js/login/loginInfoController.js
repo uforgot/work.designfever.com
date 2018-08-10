@@ -68,7 +68,7 @@ var LoginInfoController = function(){
     }
 
     function _showNotice_auto() {
-        setTimeout(_showNotice, 1000);
+        setTimeout(_showNotice, 600);
     }
 
         return {

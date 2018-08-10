@@ -61,20 +61,43 @@
     .wrapper-notice {
       margin: 0 auto;
       .area-txt{
-        margin: 2rem 0 0;
+        margin: 4.07vh 0 0;
+
+        &:first-child{
+          margin: 0;
+        }
 
         .txt-notice{
-          font-size: 4.125rem;
+          //font-size: 4.125rem;
+          font-size: 8.7vh;
           font-weight: 700;
-          line-height: 4.375rem;
+          //line-height: 4.375rem;
+          line-height: 10.3vh;
         }
 
         .txt-sub{
-          font-size: 1.25rem;
+          //font-size: 1.25rem;
+          font-size: 2.7vh;
           font-weight: 700;
-          line-height: 1.625rem;
+          //line-height: 1.625rem;
+          line-height: 3.26vh;
         }
+      }
 
+      @include breakpoint(mobile) {
+        .area-txt{
+          margin: 7.24vw 0 0;
+
+          .txt-notice{
+            font-size: 15.45vw;
+            line-height: 18.35vw;
+          }
+
+          .txt-sub{
+            font-size: 4.83vw;
+            line-height: 5.8vw;
+          }
+        }
       }
     }
 
