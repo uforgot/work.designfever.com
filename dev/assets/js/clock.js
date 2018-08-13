@@ -73,38 +73,67 @@ var Clock = (function() {
 
     };
 
-
-
     var setTime = function() {
-        var today = new Date();
 
-        var y = today.getFullYear();
-        var month = today.getMonth() + 1;
-        var date = today.getDate();
-        var day = dayArray[today.getDay()];
+        var today;
+        var year;
+        var month;
+        var date;
+        var day;
+        var hours;
+        var minutes;
+        var seconds;
 
-        dateEl.html(y +'. '+ month + '. ' + date + ' <span>' + day +'</span>');
-        //console.log(y +'.'+ month + '.'+ day +'.'+ date);
+        $.ajax({
+            url:'./getTime.php',
+            async:false,
+            success:function(data)
+            {
+                var _today = data;
+                var year = _today.substring(0,4);
+                var month = _today.substring(5,7);
+                var date = _today.substring(8,10);
+                var day = dayArray[_today.substring(11,12)];
+                var hours = _today.substring(13,15);
+                var minutes = _today.substring(16,18);
+                var seconds = _today.substring(19,21);
+                dateEl.html(year +'. '+ month + '. ' + date + ' <span>' + day +'</span>');
 
+                hourEl.html(hours + ":");
+                minuteEl.html(minutes + ":");
+                secondEl.html(seconds);
+                setTimeout(setTime, 500);
+            }
+        })
 
-        var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
-        m = checkTime(m);
-        s = checkTime(s);
+        /*
+         today = new Date();
+         year = today.getFullYear();
+         month = today.getMonth() + 1;
+         date = today.getDate();
+         day = dayArray[today.getDay()];
 
-        hourEl.html(h + ":");
-        minuteEl.html(m + ":");
-        secondEl.html(s);
+         dateEl.html(year +'. '+ month + '. ' + date + ' <span>' + day +'</span>');
+         //console.log(y +'.'+ month + '.'+ day +'.'+ date);
 
-        // + m + ":" + s;
-        setTimeout(setTime, 500);
+         var hours = today.getHours();
+         var minutes = today.getMinutes();
+         var seconds = today.getSeconds();
+         minutes = checkTime(minutes);
+         seconds = checkTime(seconds);
+
+         hourEl.html(hours + ":");
+         minuteEl.html(minutes + ":");
+         secondEl.html(seconds);
+         setTimeout(setTime, 500);
+         */
     };
 
     var checkTime = function(i) {
         if (i < 10) {i = "0" + i}; // 숫자가 10보다 작을 경우 앞에 0을 붙여줌
         return i;
     };
+
 
     var onResize = function(){
         resize();
