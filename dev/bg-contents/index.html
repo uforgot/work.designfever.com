@@ -43,14 +43,16 @@
         transition: transform 1s;
     }
 
-    #list-wrapper .item:hover img{
+    .desktop #list-wrapper .item:hover img{
         transform: scale(1.2);
         transition: transform 10s;
     }
 
-    #list-wrapper .item:hover .item-title{
+    .desktop #list-wrapper .item:hover .item-title{
         opacity: 1;
-
+    }
+    .desktop #list-wrapper .item .item-title{
+        opacity: 0;
     }
 
     #list-wrapper .item .item-title{
@@ -60,7 +62,6 @@
         justify-content: center;
         font-size: 2vw;
         width: 20%;
-        opacity: 0;
         transition: opacity 0.2s;
         pointer-events: none;
         text-shadow:1px 1px 5px rgba(0,0,0, 0.2);
