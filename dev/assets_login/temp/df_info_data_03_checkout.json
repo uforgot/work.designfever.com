@@ -22,7 +22,8 @@
 
     "isCheckout": true,
     "checkout_time": 1533780018351,
-    "checkout_timeText": "19시 59분"
+    "checkout_timeText": "19시 59분",
+    "isAdminAccount":false
   },
 
   "preset":{
@@ -129,7 +130,19 @@
     "test":{
       "bg_contents": [
         {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
-      ]
+      ],
+      "notice": {
+        "title": {
+          "line_0":"오늘은",
+          "line_1":"바닥세미나가",
+          "line_2":"열립니다."
+        },
+        "dec": {
+          "line_0":"오후 4시 30분까지",
+          "line_1":"지하1층 바닥 세미나실로 모여주세요.",
+          "line_2":"- 경영지원팀"
+        }
+      }
     },
     "date":{
       "server_time": 1533780018351

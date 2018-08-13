@@ -1,0 +1,13 @@
+{
+  "transition-time": 2000,
+  "color_mode": 0,
+  "bg_thumb":"assets_login/images/bg/bg-thumb-default.png",
+  "items": [
+    {"bg_url": "bg-contents/custom-image-slide/004/bg_0.jpg", "duration": 5000},
+    {"bg_url": "bg-contents/custom-image-slide/004/bg_0.jpg", "duration": 5000},
+    {"bg_url": "bg-contents/custom-image-slide/004/bg_0.jpg", "duration": 5000},
+    {"bg_url": "bg-contents/custom-image-slide/004/bg_0.jpg", "duration": 5000},
+    {"bg_url": "bg-contents/custom-image-slide/004/bg_0.jpg", "duration": 5000},
+    {"bg_url": "bg-contents/custom-image-slide/004/bg_0.jpg", "duration": 5000}
+  ]
+}
