@@ -5,12 +5,24 @@ var CheckinController = function(){
     var _form_out = document.getElementById('id_checkout');
     var _btn_checkout = document.getElementById('id_btn_checkout_re');
 
-    function _init(){
+    function _init(_json_user){
+        _setInfo(_json_user);
         _setUrl();
         _form.addEventListener( 'submit',  _onSubmit);
         _form_out.addEventListener( 'submit',  _onSubmit_out);
         _btn_checkout.addEventListener( 'click',  _onClick_btn_checkout);
         disable_input_out();
+    }
+
+    function _setInfo(_json_user){
+
+        console.log(CLASS_NAME + " isLoggedIn : " , _json_user.isLoggedIn);
+        console.log(CLASS_NAME + " isCheckin : " , _json_user.isCheckin);
+        console.log(CLASS_NAME + " checkin_time : " , _json_user.checkin_time);
+        console.log(CLASS_NAME + " checkout_able_time : " , _json_user.checkout_able_time);
+        console.log(CLASS_NAME + " isCheckout : " , _json_user.isCheckout);
+        console.log(CLASS_NAME + " checkout_time : " , _json_user.checkout_time);
+
     }
 
     function _setUrl(){

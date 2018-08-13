@@ -2,8 +2,8 @@
   "user":{
     "error":
     {
-      "isError":false,
-      "code":null
+      "isError":true,
+      "code":0
     },
 
     "isLoggedIn": true,

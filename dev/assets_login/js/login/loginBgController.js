@@ -1,5 +1,7 @@
 var LoginBgController = function(con_iframe, json_data){
 
+    var CLASS_NAME = "[ LoginBgController ]";
+
     var con_iframe = con_iframe;
     var arr_bg_list = [];
     var dim;
@@ -22,7 +24,7 @@ var LoginBgController = function(con_iframe, json_data){
             var ran_index = Math.floor(arr_bg_list.length * Math.random());
             var url = arr_bg_list[ran_index].url;
 
-            console.log("[ loadBgController.js ] : ",  "iframe url : ", url);
+            console.log(CLASS_NAME + " : ",  "iframe url : ", ran_index , " / " , url);
 
             set_iframe(url);
         }
@@ -30,16 +32,42 @@ var LoginBgController = function(con_iframe, json_data){
 
     function setArr_bgList(json) {
         if (json_data){
-            arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.weather.list);
-            arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.birthday.list);
-            arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.artwork.list);
-            arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.custom.list);
+
+            var json_today_bg = json.info.today.bg_contents;
+            var json_birthday = json.info.birthday;
+
+            if(json_today_bg != undefined && json_today_bg != null && json_today_bg.length > 0){
+
+                console.log(CLASS_NAME + " : ", "type : " , "custom bg");
+                arr_bg_list = arr_bg_list.concat(json_today_bg);
+
+            }else if(json_birthday != undefined && json_birthday != null && json_birthday.length > 0){
+
+                console.log(CLASS_NAME + " : ", "type : " , "Birthday bg");
+                arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.birthday.list);
+
+            }else{
+
+                console.log(CLASS_NAME + " : ", "type : " , "random bg");
+                arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.weather.list);
+                arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.artwork.list);
+            }
+
+
+            console.log(CLASS_NAME + " : ", "arr_bg_list : " , arr_bg_list);
+
+
+            //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.weather.list);
+            //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.birthday.list);
+            //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.artwork.list);
+            //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.custom.list);
         }
     }
 
     function set_iframe(url){
 
         if(con_iframe) {
+
             var ifrm = document.createElement("iframe");
             ifrm.setAttribute("src", url);
             ifrm.setAttribute("name", "iframe-bg");

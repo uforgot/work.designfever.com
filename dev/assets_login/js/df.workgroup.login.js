@@ -44,9 +44,8 @@ window.df.workgroup.login = function(json_data){
 
         _loginController.init();
         _logoutController.init();
-        _checkinController.init();
-        _loginInfoController.init();
-
+        _checkinController.init(_json_data.user);
+        _loginInfoController.init(_json_data.info.today.notice, _json_data.info.birthday);
 
         startMotion();
 
@@ -94,7 +93,23 @@ window.df.workgroup.login = function(json_data){
         setTimeout(function(){df.lab.Util.addClass(con_header, window.df.workgroup.Preset.class_name.showIn);}, 100);
 
         var con_info = document.querySelector('.sec-login');
-        setTimeout(function(){df.lab.Util.addClass(con_info, window.df.workgroup.Preset.class_name.showIn);}, 500);
+        setTimeout(function(){
+            df.lab.Util.addClass(con_info, window.df.workgroup.Preset.class_name.showIn);
+
+            console.log("user : isLoggedIn - ", _json_data.user.isLoggedIn, " / isCheckin - ", _json_data.user.isCheckin , " / isCheckout", _json_data.user.isCheckout);
+
+            if(_json_data.user.isLoggedIn){
+                _onLogin();
+
+                if(_json_data.user.isCheckin){
+                    _onCheckin();
+
+                    if(_json_data.user.isCheckout){
+                        _onCheckout();
+                    }
+                }
+            }
+        }, 500);
 
         var con_footer = document.querySelector('footer');
         setTimeout(function(){df.lab.Util.addClass(con_footer, window.df.workgroup.Preset.class_name.showIn);}, 3000);
@@ -113,6 +128,7 @@ window.df.workgroup.login = function(json_data){
     function _setTimer(){
 
         _date_now = new Date();
+
         _date_now.setTime(_date_now.getTime() + _offsetTime);
 
         _today.YY = _date_now.getFullYear();

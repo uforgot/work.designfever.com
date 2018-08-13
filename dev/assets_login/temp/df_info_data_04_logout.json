@@ -1,5 +1,11 @@
 {
   "user":{
+    "error":
+    {
+      "isError":false,
+      "code":null
+    },
+
     "isLoggedIn": false,
 
     "name": null,
@@ -109,14 +115,14 @@
     },
     "birthday":[
       {
-        "name":"박재형",
-        "team":"CEO",
-        "thumb":"thumb.jpg"
+        "name": "한영수",
+        "team": "LAB",
+        "position": "실장"
       },
       {
-        "name":"최동현",
-        "team":"CEO",
-        "thumb":"thumb.jpg"
+        "name": "박현일",
+        "team": "LAB",
+        "position": "프로"
       }
     ],
 
@@ -127,16 +133,8 @@
         {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
       ],
       "notice": {
-        "title": {
-          "line_0":"오늘은",
-          "line_1":"바닥세미나가",
-          "line_2":"열립니다."
-        },
-        "dec": {
-          "line_0":"오후 4시 30분까지",
-          "line_1":"지하1층 바닥 세미나실로 모여주세요.",
-          "line_2":"- 경영지원팀"
-        }
+        "title": ["오늘은", "바닥세미나가", "열립니다."],
+        "dec": ["오후 4시 30분까지", "지하1층 바닥 세미나실로 모여주세요.", "- 경영지원팀"]
       }
     },
     "test":{

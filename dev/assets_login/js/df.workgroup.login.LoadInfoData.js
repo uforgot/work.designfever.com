@@ -61,9 +61,15 @@ window.df.workgroup.login.LoadInfoData = (function(){
 
         console.log(CLASS_NAME + " isDesktop : " , isDesktop, " / isLoggedIn : ", isLoggedIn);
 
-        if(isDesktop && isLoggedIn){
-            redirectToMain();
-            //return;
+        if(isLoggedIn){
+
+            if(isDesktop){
+                redirectToMain();
+
+            }else if(json_data.user.isAdminAccount){
+                redirectToMain();
+
+            }
         }
 
         _dispatchOnLoad();
