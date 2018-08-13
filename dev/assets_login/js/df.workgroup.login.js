@@ -139,6 +139,8 @@ window.df.workgroup.login = function(json_data){
         _today.mm = _date_now.getMinutes();
         _today.ss = _date_now.getSeconds();
 
+        window.df.workgroup.GlobalVars.time_now = _date_now.getTime();
+
         _ID_clock = setTimeout(_updateTimer, 500);
     }
 

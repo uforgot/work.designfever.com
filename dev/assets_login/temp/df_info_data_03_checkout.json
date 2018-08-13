@@ -8,9 +8,9 @@
 
     "isLoggedIn": true,
 
-    "name": "í•œì˜ìˆ˜",
+    "name": "ÇÑ¿µ¼ö",
     "team": "LAB",
-    "position": "ì‹¤ì¥",
+    "position": "½ÇÀå",
     "img": "/file/small_sq_1.jpg",
 
     "document_approval_num":12,
@@ -20,15 +20,15 @@
     "isNotCheckout_yesterday": false,
 
     "isCheckin": true,
-    "checkin_time": 1533780018351,
-    "checkin_timeText": "9ì‹œ 59ë¶„",
+    "checkin_time": 1534123512000,
+    "checkin_timeText": "10½Ã 25ºĞ",
 
-    "checkout_able_time": 1533780018351,
-    "checkout_able_timeText": "19ì‹œ 59ë¶„",
+    "checkout_able_time": 1534155900000,
+    "checkout_able_timeText": "19½Ã 25ºĞ",
 
     "isCheckout": true,
-    "checkout_time": 1533780018351,
-    "checkout_timeText": "19ì‹œ 59ë¶„",
+    "checkout_time": 1534175049404,
+    "checkout_timeText": "23½Ã 20ºĞ",
     "isAdminAccount":false
   },
 
@@ -115,14 +115,14 @@
     },
     "birthday":[
       {
-        "name": "í•œì˜ìˆ˜",
+        "name": "ÇÑ¿µ¼ö",
         "team": "LAB",
-        "position": "ì‹¤ì¥"
+        "position": "½ÇÀå"
       },
       {
-        "name": "ë°•í˜„ì¼",
+        "name": "¹ÚÇöÀÏ",
         "team": "LAB",
-        "position": "í”„ë¡œ"
+        "position": "ÇÁ·Î"
       }
     ],
 
@@ -133,8 +133,8 @@
         {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
       ],
       "notice": {
-        "title": ["ì˜¤ëŠ˜ì€", "ë°”ë‹¥ì„¸ë¯¸ë‚˜ê°€", "ì—´ë¦½ë‹ˆë‹¤."],
-        "dec": ["ì˜¤í›„ 4ì‹œ 30ë¶„ê¹Œì§€", "ì§€í•˜1ì¸µ ë°”ë‹¥ ì„¸ë¯¸ë‚˜ì‹¤ë¡œ ëª¨ì—¬ì£¼ì„¸ìš”.", "- ê²½ì˜ì§€ì›íŒ€"]
+        "title": ["¿À´ÃÀº", "¹Ù´Ú¼¼¹Ì³ª°¡", "¿­¸³´Ï´Ù."],
+        "dec": ["¿ÀÈÄ 4½Ã 30ºĞ±îÁö", "ÁöÇÏ1Ãş ¹Ù´Ú ¼¼¹Ì³ª½Ç·Î ¸ğ¿©ÁÖ¼¼¿ä.", "- °æ¿µÁö¿øÆÀ"]
       }
     },
     "test":{
@@ -143,7 +143,7 @@
       ]
     },
     "date":{
-      "server_time": 1533780018351
+      "server_time": 1534175049404
     }
   }
 }

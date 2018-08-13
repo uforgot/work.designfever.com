@@ -5,8 +5,13 @@ var CheckinController = function(){
     var _form_out = document.getElementById('id_checkout');
     var _btn_checkout = document.getElementById('id_btn_checkout_re');
 
-    function _init(_json_user){
-        _setInfo(_json_user);
+    var _isCjeckin = false;
+    var _ID_INTERVAL_BAR = 0;
+
+    var _json_user = null;
+
+    function _init(json_user){
+        _setInfo(json_user);
         _setUrl();
         _form.addEventListener( 'submit',  _onSubmit);
         _form_out.addEventListener( 'submit',  _onSubmit_out);
@@ -14,15 +19,100 @@ var CheckinController = function(){
         disable_input_out();
     }
 
-    function _setInfo(_json_user){
+    function _setInfo(json_user){
 
-        console.log(CLASS_NAME + " isLoggedIn : " , _json_user.isLoggedIn);
-        console.log(CLASS_NAME + " isCheckin : " , _json_user.isCheckin);
-        console.log(CLASS_NAME + " checkin_time : " , _json_user.checkin_time);
-        console.log(CLASS_NAME + " checkout_able_time : " , _json_user.checkout_able_time);
-        console.log(CLASS_NAME + " isCheckout : " , _json_user.isCheckout);
-        console.log(CLASS_NAME + " checkout_time : " , _json_user.checkout_time);
+        _json_user = json_user;
 
+        // console.log(CLASS_NAME + " isLoggedIn : " , _json_user.isLoggedIn);
+        // console.log(CLASS_NAME + " isCheckin : " , _json_user.isCheckin);
+        // console.log(CLASS_NAME + " checkin_time : " , _json_user.checkin_time);
+        // console.log(CLASS_NAME + " checkout_able_time : " , _json_user.checkout_able_time);
+        // console.log(CLASS_NAME + " isCheckout : " , _json_user.isCheckout);
+        // console.log(CLASS_NAME + " checkout_time : " , _json_user.checkout_time);
+
+        if(_json_user.isLoggedIn){
+
+            if(_json_user.isCheckin){
+                var txt_checkin_time = document.getElementById("id_checkin_time");
+                var date_checkin = new Date(_json_user.checkin_time);
+                txt_checkin_time.textContent = date_checkin.getHours() + "시 " +  date_checkin.getMinutes() + "분";
+
+                // checkout able time
+                var txt_checkout_able_time = document.getElementById("id_checkout_able_time");
+                var date_checkout_able = new Date(_json_user.checkout_able_time);
+
+                txt_checkout_able_time.textContent = date_checkout_able.getHours() + "시 " +  date_checkout_able.getMinutes() + "분";
+
+                _isCjeckin = true;
+
+                if(!_json_user.isCheckout){
+                    startSetTimeBar();
+                }else{
+                    stopSetTimeBar();
+
+                    var txt_checkout_time = document.getElementById("id_checkout_time");
+                    var date_checkout = new Date(_json_user.checkout_time);
+
+                    var hh = date_checkout.getHours();
+                    if(date_checkout.getDate() - date_checkin.getDate() > 0){
+                        hh = ((date_checkout.getDate() - date_checkin.getDate()) * 24 ) + date_checkout.getHours();
+                    }
+
+                    txt_checkout_time.textContent = hh + "시 " +  date_checkout.getMinutes() + "분";
+                }
+
+            }else{
+                stopSetTimeBar();
+            }
+
+        }else{
+            stopSetTimeBar();
+        }
+
+    }
+
+    function startSetTimeBar(){
+        stopSetTimeBar();
+
+
+        console.log("startSetTimeBar");
+
+        setTimePerBar();
+        //_ID_INTERVAL_BAR = setInterval(setTimePerBar, 30000);
+        _ID_INTERVAL_BAR = setInterval(setTimePerBar, 1000);
+    }
+
+    function setTimePerBar(){
+
+        console.log("setTimePerBar : ", _json_user.isCheckin);
+
+        if(_json_user.isCheckin){
+            console.log("checkin_time : " , _json_user.checkin_time);
+            console.log("time_now : " , window.df.workgroup.GlobalVars.time_now);
+            console.log("checkout_able_time : " , _json_user.checkout_able_time);
+
+            var dis = _json_user.checkout_able_time - _json_user.checkin_time;
+            var cur = window.df.workgroup.GlobalVars.time_now - _json_user.checkin_time;
+
+            var per = cur / dis;
+
+            console.log("per : " , per, dis, cur);
+
+            if(per < 0) per = 0;
+            if(per > 1) per = 1;
+
+            var per_str = Math.round(per*100) + "%";
+            var cur_bar = document.getElementById("id_per_time");
+            cur_bar.style.width = per_str;
+
+        }else{
+            stopSetTimeBar();
+        }
+    }
+
+    function stopSetTimeBar(){
+        _isCjeckin = false;
+        clearInterval(_ID_INTERVAL_BAR);
     }
 
     function _setUrl(){
@@ -145,7 +235,7 @@ var CheckinController = function(){
         disable_input();
         able_input_out();
         _checkAbleTime();
-        setTimeout(setTimeBar, 1000);
+        //setTimeout(setTimeBar, 1000);
     }
 
     function _showCheckoutText(){
@@ -153,11 +243,6 @@ var CheckinController = function(){
         df.lab.Util.addClass(wrapper_checkin, 'checkedout');
         disable_input();
         disable_input_out();
-    }
-
-    function setTimeBar(){
-        var cur_bar = document.getElementById("id_per_time");
-        cur_bar.style.width = "75%";
     }
 
     function _checkAbleTime(){

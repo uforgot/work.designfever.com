@@ -5,6 +5,8 @@ window.df.workgroup.Util = (function(){
 
     function load_json(url, method, callback, $data){
 
+        console.log("xhr.url : ", url);
+
         var data = $data ? JSON.stringify($data) : null;
 
         var params = {
