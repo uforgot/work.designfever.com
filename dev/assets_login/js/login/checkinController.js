@@ -173,58 +173,10 @@ var CheckinController = function(){
 
         var params = {
             method: form.method,
-            action: form.action
+            action: form.action + "?uniq=" + new Date().getTime()
         };
 
-        // Construct an HTTP request
-        var xhr = new XMLHttpRequest();
-        xhr.open(params.method, params.action, true);
-        xhr.setRequestHeader('Accept', 'application/json; charset=EUC-KR');
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=EUC-KR');
-
-        // Send the collected data as JSON
-        xhr.send(JSON.stringify(data));
-
-        xhr.onreadystatechange = function () {
-
-            console.log(CLASS_NAME + " xhr.readyState : ", xhr.readyState);
-            console.log(CLASS_NAME + " xhr.status : ", xhr.status);
-        };
-
-        // Callback function
-        xhr.onloadend = function (response) {
-
-            console.log(CLASS_NAME + " xhr.onloadend : " , response);
-
-            if (response.target.status === 0) {
-
-                // Failed XmlHttpRequest should be considered an undefined error.
-                //console.log(CLASS_NAME + " xhr.onloadend (Failed) : " , xhr);
-
-            } else if (response.target.status === 400) {
-
-                // Bad Request
-                //console.log(CLASS_NAME + " xhr.onloadend (Bad Request) : " , xhr);
-            } else if (response.target.status === 404) {
-
-                // Bad Request
-                //console.log(CLASS_NAME + " xhr.onloadend (404 Not Found) : " , xhr);
-
-            } else if (response.target.status === 200) {
-
-                // Success
-                //console.log("xhr.onloadend (Success) : form.dataset.formSuccess" , form.dataset.formSuccess);
-                //console.log("xhr.onloadend (Success) response : " , response);
-                //console.log("xhr.onloadend (Success) xhr : " , xhr);
-                console.log(CLASS_NAME + " xhr.onloadend (Success) response : " , JSON.parse(response.target.responseText));
-
-                setTimeout(function(){
-                    callback(response);
-                }, 100);
-
-                //callback(response);
-            }
-        };
+        df.workgroup.Util.load_json(params.action, params.method, callback, data);
     }
     return {
         init: _init,

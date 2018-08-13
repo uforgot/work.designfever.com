@@ -35,49 +35,14 @@ window.df.workgroup.login.LoadInfoData = (function(){
 
         var params = {
             method: "GET",
-            action: url
+            action: url + "?uniq=" + new Date().getTime()
         };
 
-        var xhr = new XMLHttpRequest();
-        xhr.overrideMimeType("application/json");
-        xhr.open(params.method, params.action, true);
-        xhr.onreadystatechange = function () {
-
-            //console.log(CLASS_NAME + " xhr.readyState : ", xhr.readyState);
-            //console.log(CLASS_NAME + " xhr.status : ", xhr.status);
-
-            if (xhr.readyState == 4 && xhr.status == "200") {
-                // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-
-                console.log(CLASS_NAME + " xhr : " , xhr);
-                callback(xhr.responseText);
-            }
-
-            /*
-                        if (response.target.status === 0) {
-
-                            // Failed XmlHttpRequest should be considered an undefined error.
-                            console.log("xhr.onloadend (Failed) : " , xhr);
-
-                        } else if (response.target.status === 400) {
-
-                            // Bad Request
-                            console.log("xhr.onloadend (Bad Request) : " , xhr);
-                        } else if (response.target.status === 404) {
-
-                            // Bad Request
-                            console.log("xhr.onloadend (404 Not Found) : " , xhr);
-
-                        } else if (response.target.status === 200) {
-
-                        }*/
-
-        };
-        xhr.send(null);
+        df.workgroup.Util.load_json(params.action, params.method, callback, null);
     }
 
     function onLoad(response) {
-        var actual_JSON = JSON.parse(response);
+        var actual_JSON = JSON.parse(response.target.responseText);
         window.df.workgroup.GlobalVars.isLoaded = true;
         window.df.workgroup.GlobalVars.infoData = actual_JSON;
 
