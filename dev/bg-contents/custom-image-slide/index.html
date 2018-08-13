@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>Background Contents - df building Slide Show</title>
+
+    <style>
+        body {background-color: #000000; margin: 0}
+
+        .slide-show .img-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            overflow: hidden;
+        }
+        .slide-show .img-wrapper .img-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+            opacity: 0;
+            transition: opacity 3s linear, transform 13s linear 3s;
+            z-index: 0;
+        }
+
+        .slide-show .img-wrapper .img-content.show {
+            opacity: 1;
+            transform: scale(1.2);
+            transition: opacity 3s linear, transform 13s linear;
+            z-index: 1;
+        }
+        .container-wrapper .dimmed {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0);
+            z-index: 2;
+        }
+
+        @media all and (min-width : 1025px) {
+            .slide-show .img-wrapper .img-content.show {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+
+</head>
+
+
+<body class="slide-show">
+
+<div class="container-wrapper">
+    <!--<div class="img-wrapper">
+        <div class="img-content show" style='background-image: url("../../../common/img/wp_1.jpg")'></div>
+        <div class="img-content" style='background-image: url("../../../common/img/wp_2.jpg")'></div>
+        <div class="img-content" style='background-image: url("../../../common/img/wp_3.jpg")'></div>
+        <div class="img-content" style='background-image: url("../../../common/img/wp_4.jpeg")'></div>
+    </div>-->
+</div>
+
+</body>
+
+<script src="./js/common.js"></script>
+<script src="./js/loadImagesData.js"></script>
+<script src="./js/customImageSlide.js"></script>
+<script>
+
+    var params = Util.getParams();
+    var seq = params.seq || "000";
+
+    document.addEventListener(df.workgroup.Preset.eventType.ON_LOAD_JSON, function(){
+            init();
+        }
+    );
+
+    window.df.workgroup.Preset.json_url.default = "../../assets_login/temp/df_contents_image-slide.json" + "?seq="+seq;
+    window.df.workgroup.imageslide.LoadInfoData.init();
+
+    console.log("seq : ", seq, window.df.workgroup.Preset.json_url.default)
+
+    function init(){
+        var imageSlide = new CustomImageSlide(window.df.workgroup.GlobalVars.infoData, 0.4);
+        imageSlide.init();
+    }
+
+</script>
+
+</html>
