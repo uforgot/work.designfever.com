@@ -22,8 +22,8 @@ window.df.workgroup.Util = (function(){
         //xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
         xhr.onreadystatechange = function () {
-            console.log("xhr.readyState : ", xhr.readyState);
-            console.log("xhr.status : ", xhr.status);
+            //console.log("xhr.readyState : ", xhr.readyState);
+            //console.log("xhr.status : ", xhr.status);
         };
 
         // Callback function

@@ -105,6 +105,8 @@ var CheckinController = function(){
             var cur_bar = document.getElementById("id_per_time");
             cur_bar.style.width = per_str;
 
+            _checkAbleTime(per >= 0);
+
         }else{
             stopSetTimeBar();
         }
@@ -234,7 +236,7 @@ var CheckinController = function(){
         df.lab.Util.addClass(wrapper_checkin, 'checked');
         disable_input();
         able_input_out();
-        _checkAbleTime();
+        //_checkAbleTime();
         //setTimeout(setTimeBar, 1000);
     }
 
@@ -245,11 +247,10 @@ var CheckinController = function(){
         disable_input_out();
     }
 
-    function _checkAbleTime(){
+    function _checkAbleTime(isAble){
 
         var area_checkout = document.querySelector('.sec-login .wrapper-checkin .area-check-inout.area-checkout');
 
-        var isAble = true;
         if(isAble){
             //"checkout-able"
             df.lab.Util.addClass(area_checkout, "checkout-able");
