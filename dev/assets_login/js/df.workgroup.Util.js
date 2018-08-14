@@ -3,9 +3,11 @@ window.df.workgroup = window.df.workgroup || {};
 
 window.df.workgroup.Util = (function(){
 
+    var now_date;
     function load_json(url, method, callback, $data){
 
-        console.log("xhr.url : ", url);
+        now_date = new Date();
+        console.log("\n<< START LOAD >> xhr.url : ", url, "\n\n");
 
         var data = $data ? JSON.stringify($data) : null;
 
@@ -29,7 +31,7 @@ window.df.workgroup.Util = (function(){
         // Callback function
         xhr.onloadend = function (response) {
 
-            console.log("xhr.onloadend : " , response);
+            //console.log("xhr.onloadend : " , response);
 
             if (response.target.status === 0) {
 
@@ -48,12 +50,15 @@ window.df.workgroup.Util = (function(){
             } else if (response.target.status === 200) {
 
                 // Success
+                console.log("\n<< COMP LOAD >> xhr.onloadend (Success) duration : " , (((new Date()).getTime() - now_date.getTime())/1000) + "sec\n\n" );
                 console.log("xhr.onloadend (Success) response : " , response);
+                console.log("xhr.onloadend (Success) responseText(JSON) : " , JSON.parse(response.target.responseText));
+                console.log("\n\n<< COMP LOAD >>\n\n" );
                 //console.log("xhr.onloadend (Success) xhr : " , xhr);
                 //console.log("xhr.onloadend (Success) response.target.responseText : " , JSON.parse(response.target.responseText));
                 setTimeout(function(){
                     callback(response);
-                }, 100);
+                }, 10);
             }
         };
         // Send the collected data as JSON

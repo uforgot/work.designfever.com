@@ -107,8 +107,8 @@ var LoginInfoController = function(){
             _stage_con.addEventListener('click',  onClick_stage);
         }
 
-        console.log("Detectizr.device.type : ", Detectizr.device.type);
-        console.log("Detectizr : ", Detectizr);
+        //console.log("Detectizr.device.type : ", Detectizr.device.type);
+        //console.log("Detectizr : ", Detectizr);
 
     }
 

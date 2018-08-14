@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="EUC-KR">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>login test</title>
+    <script src="../js/df.workgroup.Util.js?uniq=20180814_4"></script>
+</head>
+<body>
+
+<div>
+    <label for="id_url_def" class="blind"><span>Logout Url</span></label>
+    <input class="round-box" id="id_url_def" type="text" placeholder="Logout" style="width:100%; height: 30px; color:#FF0000;"
+           value="http://dev3.designfever.com/assets_login/temp/df_info_data.json.php">
+</div>
+<div>
+    <form id="id_form_def" name="user_logout" method="GET" accept-charset="EUC-KR" enctype="multipart/form-data" action="">
+        <fieldset>
+            <legend class="blind">Load Def</legend>
+            <div class="area-input btn-logout" tabindex="0">
+                <i class="material-icons">Load</i>
+                <input form="id_form_def" type="submit" value="load def">
+            </div>
+        </fieldset>
+    </form>
+</div>
+<br><br>
+
+
+<div>
+    <label for="id_url_login" class="blind"><span>Login Url</span></label>
+    <input class="round-box" id="id_url_login" type="text" placeholder="Login url" style="width:100%; height: 30px; color:#FF0000;"
+    value="http://dev3.designfever.com/assets_login/temp/df_info_data.json.php">
+    <!--value="http://dev3.designfever.com/assets_login/temp/df_info_data_01_login.json">-->
+</div>
+<br>
+<div>
+<form id="id_login" name="user_info" method="POST" accept-charset="EUC-KR" enctype="multipart/form-data" autocomplete="off" action="">
+    <fieldset class="login-form">
+        <legend class="blind">Login</legend>
+        <div class="area-input">
+            <label for="user_id" class="blind"><span>ID</span></label>
+            <input class="round-box"
+                   id="user_id" name="user_id" type="text"
+                   placeholder="ID"
+                   maxlength="15"
+                   pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,15}$"
+                   style="ime-mode:disabled;height: 30px; color:#0000FF;"
+                   autocomplete="false"
+                   title="아이디를 3자 이상 입력해 주세요. 공백이나 특수문자 등은 포함할 수 없습니다."
+                   tabindex="0" aria-label="아이디 입력"
+                   spellcheck="false" autocorrect="off"
+                   required autofocus >
+        </div>
+        <div class="area-input">
+            <label for="user_pw" class="blind"><span>PW</span></label>
+            <input class="round-box"
+                   id="user_pw" name="user_pw" type="password"
+                   placeholder="Password"
+                   maxlength="15"
+                   pattern=".{4,}"
+                   title="비밀번호를 입력해 주세요. 4자 이상으로 된 영문소문자, 숫자, 언더스코어로만 구성할 수 있습니다."
+                   spellcheck="false" autocorrect="off"
+                   style="height: 30px; color:#0000FF;"
+                   required >
+        </div>
+        <div class="area-input btn-login btn-module">
+            <input class="round-box btn-submit"  id="user_login" form="id_login" type="submit" value="Login">
+        </div>
+    </fieldset>
+</form>
+</div>
+<br>
+<br>
+<br>
+<div>
+    <label for="id_url_logout" class="blind"><span>Logout Url</span></label>
+    <input class="round-box" id="id_url_logout" type="text" placeholder="Logout" style="width:100%; height: 30px; color:#FF0000;"
+           value="">
+           <!--value="http://dev3.designfever.com/assets_login/temp/df_info_data_04_logout.json">-->
+</div>
+<br>
+
+<div>
+<form id="id_form_logout" name="user_logout" method="POST" accept-charset="EUC-KR" enctype="multipart/form-data" action="">
+    <fieldset>
+        <legend class="blind">Logout</legend>
+        <div class="area-input btn-logout" tabindex="0">
+            <i class="material-icons">Log out</i>
+            <input tabindex="-1" id="id_btn_logout" class="btn-submit" form="id_form_logout" type="submit" value="log out">
+        </div>
+    </fieldset>
+</form>
+</div>
+<p id="id_log"></p>
+
+
+<script>
+
+    var log = document.getElementById('id_log');
+    var startTime = new Date();
+
+    var _url_login = document.getElementById('id_url_login');
+    var _url_logout = document.getElementById('id_url_logout');
+    var _url_def = document.getElementById('id_url_def');
+
+    var _form = document.getElementById('id_login');
+    var _form_out = document.getElementById('id_form_logout');
+    var _form_def = document.getElementById('id_form_def');
+
+    _form.addEventListener( 'submit',  _onSubmit);
+    _form_out.addEventListener( 'submit',  _onSubmit_logout);
+    _form_def.addEventListener( 'submit',  _onSubmit_def);
+    init();
+
+    function init(){
+
+        _onSubmit_def(null);
+    }
+
+    function _onSubmit_def($evt){
+        if($evt) $evt.preventDefault();
+
+        var form = _form_def;
+        // Collect the form data while iterating over the inputs
+
+        var params = {
+            method: form.method,
+            action: _url_def.value + "?uniq=" + new Date().getTime()
+        };
+
+        log.innerText = "";
+        log.innerText = "LOAD DEFAULT - method : " + params.method + " / url_json : " + params.action + "";
+        startTime = new Date();
+        log.innerText = log.innerText +  "\n\n--------------------------------------start : " + startTime.getTime();
+
+        df.workgroup.Util.load_json(params.action, params.method, onLoad_def, null);
+    }
+
+
+    function onLoad_def(response) {
+
+        var json = JSON.parse(response.target.responseText);
+
+        console.log("\n------------------------------------------\n");
+        console.log("\n------------------------------------------\n");
+        console.log("ON LOAD COMP :" , json);
+
+        var nowDate = new Date();
+        log.innerText = log.innerText +  "\n\n-------------------------------------- on comp " + nowDate.getTime() +" ( duration : "+((nowDate.getTime() - startTime.getTime()) / 1000) + "sec )";
+        log.innerText = log.innerText +  "\n\nuser:"+ JSON.stringify(json.user);
+
+        _url_login.value = json.preset.json_url.login;
+        _url_logout.value = json.preset.json_url.logout;
+    }
+
+    function _onSubmit($evt){
+        $evt.preventDefault();
+        ;
+        var form = _form;
+        // Collect the form data while iterating over the inputs
+        var data = {};
+        for (var i = 0, ii = form.length; i < ii; ++i) {
+            var input = form[i];
+            if (input.name) {
+                data[input.name] = input.value;
+            }
+        }
+
+        var params = {
+            method: form.method,
+            action: _url_login.value + "?uniq=" + new Date().getTime()
+        };
+
+        log.innerText = "";
+        log.innerText = "LOGIN - method : " + params.method + " / url_json : " + params.action + "";
+        startTime = new Date();
+        log.innerText = log.innerText +  "\n\n--------------------------------------start : " + startTime.getTime();
+
+        console.log("TEST:", data);
+
+
+        df.workgroup.Util.load_json(params.action, params.method, onLoad, data);
+    }
+    function _onSubmit_logout($evt){
+        $evt.preventDefault();
+
+        var form = _form_out;
+        // Collect the form data while iterating over the inputs
+
+        var params = {
+            method: form.method,
+            action: _url_logout.value + "?uniq=" + new Date().getTime()
+        };
+
+        log.innerText = "";
+        log.innerText = "LOGOUT - method : " + params.method + " / url_json : " + params.action + "";
+        startTime = new Date();
+        log.innerText = log.innerText +  "\n\n--------------------------------------start : " + startTime.getTime();
+
+        df.workgroup.Util.load_json(params.action, params.method, onLoad, null);
+    }
+
+    function onLoad(response) {
+
+        var json = JSON.parse(response.target.responseText);
+
+        console.log("\n------------------------------------------\n");
+        console.log("\n------------------------------------------\n");
+        console.log("ON LOAD COMP :" , json);
+
+        var nowDate = new Date();
+        log.innerText = log.innerText +  "\n\n-------------------------------------- on comp " + nowDate.getTime() +" ( duration : "+((nowDate.getTime() - startTime.getTime()) / 1000) + "sec )";
+        log.innerText = log.innerText +  "\n\nuser: "+ JSON.stringify(json.user);
+    }
+
+</script>
+</body>
+</html>

@@ -56,18 +56,22 @@
           border-radius: 50%;
           overflow: hidden;
 
-          a{
+          a.btn-link{
             display: block;
             width:100%;
             height:100%;
             text-align: center;
             background: #333333;
             color: #FFFFFF;
+            pointer-events: none;
 
             @include mx_transition("600ms", "background", $vars_easeOutCubic);
 
-            &:hover, &:focus{
-              background: #000000;
+            &.able, &.able{
+              pointer-events: auto;
+              &:hover, &:focus {
+                background: #000000;
+              }
             }
 
             .txt{
@@ -100,11 +104,16 @@
           }
 
           &.more{
-            a{
+            a.btn-link{
               background: #666666;
-              &:hover, &:focus{
-                background: #000000;
+
+              &.able, &.able{
+
+                &:hover, &:focus {
+                  background: #000000;
+                }
               }
+
               .txt{
                 @extend %blind;
               }

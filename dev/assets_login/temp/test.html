@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="EUC-KR">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <title>JSON load test</title>
-    <script src="../js/df.workgroup.Util.js"></script>
+    <script src="../js/df.workgroup.Util.js?uniq=20180814_4"></script>
 </head>
 <body>
 <p id="id_log"></p>
@@ -16,6 +18,10 @@
     var log = document.getElementById('id_log');
     log.innerText = "url_json : " + url_json + "";
 
+    var startTime = new Date();
+    log.innerText = log.innerText +  "\n\n--------------------------------------'GET' start : " + startTime.getTime();
+
+
     df.workgroup.Util.load_json(url_json, "GET", onLoad_get);
 
     function onLoad_get(response) {
@@ -26,9 +32,15 @@
         var json = JSON.parse(response.target.responseText);
         console.log(json);
 
-        log.innerText = log.innerText +  "\n\n\n-GET-------------------------------------";
+
+        var nowDate = new Date();
+        log.innerText = log.innerText +  "\n\n-----------------------------------on GET : " + nowDate.getTime() +" ( duration : "+((nowDate.getTime() - startTime.getTime()) / 1000) + "sec )";
         log.innerText = log.innerText +  "\n\n"+ JSON.stringify(json.user);
 
+
+        startTime.setTime(nowDate.getTime());
+        log.innerText = log.innerText +  "\n\n";
+        log.innerText = log.innerText +  "\n\n--------------------------------------'POST' start : " + startTime.getTime();
         df.workgroup.Util.load_json(url_json, "POST", onLoad_post);
     }
 
@@ -40,7 +52,8 @@
         var json = JSON.parse(response.target.responseText);
         console.log(json);
 
-        log.innerText = log.innerText +  "\n\n\n-POST-------------------------------------";
+        var nowDate = new Date();
+        log.innerText = log.innerText +  "\n\n--------------------------------------on POST : " + nowDate.getTime() +" ( duration : "+((nowDate.getTime() - startTime.getTime()) / 1000) + "sec )";
         log.innerText = log.innerText +  "\n\n"+ JSON.stringify(json.user);
     }
 
