@@ -10,25 +10,18 @@ var CheckinController = function(){
 
     var _json_user = null;
 
-    function _init(json_user){
-        _setInfo(json_user);
+    function _init(){
+        _setInfo();
         _setUrl();
         _form.addEventListener( 'submit',  _onSubmit);
         _form_out.addEventListener( 'submit',  _onSubmit_out);
         _btn_checkout.addEventListener( 'click',  _onClick_btn_checkout);
+        disable_input();
         disable_input_out();
     }
 
-    function _setInfo(json_user){
-
-        _json_user = json_user;
-
-        // console.log(CLASS_NAME + " isLoggedIn : " , _json_user.isLoggedIn);
-        // console.log(CLASS_NAME + " isCheckin : " , _json_user.isCheckin);
-        // console.log(CLASS_NAME + " checkin_time : " , _json_user.checkin_time);
-        // console.log(CLASS_NAME + " checkout_able_time : " , _json_user.checkout_able_time);
-        // console.log(CLASS_NAME + " isCheckout : " , _json_user.isCheckout);
-        // console.log(CLASS_NAME + " checkout_time : " , _json_user.checkout_time);
+    function _setInfo(){
+        _json_user = window.df.workgroup.GlobalVars.infoData.user;
 
         if(_json_user.isLoggedIn){
 
@@ -60,23 +53,16 @@ var CheckinController = function(){
 
                     txt_checkout_time.textContent = hh + "½Ã " +  date_checkout.getMinutes() + "ºÐ";
                 }
-
             }else{
                 stopSetTimeBar();
             }
-
         }else{
             stopSetTimeBar();
         }
-
     }
 
     function startSetTimeBar(){
         stopSetTimeBar();
-
-
-        console.log("startSetTimeBar");
-
         setTimePerBar();
         //_ID_INTERVAL_BAR = setInterval(setTimePerBar, 30000);
         _ID_INTERVAL_BAR = setInterval(setTimePerBar, 1000);
@@ -124,10 +110,10 @@ var CheckinController = function(){
             json_data.preset.json_url.checkin != undefined){
 
             _form.action = json_data.preset.json_url.checkin;
-            console.log(CLASS_NAME + " action(server) : ", _form.action);
+            //console.log(CLASS_NAME + " action(server) : ", _form.action);
         }else{
             _form.action = window.df.workgroup.Preset.json_url.checkin;
-            console.log(CLASS_NAME + " action(local) : ", _form.action);
+            //console.log(CLASS_NAME + " action(local) : ", _form.action);
         }
 
         if(json_data.preset != undefined &&
@@ -135,18 +121,16 @@ var CheckinController = function(){
             json_data.preset.json_url.checkout != undefined){
 
             _form_out.action = json_data.preset.json_url.checkout;
-            console.log(CLASS_NAME + " action(server) : ", _form_out.action);
+            //console.log(CLASS_NAME + " action(server) : ", _form_out.action);
         }else{
             _form_out.action = window.df.workgroup.Preset.json_url.checkout;
-            console.log(CLASS_NAME + " action(local) : ", _form_out.action);
+            //console.log(CLASS_NAME + " action(local) : ", _form_out.action);
         }
     }
 
     function _onClick_btn_checkout($evt){
         $evt.preventDefault();
-
-        console.log("_onClick_btn_checkout");
-        _submit_out();
+        _submit_out_re();
     }
     function _onSubmit( $evt ) {
         $evt.preventDefault();
@@ -155,7 +139,7 @@ var CheckinController = function(){
 
     function _submit(){
         loading();
-        ajaxPost(_form, onSubmit);
+        ajaxPost(_form, onCompSubmit);
         return false;
     }
 
@@ -166,8 +150,12 @@ var CheckinController = function(){
 
     function _submit_out(){
         loading_out();
-        ajaxPost(_form_out, onSubmit_out);
+        ajaxPost(_form_out, onCompSubmit_out);
         return false;
+    }
+
+    function _submit_out_re(){
+        _submit_out();
     }
 
     function loading(){
@@ -179,6 +167,7 @@ var CheckinController = function(){
     }
 
     function disable_input(){
+
         var inputs = _form.querySelectorAll('input');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].setAttribute("disabled", "");
@@ -206,32 +195,46 @@ var CheckinController = function(){
         }
     }
 
-    function onSubmit(response){
-        able_input();
-        _dispatchOnLoad();
+    function onCompSubmit(response){
+        _dispatchOnLoad(response);
     }
 
-    function onSubmit_out(response){
-        able_input_out();
-        _dispatchOnLoad_out();
+    function onCompSubmit_out(response){
+        _dispatchOnLoad_out(response);
     }
 
-    function _dispatchOnLoad(){
-        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_CHECKIN);
+    function _dispatchOnLoad(response){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_CHECKIN, {
+            detail: {
+                response: response
+            }});
         document.dispatchEvent(event);
     }
 
-    function _dispatchOnLoad_out(){
-        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_CHECKOUT);
+    function _dispatchOnLoad_out(response){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_CHECKOUT, {
+            detail: {
+                response: response
+            }});
         document.dispatchEvent(event);
     }
 
     function _showCheckinBtn(){
+
+        _setInfo();
+        _setUrl();
+
         var wrapper_checkin = document.querySelector('.sec-login .wrapper-checkin');
         df.lab.Util.addClass(wrapper_checkin, window.df.workgroup.Preset.class_name.showIn);
+        able_input();
+        disable_input_out();
     }
 
     function _showCheckoutBtn(){
+
+        _setInfo();
+        _setUrl();
+
         var wrapper_checkin = document.querySelector('.sec-login .wrapper-checkin');
         df.lab.Util.addClass(wrapper_checkin, 'checked');
         disable_input();
@@ -241,8 +244,26 @@ var CheckinController = function(){
     }
 
     function _showCheckoutText(){
+
+        _setInfo();
+        _setUrl();
+
         var wrapper_checkin = document.querySelector('.sec-login .wrapper-checkin');
         df.lab.Util.addClass(wrapper_checkin, 'checkedout');
+        disable_input();
+        disable_input_out();
+    }
+
+    function _hideCheckinBtn(){
+        _resetLayout();
+    }
+
+    function _resetLayout(){
+        var wrapper_checkin = document.querySelector('.sec-login .wrapper-checkin');
+        df.lab.Util.removeClass(wrapper_checkin, window.df.workgroup.Preset.class_name.showIn);
+        df.lab.Util.removeClass(wrapper_checkin, 'checked');
+        df.lab.Util.removeClass(wrapper_checkin, 'checkedout');
+
         disable_input();
         disable_input_out();
     }
@@ -273,6 +294,10 @@ var CheckinController = function(){
             method: form.method,
             action: form.action + "?uniq=" + new Date().getTime()
         };
+        //
+        // if(isTest_re) {
+        //     params.action = "assets_login/temp/df_info_data_03_checkout_re.json";
+        // }
 
         df.workgroup.Util.load_json(params.action, params.method, callback, data);
     }
@@ -280,6 +305,7 @@ var CheckinController = function(){
         init: _init,
         showCheckinBtn: _showCheckinBtn,
         showCheckoutBtn: _showCheckoutBtn,
-        showCheckoutText: _showCheckoutText
+        showCheckoutText: _showCheckoutText,
+        hideCheckinBtn: _hideCheckinBtn
     }
 };

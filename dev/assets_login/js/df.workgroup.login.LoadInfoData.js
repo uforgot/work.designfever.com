@@ -20,12 +20,19 @@ window.df.workgroup.login = window.df.workgroup.login || {};
 window.df.workgroup.login.LoadInfoData = (function(){
 
     var CLASS_NAME = "[ LoadInfoData ]";
-    var url_json = window.df.workgroup.Preset.json_url.default + "?uniq=" + new Date().getTime();
-
+    var url_json = "";
 
     function init() {
 
-        //console.log(CLASS_NAME + " json_url : ", url_json);
+        var _isLocalhost = false;
+        if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"){
+            _isLocalhost = true;
+            url_json = window.df.workgroup.Preset.json_url.default_local;
+        }else{
+            url_json = window.df.workgroup.Preset.json_url.default;
+        }
+
+        console.log(CLASS_NAME + " _isLocalhost : ", _isLocalhost + " / json_url : ", url_json);
 
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
         loadJSON(url_json, onLoad);

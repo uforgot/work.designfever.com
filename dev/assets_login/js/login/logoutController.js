@@ -15,10 +15,10 @@ var LogoutController = function(){
             json_data.preset.json_url.logout != undefined){
 
             _form.action = json_data.preset.json_url.logout;
-            console.log(CLASS_NAME + " action(server) : ", _form.action);
+            //console.log(CLASS_NAME + " action(server) : ", _form.action);
         }else{
             _form.action = window.df.workgroup.Preset.json_url.logout;
-            console.log(CLASS_NAME + " action(local) : ", _form.action);
+            //console.log(CLASS_NAME + " action(local) : ", _form.action);
         }
     }
 
@@ -44,12 +44,21 @@ var LogoutController = function(){
 
     function onSubmit(response){
         //console.log(response);
+        //_dispatchOnLoad(response);
         window.location.reload (true);
     }
 
     function _showLogoutBtn(){
+
+        _setUrl();
+
         var btn_logout = document.querySelector('header .wrapper-logout');
         df.lab.Util.addClass(btn_logout, window.df.workgroup.Preset.class_name.showIn);
+    }
+
+    function _hideLogoutBtn(){
+        var btn_logout = document.querySelector('header .wrapper-logout');
+        df.lab.Util.removeClass(btn_logout, window.df.workgroup.Preset.class_name.showIn);
     }
 
     function ajaxPost (form, callback) {
@@ -69,9 +78,20 @@ var LogoutController = function(){
 
         df.workgroup.Util.load_json(params.action, params.method, callback, data);
     }
+/*
+
+    function _dispatchOnLoad(response){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOGOUT, {
+            detail: {
+                response: response
+            }});
+        document.dispatchEvent(event);
+    }
+*/
 
     return {
         init: _init,
-        showLogoutBtn: _showLogoutBtn
+        showLogoutBtn: _showLogoutBtn,
+        hideLogoutBtn: _hideLogoutBtn
     }
 };

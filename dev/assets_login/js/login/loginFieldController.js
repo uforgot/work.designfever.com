@@ -118,12 +118,7 @@ var LoginFieldController = function(){
         var sec_login = document.querySelector('.sec-login');
         df.lab.Util.addClass(sec_login, 'loading');
 
-        var inputs = sec_login.querySelectorAll('input');
-
-        // inputs.forEach(function(el, index){
-        //     el.setAttribute("disabled", "");
-        // });
-
+        var inputs = _form.querySelectorAll('input');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].setAttribute("disabled", "");
         }
@@ -133,7 +128,7 @@ var LoginFieldController = function(){
         var sec_login = document.querySelector('.sec-login');
         df.lab.Util.removeClass(sec_login, 'loading');
 
-        var inputs = sec_login.querySelectorAll('input');
+        var inputs = _form.querySelectorAll('input');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].removeAttribute("disabled");
         }
@@ -141,20 +136,23 @@ var LoginFieldController = function(){
 
     function onSubmit(response){
         able_input();
-        _dispatchOnLoad();
+        _dispatchOnLoad(response);
     }
 
-    function _dispatchOnLoad(){
-        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOGIN);
+    function _dispatchOnLoad(response){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOGIN, {
+            detail: {
+                response: response
+            }});
         document.dispatchEvent(event);
     }
 
     function _hideLoginFrom(){
-
+        disable_input();
     }
 
     function _showLoginFrom(){
-
+        able_input();
     }
 
     function ajaxPost (form, callback) {
@@ -177,6 +175,7 @@ var LoginFieldController = function(){
 
     return {
         init : _init,
-        hideLoginFrom: _hideLoginFrom
+        hideLoginFrom: _hideLoginFrom,
+        showLoginFrom: _showLoginFrom
     }
 };

@@ -46,7 +46,7 @@ window.df.workgroup.login = function(json_data){
 
         _loginController.init();
         _logoutController.init();
-        _checkinController.init(_json_data.user);
+        _checkinController.init();
         _loginInfoController.init(_json_data.info.today.notice, _json_data.info.birthday);
 
         _loginUtilController.init(_json_data.preset.document_url, _json_data.preset.main_url, _json_data.user);
@@ -63,12 +63,49 @@ window.df.workgroup.login = function(json_data){
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHANGE_STAGE_INFO, _onChange_stage_info);
     }
 
-    function _onLogin(){
+    function _resetData(response){
 
-        _loginController.hideLoginFrom();
+        var actual_JSON = JSON.parse(response.target.responseText);
+        console.log("<< _resetData>> ", actual_JSON);
+        window.df.workgroup.GlobalVars.infoData = actual_JSON;
+        _json_data = window.df.workgroup.GlobalVars.infoData;
+    }
+
+    function _onLogin(evt){
+        _resetData(evt.detail.response);
+        _updateStatus();
+    }
+
+    function _onCheckin(evt) {
+        _resetData(evt.detail.response);
+        _updateStatus();
+    }
+
+    function _onCheckout(evt) {
+        _resetData(evt.detail.response);
+        _updateStatus();
+    }
+
+    function _onChange_stage_info(event){
+        //console.log("_onChange_stage_info : stage_index - ", event.detail.curIndex);
+    }
+
+    // set layout
+    function _setLayout_Logout(){
+
+        var sec_util = document.querySelector('.sec-util');
+        df.lab.Util.removeClass(sec_util, window.df.workgroup.Preset.class_name.showIn);
 
         var sec_login = document.querySelector('.sec-login');
-        df.lab.Util.addClass(sec_login, 'logged');
+        df.lab.Util.removeClass(sec_login, 'logged');
+
+        _logoutController.hideLogoutBtn();
+        _checkinController.hideCheckinBtn();
+        _loginController.showLoginFrom();
+    }
+
+    function _setLayout_Login(){
+        _loginController.hideLoginFrom();
 
         _logoutController.showLogoutBtn();
         _checkinController.showCheckinBtn();
@@ -79,16 +116,12 @@ window.df.workgroup.login = function(json_data){
         _loginInfoController.showNotice();
     }
 
-    function _onCheckin(){
+    function _setLayout_Checkin(){
         _checkinController.showCheckoutBtn();
     }
 
-    function _onCheckout(){
+    function _setLayout_Checkout(){
         _checkinController.showCheckoutText();
-    }
-
-    function _onChange_stage_info(event){
-        console.log("_onChange_stage_info : stage_index - ", event.detail.curIndex);
     }
 
     function startMotion(){
@@ -99,24 +132,36 @@ window.df.workgroup.login = function(json_data){
         var con_info = document.querySelector('.sec-login');
         setTimeout(function(){
             df.lab.Util.addClass(con_info, window.df.workgroup.Preset.class_name.showIn);
-
-            console.log(CLASS_NAME , " user : isLoggedIn - ", _json_data.user.isLoggedIn, " / isCheckin - ", _json_data.user.isCheckin , " / isCheckout", _json_data.user.isCheckout);
-
-            if(_json_data.user.isLoggedIn){
-                _onLogin();
-
-                if(_json_data.user.isCheckin){
-                    _onCheckin();
-
-                    if(_json_data.user.isCheckout){
-                        _onCheckout();
-                    }
-                }
-            }
-        }, 500);
+            _updateStatus();
+        }, 200);
 
         var con_footer = document.querySelector('footer');
         setTimeout(function(){df.lab.Util.addClass(con_footer, window.df.workgroup.Preset.class_name.showIn);}, 3000);
+    }
+
+    function _updateStatus(){
+
+        console.log(CLASS_NAME , " user : isLoggedIn - ", _json_data.user.isLoggedIn, " / isCheckin - ", _json_data.user.isCheckin , " / isCheckout", _json_data.user.isCheckout);
+
+        var sec_login = document.querySelector('.sec-login');
+
+        if(_json_data.user.isLoggedIn){
+
+            df.lab.Util.addClass(sec_login, 'logged');
+
+            _setLayout_Login();
+
+            if(_json_data.user.isCheckin){
+                _setLayout_Checkin();
+
+                if(_json_data.user.isCheckout){
+                    _setLayout_Checkout();
+                }
+            }
+        }else{
+            df.lab.Util.removeClass(sec_login, 'logged');
+            _setLayout_Logout();
+        }
     }
 
     function _startTimer(){
@@ -149,6 +194,7 @@ window.df.workgroup.login = function(json_data){
     }
 
     return {
-        init: _init
+        init: _init,
+        setLayout_Logout: _setLayout_Logout
     }
 };
