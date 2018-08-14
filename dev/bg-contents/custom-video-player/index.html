@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>Background Contents - Video Player</title>
+
+    <style>
+        body {background-color: #000000; margin: 0}
+
+        .video-player .video-wrapper {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -100;
+
+            background-position: center center;
+            background-size: cover;
+        }
+        .video-player .video-wrapper video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: auto;
+            min-width: 100%;
+            min-height: 100%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+        }
+
+        .video-player .dimmed {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0);
+        }
+    </style>
+</head>
+
+<body class="video-player">
+
+<div class="container-wrapper">
+    <div class="video-wrapper">
+        <video muted loop playsinline>
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+</body>
+
+
+<script src="./js/common.js"></script>
+<script src="./js/loadJsonData.js"></script>
+<script src="./js/VideoPlayer.js"></script>
+<script>
+
+    var params = Util.getParams();
+    var seq = params.seq || "000";
+
+    document.addEventListener(df.workgroup.Preset.eventType.ON_LOAD_JSON, function(){
+            init();
+        }
+    );
+
+    var jsonLoadUrl = "../../assets_login/temp/df_contents_video-player.json" + "?seq="+seq;
+    window.df.workgroup.LoadJsonData.init(jsonLoadUrl);
+
+    function init(){
+        var videoPlayer = new VideoPlayer(window.df.workgroup.GlobalVars.infoData, 0.4);
+        // videoPlayer.init();
+    }
+
+</script>
+
+</html>
+
+
+
+</html>

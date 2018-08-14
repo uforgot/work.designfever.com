@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <title>Background Contents - df building Slide Show</title>
+    <title>Background Contents - Image Slide</title>
 
     <style>
         body {background-color: #000000; margin: 0}
@@ -67,7 +67,7 @@
 </body>
 
 <script src="./js/common.js"></script>
-<script src="./js/loadImagesData.js"></script>
+<script src="./js/loadJsonData.js"></script>
 <script src="./js/customImageSlide.js"></script>
 <script>
 
@@ -79,14 +79,11 @@
         }
     );
 
-    window.df.workgroup.Preset.json_url.default = "../../assets_login/temp/df_contents_image-slide.json" + "?seq="+seq;
-    window.df.workgroup.imageslide.LoadInfoData.init();
-
-    console.log("seq : ", seq, window.df.workgroup.Preset.json_url.default)
+    var jsonLoadUrl = "../../assets_login/temp/df_contents_image-slide.json" + "?seq="+seq;
+    window.df.workgroup.LoadJsonData.init(jsonLoadUrl);
 
     function init(){
-        var imageSlide = new CustomImageSlide(window.df.workgroup.GlobalVars.infoData, 0.4);
-        imageSlide.init();
+        new CustomImageSlide(window.df.workgroup.GlobalVars.infoData, 0.4);
     }
 
 </script>
