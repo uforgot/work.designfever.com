@@ -20,10 +20,10 @@ var LoginFieldController = function(){
             json_data.preset.json_url.login != undefined){
 
             _form.action = json_data.preset.json_url.login;
-            console.log(CLASS_NAME + " action(server) : ", _form.action);
+            //console.log(CLASS_NAME + " action(server) : ", _form.action);
         }else{
             _form.action = window.df.workgroup.Preset.json_url.login;
-            console.log(CLASS_NAME + " action(local) : ", _form.action);
+            //console.log(CLASS_NAME + " action(local) : ", _form.action);
         }
     }
 
@@ -73,7 +73,6 @@ var LoginFieldController = function(){
 
     function _onSubmit( $evt ) {
         $evt.preventDefault();
-        console.log("_onSubmit");
         _loginCheck();
     }
 
@@ -96,17 +95,14 @@ var LoginFieldController = function(){
 
     function _submit(){
 
-        console.log("action : ", _form.action);
-        console.log("target : ", _form.target);
-
-        //alert("action : " + _form.action + "\ntarget : " + _form.target);
+        console.log(CLASS_NAME, " load json" );
 
         var btn = document.getElementById('user_pw');
         btn.blur();
 
         //_form.submit();
         loading();
-        ajaxPost(_form, onSubmit);
+        ajaxPost(_form, onCompSubmit);
         return false;
     }
 
@@ -134,7 +130,7 @@ var LoginFieldController = function(){
         }
     }
 
-    function onSubmit(response){
+    function onCompSubmit(response){
         able_input();
         _dispatchOnLoad(response);
     }
@@ -156,6 +152,7 @@ var LoginFieldController = function(){
     }
 
     function ajaxPost (form, callback) {
+
         // Collect the form data while iterating over the inputs
         var data = {};
         for (var i = 0, ii = form.length; i < ii; ++i) {

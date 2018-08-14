@@ -66,7 +66,7 @@ window.df.workgroup.login = function(json_data){
     function _resetData(response){
 
         var actual_JSON = JSON.parse(response.target.responseText);
-        console.log("<< _resetData>> ", actual_JSON);
+        console.log(CLASS_NAME + " << _resetData>> ", actual_JSON);
         window.df.workgroup.GlobalVars.infoData = actual_JSON;
         _json_data = window.df.workgroup.GlobalVars.infoData;
     }

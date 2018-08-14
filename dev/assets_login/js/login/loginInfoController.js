@@ -129,7 +129,7 @@ var LoginInfoController = function(){
 
     function onTouchStart_stage($evt){
 
-        console.log("onTouchStart_stage");
+        //console.log("onTouchStart_stage");
 
         //$evt.preventDefault();
         $evt.stopPropagation();
@@ -160,7 +160,7 @@ var LoginInfoController = function(){
 
     function onTouchEnd_stage($evt){
 
-        console.log("onTouchEnd_stage (document)");
+        //console.log("onTouchEnd_stage (document)");
 
         //$evt.preventDefault();
         $evt.stopPropagation();
@@ -219,7 +219,7 @@ var LoginInfoController = function(){
 
     function _nextStage(){
 
-        console.log("_nextStage : ",_curIndex,_isHasNotice,_isHasBirthday);
+        //console.log(CLASS_NAME + " nextStage : ",_curIndex,_isHasNotice,_isHasBirthday);
 
         var index = (_curIndex + 1);
         if(_isHasNotice && _isHasBirthday) {
@@ -231,6 +231,8 @@ var LoginInfoController = function(){
     }
 
     function _prevStage(){
+
+        //console.log(CLASS_NAME + " prevStage : ",_curIndex,_isHasNotice,_isHasBirthday);
 
         var index = (_curIndex - 1);
         if(_isHasNotice && _isHasBirthday) {
@@ -265,6 +267,7 @@ var LoginInfoController = function(){
                     break;
             }
 
+            console.log(CLASS_NAME + " changeStage : ",_curIndex, " / _isHasNotice : ", _isHasNotice, " / _isHasBirthday : ", _isHasBirthday);
             _dispatchEvent();
         }
     }

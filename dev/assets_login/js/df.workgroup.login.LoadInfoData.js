@@ -29,11 +29,12 @@ window.df.workgroup.login.LoadInfoData = (function(){
             _isLocalhost = true;
             url_json = window.df.workgroup.Preset.json_url.default_local;
         }else{
+            _isLocalhost = false;
             url_json = window.df.workgroup.Preset.json_url.default;
         }
 
-        console.log(CLASS_NAME + " _isLocalhost : ", _isLocalhost + " / json_url : ", url_json);
-
+        //console.log(CLASS_NAME + " _isLocalhost : ", _isLocalhost + " / json_url : ", url_json);
+        console.log(CLASS_NAME, " load default json data" );
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
         loadJSON(url_json, onLoad);
     }
@@ -66,7 +67,7 @@ window.df.workgroup.login.LoadInfoData = (function(){
             }
         }
 
-        console.log(CLASS_NAME + " isDesktop : " , isDesktop, " / isLoggedIn : ", isLoggedIn);
+        //console.log(CLASS_NAME + " isDesktop : " , isDesktop, " / isLoggedIn : ", isLoggedIn);
 
         if(isLoggedIn){
 
@@ -75,21 +76,10 @@ window.df.workgroup.login.LoadInfoData = (function(){
 
             }else if(json_data.user.isAdminAccount){
                 redirectToMain();
-
             }
         }
 
         _dispatchOnLoad();
-    }
-
-    function _dispatchOnLoad(){
-        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOAD_JSON);
-        document.dispatchEvent(event);
-    }
-
-    function onLoadJson(){
-        console.log(CLASS_NAME + " onLoadJson - " , window.df.workgroup.GlobalVars.infoData);
-        document.removeEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
     }
 
     function redirectToMain(){
@@ -100,14 +90,24 @@ window.df.workgroup.login.LoadInfoData = (function(){
             json_data.preset.main_url != undefined){
 
             url = json_data.preset.main_url;
-            console.log(CLASS_NAME + " go to main url (get server) : ", url);
+            //console.log(CLASS_NAME + " go to main url (get server) : ", url);
         }else{
             url = window.df.workgroup.Preset.main_url;
-            console.log(CLASS_NAME + " go to main url (get local) : ", url);
+            //console.log(CLASS_NAME + " go to main url (get local) : ", url);
         }
-
+        console.log(CLASS_NAME + " go to main url : ", url);
         //window.location.href = url;
         return;
+    }
+
+    function _dispatchOnLoad(){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOAD_JSON);
+        document.dispatchEvent(event);
+    }
+
+    function onLoadJson(){
+        //console.log(CLASS_NAME + " onLoadJson - " , window.df.workgroup.GlobalVars.infoData);
+        document.removeEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
     }
 
     return {

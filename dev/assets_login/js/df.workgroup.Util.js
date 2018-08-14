@@ -7,7 +7,7 @@ window.df.workgroup.Util = (function(){
     function load_json(url, method, callback, $data){
 
         now_date = new Date();
-        console.log("\n<< START LOAD >> xhr.url : ", url, "\n\n");
+        console.log("\n----- << START LOAD >> xhr.url : ", url, "\n");
 
         var data = $data ? JSON.stringify($data) : null;
 
@@ -50,10 +50,10 @@ window.df.workgroup.Util = (function(){
             } else if (response.target.status === 200) {
 
                 // Success
-                console.log("\n<< COMP LOAD >> xhr.onloadend (Success) duration : " , (((new Date()).getTime() - now_date.getTime())/1000) + "sec\n\n" );
-                console.log("xhr.onloadend (Success) response : " , response);
-                console.log("xhr.onloadend (Success) responseText(JSON) : " , JSON.parse(response.target.responseText));
-                console.log("\n\n<< COMP LOAD >>\n\n" );
+                console.log("\n----- << COMP LOAD >> ----- xhr.onloadend (Success) duration : " , (((new Date()).getTime() - now_date.getTime())/1000) + "sec\n\n" );
+                console.log("xhr.onloadend (Success) response : \n" , response);
+                console.log("xhr.onloadend (Success) responseText(JSON) : \n" , JSON.parse(response.target.responseText));
+                console.log("\n----- << COMP LOAD >> -----\n\n" );
                 //console.log("xhr.onloadend (Success) xhr : " , xhr);
                 //console.log("xhr.onloadend (Success) response.target.responseText : " , JSON.parse(response.target.responseText));
                 setTimeout(function(){
