@@ -1,11 +1,12 @@
-var CustomImageSlide = function(jsondDta, dimmedOpacity){
+var CustomImageSlide = function(jsondData, dimmedOpacity){
 
-    var json = jsondDta;
+    var json = jsondData;
     var imgData = json.items;
 
     var _index = -1,
         _prevIndex = -1,
         _imgArr = [],
+        _imgUrlArr = [],
         _timer,
         _dimmedOpacity = dimmedOpacity,
         _transTime = json.transition_time/1000 || 3,
@@ -14,9 +15,7 @@ var CustomImageSlide = function(jsondDta, dimmedOpacity){
     var isMobile = document.querySelector("html").classList.contains("mobile");
 
     var _setting = function(){
-        _setElement();
-        _setTransitionTime();
-        _makeDimmed();
+        _loadImage();
     };
 
     var _setTransitionTime = function(){
@@ -39,7 +38,7 @@ var CustomImageSlide = function(jsondDta, dimmedOpacity){
             var img = document.createElement("div");
             var dataObj = defaultData[i];
             img.classList.add("img-content");
-            var url = isMobile && dataObj.bg_url_low ? dataObj.bg_url_low : dataObj.bg_url;
+            var url = _imgUrlArr[i];
 
             img.style.backgroundImage = "url("+url+")";
             wrapper.appendChild(img);
@@ -63,12 +62,45 @@ var CustomImageSlide = function(jsondDta, dimmedOpacity){
 
 
     var _init = function(){
+        _setElement();
+        _setTransitionTime();
+        _makeDimmed();
+
         _imgArr = document.querySelectorAll(".img-content");
         if(_imgArr.length > 1) {
             _start();
         } else {
             var curImg = document.querySelectorAll(".img-content")[0];
             curImg.classList.add("show");
+        }
+
+
+    };
+
+    var _loadImage = function(){
+        var imageNumber = 0;
+        for (let i = 0; i < imgData.length; i++) {
+            const img = new Image();
+
+            var imgObj = imgData[i];
+            var url = isMobile && imgObj.bg_url_low ? imgObj.bg_url_low : imgObj.bg_url;
+            _imgUrlArr.push(url);
+            // imageArr.push(img);
+            img.onload = function () {
+                imageNumber++;
+                // console.log("image Load Complete", imageNumber, imgData.length)
+                if(imageNumber == imgData.length){
+                    _init();
+                }
+            };
+
+            img.onerror = function () {
+                _imgUrlArr[i] = json.bg_thumb;
+                // console.log("image error!!!!!!!!!!!!!!!!!", i, this.src)
+                this.src = json.bg_thumb;
+            }
+
+            img.src = url;
         }
     };
 
@@ -94,10 +126,10 @@ var CustomImageSlide = function(jsondDta, dimmedOpacity){
 
     _setting();
 
-    return {
+    /*return {
         setting : _setting,
         init : _init,
-    }
+    }*/
 
 
 };

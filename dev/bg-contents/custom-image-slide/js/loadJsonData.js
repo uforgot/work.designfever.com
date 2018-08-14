@@ -7,11 +7,6 @@ window.df.workgroup.GlobalVars = {
 };
 
 window.df.workgroup.Preset = {
-
-    "json_url":{
-        "default": "../../assets_login/temp/df_contents_image-slide.json"
-    },
-
     "eventType": {
         "ON_LOAD_JSON": "onLoadJson"
     }
@@ -33,14 +28,13 @@ window.df.workgroup.Preset = {
     window.CustomEvent = CustomEvent;
 })();
 
-window.df.workgroup.imageslide = window.df.workgroup.imageslide || {};
-window.df.workgroup.imageslide.LoadInfoData = (function(){
+window.df.workgroup.LoadJsonData = (function(){
 
     var CLASS_NAME = "[ LoadInfoData ]";
-    var url_json = window.df.workgroup.Preset.json_url.default + "?uniq=" + new Date().getTime();
+    var url_json = "";
 
-    function init() {
-
+    function init(jsonLoadUrl) {
+        url_json = jsonLoadUrl + "&uniq=" + new Date().getTime();
         console.log(CLASS_NAME + " json_url : ", url_json);
 
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);

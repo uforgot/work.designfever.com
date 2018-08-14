@@ -1,0 +1,11 @@
+{
+  "color_mode": 0,
+  "bg_thumb":"../birthday/002_birthday-video/video/birthday_00.jpg",
+  "items": [
+    { "video_url": "../birthday/002_birthday-video/video/birthday_00.mp4",
+      "video_url_low": ""
+    }
+
+
+  ]
+}
