@@ -25,7 +25,7 @@ window.df.workgroup.login.LoadInfoData = (function(){
 
     function init() {
 
-        console.log(CLASS_NAME + " json_url : ", url_json);
+        //console.log(CLASS_NAME + " json_url : ", url_json);
 
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOAD_JSON, onLoadJson);
         loadJSON(url_json, onLoad);

@@ -22,6 +22,8 @@ window.df.workgroup.login = function(json_data){
     var _checkinController = new CheckinController();
     var _loginInfoController = new LoginInfoController();
 
+    var _loginUtilController = new LoginUtilController();
+
     var _today = { YY:0, MM:0, DD:0, DW:0, hh:0, mm:0, ss:0 };
 
     var _date_now;
@@ -46,6 +48,8 @@ window.df.workgroup.login = function(json_data){
         _logoutController.init();
         _checkinController.init(_json_data.user);
         _loginInfoController.init(_json_data.info.today.notice, _json_data.info.birthday);
+
+        _loginUtilController.init(_json_data.preset.document_url, _json_data.preset.main_url, _json_data.user);
 
         startMotion();
 
@@ -96,7 +100,7 @@ window.df.workgroup.login = function(json_data){
         setTimeout(function(){
             df.lab.Util.addClass(con_info, window.df.workgroup.Preset.class_name.showIn);
 
-            console.log("user : isLoggedIn - ", _json_data.user.isLoggedIn, " / isCheckin - ", _json_data.user.isCheckin , " / isCheckout", _json_data.user.isCheckout);
+            console.log(CLASS_NAME , " user : isLoggedIn - ", _json_data.user.isLoggedIn, " / isCheckin - ", _json_data.user.isCheckin , " / isCheckout", _json_data.user.isCheckout);
 
             if(_json_data.user.isLoggedIn){
                 _onLogin();
