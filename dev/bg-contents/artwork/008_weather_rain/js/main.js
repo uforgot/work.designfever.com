@@ -69,7 +69,7 @@ var Weather_Rain = function(args){
     var _setElement = function(){
         for (var i = 0; i < rainLines; i++) {
             var geometryLines = new THREE.BoxGeometry( 1, 1, 100 * Math.random() + 10);
-            var materialLines = new THREE.MeshPhongMaterial( { color:0x222222, shininess :500} );
+            var materialLines = new THREE.MeshPhongMaterial( { color:0x555555, shininess :500} );
             var line = new THREE.Mesh( geometryLines, materialLines );
             scene.add( line );
             lines.push( line );
