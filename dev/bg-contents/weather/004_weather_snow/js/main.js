@@ -13,8 +13,8 @@ var Weather_Rain = function(args){
 
     var rainPow = args.powerStep || 1;
 
-    var rainLinesArr = [200, 800, 3000];
-    var rainSpdArr = [3, 3, 3];
+    var rainLinesArr = [500, 2000, 5000];
+    var rainSpdArr = [1, 1, 1];
 
     var rainLines = rainLinesArr[rainPow-1]; //isMobile ? 50*rainPow : 30*rainPow// 50 - 1000;
     var rainSpd = rainSpdArr[rainPow-1]//4//isMobile ? rainSpdArr[rainPow]*2 : rainSpdArr[rainPow];
@@ -58,8 +58,8 @@ var Weather_Rain = function(args){
         scene.rotation.x = 0.8;
 
         // Light
-        light = new THREE.AmbientLight(0xffffff,0.5);
-        light1 = new THREE.PointLight(0xffffff,0.7);
+        light = new THREE.AmbientLight(0xffffff,1);
+        light1 = new THREE.PointLight(0xffffff,1);
 
         scene.add(light);
         scene.add(light1);
@@ -150,8 +150,9 @@ var Weather_Rain = function(args){
 
         if(isDown){
             rainSpd*3 < curRainSpd ? curRainSpd : curRainSpd+=5
+            curRainSpd *= 0
         } else {
-            rainSpd > curRainSpd ? curRainSpd = rainSpd : curRainSpd-=3
+            rainSpd >= curRainSpd ? curRainSpd = rainSpd : curRainSpd-=3
         }
     };
 

@@ -55,7 +55,7 @@ var Weather_Rain = function(args){
 
         // Scene
         scene = new THREE.Scene();
-        scene.rotation.x = 0.8;
+        scene.rotation.x = 0.6;
 
         // Light
         light = new THREE.AmbientLight(0xffffff,0.5);
