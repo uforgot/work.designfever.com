@@ -89,7 +89,12 @@ var LoginUtilController = function(){
         }
     }
 
+    function _resetData(json_user){
+        _setDocNum(json_user)
+    }
+
     return {
-        init: _init
+        init: _init,
+        resetData: _resetData
     }
 };

@@ -168,6 +168,9 @@ window.df.workgroup.login = function(json_data){
         }
 
         _resetBrowserTitle();
+
+        _loginInfoController.resetData(_json_data.info.today.notice, _json_data.info.birthday);
+        _loginUtilController.resetData(_json_data.user);
     }
 
     function _resetBrowserTitle(){

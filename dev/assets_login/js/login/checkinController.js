@@ -23,6 +23,13 @@ var CheckinController = function(){
     function _setInfo(){
         _json_user = window.df.workgroup.GlobalVars.infoData.user;
 
+
+        var txt_name = document.getElementById("id_user_name");
+        txt_name.textContent = _json_user.name;
+
+        var txt_position = document.getElementById("id_user_position");
+        txt_position.textContent = _json_user.position;
+
         if(_json_user.isLoggedIn){
 
             if(_json_user.isCheckin){

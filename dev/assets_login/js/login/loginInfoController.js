@@ -22,6 +22,8 @@ var LoginInfoController = function(){
     var _json_notice;
     var _json_birthday;
 
+    var _ID_addEvent;
+    var _ID_autoShow;
 
     function _init(json_notice, json_birthday){
 
@@ -30,86 +32,93 @@ var LoginInfoController = function(){
         _stage_birthday =  document.getElementById('id_stage_birthday');
         _stage_con =  document.querySelector('section.sec-info');
 
-        if(json_notice != undefined && json_notice != null && json_notice.title != undefined && json_notice.title != null && json_notice.title.length > 0){
-            _json_notice = json_notice;
-            _isHasNotice = true;
+        clearTimeout(_ID_autoShow);
+        clearTimeout(_ID_addEvent);
 
-            setNotice();
-            df.lab.Util.removeClass(_stage_notice, "hide");
-        }else{
-            df.lab.Util.addClass(_stage_notice, "hide");
-        }
+        setNotice(json_notice);
+        setBirthday(json_birthday);
 
-        if(json_birthday != undefined && json_birthday != null && json_birthday.length > 0){
-            _json_birthday = json_birthday;
-            _isHasBirthday = true;
-
-            setBirthday();
-            df.lab.Util.removeClass(_stage_birthday, "hide");
-        }else{
-            df.lab.Util.addClass(_stage_birthday, "hide");
-        }
-
-        if(_isHasBirthday || _isHasNotice) setTimeout(addEvent, 1500);
-    }
-
-    function setNotice(){
-
-        var txt_con = _stage_notice.querySelector(".txt-notice");
-        var inner = "";
-        for(var i=0; i<_json_notice.title.length; i++){
-            inner = inner + "<span>" + _json_notice.title[i] + "</span>";
-        }
-        txt_con.innerHTML = inner;
-
-        var txt_con_sub = _stage_notice.querySelector(".txt-sub");
-        inner = "";
-        for(var i=0; i<_json_notice.dec.length; i++){
-            inner = inner + "<span>" + _json_notice.dec[i] + "</span>";
-        }
-        txt_con_sub.innerHTML = inner;
-    }
-
-    function setBirthday(){
-
-        var str_notice = ["ø¿¥√", "ª˝¿œ¿ª", "√‡«œ µÂ∑¡ø‰."];
-
-        var inner = "";
-
-        var txt_con = _stage_birthday.querySelector(".txt-notice");
-        var tot = str_notice.length;
-        for(var i=0; i<tot; i++){
-            inner = inner + "<span>" + str_notice[i] + "</span>";
-        }
-        txt_con.innerHTML = inner;
-
-
-        var txt_con_sub = _stage_birthday.querySelector(".txt-sub");
-        tot = _json_birthday.length;
-        inner = "";
-        for(var i=0; i<tot; i++){
-
-            if(i==0) inner = inner + "<span>";
-
-            if(i == 0) inner = inner + _json_birthday[i].name + " " + _json_birthday[i].position + "¥‘";
-            else if(i > 0) inner = inner + ", " + _json_birthday[i].name + " " + _json_birthday[i].position + "¥‘";
-
-            if(i == tot-1) inner = inner + "</span>";
-        }
-        txt_con_sub.innerHTML = inner;
+        if(_isHasBirthday || _isHasNotice) _ID_addEvent = setTimeout(addEvent, 1500);
+        else                                removeEvent();
     }
 
     function addEvent(){
-
+        removeEvent();
         if(Detectizr.device.type != "desktop"){
             _stage_con.addEventListener('touchstart',  onTouchStart_stage);
         }else{
             _stage_con.addEventListener('click',  onClick_stage);
         }
+    }
 
-        //console.log("Detectizr.device.type : ", Detectizr.device.type);
-        //console.log("Detectizr : ", Detectizr);
+    function removeEvent(){
+        clearTimeout(_ID_addEvent);
+        _stage_con.removeEventListener('touchstart',  onTouchStart_stage);
+        _stage_con.removeEventListener('click',  onClick_stage);
+    }
+    function setNotice(json_notice){
 
+        if(json_notice != undefined && json_notice != null && json_notice.title != undefined && json_notice.title != null && json_notice.title.length > 0){
+            _json_notice = json_notice;
+            _isHasNotice = true;
+
+
+            var txt_con = _stage_notice.querySelector(".txt-notice");
+            var inner = "";
+            for(var i=0; i<_json_notice.title.length; i++){
+                inner = inner + "<span>" + _json_notice.title[i] + "</span>";
+            }
+            txt_con.innerHTML = inner;
+
+            var txt_con_sub = _stage_notice.querySelector(".txt-sub");
+            inner = "";
+            for(var i=0; i<_json_notice.dec.length; i++){
+                inner = inner + "<span>" + _json_notice.dec[i] + "</span>";
+            }
+            txt_con_sub.innerHTML = inner;
+
+            df.lab.Util.removeClass(_stage_notice, "hide");
+        }else{
+            df.lab.Util.addClass(_stage_notice, "hide");
+        }
+    }
+
+    function setBirthday(json_birthday){
+
+        if(json_birthday != undefined && json_birthday != null && json_birthday.length > 0){
+            _json_birthday = json_birthday;
+            _isHasBirthday = true;
+
+            var str_notice = ["ø¿¥√", "ª˝¿œ¿ª", "√‡«œ µÂ∑¡ø‰."];
+
+            var inner = "";
+
+            var txt_con = _stage_birthday.querySelector(".txt-notice");
+            var tot = str_notice.length;
+            for(var i=0; i<tot; i++){
+                inner = inner + "<span>" + str_notice[i] + "</span>";
+            }
+            txt_con.innerHTML = inner;
+
+
+            var txt_con_sub = _stage_birthday.querySelector(".txt-sub");
+            tot = _json_birthday.length;
+            inner = "";
+            for(var i=0; i<tot; i++){
+
+                if(i==0) inner = inner + "<span>";
+
+                if(i == 0) inner = inner + _json_birthday[i].name + " " + _json_birthday[i].position + "¥‘";
+                else if(i > 0) inner = inner + ", " + _json_birthday[i].name + " " + _json_birthday[i].position + "¥‘";
+
+                if(i == tot-1) inner = inner + "</span>";
+            }
+            txt_con_sub.innerHTML = inner;
+
+            df.lab.Util.removeClass(_stage_birthday, "hide");
+        }else{
+            df.lab.Util.addClass(_stage_birthday, "hide");
+        }
     }
 
     function onClick_stage($evt){
@@ -327,7 +336,8 @@ var LoginInfoController = function(){
     }
 
     function _showNotice_auto() {
-        if(_isHasNotice) setTimeout(_showNotice, 600);
+        clearTimeout(_ID_autoShow);
+        if(_isHasNotice) _ID_autoShow = setTimeout(_showNotice, 600);
     }
 
     function _dispatchEvent(){
@@ -338,8 +348,23 @@ var LoginInfoController = function(){
         document.dispatchEvent(event);
     }
 
+    function _resetData(json_notice, json_birthday){
+
+        _showClock();
+
+        clearTimeout(_ID_autoShow);
+        clearTimeout(_ID_addEvent);
+
+        setNotice(json_notice);
+        setBirthday(json_birthday);
+
+        if(_isHasBirthday || _isHasNotice) _ID_addEvent = setTimeout(addEvent, 1500);
+        else                                removeEvent();
+    }
+
     return {
         init: _init,
-        showNotice: _showNotice_auto
+        showNotice: _showNotice_auto,
+        resetData: _resetData
     }
 };
