@@ -45,6 +45,19 @@
       "approval_my": "approval/approval_my_list.php",
       "approval_cc": "approval/approval_cc_list.php"
     },
+    "status ":[
+      {"code":"L00", "text":"로그인 되어 있지 않음"},
+      {"code":"L01", "text":"아이디가 없거나 올바르지 않음"},
+      {"code":"L02", "text":"패스워드가 없거나 올바르지 않음"},
+      {"code":"L03", "text":"탈퇴한 회원"},
+      {"code":"C00 ", "text":"출근체크가 완료되었습니다."},
+      {"code":"C00 ", "text":"출근체크가 완료되었습니다."},
+      {"code":"C00 ", "text":"출근체크가 완료되었습니다."},
+      {"code":"C00 ", "text":"출근체크가 완료되었습니다."},
+      {"code":"C00 ", "text":"출근체크가 완료되었습니다."},
+      {"code":"C00 ", "text":"출근체크가 완료되었습니다."},
+      {"code":"C00 ", "text":"출근체크가 완료되었습니다."}
+    ],
 
     "main_url":"main.php",
 
