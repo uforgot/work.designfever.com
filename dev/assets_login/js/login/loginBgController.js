@@ -53,7 +53,6 @@ var LoginBgController = function(con_iframe, json_data){
                 arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.artwork.list);
             }
 
-
             console.log(CLASS_NAME + " : ", "arr_bg_list : " , arr_bg_list);
 
 

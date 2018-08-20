@@ -29,7 +29,11 @@ window.df.workgroup.login = function(json_data){
     var _date_now;
     var _ID_clock;
 
+    var _title_origin;
+
     function _init(){
+
+        _title_origin = document.title;
 
         if(_json_data.info != undefined && _json_data.info.date != undefined && _json_data.info.date.server_time != undefined){
 
@@ -162,6 +166,19 @@ window.df.workgroup.login = function(json_data){
             df.lab.Util.removeClass(sec_login, 'logged');
             _setLayout_Logout();
         }
+
+        _resetBrowserTitle();
+    }
+
+    function _resetBrowserTitle(){
+
+        if(_json_data.user.isLoggedIn){
+            //document.title = _json_data.user.name + " " + _json_data.user.position+"ดิ.";
+            document.title = _title_origin;
+        }else{
+            document.title = _title_origin;
+        }
+
     }
 
     function _startTimer(){
