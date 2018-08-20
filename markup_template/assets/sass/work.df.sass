@@ -41,6 +41,22 @@ body
 .df-login
   width: 300px
   margin: 0 auto
+  .logo
+    position: absolute
+    left: 20px
+    top: 20px
+    span
+      margin-left: 0.5rem
+      font-weight: 800
+      font-style: italic
+      font-size: 0.9rem
+  .copyright
+    position: absolute
+    text-align: right
+    font-size: 0.7rem
+    right: 20px
+    bottom: 20px
+    color: #aaa
   .field:not(:last-child)
     margin-bottom: 0.5rem
   .is-fullheight
@@ -51,8 +67,22 @@ body
     height: 100%
     .button
       height: 100%
+  .util
+    position: relative
+    display: block
+    width: 100%
+    margin-top: 9px
+    label
+      margin-top: -2px
+    .right
+      margin-top: -2px
+      text-align: right
+      position: absolute
+      top: 0
+      right: 0
+      width: 50%
   +breakpoint(mobile)
-    width: auto
+    //width: auto
 
 #navbar
   z-index: 50

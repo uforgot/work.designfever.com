@@ -530,6 +530,22 @@ body {
 .df-login {
   width: 300px;
   margin: 0 auto; }
+  .df-login .logo {
+    position: absolute;
+    left: 20px;
+    top: 20px; }
+    .df-login .logo span {
+      margin-left: 0.5rem;
+      font-weight: 800;
+      font-style: italic;
+      font-size: 0.9rem; }
+  .df-login .copyright {
+    position: absolute;
+    text-align: right;
+    font-size: 0.7rem;
+    right: 20px;
+    bottom: 20px;
+    color: #aaa; }
   .df-login .field:not(:last-child) {
     margin-bottom: 0.5rem; }
   .df-login .is-fullheight {
@@ -540,9 +556,20 @@ body {
     height: 100%; }
     .df-login .login-field .button {
       height: 100%; }
-  @media screen and (max-width: 768px) {
-    .df-login {
-      width: auto; } }
+  .df-login .util {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-top: 9px; }
+    .df-login .util label {
+      margin-top: -2px; }
+    .df-login .util .right {
+      margin-top: -2px;
+      text-align: right;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%; }
 
 #navbar {
   z-index: 50; }

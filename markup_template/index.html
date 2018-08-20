@@ -17,46 +17,56 @@
     </script>
 
 </head>
-<body style="background:#000;">
+<body style="background:#fff;">
 
-<section class="hero is-fullheight">
+<section class="hero is-fullheight df-login">
+    <div class="logo">
+        <img src="/assets/images/df_logo_b.svg" width="50" style="vertical-align: middle">
+        <span>a difference that matters.</span>
+    </div>
+    <div class="copyright">
+        Contact info. 02-325-2767 / master@designfever.com / www.designfever.com<br>
+        Copyright 2017. Designfever. All rights reserved.
+    </div>
+
     <div class="hero-body">
-        <div id="shader-box"></div>
         <div class="container">
-            <div class="df-login">
-                <div class="columns">
-                    <div class="column  is-four-fifths">
-                        <div class="field">
-                            <div class="control">
-                                <input class="input" type="text" placeholder="id" value="">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="control">
-                                <input class="input" type="text" placeholder="password" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="field login-field">
-                            <a class="button is-fullwidth is-info" href="main.html">
-                                <span>Log-in</span>
-                            </a>
-                        </div>
+            <div>
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="text" placeholder="id" value="">
                     </div>
                 </div>
-                <div class="buttons">
-                    <a class="button is-small is-text is-right is-dark" href="/member/join.html">
+
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="text" placeholder="password" value="">
+                    </div>
+                </div>
+
+                <div class="field login-field">
+                    <a class="button is-fullwidth is-dark is-large" href="main.html">
+                        <span>log-in</span>
+                    </a>
+                </div>
+
+                <div class="util">
+                    <div class="field">
+                        <input class="is-checkradio  is-small" id="exampleCheckboxBackgroundColorDefault" type="checkbox" name="exampleCheckboxBackgroundColorDefault" checked="checked">
+                        <label for="exampleCheckboxBackgroundColorDefault">자동로그인</label>
+                    </div>
+                    <div class="right">
+                        <a class="button is-small is-right" href="/member/join.html">
                         <span class="icon is-small">
                             <i class="fas fa-user-plus"></i>
                         </span>
-                        <span>회원가입</span>
-                    </a>
+                            <span>회원가입</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 </body>
-<!--<script type="text/javascript" src="assets/js/shader.js"></script>-->
 </html>
