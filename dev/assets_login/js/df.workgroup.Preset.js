@@ -29,6 +29,8 @@ window.df.workgroup.Preset = {
         "ON_CHECKOUT": "onCheckout",
         "ON_LOGOUT": "onLogout",
         "ON_CHANGE_STAGE_INFO": "onChangeStageInfo",
+        "ON_ERROR": "onError",
+        "ON_WARNING": "onWarning"
     },
 
     "class_name":{

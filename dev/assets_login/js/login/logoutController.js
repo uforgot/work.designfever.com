@@ -44,8 +44,8 @@ var LogoutController = function(){
 
     function onSubmit(response){
         //console.log(response);
-        //_dispatchOnLoad(response);
-        window.location.reload (true);
+        _dispatchOnLoad(response);
+        //window.location.reload (true);
     }
 
     function _showLogoutBtn(){
@@ -78,7 +78,6 @@ var LogoutController = function(){
 
         df.workgroup.Util.load_json(params.action, params.method, callback, data);
     }
-/*
 
     function _dispatchOnLoad(response){
         var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOGOUT, {
@@ -87,7 +86,6 @@ var LogoutController = function(){
             }});
         document.dispatchEvent(event);
     }
-*/
 
     return {
         init: _init,

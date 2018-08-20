@@ -65,6 +65,7 @@ window.df.workgroup.login = function(json_data){
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHECKIN, _onCheckin);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHECKOUT, _onCheckout);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHANGE_STAGE_INFO, _onChange_stage_info);
+        document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOGOUT, _onLogout);
     }
 
     function _resetData(response){
@@ -86,6 +87,11 @@ window.df.workgroup.login = function(json_data){
     }
 
     function _onCheckout(evt) {
+        _resetData(evt.detail.response);
+        _updateStatus();
+    }
+
+    function _onLogout(evt){
         _resetData(evt.detail.response);
         _updateStatus();
     }
@@ -181,7 +187,6 @@ window.df.workgroup.login = function(json_data){
         }else{
             document.title = _title_origin;
         }
-
     }
 
     function _startTimer(){
