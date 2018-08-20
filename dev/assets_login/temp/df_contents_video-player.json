@@ -3,7 +3,8 @@
   "bg_thumb":"../birthday/002_birthday-video/video/birthday_00.jpg",
   "items": [
     { "video_url": "../birthday/002_birthday-video/video/birthday_00.mp4",
-      "video_url_low": ""
+      "video_url_m": "../birthday/003_birthday-video/video/birthday_01.mp4",
+      "video_thumb": "../birthday/002_birthday-video/video/thumbnail-1200.jpg"
     }
   ]
 }

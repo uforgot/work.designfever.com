@@ -3,10 +3,10 @@
   "color_mode": 0,
   "bg_thumb":"../../assets_login/images/bg/bg-thumb-default.png",
   "items": [
-    {"bg_url": "../custom/001_df-new-Building-slideshow/images/df_building_00.jpg", "bg_url_low": "../custom/002_df-hyatt-dining-slideshow/images/df_hyatt_01.jpg", "duration": 5000},
-    {"bg_url": "../custom/001_df-new-Building-slideshow/images/df_building_02.jpg", "bg_url_low": "", "duration": 5000},
+    {"bg_url": "../custom/001_df-new-Building-slideshow/images/df_building_00.jpg", "bg_url_m": "../custom/002_df-hyatt-dining-slideshow/images/df_hyatt_01.jpg", "duration": 5000},
+    {"bg_url": "../custom/001_df-new-Building-slideshow/images/df_building_02.jpg", "bg_url_m": "", "duration": 5000},
     {"bg_url": "../custom/001_df-new-Building-slideshow/images/df_building_00.jpg", "duration": 2000},
-    {"bg_url": "../custom/001_df-new-Building-slideshow/images/df_building_01.jpg", "bg_url_low": "../custom/002_df-hyatt-dining-slideshow/images/df_hyatt_02.jpg", "duration": 2000}
+    {"bg_url": "../custom/001_df-new-Building-slideshow/images/df_building_01.jpg", "bg_url_m": "../custom/002_df-hyatt-dining-slideshow/images/df_hyatt_02.jpg", "duration": 2000}
 
   ]
 }

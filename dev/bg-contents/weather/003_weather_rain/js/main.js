@@ -13,8 +13,8 @@ var Weather_Rain = function(args){
 
     var rainPow = args.powerStep-1;
 
-    var rainLinesArr = [30, 200, 1000];
-    var rainSpdArr = [50, 50, 50];
+    var rainLinesArr = [20, 200, 1000];
+    var rainSpdArr = [50, 50, 70];
 
     var rainLines = rainLinesArr[rainPow]; //isMobile ? 50*rainPow : 30*rainPow// 50 - 1000;
     var rainSpd = isMobile ? rainSpdArr[rainPow]*2 : rainSpdArr[rainPow];
@@ -27,12 +27,15 @@ var Weather_Rain = function(args){
 
     var isDown = false;
 
-
-
     var _setting = function(){
         _setStage();
         _setElement();
         _addEvent();
+
+        if(rainPow > 0){
+            var lightning = document.querySelector(".lightning");
+            lightning.classList.add("flashit");
+        }
     };
 
     var _init = function(){
@@ -68,7 +71,8 @@ var Weather_Rain = function(args){
 
     var _setElement = function(){
         for (var i = 0; i < rainLines; i++) {
-            var geometryLines = new THREE.BoxGeometry( 1, 1, 100 * Math.random() + 10);
+            var lineLength = rainPow > 0 ? 100 : 20;
+            var geometryLines = new THREE.BoxGeometry( 1, 1, lineLength * Math.random() + 10);
             var materialLines = new THREE.MeshPhongMaterial( { color:0x555555, shininess :500} );
             var line = new THREE.Mesh( geometryLines, materialLines );
             scene.add( line );

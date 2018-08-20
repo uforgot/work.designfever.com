@@ -83,7 +83,7 @@ var CustomImageSlide = function(jsondData, dimmedOpacity){
             const img = new Image();
 
             var imgObj = imgData[i];
-            var url = isMobile && imgObj.bg_url_low ? imgObj.bg_url_low : imgObj.bg_url;
+            var url = isMobile && imgObj.bg_url_m ? imgObj.bg_url_m : imgObj.bg_url;
             _imgUrlArr.push(url);
             // imageArr.push(img);
             img.onload = function () {

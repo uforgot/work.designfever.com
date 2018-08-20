@@ -3,9 +3,9 @@ var VideoPlayer = function(jsondData, dimmedOpacity){
     var videoData = json.items;
 
     var video_url = videoData[0].video_url;
-    var video_low_url = videoData[0].video_low_url;
+    var video_url_m = videoData[0].video_url_m;
 
-    var image_url = json.bg_thumb;
+    var image_url = videoData[0].video_thumb;
     var only_video = json.only_video_play == undefined ? true : json.only_video_play;
     var dimmedOpacity = dimmedOpacity || 0.4;//dataObj.dimmed_opacity == undefined ? 0.4 : dataObj.dimmed_opacity;
 
@@ -24,7 +24,7 @@ var VideoPlayer = function(jsondData, dimmedOpacity){
             video.style.opacity = 1;
 
             var source = document.querySelector("video source");
-            source.src = _isMobile && video_low_url ? video_low_url : video_url;
+            source.src = _isMobile && video_url_m ? video_url_m : video_url;
             // video.crossOrigin = 'anonymous';
 
             video.load();
@@ -42,7 +42,6 @@ var VideoPlayer = function(jsondData, dimmedOpacity){
             var wrapper = document.querySelector(".video-player .video-wrapper");
             wrapper.innerHTML = "";
             wrapper.style.backgroundImage = "url("+image_url+")";
-
         }
     };
 

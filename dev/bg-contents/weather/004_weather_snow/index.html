@@ -76,6 +76,9 @@
 
 
 <script>
+    var params = getParams();
+    var weatherPower = params.power || "2";
+
     var container = document.querySelector(".site-wrapper .content canvas");
 
     var oW=window.innerWidth;
@@ -88,7 +91,7 @@
             container:container,
             stageWidth:container.offsetWidth,
             stageHeight:container.offsetHeight,
-            powerStep:2 // 내리는 강도 1 ~ 3
+            powerStep:weatherPower // 내리는 강도 1 ~ 3
 
         }, 0.5);
         app.init();
@@ -110,6 +113,29 @@
             oH = tH;
             app.resetSize(tW, tH);
         }
+    }
+
+    function getParams(){
+
+        var _params = {};
+
+        var queryString = window.location.search || '';
+        var keyValPairs = [];
+        queryString     = queryString.substr(1);
+        if (queryString.length)
+        {
+            keyValPairs = queryString.split('&');
+            for (var pairNum in keyValPairs)
+            {
+                var key = keyValPairs[pairNum].split('=')[0];
+                if (!key.length) continue;
+                if (typeof _params[key] === 'undefined')
+                    _params[key] = [];
+                _params[key].push(keyValPairs[pairNum].split('=')[1]);
+            }
+        }
+
+        return _params;
     }
 </script>
 
