@@ -34,22 +34,36 @@ var LogoutController = function(){
     }
 
     function loading(){
+        disable_input();
+
+    }
+
+    function disable_input(){
+
         var inputs = _form.querySelectorAll('input');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].setAttribute("disabled", "");
-
             df.lab.Util.addClass(inputs[i],"disable");
+        }
+    }
+
+    function able_input(){
+        var inputs = _form.querySelectorAll('input');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].removeAttribute("disabled");
+            df.lab.Util.removeClass(inputs[i],"disable");
         }
     }
 
     function onSubmit(response){
         //console.log(response);
         _dispatchOnLoad(response);
-        //window.location.reload (true);
+        setTimeout(function(){    window.location.reload (true);}, 100);
     }
 
     function _showLogoutBtn(){
 
+        able_input();
         _setUrl();
 
         var btn_logout = document.querySelector('header .wrapper-logout');
@@ -57,6 +71,8 @@ var LogoutController = function(){
     }
 
     function _hideLogoutBtn(){
+
+        disable_input();
         var btn_logout = document.querySelector('header .wrapper-logout');
         df.lab.Util.removeClass(btn_logout, window.df.workgroup.Preset.class_name.showIn);
     }

@@ -1,0 +1,51 @@
+
+-----------------------------------
+[ FTP Test Server ]
+
+ftp: 221.141.1.35
+
+id : work
+pw : vlqj2013
+
+root : work_new
+도메인 : dev3.designfever.com
+
+html 템플릿 폴더 markup_template
+
+
+-----------------------------------
+[ Test account ]
+
+vidtest / 0000 일반권한
+vidtest2 / 1111 관리자권한
+
+
+-----------------------------------
+[ bg contents admin page ]
+
+http://work.designfever.com/admin/bg_contents_list.php
+
+
+-----------------------------------
+[ json data page ]
+
+http://dev3.designfever.com/assets_login/temp/df_info_data.json.php
+
+
+
+-----------------------------------
+[ BG contents list page ]
+
+http://dev3.designfever.com/bg-contents/
+
+
+-----------------------------------
+[ image slide template page ]
+
+http://dev3.designfever.com/AAAAAAA.html?seq=[000000]
+
+
+-----------------------------------
+[ video template page ]
+
+http://dev3.designfever.com/BBBBBBBB.html?seq=[000000]
