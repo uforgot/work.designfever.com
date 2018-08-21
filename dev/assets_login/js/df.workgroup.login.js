@@ -69,7 +69,7 @@ window.df.workgroup.login = function(json_data){
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHECKOUT, _onCheckout);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHANGE_STAGE_INFO, _onChange_stage_info);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOGOUT, _onLogout);
-        document.addEventListener(window.df.workgroup.Preset.eventType.ON_WARNING, _onLogout_warning);
+        document.addEventListener(window.df.workgroup.Preset.eventType.ON_WARNING, _onWarning);
     }
 
     function _resetData(response){
@@ -100,7 +100,7 @@ window.df.workgroup.login = function(json_data){
         _updateStatus();
     }
 
-    function _onLogout_warning(evt){
+    function _onWarning(evt){
         console.log(evt.detail.message);
         _modalController.showModal(evt.detail.message);
     }

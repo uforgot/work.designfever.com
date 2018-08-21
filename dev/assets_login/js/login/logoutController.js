@@ -59,14 +59,46 @@ var LogoutController = function(){
     function onSubmit(response){
         //console.log(response);
         _dispatchOnLoad(response);
-        _dispatchOnWarning();
-        document.addEventListener(window.df.workgroup.Preset.eventType.ON_CLOSE_MODAL, _onClose_modal);
+
+        var status = getStatus(response);
+
+        if(status.isWarning) {
+            console.log("status.text : " , status.text);
+            _dispatchOnWarning(status.text);
+            document.addEventListener(window.df.workgroup.Preset.eventType.ON_CLOSE_MODAL, _onClose_modal);
+        }
+    }
+
+    function getStatus(response){
+
+        var status = {
+            isWarning : false,
+            text: "표시할 메세지가 없습니다."
+        };
+        var json = JSON.parse(response.target.responseText);
+        var user_status_code = json.user.status;
+        if(user_status_code.toLowerCase() == ("L04").toLowerCase() ){
+            var list = json.preset.status_list;
+            for(var i=0; i<list.length; i++){
+                var item =  list[i];
+                var code = item.code;
+
+                if(code.toLowerCase() == user_status_code.toLowerCase()){
+                    status.isWarning = true;
+                    status.text = item.text;
+                    break;
+                }
+            }
+        }
+        return status;
     }
 
     function _onClose_modal(){
         document.removeEventListener(window.df.workgroup.Preset.eventType.ON_CLOSE_MODAL, _onClose_modal);
         //alert('log out comp');
-        setTimeout(function(){    window.location.reload (true);}, 50);
+        setTimeout(function(){
+            window.location.reload (true);
+            }, 50);
     }
 
     function _showLogoutBtn(){
@@ -111,10 +143,10 @@ var LogoutController = function(){
         document.dispatchEvent(event);
     }
 
-    function _dispatchOnWarning(){
+    function _dispatchOnWarning(txt){
         var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_WARNING, {
             detail: {
-                message: TXT_LOGOUT_COMP
+                message: txt
             }});
         document.dispatchEvent(event);
     }

@@ -1,10 +1,6 @@
 {
   "user":{
-    "error":
-    {
-      "isError":false,
-      "code":null
-    },
+    "status": "L04",
 
     "isLoggedIn": false,
 
@@ -29,7 +25,8 @@
     "isCheckout": false,
     "checkout_time": null,
     "checkout_timeText": null,
-    "isAdminAccount":false
+    "isAdminAccount":false,
+    "isInOffice": true
   },
 
   "preset":{

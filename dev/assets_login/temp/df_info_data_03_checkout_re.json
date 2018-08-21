@@ -1,10 +1,6 @@
 {
   "user":{
-    "error":
-    {
-      "isError":false,
-      "code":null
-    },
+    "status": "C10",
 
     "isLoggedIn": true,
 
@@ -29,7 +25,8 @@
     "isCheckout": true,
     "checkout_time": 1534199399404,
     "checkout_timeText": "23½Ã 20ºÐ",
-    "isAdminAccount":false
+    "isAdminAccount":false,
+    "isInOffice": true
   },
 
   "preset":{

@@ -133,7 +133,51 @@ var LoginFieldController = function(){
     function onCompSubmit(response){
         able_input();
         _dispatchOnLoad(response);
+
+        var status = getStatus(response);
+
+        if(status.isWarning) {
+            console.log("status.text : " , status.text);
+            _dispatchOnWarning(status.text);
+        }
     }
+
+    function getStatus(response){
+
+        var status = {
+            isWarning : false,
+            text: "표시할 메세지가 없습니다."
+        };
+        var json = JSON.parse(response.target.responseText);
+        var user_status_code = json.user.status;
+        if(
+            user_status_code.toLowerCase() == ("L01").toLowerCase() ||
+            user_status_code.toLowerCase() == ("L02").toLowerCase() ||
+            user_status_code.toLowerCase() == ("L03").toLowerCase()
+        ){
+            var list = json.preset.status_list;
+            for(var i=0; i<list.length; i++){
+                var item =  list[i];
+                var code = item.code;
+
+                if(code.toLowerCase() == user_status_code.toLowerCase()){
+                    status.isWarning = true;
+                    status.text = item.text;
+                    break;
+                }
+            }
+        }
+        return status;
+    }
+
+    function _dispatchOnWarning(txt){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_WARNING, {
+            detail: {
+                message: txt
+            }});
+        document.dispatchEvent(event);
+    }
+
 
     function _dispatchOnLoad(response){
         var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOGIN, {

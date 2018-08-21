@@ -300,6 +300,39 @@
           }
         }
       }
+
+
+      .ui-loading{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        //border-radius: 50% 50%;
+        border: none;
+        background: rgba(0,0,0,0.7);
+        pointer-events: none;
+        opacity: 0;
+        @include mx_transition("100ms","opacity", $vars_easeLinear, "0");
+        @extend %flex-center;
+
+        .icon-loading{
+          font-size: 24px;
+          color: #FFFFFF;
+          line-height: normal;
+          transform: rotate(0);
+          @include mx_transition("0","transform", $vars_easeLinear, "0");
+        }
+
+        &.#{$vars_class_showIn}{
+          opacity: 1;
+          pointer-events: auto;
+
+          .icon-loading {
+            transform: rotate(-2880deg);
+            @include mx_transition("10000ms","transform", $vars_easeLinear, "0");
+          }
+        }
+      }
     }
 
     .area-timebar{

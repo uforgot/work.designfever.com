@@ -1,6 +1,11 @@
 var CheckinController = function(){
 
     var CLASS_NAME = "[ CheckinController ]";
+
+    var _wrapper = document.querySelector('.sec-login .wrapper-checkin');
+    var _area_checkin = _wrapper.querySelector('.area-check-inout.area-checkin');
+    var _area_checkout = _wrapper.querySelector('.area-check-inout.area-checkout');
+
     var _form = document.getElementById('id_checkin');
     var _form_out = document.getElementById('id_checkout');
     var _btn_checkout = document.getElementById('id_btn_checkout_re');
@@ -166,10 +171,18 @@ var CheckinController = function(){
     }
 
     function loading(){
+
+        var loading = _area_checkin.querySelector('.ui-loading');
+        df.lab.Util.addClass(loading, window.df.workgroup.Preset.class_name.showIn);
+
         disable_input();
     }
 
     function loading_out(){
+
+        var loading = _area_checkout.querySelector('.ui-loading');
+        df.lab.Util.addClass(loading, window.df.workgroup.Preset.class_name.showIn);
+
         disable_input_out();
     }
 
@@ -203,11 +216,75 @@ var CheckinController = function(){
     }
 
     function onCompSubmit(response){
+        var loading = _area_checkin.querySelector('.ui-loading');
+        df.lab.Util.removeClass(loading, window.df.workgroup.Preset.class_name.showIn);
         _dispatchOnLoad(response);
+
+        var status = getStatus(response);
+
+        if(status.isWarning) {
+            console.log("status.text : " , status.text);
+            _dispatchOnWarning(status.text);
+        }
     }
 
     function onCompSubmit_out(response){
+        var loading = _area_checkout.querySelector('.ui-loading');
+        df.lab.Util.removeClass(loading, window.df.workgroup.Preset.class_name.showIn);
         _dispatchOnLoad_out(response);
+
+        var status = getStatus(response);
+
+        if(status.isWarning) {
+            console.log("status.text : " , status.text);
+            _dispatchOnWarning(status.text);
+        }
+    }
+
+    function getStatus(response){
+
+        var status = {
+            isWarning : false,
+            text: "표시할 메세지가 없습니다."
+        };
+        var json = JSON.parse(response.target.responseText);
+        var user_status_code = json.user.status;
+        if(
+            user_status_code.toLowerCase() == ("C00").toLowerCase() ||
+            user_status_code.toLowerCase() == ("C10").toLowerCase() ||
+
+            user_status_code.toLowerCase() == ("C01").toLowerCase() ||
+            user_status_code.toLowerCase() == ("C02").toLowerCase() ||
+            user_status_code.toLowerCase() == ("C03").toLowerCase() ||
+            user_status_code.toLowerCase() == ("C04").toLowerCase() ||
+            user_status_code.toLowerCase() == ("C05").toLowerCase() ||
+
+            user_status_code.toLowerCase() == ("C11").toLowerCase() ||
+            user_status_code.toLowerCase() == ("C12").toLowerCase() ||
+            user_status_code.toLowerCase() == ("C13").toLowerCase() ||
+            user_status_code.toLowerCase() == ("C14").toLowerCase()
+        ){
+            var list = json.preset.status_list;
+            for(var i=0; i<list.length; i++){
+                var item =  list[i];
+                var code = item.code;
+
+                if(code.toLowerCase() == user_status_code.toLowerCase()){
+                    status.isWarning = true;
+                    status.text = item.text;
+                    break;
+                }
+            }
+        }
+        return status;
+    }
+
+    function _dispatchOnWarning(txt){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_WARNING, {
+            detail: {
+                message: txt
+            }});
+        document.dispatchEvent(event);
     }
 
     function _dispatchOnLoad(response){
@@ -231,8 +308,7 @@ var CheckinController = function(){
         _setInfo();
         _setUrl();
 
-        var wrapper_checkin = document.querySelector('.sec-login .wrapper-checkin');
-        df.lab.Util.addClass(wrapper_checkin, window.df.workgroup.Preset.class_name.showIn);
+        df.lab.Util.addClass(_wrapper, window.df.workgroup.Preset.class_name.showIn);
         able_input();
         disable_input_out();
     }
@@ -242,8 +318,7 @@ var CheckinController = function(){
         _setInfo();
         _setUrl();
 
-        var wrapper_checkin = document.querySelector('.sec-login .wrapper-checkin');
-        df.lab.Util.addClass(wrapper_checkin, 'checked');
+        df.lab.Util.addClass(_wrapper, 'checked');
         disable_input();
         able_input_out();
         //_checkAbleTime();
@@ -255,8 +330,7 @@ var CheckinController = function(){
         _setInfo();
         _setUrl();
 
-        var wrapper_checkin = document.querySelector('.sec-login .wrapper-checkin');
-        df.lab.Util.addClass(wrapper_checkin, 'checkedout');
+        df.lab.Util.addClass(_wrapper, 'checkedout');
         disable_input();
         disable_input_out();
     }
@@ -266,24 +340,20 @@ var CheckinController = function(){
     }
 
     function _resetLayout(){
-        var wrapper_checkin = document.querySelector('.sec-login .wrapper-checkin');
-        df.lab.Util.removeClass(wrapper_checkin, window.df.workgroup.Preset.class_name.showIn);
-        df.lab.Util.removeClass(wrapper_checkin, 'checked');
-        df.lab.Util.removeClass(wrapper_checkin, 'checkedout');
+        df.lab.Util.removeClass(_wrapper, window.df.workgroup.Preset.class_name.showIn);
+        df.lab.Util.removeClass(_wrapper, 'checked');
+        df.lab.Util.removeClass(_wrapper, 'checkedout');
 
         disable_input();
         disable_input_out();
     }
 
     function _checkAbleTime(isAble){
-
-        var area_checkout = document.querySelector('.sec-login .wrapper-checkin .area-check-inout.area-checkout');
-
         if(isAble){
             //"checkout-able"
-            df.lab.Util.addClass(area_checkout, "checkout-able");
+            df.lab.Util.addClass(_area_checkout, "checkout-able");
         }else{
-            df.lab.Util.removeClass(area_checkout, "checkout-able");
+            df.lab.Util.removeClass(_area_checkout, "checkout-able");
         }
     }
 
