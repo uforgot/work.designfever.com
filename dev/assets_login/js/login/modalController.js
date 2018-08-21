@@ -32,6 +32,9 @@ var ModalController = function(){
             df.lab.Util.addClass(_modal, window.df.workgroup.Preset.class_name.showIn);
         }, 100);
 
+        _modal.setAttribute("tabindex", "-1");
+        _modal.focus();
+        _modal.removeAttribute("tabindex");
     }
 
     function _closeModal(){

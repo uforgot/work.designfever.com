@@ -9,8 +9,17 @@ var LoginFieldController = function(){
     var _form = document.getElementById('id_login');
 
     function _init(){
-        _inputKeyController();
+
+        input_user_id = document.getElementById('user_id');
+        input_user_pw = document.getElementById('user_pw');
+
         _setUrl();
+
+        _addEvent();
+
+        setTimeout(function(){
+            setFocus_id();
+        }, 500);
     }
 
     function _setUrl(){
@@ -27,25 +36,23 @@ var LoginFieldController = function(){
         }
     }
 
-    function _inputKeyController(){
-        input_user_id = document.getElementById('user_id');
-        input_user_pw = document.getElementById('user_pw');
-
+    function _addEvent(){
         input_user_id.addEventListener( 'keypress', _keypressId );
         //input_user_pw.addEventListener( 'keypress', _keypressPwd );
 
         _form.addEventListener( 'submit',  _onSubmit);
-
-        setTimeout(function(){
-            setFocus();
-        }, 500);
     }
 
-    function setFocus(){
+    function setFocus_id(){
 
-        if(storageId == null || storageId == undefined){
+        if(storageId == undefined || storageId == null){
             input_user_id.focus();
-            //console.log(CLASS_NAME + " focus: ", input_user_id);
+        }
+    }
+
+    function setFocus_pw(){
+        if(storagePw == undefined || storagePw == null){
+            input_user_pw.focus();
         }
     }
 
@@ -139,6 +146,12 @@ var LoginFieldController = function(){
         if(status.isWarning) {
             console.log("status.text : " , status.text);
             _dispatchOnWarning(status.text);
+
+            if(status.code == "L01" || status.code == "L03") {
+                document.addEventListener(window.df.workgroup.Preset.eventType.ON_CLOSE_MODAL, _onClose_modal_forID);
+            }else if(status.code == "L02") {
+                document.addEventListener(window.df.workgroup.Preset.eventType.ON_CLOSE_MODAL, _onClose_modal_forPW);
+            }
         }
     }
 
@@ -146,7 +159,8 @@ var LoginFieldController = function(){
 
         var status = {
             isWarning : false,
-            text: "표시할 메세지가 없습니다."
+            text: "표시할 메세지가 없습니다.",
+            code: null
         };
         var json = JSON.parse(response.target.responseText);
         var user_status_code = json.user.status;
@@ -163,11 +177,22 @@ var LoginFieldController = function(){
                 if(code.toLowerCase() == user_status_code.toLowerCase()){
                     status.isWarning = true;
                     status.text = item.text;
+                    status.code = item.code;
                     break;
                 }
             }
         }
         return status;
+    }
+
+    function _onClose_modal_forID(){
+        document.removeEventListener(window.df.workgroup.Preset.eventType.ON_CLOSE_MODAL, _onClose_modal_forID);
+        setFocus_id();
+    }
+
+    function _onClose_modal_forPW(){
+        document.removeEventListener(window.df.workgroup.Preset.eventType.ON_CLOSE_MODAL, _onClose_modal_forPW);
+        setFocus_pw();
     }
 
     function _dispatchOnWarning(txt){
