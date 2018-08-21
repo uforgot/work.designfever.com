@@ -1,5 +1,5 @@
 {
-  "name": "DF Workgroup Page",
+  "name": "DF Work Group Page",
   "short_name": "Work Group | DF",
   "icons": [
     {
@@ -34,7 +34,7 @@
     }
   ],
 
-  "start_url": "/index_new.html?utm_source=launcher&start=id_main",
+  "start_url": "/index.html?utm_source=launcher&start=id_intro",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#FFFFFF",

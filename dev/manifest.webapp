@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
-  "name": "DF Workgroup",
-  "launch_path": "/index_new.html",
-  "description": "This page is Workgroup of DF.",
+  "name": "DF Work Group",
+  "launch_path": "/index.html?utm_source=launcher_2&start=id_intro_2",
+  "description": "This page is Work group of DF.",
   "icons": {
     "192": "/assets_login/images/favicon/bg/android-icon-192x192.png"
   },
