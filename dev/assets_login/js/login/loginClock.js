@@ -238,18 +238,20 @@ var LoginClock = function(con, json_data){
 
         _drawCanvas();
 
-        TweenMax.to(_pixi.clockContainer, 5, {rotation:0, ease:Expo.easeOut, delay:1});
-        TweenMax.to(_pixi.clockGraphic.bar_hh, 2.2, {alpha:1, ease:Expo.easeInOut, delay:1});
-        TweenMax.to(_pixi.clockGraphic.bar_mm, 2.2, {alpha:1, ease:Expo.easeInOut, delay:1.5});
-        TweenMax.to(_pixi.clockGraphic.bar_ss, 2.2, {alpha:1, ease:Expo.easeInOut, delay:2});
+        var start_delay = 0;
 
-        TweenMax.to(_pixi.clockGraphic.bar_hh.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:1});
-        TweenMax.to(_pixi.clockGraphic.bar_mm.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:1.5});
-        TweenMax.to(_pixi.clockGraphic.bar_ss.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:1.5});
+        TweenMax.to(_pixi.clockContainer, 5, {rotation:0, ease:Expo.easeOut, delay:start_delay + 0});
+        TweenMax.to(_pixi.clockGraphic.bar_hh, 2.2, {alpha:1, ease:Expo.easeInOut, delay:start_delay + 0});
+        TweenMax.to(_pixi.clockGraphic.bar_mm, 2.2, {alpha:1, ease:Expo.easeInOut, delay:start_delay + 0.5});
+        TweenMax.to(_pixi.clockGraphic.bar_ss, 2.2, {alpha:1, ease:Expo.easeInOut, delay:start_delay + 1});
 
-        TweenMax.to(_pixi.txt_hh, 1.2, {alpha:1, ease:Cubic.easeOut, delay:3});
-        TweenMax.to(_pixi.txt_mm, 1.2, {alpha:1, ease:Cubic.easeOut, delay:3.5});
-        TweenMax.to(_pixi.txt_ss, 1.2, {alpha:1, ease:Cubic.easeOut, delay:4});
+        TweenMax.to(_pixi.clockGraphic.bar_hh.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:start_delay + 0});
+        TweenMax.to(_pixi.clockGraphic.bar_mm.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:start_delay + 0.5});
+        TweenMax.to(_pixi.clockGraphic.bar_ss.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:start_delay + 0.5});
+
+        TweenMax.to(_pixi.txt_hh, 1.2, {alpha:1, ease:Cubic.easeOut, delay:start_delay + 2});
+        TweenMax.to(_pixi.txt_mm, 1.2, {alpha:1, ease:Cubic.easeOut, delay:start_delay + 2.5});
+        TweenMax.to(_pixi.txt_ss, 1.2, {alpha:1, ease:Cubic.easeOut, delay:start_delay + 3});
     };
 
     var _drawCanvas = function () {

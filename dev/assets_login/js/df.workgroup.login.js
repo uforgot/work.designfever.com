@@ -146,16 +146,16 @@ window.df.workgroup.login = function(json_data){
     function startMotion(){
 
         var con_header = document.querySelector('header');
-        setTimeout(function(){df.lab.Util.addClass(con_header, window.df.workgroup.Preset.class_name.showIn);}, 100);
+        setTimeout(function(){df.lab.Util.addClass(con_header, window.df.workgroup.Preset.class_name.showIn);}, 10);
 
         var con_info = document.querySelector('.sec-login');
         setTimeout(function(){
             df.lab.Util.addClass(con_info, window.df.workgroup.Preset.class_name.showIn);
             _updateStatus();
-        }, 200);
+        }, 10);
 
         var con_footer = document.querySelector('footer');
-        setTimeout(function(){df.lab.Util.addClass(con_footer, window.df.workgroup.Preset.class_name.showIn);}, 3000);
+        setTimeout(function(){df.lab.Util.addClass(con_footer, window.df.workgroup.Preset.class_name.showIn);}, 1500);
     }
 
     function _updateStatus(){
