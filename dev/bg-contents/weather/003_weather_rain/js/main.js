@@ -13,7 +13,7 @@ var Weather_Rain = function(args){
 
     var rainPow = args.powerStep-1;
 
-    var rainLinesArr = [20, 200, 1000];
+    var rainLinesArr = [50, 300, 1000];
     var rainSpdArr = [50, 50, 70];
 
     var rainLines = rainLinesArr[rainPow]; //isMobile ? 50*rainPow : 30*rainPow// 50 - 1000;
@@ -71,7 +71,7 @@ var Weather_Rain = function(args){
 
     var _setElement = function(){
         for (var i = 0; i < rainLines; i++) {
-            var lineLength = rainPow > 0 ? 100 : 20;
+            var lineLength = rainPow > 0 ? 20 : 20;
             var geometryLines = new THREE.BoxGeometry( 1, 1, lineLength * Math.random() + 10);
             var materialLines = new THREE.MeshPhongMaterial( { color:0x555555, shininess :500} );
             var line = new THREE.Mesh( geometryLines, materialLines );
