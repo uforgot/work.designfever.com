@@ -43,7 +43,7 @@ window.df.workgroup.login.LoadInfoData = (function(){
 
         var params = {
             method: "GET",
-            action: url + "?uniq=" + new Date().getTime()
+            action: df.workgroup.Util.addParamUniq(url)
         };
 
         df.workgroup.Util.load_json(params.action, params.method, callback, null);

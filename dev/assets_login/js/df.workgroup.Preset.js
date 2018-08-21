@@ -30,7 +30,8 @@ window.df.workgroup.Preset = {
         "ON_LOGOUT": "onLogout",
         "ON_CHANGE_STAGE_INFO": "onChangeStageInfo",
         "ON_ERROR": "onError",
-        "ON_WARNING": "onWarning"
+        "ON_WARNING": "onWarning",
+        "ON_CLOSE_MODAL": "onCloseModal"
     },
 
     "class_name":{

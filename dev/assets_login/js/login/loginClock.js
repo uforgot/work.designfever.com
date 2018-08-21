@@ -298,8 +298,8 @@ var LoginClock = function(con, json_data){
 
         // txt
         _pixi.txt_hh.text = (_vars.clock.hh%12) == 0 ? "12" : (_vars.clock.hh%12);
-        _pixi.txt_mm.text = _vars.clock.mm < 10 ? '0'+_vars.clock.mm : _vars.clock.mm;
-        _pixi.txt_ss.text = _vars.clock.ss < 10 ? '0'+_vars.clock.ss : _vars.clock.ss;
+        _pixi.txt_mm.text = window.df.workgroup.Util.addZeroNumber(_vars.clock.mm);
+        _pixi.txt_ss.text = window.df.workgroup.Util.addZeroNumber(_vars.clock.ss);
 
         point_hh.x = center_x +  Math.cos(angle_hh) * (half_mm + 20) - (_pixi.txt_hh.width/2);
         point_hh.y = center_y +  Math.sin(angle_hh) * (half_mm + 20) - (_pixi.txt_hh.height/2);

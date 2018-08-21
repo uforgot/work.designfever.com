@@ -64,9 +64,28 @@ window.df.workgroup.Util = (function(){
         // Send the collected data as JSON
         xhr.send(data);
     }
+    function addZeroNumber(num){
+
+        var str_num = "";
+        if( num < 10 )  str_num = "0" + num;
+        else            str_num = "" + num;
+        return str_num;
+    }
+
+    function addParamUniq(url){
+
+        if(url.indexOf('?') == -1){
+            url = url + "?uniq=" + new Date().getTime();
+        }else{
+            url = url + "&uniq=" + new Date().getTime();
+        }
+        return url;
+    }
 
     return {
-        load_json: load_json
+        load_json: load_json,
+        addZeroNumber: addZeroNumber,
+        addParamUniq: addParamUniq
     }
 
 })();

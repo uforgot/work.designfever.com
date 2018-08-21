@@ -45,21 +45,91 @@
       "approval_my": "approval/approval_my_list.php",
       "approval_cc": "approval/approval_cc_list.php"
     },
-    "status ":[
-      {"code":"L00", "text":"ë¡œê·¸ì¸ ë˜ì–´ ìžˆì§€ ì•ŠìŒ"},
-      {"code":"L01", "text":"ì•„ì´ë””ê°€ ì—†ê±°ë‚˜ ì˜¬ë°”ë¥´ì§€ ì•ŠìŒ"},
-      {"code":"L02", "text":"íŒ¨ìŠ¤ì›Œë“œê°€ ì—†ê±°ë‚˜ ì˜¬ë°”ë¥´ì§€ ì•ŠìŒ"},
-      {"code":"L03", "text":"íƒˆí‡´í•œ íšŒì›"},
-      {"code":"C00 ", "text":"ì¶œê·¼ì²´í¬ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤."},
-      {"code":"C00 ", "text":"ì¶œê·¼ì²´í¬ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤."},
-      {"code":"C00 ", "text":"ì¶œê·¼ì²´í¬ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤."},
-      {"code":"C00 ", "text":"ì¶œê·¼ì²´í¬ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤."},
-      {"code":"C00 ", "text":"ì¶œê·¼ì²´í¬ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤."},
-      {"code":"C00 ", "text":"ì¶œê·¼ì²´í¬ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤."},
-      {"code":"C00 ", "text":"ì¶œê·¼ì²´í¬ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤."}
-    ],
 
     "main_url":"main.php",
+
+    "status_list": [
+      {
+        "code": "L00",
+        "type": "N",
+        "text": "·Î±×ÀÎ µÇ¾î ÀÖÁö ¾ÊÀ½."
+      },
+      {
+        "code": "L01",
+        "type": "E",
+        "text": "¾ÆÀÌµð°¡ ¾ø°Å³ª ¿Ã¹Ù¸£Áö ¾ÊÀ½."
+      },
+      {
+        "code": "L02",
+        "type": "E",
+        "text": "ÆÐ½º¿öµå°¡ ¾ø°Å³ª ¿Ã¹Ù¸£Áö ¾ÊÀ½."
+      },
+      {
+        "code": "L03",
+        "type": "E",
+        "text": "Å»ÅðÇÑ È¸¿ø."
+      },
+      {
+        "code": "L04",
+        "type": "N",
+        "text": "·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù"
+      },
+      {
+        "code": "C00",
+        "type": "N",
+        "text": "Ãâ±ÙÃ¼Å©°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù."
+      },
+      {
+        "code": "C01",
+        "type": "W",
+        "text": "Ãâ±ÙÃ¼Å©°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù. Àü±Ù¹«ÀÏ Åð±ÙÃ¼Å©°¡ µÇÁö ¾Ê¾Ò½À´Ï´Ù. Àü±Ù¹«ÀÏ Åð±Ù½Ã°£À» °æ¿µÁö¿øÆÀ¿¡ ¾Ë·ÁÁÖ¼¼¿ä."
+      },
+      {
+        "code": "C02",
+        "type": "W",
+        "text": "ÃâÅð±ÙÃ¼Å©´Â »ç³»¿¡¼­¸¸ °¡´ÉÇÕ´Ï´Ù."
+      },
+      {
+        "code": "C03",
+        "type": "W",
+        "text": "ÈÞ°¡°è¸¦ Á¦ÃâÇÏ¼Ì½À´Ï´Ù. ÃâÅð±ÙÃ¼Å©¸¦ ¿øÇÏ½Ã¸é ÈÞ°¡°è »èÁ¦¸¦ ¿äÃ»ÇØ ÁÖ¼¼¿ä."
+      },
+      {
+        "code": "C04",
+        "type": "W",
+        "text": "ÀÌ¹Ì Ãâ±ÙÃ¼Å© ÇÏ¼Ì½À´Ï´Ù."
+      },
+      {
+        "code": "C05",
+        "type": "E",
+        "text": "Ãâ±ÙÃ¼Å© ¿À·ùÀÔ´Ï´Ù. °³¹ßÆÀ¿¡ ¹®ÀÇÇØÁÖ¼¼¿ä."
+      },
+      {
+        "code": "C10",
+        "type": "N",
+        "text": "Åð±ÙÃ¼Å©°¡ ¿Ï·á µÇ¾ú½À´Ï´Ù."
+      },
+      {
+        "code": "C11",
+        "type": "W",
+        "text": "¿À´ÃÃâ±ÙÃ¼Å©¸¦ ÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù. ÃâÅð±ÙÁ¤º¸¸¦ °æ¿µÁö¿øÆÀ¿¡ ¾Ë·ÁÁÖ¼¼¿ä."
+      },
+      {
+        "code": "C12",
+        "type": "W",
+        "text": "ÁÖ°£º¸°í¼­¸¦ ÀÛ¼ºÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù ÀÛ¼º ÈÄ¿¡ Åð±ÙÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù."
+      },
+      {
+        "code": "C13",
+        "type": "E",
+        "text": "Åð±ÙÃ¼Å©¿À·ù ¿À·ù¹øÈ£ : 1"
+      },
+      {
+        "code": "C14",
+        "type": "E",
+        "text": "Åð±ÙÃ¼Å©¿À·ù ¿À·ù¹øÈ£ : 2"
+      }
+    ],
 
     "bg_contents": {
       "weather": {
@@ -128,14 +198,14 @@
     },
     "birthday":[
       {
-        "name": "í•œì˜ìˆ˜",
+        "name": "ÇÑ¿µ¼ö",
         "team": "LAB",
-        "position": "ì‹¤ìž¥"
+        "position": "½ÇÀå"
       },
       {
-        "name": "ë°•í˜„ì¼",
+        "name": "¹ÚÇöÀÏ",
         "team": "LAB",
-        "position": "í”„ë¡œ"
+        "position": "ÇÁ·Î"
       }
     ],
 
@@ -144,8 +214,8 @@
 
       ],
       "notice": {
-        "title": ["ì˜¤ëŠ˜ì€", "ë°”ë‹¥ì„¸ë¯¸ë‚˜ê°€", "ì—´ë¦½ë‹ˆë‹¤."],
-        "dec": ["ì˜¤í›„ 4ì‹œ 30ë¶„ê¹Œì§€", "ì§€í•˜1ì¸µ ë°”ë‹¥ ì„¸ë¯¸ë‚˜ì‹¤ë¡œ ëª¨ì—¬ì£¼ì„¸ìš”.", "- ê²½ì˜ì§€ì›íŒ€"]
+        "title": ["¿À´ÃÀº", "¹Ù´Ú¼¼¹Ì³ª°¡", "¿­¸³´Ï´Ù."],
+        "dec": ["¿ÀÈÄ 4½Ã 30ºÐ±îÁö", "ÁöÇÏ1Ãþ ¹Ù´Ú ¼¼¹Ì³ª½Ç·Î ¸ð¿©ÁÖ¼¼¿ä.", "- °æ¿µÁö¿øÆÀ"]
       }
     },
     "test":{

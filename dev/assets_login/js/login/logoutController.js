@@ -2,6 +2,7 @@ var LogoutController = function(){
 
     var CLASS_NAME = "[ LogoutController ]";
     var _form = document.getElementById('id_form_logout');
+    var TXT_LOGOUT_COMP = "로그 아웃 되었습니다.";
 
     function _init(){
         _setUrl();
@@ -58,7 +59,14 @@ var LogoutController = function(){
     function onSubmit(response){
         //console.log(response);
         _dispatchOnLoad(response);
-        setTimeout(function(){    window.location.reload (true);}, 100);
+        _dispatchOnWarning();
+        document.addEventListener(window.df.workgroup.Preset.eventType.ON_CLOSE_MODAL, _onClose_modal);
+    }
+
+    function _onClose_modal(){
+        document.removeEventListener(window.df.workgroup.Preset.eventType.ON_CLOSE_MODAL, _onClose_modal);
+        //alert('log out comp');
+        setTimeout(function(){    window.location.reload (true);}, 50);
     }
 
     function _showLogoutBtn(){
@@ -89,7 +97,7 @@ var LogoutController = function(){
 
         var params = {
             method: form.method,
-            action: form.action + "?uniq=" + new Date().getTime()
+            action: df.workgroup.Util.addParamUniq(form.action)
         };
 
         df.workgroup.Util.load_json(params.action, params.method, callback, data);
@@ -99,6 +107,14 @@ var LogoutController = function(){
         var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_LOGOUT, {
             detail: {
                 response: response
+            }});
+        document.dispatchEvent(event);
+    }
+
+    function _dispatchOnWarning(){
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_WARNING, {
+            detail: {
+                message: TXT_LOGOUT_COMP
             }});
         document.dispatchEvent(event);
     }

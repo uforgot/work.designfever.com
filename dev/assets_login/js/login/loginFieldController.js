@@ -164,7 +164,7 @@ var LoginFieldController = function(){
 
         var params = {
             method: form.method,
-            action: form.action + "?uniq=" + new Date().getTime()
+            action: df.workgroup.Util.addParamUniq(form.action)
         };
 
         df.workgroup.Util.load_json(params.action, params.method, callback, data);

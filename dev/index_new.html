@@ -14,11 +14,12 @@
     <meta name="msapplication-TileColor" content="#000000">
     <meta name="msapplication-TileImage" content="http://dev3.designfever.com/assets_login/images/favicon/ms-icon-144x144.png">
 
-    <link rel="apple-touch-icon" href="http://dev3.designfever.com/assets_login/images/favicon/apple-icon.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="http://dev3.designfever.com/assets_login/images/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="http://dev3.designfever.com/assets_login/images/favicon/apple-icon-180x180.png">
     <link rel="apple-touch-icon" sizes="192x192" href="http://dev3.designfever.com/assets_login/images/favicon/apple-icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://dev3.designfever.com/assets_login/images/favicon/apple-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://dev3.designfever.com/assets_login/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://dev3.designfever.com/assets_login/images/favicon/apple-icon-152x152.png">
 
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
@@ -33,7 +34,7 @@
     <meta name="description" content="DF Workgroup Login page.">
     <meta name="keywords" content="DF">
     <meta name="apple-mobile-web-app-title" content="Login | DF Workgroup">
-    <link rel="image_src" href="http://dev3.designfever.com/assets_login/images/favicon/apple-icon.png">
+    <link rel="image_src" href="http://dev3.designfever.com/assets_login/images/favicon/apple-icon-192x192.png">
 
     <link rel="stylesheet" type="text/css" href="assets_login/css/common.css" />
     <link rel="stylesheet" type="text/css" href="assets_login/css/login.css?uniq=20180820_2" />
@@ -263,6 +264,18 @@
             <p class="area-txt"><span class="txt-copyright">df work group. 2018.</span></p>
         </div>
     </footer>
+    <!-- The Modal -->
+    <div id="id_modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <p id="id_modal_txt" class="txt"><!-- text contents --></p>
+            <div class="area-btn">
+                <button id="id_btn_close_modal" class="btn-close"><i class="icon-close material-icons">close</i></button>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <script src="assets_login/js/login/loginBgController.js?uniq=20180820_2"></script>
@@ -273,6 +286,7 @@
 <script src="assets_login/js/login/checkinController.js?uniq=20180820_2"></script>
 <script src="assets_login/js/login/loginUtilController.js?uniq=20180820_2"></script>
 <script src="assets_login/js/login/loginInfoController.js?uniq=20180820_2"></script>
+<script src="assets_login/js/login/modalController.js?uniq=20180820_2"></script>
 <script src="assets_login/js/df.workgroup.login.js?uniq=20180820_2"></script>
 <script>
 
@@ -294,6 +308,8 @@
         login = new window.df.workgroup.login(df.workgroup.GlobalVars.infoData);
         login.init();
     }
+
+
 </script>
 </body>
 </html>

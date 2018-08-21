@@ -23,6 +23,7 @@ window.df.workgroup.login = function(json_data){
     var _loginInfoController = new LoginInfoController();
 
     var _loginUtilController = new LoginUtilController();
+    var _modalController = new ModalController();
 
     var _today = { YY:0, MM:0, DD:0, DW:0, hh:0, mm:0, ss:0 };
 
@@ -55,6 +56,8 @@ window.df.workgroup.login = function(json_data){
 
         _loginUtilController.init(_json_data.preset.document_url, _json_data.preset.main_url, _json_data.user);
 
+        _modalController.init();
+
         startMotion();
 
         addEvent();
@@ -66,6 +69,7 @@ window.df.workgroup.login = function(json_data){
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHECKOUT, _onCheckout);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHANGE_STAGE_INFO, _onChange_stage_info);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOGOUT, _onLogout);
+        document.addEventListener(window.df.workgroup.Preset.eventType.ON_WARNING, _onLogout_warning);
     }
 
     function _resetData(response){
@@ -94,6 +98,11 @@ window.df.workgroup.login = function(json_data){
     function _onLogout(evt){
         _resetData(evt.detail.response);
         _updateStatus();
+    }
+
+    function _onLogout_warning(evt){
+        console.log(evt.detail.message);
+        _modalController.showModal(evt.detail.message);
     }
 
     function _onChange_stage_info(event){

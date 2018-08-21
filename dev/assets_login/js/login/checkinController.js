@@ -35,13 +35,13 @@ var CheckinController = function(){
             if(_json_user.isCheckin){
                 var txt_checkin_time = document.getElementById("id_checkin_time");
                 var date_checkin = new Date(_json_user.checkin_time);
-                txt_checkin_time.textContent = date_checkin.getHours() + "시 " +  date_checkin.getMinutes() + "분";
+                txt_checkin_time.textContent = date_checkin.getHours() + "시 " +  window.df.workgroup.Util.addZeroNumber(date_checkin.getMinutes()) + "분";
 
                 // checkout able time
                 var txt_checkout_able_time = document.getElementById("id_checkout_able_time");
                 var date_checkout_able = new Date(_json_user.checkout_able_time);
 
-                txt_checkout_able_time.textContent = date_checkout_able.getHours() + "시 " +  date_checkout_able.getMinutes() + "분";
+                txt_checkout_able_time.textContent = date_checkout_able.getHours() + "시 " +  window.df.workgroup.Util.addZeroNumber(date_checkout_able.getMinutes()) + "분";
 
                 _isCjeckin = true;
 
@@ -58,7 +58,7 @@ var CheckinController = function(){
                         hh = ((date_checkout.getDate() - date_checkin.getDate()) * 24 ) + date_checkout.getHours();
                     }
 
-                    txt_checkout_time.textContent = hh + "시 " +  date_checkout.getMinutes() + "분";
+                    txt_checkout_time.textContent = hh + "시 " +  window.df.workgroup.Util.addZeroNumber(date_checkout.getMinutes()) + "분";
                 }
             }else{
                 stopSetTimeBar();
@@ -299,7 +299,7 @@ var CheckinController = function(){
 
         var params = {
             method: form.method,
-            action: form.action + "?uniq=" + new Date().getTime()
+            action: df.workgroup.Util.addParamUniq(form.action)
         };
         //
         // if(isTest_re) {
@@ -308,6 +308,7 @@ var CheckinController = function(){
 
         df.workgroup.Util.load_json(params.action, params.method, callback, data);
     }
+
     return {
         init: _init,
         showCheckinBtn: _showCheckinBtn,
