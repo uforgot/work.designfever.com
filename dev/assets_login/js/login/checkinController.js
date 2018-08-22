@@ -82,19 +82,12 @@ var CheckinController = function(){
 
     function setTimePerBar(){
 
-        //console.log("setTimePerBar : ", _json_user.isCheckin);
-
         if(_json_user.isCheckin){
-            // console.log("checkin_time : " , _json_user.checkin_time);
-            // console.log("time_now : " , window.df.workgroup.GlobalVars.time_now);
-            // console.log("checkout_able_time : " , _json_user.checkout_able_time);
 
             var dis = _json_user.checkout_able_time - _json_user.checkin_time;
             var cur = window.df.workgroup.GlobalVars.time_now - _json_user.checkin_time;
 
             var per = cur / dis;
-
-            //console.log("per : " , per, dis, cur);
 
             if(per < 0) per = 0;
             if(per > 1) per = 1;
