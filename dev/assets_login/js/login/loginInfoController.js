@@ -25,6 +25,8 @@ var LoginInfoController = function(){
     var _ID_addEvent;
     var _ID_autoShow;
 
+    var _TIME_ROLLING = 1000 * 15;
+
     function _init(json_notice, json_birthday){
 
         _stage_clock =  document.getElementById('id_stage_clock');
@@ -32,7 +34,11 @@ var LoginInfoController = function(){
         _stage_birthday =  document.getElementById('id_stage_birthday');
         _stage_con =  document.querySelector('section.sec-info');
 
-        clearTimeout(_ID_autoShow);
+        start(json_notice, json_birthday);
+    }
+
+    function start(json_notice, json_birthday){
+        stopAutoShow();
         clearTimeout(_ID_addEvent);
 
         setNotice(json_notice);
@@ -40,6 +46,8 @@ var LoginInfoController = function(){
 
         if(_isHasBirthday || _isHasNotice) _ID_addEvent = setTimeout(addEvent, 1500);
         else                                removeEvent();
+
+        _ID_autoShow = setTimeout(_nextStage, _TIME_ROLLING);
     }
 
     function addEvent(){
@@ -231,11 +239,16 @@ var LoginInfoController = function(){
         //console.log(CLASS_NAME + " nextStage : ",_curIndex,_isHasNotice,_isHasBirthday);
 
         var index = (_curIndex + 1);
-        if(_isHasNotice && _isHasBirthday) {
+        if(!_isHasNotice && !_isHasBirthday) {
+            return;
+        }else if(_isHasNotice && _isHasBirthday) {
             if(index < 3) _changeStage(index);
+            else return;
         }else {
+
             if(_curIndex == 0 && _isHasNotice) _showNotice();
-            if(_curIndex == 0 && _isHasBirthday) _showBirthday();
+            else if(_curIndex == 0 && _isHasBirthday) _showBirthday();
+            else return;
         }
     }
 
@@ -244,8 +257,11 @@ var LoginInfoController = function(){
         //console.log(CLASS_NAME + " prevStage : ",_curIndex,_isHasNotice,_isHasBirthday);
 
         var index = (_curIndex - 1);
-        if(_isHasNotice && _isHasBirthday) {
+        if(!_isHasNotice && !_isHasBirthday) {
+            return;
+        }else if(_isHasNotice && _isHasBirthday) {
             if(index > -1) _changeStage(index);
+            else return;
         }else{
             _showClock();
         }
@@ -254,7 +270,7 @@ var LoginInfoController = function(){
     function _changeStage(index){
 
         if(_curIndex != index){
-
+            stopAutoShow();
             _curIndex = index;
 
             switch (_curIndex) {
@@ -278,6 +294,16 @@ var LoginInfoController = function(){
 
             console.log(CLASS_NAME + " changeStage : ",_curIndex, " / _isHasNotice : ", _isHasNotice, " / _isHasBirthday : ", _isHasBirthday);
             _dispatchEvent();
+
+            if(!_isHasNotice && !_isHasBirthday) {
+                return;
+            }else if(_isHasNotice && _isHasBirthday) {
+                if(_curIndex < 2) _ID_autoShow = setTimeout(_nextStage, _TIME_ROLLING);
+                else _ID_autoShow = setTimeout(_showClock, _TIME_ROLLING);
+            }else {
+                if(_curIndex == 0)  _ID_autoShow = setTimeout(_nextStage, _TIME_ROLLING);
+                else  _ID_autoShow = setTimeout(_showClock, _TIME_ROLLING);
+            }
         }
     }
 
@@ -336,8 +362,11 @@ var LoginInfoController = function(){
     }
 
     function _showNotice_auto() {
-        clearTimeout(_ID_autoShow);
-        if(_isHasNotice) _ID_autoShow = setTimeout(_showNotice, 600);
+        stopAutoShow();
+        if(_isHasNotice || _isHasBirthday) {
+            if (_isHasNotice)           _ID_autoShow = setTimeout(_showNotice, 600);
+            else if (_isHasBirthday)    _ID_autoShow = setTimeout(_showBirthday, 600);
+        }
     }
 
     function _dispatchEvent(){
@@ -350,16 +379,13 @@ var LoginInfoController = function(){
 
     function _resetData(json_notice, json_birthday){
 
-        _showClock();
+        if(!_isHasNotice && !_isHasBirthday) _showClock();
+        start(json_notice, json_birthday);
+    }
 
+    function stopAutoShow(){
+        //console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  stopAutoShow");
         clearTimeout(_ID_autoShow);
-        clearTimeout(_ID_addEvent);
-
-        setNotice(json_notice);
-        setBirthday(json_birthday);
-
-        if(_isHasBirthday || _isHasNotice) _ID_addEvent = setTimeout(addEvent, 1500);
-        else                                removeEvent();
     }
 
     return {

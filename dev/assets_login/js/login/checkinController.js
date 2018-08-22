@@ -236,7 +236,7 @@ var CheckinController = function(){
         var status = getStatus(response);
 
         if(status.isWarning) {
-            console.log("status.text : " , status.text);
+            //console.log("status.text : " , status.text);
             _dispatchOnWarning(status.text);
         }
     }

@@ -21,8 +21,8 @@
     width: 80%; /* Could be more or less, depending on screen size */
     color: #000000;
     box-sizing: border-box;
-    transform: translateY(-10%);
-    transform: translate3d(0,-10%,0);
+    transform: translateY(-50%);
+    transform: translate3d(0,-50%,0);
 
     opacity: 0;
     @include mx_transition("600ms", "opacity, transform", $vars_easeOutCubic, "0");

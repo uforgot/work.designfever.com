@@ -63,7 +63,7 @@ var LogoutController = function(){
         var status = getStatus(response);
 
         if(status.isWarning) {
-            console.log("status.text : " , status.text);
+            //console.log("status.text : " , status.text);
             _dispatchOnWarning(status.text);
             document.addEventListener(window.df.workgroup.Preset.eventType.ON_CLOSE_MODAL, _onClose_modal);
         }

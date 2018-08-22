@@ -39,5 +39,13 @@ window.df.workgroup.Preset = {
         "hideOut": "hide-out"
     },
 
+    "related_site":[
+        {
+            "title": "",
+            "url": "",
+            "thumb": ""
+        }
+    ],
+
     "isBgTest": false
 };

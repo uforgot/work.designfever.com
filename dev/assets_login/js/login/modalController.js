@@ -3,7 +3,6 @@ var ModalController = function(){
     // Get the modal
     var _modal = document.getElementById('id_modal');
     var _modal_txt = document.getElementById('id_modal_txt');
-
     var _btn_close = document.getElementById('id_btn_close_modal');
 
     var _ID_TIMEOUT = 0;

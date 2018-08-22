@@ -146,7 +146,7 @@ var LoginFieldController = function(){
         var status = getStatus(response);
 
         if(status.isWarning) {
-            console.log("status.text : " , status.text);
+            //console.log("status.text : " , status.text);
             _dispatchOnWarning(status.text);
 
             if(status.code == "L01" || status.code == "L03") {

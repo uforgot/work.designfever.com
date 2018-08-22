@@ -101,7 +101,7 @@ window.df.workgroup.login = function(json_data){
     }
 
     function _onWarning(evt){
-        console.log(evt.detail.message);
+        //console.log(evt.detail.message);
         _modalController.showModal(evt.detail.message);
     }
 
@@ -162,6 +162,11 @@ window.df.workgroup.login = function(json_data){
 
         console.log(CLASS_NAME , " user : isLoggedIn - ", _json_data.user.isLoggedIn, " / isCheckin - ", _json_data.user.isCheckin , " / isCheckout", _json_data.user.isCheckout);
 
+        _resetBrowserTitle();
+
+        _loginInfoController.resetData(_json_data.info.today.notice, _json_data.info.birthday);
+        _loginUtilController.resetData(_json_data.user);
+
         var sec_login = document.querySelector('.sec-login');
 
         if(_json_data.user.isLoggedIn){
@@ -182,10 +187,6 @@ window.df.workgroup.login = function(json_data){
             _setLayout_Logout();
         }
 
-        _resetBrowserTitle();
-
-        _loginInfoController.resetData(_json_data.info.today.notice, _json_data.info.birthday);
-        _loginUtilController.resetData(_json_data.user);
     }
 
     function _resetBrowserTitle(){
