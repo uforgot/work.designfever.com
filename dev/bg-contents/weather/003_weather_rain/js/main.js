@@ -14,7 +14,7 @@ var Weather_Rain = function(args){
     var rainPow = args.powerStep-1;
 
     var rainLinesArr = [50, 300, 1000];
-    var rainSpdArr = [50, 50, 70];
+    var rainSpdArr = [40, 30, 40];
 
     var rainLines = rainLinesArr[rainPow]; //isMobile ? 50*rainPow : 30*rainPow// 50 - 1000;
     var rainSpd = isMobile ? rainSpdArr[rainPow]*2 : rainSpdArr[rainPow];
@@ -61,8 +61,8 @@ var Weather_Rain = function(args){
         scene.rotation.x = 0.6;
 
         // Light
-        light = new THREE.AmbientLight(0xffffff,0.5);
-        light1 = new THREE.PointLight(0xffffff,0.5);
+        light = new THREE.AmbientLight(0xffffff,0.2);
+        light1 = new THREE.PointLight(0xffffff,0.4);
         light1.position.set( options.stageWidth/2, options.stageHeight/2, 0 );
 
         scene.add(light);
@@ -71,9 +71,9 @@ var Weather_Rain = function(args){
 
     var _setElement = function(){
         for (var i = 0; i < rainLines; i++) {
-            var lineLength = rainPow > 0 ? 20 : 20;
-            var geometryLines = new THREE.BoxGeometry( 1, 1, lineLength * Math.random() + 10);
-            var materialLines = new THREE.MeshPhongMaterial( { color:0x555555, shininess :500} );
+            var lineLength = rainPow > 0 ? 5 : 10;
+            var geometryLines = new THREE.BoxGeometry( 0.3, 0.3, lineLength * Math.random() + 10);
+            var materialLines = new THREE.MeshPhongMaterial( { color:0xffffff, shininess :500} );
             var line = new THREE.Mesh( geometryLines, materialLines );
             scene.add( line );
             lines.push( line );
