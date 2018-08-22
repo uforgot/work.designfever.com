@@ -262,7 +262,8 @@ var CheckinController = function(){
             user_status_code.toLowerCase() == ("C11").toLowerCase() ||
             user_status_code.toLowerCase() == ("C12").toLowerCase() ||
             user_status_code.toLowerCase() == ("C13").toLowerCase() ||
-            user_status_code.toLowerCase() == ("C14").toLowerCase()
+            user_status_code.toLowerCase() == ("C14").toLowerCase() ||
+            user_status_code.toLowerCase() == ("C15").toLowerCase()
         ){
             var list = json.preset.status_list;
             for(var i=0; i<list.length; i++){

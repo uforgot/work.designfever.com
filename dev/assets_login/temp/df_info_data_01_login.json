@@ -34,37 +34,37 @@
       {
         "title": "designfever.com",
         "url": "http://designfever.com/",
-        "thumb": "thumb_mail.jpg_200x200"
+        "thumb": "assets_login/images/related/icon-200x200.png"
       },
       {
         "title": "Facebook",
         "url": "https://www.facebook.com/feverbook",
-        "thumb": "thumb_mail.jpg_200x200"
+        "thumb": "assets_login/images/related/icon-200x200.png"
       },
       {
         "title": "Twitter",
         "url": "https://twitter.com/designfever_kr",
-        "thumb": "thumb_mail.jpg_200x200"
+        "thumb": "assets_login/images/related/icon-200x200.png"
       },
       {
         "title": "Blog",
         "url": "https://blog.naver.com/design_fever",
-        "thumb": "thumb_mail.jpg_200x200"
+        "thumb": "assets_login/images/related/icon-200x200.png"
       },
       {
         "title": "DF Mail",
         "url": "http://mail.designfever.com/",
-        "thumb": "thumb_mail.jpg_200x200"
+        "thumb": "assets_login/images/related/icon-200x200.png"
       },
       {
         "title": "DF Lab",
         "url": "http://dev.designfever.com/lab/",
-        "thumb": "thumb_mail.jpg_200x200"
+        "thumb": "assets_login/images/related/icon-200x200.png"
       },
       {
         "title": "Youtube",
         "url": "https://www.youtube.com/user/designfeverda",
-        "thumb": "thumb_mail.jpg_200x200"
+        "thumb": "assets_login/images/related/icon-200x200.png"
       }
     ],
     "json_url":{
@@ -162,6 +162,11 @@
         "code": "C14",
         "type": "E",
         "text": "퇴근체크오류 오류번호 : 2"
+      },
+      {
+        "code": "C15",
+        "type": "E",
+        "text": "외출관련"
       }
     ],
 

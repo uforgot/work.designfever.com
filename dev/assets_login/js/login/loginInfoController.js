@@ -7,6 +7,8 @@ var LoginInfoController = function(){
     var _stage_birthday = "";
 
     var _stage_con = "";
+    var _info_con = "";
+    var _indicator = "";
 
     var _curIndex = 0;
     var _pos = {
@@ -33,6 +35,8 @@ var LoginInfoController = function(){
         _stage_notice =  document.getElementById('id_stage_notice');
         _stage_birthday =  document.getElementById('id_stage_birthday');
         _stage_con =  document.querySelector('section.sec-info');
+        _info_con =  _stage_con.querySelector('ul.contents_con');
+        _indicator =  _stage_con.querySelector('.area-indicator ul.indicator');
 
         start(json_notice, json_birthday);
     }
@@ -48,21 +52,70 @@ var LoginInfoController = function(){
         else                                removeEvent();
 
         _ID_autoShow = setTimeout(_nextStage, _TIME_ROLLING);
+
+        _setIndicator();
     }
+
+    function _setIndicator(){
+        if(_isHasBirthday || _isHasNotice) {
+            df.lab.Util.addClass(_indicator, window.df.workgroup.Preset.class_name.showIn);
+            _addEvent_indi();
+            _setIndiIndex(_curIndex);
+        }else{
+            df.lab.Util.removeClass(_indicator, window.df.workgroup.Preset.class_name.showIn);
+        }
+    }
+
+    function _addEvent_indi(){
+        _removeEvent_indi();
+        var lists = _indicator.querySelectorAll("li.item-list");
+        for(var i=0; i<lists.length; i++){
+            var item = lists[i];
+            var btn = item.querySelector("button.btn-indi");
+            btn.setAttribute("data-index", i);
+            btn.addEventListener("click",_onClick_indi);
+        }
+    }
+
+    function _removeEvent_indi(){
+        var lists = _indicator.querySelectorAll("li.item-list");
+        for(var i=0; i<lists.length; i++){
+            var item = lists[i];
+            var btn = item.querySelector("button.btn-indi");
+            btn.removeEventListener("click",_onClick_indi);
+        }
+    }
+
+    function _setIndiIndex(index){
+        var lists = _indicator.querySelectorAll("li.item-list");
+        for(var i=0; i<lists.length; i++){
+            var item = lists[i];
+            if(index == i)  df.lab.Util.addClass(item, "active");
+            else            df.lab.Util.removeClass(item, "active");
+        }
+    }
+
+    function _onClick_indi(evt){
+
+        var btn = evt.currentTarget;
+        var index = parseInt(btn.getAttribute("data-index"));
+        _changeStage(index);
+    }
+
 
     function addEvent(){
         removeEvent();
         if(Detectizr.device.type != "desktop"){
-            _stage_con.addEventListener('touchstart',  onTouchStart_stage);
+            _info_con.addEventListener('touchstart',  onTouchStart_stage);
         }else{
-            _stage_con.addEventListener('click',  onClick_stage);
+            _info_con.addEventListener('click',  onClick_stage);
         }
     }
 
     function removeEvent(){
         clearTimeout(_ID_addEvent);
-        _stage_con.removeEventListener('touchstart',  onTouchStart_stage);
-        _stage_con.removeEventListener('click',  onClick_stage);
+        _info_con.removeEventListener('touchstart',  onTouchStart_stage);
+        _info_con.removeEventListener('click',  onClick_stage);
     }
     function setNotice(json_notice){
 
@@ -151,7 +204,7 @@ var LoginInfoController = function(){
         //$evt.preventDefault();
         $evt.stopPropagation();
 
-        _stage_con.addEventListener('touchmove',  onTouchMove_stage);
+        _info_con.addEventListener('touchmove',  onTouchMove_stage);
         document.addEventListener('touchend',  onTouchEnd_stage);
 
         var pointX = 0;
@@ -182,7 +235,7 @@ var LoginInfoController = function(){
         //$evt.preventDefault();
         $evt.stopPropagation();
 
-        _stage_con.removeEventListener('touchmove',  onTouchMove_stage);
+        _info_con.removeEventListener('touchmove',  onTouchMove_stage);
         document.removeEventListener('touchend',  onTouchEnd_stage);
 
         var oW = _stage_con.offsetWidth;
@@ -291,6 +344,8 @@ var LoginInfoController = function(){
 
                     break;
             }
+
+            _setIndiIndex(_curIndex);
 
             console.log(CLASS_NAME + " changeStage : ",_curIndex, " / _isHasNotice : ", _isHasNotice, " / _isHasBirthday : ", _isHasBirthday);
             _dispatchEvent();
