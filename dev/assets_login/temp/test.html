@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <title>JSON load test</title>
     <script src="../js/df.workgroup.Util.js?uniq=20180814_4"></script>
+    <script src="../js/df.workgroup.Preset.js"></script>
 </head>
 <body>
 <p id="id_log"></p>
@@ -13,7 +14,7 @@
 
 <script>
 
-    var url_json = "http://dev3.designfever.com/assets_login/temp/df_info_data.json.php" + "?uniq=" + new Date().getTime();
+    var url_json = window.df.workgroup.Preset.json_url.default + "?uniq=" + new Date().getTime();
     //var url_json = "df_info_data.json" + "?uniq=" + new Date().getTime();
     var log = document.getElementById('id_log');
     log.innerText = "url_json : " + url_json + "";

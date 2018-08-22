@@ -30,6 +30,43 @@
   },
 
   "preset":{
+    "related_site":[
+      {
+        "title": "designfever.com",
+        "url": "http://designfever.com/",
+        "thumb": "assets_login/images/related/icon-200x200.png"
+      },
+      {
+        "title": "Facebook",
+        "url": "https://www.facebook.com/feverbook",
+        "thumb": "assets_login/images/related/icon-200x200.png"
+      },
+      {
+        "title": "Twitter",
+        "url": "https://twitter.com/designfever_kr",
+        "thumb": "assets_login/images/related/icon-200x200.png"
+      },
+      {
+        "title": "Blog",
+        "url": "https://blog.naver.com/design_fever",
+        "thumb": "assets_login/images/related/icon-200x200.png"
+      },
+      {
+        "title": "DF Mail",
+        "url": "http://mail.designfever.com/",
+        "thumb": "assets_login/images/related/icon-200x200.png"
+      },
+      {
+        "title": "DF Lab",
+        "url": "http://dev.designfever.com/lab/",
+        "thumb": "assets_login/images/related/icon-200x200.png"
+      },
+      {
+        "title": "Youtube",
+        "url": "https://www.youtube.com/user/designfeverda",
+        "thumb": "assets_login/images/related/icon-200x200.png"
+      }
+    ],
     "json_url":{
       "default": "assets_login/temp/df_info_data.json",
       "login": "assets_login/temp/df_info_data_01_login.json",

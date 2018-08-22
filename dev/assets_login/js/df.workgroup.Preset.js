@@ -5,7 +5,7 @@ window.df.workgroup.Preset = {
 
     "json_url":{
 
-        "default": "http://dev3.designfever.com/assets_login/temp/df_info_data.json.php",
+        "default": "/json/df_info_data.json.php",
         "default_local": "assets_login/temp/df_info_data.json",
 
         "login": "assets_login/temp/df_info_data_01_login.json",
@@ -41,11 +41,40 @@ window.df.workgroup.Preset = {
 
     "related_site":[
         {
-            "title": "",
-            "url": "",
-            "thumb": ""
+            "title": "designfever.com",
+            "url": "http://designfever.com/",
+            "thumb": "thumb_mail.jpg_200x200"
+        },
+        {
+            "title": "Facebook",
+            "url": "https://www.facebook.com/feverbook",
+            "thumb": "thumb_mail.jpg_200x200"
+        },
+        {
+            "title": "Twitter",
+            "url": "https://twitter.com/designfever_kr",
+            "thumb": "thumb_mail.jpg_200x200"
+        },
+        {
+            "title": "Blog",
+            "url": "https://blog.naver.com/design_fever",
+            "thumb": "thumb_mail.jpg_200x200"
+        },
+        {
+            "title": "DF Mail",
+            "url": "http://mail.designfever.com/",
+            "thumb": "thumb_mail.jpg_200x200"
+        },
+        {
+            "title": "DF Lab",
+            "url": "http://dev.designfever.com/lab/",
+            "thumb": "thumb_mail.jpg_200x200"
+        },
+        {
+            "title": "Youtube",
+            "url": "https://www.youtube.com/user/designfeverda",
+            "thumb": "thumb_mail.jpg_200x200"
         }
     ],
-
     "isBgTest": false
 };
