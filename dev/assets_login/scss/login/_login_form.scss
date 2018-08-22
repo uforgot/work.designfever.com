@@ -30,21 +30,6 @@
     @include mx_transform_transY(1, 0);
   }
 
-  &.big{
-    .wrapper-login{
-      .login-form{
-        .round-box {
-          height: 40px;
-          border-radius: 1.25rem;
-          font-size: 0.75rem;
-          font-weight: 700;
-          padding: 0.75rem 1.25rem;
-          vertical-align: middle;
-        }
-      }
-    }
-  }
-
   .wrapper-login{
     display: block;
 
@@ -375,6 +360,7 @@
         width:100%;
         height:50%;
         opacity: 0;
+        top:50%;
 
         @extend %flex-center;
 
@@ -385,6 +371,27 @@
             display: none;
           }
         }
+      }
+    }
+
+    .area-name{
+      pointer-events: none;
+      position: absolute;
+      width: 100%;
+      height: 0;
+      transform: translateY(-52px);
+      opacity: 0;
+      @include mx_transition("600ms", "opacity, transform", $vars_easeOutCubic, "1000ms");
+
+      .name-wrapper {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-align: center;
+        height: 42px;
+        transform: translateY(-100%);
+        @include mx_transition("1000ms", "transform", $vars_easeInOutCubic, "200ms");
+
+        @extend %flex-center;
       }
     }
 
@@ -433,6 +440,12 @@
         .txt-wrapper {
           @include mx_transition("800ms", "opacity", $vars_easeInOutCubic, "500ms");
           opacity: 1;
+        }
+      }
+
+      .area-name{
+        .name-wrapper {
+          transform: translateY(0);
         }
       }
     }
@@ -512,6 +525,11 @@
         }
         .area-timebar{
           display: block;
+        }
+
+        .area-name {
+          transform: translateY(-42px);
+          opacity: 1;
         }
       }
     }

@@ -140,6 +140,10 @@
   .area-indicator {
     width: 100%;
     height: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    transform: translate3d(0, -20px, 0);
+
     ul.indicator {
       display: none;
       &.#{$vars_class_showIn}{
@@ -186,6 +190,16 @@
           }
         }
       }
+    }
+  }
+
+
+  &.#{$vars_class_showIn}{
+    .area-indicator{
+      opacity: 1;
+      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
+      @include mx_transition("1000ms", "opacity, transform", $vars_easeOutCubic, "2000ms");
     }
   }
 }

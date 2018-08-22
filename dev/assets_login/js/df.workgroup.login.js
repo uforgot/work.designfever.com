@@ -148,9 +148,15 @@ window.df.workgroup.login = function(json_data){
         var con_header = document.querySelector('header');
         setTimeout(function(){df.lab.Util.addClass(con_header, window.df.workgroup.Preset.class_name.showIn);}, 10);
 
-        var con_info = document.querySelector('.sec-login');
+        var con_info = document.querySelector('.sec-info');
         setTimeout(function(){
             df.lab.Util.addClass(con_info, window.df.workgroup.Preset.class_name.showIn);
+            _updateStatus();
+        }, 0);
+
+        var con_login = document.querySelector('.sec-login');
+        setTimeout(function(){
+            df.lab.Util.addClass(con_login, window.df.workgroup.Preset.class_name.showIn);
             _updateStatus();
         }, 10);
 

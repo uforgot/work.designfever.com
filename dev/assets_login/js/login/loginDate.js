@@ -36,7 +36,7 @@ var LoginDate = function(con, json_data){
         clearTimeout(_ID_TIMEOUT);
         _ID_TIMEOUT = setTimeout(function(){
             df.lab.Util.addClass(_con, window.df.workgroup.Preset.class_name.showIn);
-        }, 2000);
+        }, 1000);
     }
 
     function _updateToday(today){

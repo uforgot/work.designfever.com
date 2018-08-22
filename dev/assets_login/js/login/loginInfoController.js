@@ -63,6 +63,7 @@ var LoginInfoController = function(){
             _setIndiIndex(_curIndex);
         }else{
             df.lab.Util.removeClass(_indicator, window.df.workgroup.Preset.class_name.showIn);
+            _removeEvent_indi();
         }
     }
 
@@ -70,7 +71,12 @@ var LoginInfoController = function(){
         _removeEvent_indi();
         var lists = _indicator.querySelectorAll("li.item-list");
         for(var i=0; i<lists.length; i++){
+
             var item = lists[i];
+            if(i == 1 && !_isHasNotice) df.lab.Util.addClass(item, "hide");
+            else if(i == 2 && !_isHasBirthday) df.lab.Util.addClass(item, "hide");
+            else df.lab.Util.removeClass(item, "hide");
+
             var btn = item.querySelector("button.btn-indi");
             btn.setAttribute("data-index", i);
             btn.addEventListener("click",_onClick_indi);
@@ -80,9 +86,13 @@ var LoginInfoController = function(){
     function _removeEvent_indi(){
         var lists = _indicator.querySelectorAll("li.item-list");
         for(var i=0; i<lists.length; i++){
+
             var item = lists[i];
+            df.lab.Util.addClass(item, "hide");
+
             var btn = item.querySelector("button.btn-indi");
             btn.removeEventListener("click",_onClick_indi);
+
         }
     }
 

@@ -250,7 +250,7 @@ var CheckinController = function(){
         var json = JSON.parse(response.target.responseText);
         var user_status_code = json.user.status;
         if(
-            user_status_code.toLowerCase() == ("C00").toLowerCase() ||
+            //user_status_code.toLowerCase() == ("C00").toLowerCase() ||
             user_status_code.toLowerCase() == ("C10").toLowerCase() ||
 
             user_status_code.toLowerCase() == ("C01").toLowerCase() ||
