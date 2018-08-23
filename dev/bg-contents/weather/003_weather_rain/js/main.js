@@ -26,6 +26,9 @@ var Weather_Rain = function(args){
     var lines = [];
 
     var isDown = false;
+    var isLight = false;
+    var lightning = false;
+    var timerNum = 0;
 
     var _setting = function(){
         _setStage();
@@ -33,8 +36,9 @@ var Weather_Rain = function(args){
         _addEvent();
 
         if(rainPow > 0){
-            var lightning = document.querySelector(".lightning");
-            lightning.classList.add("flashit");
+            lightning = document.querySelector(".lightning");
+
+            isLight = true;
         }
     };
 
@@ -143,6 +147,21 @@ var Weather_Rain = function(args){
             rainSpd*3 < curRainSpd ? curRainSpd : curRainSpd+=5
         } else {
             rainSpd > curRainSpd ? curRainSpd = rainSpd : curRainSpd-=3
+        }
+
+        timerNum++;
+        if(isLight){
+            if(timerNum == 10){
+                lightning.classList.add("flashit");
+                console.log("ururururu")
+            } else if(timerNum == 100){
+                lightning.classList.remove("flashit");
+                console.log("del")
+            } else if(timerNum == 500){
+                timerNum = 0;
+                console.log("reset")
+            }
+
         }
     };
 
