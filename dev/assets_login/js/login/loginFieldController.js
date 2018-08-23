@@ -8,18 +8,17 @@ var LoginFieldController = function(){
     var CLASS_NAME = "[ LoginFieldController ]";
     var _form = document.getElementById('id_login');
 
+    var _ID_TIMEOUT = 0;
+
     function _init(){
 
         input_user_id = document.getElementById('user_id');
         input_user_pw = document.getElementById('user_pw');
 
         _setUrl();
-
         _addEvent();
-        //setFocus_id();
-        setTimeout(function(){
-             setFocus_id();
-         }, 500);
+
+        _ID_TIMEOUT = setTimeout(setFocus_id, 1000);
     }
 
     function _setUrl(){
@@ -41,6 +40,8 @@ var LoginFieldController = function(){
         //input_user_pw.addEventListener( 'keypress', _keypressPwd );
 
         _form.addEventListener( 'submit',  _onSubmit);
+
+        input_user_pw.addEventListener("focusin", _onFocus_PW);
     }
 
     function setFocus_id(){
@@ -56,6 +57,11 @@ var LoginFieldController = function(){
             input_user_pw.focus();
             input_user_pw.select();
         }
+    }
+
+    function _onFocus_PW(){
+        //console.log("_onFocus_PW");
+        clearTimeout(_ID_TIMEOUT);
     }
 
     function _keypressId( $evt ) {
