@@ -129,26 +129,36 @@ var LoginInfoController = function(){
     }
     function setNotice(json_notice){
 
-        if(json_notice != undefined && json_notice != null && json_notice.title != undefined && json_notice.title != null && json_notice.title.length > 0){
-            _json_notice = json_notice;
-            _isHasNotice = true;
+        if(json_notice != undefined && json_notice != null && json_notice.title != undefined && json_notice.title != null && json_notice.dec != undefined && json_notice.dec != null) {
 
+            _json_notice = json_notice;
+            _isHasNotice = false;
 
             var txt_con = _stage_notice.querySelector(".txt-notice");
             var inner = "";
             for(var i=0; i<_json_notice.title.length; i++){
-                inner = inner + "<span>" + _json_notice.title[i] + "</span>";
+                if(_json_notice.title[i] != null && _json_notice.title[i] != "") {
+                    inner = inner + "<span>" + _json_notice.title[i] + "</span>";
+                    _isHasNotice = true;
+                }
             }
             txt_con.innerHTML = inner;
 
             var txt_con_sub = _stage_notice.querySelector(".txt-sub");
             inner = "";
             for(var i=0; i<_json_notice.dec.length; i++){
-                inner = inner + "<span>" + _json_notice.dec[i] + "</span>";
+                if(_json_notice.dec[i] != null && _json_notice.dec[i] != "") {
+                    inner = inner + "<span>" + _json_notice.dec[i] + "</span>";
+                    _isHasNotice = true;
+                }
             }
-            txt_con_sub.innerHTML = inner;
 
-            df.lab.Util.removeClass(_stage_notice, "hide");
+            if(_isHasNotice) {
+                txt_con_sub.innerHTML = inner;
+                df.lab.Util.removeClass(_stage_notice, "hide");
+            }else{
+                df.lab.Util.addClass(_stage_notice, "hide");
+            }
         }else{
             df.lab.Util.addClass(_stage_notice, "hide");
         }

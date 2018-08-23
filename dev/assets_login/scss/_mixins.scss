@@ -6,7 +6,7 @@
   transition-delay: #{ $delay };
 }
 
-@mixin mx_transform_transY($prop_opacity, $prop_y, $time:1000ms) {
+@mixin mx_transform_transY($prop_opacity, $prop_y, $time:400ms) {
 
   opacity: $prop_opacity;
 
@@ -16,7 +16,7 @@
   -o-transform: translateY($prop_y);
   transform: translateY($prop_y);
 
-  @include mx_transition(#{ $time + "," $time }, "opacity, transform", "ease-out, ease-out");
+  @include mx_transition(#{ $time + "," $time }, "opacity, transform", "#{$vars_easeOutCubic}" );
 }
 
 @mixin breakpoint($point) {

@@ -16,10 +16,10 @@ var LoginFieldController = function(){
         _setUrl();
 
         _addEvent();
-
+        //setFocus_id();
         setTimeout(function(){
-            setFocus_id();
-        }, 500);
+             setFocus_id();
+         }, 500);
     }
 
     function _setUrl(){

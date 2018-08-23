@@ -31,12 +31,20 @@ var LoginBgController = function(con_iframe, json_data){
     }
 
     function setArr_bgList(json) {
+
+        var params = df.lab.Util.getParams(); // browser params
+
         if (json_data){
 
+            var json_test_bg = json.info.test.bg_contents;
             var json_today_bg = json.info.today.bg_contents;
             var json_birthday = json.info.birthday;
 
-            if(json_today_bg != undefined && json_today_bg != null && json_today_bg.length > 0){
+            if(json_test_bg != undefined && json_test_bg != null && json_test_bg.length > 0 && params.test == "true"){
+                console.log(CLASS_NAME + " : ", "type : " , "test bg");
+                arr_bg_list = arr_bg_list.concat(json_test_bg);
+
+            }else if(json_today_bg != undefined && json_today_bg != null && json_today_bg.length > 0){
 
                 console.log(CLASS_NAME + " : ", "type : " , "custom bg");
                 arr_bg_list = arr_bg_list.concat(json_today_bg);
