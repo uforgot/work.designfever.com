@@ -8,6 +8,7 @@ var VideoPlayer = function(dataObj){
 
     var _html = document.querySelector("html");
     var _isMobile = _html.classList.contains("mobile");
+    var _checkTimer;
 
     var _setting = function(){
         _setElement(!only_video ? _checkPlayType() : true);
@@ -22,12 +23,14 @@ var VideoPlayer = function(dataObj){
 
             var source = document.querySelector("video source");
             source.src = _isMobile && video_low_url ? video_low_url : video_url;
+
             // video.src = video_url;
             // video.crossOrigin = 'anonymous';
-            video.play();
+            video.load();
             video.oncanplay = function() {
                 video.play();
             };
+            _checkTimer = setInterval(function(){videoStatus(video)}, 1000);
 
 
         } else {
@@ -35,7 +38,17 @@ var VideoPlayer = function(dataObj){
             var wrapper = document.querySelector(".video-player .video-wrapper");
             wrapper.innerHTML = "";
             wrapper.style.backgroundImage = "url("+image_url+")";
+        }
+    };
 
+
+    var videoStatus = function(video){
+        if(video.readyState == 0){
+            console.log(video.paused, video.readyState)
+            /*video.play();
+            video.style.opacity = 0.5*/
+        } else {
+            clearInterval(_checkTimer);
         }
     };
 
