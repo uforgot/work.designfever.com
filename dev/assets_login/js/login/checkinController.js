@@ -244,6 +244,8 @@ var CheckinController = function(){
         var user_status_code = json.user.status;
         if(
             //user_status_code.toLowerCase() == ("C00").toLowerCase() ||
+            user_status_code.toLowerCase() == ("L00").toLowerCase() ||
+
             user_status_code.toLowerCase() == ("C10").toLowerCase() ||
 
             user_status_code.toLowerCase() == ("C01").toLowerCase() ||
