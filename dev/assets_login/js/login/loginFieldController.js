@@ -1,4 +1,4 @@
-var LoginFieldController = function(){
+module.exports = function(){
 
     var KEYBOARD_ENTER = 13;
     var KEYBOARD_TAB = 9;

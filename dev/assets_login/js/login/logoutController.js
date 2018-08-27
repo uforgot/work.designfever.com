@@ -1,4 +1,4 @@
-var LogoutController = function(){
+module.exports = function(){
 
     var CLASS_NAME = "[ LogoutController ]";
     var _form = document.getElementById('id_form_logout');

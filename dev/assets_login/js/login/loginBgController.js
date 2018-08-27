@@ -1,4 +1,4 @@
-var LoginBgController = function(con_iframe, json_data){
+module.exports = function(con_iframe, json_data){
 
     var CLASS_NAME = "[ LoginBgController ]";
 

@@ -1,4 +1,4 @@
-var LoginInfoController = function(){
+module.exports = function(){
 
     var CLASS_NAME = "[ LoginInfoController ]";
 

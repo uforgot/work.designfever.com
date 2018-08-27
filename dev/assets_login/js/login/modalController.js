@@ -1,4 +1,4 @@
-var ModalController = function(){
+module.exports = function(){
 
     // Get the modal
     var _modal = document.getElementById('id_modal');

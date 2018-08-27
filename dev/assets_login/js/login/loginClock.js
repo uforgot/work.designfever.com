@@ -1,4 +1,4 @@
-var LoginClock = function(con, json_data){
+module.exports = function(con, json_data){
 
     var CLASS_NAME = "[ LoginClock ]";
 

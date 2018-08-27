@@ -1,4 +1,4 @@
-var LoginUtilController = function(){
+module.exports = function(){
 
     var sec_con = document.querySelector(".sec-util");
 

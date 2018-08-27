@@ -1,4 +1,4 @@
-var CheckinController = function(){
+module.exports = function(){
 
     var CLASS_NAME = "[ CheckinController ]";
 

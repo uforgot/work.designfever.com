@@ -1,3 +1,13 @@
+import LoginClock from './login/loginClock';
+import LoginDate from './login/loginDate';
+import LoginBgController from './login/loginBgController';
+import LoginFieldController from './login/loginFieldController';
+import LogoutController from './login/logoutController';
+import CheckinController from './login/checkinController';
+import LoginInfoController from './login/loginInfoController';
+import LoginUtilController from './login/loginUtilController';
+import ModalController from './login/modalController';
+
 window.df = window.df || {};
 window.df.workgroup = window.df.workgroup || {};
 
