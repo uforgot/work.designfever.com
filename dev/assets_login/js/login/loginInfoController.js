@@ -367,7 +367,7 @@ module.exports = function(){
 
             _setIndiIndex(_curIndex);
 
-            console.log(CLASS_NAME + " changeStage : ",_curIndex, " / _isHasNotice : ", _isHasNotice, " / _isHasBirthday : ", _isHasBirthday);
+            //console.log(CLASS_NAME + " changeStage : ",_curIndex, " / _isHasNotice : ", _isHasNotice, " / _isHasBirthday : ", _isHasBirthday);
             _dispatchEvent();
 
             if(!_isHasNotice && !_isHasBirthday) {
