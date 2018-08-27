@@ -170,7 +170,7 @@ module.exports = function(){
             _json_birthday = json_birthday;
             _isHasBirthday = true;
 
-            var str_notice = ["¿À´Ã", "»ıÀÏÀ»", "ÃàÇÏ µå·Á¿ä."];
+            var str_notice = ["ì˜¤ëŠ˜", "ìƒì¼ì„", "ì¶•í•˜ ë“œë ¤ìš”."];
 
             var inner = "";
 
@@ -189,8 +189,8 @@ module.exports = function(){
 
                 if(i==0) inner = inner + "<span>";
 
-                if(i == 0) inner = inner + _json_birthday[i].name + " " + _json_birthday[i].position + "´Ô";
-                else if(i > 0) inner = inner + ", " + _json_birthday[i].name + " " + _json_birthday[i].position + "´Ô";
+                if(i == 0) inner = inner + _json_birthday[i].name + " " + _json_birthday[i].position + "ë‹˜";
+                else if(i > 0) inner = inner + ", " + _json_birthday[i].name + " " + _json_birthday[i].position + "ë‹˜";
 
                 if(i == tot-1) inner = inner + "</span>";
             }

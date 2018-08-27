@@ -1,12 +1,12 @@
-import LoginClock from './login/loginClock';
-import LoginDate from './login/loginDate';
-import LoginBgController from './login/loginBgController';
-import LoginFieldController from './login/loginFieldController';
-import LogoutController from './login/logoutController';
-import CheckinController from './login/checkinController';
-import LoginInfoController from './login/loginInfoController';
-import LoginUtilController from './login/loginUtilController';
-import ModalController from './login/modalController';
+import LoginClock from './loginClock';
+import LoginDate from './loginDate';
+import LoginBgController from './loginBgController';
+import LoginFieldController from './loginFieldController';
+import LogoutController from './logoutController';
+import CheckinController from './checkinController';
+import LoginInfoController from './loginInfoController';
+import LoginUtilController from './loginUtilController';
+import ModalController from './modalController';
 
 window.df = window.df || {};
 window.df.workgroup = window.df.workgroup || {};
@@ -208,7 +208,7 @@ window.df.workgroup.login = function(json_data){
     function _resetBrowserTitle(){
 
         if(_json_data.user.isLoggedIn){
-            //document.title = _json_data.user.name + " " + _json_data.user.position+"´Ô.";
+            //document.title = _json_data.user.name + " " + _json_data.user.position+"ë‹˜.";
             document.title = _title_origin;
         }else{
             document.title = _title_origin;

@@ -2,7 +2,7 @@ module.exports = function(){
 
     var CLASS_NAME = "[ LogoutController ]";
     var _form = document.getElementById('id_form_logout');
-    var TXT_LOGOUT_COMP = "·Î±× ¾Æ¿ô µÇ¾ú½À´Ï´Ù.";
+    var TXT_LOGOUT_COMP = "ë¡œê·¸ ì•„ì›ƒ ë˜ì—ˆìŠµë‹ˆë‹¤.";
 
     function _init(){
         _setUrl();
@@ -73,7 +73,7 @@ module.exports = function(){
 
         var status = {
             isWarning : false,
-            text: "Ç¥½ÃÇÒ ¸Ş¼¼Áö°¡ ¾ø½À´Ï´Ù."
+            text: "í‘œì‹œí•  ë©”ì„¸ì§€ê°€ ì—†ìŠµë‹ˆë‹¤."
         };
         var json = JSON.parse(response.target.responseText);
         var user_status_code = json.user.status;

@@ -1,20 +1,21 @@
 const webpack = require('webpack');
 const path = require('path');
+var EncodingPlugin = require('webpack-encoding-plugin');
 
 module.exports = {
     entry: {
 
         // common
         "df.workgroup.login.common": [
-            './df.workgroup.Preset.js',
-            './df.workgroup.GlobalVars.js',
-            './df.workgroup.Util.js',
-            './df.workgroup.login.LoadInfoData.js'
+            '../common/df.workgroup.Preset.js',
+            '../common/df.workgroup.GlobalVars.js',
+            '../common/df.workgroup.Util.js',
+            '../common/df.workgroup.login.LoadInfoData.js'
         ],
-        "df.workgroup.login.custom": ['./df.workgroup.login.js']
+        "df.workgroup.login": ['../login/df.workgroup.login.js']
     },
     output: {
-        path: path.resolve(__dirname, './'),
+        path: path.resolve(__dirname, '../'),
         filename: '[name].bundle.js'
     },
     module: {
@@ -22,7 +23,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 include: [
-                    path.resolve(__dirname, './login')
+                    path.resolve(__dirname, '../login')
                 ],
                 exclude: /node_modules/,
                 use: {
@@ -33,6 +34,9 @@ module.exports = {
             }
         ]
     },
+    plugins: [new EncodingPlugin({
+        encoding: 'EUC-KR'
+    })],
     optimization: {
         minimize: true,
         //splitChunks: {}

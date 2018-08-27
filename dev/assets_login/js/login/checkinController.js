@@ -40,13 +40,13 @@ module.exports = function(){
             if(_json_user.isCheckin){
                 var txt_checkin_time = document.getElementById("id_checkin_time");
                 var date_checkin = new Date(_json_user.checkin_time);
-                txt_checkin_time.textContent = date_checkin.getHours() + "½Ã " +  window.df.workgroup.Util.addZeroNumber(date_checkin.getMinutes()) + "ºÐ";
+                txt_checkin_time.textContent = date_checkin.getHours() + "ì‹œ " +  window.df.workgroup.Util.addZeroNumber(date_checkin.getMinutes()) + "ë¶„";
 
                 // checkout able time
                 var txt_checkout_able_time = document.getElementById("id_checkout_able_time");
                 var date_checkout_able = new Date(_json_user.checkout_able_time);
 
-                txt_checkout_able_time.textContent = date_checkout_able.getHours() + "½Ã " +  window.df.workgroup.Util.addZeroNumber(date_checkout_able.getMinutes()) + "ºÐ";
+                txt_checkout_able_time.textContent = date_checkout_able.getHours() + "ì‹œ " +  window.df.workgroup.Util.addZeroNumber(date_checkout_able.getMinutes()) + "ë¶„";
 
                 _isCjeckin = true;
 
@@ -63,7 +63,7 @@ module.exports = function(){
                         hh = ((date_checkout.getDate() - date_checkin.getDate()) * 24 ) + date_checkout.getHours();
                     }
 
-                    txt_checkout_time.textContent = hh + "½Ã " +  window.df.workgroup.Util.addZeroNumber(date_checkout.getMinutes()) + "ºÐ";
+                    txt_checkout_time.textContent = hh + "ì‹œ " +  window.df.workgroup.Util.addZeroNumber(date_checkout.getMinutes()) + "ë¶„";
                 }
             }else{
                 stopSetTimeBar();
@@ -238,7 +238,7 @@ module.exports = function(){
 
         var status = {
             isWarning : false,
-            text: "Ç¥½ÃÇÒ ¸Þ¼¼Áö°¡ ¾ø½À´Ï´Ù."
+            text: "í‘œì‹œí•  ë©”ì„¸ì§€ê°€ ì—†ìŠµë‹ˆë‹¤."
         };
         var json = JSON.parse(response.target.responseText);
         var user_status_code = json.user.status;
