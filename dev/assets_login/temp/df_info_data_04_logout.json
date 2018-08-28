@@ -86,87 +86,87 @@
       {
         "code": "L00",
         "type": "N",
-        "text": "�α��� �Ǿ� ���� ����."
+        "text": "로그인 되어 있지 않음."
       },
       {
         "code": "L01",
         "type": "E",
-        "text": "���̵� ���ų� �ùٸ��� ����."
+        "text": "아이디가 없거나 올바르지 않음."
       },
       {
         "code": "L02",
         "type": "E",
-        "text": "�н����尡 ���ų� �ùٸ��� ����."
+        "text": "패스워드가 없거나 올바르지 않음."
       },
       {
         "code": "L03",
         "type": "E",
-        "text": "Ż���� ȸ��."
+        "text": "탈퇴한 회원."
       },
       {
         "code": "L04",
         "type": "N",
-        "text": "�α׾ƿ� �Ǿ����ϴ�"
+        "text": "로그아웃 되었습니다"
       },
       {
         "code": "C00",
         "type": "N",
-        "text": "���üũ�� �Ϸ�Ǿ����ϴ�."
+        "text": "출근체크가 완료되었습니다."
       },
       {
         "code": "C01",
         "type": "W",
-        "text": "���üũ�� �Ϸ�Ǿ����ϴ�. ���ٹ��� ���üũ�� ���� �ʾҽ��ϴ�. ���ٹ��� ��ٽð��� �濵�������� �˷��ּ���."
+        "text": "출근체크가 완료되었습니다. 전근무일 퇴근체크가 되지 않았습니다. 전근무일 퇴근시간을 경영지원팀에 알려주세요."
       },
       {
         "code": "C02",
         "type": "W",
-        "text": "�����üũ�� �系������ �����մϴ�."
+        "text": "출퇴근체크는 사내에서만 가능합니다."
       },
       {
         "code": "C03",
         "type": "W",
-        "text": "�ް��踦 �����ϼ̽��ϴ�. �����üũ�� ���Ͻø� �ް��� ������ ��û�� �ּ���."
+        "text": "휴가계를 제출하셨습니다. 출퇴근체크를 원하시면 휴가계 삭제를 요청해 주세요."
       },
       {
         "code": "C04",
         "type": "W",
-        "text": "�̹� ���üũ �ϼ̽��ϴ�."
+        "text": "이미 출근체크 하셨습니다."
       },
       {
         "code": "C05",
         "type": "E",
-        "text": "���üũ �����Դϴ�. �������� �������ּ���."
+        "text": "출근체크 오류입니다. 개발팀에 문의해주세요."
       },
       {
         "code": "C10",
         "type": "N",
-        "text": "���üũ�� �Ϸ� �Ǿ����ϴ�."
+        "text": "퇴근체크가 완료 되었습니다."
       },
       {
         "code": "C11",
         "type": "W",
-        "text": "�������üũ�� ���� �����̽��ϴ�. ����������� �濵�������� �˷��ּ���."
+        "text": "오늘출근체크를 하지 않으셨습니다. 출퇴근정보를 경영지원팀에 알려주세요."
       },
       {
         "code": "C12",
         "type": "W",
-        "text": "�ְ��������� �ۼ����� �����̽��ϴ� �ۼ� �Ŀ� ������ֽñ� �ٶ��ϴ�."
+        "text": "주간보고서를 작성하지 않으셨습니다 작성 후에 퇴근해주시기 바랍니다."
       },
       {
         "code": "C13",
         "type": "E",
-        "text": "���üũ���� ������ȣ : 1"
+        "text": "퇴근체크오류 오류번호 : 1"
       },
       {
         "code": "C14",
         "type": "E",
-        "text": "���üũ���� ������ȣ : 2"
+        "text": "퇴근체크오류 오류번호 : 2"
       },
       {
         "code": "C15",
         "type": "E",
-        "text": "�������"
+        "text": "외출관련"
       }
     ],
 
@@ -237,14 +237,14 @@
     },
     "birthday":[
       {
-        "name": "�ѿ���",
+        "name": "한영수",
         "team": "LAB",
-        "position": "����"
+        "position": "실장"
       },
       {
-        "name": "������",
+        "name": "박현일",
         "team": "LAB",
-        "position": "����"
+        "position": "프로"
       }
     ],
 
@@ -255,8 +255,8 @@
         {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
       ],
       "notice": {
-        "title": ["������", "�ٴڼ��̳���", "�����ϴ�."],
-        "dec": ["���� 4�� 30�б���", "����1�� �ٴ� ���̳��Ƿ� ���ּ���.", "- �濵������"]
+        "title": ["오늘은", "바닥세미나가", "열립니다."],
+        "dec": ["오후 4시 30분까지", "지하1층 바닥 세미나실로 모여주세요.", "- 경영지원팀"]
       }
     },
     "test":{

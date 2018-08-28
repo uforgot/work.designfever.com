@@ -54,8 +54,6 @@ window.df.workgroup.login.LoadInfoData = (function(){
         window.df.workgroup.GlobalVars.isLoaded = true;
         window.df.workgroup.GlobalVars.infoData = actual_JSON;
 
-        var el_html = document.querySelector('html');
-        var isDesktop = window.df.lab.Util.hasClass(el_html, 'desktop');
 
         var isLoggedIn = false;
         var json_data = window.df.workgroup.GlobalVars.infoData;
@@ -67,17 +65,24 @@ window.df.workgroup.login.LoadInfoData = (function(){
             }
         }
 
-        //console.log(CLASS_NAME + " isDesktop : " , isDesktop, " / isLoggedIn : ", isLoggedIn);
+        // if is desktop
+
+        var el_html = document.querySelector('html');
+        var isDesktop = window.df.lab.Util.hasClass(el_html, 'desktop');
 
         if(isLoggedIn){
 
-            if(isDesktop){
-                redirectToMain();
+            if(isDesktop && Detectizr.device.type == "desktop"){
+                //redirectToMain();
+                //return;
 
             }else if(json_data.user.isAdminAccount){
-                redirectToMain();
+                //redirectToMain();
+                //return;
             }
         }
+
+        // else -
 
         _dispatchOnLoad();
     }
@@ -96,7 +101,7 @@ window.df.workgroup.login.LoadInfoData = (function(){
             //console.log(CLASS_NAME + " go to main url (get local) : ", url);
         }
         console.log(CLASS_NAME + " go to main url : ", url);
-        //window.location.href = url;
+        window.location.href = url;
         return;
     }
 

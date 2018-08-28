@@ -36,6 +36,8 @@ window.df.workgroup.login = function(json_data){
     var _modalController = new ModalController();
 
     var _today = { YY:0, MM:0, DD:0, DW:0, hh:0, mm:0, ss:0 };
+    var _save_DD;
+    var _isChangeToTomorow
 
     var _date_now;
     var _ID_clock;
@@ -46,12 +48,7 @@ window.df.workgroup.login = function(json_data){
 
         _title_origin = document.title;
 
-        if(_json_data.info != undefined && _json_data.info.date != undefined && _json_data.info.date.server_time != undefined){
-
-            _offsetTime = _json_data.info.date.server_time - new Date().getTime();
-
-            console.log(CLASS_NAME + " [server time] : ", _json_data.info.date.server_time, " [client time] : ", new Date().getTime(), " [_offsetTime] : ", _offsetTime);
-        }
+        setOffsetTime();
 
         _startTimer();
 
@@ -73,6 +70,17 @@ window.df.workgroup.login = function(json_data){
         addEvent();
     }
 
+    function setOffsetTime(){
+        if(_json_data.info != undefined &&
+            _json_data.info.date != undefined &&
+            _json_data.info.date.server_time != undefined){
+
+            _offsetTime = _json_data.info.date.server_time - new Date().getTime();
+
+            console.log(CLASS_NAME + " [server time] : ", _json_data.info.date.server_time, " [client time] : ", new Date().getTime(), " [_offsetTime] : ", _offsetTime);
+        }
+    }
+
     function addEvent(){
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOGIN, _onLogin);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHECKIN, _onCheckin);
@@ -88,6 +96,8 @@ window.df.workgroup.login = function(json_data){
         console.log(CLASS_NAME + " << _resetData>> ", actual_JSON);
         window.df.workgroup.GlobalVars.infoData = actual_JSON;
         _json_data = window.df.workgroup.GlobalVars.infoData;
+
+        setOffsetTime();
     }
 
     function _onLogin(evt){
@@ -178,6 +188,25 @@ window.df.workgroup.login = function(json_data){
 
         console.log(CLASS_NAME , " user : isLoggedIn - ", _json_data.user.isLoggedIn, " / isCheckin - ", _json_data.user.isCheckin , " / isCheckout", _json_data.user.isCheckout);
 
+        var el_html = document.querySelector('html');
+        var isDesktop = window.df.lab.Util.hasClass(el_html, 'desktop');
+
+        // if is desktop
+
+        if(_json_data.user.isLoggedIn){
+
+            if(isDesktop && Detectizr.device.type == "desktop"){
+                //redirectToMain();
+                //return;
+
+            }else if(json_data.user.isAdminAccount){
+                //redirectToMain();
+                //return;
+            }
+        }
+
+        // else -
+
         _resetBrowserTitle();
 
         _loginInfoController.resetData(_json_data.info.today.notice, _json_data.info.birthday);
@@ -203,6 +232,23 @@ window.df.workgroup.login = function(json_data){
             _setLayout_Logout();
         }
 
+    }
+
+    function redirectToMain(){
+
+        var url = "";
+        if(_json_data.preset != undefined &&
+            _json_data.preset.main_url != undefined){
+
+            url = _json_data.preset.main_url;
+            //console.log(CLASS_NAME + " go to main url (get server) : ", url);
+        }else{
+            url = window.df.workgroup.Preset.main_url;
+            //console.log(CLASS_NAME + " go to main url (get local) : ", url);
+        }
+        console.log(CLASS_NAME + " go to main url : ", url);
+        window.location.href = url;
+        return;
     }
 
     function _resetBrowserTitle(){
@@ -238,6 +284,8 @@ window.df.workgroup.login = function(json_data){
         _today.hh = _date_now.getHours();
         _today.mm = _date_now.getMinutes();
         _today.ss = _date_now.getSeconds();
+
+        _save_DD = _today.DD;
 
         window.df.workgroup.GlobalVars.time_now = _date_now.getTime();
 

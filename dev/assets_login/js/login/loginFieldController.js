@@ -18,7 +18,9 @@ module.exports = function(){
         _setUrl();
         _addEvent();
 
-        _ID_TIMEOUT = setTimeout(setFocus_id, 1000);
+        var el_html = document.querySelector('html');
+        var isDesktop = window.df.lab.Util.hasClass(el_html, 'desktop');
+        if(isDesktop) _ID_TIMEOUT = setTimeout(setFocus_id, 1000);
     }
 
     function _setUrl(){
