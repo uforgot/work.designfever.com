@@ -98,7 +98,7 @@ module.exports = function(){
         //alert('log out comp');
         setTimeout(function(){
             window.location.reload (true);
-            }, 50);
+            }, 10);
     }
 
     function _showLogoutBtn(){

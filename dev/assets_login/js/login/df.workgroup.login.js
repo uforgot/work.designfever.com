@@ -36,11 +36,12 @@ window.df.workgroup.login = function(json_data){
     var _modalController = new ModalController();
 
     var _today = { YY:0, MM:0, DD:0, DW:0, hh:0, mm:0, ss:0 };
-    var _save_DD;
-    var _isChangeToTomorow
+    var _save_DD = null;
+    var _isChangeToTomorow = false;
 
     var _date_now;
-    var _ID_clock;
+    var _ID_clock = 0;
+    var _ID_refresh = 0;
 
     var _title_origin;
 
@@ -49,8 +50,6 @@ window.df.workgroup.login = function(json_data){
         _title_origin = document.title;
 
         setOffsetTime();
-
-        _startTimer();
 
         _bgControll.init();
         _clock.init(_today);
@@ -66,6 +65,7 @@ window.df.workgroup.login = function(json_data){
         _modalController.init();
 
         startMotion();
+        _startTimer();
 
         addEvent();
     }
@@ -165,19 +165,19 @@ window.df.workgroup.login = function(json_data){
 
     function startMotion(){
 
+        _updateStatus();
+
         var con_header = document.querySelector('header');
         setTimeout(function(){df.lab.Util.addClass(con_header, window.df.workgroup.Preset.class_name.showIn);}, 10);
 
         var con_info = document.querySelector('.sec-info');
         setTimeout(function(){
             df.lab.Util.addClass(con_info, window.df.workgroup.Preset.class_name.showIn);
-            _updateStatus();
         }, 0);
 
         var con_login = document.querySelector('.sec-login');
         setTimeout(function(){
             df.lab.Util.addClass(con_login, window.df.workgroup.Preset.class_name.showIn);
-            _updateStatus();
         }, 10);
 
         var con_footer = document.querySelector('footer');
@@ -187,6 +187,8 @@ window.df.workgroup.login = function(json_data){
     function _updateStatus(){
 
         console.log(CLASS_NAME , " user : isLoggedIn - ", _json_data.user.isLoggedIn, " / isCheckin - ", _json_data.user.isCheckin , " / isCheckout", _json_data.user.isCheckout);
+
+        _resetChangeDateCheck();
 
         var el_html = document.querySelector('html');
         var isDesktop = window.df.lab.Util.hasClass(el_html, 'desktop');
@@ -227,7 +229,8 @@ window.df.workgroup.login = function(json_data){
                     _setLayout_Checkout();
                 }
             }
-        }else{
+        }
+        else{
             df.lab.Util.removeClass(sec_login, 'logged');
             _setLayout_Logout();
         }
@@ -285,6 +288,12 @@ window.df.workgroup.login = function(json_data){
         _today.mm = _date_now.getMinutes();
         _today.ss = _date_now.getSeconds();
 
+        //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ", _today.DD , " / " , _save_DD);
+
+        if(_isChangeToTomorow != true && _save_DD != _today.DD && _save_DD != null){
+            _startChangeDateCheck();
+        }
+
         _save_DD = _today.DD;
 
         window.df.workgroup.GlobalVars.time_now = _date_now.getTime();
@@ -292,8 +301,51 @@ window.df.workgroup.login = function(json_data){
         _ID_clock = setTimeout(_updateTimer, 500);
     }
 
+    function _startChangeDateCheck(){
+
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Change Date ");
+
+        _isChangeToTomorow = true;
+
+        document.removeEventListener("mousemove", onMouseMove_changeDate);
+        document.addEventListener("mousemove", onMouseMove_changeDate);
+        document.removeEventListener("touchstart", onMouseMove_changeDate);
+        document.addEventListener("touchstart", onMouseMove_changeDate);
+        document.removeEventListener("touchmove", onMouseMove_changeDate);
+        document.addEventListener("touchmove", onMouseMove_changeDate);
+
+        _delayAutoRefresh();
+    }
+    function _delayAutoRefresh(){
+
+        var DELAY_TIME = 10000;
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> _delayAutoRefresh : ", DELAY_TIME);
+
+        clearTimeout(_ID_refresh);
+        _ID_refresh = setTimeout(function(){
+            console.log("_Refresh");
+            //window.location.reload (true);
+        }, DELAY_TIME);
+    }
+
+    function _resetChangeDateCheck(){
+
+        if(_isChangeToTomorow) {
+            console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> _resetChangeDateCheck");
+            clearTimeout(_ID_refresh);
+            document.removeEventListener("mousemove", onMouseMove_changeDate);
+            document.removeEventListener("touchstart", onMouseMove_changeDate);
+            document.removeEventListener("touchmove", onMouseMove_changeDate);
+        }
+
+        _isChangeToTomorow = false;
+    }
+
+    function onMouseMove_changeDate(evt){
+        _delayAutoRefresh();
+    }
+
     return {
-        init: _init,
-        setLayout_Logout: _setLayout_Logout
+        init: _init
     }
 };
