@@ -1,4 +1,4 @@
-module.exports = function(){
+module.exports = function () {
 
     var CLASS_NAME = "[ CheckinController ]";
 
@@ -15,17 +15,17 @@ module.exports = function(){
 
     var _json_user = null;
 
-    function _init(){
+    function _init() {
         _setInfo();
         _setUrl();
-        _form.addEventListener( 'submit',  _onSubmit);
-        _form_out.addEventListener( 'submit',  _onSubmit_out);
-        _btn_checkout.addEventListener( 'click',  _onClick_btn_checkout);
+        _form.addEventListener('submit', _onSubmit);
+        _form_out.addEventListener('submit', _onSubmit_out);
+        _btn_checkout.addEventListener('click', _onClick_btn_checkout);
         disable_input();
         disable_input_out();
     }
 
-    function _setInfo(){
+    function _setInfo() {
         _json_user = window.df.workgroup.GlobalVars.infoData.user;
 
 
@@ -35,135 +35,136 @@ module.exports = function(){
         var txt_position = document.getElementById("id_user_position");
         txt_position.textContent = _json_user.position;
 
-        if(_json_user.isLoggedIn){
+        if (_json_user.isLoggedIn) {
 
-            if(_json_user.isCheckin){
+            if (_json_user.isCheckin) {
                 var txt_checkin_time = document.getElementById("id_checkin_time");
                 var date_checkin = new Date(_json_user.checkin_time);
-                txt_checkin_time.textContent = date_checkin.getHours() + "시 " +  window.df.workgroup.Util.addZeroNumber(date_checkin.getMinutes()) + "분";
+                txt_checkin_time.textContent = date_checkin.getHours() + "시 " + window.df.workgroup.Util.addZeroNumber(date_checkin.getMinutes()) + "분";
 
                 // checkout able time
                 var txt_checkout_able_time = document.getElementById("id_checkout_able_time");
                 var date_checkout_able = new Date(_json_user.checkout_able_time);
 
-                txt_checkout_able_time.textContent = date_checkout_able.getHours() + "시 " +  window.df.workgroup.Util.addZeroNumber(date_checkout_able.getMinutes()) + "분";
+                txt_checkout_able_time.textContent = date_checkout_able.getHours() + "시 " + window.df.workgroup.Util.addZeroNumber(date_checkout_able.getMinutes()) + "분";
 
                 _isCjeckin = true;
 
-                if(!_json_user.isCheckout){
+                if (!_json_user.isCheckout) {
                     startSetTimeBar();
-                }else{
+                } else {
                     stopSetTimeBar();
 
                     var txt_checkout_time = document.getElementById("id_checkout_time");
                     var date_checkout = new Date(_json_user.checkout_time);
 
                     var hh = date_checkout.getHours();
-                    if(date_checkout.getDate() - date_checkin.getDate() > 0){
-                        hh = ((date_checkout.getDate() - date_checkin.getDate()) * 24 ) + date_checkout.getHours();
+                    if (date_checkout.getDate() - date_checkin.getDate() > 0) {
+                        hh = ((date_checkout.getDate() - date_checkin.getDate()) * 24) + date_checkout.getHours();
                     }
 
-                    txt_checkout_time.textContent = hh + "시 " +  window.df.workgroup.Util.addZeroNumber(date_checkout.getMinutes()) + "분";
+                    txt_checkout_time.textContent = hh + "시 " + window.df.workgroup.Util.addZeroNumber(date_checkout.getMinutes()) + "분";
                 }
-            }else{
+            } else {
                 stopSetTimeBar();
             }
-        }else{
+        } else {
             stopSetTimeBar();
         }
     }
 
-    function startSetTimeBar(){
+    function startSetTimeBar() {
         stopSetTimeBar();
         setTimePerBar();
         //_ID_INTERVAL_BAR = setInterval(setTimePerBar, 30000);
         _ID_INTERVAL_BAR = setInterval(setTimePerBar, 1000);
     }
 
-    function setTimePerBar(){
+    function setTimePerBar() {
 
-        if(_json_user.isCheckin){
+        if (_json_user.isCheckin) {
 
             var dis = _json_user.checkout_able_time - _json_user.checkin_time;
             var cur = window.df.workgroup.GlobalVars.time_now - _json_user.checkin_time;
 
             var per = cur / dis;
 
-            if(per < 0) per = 0;
-            if(per > 1) per = 1;
+            if (per < 0) per = 0;
+            if (per > 1) per = 1;
 
-            var per_str = Math.round(per*100) + "%";
+            var per_str = Math.round(per * 100) + "%";
             var cur_bar = document.getElementById("id_per_time");
             cur_bar.style.width = per_str;
 
             _checkAbleTime(per >= 0);
 
-        }else{
+        } else {
             stopSetTimeBar();
         }
     }
 
-    function stopSetTimeBar(){
+    function stopSetTimeBar() {
         _isCjeckin = false;
         clearInterval(_ID_INTERVAL_BAR);
     }
 
-    function _setUrl(){
+    function _setUrl() {
         var json_data = window.df.workgroup.GlobalVars.infoData;
-        if(json_data.preset != undefined &&
+        if (json_data.preset != undefined &&
             json_data.preset.json_url != undefined &&
-            json_data.preset.json_url.checkin != undefined){
+            json_data.preset.json_url.checkin != undefined) {
 
             _form.action = json_data.preset.json_url.checkin;
             //console.log(CLASS_NAME + " action(server) : ", _form.action);
-        }else{
+        } else {
             _form.action = window.df.workgroup.Preset.json_url.checkin;
             //console.log(CLASS_NAME + " action(local) : ", _form.action);
         }
 
-        if(json_data.preset != undefined &&
+        if (json_data.preset != undefined &&
             json_data.preset.json_url != undefined &&
-            json_data.preset.json_url.checkout != undefined){
+            json_data.preset.json_url.checkout != undefined) {
 
             _form_out.action = json_data.preset.json_url.checkout;
             //console.log(CLASS_NAME + " action(server) : ", _form_out.action);
-        }else{
+        } else {
             _form_out.action = window.df.workgroup.Preset.json_url.checkout;
             //console.log(CLASS_NAME + " action(local) : ", _form_out.action);
         }
     }
 
-    function _onClick_btn_checkout($evt){
+    function _onClick_btn_checkout($evt) {
         $evt.preventDefault();
         _submit_out_re();
     }
-    function _onSubmit( $evt ) {
+
+    function _onSubmit($evt) {
         $evt.preventDefault();
         _submit();
     }
 
-    function _submit(){
+    function _submit() {
         loading();
         ajaxPost(_form, onCompSubmit);
         return false;
     }
 
-    function _onSubmit_out( $evt ) {
+    function _onSubmit_out($evt) {
         $evt.preventDefault();
         _submit_out();
     }
 
-    function _submit_out(){
+    function _submit_out() {
         loading_out();
         ajaxPost(_form_out, onCompSubmit_out);
         return false;
     }
 
-    function _submit_out_re(){
+    function _submit_out_re() {
         _submit_out();
     }
 
-    function loading(){
+    function loading() {
 
         var loading = _area_checkin.querySelector('.ui-loading');
         df.lab.Util.addClass(loading, window.df.workgroup.Preset.class_name.showIn);
@@ -171,7 +172,7 @@ module.exports = function(){
         disable_input();
     }
 
-    function loading_out(){
+    function loading_out() {
 
         var loading = _area_checkout.querySelector('.ui-loading');
         df.lab.Util.addClass(loading, window.df.workgroup.Preset.class_name.showIn);
@@ -179,7 +180,7 @@ module.exports = function(){
         disable_input_out();
     }
 
-    function disable_input(){
+    function disable_input() {
 
         var inputs = _form.querySelectorAll('input');
         for (var i = 0; i < inputs.length; i++) {
@@ -187,62 +188,62 @@ module.exports = function(){
         }
     }
 
-    function able_input(){
+    function able_input() {
         var inputs = _form.querySelectorAll('input');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].removeAttribute("disabled");
         }
     }
 
-    function disable_input_out(){
+    function disable_input_out() {
         var inputs = _form_out.querySelectorAll('input');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].setAttribute("disabled", "");
         }
     }
 
-    function able_input_out(){
+    function able_input_out() {
         var inputs = _form_out.querySelectorAll('input');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].removeAttribute("disabled");
         }
     }
 
-    function onCompSubmit(response){
+    function onCompSubmit(response) {
         var loading = _area_checkin.querySelector('.ui-loading');
         df.lab.Util.removeClass(loading, window.df.workgroup.Preset.class_name.showIn);
         _dispatchOnLoad(response);
 
         var status = getStatus(response);
 
-        if(status.isWarning) {
-            console.log("status.text : " , status.text);
+        if (status.isWarning) {
+            console.log("status.text : ", status.text);
             _dispatchOnWarning(status.text);
         }
     }
 
-    function onCompSubmit_out(response){
+    function onCompSubmit_out(response) {
         var loading = _area_checkout.querySelector('.ui-loading');
         df.lab.Util.removeClass(loading, window.df.workgroup.Preset.class_name.showIn);
         _dispatchOnLoad_out(response);
 
         var status = getStatus(response);
 
-        if(status.isWarning) {
+        if (status.isWarning) {
             //console.log("status.text : " , status.text);
             _dispatchOnWarning(status.text);
         }
     }
 
-    function getStatus(response){
+    function getStatus(response) {
 
         var status = {
-            isWarning : false,
+            isWarning: false,
             text: "표시할 메세지가 없습니다."
         };
         var json = JSON.parse(response.target.responseText);
         var user_status_code = json.user.status;
-        if(
+        if (
             //user_status_code.toLowerCase() == ("C00").toLowerCase() ||
             user_status_code.toLowerCase() == ("L00").toLowerCase() ||
 
@@ -259,13 +260,13 @@ module.exports = function(){
             user_status_code.toLowerCase() == ("C13").toLowerCase() ||
             user_status_code.toLowerCase() == ("C14").toLowerCase() ||
             user_status_code.toLowerCase() == ("C15").toLowerCase()
-        ){
+        ) {
             var list = json.preset.status_list;
-            for(var i=0; i<list.length; i++){
-                var item =  list[i];
+            for (var i = 0; i < list.length; i++) {
+                var item = list[i];
                 var code = item.code;
 
-                if(code.toLowerCase() == user_status_code.toLowerCase()){
+                if (code.toLowerCase() == user_status_code.toLowerCase()) {
                     status.isWarning = true;
                     status.text = item.text;
                     break;
@@ -275,31 +276,34 @@ module.exports = function(){
         return status;
     }
 
-    function _dispatchOnWarning(txt){
+    function _dispatchOnWarning(txt) {
         var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_WARNING, {
             detail: {
                 message: txt
-            }});
+            }
+        });
         document.dispatchEvent(event);
     }
 
-    function _dispatchOnLoad(response){
+    function _dispatchOnLoad(response) {
         var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_CHECKIN, {
             detail: {
                 response: response
-            }});
+            }
+        });
         document.dispatchEvent(event);
     }
 
-    function _dispatchOnLoad_out(response){
+    function _dispatchOnLoad_out(response) {
         var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_CHECKOUT, {
             detail: {
                 response: response
-            }});
+            }
+        });
         document.dispatchEvent(event);
     }
 
-    function _showCheckinBtn(){
+    function _showCheckinBtn() {
 
         _setInfo();
         _setUrl();
@@ -309,7 +313,7 @@ module.exports = function(){
         disable_input_out();
     }
 
-    function _showCheckoutBtn(){
+    function _showCheckoutBtn() {
 
         _setInfo();
         _setUrl();
@@ -321,7 +325,7 @@ module.exports = function(){
         //setTimeout(setTimeBar, 1000);
     }
 
-    function _showCheckoutText(){
+    function _showCheckoutText() {
 
         _setInfo();
         _setUrl();
@@ -331,11 +335,11 @@ module.exports = function(){
         disable_input_out();
     }
 
-    function _hideCheckinBtn(){
+    function _hideCheckinBtn() {
         _resetLayout();
     }
 
-    function _resetLayout(){
+    function _resetLayout() {
         df.lab.Util.removeClass(_wrapper, window.df.workgroup.Preset.class_name.showIn);
         df.lab.Util.removeClass(_wrapper, 'checked');
         df.lab.Util.removeClass(_wrapper, 'checkedout');
@@ -344,16 +348,16 @@ module.exports = function(){
         disable_input_out();
     }
 
-    function _checkAbleTime(isAble){
-        if(isAble){
+    function _checkAbleTime(isAble) {
+        if (isAble) {
             //"checkout-able"
             df.lab.Util.addClass(_area_checkout, "checkout-able");
-        }else{
+        } else {
             df.lab.Util.removeClass(_area_checkout, "checkout-able");
         }
     }
 
-    function ajaxPost (form, callback) {
+    function ajaxPost(form, callback) {
         // Collect the form data while iterating over the inputs
         var data = {};
         for (var i = 0, ii = form.length; i < ii; ++i) {

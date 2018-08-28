@@ -1,31 +1,25 @@
-module.exports = function(con, json_data){
+module.exports = function (con, json_data) {
 
     var CLASS_NAME = "[ LoginClock ]";
 
     var _con = con;
 
     var _def_opts = {
-        objectName : "ConectedLines_" + new Date().getTime(),
-        container : document.body,
-        stageWidth : 1920,
-        stageHeight : 1080,
+        objectName: "ConectedLines_" + new Date().getTime(),
+        container: document.body,
+        stageWidth: 1920,
+        stageHeight: 1080,
     };
 
     var _opts = {};
 
-    var _preset = {
-
-    };
+    var _preset = {};
 
     var _vars = {
         count: 0,
         oW: 0,
         oH: 0,
-        clock:{
-            hh:0,
-            mm:0,
-            ss:0
-        }
+        date_now: null
     };
 
     var _pixi = {
@@ -46,19 +40,19 @@ module.exports = function(con, json_data){
 
     var ID_timeout = null;
 
-    function init(today){
+    function init(date) {
         //console.log(CLASS_NAME + " container : ", _con);
         _setting({
-            container : _con,
-            stageWidth:_con.offsetWidth,
-            stageHeight:_con.offsetHeight
+            container: _con,
+            stageWidth: _con.offsetWidth,
+            stageHeight: _con.offsetHeight
         });
-        _updateToday(today);
+        _updateToday(date);
         _addEvent();
         _start();
     }
 
-    var _setting = function(arg){
+    var _setting = function (arg) {
 
         _opts = df.lab.Util.combine_object_value(arg, _def_opts);
 
@@ -67,11 +61,11 @@ module.exports = function(con, json_data){
 
         _setPixi();
 
-        _pixi.mainContainer   = new PIXI.Container();
-        _pixi.clockContainer   = new PIXI.Container();
+        _pixi.mainContainer = new PIXI.Container();
+        _pixi.clockContainer = new PIXI.Container();
         //_pixi.clockContainer.alpha = 0;
 
-        _pixi.app.stage.addChild( _pixi.mainContainer );
+        _pixi.app.stage.addChild(_pixi.mainContainer);
 
         _pixi.render = new PIXI.ticker.Ticker();
         _pixi.render.autoStart = true;
@@ -79,7 +73,6 @@ module.exports = function(con, json_data){
         _pixi.clockGraphic.bar_hh = new PIXI.Graphics();
         _pixi.clockGraphic.bar_mm = new PIXI.Graphics();
         _pixi.clockGraphic.bar_ss = new PIXI.Graphics();
-
 
         _pixi.clockContainer.rotation = Math.radians(-360);
         _pixi.clockGraphic.bar_hh.alpha = 0;
@@ -94,16 +87,16 @@ module.exports = function(con, json_data){
 
         _resetSize(_opts.stageWidth, _opts.stageHeight);
 
-        _opts.container.appendChild( _pixi.app.view );
+        _opts.container.appendChild(_pixi.app.view);
     };
 
-    var _drawBar = function(){
+    var _drawBar = function () {
 
-        var center_x = _opts.stageWidth/2;
-        var center_y = _opts.stageHeight/2;
+        var center_x = _opts.stageWidth / 2;
+        var center_y = _opts.stageHeight / 2;
 
-        _pixi.clockContainer.x  = center_x;
-        _pixi.clockContainer.y  = center_y;
+        _pixi.clockContainer.x = center_x;
+        _pixi.clockContainer.y = center_y;
 
         var half = Math.min(center_x, center_y);
 
@@ -129,29 +122,29 @@ module.exports = function(con, json_data){
 
     };
 
-    var _addEvent = function(){
+    var _addEvent = function () {
 
-        window.onresize = function(event) {
+        window.onresize = function (event) {
             checkSize();
         };
 
-        window.addEventListener("orientationchange", function() {
+        window.addEventListener("orientationchange", function () {
             clearTimeout(ID_timeout);
             ID_timeout = setTimeout(checkSize, 1000);
         }, false);
     };
 
 
-    function checkSize(){
+    function checkSize() {
 
-        if(_vars.oW != _opts.container.offsetWidth || _vars.oH != _opts.container.offsetHeight) {
+        if (_vars.oW != _opts.container.offsetWidth || _vars.oH != _opts.container.offsetHeight) {
             _vars.oW = _opts.container.offsetWidth;
             _vars.oH = _opts.container.offsetHeight;
             _resetSize(_vars.oW, _vars.oH);
         }
     }
 
-    var _settingTxt = function(){
+    var _settingTxt = function () {
         var style_hh = new PIXI.TextStyle({
             fontFamily: 'NanumSquareRound',
             //fontFamily: 'Arial',
@@ -195,19 +188,19 @@ module.exports = function(con, json_data){
         _pixi.txt_ss.alpha = 0;
     };
 
-    var _resetSize = function(w, h){
+    var _resetSize = function (w, h) {
         _opts.stageWidth = w || _opts.stageWidth;
         _opts.stageHeight = h || _opts.stageHeight;
 
-        _pixi.app.view.style.width = _opts.stageWidth+"px";
-        _pixi.app.view.style.height = _opts.stageHeight+"px";
+        _pixi.app.view.style.width = _opts.stageWidth + "px";
+        _pixi.app.view.style.height = _opts.stageHeight + "px";
 
         _drawBar();
 
         _pixi.app.renderer.resize(_opts.stageWidth, _opts.stageHeight);   // * PIXI.settings.RESOLUTION)
     };
 
-    var _setPixi = function() {
+    var _setPixi = function () {
 
         // 네이티브 윈도우 해상도를 기본 해상도로 사용
         // 렌더링 할 때 고밀도 디스플레이를 지원합니다.
@@ -225,7 +218,7 @@ module.exports = function(con, json_data){
             });
     };
 
-    var _start = function(){
+    var _start = function () {
 
         _pixi.mainContainer.addChild(_pixi.clockContainer);
         _pixi.clockContainer.addChild(_pixi.clockGraphic.bar_ss);
@@ -240,18 +233,18 @@ module.exports = function(con, json_data){
 
         var start_delay = 0;
 
-        TweenMax.to(_pixi.clockContainer, 5, {rotation:0, ease:Expo.easeOut, delay:start_delay + 0});
-        TweenMax.to(_pixi.clockGraphic.bar_hh, 2.2, {alpha:1, ease:Expo.easeInOut, delay:start_delay + 0});
-        TweenMax.to(_pixi.clockGraphic.bar_mm, 2.2, {alpha:1, ease:Expo.easeInOut, delay:start_delay + 0.5});
-        TweenMax.to(_pixi.clockGraphic.bar_ss, 2.2, {alpha:1, ease:Expo.easeInOut, delay:start_delay + 1});
+        TweenMax.to(_pixi.clockContainer, 5, {rotation: 0, ease: Expo.easeOut, delay: start_delay + 0});
+        TweenMax.to(_pixi.clockGraphic.bar_hh, 2.2, {alpha: 1, ease: Expo.easeInOut, delay: start_delay + 0});
+        TweenMax.to(_pixi.clockGraphic.bar_mm, 2.2, {alpha: 1, ease: Expo.easeInOut, delay: start_delay + 0.5});
+        TweenMax.to(_pixi.clockGraphic.bar_ss, 2.2, {alpha: 1, ease: Expo.easeInOut, delay: start_delay + 1});
 
-        TweenMax.to(_pixi.clockGraphic.bar_hh.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:start_delay + 0});
-        TweenMax.to(_pixi.clockGraphic.bar_mm.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:start_delay + 0.5});
-        TweenMax.to(_pixi.clockGraphic.bar_ss.scale, 2.2, {x:1, ease:Expo.easeInOut, delay:start_delay + 0.5});
+        TweenMax.to(_pixi.clockGraphic.bar_hh.scale, 2.2, {x: 1, ease: Expo.easeInOut, delay: start_delay + 0});
+        TweenMax.to(_pixi.clockGraphic.bar_mm.scale, 2.2, {x: 1, ease: Expo.easeInOut, delay: start_delay + 0.5});
+        TweenMax.to(_pixi.clockGraphic.bar_ss.scale, 2.2, {x: 1, ease: Expo.easeInOut, delay: start_delay + 0.5});
 
-        TweenMax.to(_pixi.txt_hh, 1.2, {alpha:1, ease:Cubic.easeOut, delay:start_delay + 2});
-        TweenMax.to(_pixi.txt_mm, 1.2, {alpha:1, ease:Cubic.easeOut, delay:start_delay + 2.5});
-        TweenMax.to(_pixi.txt_ss, 1.2, {alpha:1, ease:Cubic.easeOut, delay:start_delay + 3});
+        TweenMax.to(_pixi.txt_hh, 1.2, {alpha: 1, ease: Cubic.easeOut, delay: start_delay + 2});
+        TweenMax.to(_pixi.txt_mm, 1.2, {alpha: 1, ease: Cubic.easeOut, delay: start_delay + 2.5});
+        TweenMax.to(_pixi.txt_ss, 1.2, {alpha: 1, ease: Cubic.easeOut, delay: start_delay + 3});
     };
 
     var _drawCanvas = function () {
@@ -261,32 +254,41 @@ module.exports = function(con, json_data){
         });
     };
 
-    var _updateValue = function(){
+    var _updateValue = function () {
         _vars.count = _vars.count + 1;
     };
 
-    var _updateTime = function(){
+    var _updateTime_txt = function () {
 
-        var angle_hh = 0; //Math.radians((_vars.count*0.2)%360);
-        var angle_mm = 0; //Math.radians((_vars.count*0.5)%360);
-        var angle_ss = 0; //Math.radians((_vars.count*1)%360);
+        // txt
+        _pixi.txt_hh.text = window.df.workgroup.Util.getDate_format(_vars.date_now, "h");
+        _pixi.txt_mm.text = window.df.workgroup.Util.getDate_format(_vars.date_now, "mm");
+        _pixi.txt_ss.text = window.df.workgroup.Util.getDate_format(_vars.date_now, "ss");
+    };
 
+    var _updateTime = function () {
 
-        var degree_s = (_vars.clock.ss/60) * 360;
-        angle_ss = Math.radians((degree_s - 90)%360);
+        _updateTime_txt();
 
-        var degree_m = (_vars.clock.mm/60) * 360;
-        angle_mm = Math.radians((degree_m - 90)%360);
+        var hh = _vars.date_now.getHours();
+        var mm = _vars.date_now.getMinutes();
+        var ss = _vars.date_now.getSeconds();
 
-        var degree_h = ((_vars.clock.hh%12)/12) * 360 + ((_vars.clock.mm/60) * (360 / 12));
-        angle_hh = Math.radians((degree_h - 90)%360);
+        var degree_s = (ss / 60) * 360;
+        var angle_ss = Math.radians((degree_s - 90) % 360);
+
+        var degree_m = (mm / 60) * 360;
+        var angle_mm = Math.radians((degree_m - 90) % 360);
+
+        var degree_h = ((hh % 12) / 12) * 360 + ((mm / 60) * (360 / 12));
+        var angle_hh = Math.radians((degree_h - 90) % 360);
 
         _pixi.clockGraphic.bar_hh.rotation = angle_hh;
         _pixi.clockGraphic.bar_mm.rotation = angle_mm;
         _pixi.clockGraphic.bar_ss.rotation = angle_ss;
 
-        var center_x = _opts.stageWidth/2;
-        var center_y = _opts.stageHeight/2;
+        var center_x = _opts.stageWidth / 2;
+        var center_y = _opts.stageHeight / 2;
 
         var half = Math.min(center_x, center_y);
 
@@ -298,37 +300,27 @@ module.exports = function(con, json_data){
         var point_mm = new PIXI.Point();
         var point_ss = new PIXI.Point();
 
-        // txt
-        _pixi.txt_hh.text = (_vars.clock.hh%12) == 0 ? "12" : (_vars.clock.hh%12);
-        _pixi.txt_mm.text = window.df.workgroup.Util.addZeroNumber(_vars.clock.mm);
-        _pixi.txt_ss.text = window.df.workgroup.Util.addZeroNumber(_vars.clock.ss);
-
-        point_hh.x = center_x +  Math.cos(angle_hh) * (half_mm + 20) - (_pixi.txt_hh.width/2);
-        point_hh.y = center_y +  Math.sin(angle_hh) * (half_mm + 20) - (_pixi.txt_hh.height/2);
+        point_hh.x = center_x + Math.cos(angle_hh) * (half_mm + 20) - (_pixi.txt_hh.width / 2);
+        point_hh.y = center_y + Math.sin(angle_hh) * (half_mm + 20) - (_pixi.txt_hh.height / 2);
 
         _pixi.txt_hh.x = point_hh.x;
         _pixi.txt_hh.y = point_hh.y;
 
-        point_mm.x = center_x +  Math.cos(angle_mm) * (half_mm + 44) - (_pixi.txt_mm.width/2);
-        point_mm.y = center_y +  Math.sin(angle_mm) * (half_mm + 44) - (_pixi.txt_mm.height/2);
+        point_mm.x = center_x + Math.cos(angle_mm) * (half_mm + 44) - (_pixi.txt_mm.width / 2);
+        point_mm.y = center_y + Math.sin(angle_mm) * (half_mm + 44) - (_pixi.txt_mm.height / 2);
 
         _pixi.txt_mm.x = point_mm.x;
         _pixi.txt_mm.y = point_mm.y;
 
-        point_ss.x = center_x +  Math.cos(angle_ss) * (half_ss + 44) - (_pixi.txt_ss.width/2);
-        point_ss.y = center_y +  Math.sin(angle_ss) * (half_ss + 44) - (_pixi.txt_ss.height/2);
+        point_ss.x = center_x + Math.cos(angle_ss) * (half_ss + 44) - (_pixi.txt_ss.width / 2);
+        point_ss.y = center_y + Math.sin(angle_ss) * (half_ss + 44) - (_pixi.txt_ss.height / 2);
 
         _pixi.txt_ss.x = point_ss.x;
         _pixi.txt_ss.y = point_ss.y;
     };
 
-    function _updateToday(today){
-
-        _vars.clock.hh = today.hh;
-        _vars.clock.mm = today.mm;
-        _vars.clock.ss = today.ss;
-
-        //console.log(_vars.clock.hh, " : ", _vars.clock.mm, " : ", _vars.clock.ss);
+    function _updateToday(date) {
+        _vars.date_now = date;
     }
 
     return {

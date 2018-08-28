@@ -3,7 +3,7 @@ window.df.workgroup = window.df.workgroup || {};
 
 window.df.workgroup.Preset = {
 
-    "json_url":{
+    "json_url": {
 
         "default": "/json/df_info_data.json.php",
         "default_local": "assets_login/temp/df_info_data.json",
@@ -14,13 +14,13 @@ window.df.workgroup.Preset = {
         "logout": "assets_login/temp/df_info_data_04_logout.json"
     },
 
-    "document_url":{
+    "document_url": {
         "approval": "approval/approval_to_list.php",
         "approval_my": "approval/approval_my_list.php",
         "approval_cc": "approval/approval_cc_list.php"
     },
 
-    "main_url":"main.php",
+    "main_url": "main.php",
 
     "eventType": {
         "ON_LOAD_JSON": "onLoadJson",
@@ -34,12 +34,12 @@ window.df.workgroup.Preset = {
         "ON_CLOSE_MODAL": "onCloseModal"
     },
 
-    "class_name":{
+    "class_name": {
         "showIn": "show-in",
         "hideOut": "hide-out"
     },
 
-    "related_site":[
+    "related_site": [
         {
             "title": "designfever.com",
             "url": "http://designfever.com/",
