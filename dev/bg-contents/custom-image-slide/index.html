@@ -79,12 +79,14 @@
         }
     );
 
-    var jsonLoadUrl = "../../assets_login/temp/df_contents_image-slide.json" + "?seq="+seq;
+    var jsonLoadUrl = "http://dev3.designfever.com/json/df_contents_image-slide.json.php" + "?seqno="+seq;
     window.df.workgroup.LoadJsonData.init(jsonLoadUrl);
 
     function init(){
         new CustomImageSlide(window.df.workgroup.GlobalVars.infoData, 0.4);
     }
+
+
 
 </script>
 
