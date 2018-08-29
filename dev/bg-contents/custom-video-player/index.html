@@ -66,19 +66,18 @@
 <script>
 
     var params = Util.getParams();
-    var seq = params.seq || "000";
+    var seq = params.seqno || "000";
 
     document.addEventListener(df.workgroup.Preset.eventType.ON_LOAD_JSON, function(){
             init();
         }
     );
 
-    var jsonLoadUrl = "../../assets_login/temp/df_contents_video-player.json" + "?seq="+seq;
+    var jsonLoadUrl = "http://dev3.designfever.com/json/df_contents_video-player.json.php" + "?seqno="+seq;
     window.df.workgroup.LoadJsonData.init(jsonLoadUrl);
 
     function init(){
-        var videoPlayer = new VideoPlayer(window.df.workgroup.GlobalVars.infoData, 0.4);
-        // videoPlayer.init();
+        new VideoPlayer(window.df.workgroup.GlobalVars.infoData, 0.4);
     }
 
 </script>
