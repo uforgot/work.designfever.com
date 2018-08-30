@@ -35,7 +35,8 @@ var BackgroundList = function(json_data){
             elem.classList.add('item');
 
             var link = document.createElement('a');
-            link.href = "../"+list.url;
+            // link.href = "../"+list.url;
+            link.href = list.url;
             link.target = "_blank";
 
             var title = document.createElement('p');
