@@ -4,5 +4,6 @@ window.df.workgroup = window.df.workgroup || {};
 window.df.workgroup.GlobalVars = {
     "isLoaded": false,
     "infoData": null,
-    "time_now": 0
+    "time_now": 0,
+    "params": df.lab.Util.getParams()
 };

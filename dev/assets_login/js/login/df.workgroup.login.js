@@ -215,7 +215,15 @@ window.df.workgroup.login = function (json_data) {
 
         _resetBrowserTitle();
 
-        _loginInfoController.resetData(_json_data.info.today.notice, _json_data.info.birthday);
+
+        var params = window.df.workgroup.GlobalVars.params; // browser params
+
+        if (params.test == "true") {
+            _loginInfoController.resetData(_json_data.info.test.notice, _json_data.info.birthday);
+        }else{
+            _loginInfoController.resetData(_json_data.info.today.notice, _json_data.info.birthday);
+        }
+
         _loginUtilController.resetData(_json_data.user);
 
         var sec_login = document.querySelector('.sec-login');

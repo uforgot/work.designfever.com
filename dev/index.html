@@ -41,7 +41,7 @@
     <link rel="preconnect" href="http://work.designfever.com/">
     <link rel="prefetch" href="http://work.designfever.com/">
     <link rel="prerender" href="http://work.designfever.com/">
-    <link rel="preload" href="http://work.designfever.com/assets_login/images/favicon/bg/icon-200x200.png" as="image">
+    <link rel="preload" href="http://work.designfever.com/assets_login/images/logo/df_logo_w_242.svg" as="image">
     <!-- More info: http://css-tricks.com/prefetching-preloading-prebrowsing/ -->
 
     <!-- FB -->
@@ -69,10 +69,10 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets_login/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="assets_login/css/login.css?uniq=20180823_3" />
+    <link rel="stylesheet" type="text/css" href="assets_login/css/login.css?uniq=20180831_2" />
 
     <script type="text/javascript" src="assets_login/js/common_withPixi.bundle.js"></script>
-    <script type="text/javascript" src="assets_login/js/df.workgroup.login.common.bundle.js?uniq=20180828_2"></script>
+    <script type="text/javascript" src="assets_login/js/df.workgroup.login.common.bundle.js?uniq=20180831_2"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -169,14 +169,16 @@
                                id="user_id" name="user_id" type="text"
                                placeholder="ID"
                                maxlength="15"
-                               pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,15}$"
+                               pattern="^[a-zA-Z0-9-_\.]{2,16}$"
                                style="ime-mode:disabled;"
                                autocomplete="false"
-                               title="아이디를 3자 이상 입력해 주세요. 공백이나 특수문자 등은 포함할 수 없습니다."
+                               title="아이디를 2자 이상 입력해 주세요. 공백이나 특수문자 등은 포함할 수 없습니다."
                                tabindex="0" aria-label="아이디 입력"
                                spellcheck="false" autocorrect="off"
                                required autofocus
                                >
+                        <!--pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,15}$"-->
+                        <!--pattern=" ^[a-zA-Z0-9-_\.]{1,16}$"-->
                     </div>
                     <div class="area-input">
                         <label for="user_pw" class="blind"><span>PW</span></label>
@@ -322,7 +324,7 @@
 
     </div>
 </div>
-<script type="text/javascript" src="assets_login/js/df.workgroup.login.bundle.js?uniq=20180828_2"></script>
+<script type="text/javascript" src="assets_login/js/df.workgroup.login.bundle.js?uniq=20180831_2"></script>
 <script>
     console.log("[ index.html ] : ", "check load json");
     if(df.workgroup.GlobalVars.isLoaded)    {

@@ -130,7 +130,13 @@ module.exports = function () {
 
     function setNotice(json_notice) {
 
-        if (json_notice != undefined && json_notice != null && json_notice.title != undefined && json_notice.title != null && json_notice.dec != undefined && json_notice.dec != null) {
+        if (
+            json_notice != undefined &&
+            json_notice != null &&
+            json_notice.title != undefined &&
+            json_notice.title != null &&
+            json_notice.dec != undefined &&
+            json_notice.dec != null) {
 
             _json_notice = json_notice;
             _isHasNotice = false;

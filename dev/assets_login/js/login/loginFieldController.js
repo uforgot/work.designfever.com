@@ -95,13 +95,13 @@ module.exports = function () {
 
     function _loginCheck() {
 
-        if (_form.user_id.value.length < 3 || _form.user_id.value.length > 16) {
+        if (_form.user_id.value.length < 2 || _form.user_id.value.length > 15) {
             //alert("아이디가 존재하지 않습니다.");
             _form.user_id.focus();
             return false;
         }
 
-        if (_form.user_pw.value.length < 4 || _form.user_pw.value.length > 16) {
+        if (_form.user_pw.value.length < 4 || _form.user_pw.value.length > 15) {
             //alert("잘못된 패스워드입니다. (4-16자리 가능)");
             _form.user_pw.focus();
             return false;

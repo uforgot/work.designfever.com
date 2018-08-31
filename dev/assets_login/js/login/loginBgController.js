@@ -32,7 +32,7 @@ module.exports = function (con_iframe, json_data) {
 
     function setArr_bgList(json) {
 
-        var params = df.lab.Util.getParams(); // browser params
+        var params = window.df.workgroup.GlobalVars.params; // browser params
 
         if (json_data) {
 
