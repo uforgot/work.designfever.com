@@ -190,6 +190,8 @@ window.df.workgroup.login = function (json_data) {
 
     function _updateStatus() {
 
+        var params = window.df.workgroup.GlobalVars.params; // browser params
+
         console.log(CLASS_NAME, " user : isLoggedIn - ", _json_data.user.isLoggedIn, " / isCheckin - ", _json_data.user.isCheckin, " / isCheckout", _json_data.user.isCheckout);
 
         _resetChangeDateCheck();
@@ -197,7 +199,11 @@ window.df.workgroup.login = function (json_data) {
         var el_html = document.querySelector('html');
         var isDesktop = window.df.lab.Util.hasClass(el_html, 'desktop');
 
-        // if is desktop
+        // redirect
+        if(_json_data.user.isLoggedIn && params.retUrl != undefined && params.retUrl !="" && params.retUrl.length > 0){
+            console.log("--------------------------------------- go redirect : ", params.retUrl[0]);
+            window.location.href = params.retUrl[0];
+        }
 
         if (_json_data.user.isLoggedIn) {
 
@@ -214,9 +220,6 @@ window.df.workgroup.login = function (json_data) {
         // else -
 
         _resetBrowserTitle();
-
-
-        var params = window.df.workgroup.GlobalVars.params; // browser params
 
         if (params.test == "true") {
             _loginInfoController.resetData(_json_data.info.test.notice, _json_data.info.birthday);

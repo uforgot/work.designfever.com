@@ -103,7 +103,7 @@
             }
           }
 
-          &.more{
+          &.link-main{
             a.btn-link{
               background: #666666;
 
@@ -115,19 +115,19 @@
               }
 
               .txt{
-                @extend %blind;
+                //@extend %blind;
               }
               .icon{
-                padding: 13px 0;
-                height:auto;
+                //padding: 13px 0;
+                //height:auto;
                 .material-icons{
-                  font-size: 24px;
+                  //font-size: 24px;
                   color: #FFFFFF;
                   line-height: normal;
                 }
                 img{
-                  width:24px;
-                  height:24px;
+                  //width:24px;
+                  //height:24px;
                 }
               }
             }

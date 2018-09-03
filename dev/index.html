@@ -69,10 +69,10 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets_login/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="assets_login/css/login.css?uniq=20180831_2" />
+    <link rel="stylesheet" type="text/css" href="assets_login/css/login.css?uniq=20180831_4" />
 
     <script type="text/javascript" src="assets_login/js/common_withPixi.bundle.js"></script>
-    <script type="text/javascript" src="assets_login/js/df.workgroup.login.common.bundle.js?uniq=20180831_2"></script>
+    <script type="text/javascript" src="assets_login/js/df.workgroup.login.common.bundle.js?uniq=20180831_4"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -89,6 +89,7 @@
                     <fieldset>
                         <legend class="blind">Logout</legend>
                         <div class="area-input btn-logout" tabindex="0">
+                            <span class="txt">Logout</span>
                             <i class="material-icons">close</i>
                             <input tabindex="-1" id="id_btn_logout" class="btn-submit" form="id_form_logout" type="submit" value="log out">
                         </div>
@@ -293,13 +294,13 @@
             </ul>
             <ul class="list-wrapper">
                 <li class="util-list" id="id_link_main">
-                    <div class="circle-box more">
+                    <div class="circle-box link-main">
                         <a href="#" class="btn-link" title="go to Main">
                             <div class="icon">
                                 <i class="material-icons">view_comfy</i>
                                 <!--<i class="material-icons">apps</i>-->
                                 </div>
-                            <div class="txt"><span id="id_more">more</span></div>
+                            <div class="txt"><span id="id_more">Main</span></div>
                         </a>
                     </div>
                 </li>
@@ -324,7 +325,7 @@
 
     </div>
 </div>
-<script type="text/javascript" src="assets_login/js/df.workgroup.login.bundle.js?uniq=20180831_2"></script>
+<script type="text/javascript" src="assets_login/js/df.workgroup.login.bundle.js?uniq=20180831_4"></script>
 <script>
     console.log("[ index.html ] : ", "check load json");
     if(df.workgroup.GlobalVars.isLoaded)    {
