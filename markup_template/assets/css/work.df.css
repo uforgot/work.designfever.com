@@ -154,6 +154,7 @@
   background: whitesmoke; }
 
 .df-org .notification {
+  background: #fff;
   border-radius: 0;
   padding: 0;
   padding-left: 0.75rem;
@@ -177,7 +178,8 @@
 .df-org .is-70x70 {
   height: 100px !important;
   width: 100px !important;
-  border-radius: 0 !important; }
+  border: 4px solid #3273dc;
+  border-radius: 50%; }
 .df-org .is-team {
   position: relative; }
 .df-org .is-team-title:before {
@@ -202,10 +204,8 @@
   height: 100%; }
 .df-org .is-member .column {
   padding: 0.5rem !important; }
-.df-org .is-absent {
-  box-shadow: none; }
-  .df-org .is-absent img {
-    filter: grayscale(1); }
+.df-org .is-absent .is-70x70 {
+  border: 0px !important; }
 
 .modal-commuting-modify {
   min-width: 100%; }
