@@ -202,7 +202,7 @@ window.df.workgroup.login = function (json_data) {
         // redirect
         if(_json_data.user.isLoggedIn && params.retUrl != undefined && params.retUrl !="" && params.retUrl.length > 0){
             console.log("--------------------------------------- go redirect : ", params.retUrl[0]);
-            window.location.href = params.retUrl[0];
+            window.location.href = decodeURIComponent(params.retUrl[0]);
         }
 
         if (_json_data.user.isLoggedIn) {
@@ -265,7 +265,7 @@ window.df.workgroup.login = function (json_data) {
             //console.log(CLASS_NAME + " go to main url (get local) : ", url);
         }
         console.log(CLASS_NAME + " go to main url : ", url);
-        window.location.href = url;
+        window.location.href = decodeURIComponent(url);
         return;
     }
 
