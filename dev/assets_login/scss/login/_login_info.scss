@@ -21,7 +21,8 @@
   ul.contents_con{
     position: relative;
     width: 100%;
-    height: 49vh;
+    //height: 49vh;
+    height: 48vh;
     overflow: hidden;
     display: block;
 
@@ -43,8 +44,8 @@
       margin: 0 auto;
       //width: 90vw;
       height: 100%;
-      max-width: 49vh;
-      max-height: 49vh;
+      max-width: 48vh;
+      max-height: 48vh;
       pointer-events: none;
       overflow: hidden;
 
