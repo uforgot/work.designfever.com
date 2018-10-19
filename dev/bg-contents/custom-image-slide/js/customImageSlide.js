@@ -20,9 +20,10 @@ var CustomImageSlide = function(jsondData, dimmedOpacity){
     };
 
     var _setTransitionTime = function(){
+        console.log(_transTime)
         var content = document.querySelectorAll(".slide-show .img-wrapper .img-content");
         content.forEach(function(el) {
-            el.style.transition = "opacity "+(_transTime)+"s linear, transform 10s linear "+_transTime+"s";
+            el.style.transition = "opacity "+(_transTime)+"s linear, transform 1s linear "+_transTime+"s";
         });
 
         var style = document.styleSheets[0];
@@ -124,7 +125,12 @@ var CustomImageSlide = function(jsondData, dimmedOpacity){
 
     var _controlImages = function(index){
         _imgArr[index].classList.add("show");
-        if(_imgArr[_prevIndex]) _imgArr[_prevIndex].classList.remove("show");
+        if(_imgArr[_prevIndex]) {
+            setTimeout(function(){
+                _imgArr[_prevIndex].classList.remove("show");
+            }, 100);
+
+        }
     };
 
     var _shuffle = function(array) {
