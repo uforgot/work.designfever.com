@@ -13,6 +13,7 @@ var CustomImageSlide = function(jsondData, dimmedOpacity){
         _loopTime = 5;
 
     var isMobile = document.querySelector("html").classList.contains("mobile");
+    var isRandomSort = true;
 
     var _setting = function(){
         _loadImage();
@@ -62,6 +63,8 @@ var CustomImageSlide = function(jsondData, dimmedOpacity){
 
 
     var _init = function(){
+        if(isRandomSort) _shuffle(_imgUrlArr);
+
         _setElement();
         _setTransitionTime();
         _makeDimmed();
@@ -123,6 +126,26 @@ var CustomImageSlide = function(jsondData, dimmedOpacity){
         _imgArr[index].classList.add("show");
         if(_imgArr[_prevIndex]) _imgArr[_prevIndex].classList.remove("show");
     };
+
+    var _shuffle = function(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    };
+
 
     _setting();
 
