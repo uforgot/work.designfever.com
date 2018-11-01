@@ -76,7 +76,7 @@ module.exports = function (con_iframe, json_data) {
 
             }
 
-            //console.log(CLASS_NAME + " : ", "arr_bg_list : ", arr_bg_list);
+            console.log(CLASS_NAME + " : ", "arr_bg_list : ", arr_bg_list);
 
             //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.weather.list);
             //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.birthday.list);
