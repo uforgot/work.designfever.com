@@ -57,18 +57,36 @@ module.exports = function (con_iframe, json_data) {
             } else {
 
                 console.log(CLASS_NAME + " : ", "type : ", "random bg");
-                arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.weather.list);
-                arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.artwork.list);
+                // arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.weather.list);
+                // arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.artwork.list);
+
+                var random_arr;
+                random_arr = json.preset.bg_contents.weather.list.filter(getRandomShowArr);
+                arr_bg_list = arr_bg_list.concat(random_arr);
+                random_arr = json.preset.bg_contents.birthday.list.filter(getRandomShowArr);
+                arr_bg_list = arr_bg_list.concat(random_arr);
+                random_arr = json.preset.bg_contents.artwork.list.filter(getRandomShowArr);
+                arr_bg_list = arr_bg_list.concat(random_arr);
+                random_arr = json.preset.bg_contents.custom.list.filter(getRandomShowArr);
+                arr_bg_list = arr_bg_list.concat(random_arr);
+                random_arr = json.preset.bg_contents.custom_image_slide.list.filter(getRandomShowArr);
+                arr_bg_list = arr_bg_list.concat(random_arr);
+                random_arr = json.preset.bg_contents.custom_video_player.list.filter(getRandomShowArr);
+                arr_bg_list = arr_bg_list.concat(random_arr);
+
             }
 
             //console.log(CLASS_NAME + " : ", "arr_bg_list : ", arr_bg_list);
-
 
             //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.weather.list);
             //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.birthday.list);
             //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.artwork.list);
             //arr_bg_list = arr_bg_list.concat(json.preset.bg_contents.custom.list);
         }
+    }
+
+    function getRandomShowArr(item, index, array) {
+        return item.random_show == true || item.random_show == "true";
     }
 
     function set_iframe(url) {

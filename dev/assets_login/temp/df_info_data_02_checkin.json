@@ -174,71 +174,71 @@
       "weather": {
         "group": "01",
         "list": [
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=801", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=800&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=800&videoindex=0", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=600", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=2", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=0", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=300&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=300&videoindex=0", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=200", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=801", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=800", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=700", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=600", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=500", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=300", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=200", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=801", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=800&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=800&videoindex=0", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=600", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=2", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=0", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=300&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=300&videoindex=0", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=200", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=801", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=800", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=700", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=600", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=500", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=300", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/001_weather-slideshow/index.html?weathercode=200", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
         ]
       },
       "birthday": {
         "group": "02",
         "list": [
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/birthday/004_birthday-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/birthday/003_birthday-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/birthday/002_birthday-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/birthday/001_birthday-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/birthday/004_birthday-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/birthday/003_birthday-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/birthday/002_birthday-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/birthday/001_birthday-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
         ]
       },
       "artwork": {
         "group": "03",
         "list": [
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/006_particle-line/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/005_zigzag/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/004_connected-lines/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/002_sphere-lines-3d/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/artwork/001_Gooey-df/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/artwork/006_particle-line/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/artwork/005_zigzag/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/artwork/004_connected-lines/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/artwork/002_sphere-lines-3d/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/artwork/001_Gooey-df/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
         ]
       },
       "custom": {
         "group": "04",
         "list": [
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/004_2015-df-makeover-project-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/002_df-hyatt-dining-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/001_df-new-Building-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/004_2015-df-makeover-project-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/002_df-hyatt-dining-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/001_df-new-Building-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
         ]
       },
       "custom_image_slide": {
         "group": "05",
         "list": [
-          {"group": "05", "seq":"0005", "cat": "001", "url": "bg-contents/custom/004_2015-df-makeover-project-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "05", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "05", "seq":"0005", "cat": "001", "url": "bg-contents/custom/002_df-hyatt-dining-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "05", "seq":"0005", "cat": "001", "url": "bg-contents/custom/001_df-new-Building-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
+          {"group": "05", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/004_2015-df-makeover-project-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "05", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "05", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/002_df-hyatt-dining-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "05", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/001_df-new-Building-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
         ]
       },
       "custom_video_player": {
         "group": "06",
         "list": [
-          {"group": "06", "seq":"0005", "cat": "001", "url": "bg-contents/custom/004_2015-df-makeover-project-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "06", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "06", "seq":"0005", "cat": "001", "url": "bg-contents/custom/002_df-hyatt-dining-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "06", "seq":"0005", "cat": "001", "url": "bg-contents/custom/001_df-new-Building-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
+          {"group": "06", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/004_2015-df-makeover-project-video/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "06", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "06", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/002_df-hyatt-dining-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "06", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/001_df-new-Building-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
         ]
       }
     }
@@ -268,9 +268,9 @@
 
     "today":{
       "bg_contents": [
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
+        {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+        {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+        {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
       ],
       "notice": {
         "title": ["오늘은", "바닥세미나가", "열립니다."],
@@ -279,7 +279,7 @@
     },
     "test":{
       "bg_contents": [
-        {"group": "04", "seq":"0005", "cat": "001", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
+        {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
       ]
     },
     "date":{
