@@ -98,6 +98,50 @@
         background: #f3f3f3
         border-left: 1px solid rgb(219, 219, 219)
 
+  //approval component 20181024 jj
+  .box-approval
+    height: 212px
+
+    +breakpoint(mobile)
+      height: auto
+
+
+  .list-approval
+    border-bottom: 1px solid #f1f1f1
+    margin-bottom: 1em
+
+    .item
+      margin: 0 !important
+      padding-top: 0
+
+      &:nth-of-type(1)
+        border-left: none
+
+      &.is-init-item
+        li:nth-of-type(1)
+          height: 100%
+          margin-bottom: 0
+          border-bottom: none
+
+      li
+        display: flex
+        align-items: center
+        justify-content: center
+        height: 2.7em
+        margin-top: 0
+        list-style: none
+        text-align: center
+
+        &:first-child
+          margin-bottom: 0.5em
+          border-bottom: 1px solid #dbdbdb
+
+        &.l-txt
+          font-weight: 400
+
+
+
+
 .approval-popup, .approval-popup2, .approval-popup3, .approval-popup4, .approval-popup5, .approval-popup6
   font-size: 12px
   td,th

@@ -13,15 +13,17 @@ var CustomImageSlide = function(jsondData, dimmedOpacity){
         _loopTime = 5;
 
     var isMobile = document.querySelector("html").classList.contains("mobile");
+    var isRandomSort = true;
 
     var _setting = function(){
         _loadImage();
     };
 
     var _setTransitionTime = function(){
+        console.log(_transTime)
         var content = document.querySelectorAll(".slide-show .img-wrapper .img-content");
         content.forEach(function(el) {
-            el.style.transition = "opacity "+(_transTime)+"s linear, transform 10s linear "+_transTime+"s";
+            el.style.transition = "opacity "+(_transTime)+"s linear, transform 1s linear "+_transTime+"s";
         });
 
         var style = document.styleSheets[0];
@@ -62,6 +64,8 @@ var CustomImageSlide = function(jsondData, dimmedOpacity){
 
 
     var _init = function(){
+        if(isRandomSort) _shuffle(_imgUrlArr);
+
         _setElement();
         _setTransitionTime();
         _makeDimmed();
@@ -121,8 +125,33 @@ var CustomImageSlide = function(jsondData, dimmedOpacity){
 
     var _controlImages = function(index){
         _imgArr[index].classList.add("show");
-        if(_imgArr[_prevIndex]) _imgArr[_prevIndex].classList.remove("show");
+        if(_imgArr[_prevIndex]) {
+            setTimeout(function(){
+                _imgArr[_prevIndex].classList.remove("show");
+            }, 100);
+
+        }
     };
+
+    var _shuffle = function(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    };
+
 
     _setting();
 
