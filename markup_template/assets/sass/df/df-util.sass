@@ -20,3 +20,126 @@
 =break-max($mq)
   @media (max-width: $mq)
     @content
+
+
+// helper
+.blind
+  position: absolute !important
+  left: -9999px !important
+  top: -9999px !important
+  font-size: 0
+
+// align
+.inline-fields
+  display: flex
+  flex-wrap: wrap
+  .i-field
+    display: flex
+    align-items: center
+    font-style: normal
+    font-weight: normal
+
+    &:not(:first-child)
+      margin-left: 2em
+    &.ns
+      margin-left: 0 !important
+
+    .child
+      margin-left: 0.25em
+      margin-right: 0.25em
+      &:first-child
+        margin-left: 0
+        margin-right: 0.35em
+
+  &.yymmdd
+    .i-field
+      &:not(:first-child)
+        margin-left: 0.25em
+
++breakpoint(mobile)
+  .inline-fields
+    &.is-mobile
+      display: block
+      .i-field
+        &:not(:first-child)
+        margin-left: 0
+        margin-top: 0.25em
+
+    &.mobile-field-label
+      label
+        width: 100px
+      input
+        width: 100% !important
+
+
+.groups
+  &.inline-fields
+    .i-field
+      display: inline-block
+      vertical-align: middle
+      margin-bottom: 0
+
+.is-rounded
+  overflow: hidden
+  border-radius: 6px
+
+.is-flex-wrap
+  flex-wrap: wrap
+.is-mb-0
+  margin-bottom: 0 !important
+.is-mb-50
+  margin-bottom: 50px !important
+.is-fullwidth
+  width: 100%
+
+
+
+
++break-max(1087.3px)
+  .is-mobile-tablet-block
+    display: block !important
+
+  .is-tablet-flex-wrap
+    flex-wrap: wrap
+
+.is-flex-vertical-middle
+  align-items: center
+
+.is-grow-1,
+.is-mobile-grow-1
+  flex-grow: 1
+
+.select select
+  width: 100%
+// tablet~
++break-min(768.3px)
+  .is-tbl-pc-mb-0
+    margin-bottom: 0 !important
+  .is-tbl-pc-pb-0
+    padding-bottom: 0 !important
+
++breakpoint(mobile)
+  .is-mobile-pt-0
+    padding-top: 0 !important
+  .is-mobile-pt-1
+    padding-top: 0.25rem !important
+
+  .is-mobile-pb-0
+    padding-bottom: 0 !important
+  .is-mobile-pb-1
+    padding-bottom: 0.25rem !important
+
+  .is-mobile-mt-0
+    margin-top: 0 !important
+  .is-mobile-mt-1
+    margin-top: 0.25rem !important
+
+  .is-mobile-mb-0
+    margin-bottom: 0 !important
+  .is-mobile-mb-1
+    margin-bottom: 0.25rem !important
+
+
+
+
+

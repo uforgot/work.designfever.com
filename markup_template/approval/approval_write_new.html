@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=yes">
+
     <title>designfever intranet</title>
     <link rel="stylesheet" href="/assets/css/work.df.css">
     
@@ -18,192 +19,542 @@
 <!-- 본문 시작 -->
 <section class="section df-approval">
     <div class="container">
-        <nav class="level is-mobile">
-            <div class="level-left">
-                <p class="buttons">
-                    <a href="project_list.html" class="button">
-                        <span class="icon is-small">
-                            <i class="fas fa-bars"></i>
-                        </span>
-                        <span>목록</span>
+        <div class="tabs is-boxed">
+            <ul>
+                <li class="is-active">
+                    <a href="/approval/approval_write_new.html">
+                        <span>입사승인계</span>
                     </a>
-                </p>
-            </div>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_2.html">
+                        <span>프로젝트 휴가 승인계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_3_new.html">
+                        <span>비용품의서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_4.html">
+                        <span>외근계/파견계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write.html">
+                        <span>휴가계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_5.html">
+                        <span>출장계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_6.html">
+                        <span>사유서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_7.html">
+                        <span>시말서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_8.html">
+                        <span>조퇴계함</span>
+                    </a>
+                </li>
 
-            <div class="level-right">
-                <p class="buttons">
-                    <a href="project_list.html" class="button is-danger">
-                        <span class="icon is-small">
-                            <i class="fas fa-pencil-alt"></i>
-                        </span>
-                        <span>등록</span>
-                    </a>
-                </p>
-            </div>
-        </nav>
-    
-        <div class="content">
+
+            </ul>
+        </div>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!--   마크업 교체 시작 -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- 결제문서 상단 공통 -->
+        <div class="content tbl-form-box">
             <div class="columns">
                 <div class="column">
-                    <div class="box box-approval">
-                        <div class="columns">
-                            <div class="column">
-                                <div class="field">
-                                    <input class="input is-static" type="email" value="문서번호 8601-xxxx" readonly>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <input class="input is-static" type="email" value="기안일 2018년 06월 11일" readonly>
-                            </div>
-                            <div class="column">
-                                <input class="input is-static" type="email" value="이사 신형주" readonly>
-                            </div>
-                        </div>
-                        <div class="columns">
-
-                            <div class="column">
-                                <div class="field">
-                                    <div class="control select is-fullwidth">
+                    <div class="box box-approval document-info">
+                        <div class="is-fullwidth">
+                            <div class="columns is-7-desktop">
+                                <div class="column">
+                                    <div class="control select">
                                         <select>
-                                            <option value="연차" selected="">연차</option>
-                                            <option value="프로젝트">프로젝트</option>
-                                            <option value="오전반차">오전반차</option>
-                                            <option value="오후반차">오후반차</option>
-                                            <option value="프로젝트 오전반차">프로젝트 오전반차</option>
-                                            <option value="프로젝트 오후반차">프로젝트 오후반차</option>
-                                            <option value="병가">병가</option>
-                                            <option value="리프레쉬">리프레쉬</option>
-                                            <option value="무급">무급</option>
-                                            <option value="경조사">경조사</option>
-                                            <option value="예비군/민방위">예비군/민방위</option>
-                                            <option value="기타">기타</option>
-                                            <option value="휴가 소진시">휴가 소진시</option>
-                                            <option value="휴가 소진시 오전반차">휴가 소진시 오전반차</option>
-                                            <option value="휴가 소진시 오후반차">휴가 소진시 오후반차</option>
-                                            <option value="출산휴가">출산휴가</option>
-                                            <option value="육아휴직">육아휴직</option>
+                                            <option value="공개" selected>공개</option>
+                                            <option value="비공개">비공개</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="column">
-                                <div class="field">
-                                    <div class="control select is-fullwidth">
-                                        <select>
-                                            <option>공개</option>
-                                            <option>비공개</option>
-                                        </select>
+                            <div class="columns is-flex-mobile form-info">
+                                <div class="column">
+                                    <span class="tit">문서번호</span>
+                                    <div class="control">
+                                        8601-xxxx
+                                    </div>
+                                </div>
+
+                                <div class="column">
+                                    <span class="tit">문서종류</span>
+                                    <div class="control">
+                                        입사승인계
+                                    </div>
+                                </div>
+
+
+
+                                <div class="column">
+                                    <span class="tit">기안일</span>
+                                    <div class="control">
+                                        2019년 02월 28일
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
 
-                <div class="column">
-                    <div class="box box-approval">
-                        <div class="list-approval is-flex">
-                            <ul class="column item">
-                                <li>이사</li>
-                                <li class="l-txt">신형주</li>
-                                <li></li>
-                            </ul>
+                <div class="column is-5-desktop">
+                    <div class="box box-approval approval-line">
+                        <div class="inner-wrap">
+                            <div class="approval-line-list">
+                                <div class="column">
+                                    <a href="" class="item is-completed tooltip" data-tooltip="3월8일 결제">
+                                        <span class="signature">
+                                            <i class="sign"></i>
+                                            <i class="txt">홍길동</i>
+                                        </span>
+                                    </a>
+                                </div>
 
-                            <ul class="column item">
-                                <li>대표</li>
-                                <li class="l-txt">신형주</li>
-                                <li><a class="button is-small" href="javascript:toAdd();">변경</a></li>
-                            </ul>
+                                <div class="column">
+                                    <a href="" class="item is-completed tooltip" data-tooltip="3월8일 결제">
+                                        <span class="signature">
+                                            <i class="sign"></i>
+                                            <i class="txt">홍삼삼</i>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="column">
+                                    <a class="item is-active tooltip" data-tooltip="">
+                                         <span class="signature">
+                                            <i class="sign"></i>
+                                            <i class="txt">홍길동</i>
+                                        </span>
+                                    </a>
+                                </div>
+                                <!-- 결제자 미지정 -->
+                                <div class="column">
+                                    <a class="item tooltip" data-tooltip="">
+                                        <span class="signature">
+                                            <i class="sign"></i>
+                                            <i class="txt">지정</i>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="column">
+                                    <a class="item tooltip" data-tooltip="">
+                                        <span class="signature">
+                                            <i class="sign"></i>
+                                            <i class="txt">지정</i>
+                                        </span>
+                                    </a>
 
-                            <ul class="column item is-init-item">
-                                <li><a class="button is-small" href="javascript:toAdd();">지정</a></li>
-                            </ul>
-
-                            <ul class="column item is-init-item">
-                                <li><a class="button is-small" href="javascript:toAdd();">지정</a></li>
-                            </ul>
-
-                            <ul class="column item is-init-item">
-                                <li><a class="button is-small" href="javascript:toAdd();">지정</a></li>
-                            </ul>
-
-                            <input type="hidden" name="to_id" id="to_id" value="79,22,">
-                        </div>
-                        <!-- 참조 -->
-                        <div class="field is-grouped">
-                            <input type="hidden" name="cc_id" id="cc_id" value="">
-                            <div class="control is-expanded">
-                                <input class="input"  name="cc" id="cc" readonly="" value="">
+                                </div>
                             </div>
+                            <!-- 참조 -->
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field is-grouped">
+                                        <div class="control is-expanded">
+                                            <input class="input"  name="cc" id="cc" readonly="" value="">
+                                            <input type="hidden" name="cc_id" id="cc_id" value="">
+                                        </div>
+                                        <div class="control">
+                                            <a class="button is-link" href="#">참조자 지정</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //결제문서 상단 공통 -->
+
+        <!-- 문서 중간 -->
+        <div class="content tbl-form-box is-mb-50">
+            <div class="box">
+                <div class="columns is-mobile-mb-0">
+                    <div class="column">
+                        <div class="control">
+                            <input class="input is-large" type="text" placeholder="제목">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="columns">
+                    <div class="column">
+                        <div class="control select" style="width:100%;">
+                            <select name="">
+                                <option>채용부서를 선택해주세요</option>
+                                <option value=''>VID 1팀</option>
+                                <option value=''>VID 2팀</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // 문서 중간 -->
+
+        <!-- 입사 정보 박스 추가하기 -->
+        <div id="employ_0" class="content tbl-form-box">
+            <div class="box">
+                <div class="columns inbox-title">
+                    <div class="column">
+                        <h1><span class="label-txt">사원 1</span></h1>
+                    </div>
+                    <div class="column">
+                        <a class="button btn-remove" title="삭제">
+                            <span class="icon is-small">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 탭 메뉴 -->
+                <div class="columns">
+                    <div class="column">
+                        <span class="tbl-form-tit is-hidden-mobile">채용 구분</span>
+                        <div class="tabs is-toggle inbox-tabs is-fullwidth">
+                            <ul id="tab-employ">
+                                <li class="is-active">
+                                    <a href="#">
+                                        <span>정규직</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>계약직</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- 정규직 -->
+                <div id="tab-employ-content-1" class="content">
+                    <div class="columns is-tbl-pc-mb-0 is-flex-mobile">
+                        <div class="column">
+                            <span class="tbl-form-tit is-next-chk">경력 구분</span>
+                            <div class="columns is-multiline is-flex-mobile">
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">신입</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">경력</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <span class="tbl-form-tit">총 경력기간</span>
+                            <div class="inline-fields yymmdd">
+                                <div class="i-field">
+                                    <input class="input" type="number" id="" style="width:50px;">
+                                    <label for="" class="child">년</label>
+                                </div>
+                                <div class="i-field">
+                                    <input class="input" type="number" id="" style="width:50px;">
+                                    <label for="" class="child">월</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit">채용 사유</span>
                             <div class="control">
-                                <a class="button is-link" href="javascript:ccAdd();">참조자 지정</a>
+                                <input class="input" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit">성명</span>
+                            <div class="control">
+                                <input class="input" type="text">
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <span class="tbl-form-tit">생년월일</span>
+                            <div class="control">
+                                <input class="input" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit">최종학교</span>
+                            <div class="control">
+                                <input class="input" type="text">
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <span class="tbl-form-tit">전공</span>
+                            <div class="control">
+                                <input class="input" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit is-next-chk">정규직 직급</span>
+                            <div class="columns is-multiline is-flex-mobile">
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="" checked="checked">
+                                    <label for="">사원</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">주임</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">대리</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">과장</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">차장</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <span class="tbl-form-tit is-next-chk">정규직 호봉</span>
+                            <div class="columns is-multiline is-flex-mobile is-mobile-pb-0">
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="" checked="checked">
+                                    <label for="">1호봉</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">2호봉</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">3호봉</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">4호봉</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns is-mb-0 is-mobile-mt-1">
+                        <div class="column is-mobile-pb-0">
+                            <span class="tbl-form-tit is-next-chk">직책</span>
+                            <div class="columns is-multiline is-flex-mobile is-mb-0">
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="" checked="checked">
+                                    <label for="">팀장</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">실장</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-mobile-pt-0">
+                            <span class="tbl-form-tit">입사 예정일</span>
+                            <div class="inline-fields yymmdd">
+                                <div class="i-field">
+                                    <input class="input" type="number" id="" style="width:100px;">
+                                    <label for="" class="child">년</label>
+                                </div>
+                                <div class="i-field">
+                                    <input class="input" type="number" id="" style="width:50px;">
+                                    <label for="" class="child">월</label>
+                                </div>
+                                <div class="i-field">
+                                    <input class="input" type="number" id="" style="width:50px;">
+                                    <label for="" class="child">일</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+                <!-- 비정규직 -->
+                <div id="tab-employ-content-2" class="content">
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit is-next-chk">구분</span>
+                            <div class="columns is-multiline is-flex-mobile">
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">모션실산학</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">단기계약직(3개월미만)</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">장기계약직</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">계약직근무 후 정규직 검토</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit">채용 사유</span>
+                            <div class="control">
+                                <input class="input" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit">성명</span>
+                            <div class="control">
+                                <input class="input" type="text">
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <span class="tbl-form-tit">중개업체</span>
+                            <div class="control">
+                                <input class="input" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit">급여</span>
+                            <div class="inline-fields is-mobile mobile-field-label">
+                                <div class="i-field">
+                                    <label for="" class="child">시급</label>
+                                    <input class="input" type="number" value="99,999,999" id="" style="width:150px;">
+                                </div>
+                                <div class="i-field">
+                                    <label for="" class="child">월급</label>
+                                    <input class="input" type="number" value="99,999" id="" style="width:150px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit">기간</span>
+                            <div class="columns is-block">
+                                <div class="column is-inline-block-tablet">
+                                    <div class="inline-fields yymmdd">
+                                        <div class="i-field">
+                                            <input class="input" type="number" id="" style="width:90px;">
+                                            <label for="" class="child">년</label>
+                                        </div>
+                                        <div class="i-field">
+                                            <input class="input" type="number" id="" style="width:50px;">
+                                            <label for="" class="child">월</label>
+                                        </div>
+                                        <div class="i-field">
+                                            <input class="input" type="number" id="" style="width:50px;">
+                                            <label for="" class="child">일</label>
+                                        </div>
+                                        <div class="i-field ns" style="margin-right:20px;">
+                                            부터
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column is-inline-block is-mobile-pt-0">
+                                    <div class="inline-fields yymmdd">
+                                        <div class="i-field">
+                                            <input class="input" type="number" id="" style="width:90px;">
+                                            <label for="" class="child">년</label>
+                                        </div>
+                                        <div class="i-field">
+                                            <input class="input" type="number" id="" style="width:50px;">
+                                            <label for="" class="child">월</label>
+                                        </div>
+                                        <div class="i-field">
+                                            <input class="input" type="number" id="" style="width:50px;">
+                                            <label for="" class="child">일</label>
+                                        </div>
+                                        <div class="i-field is-marginless">
+                                            까지
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit">기타</span>
+                            <div class="control">
+                                <input class="input" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-
         </div>
-    
 
-        <hr>
-        
         <div class="content">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="text" placeholder="제목">
-                </div>
-            </div>
-            <div class="columns">
-                <div class="column" style="display:inline-block;flex-grow:0;flex-basis:auto;">
-                    <div class="field is-group">
-                        <div class="control select">
-                            <select name="fr_year" id="fr_year">
-                                <option value='2013'>2013년</option><option value='2014'>2014년</option><option value='2015'>2015년</option><option value='2016'>2016년</option><option value='2017'>2017년</option><option value='2018' selected>2018년</option><option value='2019'>2019년</option>                                    </select>
-                        </div>
-                        <div class="control select">
-                            <select name="fr_month" id="fr_month">
-                                <option value='01'>1월</option><option value='02'>2월</option><option value='03'>3월</option><option value='04' selected>4월</option><option value='05'>5월</option><option value='06'>6월</option><option value='07'>7월</option><option value='08'>8월</option><option value='09'>9월</option><option value='10'>10월</option><option value='11'>11월</option><option value='12'>12월</option>                                    </select>
-                        </div>
-                        <div class="control select">
-                            <select name="fr_day" id="fr_day">
-                                <option value='01' selected>1일</option><option value='02'>2일</option><option value='03'>3일</option><option value='04'>4일</option><option value='05'>5일</option><option value='06'>6일</option><option value='07'>7일</option><option value='08'>8일</option><option value='09'>9일</option><option value='10'>10일</option><option value='11'>11일</option><option value='12'>12일</option><option value='13'>13일</option><option value='14'>14일</option><option value='15'>15일</option><option value='16'>16일</option><option value='17'>17일</option><option value='18'>18일</option><option value='19'>19일</option><option value='20'>20일</option><option value='21'>21일</option><option value='22'>22일</option><option value='23'>23일</option><option value='24'>24일</option><option value='25'>25일</option><option value='26'>26일</option><option value='27'>27일</option><option value='28'>28일</option><option value='29'>29일</option><option value='30'>30일</option><option value='31'>31일</option>                                    </select>
-                        </div>
-                        <div class="button">
-                            <input type="hidden" id="fr_date" class="datepicker">
-                            <i class="fa fa-calendar-plus"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="field is-group">
-                        <div class="control select">
-                            <select name="to_year" id="to_year">
-                                <option value='2013'>2013년</option><option value='2014'>2014년</option><option value='2015'>2015년</option><option value='2016'>2016년</option><option value='2017'>2017년</option><option value='2018' selected>2018년</option><option value='2019'>2019년</option>                                    </select>
-                        </div>
-                        <div class="control select">
-                            <select name="to_month" id="to_month">
-                                <option value='01'>1월</option><option value='02'>2월</option><option value='03'>3월</option><option value='04' selected>4월</option><option value='05'>5월</option><option value='06'>6월</option><option value='07'>7월</option><option value='08'>8월</option><option value='09'>9월</option><option value='10'>10월</option><option value='11'>11월</option><option value='12'>12월</option>                                    </select>
-                        </div>
-                        <div class="control select">
-                            <select name="to_day" id="to_day">
-                                <option value='01'>1일</option><option value='02'>2일</option><option value='03'>3일</option><option value='04'>4일</option><option value='05'>5일</option><option value='06'>6일</option><option value='07'>7일</option><option value='08'>8일</option><option value='09'>9일</option><option value='10'>10일</option><option value='11'>11일</option><option value='12'>12일</option><option value='13'>13일</option><option value='14'>14일</option><option value='15'>15일</option><option value='16'>16일</option><option value='17'>17일</option><option value='18'>18일</option><option value='19'>19일</option><option value='20'>20일</option><option value='21'>21일</option><option value='22'>22일</option><option value='23'>23일</option><option value='24'>24일</option><option value='25'>25일</option><option value='26'>26일</option><option value='27' selected>27일</option><option value='28'>28일</option><option value='29'>29일</option><option value='30'>30일</option><option value='31'>31일</option>                                    </select>
-                        </div>
-                        <div class="button">
-                            <input type="hidden" id="fr_date" class="datepicker">
-                            <i class="fa fa-calendar-plus"></i>
-                        </div>
-                    </div>
-                </div>
+            <div class="btn-wrapper">
+                <button class="button has-icon is-large is-fullwidth">
+                    <i class="fas fa-plus-circle"></i><span class="label is-size-5">입사정보 추가하기</span>
+                </button>
             </div>
         </div>
 
-
+        <!-- 웹 에디터 -->
         <div class="content">
             <img src="../assets/images/dummy.png" width="100%">
         </div>
-    
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!--   마크업 교체 끝 -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
         <div class="content">
             <div class="box">
                 <!--- 04/18 파일 찾기 태그 수정 start -->
