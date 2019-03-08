@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=yes">
+    <title>designfever intranet</title>
+    <link rel="stylesheet" href="/assets/css/work.df.css">
+
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script defer src="/assets/js/all.js"></script>
+    <script defer src="/assets/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+
+<div id="top"></div>
+<div id="sub-menu-4"></div>
+
+<!-- 본문 시작 -->
+<section class="section df-approval">
+    <div class="container">
+        <div class="tabs is-boxed">
+            <ul>
+                <li>
+                    <a href="/approval/approval_write_new.html">
+                        <span>입사승인계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_2.html">
+                        <span>프로젝트 휴가 승인계</span>
+                    </a>
+                </li>
+                <li class="is-active">
+                    <a href="/approval/approval_write_3_new.html">
+                        <span>비용품의서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_4.html">
+                        <span>외근계/파견계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write.html">
+                        <span>휴가계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_5.html">
+                        <span>출장계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_6.html">
+                        <span>사유서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_7.html">
+                        <span>시말서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_8.html">
+                        <span>조퇴계함</span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+
+        <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <!--   마크업 교체 시작 -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+        <!-- 결제문서 상단 공통 -->
+        <div class="content tbl-form-box">
+            <div class="columns">
+                <div class="column">
+                    <div class="box box-approval document-info">
+                        <div class="is-fullwidth">
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="control select">
+                                        <select>
+                                            <option value="공개" selected>공개</option>
+                                            <option value="비공개">비공개</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns is-flex-mobile form-info">
+                                <div class="column">
+                                    <span class="tit">문서번호</span>
+                                    <div class="control">
+                                        8601-xxxx
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <span class="tit">문서종류</span>
+                                    <div class="control select">
+                                        <select>
+                                            <option value="" selected>반차</option>
+                                            <option value="">오후반차</option>
+                                            <option value="">프로젝트 연차휴가</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <span class="tit">기안일</span>
+                                    <div class="control">
+                                        2019년 02월 28일
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="box box-approval approval-line">
+                        <div class="inner-wrap">
+                            <div class="approval-line-list">
+                                <!-- 결제 완료 : 개인 사인이 있는 경우 -->
+                                <div class="column">
+                                    <a href="" class="item is-completed has-sign tooltip" data-tooltip="3월8일 결제">
+                                        <span class="signature">
+                                            <i class="sign" style="background-image:url('../assets/images/icons/check-circle-regular.svg')"></i>
+                                            <i class="txt">홍길동</i>
+                                        </span>
+                                    </a>
+                                </div>
+
+                                <!-- 결제 완료: 개인 사인이 없는 경우  -->
+                                <div class="column">
+                                    <a href="" class="item is-completed tooltip" data-tooltip="3월8일 결제">
+                                        <span class="signature">
+                                            <i class="sign"></i>
+                                            <i class="txt">홍길동</i>
+                                        </span>
+                                    </a>
+                                </div>
+                                <!-- 결제자 미지정  -->
+                                <div class="column">
+                                    <a class="item tooltip" data-tooltip="">
+                                        <span class="signature">
+                                            <i class="sign"></i>
+                                            <i class="txt">지정</i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 참조 -->
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field is-grouped">
+                                        <div class="control is-expanded">
+                                            <input class="input"  name="cc" id="cc" readonly="" value="">
+                                            <input type="hidden" name="cc_id" id="cc_id" value="">
+                                        </div>
+                                        <div class="control">
+                                            <a class="button is-link" href="#">참조자 지정</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //결제문서 상단 공통 -->
+
+        <!-- 결제 문서 중간 -->
+        <div class="content tbl-form-box is-mb-50">
+            <div class="box">
+                <div class="columns">
+                    <div class="column">
+                        <div class="control">
+                            <input class="input is-large" type="text" placeholder="제목">
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div class="control select" style="width:100%;">
+                            <select name="">
+                                <option>프로젝트를 선택해주세요</option>
+                                <option value=''>프로젝트1</option>
+                                <option value=''>프로젝트2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <span class="tbl-form-tit">총금액</span>
+                        <div class="inline-fields">
+                            <div class="i-field">
+                                <input class="input" type="number" value="0">
+                            </div>
+                            <div class="i-field" style="margin-left: 0.25em;">
+                                원 - 자동입력
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- //결제 문서 중간 -->
+
+        <!-- 결제 폼 세트 -->
+        <div id="payment_0" class="content tbl-form-box">
+            <div class="box">
+                <!-- 타이틀 -->
+                <div class="columns inbox-title">
+                    <div class="column">
+                        <h1><span class="label-txt">결제 항목 1</span></h1>
+                    </div>
+                    <div class="column">
+                        <a class="button btn-remove" title="삭제">
+                            <span class="icon is-small">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 결제항목 폼 -->
+                <div class="content">
+                    <div class="columns is-tbl-pc-mb-0">
+                        <div class="column">
+                            <span class="tbl-form-tit is-next-chk">청구</span>
+                            <div class="columns is-multiline is-flex-mobile">
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">실비청구</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">미청구</label>
+                                </div>
+                                <div class="field">
+                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <label for="">운영</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is-mobile-pb-0">
+                            <span class="tbl-form-tit">금액</span>
+                            <div class="columns is-flex-mobile">
+                                <div class="column" style="flex-shrink: 0; flex-grow: 0">
+                                    <div class="inline-fields">
+                                        <div class="i-field">
+                                            <input class="input" type="number" id="" style="width:150px">
+                                            <label for="" class="child">원</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="inline-fields">
+                                        <div class="i-field">
+                                            <div class="control select" style="">
+                                                <select name="">
+                                                    <option value=''>면세</option>
+                                                    <option value=''>부가세포함</option>
+                                                    <option value=''>부가세별도</option>
+                                                    <option value=''>세금</option>
+                                                    <option value=''>공과금</option>
+                                                    <option value=''>제세공과금 포함</option>
+                                                    <option value=''>제세공과금 불포함</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <span class="tbl-form-tit">대상</span>
+                            <div class="control select" style="width:100%">
+                                <select name="">
+                                    <option value=''>외주사</option>
+                                    <option value=''>용역(프리랜서)</option>
+                                    <option value=''>이미지,영상,음원</option>
+                                    <option value=''>이벤트 경품</option>
+                                    <option value=''>상금</option>
+                                    <option value=''>어워드</option>
+                                    <option value=''>기타</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns inbox-subtitle">
+                        <div class="column">
+                            <h2><span class="label-txt">결제정보</span></h2>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit">결제방법</span>
+                            <div class="tabs is-toggle inbox-tabs is-fullwidth">
+                                <ul id="tab-employ">
+                                    <li class="is-active"><a href="#"><span>계좌</span></a></li>
+                                    <li><a href="#"><span>법인카드</span></a></li>
+                                    <li><a href="#"><span>개인경비</span></a></li>
+                                    <li><a href="#"><span>자동이체</span></a></li>
+                                    <li><a href="#"><span>현금시재</span></a></li>
+                                    <li><a href="#"><span>지로납부</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 결제방법 컨텐츠 레이어 -->
+                    <!-- 레이어1: 계좌 -->
+                    <div id="tab-payment-content-1">
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tbl-form-tit is-next-chk">계산서</span>
+                                <div class="columns is-multiline is-flex-mobile">
+                                    <div class="field">
+                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <label for="">세금계산서</label>
+                                    </div>
+                                    <div class="field">
+                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <label for="">계산서</label>
+                                    </div>
+                                    <div class="field">
+                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <label for="">사업자지출증빙(현금영수증)</label>
+                                    </div>
+                                    <div class="field">
+                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <label for="">프리랜서사업소득</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tbl-form-tit">업체명</span>
+                                <div class="control">
+                                    <input class="input" type="text">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <span class="tbl-form-tit">담당자</span>
+                                <div class="control">
+                                    <input class="input" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tbl-form-tit">연락처</span>
+                                <div class="control">
+                                    <input class="input" type="text">
+                                </div>
+                            </div>
+                            <div class="column"></div>
+                        </div>
+
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tbl-form-tit">업체계좌정보</span>
+                                <div class="inline-fields is-mobile mobile-field-label">
+                                    <div class="i-field">
+                                        <label for="" class="child">은행명</label>
+                                        <input class="input" type="text" id="" style="width:150px;">
+                                    </div>
+                                    <div class="i-field">
+                                        <label for="" class="child">계좌번호</label>
+                                        <input class="input" type="text" id="" style="width:200px;">
+                                    </div>
+                                    <div class="i-field">
+                                        <label for="" class="child">예금주</label>
+                                        <input class="input" type="text" id="" style="width:110px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tbl-form-tit is-next-chk">지급일자</span>
+                                <div class="columns is-multiline is-flex-mobile">
+                                    <div class="field">
+                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <label for="">보름</label>
+                                    </div>
+                                    <div class="field">
+                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <label for="">말일</label>
+                                    </div>
+                                    <div class="field">
+                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <label for="">기안결제 완료 즉시</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 레이어2: 법인카드 -->
+                    <div id="tab-payment-content-2">
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tbl-form-tit is-next-chk">결제구분</span>
+                                <div class="columns is-multiline is-flex-mobile">
+                                    <div class="field">
+                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <label for="">온라인</label>
+                                    </div>
+                                    <div class="field">
+                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <label for="">방문결제</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 레이어3: 개인경비 -->
+                    <div id="tab-payment-content-3">
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tbl-form-tit is-next-chk">결제구분</span>
+                                <div class="columns is-multiline is-flex-mobile">
+                                    <div class="field">
+                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <label for="">개인카드</label>
+                                    </div>
+                                    <div class="field">
+                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <label for="">개인현금</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 레이어4: 자동이체 -->
+                    <div id="tab-payment-content-4">
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tbl-form-tit">이체일자</span>
+                                <div class="inline-fields">
+                                    <div class="i-field">
+                                        <input class="input" type="number" style="width:50px;">
+                                    </div>
+                                    <div class="i-field" style="margin-left: 0.25em;">
+                                       일 / 자동이체 신규 신청시 경영지원팀 확인 후 등록
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 레이어5: 현금시재 -->
+                    <div id="tab-payment-content-5">
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tbl-form-tit">현금시재</span>
+                                <div class="control">
+                                    경영지원팀 확인 후 직접 수령
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- // 결제방법 컨텐츠 레이어 -->
+                    <hr>
+                    <div class="columns">
+                        <div class="column">
+                            <span class="tbl-form-tit">활용내용</span>
+                            <div class="control">
+                                <input class="input" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="btn-wrapper">
+                <button class="button has-icon is-large is-fullwidth">
+                    <i class="fas fa-plus-circle"></i><span class="label is-size-5">결제항목 추가하기</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 웹 에디터 -->
+        <div class="content">
+            <img src="../assets/images/dummy.png" width="100%">
+        </div>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!--   마크업 교체 끝 -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+        <div class="content">
+            <div class="box">
+                <!--- 04/18 파일 찾기 태그 수정 start -->
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="file has-name is-fullwidth is-right">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">파일찾기</span>
+                                </span>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column last-button">
+                        <span class="buttons">
+                            <a class="button is-fullwidth">
+                                <span class="icon is-small">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="file has-name is-fullwidth is-right">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">파일찾기</span>
+                                </span>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column last-button">
+                        <span class="buttons">
+                            <a class="button is-fullwidth">
+                                <span class="icon is-small">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <!--- 04/18 파일 찾기 태그 수정 start -->
+            </div>
+        </div>
+
+
+        <nav class="level is-mobile">
+            <div class="level-left">
+                <p class="buttons">
+                    <a href="project_list.html" class="button">
+                        <span class="icon is-small">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                        <span>목록</span>
+                    </a>
+                </p>
+            </div>
+
+            <div class="level-right">
+                <p class="buttons">
+                    <a href="project_list.html" class="button is-danger">
+                        <span class="icon is-small">
+                            <i class="fas fa-pencil-alt"></i>
+                        </span>
+                        <span>등록</span>
+                    </a>
+                </p>
+            </div>
+        </nav>
+    </div>
+
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title is-size-6">담당자 선택</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+
+                <div class="columns">
+
+                    <div class="column">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <div class="field">
+                                    <div class="control select is-small is-fullwidth">
+                                        <select>
+                                            <option>BM</option>
+                                            <option>CD</option>
+                                            <option>PM</option>
+                                            <option>PL</option>
+                                            <option>기획</option>
+                                            <option>디자인</option>
+                                            <option>모션</option>
+                                            <option>개발(front-end)</option>
+                                            <option>개발(back-end)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-block">
+                                <p class="control has-icons-left">
+                                    <input class="input is-small" type="text" placeholder="search">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-search" aria-hidden="true"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="panel-block">
+                                <div class="search-result">
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column last-button has-text-centered column-center">
+                        <a class="button">
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-right is-hidden-mobile"></i>
+                                <i class="fas fa-angle-down is-hidden-tablet"></i>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="column">
+
+                        <div class="card is-shadowless is-bordered">
+
+                            <div class="card-content">
+
+                                <div class="member-result">
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">BM</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="is-size-7">대표 노진영</p>
+                                    <p class="is-size-7">이사 박수천</p>
+                                    <p class="is-size-7">이사 박수천</p>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">CD</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">PM</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">PL</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">기획</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">디자인</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">개발(front-end)</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">개발(back-end)</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <a class="card-footer-item is-size-7">
+                                    위로 직원이동
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-up"></i>
+                                    </span>
+                                </a>
+                                <a class="card-footer-item  is-size-7">
+                                    아래로 직원이동
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down"></i>
+                                    </span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-primary">확인</button>
+                <button class="button">취소</button>
+            </footer>
+        </div>
+    </div>
+</section>
+<!-- 본문 끌 -->
+
+<script>_isMarkup=true;</script><script src="/assets/js/menu.js"></script>
+</body>
+</html>

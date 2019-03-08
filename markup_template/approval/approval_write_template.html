@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>designfever intranet</title>
+    <link rel="stylesheet" href="/assets/css/work.df.css">
+
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script defer src="/assets/js/all.js"></script>
+    <script defer src="/assets/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+
+<div id="top"></div>
+<div id="sub-menu-4"></div>
+
+<!-- 본문 시작 -->
+<section class="section df-approval">
+    <div class="container">
+        <div class="tabs is-boxed">
+            <ul>
+                <li>
+                    <a href="/approval/approval_write_1.html">
+                        <span>입사승인계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_2.html">
+                        <span>프로젝트 휴가 승인계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_3.html">
+                        <span>비용품의서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_4.html">
+                        <span>외근계/파견계</span>
+                    </a>
+                </li>
+                <li class="is-active">
+                    <a href="/approval/approval_write.html">
+                        <span>휴가계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_5.html">
+                        <span>출장계</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_6.html">
+                        <span>사유서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_7.html">
+                        <span>시말서</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/approval/approval_write_8.html">
+                        <span>조퇴계함</span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+
+        <nav class="level is-mobile">
+            <div class="level-left">
+                <p class="buttons">
+                    <a href="project_list.html" class="button">
+                        <span class="icon is-small">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                        <span>목록</span>
+                    </a>
+                </p>
+            </div>
+
+            <div class="level-right">
+                <p class="buttons">
+                    <a href="project_list.html" class="button is-danger">
+                        <span class="icon is-small">
+                            <i class="fas fa-pencil-alt"></i>
+                        </span>
+                        <span>등록</span>
+                    </a>
+                </p>
+            </div>
+        </nav>
+
+
+
+
+
+
+        <!-- 결제문서 상단 공통 -->
+        <div class="content tbl-form-box">
+            <div class="columns">
+                <div class="column">
+                    <div class="box box-approval document-info">
+                        <div class="is-fullwidth">
+                            <div class="columns is-7-desktop">
+                                <div class="column">
+                                    <div class="control select">
+                                        <select>
+                                            <option value="공개" selected>공개</option>
+                                            <option value="비공개">비공개</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns is-flex-mobile form-info">
+                                <div class="column">
+                                    <span class="tit">문서번호</span>
+                                    <div class="control">
+                                        8601-xxxx
+                                    </div>
+                                </div>
+
+                                <div class="column">
+                                    <span class="tit">문서종류</span>
+                                    <div class="control select">
+                                        <select>
+                                            <option value="" selected>반차</option>
+                                            <option value="">오후반차</option>
+                                            <option value="">프로젝트 연차휴가</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="column">
+                                    <span class="tit">기안일</span>
+                                    <div class="control">
+                                        2019년 02월 28일
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-5-desktop">
+                    <div class="box box-approval approval-line">
+                        <div class="inner-wrap">
+                            <div class="approval-line-list">
+                                <!-- 결제 완료 : a ==> div, 개인 사인이 있는 경우 -->
+                                <div class="column">
+                                    <div class="item is-completed">
+                                        <span class="pos">대표</span>
+                                        <span class="name">홍길동</span>
+                                        <span class="state">
+                                            <i class="date">결재</i>
+                                            <i class="sign" style="background-image:url('http://work.designfever.com/file/ggang_02.jpg')"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- 결제 완료: 개인 사인이 없는 경우  -->
+                                <div class="column">
+                                    <div class="item is-completed">
+                                        <span class="pos">직책</span>
+                                        <span class="name">홍길동</span>
+                                        <span class="state">
+                                            <i>변경</i>
+                                            <i class="sign"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <a class="item is-active">
+                                        <span class="pos">직책</span>
+                                        <span class="name">홍길동상</span>
+                                        <span class="state">
+                                            <i>미결재</i>
+                                            <i class="sign"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="column">
+                                    <a class="item">
+                                        <span class="name">지정</span>
+                                    </a>
+                                </div>
+                                <div class="column">
+                                    <a class="item">
+                                        <span class="name">지정</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 참조 -->
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field is-grouped">
+                                        <div class="control is-expanded">
+                                            <input class="input"  name="cc" id="cc" readonly="" value="">
+                                            <input type="hidden" name="cc_id" id="cc_id" value="">
+                                        </div>
+                                        <div class="control">
+                                            <a class="button is-link" href="#">참조자 지정</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //결제문서 상단 공통 -->
+
+        <hr>
+
+        <h1 class="title has-text-link">*등록 페이지에서 출력</h1>
+        <p class="message">
+            입력폼이 사용되는 페이지 컴포넌트 전용 클래스 : tbl-form-box
+        </p>
+        <!-- 템플릿 -->
+        <div class="content tbl-form-box">
+            <div class="columns">
+                <div class="column">
+                    <span class="tbl-form-tit">제목</span>
+                    <div class="control">
+                        <input class="input is-large" type="text" placeholder="제목">
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <span class="tbl-form-tit">PC에서 화면 50% 사용 시</span>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="일반 입력폼">
+                    </div>
+                </div>
+                <div class="column is-hidden-mobile"></div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <span class="tbl-form-tit">프로젝트 1</span>
+                    <div class="control select" style="width:100%;">
+                        <select name="">
+                            <option value='프로젝트1'>프로젝트1</option>
+                            <option value='프로젝트2'>프로젝트2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <span class="tbl-form-tit">프로젝트 2</span>
+                    <div class="control select" style="width:100%;">
+                        <select name="">
+                            <option value='프로젝트1'>프로젝트21</option>
+                            <option value='프로젝트2'>프로젝트22</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <span class="tbl-form-tit">폼 설명이 달려있는 타입</span>
+                    <div class="control">
+                        <input type="text" class="input is-small-middle" placeholder="총금액">
+                    </div>
+                    <span class="is-size-7">원 - 자동입력</span>
+                </div>
+
+                <div class="column">
+                    <span class="tbl-form-tit">비활성화 폼</span>
+                    <div class="control">
+                        <input type="text" class="input" placeholder="Disabled input" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column is-half">
+                    <span class="tbl-form-tit">50% 컬럼, 내용은 가변적...</span>
+                    <div class="inline-fields">
+                        <div class="i-field" style="width:30%; min-width:100px;">
+                            <input class="input" type="text" id="">
+                            <label for="" class="child">년</label>
+                        </div>
+                        <div class="i-field" style="width:30%; min-width:100px;">
+                            <input class="input" type="text" id="">
+                            <label for="" class="child">월</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <span class="tbl-form-tit">50% 컬럼</span>
+                    <div class="control">
+                        <input type="text" class="input" placeholder="총금액">
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <span class="tbl-form-tit">기간</span>
+                    <div class="columns">
+                        <div class="column is-mobile-pb-1" style="flex-grow:0;flex-basis:auto;">
+                            <div class="control select">
+                                <select name="fr_year" id="">
+                                    <option value="">2018년</option>
+                                    <option value="">옵션2</option>
+                                    <option value="">옵션3</option>
+                                </select>
+                            </div>
+                            <div class="control select">
+                                <select name="fr_month" id="">
+                                    <option value="01">1월</option><option value="02">2월</option><option value="03">3월</option><option value="04" selected="">4월</option><option value="05">5월</option><option value="06">6월</option><option value="07">7월</option><option value="08">8월</option><option value="09">9월</option><option value="10">10월</option><option value="11">11월</option><option value="12">12월</option>                                    </select>
+                            </div>
+                            <div class="control select">
+                                <select name="fr_day" id="">
+                                    <option value="01" selected="">1일</option><option value="02">2일</option><option value="03">3일</option><option value="04">4일</option><option value="05">5일</option><option value="06">6일</option><option value="07">7일</option><option value="08">8일</option><option value="09">9일</option><option value="10">10일</option><option value="11">11일</option><option value="12">12일</option><option value="13">13일</option><option value="14">14일</option><option value="15">15일</option><option value="16">16일</option><option value="17">17일</option><option value="18">18일</option><option value="19">19일</option><option value="20">20일</option><option value="21">21일</option><option value="22">22일</option><option value="23">23일</option><option value="24">24일</option><option value="25">25일</option><option value="26">26일</option><option value="27">27일</option><option value="28">28일</option><option value="29">29일</option><option value="30">30일</option><option value="31">31일</option>                                    </select>
+                            </div>
+                            <div class="button">
+                                <input type="hidden" id="" class="datepicker">
+                                <svg class="svg-inline--fa fa-calendar-plus fa-w-14" aria-hidden="true" data-prefix="fa" data-icon="calendar-plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm316 140c0-6.6-5.4-12-12-12h-60v-60c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v60h-60c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h60v60c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-60h60c6.6 0 12-5.4 12-12v-40z"></path></svg><!-- <i class="fa fa-calendar-plus"></i> -->
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="control select">
+                                <select name="to_year" id="to_year">
+                                    <option value="2013">2013년</option><option value="2014">2014년</option><option value="2015">2015년</option><option value="2016">2016년</option><option value="2017">2017년</option><option value="2018" selected="">2018년</option><option value="2019">2019년</option>                                    </select>
+                            </div>
+                            <div class="control select">
+                                <select name="to_month" id="to_month">
+                                    <option value="01">1월</option><option value="02">2월</option><option value="03">3월</option><option value="04" selected="">4월</option><option value="05">5월</option><option value="06">6월</option><option value="07">7월</option><option value="08">8월</option><option value="09">9월</option><option value="10">10월</option><option value="11">11월</option><option value="12">12월</option>                                    </select>
+                            </div>
+                            <div class="control select">
+                                <select name="to_day" id="to_day">
+                                    <option value="01">1일</option><option value="02">2일</option><option value="03">3일</option><option value="04">4일</option><option value="05">5일</option><option value="06">6일</option><option value="07">7일</option><option value="08">8일</option><option value="09">9일</option><option value="10">10일</option><option value="11">11일</option><option value="12">12일</option><option value="13">13일</option><option value="14">14일</option><option value="15">15일</option><option value="16">16일</option><option value="17">17일</option><option value="18">18일</option><option value="19">19일</option><option value="20">20일</option><option value="21">21일</option><option value="22">22일</option><option value="23">23일</option><option value="24">24일</option><option value="25">25일</option><option value="26">26일</option><option value="27" selected="">27일</option><option value="28">28일</option><option value="29">29일</option><option value="30">30일</option><option value="31">31일</option>                                    </select>
+                            </div>
+                            <div class="button">
+                                <input type="hidden" id="fr_date" class="datepicker">
+                                <svg class="svg-inline--fa fa-calendar-plus fa-w-14" aria-hidden="true" data-prefix="fa" data-icon="calendar-plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm316 140c0-6.6-5.4-12-12-12h-60v-60c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v60h-60c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h60v60c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-60h60c6.6 0 12-5.4 12-12v-40z"></path></svg><!-- <i class="fa fa-calendar-plus"></i> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <span class="tbl-form-tit">50% 버튼 있는 입력폼</span>
+                    <div class="field is-grouped">
+                        <div class="control is-expanded">
+                            <input type="text" class="input"  name="" id="" value="">
+                        </div>
+                        <div class="control">
+                            <button class="button is-link">버튼</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-hidden-mobile"></div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <span class="tbl-form-tit">100% 버튼 있는 입력폼</span>
+                    <div class="field is-grouped">
+                        <div class="control is-expanded">
+                            <input type="text" class="input"  name="" id="" value="">
+                        </div>
+                        <div class="control">
+                            <button class="button is-link">버튼</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- //템플릿 -->
+        <hr>
+
+        <h1 class="title has-text-link">*보기 페이지에서 출력</h1>
+        <!-- 템플릿 -->
+        <div class="content tbl-form-box">
+            <div class="columns">
+                <div class="column">
+                    <div class="control">
+                        <span class="tbl-form-tit">제목</span>
+                        <span class="txt is-size-4">상세보기에서 제목을 출력합니다.</span>
+                    </div>
+                </div>
+            </div>
+
+            <em class="subtitle has-text-primary">기본 2컬럼 타입</em>
+            <div class="columns">
+                <div class="column" style="background: gray">
+                    <span class="tbl-form-tit">제목1</span>
+                    <div class="field">columns는 table의 tr 개념</div>
+                </div>
+                <div class="column" style="background: darkgray">
+                    <span class="tbl-form-tit">제목2</span>
+                    <div class="field">column 태그는 th, td 개념</div>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column" style="background: darkgray">
+                    <span class="tbl-form-tit">제목1</span>
+                    <div class="field">체크박스 사용된 컴포넌트만 column으로 감쏴준다.</div>
+                </div>
+                <div class="column" style="background: gray">
+                    <span class="tbl-form-tit">제목2</span>
+                    <div class="field">field, control 클래스는 동일하다.</div>
+                </div>
+            </div>
+
+            <em class="subtitle has-text-primary">리스트인데 PC만 2컬럼 타입</em>
+            <!-- ### -->
+            <div class="columns is-desktop is-flex-wrap">
+                <div class="column is-half-desktop">
+                    <div class="field" style="background: pink">
+                        <span class="tbl-form-tit">제목1</span>
+                        <div class="control">
+                            내용이 출력된다내용이 출력된다내용이 출력된다내용이 출력된다 내용이 출력된다.....
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-half-desktop">
+                    <div class="field"  style="background: skyblue">
+                        <span class="tbl-form-tit">제목2</span>
+                        <div class="control">
+                            내용이 출력된다.....
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-half-desktop">
+                    <div class="field" style="background: pink">
+                        <span class="tbl-form-tit">제목3</span>
+                        <div class="control">
+                            내용이 출력된다내용이 출력된다.....
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-half-desktop">
+                    <div class="field"  style="background: skyblue">
+                        <span class="tbl-form-tit">제목4</span>
+                        <div class="control">
+                            내용이 출력된다.....출력된다.....출력된다..... ㅇㄴㄹㅇㄴㅁㄹㄴㅁㅇㄹㄴㅁㄹ
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <em class="subtitle has-text-primary">모바일~PC 1줄에 집어 넣기</em>
+            <!-- ### -->
+            <div class="columns">
+                <div class="column">
+                    <div class="field" style="background: pink">
+                        <span class="tbl-form-tit">제목1</span>
+                        <div class="control">
+                            내용이 출력된다내용이 출력된다내용이 출력된다내용이 출력된다 내용이 출력된다.....
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="field"  style="background: skyblue">
+                        <span class="tbl-form-tit">제목2</span>
+                        <div class="control">
+                            내용이 출력된다.....
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="field" style="background: pink">
+                        <span class="tbl-form-tit">제목3</span>
+                        <div class="control">
+                            내용이 출력된다내용이 출력된다.....
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="field"  style="background: skyblue">
+                        <span class="tbl-form-tit">제목4</span>
+                        <div class="control">
+                            내용이 출력된다.....출력된다.....출력된다..... ㅇㄴㄹㅇㄴㅁㄹㄴㅁㅇㄹㄴㅁㄹ
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- //템플릿 -->
+
+        <div class="content">
+            <img src="../assets/images/dummy.png" width="100%">
+        </div>
+
+        <div class="content">
+            <div class="box">
+                <!--- 04/18 파일 찾기 태그 수정 start -->
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="file has-name is-fullwidth is-right">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">파일찾기</span>
+                                </span>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column last-button">
+                        <span class="buttons">
+                            <a class="button is-fullwidth">
+                                <span class="icon is-small">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="file has-name is-fullwidth is-right">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">파일찾기</span>
+                                </span>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column last-button">
+                        <span class="buttons">
+                            <a class="button is-fullwidth">
+                                <span class="icon is-small">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <!--- 04/18 파일 찾기 태그 수정 start -->
+            </div>
+        </div>
+
+
+        <nav class="level is-mobile">
+            <div class="level-left">
+                <p class="buttons">
+                    <a href="project_list.html" class="button">
+                        <span class="icon is-small">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                        <span>목록</span>
+                    </a>
+                </p>
+            </div>
+
+            <div class="level-right">
+                <p class="buttons">
+                    <a href="project_list.html" class="button is-danger">
+                        <span class="icon is-small">
+                            <i class="fas fa-pencil-alt"></i>
+                        </span>
+                        <span>등록</span>
+                    </a>
+                </p>
+            </div>
+        </nav>
+    </div>
+
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title is-size-6">담당자 선택</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+
+                <div class="columns">
+
+                    <div class="column">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <div class="field">
+                                    <div class="control select is-small is-fullwidth">
+                                        <select>
+                                            <option>BM</option>
+                                            <option>CD</option>
+                                            <option>PM</option>
+                                            <option>PL</option>
+                                            <option>기획</option>
+                                            <option>디자인</option>
+                                            <option>모션</option>
+                                            <option>개발(front-end)</option>
+                                            <option>개발(back-end)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-block">
+                                <p class="control has-icons-left">
+                                    <input class="input is-small" type="text" placeholder="search">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-search" aria-hidden="true"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="panel-block">
+                                <div class="search-result">
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+                                    <div class="search-member">
+                                        <input type="checkbox">
+                                        <span class="is-size-7">대표 노진영</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column last-button has-text-centered column-center">
+                        <a class="button">
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-right is-hidden-mobile"></i>
+                                <i class="fas fa-angle-down is-hidden-tablet"></i>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="column">
+
+                        <div class="card is-shadowless is-bordered">
+
+                            <div class="card-content">
+
+                                <div class="member-result">
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">BM</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="is-size-7">대표 노진영</p>
+                                    <p class="is-size-7">이사 박수천</p>
+                                    <p class="is-size-7">이사 박수천</p>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">CD</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">PM</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">PL</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">기획</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">디자인</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">개발(front-end)</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="member-title">
+                                        <div class="columns is-mobile">
+                                            <div class="column">
+                                                <span class="title is-size-7">개발(back-end)</span>
+                                            </div>
+                                            <div class="column last-button">
+                                                <a class="button is-small">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <a class="card-footer-item is-size-7">
+                                    위로 직원이동
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-up"></i>
+                                    </span>
+                                </a>
+                                <a class="card-footer-item  is-size-7">
+                                    아래로 직원이동
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down"></i>
+                                    </span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-primary">확인</button>
+                <button class="button">취소</button>
+            </footer>
+        </div>
+    </div>
+</section>
+<!-- 본문 끌 -->
+
+<script>_isMarkup=true;</script><script src="/assets/js/menu.js"></script>
+</body>
+</html>
