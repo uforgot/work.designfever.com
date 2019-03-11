@@ -1,6 +1,444 @@
 @charset "utf-8"
 
-// utils
+@import "bulma/utilities/initial-variables"
+@import "df/df-util"
+
+// util
+// helper
+.blind
+  position: absolute !important
+  left: -9999px !important
+  top: -9999px !important
+  font-size: 0
+
+// align
+.inline-fields
+  display: flex
+  flex-wrap: wrap
+  .i-field
+    display: flex
+    align-items: center
+    font-style: normal
+    font-weight: normal
+
+    &:not(:first-child)
+      margin-left: 2em
+    &.ns
+      margin-left: 0 !important
+
+    .child
+      margin-left: 0.25em
+      margin-right: 0.25em
+      &:first-child
+        margin-left: 0
+        margin-right: 0.35em
+
+  &.yymmdd
+    .i-field
+      &:not(:first-child)
+        margin-left: 0.25em
+
++breakpoint(mobile)
+  .inline-fields
+    &.is-mobile
+      display: block
+      .i-field
+        &:not(:first-child)
+        margin-left: 0
+        margin-top: 0.25em
+
+    &.mobile-field-label
+      label
+        width: 100px
+      input
+        width: 100% !important
 
 
-//approval
+.groups
+  &.inline-fields
+    .i-field
+      display: inline-block
+      vertical-align: middle
+      margin-bottom: 0
+
+.is-rounded
+  overflow: hidden
+  border-radius: 6px
+
+.is-flex-wrap
+  flex-wrap: wrap
+.is-mb-0
+  margin-bottom: 0 !important
+.is-mb-50
+  margin-bottom: 50px !important
+.is-fullwidth
+  width: 100%
+
+
+
+
++break-max(1087.3px)
+  .is-mobile-tablet-block
+    display: block !important
+
+  .is-tablet-flex-wrap
+    flex-wrap: wrap
+
+.is-flex-vertical-middle
+  align-items: center
+
+.is-grow-1,
+.is-mobile-grow-1
+  flex-grow: 1
+
+.select select
+  width: 100%
+// tablet~
++break-min(768.3px)
+  .is-tbl-pc-mb-0
+    margin-bottom: 0 !important
+  .is-tbl-pc-pb-0
+    padding-bottom: 0 !important
+
++breakpoint(mobile)
+  .is-mobile-pt-0
+    padding-top: 0 !important
+  .is-mobile-pt-1
+    padding-top: 0.25rem !important
+
+  .is-mobile-pb-0
+    padding-bottom: 0 !important
+  .is-mobile-pb-1
+    padding-bottom: 0.25rem !important
+
+  .is-mobile-mt-0
+    margin-top: 0 !important
+  .is-mobile-mt-1
+    margin-top: 0.25rem !important
+
+  .is-mobile-mb-0
+    margin-bottom: 0 !important
+  .is-mobile-mb-1
+    margin-bottom: 0.25rem !important
+
+
+// 테이블 레이아웃을 반응형 타입으로 변경
+// 20190228 jj
+
+.btn-wrapper
+  .has-icon
+    svg
+      transition: all 0.25s
+      transform-origin: center
+      path
+        fill: #5a5a5a
+    .label
+      margin-left: 0.25rem
+      margin-right: 0.25rem
+      color: #5a5a5a
+    &:hover
+      svg
+        path
+          fill: #000
+      .label
+        color: #000
+
+.tbl-form-box
+  *
+    white-space: nowrap
+
+  .inbox-title
+    position: relative
+    background: whitesmoke
+    border-radius: 0.15em
+
+    .column
+      display: flex
+      align-items: center
+
+      &:nth-of-type(2)
+        padding: 0
+
+    h1
+      margin-bottom:  0
+      font-size: 1.75rem
+      .label-txt
+        display: block
+        padding: 0.15em 0.25em
+
+    .btn-remove
+      display: block
+      position: absolute
+      top: 12px
+      right: 12px
+      //width: 25px
+      //height: 25px
+      color: #000
+      svg
+        width: 100%
+        height: 100%
+      &:hover
+        color: darkred
+
+    +breakpoint(mobile)
+      .column
+        padding: 0.5rem
+      h1
+        font-size: 1.25rem
+        .label-txt
+          padding: 0
+      .btn-remove
+        top: 5px
+        right: 5px
+        height: auto
+        line-height: 0
+        //width: 15px
+        //height: 15px
+        .is-small
+          width: 1em
+          height: 1em
+
+  .inbox-subtitle
+    margin-bottom: 0
+    h2
+      margin-bottom: 0.25em
+      font-size: 1.5rem
+
+    +breakpoint(mobile)
+      .column
+      h2
+        font-size: 1.25rem
+  //margin-bottom: 0
+
+
+
+
+  //박스내 탭 스타일
+  .inbox-tabs
+    display: flex
+    align-items: center
+    width: 100%
+
+    .tbl-form-tit
+      padding-bottom:  0
+      padding-right: 0.25em
+      &:after
+        display: inline
+        content: ':'
+
+    ul,li
+      margin: 0
+
+
+
+  .control, .field, label
+    font-weight: normal
+
+  //문서정보
+  .document-info
+    display: flex
+    align-items: center
+    .columns:first-of-type
+      .select
+        width: 100%
+    .form-info
+      display: inline-flex
+      flex-wrap: wrap
+      .column:first-of-type
+        flex-grow: 0
+        flex-shrink: 0
+
+    .column
+      display: flex
+      padding-top: 0.5rem
+      padding-bottom: 0.5rem
+      align-items: center
+
+      .tit, .control
+        display: inline-block
+        vertical-align: middle
+
+      .tit
+        &:after
+          margin: 0 0.25rem
+          content: ':'
+
+      .control
+        font-weight: normal
+
+
+
+    +breakpoint(mobile)
+      padding-top: 1.6rem
+      padding-bottom: 1.6rem
+      .columns:first-of-type
+        .select
+          width: 100%
+
+
+      .column
+        padding-top: 0.25rem
+        padding-bottom: 0.25rem
+
+
+  .tbl-form-tit
+    display: block
+    padding-bottom: 0.5em
+    font-size: 1rem
+
+    &.is-next-chk
+      margin-bottom: 0.5em
+
+  .box-approval
+    height: 100%
+
+    .title
+      margin-bottom: 0.75rem
+
+    +breakpoint(mobile)
+      height: auto
+
+
+
+  .approval-line
+    .inner-wrap
+      .approval-line-list
+        display: flex
+        align-items: center
+        justify-content: space-around
+        height: 70px
+        margin-bottom: 0.75rem
+
+        .column
+          min-width: 60px
+          height: 100%
+          padding: 0
+          margin-left: 2.5%
+
+          &:first-child
+            margin-left: 0
+
+        .item
+          position: relative
+          display: flex
+          flex-direction: column
+          border: 1px solid #dbdbdb
+          border-radius: 4px
+          height: 100%
+          justify-content: center
+          align-items: center
+          padding-bottom: calc(0.75em - 1px)
+          padding-left: 0.75em
+          padding-right: 0.75em
+          padding-top: calc(0.75em - 1px)
+          text-align: center
+          white-space: nowrap
+          line-height: 1
+          color: #000
+
+          &.tooltip
+            &:before
+              display: none
+              transform: translate(-90%, 0.7rem)
+            &:after
+              display: none
+
+          span
+            display: block
+            &.pos
+              font-size: 0.75rem
+            &.signature
+              position: relative
+              display: block
+              font-size: 1rem
+              line-height: 1.8
+              width: 50px
+              height: 50px
+
+              i.txt
+                display: flex
+                width: inherit
+                height: inherit
+                border: solid 1px transparent
+                border-radius: 50%
+                align-items: center
+                justify-content: center
+                font-style: normal
+
+              i.sign
+                display: none
+                position: absolute
+                left: 0
+                top: 0
+
+                width: inherit
+                height: inherit
+                background-repeat: no-repeat
+                background-position: center center
+                background-size: 100%
+            &.state
+              i
+                font-size: 0.75rem
+                font-style: normal
+                &.sign
+                  display: flex
+                  justify-content: center
+                  align-items: center
+                  position: absolute
+                  left: 0
+                  top: 0
+                  width: 100%
+                  height: 100%
+                  color: #c70a00
+
+                  background-size: 80%
+                  opacity: 0
+
+
+          &.is-completed
+            //background-color: #2366d1
+            border-color: #ddd
+            background: #eaeaea
+            cursor: default
+            color: red
+            //pointer-events: none
+
+            &.tooltip
+              &:before
+                display: block
+
+            .signature
+              i.txt
+                border-color: red
+            &.has-sign
+              i.txt
+                visibility: hidden
+              i.sign
+                display: block
+
+
+
+          &.is-active
+            //background-color: #2366d1
+            border-color: #2366d1
+            color: #2366d1
+            &:hover
+              &.tooltip
+                &:before
+                  display: block
+                  content: '미결제'
+
+          &.is-inactive
+            opacity: 0.5
+            cursor: default
+            pointer-events: none
+
+        a.item:not(.is-completed)
+          &:hover
+            color: #000
+            border-color: #2366d1
+
+
+
+        +breakpoint(mobile)
+
