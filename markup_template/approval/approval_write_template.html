@@ -165,7 +165,7 @@
                                     </a>
                                 </div>
                                 <div class="column">
-                                    <a class="item is-active tooltip" data-tooltip="">
+                                    <a href="" class="item is-active tooltip" data-tooltip="">
                                          <span class="signature">
                                             <i class="sign"></i>
                                             <i class="txt">홍길동</i>
@@ -174,14 +174,14 @@
                                 </div>
                                 <!-- 결제자 미지정 -->
                                 <div class="column">
-                                    <a class="item tooltip" data-tooltip="">
+                                    <a href="" class="item tooltip" data-tooltip="">
                                         <span class="signature">
                                             <i class="sign"></i>
                                             <i class="txt">지정</i>
                                         </span>
                                     </a>
                                 </div>
-                                <div class="column">
+                                <div href="" class="column">
                                     <a class="item tooltip" data-tooltip="">
                                         <span class="signature">
                                             <i class="sign"></i>
@@ -214,6 +214,75 @@
 
         <hr>
 
+        <h1 class="title has-text-link">* 추가되는 컴포넌트</h1>
+        <div class="content tbl-form-box">
+            <div class="subtitle has-text-primary">1. 휴가 승인계 / 휴가자 지정</div>
+            <!-- Source -->
+
+            <div class="content">
+                <div class="btn-wrapper" style="margin-bottom:1em">
+                    <button class="button has-icon is-large is-fullwidth">
+                        <i class="fas fa-user-plus"></i><span class="label is-size-5">휴가자 지정</span>
+                    </button>
+                </div>
+
+                <div class="columns is-flex-wrap">
+                    <div class="column is-3">
+                        <div class="inline-fields is-full-in-column is-mobile-pr-0" style="padding-right:10%;">
+                            <div class="i-field">
+                                <label for="" class="child">대상자</label>
+                                <input class="input" type="text" id="">
+                            </div>
+                            <div class="i-field" style="margin-left: 0;">
+                                <label for="" class="child">휴가일수</label>
+                                <input class="input" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-3">
+                        <div class="inline-fields is-full-in-column is-mobile-pr-0" style="padding-right:10%;">
+                            <div class="i-field">
+                                <label for="" class="child">대상자</label>
+                                <input class="input" type="text" id="">
+                            </div>
+                            <div class="i-field" style="margin-left: 0;">
+                                <label for="" class="child">휴가일수</label>
+                                <input class="input" type="text" id="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-3">
+                        <div class="inline-fields is-full-in-column is-mobile-pr-0" style="padding-right:10%;">
+                            <div class="i-field">
+                                <label for="" class="child">대상자</label>
+                                <input class="input" type="text" id="">
+                            </div>
+                            <div class="i-field" style="margin-left: 0;">
+                                <label for="" class="child">휴가일수</label>
+                                <input class="input" type="text" id="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-3">
+                        <div class="inline-fields is-full-in-column is-mobile-pr-0" style="padding-right:10%;">
+                            <div class="i-field">
+                                <label for="" class="child">대상자</label>
+                                <input class="input" type="text" id="">
+                            </div>
+                            <div class="i-field" style="margin-left: 0;">
+                                <label for="" class="child">휴가일수</label>
+                                <input class="input" type="text" id="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <h1 class="title has-text-link">*등록 페이지에서 사용</h1>
         <p class="message">
             입력폼이 사용되는 페이지 컴포넌트 전용 클래스 : tbl-form-box
@@ -231,7 +300,16 @@
 
             <div class="columns">
                 <div class="column">
-                    <span class="tbl-form-tit">PC에서 화면 50% 사용 시</span>
+                    <span class="tbl-form-tit">1단 컬럼(100% 사용)</span>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="일반 입력폼">
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <span class="tbl-form-tit">PC, 타블릿에서 50% 컬럼 사용</span>
                     <div class="control">
                         <input class="input" type="text" placeholder="일반 입력폼">
                     </div>
@@ -241,7 +319,7 @@
 
             <div class="columns">
                 <div class="column">
-                    <span class="tbl-form-tit">50% 컬럼</span>
+                    <span class="tbl-form-tit">2단 컬럼(자동 50%)</span>
                     <div class="control select" style="width:100%;">
                         <select name="">
                             <option value='프로젝트1'>프로젝트1</option>
@@ -251,7 +329,7 @@
                 </div>
 
                 <div class="column">
-                    <span class="tbl-form-tit">50% 컬럼</span>
+                    <span class="tbl-form-tit">2단 컬럼(자동 50%)</span>
                     <div class="control select" style="width:100%;">
                         <select name="">
                             <option value='프로젝트1'>프로젝트21</option>
@@ -304,8 +382,8 @@
 
             <div class="columns">
                 <div class="column">
-                    <span class="tbl-form-tit">기본: 입력필드가 한 라인에 출력될 경우</span>
-                    <div class="inline-fields is-mobile mobile-field-label">
+                    <span class="tbl-form-tit">기본: 그룹핑된 입력필드</span>
+                    <div class="inline-fields is-mobile-full-in-column">
                         <div class="i-field">
                             <label for="" class="child">은행명</label>
                             <input class="input" type="text" id="" style="width:100px;">
@@ -324,31 +402,51 @@
                     <span class="tbl-form-tit">확장 : 입력필드와 텍스트가 정렬되는 경우</span>
                     <div class="inline-fields">
                         <div class="i-field">
-                            <input class="input" type="number" value="0">
+                            <input class="input" type="text" value="0">
                         </div>
                         <div class="i-field" style="margin-left: 0.25em;">
                             원 - 자동입력
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="columns">
-
                 <div class="column">
-                    <span class="tbl-form-tit">확장: 년도 입력 필드, 전용 클래스 yymmdd</span>
+                    <span class="tbl-form-tit">라디오버튼과 입력필드 조합시</span>
+                    <div class="control">
+                        <input class="input" type="text">
+                    </div>
+                </div>
+                <div class="column">
+                    <span class="tbl-form-tit" style="margin-bottom:1rem">제세공과금 신고여부</span>
+                    <div class="columns is-multiline is-flex-mobile">
+                        <div class="field">
+                            <input class="is-checkradio" id="" type="radio" name="">
+                            <label for="">예</label>
+                        </div>
+                        <div class="field">
+                            <input class="is-checkradio" id="" type="radio" name="">
+                            <label for="">아니오</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <span class="tbl-form-tit">확장: 그룹핑된 입력필도, 년도 입력 필드, 전용 클래스 yymmdd</span>
                     <div class="inline-fields yymmdd">
                         <div class="i-field">
-                            <input class="input" type="number" id="" style="width:100px;">
+                            <input class="input" type="text" id="" style="width:100px;">
                             <label for="" class="child">년</label>
                         </div>
                         <div class="i-field">
-                            <input class="input" type="number" id="" style="width:50px;">
+                            <input class="input" type="text" id="" style="width:50px;">
                             <label for="" class="child">월</label>
                         </div>
                         <div class="i-field">
-                            <input class="input" type="number" id="" style="width:50px;">
+                            <input class="input" type="text" id="" style="width:50px;">
                             <label for="" class="child">일</label>
                         </div>
                     </div>
@@ -538,12 +636,27 @@
 
         </div>
 
-
-        <!-- //템플릿 -->
-
-        <div class="content">
-            <img src="../assets/images/dummy.png" width="100%">
+        <!-- 웹 에디터 -->
+        <div class="content tbl-form-box">
+            <div class="box">
+                <div class="columns inbox-subtitle">
+                    <div class="column">
+                        <h2><span class="label-txt">상세 내용</span></h2>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div>
+                            분문 내용이 출력되다<br>
+                            <img src="../assets/images/dummy.png" width="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+
 
         <div class="content">
             <div class="box">

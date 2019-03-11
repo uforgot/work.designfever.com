@@ -105,8 +105,6 @@
                                     </div>
                                 </div>
 
-
-
                                 <div class="column">
                                     <span class="tit">기안일</span>
                                     <div class="control">
@@ -139,7 +137,7 @@
                                         </span>
                                     </a>
                                 </div>
-                                <div class="column">
+                                <div href="" class="column">
                                     <a class="item is-active tooltip" data-tooltip="">
                                          <span class="signature">
                                             <i class="sign"></i>
@@ -149,7 +147,7 @@
                                 </div>
                                 <!-- 결제자 미지정 -->
                                 <div class="column">
-                                    <a class="item tooltip" data-tooltip="">
+                                    <a href="" class="item tooltip" data-tooltip="">
                                         <span class="signature">
                                             <i class="sign"></i>
                                             <i class="txt">지정</i>
@@ -157,13 +155,12 @@
                                     </a>
                                 </div>
                                 <div class="column">
-                                    <a class="item tooltip" data-tooltip="">
+                                    <a href="" class="item tooltip" data-tooltip="">
                                         <span class="signature">
                                             <i class="sign"></i>
                                             <i class="txt">지정</i>
                                         </span>
                                     </a>
-
                                 </div>
                             </div>
                             <!-- 참조 -->
@@ -234,16 +231,14 @@
                     <div class="column">
                         <span class="tbl-form-tit is-hidden-mobile">채용 구분</span>
                         <div class="tabs is-toggle inbox-tabs is-fullwidth">
-                            <ul id="tab-employ">
-                                <li class="is-active">
-                                    <a href="#">
-                                        <span>정규직</span>
-                                    </a>
+                            <ul id="tab-employ-type">
+                                <li>
+                                    <input type="radio" name="tab-rdo-emp" id="tab-rdo-emp-1" checked>
+                                    <label for="tab-rdo-emp-1">정규직</label>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <span>계약직</span>
-                                    </a>
+                                    <input type="radio" name="tab-rdo-emp" id="tab-rdo-emp-2">
+                                    <label for="tab-rdo-emp-2">비정규직</label>
                                 </li>
                             </ul>
                         </div>
@@ -272,11 +267,11 @@
                             <span class="tbl-form-tit">총 경력기간</span>
                             <div class="inline-fields yymmdd">
                                 <div class="i-field">
-                                    <input class="input" type="number" id="" style="width:50px;">
+                                    <input class="input" type="text" id="" style="width:50px;">
                                     <label for="" class="child">년</label>
                                 </div>
                                 <div class="i-field">
-                                    <input class="input" type="number" id="" style="width:50px;">
+                                    <input class="input" type="text" id="" style="width:50px;">
                                     <label for="" class="child">월</label>
                                 </div>
                             </div>
@@ -394,15 +389,15 @@
                             <span class="tbl-form-tit">입사 예정일</span>
                             <div class="inline-fields yymmdd">
                                 <div class="i-field">
-                                    <input class="input" type="number" id="" style="width:100px;">
+                                    <input class="input" type="text" id="" style="width:100px;">
                                     <label for="" class="child">년</label>
                                 </div>
                                 <div class="i-field">
-                                    <input class="input" type="number" id="" style="width:50px;">
+                                    <input class="input" type="text" id="" style="width:50px;">
                                     <label for="" class="child">월</label>
                                 </div>
                                 <div class="i-field">
-                                    <input class="input" type="number" id="" style="width:50px;">
+                                    <input class="input" type="text" id="" style="width:50px;">
                                     <label for="" class="child">일</label>
                                 </div>
                             </div>
@@ -465,14 +460,14 @@
                     <div class="columns">
                         <div class="column">
                             <span class="tbl-form-tit">급여</span>
-                            <div class="inline-fields is-mobile mobile-field-label">
+                            <div class="inline-fields is-mobile-full-in-column">
                                 <div class="i-field">
                                     <label for="" class="child">시급</label>
-                                    <input class="input" type="number" value="99,999,999" id="" style="width:150px;">
+                                    <input class="input" type="text" value="99,999,999" id="" style="width:150px;">
                                 </div>
                                 <div class="i-field">
                                     <label for="" class="child">월급</label>
-                                    <input class="input" type="number" value="99,999" id="" style="width:150px;">
+                                    <input class="input" type="text" value="99,999" id="" style="width:150px;">
                                 </div>
                             </div>
                         </div>
@@ -485,15 +480,15 @@
                                 <div class="column is-inline-block-tablet">
                                     <div class="inline-fields yymmdd">
                                         <div class="i-field">
-                                            <input class="input" type="number" id="" style="width:90px;">
+                                            <input class="input" type="text" id="" style="width:90px;">
                                             <label for="" class="child">년</label>
                                         </div>
                                         <div class="i-field">
-                                            <input class="input" type="number" id="" style="width:50px;">
+                                            <input class="input" type="text" id="" style="width:50px;">
                                             <label for="" class="child">월</label>
                                         </div>
                                         <div class="i-field">
-                                            <input class="input" type="number" id="" style="width:50px;">
+                                            <input class="input" type="text" id="" style="width:50px;">
                                             <label for="" class="child">일</label>
                                         </div>
                                         <div class="i-field ns" style="margin-right:20px;">
@@ -504,15 +499,15 @@
                                 <div class="column is-inline-block is-mobile-pt-0">
                                     <div class="inline-fields yymmdd">
                                         <div class="i-field">
-                                            <input class="input" type="number" id="" style="width:90px;">
+                                            <input class="input" type="text" id="" style="width:90px;">
                                             <label for="" class="child">년</label>
                                         </div>
                                         <div class="i-field">
-                                            <input class="input" type="number" id="" style="width:50px;">
+                                            <input class="input" type="text" id="" style="width:50px;">
                                             <label for="" class="child">월</label>
                                         </div>
                                         <div class="i-field">
-                                            <input class="input" type="number" id="" style="width:50px;">
+                                            <input class="input" type="text" id="" style="width:50px;">
                                             <label for="" class="child">일</label>
                                         </div>
                                         <div class="i-field is-marginless">
@@ -546,8 +541,22 @@
         </div>
 
         <!-- 웹 에디터 -->
-        <div class="content">
-            <img src="../assets/images/dummy.png" width="100%">
+        <div class="content tbl-form-box">
+            <div class="box">
+                <div class="columns inbox-subtitle">
+                    <div class="column">
+                        <h2><span class="label-txt">상세 내용</span></h2>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div>
+                            분문 내용이 출력되다<br>
+                            <img src="../assets/images/dummy.png" width="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 <!--   마크업 교체 끝 -->
