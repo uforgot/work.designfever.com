@@ -310,11 +310,15 @@
       .select
         width: 100%
     .form-info
-      display: inline-flex
+      display: block
       flex-wrap: wrap
+      .column
+        display: inline-block
       .column:first-of-type
         flex-grow: 0
         flex-shrink: 0
+    +breakpoint(mobile)
+
 
     .column
       display: flex
@@ -510,4 +514,5 @@
 
 
         +breakpoint(mobile)
+
 
