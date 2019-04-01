@@ -286,149 +286,238 @@
 </section>
 <!-- 본문 끌 -->
 
-<div class="modal">
+<!-- 모달창이 활성화 되어 있을때 -->
+<div class="modal is-active">
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">연차 휴가계</p>
             <button class="delete" aria-label="close"></button>
         </header>
-        <section class="modal-card-body" style="font-size:0.75rem;">
+        <section class="modal-card-body">
             
             <form name="form2" method="post">
-                <input type="hidden" name="doc_no" value="1802-0068">
-                <table class="" width="100%">
-                    <colgroup>
-                        <col width="13%">
-                        <col width="37%">
-                        <col width="13%">
-                        <col width="37%">
-                    </colgroup>
-                    <tbody class="">
-                    <tr>
-                        <th class="gray">문서번호</th>
-                            <td>1802-0068</td>
-                        <th class="gray" rowspan="2">결재</th>
-                        <td rowspan="2" style="padding:0;">
-                            <table class="sign" width="100%">
-                                <tbody>
-                                <tr style="height:30px">
-                                    <td width="20%">실장</td>
-                                    <td width="20%">대표</td>
-                                    <td width="20%"></td>
-                                    <td width="20%"></td>
-                                    <td width="20%" class="last"></td>
-                                </tr>
-                                <tr style="height:65px">
-                                    <td>
-                                        <span class="signature">신형주</span>
-                                    </td>
-                                    <td>
-                                        <span class="signature">노진영</span>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="last"></td>
-                                </tr>
-                                <tr style="height:30px" class="last">
-                                    <td><span class="signature_state">02/08결재</span></td>
-                                    <td><span class="signature_state">02/08결재</span></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="last"></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="gray">문서종류</th>
-                        <td>연차 휴가계</td>
-                    </tr>
-                    <tr>
-                        <th class="gray">기안일</th>
-                        <td>2018년 02월 08일</td>
-                        <th class="gray">수신참조</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th class="gray">부서</th>
-                        <td colspan="3">비주얼 인터랙션 디벨롭먼트 1실</td>
-                    </tr>
-                    <tr>
-                        <th class="gray">이름</th>
-                        <td>실장 신형주</td>
-                        <th class="gray">공개여부</th>
-                        <td>공개</td>
-                    </tr>
-                    <tr>
-                        <th class="gray">제목</th>
-                        <td colspan="3">[신형주 연차 휴가] 2월 14일 연차 휴가</td>
-                    </tr>
-                    <tr>
-                        <th class="gray">기간</th>
-                        <td colspan="3">2018.02.14 - 2018.02.14 (1일)</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="editor-txt">
-                    <p>아래와 같은 사유로 인하여 연차 휴가계를 제출하오니 재가 바랍니다.</p>
-                    <p>&nbsp;</p><p>- 아&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 래 -</p>
-                    <p>&nbsp;</p><p>&nbsp;</p>
-                    <table border="1" cellpadding="0" cellspacing="0">
-                        <tbody>
-                        <tr>
-                            <td style="background-color:transparent; height:23.85pt; width:99pt">
-                                <p><strong>행선지</strong></p>
-                            </td>
-                            <td colspan="3" style="background-color:transparent; border-color:windowtext windowtext windowtext rgb(236, 233, 216); height:23.85pt; width:324pt">
-                                <p>&nbsp;경주&nbsp;</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext; height:23.85pt; width:99pt">
-                                <p><strong>사유</strong></p>
-                            </td>
-                            <td colspan="3" style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext rgb(236, 233, 216); height:23.85pt; width:324pt">
-                                <p>&nbsp;연차휴가</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext; height:23.85pt; width:99pt">
-                                <p><strong>비상 연락처</strong></p>
-                            </td>
-                            <td colspan="3" style="background-color:transparent; border-color:rgb(236, 233, 216) windowtext windowtext rgb(236, 233, 216); height:23.85pt; width:324pt">&nbsp;010-8582-1051</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <p><br>&nbsp;</p>
-                    <p>&nbsp;</p>
-                    <p>끝.</p>
-                </div>
-                <table class="editor-table2" width="100%">
-                    <colgroup>
-                        <col width="10%">
-                        <col width="90%">
-                    </colgroup>
-                    <tbody class="">
-                    <tr class="idea-add">
-                        <th>의견등록</th>
-                        <td>
-                            <input name="reply_contents" id="w_comment" onkeyup="textcounter(this.form.reply_contents, this.form.remlen,200);" onkeydown="textcounter(this.form.reply_contents, this.form.remlen,200);">
-                            <input type="hidden" readonly="" name="remlen" size="3" maxlength="3" value="200">
-                            <div id="reply_btn">
-                                <a href="javascript:writeReply();"><img src="/img/btn_insert.gif" alt=""></a>
+                <!-- 결제문서 상단 공통 -->
+                <div class="content tbl-form-box approval-common">
+                    <div class="columns is-block">
+                        <div class="column">
+                            <div class="box box-approval document-info">
+                                <div class="is-fullwidth">
+                                    <div class="columns">
+                                        <div class="column">
+                                            <div class="control select">
+                                                <select>
+                                                    <option value="공개" selected>공개</option>
+                                                    <option value="비공개">비공개</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="columns form-info">
+                                        <div class="column">
+                                            <span class="tit">문서번호</span>
+                                            <div class="control">
+                                                8601-xxxx
+                                            </div>
+                                        </div>
+                                        <div class="column">
+                                            <span class="tit">문서종류</span>
+                                            <div class="control select">
+                                                <select>
+                                                    <option value="" selected>반차</option>
+                                                    <option value="">오후반차</option>
+                                                    <option value="">프로젝트 연차휴가</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="column">
+                                            <span class="tit">기안일</span>
+                                            <div class="control">
+                                                2019년 02월 28일
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                        </div>
+
+                        <div class="column">
+                            <div class="box box-approval approval-line">
+                                <div class="inner-wrap">
+                                    <div class="approval-line-list">
+                                        <!-- 결제 완료 : 개인 사인이 있는 경우 -->
+                                        <div class="column">
+                                            <div class="item is-completed has-sign tooltip" data-tooltip="3월8일 결제">
+                                            <span class="signature-name">
+                                                <i class="sign"
+                                                   style="background-image:url('../assets/images/icons/check-circle-regular.svg')"></i>
+                                                <i class="txt">홍길동</i>
+                                            </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- 결제 완료: 개인 사인이 없는 경우  -->
+                                        <div class="column">
+                                            <div class="item is-completed tooltip" data-tooltip="3월8일 결제">
+                                            <span class="signature-name">
+                                                <i class="sign"></i>
+                                                <i class="txt">홍길동</i>
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <!-- 결제자 미지정  -->
+                                        <div class="column">
+                                            <a href="" class="item tooltip" data-tooltip="">
+                                                <span class="signature-name">
+                                                    <i class="sign"></i>
+                                                    <i class="txt">지정</i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="column">
+                                            <a href="" class="item tooltip" data-tooltip="">
+                                                <span class="signature-name">
+                                                    <i class="sign"></i>
+                                                    <i class="txt">지정</i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="column">
+                                            <a href="" class="item tooltip" data-tooltip="">
+                                                <span class="signature-name">
+                                                    <i class="sign"></i>
+                                                    <i class="txt">지정</i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- 참조 -->
+                                    <div class="columns">
+                                        <div class="column">
+                                            <div class="field is-grouped">
+                                                <div class="control is-expanded">
+                                                    <input class="input"  name="cc" id="cc" readonly="" value="">
+                                                    <input type="hidden" name="cc_id" id="cc_id" value="">
+                                                </div>
+                                                <div class="control">
+                                                    <a class="button is-link" href="#">참조자 지정</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //결제문서 상단 공통 -->
+
+                <!-- 결제 문서 중간 -->
+                <div class="content tbl-form-box is-mb-50">
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="control">
+                                    <input class="input is-large" type="text" placeholder="제목">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="control select" style="width:100%;">
+                                    <select name="">
+                                        <option>프로젝트를 선택해주세요</option>
+                                        <option value=''>프로젝트1</option>
+                                        <option value=''>프로젝트2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tbl-form-tit">총금액</span>
+                                <div class="inline-fields">
+                                    <div class="i-field">
+                                        <input class="input" type="text" value="0">
+                                    </div>
+                                    <div class="i-field" style="margin-left: 0.25em;">
+                                        원 - 자동입력
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- //결제 문서 중간 -->
+                <!-- 웹 에디터 -->
+                <div class="content tbl-form-box">
+                    <div class="box">
+                        <div class="columns inbox-subtitle">
+                            <div class="column">
+                                <h2><span class="label-txt">상세 내용</span></h2>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <div>
+                                    분문 내용이 출력되다<br>
+                                    <img src="../assets/images/dummy.png" width="100%">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="is-mt-0">
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tbl-form-tit">의견등록</span>
+                                <div class="field is-grouped">
+                                    <div class="control is-expanded">
+                                        <input class="input"  name="cc" id="cc" readonly="" value="">
+                                        <input type="hidden" name="cc_id" id="cc_id" value="">
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-link" href="#">등록</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //웹 에디터 -->
             </form>
         </section>
         
         
-        <footer class="modal-card-foot">
-            <button class="button">닫기</button>
+        <footer class="modal-card-foot is-block">
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <p class="buttons">
+                        <a href="" class="button">
+                            <span class="icon is-small">
+                                <i class="fas fa-bars"></i>
+                            </span>
+                            <span>목록</span>
+                        </a>
+                    </p>
+                </div>
+
+                <div class="level-right">
+                    <p class="buttons">
+                        <a href="" class="button is-info">
+                            <span class="icon is-small">
+                                <i class="fas fa-pencil-alt"></i>
+                            </span>
+                            <span>작성</span>
+                        </a>
+                        <a href="" class="button is-danger">
+                            <span class="icon is-small">
+                                <i class="fas fa-times"></i>
+                            </span>
+                            <span>취소</span>
+                        </a>
+                    </p>
+                </div>
+            </nav>
         </footer>
     </div>
 </div>

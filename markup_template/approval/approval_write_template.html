@@ -100,7 +100,7 @@
 
 
         <!-- 결제문서 상단 공통 -->
-        <div class="content tbl-form-box">
+        <div class="content tbl-form-box approval-common">
             <div class="columns">
                 <div class="column is-half">
                     <div class="box box-approval document-info">
@@ -146,29 +146,29 @@
                         <div class="inner-wrap">
                             <div class="approval-line-list">
                                 <div class="column">
-                                    <a href="" class="item is-completed has-sign tooltip" data-tooltip="3월8일 결제">
+                                    <div class="item is-completed has-sign tooltip" data-tooltip="3월8일 결제">
                                         <span class="signature-name">
                                             <i class="sign" style="background-image:url('../assets/images/icons/check-circle-regular.svg')"></i>
                                             <i class="txt">홍길동</i>
                                         </span>
-                                    </a>
+                                    </div>
                                 </div>
 
                                 <div class="column">
-                                    <a href="" class="item is-completed tooltip" data-tooltip="3월8일 결제">
+                                    <div class="item is-completed tooltip" data-tooltip="3월8일 결제">
                                         <span class="signature-name">
                                             <i class="sign"></i>
                                             <i class="txt">홍삼삼</i>
                                         </span>
-                                    </a>
+                                    </div>
                                 </div>
                                 <div class="column">
-                                    <a href="" class="item is-active tooltip" data-tooltip="">
+                                    <div class="item is-active tooltip" data-tooltip="">
                                          <span class="signature-name">
                                             <i class="sign"></i>
                                             <i class="txt">홍길동</i>
                                         </span>
-                                    </a>
+                                    </div>
                                 </div>
                                 <!-- 결제자 미지정 -->
                                 <div class="column">
@@ -192,15 +192,25 @@
                             <!-- 참조 -->
                             <div class="columns">
                                 <div class="column">
+
                                     <div class="field is-grouped">
-                                        <div class="control is-expanded">
+                                        <!-- *등록 모드* -->
+                                        <!--<div class="control is-expanded">
                                             <input class="input"  name="cc" id="cc" readonly="" value="">
                                             <input type="hidden" name="cc_id" id="cc_id" value="">
                                         </div>
                                         <div class="control">
                                             <a class="button is-link" href="#">참조자 지정</a>
+                                        </div>-->
+
+                                        <!-- *출력 모드* -->
+                                        <div class="appr-line-ref">
+                                            <strong class="tit">참조자 : </strong>
+                                            <span>홍길동, 홍삼삼, 홍홍홍</span>
                                         </div>
                                     </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -218,22 +228,16 @@
             <!-- Source -->
 
             <div class="content">
-                <div class="btn-wrapper" style="margin-bottom:1em">
-                    <button class="button has-icon is-large is-fullwidth">
-                        <i class="fas fa-user-plus"></i><span class="label is-size-5">휴가자 지정</span>
-                    </button>
-                </div>
-
                 <div class="columns is-flex-wrap">
                     <div class="column is-3">
                         <div class="inline-fields is-full-in-column is-mobile-pr-0" style="padding-right:10%;">
                             <div class="i-field">
                                 <label for="" class="child">대상자</label>
-                                <input class="input" type="text" id="">
+                                <input class="input" type="text" id="" value="홍길동" readonly>
                             </div>
                             <div class="i-field">
                                 <label for="" class="child">휴가일수</label>
-                                <input class="input" type="text">
+                                <input class="input" type="text" value="10 일" readonly>
                             </div>
                         </div>
                     </div>
@@ -276,6 +280,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="btn-wrapper" style="margin-bottom:1em">
+                    <button class="button has-icon is-large is-fullwidth">
+                        <i class="fas fa-user-plus"></i><span class="label is-size-5">휴가자 지정</span>
+                    </button>
                 </div>
             </div>
 

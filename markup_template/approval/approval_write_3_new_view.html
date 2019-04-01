@@ -10,13 +10,16 @@
     <script defer src="/assets/js/all.js"></script>
     <script defer src="/assets/js/bulma-calendar.min.js"></script>
 </head>
+<style>
+
+</style>
 <body>
 
 <div id="top"></div>
 <div id="sub-menu-4"></div>
 
 <!-- 본문 시작 -->
-<section class="section df-approval">
+<section class="section df-approval ">
     <div class="container">
         <div class="tabs is-boxed">
             <ul>
@@ -75,18 +78,16 @@
         <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
         <!-- 결제문서 상단 공통 -->
-        <div class="content tbl-form-box approval-common">
+        <div class="content tbl-form-box approval-common mode-view-page">
             <div class="columns">
                 <div class="column is-half">
                     <div class="box box-approval document-info">
                         <div class="is-fullwidth">
                             <div class="columns">
                                 <div class="column">
-                                    <div class="control select">
-                                        <select>
-                                            <option value="공개" selected>공개</option>
-                                            <option value="비공개">비공개</option>
-                                        </select>
+                                    <span class="tit">공개여부</span>
+                                    <div class="control">
+                                        공개
                                     </div>
                                 </div>
                             </div>
@@ -99,12 +100,8 @@
                                 </div>
                                 <div class="column">
                                     <span class="tit">문서종류</span>
-                                    <div class="control select">
-                                        <select>
-                                            <option value="" selected>반차</option>
-                                            <option value="">오후반차</option>
-                                            <option value="">프로젝트 연차휴가</option>
-                                        </select>
+                                    <div class="control">
+                                        비용품의서(v2)
                                     </div>
                                 </div>
                                 <div class="column">
@@ -121,7 +118,7 @@
                 <div class="column is-half">
                     <div class="box box-approval approval-line">
                         <div class="inner-wrap">
-                            <div class="approval-line-list has-sign">
+                            <div class="approval-line-list">
                                 <!-- 결제 완료 : 개인 사인이 있는 경우 -->
                                 <div class="column">
                                     <div class="item is-completed has-sign tooltip" data-tooltip="3월8일 결제">
@@ -155,12 +152,9 @@
                             <div class="columns">
                                 <div class="column">
                                     <div class="field is-grouped">
-                                        <div class="control is-expanded">
-                                            <input class="input"  name="cc" id="cc" readonly="" value="">
-                                            <input type="hidden" name="cc_id" id="cc_id" value="">
-                                        </div>
-                                        <div class="control">
-                                            <a class="button is-link" href="#">참조자 지정</a>
+                                        <div class="appr-line-ref">
+                                            <strong class="tit">참조자 : </strong>
+                                            <span>홍길동, 홍삼삼, 홍홍홍</span>
                                         </div>
                                     </div>
                                 </div>
@@ -173,23 +167,21 @@
         <!-- //결제문서 상단 공통 -->
 
         <!-- 결제 문서 중간 -->
-        <div class="content tbl-form-box is-mb-50">
+        <div class="content tbl-form-box is-mb-50 mode-view-page">
             <div class="box">
                 <div class="columns">
                     <div class="column">
-                        <div class="control">
-                            <input class="input is-large" type="text" placeholder="제목">
+                        <span class="tbl-form-tit">제목</span>
+                        <div class="control is-size-4">
+                            제목이 출력됩니다.
                         </div>
                     </div>
                 </div>
                 <div class="columns">
                     <div class="column">
-                        <div class="control select" style="width:100%;">
-                            <select name="">
-                                <option>프로젝트를 선택해주세요</option>
-                                <option value=''>프로젝트1</option>
-                                <option value=''>프로젝트2</option>
-                            </select>
+                        <span class="tbl-form-tit">프로젝트 명</span>
+                        <div class="control" style="width:100%;">
+                            셀렉트박스가 있던 div.control의  select 클래스는 제거 필요
                         </div>
                     </div>
                 </div>
@@ -197,100 +189,33 @@
                     <div class="column">
                         <span class="tbl-form-tit">총금액</span>
                         <div class="inline-fields">
-                            <div class="i-field">
-                                <input class="input" type="text" value="0">
-                            </div>
-                            <div class="i-field" style="margin-left: 0.25em;">
-                                원 - 자동입력
+                            <div class="i-field is-size-5">
+                                3000원 *금액부분은 폰트 사이즈용 클래스 is-size-5
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- 휴가자 모듈 -->
-                <hr>
-                <div class="content">
-                    <span class="tbl-form-tit">휴가자</span>
-                    <div class="columns is-flex-wrap">
-                        <div class="column is-3">
-                            <div class="inline-fields is-full-in-column is-mobile-pr-0" style="padding-right:10%;">
-                                <div class="i-field">
-                                    <label for="" class="child">대상자</label>
-                                    <input class="input" type="text" id="" value="홍길동" readonly>
-                                </div>
-                                <div class="i-field">
-                                    <label for="" class="child">휴가일수</label>
-                                    <input class="input" type="text" value="10 일" readonly>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="column is-3">
-                            <div class="inline-fields is-full-in-column is-mobile-pr-0" style="padding-right:10%;">
-                                <div class="i-field">
-                                    <label for="" class="child">대상자</label>
-                                    <input class="input" type="text" id="">
-                                </div>
-                                <div class="i-field">
-                                    <label for="" class="child">휴가일수</label>
-                                    <input class="input" type="text" id="">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="column is-3">
-                            <div class="inline-fields is-full-in-column is-mobile-pr-0" style="padding-right:10%;">
-                                <div class="i-field">
-                                    <label for="" class="child">대상자</label>
-                                    <input class="input" type="text" id="">
-                                </div>
-                                <div class="i-field">
-                                    <label for="" class="child">휴가일수</label>
-                                    <input class="input" type="text" id="">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="column is-3">
-                            <div class="inline-fields is-full-in-column is-mobile-pr-0" style="padding-right:10%;">
-                                <div class="i-field">
-                                    <label for="" class="child">대상자</label>
-                                    <input class="input" type="text" id="">
-                                </div>
-                                <div class="i-field">
-                                    <label for="" class="child">휴가일수</label>
-                                    <input class="input" type="text" id="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn-wrapper" style="margin-bottom:1em">
-                        <button class="button has-icon is-large is-fullwidth">
-                            <i class="fas fa-user-plus"></i><span class="label is-size-5">휴가자 지정</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- // 휴가자 컴포넌트 -->
 
             </div>
         </div>
         <!-- //결제 문서 중간 -->
 
         <!-- 결제 컨텐츠 -->
-        <div class="content tbl-form-box">
+        <div class="content tbl-form-box mode-view-page">
             <!-- 결제 폼 세트 -->
             <div class="box" id="payment_0" >
                 <!-- 타이틀 -->
-                <div class="columns inbox-title">
+                <div class="columns inbox-title no-underline">
                     <div class="column">
                         <h1><span class="label-txt">결제 항목 1</span></h1>
                     </div>
                     <div class="column">
-                        <a class="button btn-remove" title="삭제">
+                        <!-- 버튼 미출력 -->
+                        <!--<a class="button btn-remove" title="삭제">
                             <span class="icon is-small">
                                 <i class="fas fa-minus"></i>
                             </span>
-                        </a>
+                        </a>-->
                     </div>
                 </div>
 
@@ -301,7 +226,7 @@
                             <span class="tbl-form-tit is-next-chk">청구</span>
                             <div class="columns is-multiline is-flex-mobile">
                                 <div class="field">
-                                    <input class="is-checkradio" id="type_0_1" type="radio" name="type_0">
+                                    <input class="is-checkradio" id="type_0_1" type="radio" name="type_0" checked>
                                     <label for="type_0_1">실비청구</label>
                                 </div>
                                 <div class="field">
@@ -320,24 +245,15 @@
                             <div class="columns is-flex-mobile">
                                 <div class="column">
                                     <div class="inline-fields">
-                                        <div class="i-field">
-                                            <input class="input" type="text" id="" style="width:120px">
-                                            <label for="" class="child">원</label>
+                                        <div class="i-field is-size-5">
+                                            9,000,000원
                                         </div>
 
-                                        <div class="i-field">
+                                        <!--<div class="i-field">
                                             <div class="control select" style="width:120px">
-                                                <select name="">
-                                                    <option value=''>면세</option>
-                                                    <option value=''>부가세포함</option>
-                                                    <option value=''>부가세별도</option>
-                                                    <option value=''>세금</option>
-                                                    <option value=''>공과금</option>
-                                                    <option value=''>제세공과금 포함</option>
-                                                    <option value=''>제세공과금 불포함</option>
-                                                </select>
+                                                부가세포함
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -349,31 +265,31 @@
                             <span class="tbl-form-tit is-next-chk">대상</span>
                             <div class="columns is-multiline is-flex-mobile">
                                 <div class="field">
-                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <input class="is-checkradio" id="" type="radio" name="aa">
                                     <label for="">외주사</label>
                                 </div>
                                 <div class="field">
-                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <input class="is-checkradio" id="" type="radio" name="aa" checked>
                                     <label for="">용역(프리랜서)</label>
                                 </div>
                                 <div class="field">
-                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <input class="is-checkradio" id="" type="radio" name="aa">
                                     <label for="">이미지,영상,음원</label>
                                 </div>
                                 <div class="field">
-                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <input class="is-checkradio" id="" type="radio" name="aa">
                                     <label for="">이벤트 경품</label>
                                 </div>
                                 <div class="field">
-                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <input class="is-checkradio" id="" type="radio" name="aa">
                                     <label for="">상금</label>
                                 </div>
                                 <div class="field">
-                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <input class="is-checkradio" id="" type="radio" name="aa">
                                     <label for="">어워드</label>
                                 </div>
                                 <div class="field">
-                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <input class="is-checkradio" id="" type="radio" name="aa">
                                     <label for="">기타</label>
                                 </div>
                             </div>
@@ -384,14 +300,14 @@
                         <div class="column">
                             <span class="tbl-form-tit">경품 품목</span>
                             <div class="control">
-                                <input class="input" type="text">
+                                스타벅스 텀블러 1박스
                             </div>
                         </div>
                         <div class="column">
                             <span class="tbl-form-tit" style="margin-bottom:1rem">제세공과금 신고여부</span>
                             <div class="columns is-multiline is-flex-mobile">
                                 <div class="field">
-                                    <input class="is-checkradio" id="" type="radio" name="">
+                                    <input class="is-checkradio" id="" type="radio" name=""  checked>
                                     <label for="">예</label>
                                 </div>
                                 <div class="field">
@@ -402,13 +318,13 @@
                         </div>
                     </div>
 
-                    <div class="columns inbox-subtitle">
+                    <div class="columns inbox-subtitle no-underline">
                         <div class="column">
                             <h2><span class="label-txt">결제정보</span></h2>
                         </div>
                     </div>
 
-                    <div class="columns">
+                    <div class="columns no-underline">
                         <div class="column">
                             <span class="tbl-form-tit">결제방법</span>
                             <div class="tabs is-toggle inbox-tabs is-fullwidth">
@@ -444,25 +360,25 @@
 
                     <!-- 결제방법 컨텐츠 레이어 -->
                     <!-- 레이어1: 계좌 -->
-                    <div id="tab-payment-content-1">
+                    <div class="tab-contents" id="tab-payment-content-1">
                         <div class="columns">
                             <div class="column">
                                 <span class="tbl-form-tit is-next-chk">계산서</span>
                                 <div class="columns is-multiline is-flex-mobile">
                                     <div class="field">
-                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <input class="is-checkradio" id="" type="radio" name="a">
                                         <label for="">세금계산서</label>
                                     </div>
                                     <div class="field">
-                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <input class="is-checkradio" id="" type="radio" name="a">
                                         <label for="">계산서</label>
                                     </div>
                                     <div class="field">
-                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <input class="is-checkradio" id="" type="radio" name="a">
                                         <label for="">사업자지출증빙(현금영수증)</label>
                                     </div>
                                     <div class="field">
-                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <input class="is-checkradio" id="" type="radio" name="a">
                                         <label for="">프리랜서사업소득</label>
                                     </div>
                                 </div>
@@ -473,13 +389,13 @@
                             <div class="column">
                                 <span class="tbl-form-tit">업체명</span>
                                 <div class="control">
-                                    <input class="input" type="text">
+                                    디에프 컴퍼니
                                 </div>
                             </div>
                             <div class="column">
                                 <span class="tbl-form-tit">담당자</span>
                                 <div class="control">
-                                    <input class="input" type="text">
+                                    홍길동
                                 </div>
                             </div>
                         </div>
@@ -488,7 +404,7 @@
                             <div class="column">
                                 <span class="tbl-form-tit">연락처</span>
                                 <div class="control">
-                                    <input class="input" type="text">
+                                    01-1111-1111
                                 </div>
                             </div>
                             <div class="column"></div>
@@ -500,15 +416,15 @@
                                 <div class="inline-fields is-mobile-full-in-column">
                                     <div class="i-field">
                                         <label for="" class="child">은행명</label>
-                                        <input class="input" type="text" id="" style="width:150px;">
+                                        <input class="input" type="text" id="" style="width:150px;" readonly value="국민은행">
                                     </div>
                                     <div class="i-field">
                                         <label for="" class="child">계좌번호</label>
-                                        <input class="input" type="text" id="" style="width:200px;">
+                                        <input class="input" type="text" id="" style="width:200px;" readonly value="1222-222-22222">
                                     </div>
                                     <div class="i-field">
                                         <label for="" class="child">예금주</label>
-                                        <input class="input" type="text" id="" style="width:110px;">
+                                        <input class="input" type="text" id="" style="width:110px;" readonly value="홍길동">
                                     </div>
                                 </div>
                             </div>
@@ -519,15 +435,15 @@
                                 <span class="tbl-form-tit is-next-chk">지급일자</span>
                                 <div class="columns is-multiline is-flex-mobile">
                                     <div class="field">
-                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <input class="is-checkradio" id="" type="radio" name="v" checked>
                                         <label for="">보름</label>
                                     </div>
                                     <div class="field">
-                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <input class="is-checkradio" id="" type="radio" name="v">
                                         <label for="">말일</label>
                                     </div>
                                     <div class="field">
-                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <input class="is-checkradio" id="" type="radio" name="v">
                                         <label for="">기안결제 완료 즉시</label>
                                     </div>
                                 </div>
@@ -535,17 +451,17 @@
                         </div>
                     </div>
                     <!-- 레이어2: 법인카드 -->
-                    <div id="tab-payment-content-2">
+                    <div class="tab-contents" id="tab-payment-content-2">
                         <div class="columns">
                             <div class="column">
                                 <span class="tbl-form-tit is-next-chk">결제구분</span>
                                 <div class="columns is-multiline is-flex-mobile">
                                     <div class="field">
-                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <input class="is-checkradio" id="" type="radio" name="vv">
                                         <label for="">온라인</label>
                                     </div>
                                     <div class="field">
-                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <input class="is-checkradio" id="" type="radio" name="vv" checked>
                                         <label for="">방문결제</label>
                                     </div>
                                 </div>
@@ -553,17 +469,17 @@
                         </div>
                     </div>
                     <!-- 레이어3: 개인경비 -->
-                    <div id="tab-payment-content-3">
+                    <div class="tab-contents" id="tab-payment-content-3">
                         <div class="columns">
                             <div class="column">
                                 <span class="tbl-form-tit is-next-chk">결제구분</span>
                                 <div class="columns is-multiline is-flex-mobile">
                                     <div class="field">
-                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <input class="is-checkradio" id="" type="radio" name="vvv">
                                         <label for="">개인카드</label>
                                     </div>
                                     <div class="field">
-                                        <input class="is-checkradio" id="" type="radio" name="">
+                                        <input class="is-checkradio" id="" type="radio" name="vvv" checked>
                                         <label for="">개인현금</label>
                                     </div>
                                 </div>
@@ -571,13 +487,13 @@
                         </div>
                     </div>
                     <!-- 레이어4: 자동이체 -->
-                    <div id="tab-payment-content-4">
+                    <div class="tab-contents" id="tab-payment-content-4">
                         <div class="columns">
                             <div class="column">
                                 <span class="tbl-form-tit">이체일자</span>
                                 <div class="inline-fields">
                                     <div class="i-field">
-                                        <input class="input" type="text" style="width:50px;">
+                                        20
                                     </div>
                                     <div class="i-field" style="margin-left: 0.25em;">
                                        일 / 자동이체 신규 신청시 경영지원팀 확인 후 등록
@@ -587,7 +503,7 @@
                         </div>
                     </div>
                     <!-- 레이어5: 현금시재 -->
-                    <div id="tab-payment-content-5">
+                    <div class="tab-contents" id="tab-payment-content-5">
                         <div class="columns">
                             <div class="column">
                                 <span class="tbl-form-tit">현금시재</span>
@@ -604,7 +520,7 @@
                         <div class="column">
                             <span class="tbl-form-tit">활용내용</span>
                             <div class="control">
-                                <input class="input" type="text">
+                                활용 내용을 출력중입니다.
                             </div>
                         </div>
                     </div>
@@ -612,12 +528,7 @@
 
             </div>
 
-            <!-- 추가 버튼 -->
-            <div class="btn-wrapper">
-                <button class="button has-icon is-large is-fullwidth">
-                    <i class="fas fa-plus-circle"></i><span class="label is-size-5">결제항목 추가하기</span>
-                </button>
-            </div>
+
         </div>
 
         <!-- 웹 에디터 -->

@@ -29,6 +29,8 @@
 
 .is-flex-wrap
   flex-wrap: wrap
+.is-mt-0
+  margin-top: 0 !important
 .is-mb-0
   margin-bottom: 0 !important
 .is-mb-1
@@ -65,6 +67,14 @@
     padding-bottom: 0 !important
 
 +breakpoint(mobile)
+  .is-mobile-x-1
+    padding-left: 0.25rem !important
+    padding-right: 0.25rem !important
+
+  .is-mobile-x-2
+    padding-left: 0.5rem !important
+    padding-right: 0.5rem !important
+
   .is-mobile-pt-0
     padding-top: 0 !important
   .is-mobile-pt-1
@@ -95,6 +105,25 @@
     margin-bottom: 0.25rem !important
 
 
+  .modal
+    .modal-card-body
+      min-width: 100%
+
+      +breakpoint(mobile)
+        padding: 20px !important
+
+      +break-max(480px)
+        .tbl-form-box
+          .approval-line-list
+            height: auto !important
+            flex-wrap: wrap
+
+            .column
+              min-width: 50px !important
+              &:nth-child(5)
+                //margin-left: 0
+                margin-top: 0.25rem
+
 // 테이블 레이아웃을 반응형 타입으로 변경
 // 20190228 jj
 
@@ -119,9 +148,14 @@
 .tbl-form-box
   .control, .field, label
     font-weight: normal
+  .column
+    flex-basis: 0
+    flex-grow: 1
+    flex-shrink: 1
 
   .is-checkradio + label
     white-space: nowrap
+
 
   .inbox-title
     position: relative
@@ -302,6 +336,10 @@
         input
           width: 100% !important
 
+
+  // 결제문서 상단 공통
+  &.approval-common
+
   //문서정보
   .document-info
     display: flex
@@ -325,6 +363,7 @@
       padding-top: 0.5rem
       padding-bottom: 0.5rem
       align-items: center
+      flex-basis: auto
 
       .tit, .control
         display: inline-block
@@ -378,7 +417,8 @@
       .approval-line-list
         display: flex
         align-items: center
-        justify-content: space-around
+        //justify-content: space-around
+        justify-content: end
         height: 70px
         margin-bottom: 0.75rem
 
@@ -449,24 +489,17 @@
                 background-repeat: no-repeat
                 background-position: center center
                 background-size: 100%
-            &.state
-              i
-                font-size: 0.75rem
-                font-style: normal
-                &.sign
-                  display: flex
-                  justify-content: center
-                  align-items: center
+
+                &:after
+                  display: none
+                  content: ''
                   position: absolute
                   left: 0
                   top: 0
-                  width: 100%
-                  height: 100%
-                  color: #c70a00
-
-                  background-size: 80%
-                  opacity: 0
-
+                  width: inherit
+                  height: inherit
+                  border: 1px solid red
+                  border-radius: 50%
 
           &.is-completed
             //background-color: #2366d1
@@ -479,23 +512,27 @@
             &.tooltip
               &:before
                 display: block
+            span
+              &.signature-name
+                i.sign
+                  display: block
+                  &:after
+                    display: block
 
-            .signature
-              i.txt
-                border-color: red
             &.has-sign
               i.txt
                 visibility: hidden
               i.sign
-                display: block
-
-
+                &:after
+                  display: none !important
 
           &.is-active
-            //background-color: #2366d1
             border-color: #2366d1
             color: #2366d1
+            cursor: default
+
             &:hover
+              color: #2366d1
               &.tooltip
                 &:before
                   display: block
@@ -514,5 +551,50 @@
 
 
         +breakpoint(mobile)
+
+
+
+// 보기페이지
+.tbl-form-box.mode-view-page
+  .content, .box, .tab-contents
+    > .columns:not(.no-underline)
+      border-bottom: 1px solid #f6f6f6
+    > .columns:last-of-type
+      border-bottom-color: transparent
+
+  input[type="radio"],
+  input[type="checkbox"]
+    opacity: 0
+    left: -9999px
+    &:hover + label
+      &:before
+        border-color: #dbdbdb !important
+
+    & + label
+      pointer-events: none
+      cursor: default
+  .is-checkradio
+    &:not(:checked) + label
+      opacity: 0.4
+  input[readonly] + label,
+  label + input[readonly]
+    pointer-events: none
+    cursor: default
+    border-color: #eee
+
+  .tabs li input:not(:checked) + label
+    opacity: 0.4
+    background: #eee
+
+
++breakpoint(mobile)
+  .content, .box, .tab-contents
+    > .columns
+      border-bottom-color: transparent !important
+
+
+
+
+
 
 

@@ -75,7 +75,7 @@
 <!--   마크업 교체 시작 -->
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- 결제문서 상단 공통 -->
-        <div class="content tbl-form-box">
+        <div class="content tbl-form-box approval-common">
             <div class="columns">
                 <div class="column is-half">
                     <div class="box box-approval document-info">
@@ -121,29 +121,30 @@
                         <div class="inner-wrap">
                             <div class="approval-line-list">
                                 <div class="column">
-                                    <a href="" class="item is-completed tooltip" data-tooltip="3월8일 결제">
+                                    <div class="item is-completed tooltip" data-tooltip="3월8일 결제">
                                         <span class="signature-name">
                                             <i class="sign"></i>
                                             <i class="txt">홍길동</i>
                                         </span>
-                                    </a>
+                                    </div>
                                 </div>
 
                                 <div class="column">
-                                    <a href="" class="item is-completed tooltip" data-tooltip="3월8일 결제">
+                                    <div class="item is-completed tooltip" data-tooltip="3월8일 결제">
                                         <span class="signature-name">
                                             <i class="sign"></i>
                                             <i class="txt">홍삼삼</i>
                                         </span>
-                                    </a>
+                                    </div>
                                 </div>
-                                <div href="" class="column">
-                                    <a class="item is-active tooltip" data-tooltip="">
+                                <!-- 미결제 상태 -->
+                                <div class="column">
+                                    <div class="item is-active tooltip" data-tooltip="">
                                          <span class="signature-name">
                                             <i class="sign"></i>
                                             <i class="txt">홍길동</i>
                                         </span>
-                                    </a>
+                                    </div>
                                 </div>
                                 <!-- 결제자 미지정 -->
                                 <div class="column">

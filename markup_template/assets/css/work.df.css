@@ -2,6 +2,7 @@
 /*! 나눔 고딕 폰트 */
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(bulma.css);
+@import url(add.work.df.201903.css);
 .df-main table tr:last-child {
   border-bottom: none; }
 .df-main .calendar-nav .calendar-title {
@@ -394,36 +395,6 @@
     text-align: center;
     background: #f3f3f3;
     border-left: 1px solid #dbdbdb; }
-.df-approval .box-approval {
-  height: 212px; }
-  @media screen and (max-width: 768px) {
-    .df-approval .box-approval {
-      height: auto; } }
-.df-approval .list-approval {
-  border-bottom: 1px solid #f1f1f1;
-  margin-bottom: 1em; }
-  .df-approval .list-approval .item {
-    margin: 0 !important;
-    padding-top: 0; }
-    .df-approval .list-approval .item:nth-of-type(1) {
-      border-left: none; }
-    .df-approval .list-approval .item.is-init-item li:nth-of-type(1) {
-      height: 100%;
-      margin-bottom: 0;
-      border-bottom: none; }
-    .df-approval .list-approval .item li {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 2.7em;
-      margin-top: 0;
-      list-style: none;
-      text-align: center; }
-      .df-approval .list-approval .item li:first-child {
-        margin-bottom: 0.5em;
-        border-bottom: 1px solid #dbdbdb; }
-      .df-approval .list-approval .item li.l-txt {
-        font-weight: 400; }
 
 .approval-popup, .approval-popup2, .approval-popup3, .approval-popup4, .approval-popup5, .approval-popup6 {
   font-size: 12px; }
