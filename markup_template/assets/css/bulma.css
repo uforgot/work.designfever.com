@@ -2120,8 +2120,7 @@ a.box:active {
     .select select[disabled]:hover {
       border-color: whitesmoke; }
     .select select:not([multiple]) {
-      /*padding-right: 2.5em; }*/ /*20180910 ksyang*/
-	  padding-right: 1.9em; }
+      padding-right: 2.5em; }
     .select select[multiple] {
       height: initial;
       padding: 0; }
@@ -2452,7 +2451,7 @@ a.box:active {
     flex-grow: 1;
     max-width: none; }
   .file.is-right {
-    /*justify-content: flex-end;*/ } /*ie debug 20180906 ksyang*/
+    justify-content: flex-end; }
     .file.is-right .file-cta {
       border-radius: 0 4px 4px 0; }
     .file.is-right .file-name {
@@ -3751,6 +3750,7 @@ a.dropdown-item {
     flex-grow: 0;
     flex-shrink: 0;
     margin-left: 0.75em; }
+  .message-header + .message-body {
     border-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
@@ -3770,10 +3770,8 @@ a.dropdown-item {
 
 .modal {
   align-items: center;
-  display: none;  
-  justify-content: end;/* *ie debug 201809 ksyang*/
-  /*justify-content: center; */ /* *ie debug 201809 ksyang*/
-  /*flex-direction: initial; */
+  display: none;
+  justify-content: center;
   overflow: hidden;
   position: fixed;
   z-index: 40; }
@@ -3795,7 +3793,7 @@ a.dropdown-item {
     .modal-card {
       margin: 0 auto;
       max-height: calc(100vh - 40px);
-      width: 639px; } } /*ie debug 20180910 ksyang*/
+      width: 640px; } }
 
 .modal-close {
   background: none;
@@ -4894,8 +4892,7 @@ label.panel-block {
 
 .column {
   display: block;
-  /*flex-basis: 0;*/ /*ie debug 20180905 ksyang*/
-  
+  flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
   padding: 0.75rem; }
@@ -7562,7 +7559,7 @@ label.panel-block {
 
 section {
   min-width: 370px; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     section {
       padding: 1rem 1rem !important; } }
 
@@ -7572,14 +7569,14 @@ section {
 .section-fixed-margin {
   height: 3.3rem; }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .hero-body {
     padding: 1rem 0.5rem; } }
 
 .hr-strong {
   border: 1px solid #000000; }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .card-content {
     padding: 1rem !important; } }
 
@@ -7625,7 +7622,7 @@ section {
 .table.is-resize tbody tr:last-child th,
 .table.is-resize tbody tr:last-child td {
   border-bottom: 1px solid #dbdbdb; }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .table.is-resize thead tr th {
     display: none; }
   .table.is-resize thead tr th:first-child {
