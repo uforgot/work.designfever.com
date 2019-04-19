@@ -305,11 +305,7 @@ var MainContents = (function (){
                         // if (i===0) {
                         ele = ele + ' <td  style="width:300px;">' + jsonData.table_data.lists[i].project_name;
                         // ele = ele + '</td><td style="width:200px;"><span class="is-size-7">' + startTime +' - ' +endTime + '</span></td>';
-                        if (endTime === '2019-12-31') {
-                            ele = ele + '</td><td style="width:100px;"><span class="is-size-7"> - </span></td>';
-                        } else {
-                            ele = ele + '</td><td style="width:150px;"><span class="is-size-7"> ~ ' + endTime + '</span></td>';
-                        }
+                        ele = ele + '</td><td style="width:150px;"><span class="is-size-7"> ~ ' + endTime + '</span></td>';
 
                         // } else {
                         //     ele = ele + ' <td style="width:300px;" title="시작일 : '+startTime+'&#10;종료일 : '+endTime+'">'+jsonData.table_data.lists[i].project_name+'</td>'
