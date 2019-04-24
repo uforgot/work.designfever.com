@@ -138,11 +138,22 @@
 .content.editor
   // 에디터에서 사용되는 템플릿 표의 테이블 최대 크기 정의
   .columns
-    .column > div table
-      max-width: 94%
+    .column > div
+      table
+        max-width: 94%
 
-      +break-max(480px)
-        max-width: 90%
+        // 테이블 템플릿
+        &.tpl-table
+          border: 1px solid #dbdbdb
+          th
+            background-color: #f6f6f6
+
+        img
+          max-width: 100%
+          height: auto !important
+
+        +break-max(480px)
+          max-width: 90%
 
 
 
@@ -461,8 +472,9 @@
           position: relative
           display: flex
           flex-direction: column
-          border: 1px solid #dbdbdb
+          border: 1px solid #eaeaea
           border-radius: 4px
+          background-color: #f6f6f6
           height: 100%
           justify-content: center
           align-items: center
@@ -478,7 +490,10 @@
           &.tooltip
             &:before
               display: none
-              transform: translate(-90%, 0.7rem)
+              bottom: 60%
+              background-color: rgba(#000, 0.45)
+              padding: 0.4em
+              border-radius: 2px
             &:after
               display: none
 
@@ -528,9 +543,9 @@
                   border-radius: 50%
 
           &.is-completed
-            //background-color: #2366d1
+            background-color: #fff
             border-color: #ddd
-            background: #eaeaea
+            //background: #eaeaea
             cursor: default
             color: red
             //pointer-events: none
@@ -594,6 +609,8 @@
         .column
           width: 50%
 
+
+
 // 보기페이지
 .tbl-form-box.mode-view-page
   .content, .box, .tab-contents
@@ -625,6 +642,7 @@
   .tabs li input:not(:checked) + label
     opacity: 0.4
     background: #eee
+
 
 
 +breakpoint(mobile)
