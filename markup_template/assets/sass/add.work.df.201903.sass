@@ -436,6 +436,7 @@
 
   .box-approval
     height: 100%
+    padding-bottom: 0.85rem
 
     .title
       margin-bottom: 0.75rem
@@ -452,7 +453,7 @@
         align-items: center
         //justify-content: space-around
         justify-content: end
-        height: 70px
+        height: 80px
         margin-bottom: 0.75rem
 
         +breakpoint(mobile)
@@ -523,13 +524,12 @@
                 display: none
                 position: absolute
                 left: 0
-                top: 0
-
+                top: -8px
                 width: inherit
                 height: inherit
-                background-repeat: no-repeat
-                background-position: center center
+                background: url('../images/icons/checkbox-marked-circle-outline.svg') no-repeat center center
                 background-size: 100%
+
 
                 &:after
                   display: none
@@ -558,11 +558,17 @@
                 i.sign
                   display: block
                   &:after
-                    display: block
+                    //display: block
+                i.txt
+                  display: block
+                  height: auto
+                  position: absolute
+                  bottom: -11px
+                  font-size: 0.8em
 
             &.has-sign
               i.txt
-                visibility: hidden
+
               i.sign
                 &:after
                   display: none !important
