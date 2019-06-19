@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>designfever intranet</title>
+    <link rel="stylesheet" href="/assets/css/work.df.css">
+
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script defer src="/assets/js/all.js"></script>
+    <script defer src="/assets/js/bulma-calendar.min.js"></script>
+</head>
+<body>
+
+<div id="top"></div>
+<div id="sub-menu-2"></div>
+
+<section class="section df-commuting">
+    <div class="container">
+        <div class="content">
+            <div class="calendar is-large">
+                <div class="calendar-nav">
+                    <div class="calendar-nav-previous-month">
+                        <a href="" class="button is-text is-small is-primary">
+                            <svg class="svg-inline--fa fa-chevron-left fa-w-10" aria-hidden="true" data-prefix="fa"
+                                 data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 320 512" data-fa-i2svg="">
+                                <path fill="currentColor"
+                                      d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+                            </svg><!-- <i class="fa fa-chevron-left"></i> -->
+                        </a>
+                    </div>
+
+
+                    <div>
+                    <span class="title is-6 has-text-white">
+                          <div class="control select">
+                                <select name="year" value="2019">
+                                    <option value="2019" selected="">2019년</option><option value="2020">2020년</option>					            </select>
+                           </div>
+                           <div class="control select">
+                               <select name="month" value="06">
+                                    <option value="01">1월</option><option value="02">2월</option><option
+                                       value="03">3월</option><option value="04">4월</option><option
+                                       value="05">5월</option><option value="06" selected="">6월</option><option
+                                       value="07">7월</option><option value="08">8월</option><option
+                                       value="09">9월</option><option value="10">10월</option><option
+                                       value="11">11월</option><option value="12">12월</option>                               </select>
+                           </div>
+                            </span>
+                    </div>
+                    <div class="calendar-nav-next-month">
+                        <a href="" class="button is-text is-small is-primary">
+                            <svg class="svg-inline--fa fa-chevron-right fa-w-10" aria-hidden="true" data-prefix="fa"
+                                 data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 320 512" data-fa-i2svg="">
+                                <path fill="currentColor"
+                                      d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path>
+                            </svg><!-- <i class="fa fa-chevron-right"></i> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content tbl-form-box">
+            <div class="card is-flex-tablet">
+                <div class="column is-3">
+                    <div class="control select" style="width:100%;">
+                        <select name="">
+                            <option value="프로젝트1">프로젝트1</option>
+                            <option value="프로젝트2">프로젝트2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="column is-mobile-pt-0">
+                    <div class="inline-fields">
+                        <div class="i-field">
+                            <a class="button" href="javascript:transWeek(1);">
+                                <span>1주</span>
+                            </a>
+                        </div>
+                        <div class="i-field lf-1-4">
+                            <a class="button" href="javascript:transWeek(2);">
+                                <span>2주</span>
+                            </a>
+                        </div>
+                        <div class="i-field lf-1-4">
+                            <a class="button is-primary" href="javascript:transWeek(3);">
+                                <span>3주</span>
+                            </a>
+                        </div>
+                        <div class="i-field lf-1-4">
+                            <a class="button" href="javascript:transWeek(4);">
+                                <span>4주</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- 2019.06.19 jj -->
+            <div id="week-work-data" class="week-worked-time-wrap">
+                <div class="control">
+                    <button class="button toggle-worked-time-all"><!-- 전체 열기 --></button>
+                </div>
+
+                <style>
+                    .toggle-worked-time-all{
+                        display: none;
+                    }
+                    .icon-user-work-time{
+                        display: none;
+                    }
+                    .mb-work-date-list{
+                        display: none;
+                    }
+
+                    .week-worked-time-wrap tr th{
+                        vertical-align: middle;
+                    }
+                    .week-worked-time-wrap tr th,
+                    .week-worked-time-wrap tr td{
+                        text-align: center;
+                    }
+
+                    .week-worked-time-wrap td, .week-worked-time-wrap td th{
+                        font-weight: normal;
+                    }
+
+                    @media (max-width:767px){
+                        .toggle-worked-time-all{
+                            display: block;
+                        }
+                        .toggle-worked-time-all:after{
+                            content:'전체 주간 근무시간 열기'
+                        }
+                        .toggle-worked-time-all.on:after{
+                            content:'전체 주간 근무시간 닫기'
+                        }
+                        .week-worked-time-wrap .total-time{
+                            position: relative;
+                        }
+                        .icon-user-work-time{
+                            position: absolute; right:6px; top:calc(50% - 4px);
+                            display: block;
+                            line-height: 1;
+                            cursor: pointer;
+                        }
+                        .icon-user-work-time:after{
+                            display: block;
+                            border: 3px solid #3273dc;
+                            border-radius: 2px;
+                            border-right: 0;
+                            border-top: 0;
+                            transform: rotate(-45deg);
+                            transform-origin: center;
+                            width: 0.625em; height: 0.625em;
+                            content:'';
+                        }
+                        .icon-user-work-time.on:after{
+                            transform:rotate(135deg);
+                        }
+
+                        .mb-work-date-list > td{
+                            background: #f9f9f9;
+                        }
+
+                        .week-worked-time-wrap tr th {
+                            display: none;
+                        }
+                        .week-worked-time-wrap tr td{
+                            display: none;
+                        }
+
+                        .week-worked-time-wrap tr th:first-child,
+                        .week-worked-time-wrap tr th:nth-last-child(2),
+                        .week-worked-time-wrap tr th:last-child,
+                        .week-worked-time-wrap tr td:first-child,
+                        .week-worked-time-wrap tr td:nth-last-child(2),
+                        .week-worked-time-wrap tr td:last-child{
+                            display: table-cell;
+                        }
+                        .inner-tbl{
+                            margin: 10px 0 5px;
+                        }
+                        .inner-tbl br{
+                            display: none;
+                        }
+
+                        .inner-tbl caption{
+                            padding: 0 0 5px 10%;
+                            font-size: 0.75rem;
+                            font-weight: bold;
+                            text-align: left;
+                        }
+                        .inner-tbl .time{
+                            text-align: left;
+                            padding: 0.25em 0;
+                            font-size: 0.9rem;
+                            border-bottom: 1px solid #e8e8e8 !important;
+                        }
+                        .inner-tbl th.time{
+                            width: 41%;
+                            padding-left: 10%;
+                        }
+                        .inner-tbl td{
+
+                        }
+
+                        .inner-tbl tr:last-child,
+                        .inner-tbl tr:last-child .time{
+                            border-bottom: none !important;
+                        }
+                    }
+                </style>
+                <script>
+                    $(function(){
+                        var openOwnWeeklyWorkedTime = false;
+                        var openWeeklyWorkedTimeAll = false;
+                        var isAddEvent = false;
+                        var isMobile;
+
+                        // 모바일에서 사용할 일별 근무시간 테이블 생성
+                        var wWeekData = $('#week-work-data');
+                        var wWeekDataTable = wWeekData.find('.table');
+                        var theadTimes = wWeekDataTable.find('thead .time');
+                        var tbodyTrs = wWeekDataTable.find('tbody tr');
+                        var tdLength = tbodyTrs.eq(0).find('td').length;
+                        var tmpCell = '';
+
+                        for( var i =0, leng = tbodyTrs.length; i < leng; i++){
+                            var memName = tbodyTrs.eq(i).find('.name').text();
+                            for(var j =0, times = tbodyTrs.eq(i).find('.time'); j < times.length; j++){
+                                // console.log('member:'+ j + memName, theadTimes.eq(j).text() , times.eq(j).text());
+                                tmpCell += '<tr>' + theadTimes.eq(j)[0].outerHTML + times.eq(j)[0].outerHTML +'</tr>'
+                            }
+                            var innerTable = '<table class="inner-tbl"><caption>*요일별 근무시간*</caption>'+ tmpCell +'</table>';
+                            var addTrs = '<tr class="mb-work-date-list"><td class= "is-paddingless" colspan='+ tdLength +'>'+ innerTable +'</td></tr>';
+                            // 테이블에 동적 셀 추가
+                            tbodyTrs.eq(i).after(addTrs);
+                            tmpCell ='';
+                        }
+
+
+                        ////////////////////////////////////////////////////////////////////////////////////
+                        // Events
+
+                        function clickWeeklyWorkedTimeAllShow(){
+                            //console.log('allShow', 'openWeeklyWorkedTimeAll ==>', openWeeklyWorkedTimeAll, ' openOwnWeeklyWorkedTime ==>', openOwnWeeklyWorkedTime)
+                            $('.toggle-worked-time-all').toggleClass('on');
+                            if(openWeeklyWorkedTimeAll){
+                                $('.icon-user-work-time.on').removeClass('on');
+                                $('.mb-work-date-list').css('display', 'none');
+
+                            }else{
+                                $('.icon-user-work-time').addClass('on');
+                                $('.mb-work-date-list').css('display', 'table-row');
+                            }
+                            openWeeklyWorkedTimeAll =! openWeeklyWorkedTimeAll;
+                        }
+
+                        function clickWeeklyWorkedTime(e){
+                            var currentBtn = $(this).find('.icon-user-work-time');
+                            if(openWeeklyWorkedTimeAll) clickWeeklyWorkedTimeAllShow();
+
+                            //console.log('개인별', 'openWeeklyWorkedTimeAll ==>', openWeeklyWorkedTimeAll, ' openOwnWeeklyWorkedTime ==>', openOwnWeeklyWorkedTime)
+
+                            $('.icon-user-work-time.on').not(currentBtn).removeClass('on');
+                            $('.mb-work-date-list').not($(this).next()).css('display', 'none');
+                            currentBtn.toggleClass('on');
+                            if(currentBtn.hasClass('on')){
+                                currentBtn.addClass('on');
+                                openOwnWeeklyWorkedTime = true;
+                            }else{
+                                currentBtn.removeClass('on');
+                                openOwnWeeklyWorkedTime = false;
+                            }
+                            $(this).next().toggle();
+                        }
+
+
+                        function changeStatusWebMobile(){
+                            //console.log('isMobile ==>', isMobile, ' isAddEvent ==>',isAddEvent)
+                            if(isMobile && !isAddEvent){
+                                // 근무시간 토글 이벤트
+                                // 모바일에서 tr행에 Click 이벤트 추가, PC에서 Click 이벤트 제거
+                                $('.week-worked-time-wrap .origin-tr').on('click', clickWeeklyWorkedTime);
+                                isAddEvent = true;
+                            }else if(!isMobile){
+                                $('.week-worked-time-wrap .origin-tr').off('click');
+                                if(openWeeklyWorkedTimeAll) clickWeeklyWorkedTimeAllShow();
+                                if(openOwnWeeklyWorkedTime){
+                                    $('.icon-user-work-time.on').removeClass('on');
+                                    $('.mb-work-date-list').css('display', 'none');
+                                    openOwnWeeklyWorkedTime = false;
+                                }
+
+                                isAddEvent = false;
+                            }
+                        }
+
+                        // 모바일에서 일별 근무시간 테이블 전체 출력용 토글 이벤트
+                        $('.toggle-worked-time-all').click(clickWeeklyWorkedTimeAllShow);
+
+                        /////////////////////////////////////////////////////////////////////////////
+
+                        function resize(){
+                            //console.log('resize...', 'openWeeklyWorkedTimeAll ==>', openWeeklyWorkedTimeAll, ' openOwnWeeklyWorkedTime ==>', openOwnWeeklyWorkedTime)
+
+                            var windowWidth = window.innerWidth;
+
+                            if(windowWidth < 768 && !isMobile){
+                                isMobile = true;
+                            }else if(windowWidth >= 768 && isMobile){
+                                isMobile = false;
+                            }
+
+                            changeStatusWebMobile();
+                        }
+                        resize();
+
+                        $(window).resize(resize)
+                    })
+                </script>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th class="time">06/17<br>월</th>
+                        <th class="time">06/18<br>화</th>
+                        <th class="time">06/19<br>수</th>
+                        <th class="time">06/20<br>목</th>
+                        <th class="time">06/21<br>금</th>
+                        <th class="time">06/22<br>토</th>
+                        <th class="time">06/23<br>일</th>
+                        <th class="over-time">주간<br>근무시간</th>
+                        <th class="total-time">2주 평균<br>근무시간</th>
+                    </tr>
+                    </thead>
+                    <tbody class="list">
+                    <!-- -->
+                    <tr class="origin-tr">
+                        <td class="name">박현일</td>
+                        <td class="time">07:32</td>
+                        <td class="time">11:23</td>
+                        <td class="time">08:00</td>
+                        <td class="time">22:22</td>
+                        <td class="time">09:11</td>
+                        <td class="time">-</td>
+                        <td class="time">01:22</td>
+                        <td class="over-time">47 : 32</td>
+                        <td class="total-time">
+                            <span class="icon-user-work-time" title="일일 근무시간"></span>
+                            <font color="#0000cc">88:27</font>
+                        </td>
+                    </tr>
+                    <tr class="origin-tr">
+                        <td class="name">한영수 </td>
+                        <td class="time">07:26</td>
+                        <td class="time">09:20</td>
+                        <td class="time">12:22</td>
+                        <td class="time">-</td>
+                        <td class="time">11:22</td>
+                        <td class="time">-</td>
+                        <td class="time">-</td>
+                        <td class="over-time">47 : 00</td>
+                        <td class="total-time">
+                            <span class="icon-user-work-time" title="일일 근무시간"></span>
+                            <font color="#0000cc">123:42</font>
+                        </td>
+                    </tr>
+                    <tr class="origin-tr">
+                        <td class="name">김도훈</td>
+                        <td class="time">07:26</td>
+                        <td class="time">09:20</td>
+                        <td class="time">12:22</td>
+                        <td class="time">1:00</td>
+                        <td class="time">11:22</td>
+                        <td class="time">4:44</td>
+                        <td class="time">22:22</td>
+                        <td class="over-time">80:00</td>
+                        <td class="total-time">
+                            <span class="icon-user-work-time" title="일일 근무시간"></span>
+                            <font color="#0000cc">123:42</font>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <!-- paging-->
+                <div class="page_num">
+                    <div class="pagination-list ">
+                        <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">1</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>_isMarkup = true;</script>
+<script src="/assets/js/menu.js"></script>
+</body>
+</html>
