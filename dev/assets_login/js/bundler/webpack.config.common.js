@@ -12,7 +12,8 @@ module.exports = {
             '../common/df.workgroup.Util.js',
             '../common/df.workgroup.login.LoadInfoData.js'
         ],
-        "df.workgroup.login": ['../login/df.workgroup.login.js']
+        "df.workgroup.login": ['../login/df.workgroup.login.js'],
+        "df.workgroup.login_new": ['../login/df.workgroup.login_new.js']
     },
     output: {
         path: path.resolve(__dirname, '../'),

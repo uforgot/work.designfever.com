@@ -1,6 +1,6 @@
 {
   "user":{
-    "status": "L04",
+    "status": "000",
 
     "isLoggedIn": false,
 
@@ -30,15 +30,31 @@
 
     "workInfo": {
 
-      "isWorking": false,
-      "startedTime": null,
-      "startedTimeText": null,
+      "isWorking": true,
+      "startedTime": 12456789,
 
-      "workingTimeLine": [],
+      "workingTimeLine": [
+        {
+          "start": 123456789,
+          "stop": 123456789
+        },
+        {
+          "start": 123456789,
+          "stop": 123456789
+        },
+        {
+          "start": 123456789,
+          "stop": 123456789
+        },
+        {
+          "start": 123456789,
+          "stop": 123456789
+        }
+      ],
 
-      "workingTime_forToday": null,
-      "workingTime_forThisWeek": null,
-      "workingTime_forThisMonth": null
+      "workingTime_forToday": 28800000,
+      "workingTime_forThisWeek": 28800000,
+      "workingTime_forThisMonth": 28800000
     }
   },
 
@@ -85,9 +101,7 @@
       "login": "assets_login/temp/df_info_data_01_login.json",
       "checkin": "assets_login/temp/df_info_data_02_checkin.json",
       "checkout": "assets_login/temp/df_info_data_03_checkout.json",
-      "logout": "assets_login/temp/df_info_data_04_logout.json",
-      "start": "assets_login/temp/df_info_data_05_start_work.json",
-      "stop": "assets_login/temp/df_info_data_06_stop_work.json"
+      "logout": "assets_login/temp/df_info_data_04_logout.json"
     },
     "document_url":{
       "approval": "approval/approval_to_list.php",
@@ -101,22 +115,22 @@
       {
         "code": "L00",
         "type": "N",
-        "text": "로그인 되어 있지 않음."
+        "text": "로그인 되어 있지 않습니다."
       },
       {
         "code": "L01",
         "type": "E",
-        "text": "아이디가 없거나 올바르지 않음."
+        "text": "아이디가 없거나 올바르지 않습니다."
       },
       {
         "code": "L02",
         "type": "E",
-        "text": "패스워드가 없거나 올바르지 않음."
+        "text": "패스워드가 없거나 올바르지 않습니다."
       },
       {
         "code": "L03",
         "type": "E",
-        "text": "탈퇴한 회원."
+        "text": "탈퇴한 회원 입니다."
       },
       {
         "code": "L04",
@@ -189,10 +203,10 @@
       "weather": {
         "group": "01",
         "list": [
-          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=801", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=800&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-          {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=800&videoindex=0", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "false", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "false", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=801", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "false", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=800&videoindex=1", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
+          {"group": "04", "seq":"0005", "cat": "001", "random_show": "false", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=800&videoindex=0", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
           {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=700", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
           {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=600", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
           {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/weather/002_weather-video/index.html?weathercode=500&videoindex=2", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
@@ -269,23 +283,12 @@
       "sunset":1533780018351
     },
     "birthday":[
-      {
-        "name": "한영수",
-        "team": "LAB",
-        "position": "실장"
-      },
-      {
-        "name": "박현일",
-        "team": "LAB",
-        "position": "프로"
-      }
+
     ],
 
     "today":{
       "bg_contents": [
-        {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-        {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"},
-        {"group": "04", "seq":"0005", "cat": "001", "random_show": "true", "url": "bg-contents/custom/003_2017-iF-design-award-slideshow/index.html", "color_mode": 0, "bg_thumb":"assets_login/images/bg/bg-thumb-default.png", "bg_thumb_s":"assets_login/images/bg/bg-thumb-default_s.png"}
+
       ],
       "notice": {
         "title": ["오늘은", "바닥세미나가", "열립니다."],

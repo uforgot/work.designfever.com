@@ -1,26 +1,26 @@
 {
   "user":{
-    "status": "L04",
+    "status": "C00",
 
-    "isLoggedIn": false,
+    "isLoggedIn": true,
 
-    "name": null,
-    "team": null,
-    "position": null,
-    "img": null,
+    "name": "홍길동3",
+    "team": "LAB",
+    "position": "실장",
+    "img": "/file/small_sq_1.jpg",
 
-    "document_approval_num": null,
-    "document_approval_my_num": null,
-    "document_approval_cc_num": null,
+    "document_approval_num":12,
+    "document_approval_my_num":5,
+    "document_approval_cc_num":0,
 
-    "isNotCheckout_yesterday": null,
+    "isNotCheckout_yesterday": false,
 
-    "isCheckin": false,
-    "checkin_time": null,
-    "checkin_timeText": null,
+    "isCheckin": true,
+    "checkin_time": 1534123512000,
+    "checkin_timeText": "10시 25분",
 
-    "checkout_able_time": null,
-    "checkout_able_timeText": null,
+    "checkout_able_time": 1534155900000,
+    "checkout_able_timeText": "19시 25분",
 
     "isCheckout": false,
     "checkout_time": null,
@@ -28,17 +28,35 @@
     "isAdminAccount":false,
     "isInOffice": true,
 
+
     "workInfo": {
 
       "isWorking": false,
       "startedTime": null,
       "startedTimeText": null,
 
-      "workingTimeLine": [],
+      "workingTimeLine": [
+        {
+          "start": 1534123512000,
+          "stop": 1534155900000
+        },
+        {
+          "start": 1534123512000,
+          "stop": 1534155900000
+        },
+        {
+          "start": 1534123512000,
+          "stop": 1534155900000
+        },
+        {
+          "start": 1534123512000,
+          "stop": 1534155900000
+        }
+      ],
 
-      "workingTime_forToday": null,
-      "workingTime_forThisWeek": null,
-      "workingTime_forThisMonth": null
+      "workingTime_forToday": 28800000,
+      "workingTime_forThisWeek": 28800000,
+      "workingTime_forThisMonth": 28800000
     }
   },
 
