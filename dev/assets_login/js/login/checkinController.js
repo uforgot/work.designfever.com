@@ -10,7 +10,7 @@ module.exports = function () {
     var _form_out = document.getElementById('id_checkout');
     var _btn_checkout = document.getElementById('id_btn_checkout_re');
 
-    var _isCjeckin = false;
+    var _isCheckin = false;
     var _ID_INTERVAL_BAR = 0;
 
     var _json_user = null;
@@ -48,7 +48,7 @@ module.exports = function () {
 
                 txt_checkout_able_time.textContent = date_checkout_able.getHours() + "시 " + window.df.workgroup.Util.addZeroNumber(date_checkout_able.getMinutes()) + "분";
 
-                _isCjeckin = true;
+                _isCheckin = true;
 
                 if (!_json_user.isCheckout) {
                     startSetTimeBar();
@@ -104,7 +104,7 @@ module.exports = function () {
     }
 
     function stopSetTimeBar() {
-        _isCjeckin = false;
+        _isCheckin = false;
         clearInterval(_ID_INTERVAL_BAR);
     }
 

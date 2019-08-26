@@ -11,7 +11,9 @@ window.df.workgroup.Preset = {
         "login": "assets_login/temp/df_info_data_01_login.json",
         "checkin": "assets_login/temp/df_info_data_02_checkin.json",
         "checkout": "assets_login/temp/df_info_data_03_checkout.json",
-        "logout": "assets_login/temp/df_info_data_04_logout.json"
+        "logout": "assets_login/temp/df_info_data_04_logout.json",
+        "start": "assets_login/temp/df_info_data_05_start_work.json",
+        "stop": "assets_login/temp/df_info_data_06_stop_work.json"
     },
 
     "document_url": {
@@ -31,7 +33,9 @@ window.df.workgroup.Preset = {
         "ON_CHANGE_STAGE_INFO": "onChangeStageInfo",
         "ON_ERROR": "onError",
         "ON_WARNING": "onWarning",
-        "ON_CLOSE_MODAL": "onCloseModal"
+        "ON_CLOSE_MODAL": "onCloseModal",
+        "ON_START" : "onStart",
+        "ON_STOP" : "onStop"
     },
 
     "class_name": {

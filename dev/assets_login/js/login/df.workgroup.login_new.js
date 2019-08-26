@@ -4,6 +4,7 @@ import LoginBgController from './loginBgController';
 import LoginFieldController from './loginFieldController';
 import LogoutController from './logoutController';
 import CheckinController from './checkinController';
+import StartStopController from './startStopController';
 import LoginInfoController from './loginInfoController';
 import LoginUtilController from './loginUtilController';
 import ModalController from './modalController';
@@ -30,6 +31,7 @@ window.df.workgroup.login = function (json_data) {
     var _loginController = new LoginFieldController();
     var _logoutController = new LogoutController();
     var _checkinController = new CheckinController();
+    var _startStopController = new StartStopController();
     var _loginInfoController = new LoginInfoController();
 
     var _loginUtilController = new LoginUtilController();
@@ -61,6 +63,7 @@ window.df.workgroup.login = function (json_data) {
         _loginController.init();
         _logoutController.init();
         _checkinController.init();
+        _startStopController.init();
         _loginInfoController.init(_json_data.info.today.notice, _json_data.info.birthday);
 
         _loginUtilController.init(_json_data.preset.document_url, _json_data.preset.main_url, _json_data.user);
@@ -88,6 +91,8 @@ window.df.workgroup.login = function (json_data) {
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOGIN, _onLogin);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHECKIN, _onCheckin);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHECKOUT, _onCheckout);
+        document.addEventListener(window.df.workgroup.Preset.eventType.ON_START, _onStart);
+        document.addEventListener(window.df.workgroup.Preset.eventType.ON_STOP, _onStop);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_CHANGE_STAGE_INFO, _onChange_stage_info);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_LOGOUT, _onLogout);
         document.addEventListener(window.df.workgroup.Preset.eventType.ON_WARNING, _onWarning);
@@ -118,6 +123,16 @@ window.df.workgroup.login = function (json_data) {
         _updateStatus();
     }
 
+    function _onStart(evt) {
+        _resetData(evt.detail.response);
+        _updateStatus();
+    }
+
+    function _onStop(evt) {
+        _resetData(evt.detail.response);
+        _updateStatus();
+    }
+
     function _onLogout(evt) {
         _resetData(evt.detail.response);
         _updateStatus();
@@ -143,6 +158,7 @@ window.df.workgroup.login = function (json_data) {
 
         _logoutController.hideLogoutBtn();
         _checkinController.hideCheckinBtn();
+        _startStopController.hideStartBtn();
         _loginController.showLoginFrom();
     }
 
@@ -151,6 +167,7 @@ window.df.workgroup.login = function (json_data) {
 
         _logoutController.showLogoutBtn();
         _checkinController.showCheckinBtn();
+        _startStopController.showStartBtn();
 
         var sec_util = document.querySelector('.sec-util');
         df.lab.Util.addClass(sec_util, window.df.workgroup.Preset.class_name.showIn);
@@ -164,6 +181,10 @@ window.df.workgroup.login = function (json_data) {
 
     function _setLayout_Checkout() {
         _checkinController.showCheckoutText();
+    }
+
+    function _setLayout_started() {
+        _startStopController.showStopBtn();
     }
 
     function startMotion() {
@@ -246,6 +267,10 @@ window.df.workgroup.login = function (json_data) {
                 if (_json_data.user.isCheckout) {
                     _setLayout_Checkout();
                 }
+            }
+
+            if (_json_data.user.workInfo.isWorking) {
+                _setLayout_started();
             }
         }
         else {

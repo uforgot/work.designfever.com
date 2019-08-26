@@ -15,6 +15,7 @@
 .wrapper .sec-login,
 .wrapper .sec-login .wrapper-startStop,
 .wrapper .sec-login .wrapper-startStop .area-start .ui-loading,
+.wrapper .sec-login .wrapper-startStop .area-name .name-wrapper,
 .wrapper .sec-login .wrapper-checkin,
 .wrapper .sec-login .wrapper-checkin .area-check-inout .ui-loading,
 .wrapper .sec-login .wrapper-checkin .area-timebar .txt-wrapper,
@@ -31,6 +32,7 @@
     justify-content: center;
 }
 
+.wrapper .sec-login .wrapper-startStop .area-start .btn-wrapper .time-txt .txt-time,
 .wrapper .sec-login .wrapper-checkin .area-check-inout .btn-wrapper .time-txt .txt-time {
     display: -webkit-flex;
     display: flex;
@@ -40,6 +42,7 @@
     justify-content: center;
 }
 
+.wrapper .sec-login .wrapper-startStop .area-start .btn-wrapper .time-txt .txt-title,
 .wrapper .sec-login .wrapper-checkin .area-check-inout .btn-wrapper .time-txt .txt-title {
     display: -webkit-flex;
     display: flex;
@@ -883,6 +886,7 @@ a:focus, button:focus, input[type="submit"]:focus {
     display: none;
 }
 
+.wrapper .sec-login .wrapper-startStop .area-name,
 .wrapper .sec-login .wrapper-checkin .area-name {
     pointer-events: none;
     position: absolute;
@@ -897,6 +901,7 @@ a:focus, button:focus, input[type="submit"]:focus {
     transition-delay: 1000ms;
 }
 
+.wrapper .sec-login .wrapper-startStop .area-name .name-wrapper,
 .wrapper .sec-login .wrapper-checkin .area-name .name-wrapper {
     font-size: 0.75rem;
     font-weight: 700;
@@ -909,6 +914,7 @@ a:focus, button:focus, input[type="submit"]:focus {
     transition-delay: 200ms;
 }
 
+.wrapper .sec-login .wrapper-startStop.checked .area-start .btn-wrapper,
 .wrapper .sec-login .wrapper-checkin.checked .area-check-inout.area-checkin .btn-wrapper {
     transition-duration: 800ms;
     transition-property: background;
@@ -917,6 +923,7 @@ a:focus, button:focus, input[type="submit"]:focus {
     background: #161616;
 }
 
+.wrapper .sec-login .wrapper-startStop.checked .area-start .btn-wrapper form,
 .wrapper .sec-login .wrapper-checkin.checked .area-check-inout.area-checkin .btn-wrapper form {
     transition-duration: 800ms, 800ms;
     transition-property: opacity, transform;
@@ -927,10 +934,12 @@ a:focus, button:focus, input[type="submit"]:focus {
     transform: translate3d(0, -100%, 0);
 }
 
+.wrapper .sec-login .wrapper-startStop.checked .area-start .btn-wrapper form input,
 .wrapper .sec-login .wrapper-checkin.checked .area-check-inout.area-checkin .btn-wrapper form input {
     pointer-events: none;
 }
 
+.wrapper .sec-login .wrapper-startStop.checked .area-start .btn-wrapper .time-txt,
 .wrapper .sec-login .wrapper-checkin.checked .area-check-inout.area-checkin .btn-wrapper .time-txt {
     -webkit-mask-image: -webkit-radial-gradient(white, black);
     transition-duration: 800ms;
@@ -976,6 +985,7 @@ a:focus, button:focus, input[type="submit"]:focus {
     opacity: 1;
 }
 
+/*.wrapper .sec-login .wrapper-startStop.checked .area-name .name-wrapper,*/
 .wrapper .sec-login .wrapper-checkin.checked .area-name .name-wrapper {
     transform: translateY(0);
 }
@@ -1057,6 +1067,7 @@ a:focus, button:focus, input[type="submit"]:focus {
     display: block;
 }
 
+.wrapper .sec-login.logged .wrapper-startStop.show-in .area-name,
 .wrapper .sec-login.logged .wrapper-checkin.show-in .area-name {
     transform: translateY(-42px);
     opacity: 1;

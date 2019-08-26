@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, viewport-fit=cover">
 
-    <title>Login | DF Workgroup</title>
+    <title>Login New | DF Workgroup</title>
     <meta name="description" content="DF Workgroup Login page.">
     <meta name="keywords" content="DF">
     <meta name="apple-mobile-web-app-title" content="Login | DF Workgroup">
@@ -255,7 +255,10 @@
                 </div>
             </div>
         </div>
-        <div class="wrapper-startStop show-in">
+        <div class="wrapper-startStop">
+            <div class="area-name">
+                <div class="name-wrapper"><p><span id="id_user_name_new"></span>&nbsp;<span id="id_user_position_new"></span></p></div>
+            </div>
             <div class="area-start">
                 <div class="btn-wrapper">
                     <form id="id_start" name="user_start" method="POST" accept-charset="EUC-KR" enctype="multipart/form-data" action="">
@@ -266,6 +269,10 @@
                             </div>
                         </fieldset>
                     </form>
+                    <div class="time-txt">
+                        <p class="txt-title"><span>시작 시간</span></p>
+                        <p class="txt-time"><span id="id_start_time">00시 00분</span></p>
+                    </div>
                 </div>
                 <div class="ui-loading">
                     <i class="icon-loading material-icons">sync</i>
