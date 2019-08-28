@@ -738,6 +738,10 @@ a:focus, button:focus, input[type="submit"]:focus {
     transition-delay: 0;
 }
 
+.wrapper .sec-login .wrapper-startStop .area-start .btn-wrapper form fieldset .area-input .btn-submit.longtext {
+    font-size: 1rem;
+}
+
 .wrapper .sec-login .wrapper-checkin .area-check-inout .btn-wrapper form fieldset .area-input .btn-submit:hover,
 .wrapper .sec-login .wrapper-checkin .area-check-inout .btn-wrapper form fieldset .area-input .btn-submit:focus {
     color: #FFFFFF;
@@ -1035,6 +1039,20 @@ a:focus, button:focus, input[type="submit"]:focus {
 
 .wrapper .sec-login .wrapper-checkin.checkedout .area-timebar .txt-wrapper .limit-time-txt.complete {
     display: block;
+}
+
+.wrapper .sec-login .wrapper-startStop .area-working-time {
+    display: none;
+    font-size: 0.625rem;
+    text-align: left;
+}
+
+.wrapper .sec-login .wrapper-startStop.show-in .area-working-time {
+    display: block;
+}
+
+.wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt{
+    margin: 10px;
 }
 
 .wrapper .sec-login.loading input {

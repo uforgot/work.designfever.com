@@ -166,7 +166,7 @@ window.df.workgroup.login = function (json_data) {
         _loginController.hideLoginFrom();
 
         _logoutController.showLogoutBtn();
-        _checkinController.showCheckinBtn();
+        //_checkinController.showCheckinBtn();
         _startStopController.showStartBtn();
 
         var sec_util = document.querySelector('.sec-util');

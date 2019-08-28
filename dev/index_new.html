@@ -265,7 +265,7 @@
                         <fieldset>
                             <legend class="blind">Start</legend>
                             <div class="area-input btn-start">
-                                <input class="btn-submit" form="id_start" type="submit" value="시작" title="근무 시작" >
+                                <input class="btn-submit longtext" form="id_start" type="submit" value="업무 시작" title="업무 시작" >
                             </div>
                         </fieldset>
                     </form>
@@ -276,6 +276,13 @@
                 </div>
                 <div class="ui-loading">
                     <i class="icon-loading material-icons">sync</i>
+                </div>
+            </div>
+            <div class="area-working-time">
+                <div class="txt-wrapper">
+                    <p class="time-txt"><span>오늘 근무한 시간 - </span><span id="id_workingTime_forToday">00시간 00분</span></p>
+                    <p class="time-txt"><span>이번주 근무한 시간 - </span><span id="id_workingTime_forThisWeek">00시간 00분</span></p>
+                    <p class="time-txt"><span>이번달 근무한 시간 - </span><span id="id_workingTime_forThisMonth">00시간 00분</span> / <span id="id_workingTime_total_ofThisMonth">160시간</span></p>
                 </div>
             </div>
         </div>
