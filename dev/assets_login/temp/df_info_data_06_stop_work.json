@@ -15,19 +15,18 @@
 
     "isNotCheckout_yesterday": false,
 
-    "isCheckin": true,
-    "checkin_time": 1534123512000,
-    "checkin_timeText": "10시 25분",
+    "isCheckin": false,
+    "checkin_time": null,
+    "checkin_timeText": null,
 
-    "checkout_able_time": 1534155900000,
-    "checkout_able_timeText": "19시 25분",
+    "checkout_able_time": null,
+    "checkout_able_timeText": null,
 
     "isCheckout": false,
     "checkout_time": null,
     "checkout_timeText": null,
     "isAdminAccount":false,
     "isInOffice": true,
-
 
     "workInfo": {
 

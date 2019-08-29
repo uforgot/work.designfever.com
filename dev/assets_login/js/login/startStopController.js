@@ -3,9 +3,11 @@ module.exports = function () {
     var CLASS_NAME = "[ startStopController ]";
 
     var _wrapper = document.querySelector('.sec-login .wrapper-startStop');
-    var _area_start = _wrapper.querySelector('.area-start');
+    var _area_start = _wrapper.querySelector('.area-start.start');
+    var _area_stop = _wrapper.querySelector('.area-start.stop');
 
     var _form = document.getElementById('id_start');
+    var _form_stop = document.getElementById('id_stop');
 
     var _isCheckin = false;
     var _ID_INTERVAL_BAR = 0;
@@ -16,7 +18,10 @@ module.exports = function () {
         _setInfo();
         _setUrl();
         _form.addEventListener('submit', _onSubmit);
+        _form_stop.addEventListener('submit', _onSubmit_stop);
+
         disable_input();
+        disable_input_stop();
     }
 
     function _setInfo() {
@@ -36,6 +41,38 @@ module.exports = function () {
 
                 _isCheckin = true;
             }
+
+            var txt_workingtime = document.getElementById("id_workingTime_forToday");
+            var value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forToday);
+            txt_workingtime.textContent = value_workingtime.hours + "시간 " + window.df.workgroup.Util.addZeroNumber(value_workingtime.minutes) + "분";
+
+            txt_workingtime = document.getElementById("id_workingTime_forThisWeek");
+            value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forThisWeek);
+            txt_workingtime.textContent = value_workingtime.hours + "시간 " + window.df.workgroup.Util.addZeroNumber(value_workingtime.minutes) + "분";
+
+            txt_workingtime = document.getElementById("id_workingTime_forThisMonth");
+            value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forThisMonth);
+            txt_workingtime.textContent = value_workingtime.hours + "시간 " + window.df.workgroup.Util.addZeroNumber(value_workingtime.minutes) + "분";
+
+            txt_workingtime = document.getElementById("id_workingTime_total_ofThisMonth");
+            value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forThisMonth);
+            txt_workingtime.textContent = value_workingtime.hours + "시간";
+            if(value_workingtime.minutes > 0) {
+                txt_workingtime.textContent = txt_workingtime.textContent + " " + window.df.workgroup.Util.addZeroNumber(value_workingtime.minutes) + "분";
+            }
+        }
+    }
+
+    function getWorkingTimeFromMicroSEC(microSEC){
+
+        var sec = (Math.floor(microSEC/1000))%60;
+        var min = Math.floor(microSEC/1000/60)%60;
+        var hour = Math.floor(microSEC/1000/60/60);
+
+        return {
+            hours: hour,
+            minutes: min,
+            seconds: sec
         }
     }
 
@@ -46,10 +83,17 @@ module.exports = function () {
             json_data.preset.json_url.start != undefined) {
 
             _form.action = json_data.preset.json_url.start;
-            //console.log(CLASS_NAME + " action(server) : ", _form.action);
         } else {
             _form.action = window.df.workgroup.Preset.json_url.start;
-            //console.log(CLASS_NAME + " action(local) : ", _form.action);
+        }
+
+        if (json_data.preset != undefined &&
+            json_data.preset.json_url != undefined &&
+            json_data.preset.json_url.stop != undefined) {
+
+            _form_stop.action = json_data.preset.json_url.stop;
+        } else {
+            _form_stop.action = window.df.workgroup.Preset.json_url.stop;
         }
     }
 
@@ -64,12 +108,33 @@ module.exports = function () {
         return false;
     }
 
+
+    function _onSubmit_stop($evt) {
+        $evt.preventDefault();
+        _submit_stop();
+    }
+
+    function _submit_stop() {
+        loading_forStop();
+        ajaxPost(_form_stop, onCompSubmit_stop);
+        return false;
+    }
+
     function loading() {
 
         var loading = _area_start.querySelector('.ui-loading');
         df.lab.Util.addClass(loading, window.df.workgroup.Preset.class_name.showIn);
 
         disable_input();
+    }
+
+
+    function loading_forStop() {
+
+        var loading = _area_stop.querySelector('.ui-loading');
+        df.lab.Util.addClass(loading, window.df.workgroup.Preset.class_name.showIn);
+
+        disable_input_stop();
     }
 
     function disable_input() {
@@ -87,6 +152,20 @@ module.exports = function () {
         }
     }
 
+    function disable_input_stop() {
+        var inputs = _form_stop.querySelectorAll('input');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].setAttribute("disabled", "");
+        }
+    }
+
+    function able_input_stop() {
+        var inputs = _form_stop.querySelectorAll('input');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].removeAttribute("disabled");
+        }
+    }
+
     function onCompSubmit(response) {
         var loading = _area_start.querySelector('.ui-loading');
         df.lab.Util.removeClass(loading, window.df.workgroup.Preset.class_name.showIn);
@@ -96,6 +175,19 @@ module.exports = function () {
 
         if (status.isWarning) {
             console.log("status.text : ", status.text);
+            _dispatchOnWarning(status.text);
+        }
+    }
+
+    function onCompSubmit_stop(response) {
+        var loading = _area_stop.querySelector('.ui-loading');
+        df.lab.Util.removeClass(loading, window.df.workgroup.Preset.class_name.showIn);
+        _dispatchOnLoad_stop(response);
+
+        var status = getStatus(response);
+
+        if (status.isWarning) {
+            //console.log("status.text : " , status.text);
             _dispatchOnWarning(status.text);
         }
     }
@@ -159,6 +251,15 @@ module.exports = function () {
         document.dispatchEvent(event);
     }
 
+    function _dispatchOnLoad_stop(response) {
+        var event = new CustomEvent(window.df.workgroup.Preset.eventType.ON_STOP, {
+            detail: {
+                response: response
+            }
+        });
+        document.dispatchEvent(event);
+    }
+
     function _showStartBtn() {
 
         _setInfo();
@@ -166,6 +267,7 @@ module.exports = function () {
 
         df.lab.Util.addClass(_wrapper, window.df.workgroup.Preset.class_name.showIn);
         able_input();
+        disable_input_stop();
     }
 
     function _hideStartBtn() {
@@ -179,14 +281,27 @@ module.exports = function () {
 
         df.lab.Util.addClass(_wrapper, 'checked');
         disable_input();
-        //able_input_out();
+        able_input_stop();
     }
+
+
+    function _hideStopBtn() {
+
+        _setInfo();
+        _setUrl();
+
+        df.lab.Util.removeClass(_wrapper, 'checked');
+        disable_input_stop();
+        able_input();
+    }
+
     function _resetLayout() {
         df.lab.Util.removeClass(_wrapper, window.df.workgroup.Preset.class_name.showIn);
         df.lab.Util.removeClass(_wrapper, 'checked');
         df.lab.Util.removeClass(_wrapper, 'checkedout');
 
         disable_input();
+        disable_input_stop();
     }
 
     function ajaxPost(form, callback) {
@@ -215,6 +330,7 @@ module.exports = function () {
         init: _init,
         showStartBtn: _showStartBtn,
         hideStartBtn: _hideStartBtn,
-        showStopBtn: _showStopBtn
+        showStopBtn: _showStopBtn,
+        hideStopBtn: _hideStopBtn
     }
 };

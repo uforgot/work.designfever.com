@@ -187,6 +187,10 @@ window.df.workgroup.login = function (json_data) {
         _startStopController.showStopBtn();
     }
 
+    function _setLayout_stop() {
+        _startStopController.hideStopBtn();
+    }
+
     function startMotion() {
 
         _updateStatus();
@@ -260,17 +264,19 @@ window.df.workgroup.login = function (json_data) {
             df.lab.Util.addClass(sec_login, 'logged');
 
             _setLayout_Login();
-
-            if (_json_data.user.isCheckin) {
-                _setLayout_Checkin();
-
-                if (_json_data.user.isCheckout) {
-                    _setLayout_Checkout();
-                }
-            }
+            //
+            // if (_json_data.user.isCheckin) {
+            //     _setLayout_Checkin();
+            //
+            //     if (_json_data.user.isCheckout) {
+            //         _setLayout_Checkout();
+            //     }
+            // }
 
             if (_json_data.user.workInfo.isWorking) {
                 _setLayout_started();
+            }else{
+                _setLayout_stop();
             }
         }
         else {

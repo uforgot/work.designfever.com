@@ -660,6 +660,7 @@ a:focus, button:focus, input[type="submit"]:focus {
     will-change: width, opacity, transform;
 }
 
+.wrapper .sec-login .wrapper-startStop .area-start.stop,
 .wrapper .sec-login .wrapper-checkin .area-check-inout.area-checkout {
     will-change: width, opacity, transform;
     width: 0;
@@ -667,15 +668,18 @@ a:focus, button:focus, input[type="submit"]:focus {
     transform: scale(0);
 }
 
+.wrapper .sec-login .wrapper-startStop .area-start.stop .btn-wrapper,
 .wrapper .sec-login .wrapper-checkin .area-check-inout.area-checkout .btn-wrapper {
     background: #223333;
     color: #5BA1A9;
 }
 
+.wrapper .sec-login .wrapper-startStop .area-start.stop .btn-wrapper .time-txt .txt-time span,
 .wrapper .sec-login .wrapper-checkin .area-check-inout.area-checkout .btn-wrapper .time-txt .txt-time span {
     color: #009494;
 }
 
+.wrapper .sec-login .wrapper-startStop .area-start.stop.checkout-able .btn-wrapper,
 .wrapper .sec-login .wrapper-checkin .area-check-inout.area-checkout.checkout-able .btn-wrapper {
     background: #009494;
     color: #FFFFFF;
@@ -742,6 +746,8 @@ a:focus, button:focus, input[type="submit"]:focus {
     font-size: 1rem;
 }
 
+.wrapper .sec-login .wrapper-startStop .area-start .btn-wrapper form fieldset .area-input .btn-submit:hover,
+.wrapper .sec-login .wrapper-startStop .area-start .btn-wrapper form fieldset .area-input .btn-submit:focus,
 .wrapper .sec-login .wrapper-checkin .area-check-inout .btn-wrapper form fieldset .area-input .btn-submit:hover,
 .wrapper .sec-login .wrapper-checkin .area-check-inout .btn-wrapper form fieldset .area-input .btn-submit:focus {
     color: #FFFFFF;
@@ -918,7 +924,7 @@ a:focus, button:focus, input[type="submit"]:focus {
     transition-delay: 200ms;
 }
 
-.wrapper .sec-login .wrapper-startStop.checked .area-start .btn-wrapper,
+.wrapper .sec-login .wrapper-startStop.checked .area-start.start .btn-wrapper,
 .wrapper .sec-login .wrapper-checkin.checked .area-check-inout.area-checkin .btn-wrapper {
     transition-duration: 800ms;
     transition-property: background;
@@ -927,7 +933,7 @@ a:focus, button:focus, input[type="submit"]:focus {
     background: #161616;
 }
 
-.wrapper .sec-login .wrapper-startStop.checked .area-start .btn-wrapper form,
+.wrapper .sec-login .wrapper-startStop.checked .area-start.start .btn-wrapper form,
 .wrapper .sec-login .wrapper-checkin.checked .area-check-inout.area-checkin .btn-wrapper form {
     transition-duration: 800ms, 800ms;
     transition-property: opacity, transform;
@@ -938,12 +944,12 @@ a:focus, button:focus, input[type="submit"]:focus {
     transform: translate3d(0, -100%, 0);
 }
 
-.wrapper .sec-login .wrapper-startStop.checked .area-start .btn-wrapper form input,
+.wrapper .sec-login .wrapper-startStop.checked .area-start.start .btn-wrapper form input,
 .wrapper .sec-login .wrapper-checkin.checked .area-check-inout.area-checkin .btn-wrapper form input {
     pointer-events: none;
 }
 
-.wrapper .sec-login .wrapper-startStop.checked .area-start .btn-wrapper .time-txt,
+.wrapper .sec-login .wrapper-startStop.checked .area-start.start .btn-wrapper .time-txt,
 .wrapper .sec-login .wrapper-checkin.checked .area-check-inout.area-checkin .btn-wrapper .time-txt {
     -webkit-mask-image: -webkit-radial-gradient(white, black);
     transition-duration: 800ms;
@@ -955,6 +961,7 @@ a:focus, button:focus, input[type="submit"]:focus {
     will-change: auto;
 }
 
+.wrapper .sec-login .wrapper-startStop.checked .area-start.stop,
 .wrapper .sec-login .wrapper-checkin.checked .area-check-inout.area-checkout {
     transition-duration: 600ms, 800ms, 800ms;
     transition-property: width, opacity, transform;
@@ -1041,6 +1048,7 @@ a:focus, button:focus, input[type="submit"]:focus {
     display: block;
 }
 
+/** start stop time text **/
 .wrapper .sec-login .wrapper-startStop .area-working-time {
     display: none;
     font-size: 0.625rem;
@@ -1055,6 +1063,16 @@ a:focus, button:focus, input[type="submit"]:focus {
     margin: 10px;
 }
 
+.wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt .value-txt{
+    color: #009494;
+}
+
+.wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt .value-total-txt{
+    color: #00BFBF;
+}
+
+
+/** **/
 .wrapper .sec-login.loading input {
     pointer-events: none;
 }
