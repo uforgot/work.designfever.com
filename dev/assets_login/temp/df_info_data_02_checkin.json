@@ -56,7 +56,9 @@
 
       "workingTime_forToday": 28800000,
       "workingTime_forThisWeek": 28800000,
-      "workingTime_forThisMonth": 28800000
+      "workingTime_forThisMonth": 28800000,
+      "workingTime_forThisMonthMax": 288000000,
+      "workingTime_forThisMonthLimit": 588000000
     }
   },
 

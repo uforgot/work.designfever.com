@@ -1060,15 +1060,24 @@ a:focus, button:focus, input[type="submit"]:focus {
 }
 
 .wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt{
-    margin: 10px;
+    margin: 5px 10px;
+    color: #cccccc;
+}
+
+.wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt.gap-margin{
+    margin-top: 10px;
 }
 
 .wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt .value-txt{
     color: #009494;
 }
 
-.wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt .value-total-txt{
+.wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt .value-txt.total{
     color: #00BFBF;
+}
+
+.wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt .value-txt.limit{
+    color: #BF5E00;
 }
 
 

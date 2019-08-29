@@ -55,10 +55,27 @@ module.exports = function () {
             txt_workingtime.textContent = value_workingtime.hours + "시간 " + window.df.workgroup.Util.addZeroNumber(value_workingtime.minutes) + "분";
 
             txt_workingtime = document.getElementById("id_workingTime_total_ofThisMonth");
-            value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forThisMonth);
-            txt_workingtime.textContent = value_workingtime.hours + "시간";
-            if(value_workingtime.minutes > 0) {
-                txt_workingtime.textContent = txt_workingtime.textContent + " " + window.df.workgroup.Util.addZeroNumber(value_workingtime.minutes) + "분";
+
+            if(_json_user.workInfo.workingTime_forThisMonthMax == undefined || _json_user.workInfo.workingTime_forThisMonthMax == null){
+                txt_workingtime.textContent = "-";
+            }else {
+                value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forThisMonthMax);
+                txt_workingtime.textContent = value_workingtime.hours + "시간";
+                if (value_workingtime.minutes > 0) {
+                    txt_workingtime.textContent = txt_workingtime.textContent + " " + window.df.workgroup.Util.addZeroNumber(value_workingtime.minutes) + "분";
+                }
+            }
+
+            txt_workingtime = document.getElementById("id_workingTime_limit_ofThisMonth");
+
+            if(_json_user.workInfo.workingTime_forThisMonthLimit == undefined || _json_user.workInfo.workingTime_forThisMonthLimit == null){
+                txt_workingtime.textContent = "-";
+            }else {
+                value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forThisMonthLimit);
+                txt_workingtime.textContent = value_workingtime.hours + "시간";
+                if (value_workingtime.minutes > 0) {
+                    txt_workingtime.textContent = txt_workingtime.textContent + " " + window.df.workgroup.Util.addZeroNumber(value_workingtime.minutes) + "분";
+                }
             }
         }
     }

@@ -38,7 +38,9 @@
 
       "workingTime_forToday": null,
       "workingTime_forThisWeek": null,
-      "workingTime_forThisMonth": null
+      "workingTime_forThisMonth": null,
+      "workingTime_forThisMonthMax": null,
+      "workingTime_forThisMonthLimit": null
     }
   },
 

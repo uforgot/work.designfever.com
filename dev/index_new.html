@@ -69,10 +69,10 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets_login/css/common.css?uniq=20181101_1" />
-    <link rel="stylesheet" type="text/css" href="assets_login/css/login.css?uniq=20181101_1" />
+    <link rel="stylesheet" type="text/css" href="assets_login/css/login.css?uniq=20190829_2" />
 
-    <script type="text/javascript" src="assets_login/js/common_withPixi.bundle.js?uniq=20181101_1"></script>
-    <script type="text/javascript" src="assets_login/js/df.workgroup.login.common.bundle.js?uniq=20190823"></script>
+    <script type="text/javascript" src="assets_login/js/common_withPixi.bundle.js?uniq=20190829_2"></script>
+    <script type="text/javascript" src="assets_login/js/df.workgroup.login.common.bundle.js?uniq=20190829_2"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -282,7 +282,9 @@
                 <div class="txt-wrapper">
                     <p class="time-txt"><span>오늘 근무한 시간 : </span><span class="value-txt" id="id_workingTime_forToday">00시간 00분</span></p>
                     <p class="time-txt"><span>이번주 근무한 시간 : </span><span class="value-txt" id="id_workingTime_forThisWeek">00시간 00분</span></p>
-                    <p class="time-txt"><span>이번달 근무한 시간 : </span><span class="value-txt" id="id_workingTime_forThisMonth">00시간 00분</span><span class="value-total-txt"> / </span><span class="value-total-txt" id="id_workingTime_total_ofThisMonth">160시간</span></p>
+                    <p class="time-txt gap-margin"><span>이번달 근무한 시간 : </span><span class="value-txt" id="id_workingTime_forThisMonth">00시간 00분</span></p>
+                    <p class="time-txt"><span>이번달 최소 근무해야 할 시간 : </span><span class="value-txt total" id="id_workingTime_total_ofThisMonth">00시간</span></p>
+                    <p class="time-txt"><span>이번달 최대 근무 가능한 시간 : </span><span class="value-txt limit" id="id_workingTime_limit_ofThisMonth">00시간</span></p>
                 </div>
             </div>
             <div class="area-start stop">
@@ -371,7 +373,7 @@
 
     </div>
 </div>
-<script type="text/javascript" src="assets_login/js/df.workgroup.login_new.bundle.js?uniq=20190823"></script>
+<script type="text/javascript" src="assets_login/js/df.workgroup.login_new.bundle.js?uniq=20190829_2"></script>
 <script>
     console.log("[ index.html ] : ", "check load json");
     if(df.workgroup.GlobalVars.isLoaded)    {
