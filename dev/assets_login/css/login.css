@@ -668,7 +668,11 @@ a:focus, button:focus, input[type="submit"]:focus {
     transform: scale(0);
 }
 
-.wrapper .sec-login .wrapper-startStop .area-start.stop .btn-wrapper,
+.wrapper .sec-login .wrapper-startStop .area-start.stop .btn-wrapper{
+    background: #009494;
+    color: #FFFFFF;
+}
+
 .wrapper .sec-login .wrapper-checkin .area-check-inout.area-checkout .btn-wrapper {
     background: #223333;
     color: #5BA1A9;
