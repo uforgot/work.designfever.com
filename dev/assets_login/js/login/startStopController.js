@@ -54,24 +54,24 @@ module.exports = function () {
             value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forThisMonth);
             txt_workingtime.textContent = value_workingtime.hours + "시간 " + window.df.workgroup.Util.addZeroNumber(value_workingtime.minutes) + "분";
 
-            txt_workingtime = document.getElementById("id_workingTime_total_ofThisMonth");
+            txt_workingtime = document.getElementById("id_workingTime_total_min_ofThisMonth");
 
-            if(_json_user.workInfo.workingTime_forThisMonthMax == undefined || _json_user.workInfo.workingTime_forThisMonthMax == null){
+            if(_json_user.workInfo.workingTime_forThisMonthMin == undefined || _json_user.workInfo.workingTime_forThisMonthMin == null){
                 txt_workingtime.textContent = "-";
             }else {
-                value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forThisMonthMax);
+                value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forThisMonthMin);
                 txt_workingtime.textContent = value_workingtime.hours + "시간";
                 if (value_workingtime.minutes > 0) {
                     txt_workingtime.textContent = txt_workingtime.textContent + " " + window.df.workgroup.Util.addZeroNumber(value_workingtime.minutes) + "분";
                 }
             }
 
-            txt_workingtime = document.getElementById("id_workingTime_limit_ofThisMonth");
+            txt_workingtime = document.getElementById("id_workingTime_total_max_ofThisMonth");
 
-            if(_json_user.workInfo.workingTime_forThisMonthLimit == undefined || _json_user.workInfo.workingTime_forThisMonthLimit == null){
+            if(_json_user.workInfo.workingTime_forThisMonthMax == undefined || _json_user.workInfo.workingTime_forThisMonthMax == null){
                 txt_workingtime.textContent = "-";
             }else {
-                value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forThisMonthLimit);
+                value_workingtime = getWorkingTimeFromMicroSEC(_json_user.workInfo.workingTime_forThisMonthMax);
                 txt_workingtime.textContent = value_workingtime.hours + "시간";
                 if (value_workingtime.minutes > 0) {
                     txt_workingtime.textContent = txt_workingtime.textContent + " " + window.df.workgroup.Util.addZeroNumber(value_workingtime.minutes) + "분";
@@ -218,8 +218,11 @@ module.exports = function () {
         var json = JSON.parse(response.target.responseText);
         var user_status_code = json.user.status;
         if (
-            //user_status_code.toLowerCase() == ("C00").toLowerCase() ||
             user_status_code.toLowerCase() == ("L00").toLowerCase() ||
+            user_status_code.toLowerCase() == ("L01").toLowerCase() ||
+            user_status_code.toLowerCase() == ("L02").toLowerCase() ||
+            user_status_code.toLowerCase() == ("L03").toLowerCase() ||
+            user_status_code.toLowerCase() == ("L04").toLowerCase() ||
 
             user_status_code.toLowerCase() == ("C10").toLowerCase() ||
 
@@ -233,7 +236,25 @@ module.exports = function () {
             user_status_code.toLowerCase() == ("C12").toLowerCase() ||
             user_status_code.toLowerCase() == ("C13").toLowerCase() ||
             user_status_code.toLowerCase() == ("C14").toLowerCase() ||
-            user_status_code.toLowerCase() == ("C15").toLowerCase()
+            user_status_code.toLowerCase() == ("C15").toLowerCase() ||
+
+
+            user_status_code.toLowerCase() == ("W00").toLowerCase() ||
+
+            user_status_code.toLowerCase() == ("W01").toLowerCase() ||
+            user_status_code.toLowerCase() == ("W02").toLowerCase() ||
+            user_status_code.toLowerCase() == ("W03").toLowerCase() ||
+            user_status_code.toLowerCase() == ("W04").toLowerCase() ||
+            user_status_code.toLowerCase() == ("W05").toLowerCase() ||
+            user_status_code.toLowerCase() == ("W06").toLowerCase() ||
+            user_status_code.toLowerCase() == ("W07").toLowerCase() ||
+
+            user_status_code.toLowerCase() == ("W10").toLowerCase() ||
+            user_status_code.toLowerCase() == ("W11").toLowerCase() ||
+            user_status_code.toLowerCase() == ("W12").toLowerCase() ||
+            user_status_code.toLowerCase() == ("W13").toLowerCase() ||
+            user_status_code.toLowerCase() == ("W14").toLowerCase()
+
         ) {
             var list = json.preset.status_list;
             for (var i = 0; i < list.length; i++) {

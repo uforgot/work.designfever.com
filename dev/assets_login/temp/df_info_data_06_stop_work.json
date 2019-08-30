@@ -57,7 +57,7 @@
       "workingTime_forThisWeek": 28800000,
       "workingTime_forThisMonth": 28800000,
       "workingTime_forThisMonthMax": null,
-      "aworkingTime_forThisMonthLimit": 588000000
+      "workingTime_forThisMonthMin": 588000000
     }
   },
 

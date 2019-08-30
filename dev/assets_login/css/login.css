@@ -1076,11 +1076,11 @@ a:focus, button:focus, input[type="submit"]:focus {
     color: #009494;
 }
 
-.wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt .value-txt.total{
+.wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt .value-txt.total-min{
     color: #00BFBF;
 }
 
-.wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt .value-txt.limit{
+.wrapper .sec-login .wrapper-startStop .area-working-time .txt-wrapper .time-txt .value-txt.total-max{
     color: #BF5E00;
 }
 
