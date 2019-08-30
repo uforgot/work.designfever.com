@@ -1,0 +1,671 @@
+@charset "utf-8"
+
+@import "bulma/utilities/initial-variables"
+@import "df/df-util"
+
+// util
+// helper
+.blind
+  position: absolute !important
+  left: -9999px !important
+  top: -9999px !important
+  font-size: 0
+
+// color
+.is-bg-lighten
+  background: #fafafa
+
+// align
+.groups
+  &.inline-fields
+    .i-field
+      display: inline-block
+      vertical-align: middle
+      margin-bottom: 0
+
+.is-rounded
+  overflow: hidden
+  border-radius: 6px
+
+.is-flex-wrap
+  flex-wrap: wrap
+.is-mt-0
+  margin-top: 0 !important
+.is-mb-0
+  margin-bottom: 0 !important
+.is-mb-1
+  margin-bottom: 0.25rem !important
+.is-mb-50
+  margin-bottom: 50px !important
+.is-fullwidth
+  width: 100%
+
+
+
+
++break-max(1087.3px)
+  .is-mobile-tablet-block
+    display: block !important
+
+  .is-tablet-flex-wrap
+    flex-wrap: wrap
+
+.is-flex-vertical-middle
+  align-items: center
+
+.is-grow-1,
+.is-mobile-grow-1
+  flex-grow: 1
+
+.select select
+  width: 100%
+// tablet~
++break-min(768.3px)
+  .is-tbl-pc-mb-0
+    margin-bottom: 0 !important
+  .is-tbl-pc-pb-0
+    padding-bottom: 0 !important
+
++breakpoint(mobile)
+  .is-mobile-x-1
+    padding-left: 0.25rem !important
+    padding-right: 0.25rem !important
+
+  .is-mobile-x-2
+    padding-left: 0.5rem !important
+    padding-right: 0.5rem !important
+
+  .is-mobile-pt-0
+    padding-top: 0 !important
+  .is-mobile-pt-1
+    padding-top: 0.25rem !important
+
+  .is-mobile-pb-0
+    padding-bottom: 0 !important
+  .is-mobile-pb-1
+    padding-bottom: 0.25rem !important
+  .is-mobile-pl-0
+    padding-left: 0 !important
+  .is-mobile-pl-1
+    padding-left: 0.25em !important
+  .is-mobile-pr-0
+    padding-right: 0 !important
+  .is-mobile-pr-1
+    padding-right: 0.25em !important
+
+
+  .is-mobile-mt-0
+    margin-top: 0 !important
+  .is-mobile-mt-1
+    margin-top: 0.25rem !important
+
+  .is-mobile-mb-0
+    margin-bottom: 0 !important
+  .is-mobile-mb-1
+    margin-bottom: 0.25rem !important
+
+// 모달 재설정
+.modal
+  &.top-align
+    align-items: start
+    padding: 50px 0 20px
+  .modal-card
+    max-height: calc(100vh - 58px)
+  .modal-card-body
+    min-width: 100%
+
+    +breakpoint(mobile)
+      padding: 20px !important
+
+    +break-max(480px)
+      .tbl-form-box
+        .approval-line-list
+          height: auto !important
+          flex-wrap: wrap
+
+          .column
+            min-width: 50px !important
+            &:nth-child(5)
+              //margin-left: 0
+              margin-top: 0.25rem
+
+
+// 상단, 접속 정보 노출 영역 텍스트 스타일 수정
+.navbar-brand .navbar-item, .navbar-tabs .navbar-item
+  white-space: nowrap
+
+// 에디터영역 예외처리
+.content.editor
+  // 에디터에서 사용되는 템플릿 표의 테이블 최대 크기 정의
+  .columns
+    .column > div
+      table
+        max-width: 94%
+
+        // 테이블 템플릿
+        &.tpl-table
+          border: 1px solid #dbdbdb
+          th
+            background-color: #f6f6f6
+
+        img
+          max-width: 100%
+          height: auto !important
+
+        +break-max(480px)
+          max-width: 90%
+
+
+
+// 테이블 레이아웃을 반응형 타입으로 변경
+// 20190228 jj
+
+.btn-wrapper
+  .has-icon
+    svg
+      transition: all 0.25s
+      transform-origin: center
+      path
+        fill: #5a5a5a
+    .label
+      margin-left: 0.25rem
+      margin-right: 0.25rem
+      color: #5a5a5a
+    &:hover
+      svg
+        path
+          fill: #000
+      .label
+        color: #000
+
+.tbl-form-box
+  .control, .field, label
+    font-weight: normal
+  .column
+    flex-basis: 0
+    flex-grow: 1
+    flex-shrink: 1
+
+  .is-checkradio + label
+    white-space: nowrap
+
+
+  .inbox-title
+    position: relative
+    background: whitesmoke
+    border-radius: 0.15em
+
+    .column
+      display: flex
+      align-items: center
+
+      &:nth-of-type(2)
+        padding: 0
+
+    h1
+      margin-bottom:  0
+      font-size: 1.75rem
+      .label-txt
+        display: block
+        padding: 0.15em 0.25em
+
+    .btn-remove
+      display: block
+      position: absolute
+      top: 12px
+      right: 12px
+      //width: 25px
+      //height: 25px
+      color: #000
+      svg
+        width: 100%
+        height: 100%
+      &:hover
+        color: darkred
+
+    +breakpoint(mobile)
+      .column
+        padding: 0.5rem
+      h1
+        font-size: 1.25rem
+        .label-txt
+          padding: 0
+      .btn-remove
+        top: 5px
+        right: 5px
+        height: auto
+        line-height: 0
+        //width: 15px
+        //height: 15px
+        .is-small
+          width: 1em
+          height: 1em
+
+  .inbox-subtitle
+    margin-bottom: 0
+    h2
+      margin-bottom: 0.25em
+      font-size: 1.5rem
+
+    +breakpoint(mobile)
+      .column
+      h2
+        font-size: 1.25rem
+
+  //박스내 탭 스타일
+  .inbox-tabs
+    display: flex
+    align-items: center
+    width: 100%
+
+    .tbl-form-tit
+      padding-bottom:  0
+      padding-right: 0.25em
+      &:after
+        display: inline
+        content: ':'
+
+    ul,li
+      margin: 0
+
+    li
+      position: relative
+      overflow: hidden
+
+      &:first-child
+        label
+          border-radius: 4px 0 0 4px
+      &:last-child
+        label
+          border-radius: 0 4px 4px 0
+
+      input
+        position: absolute
+        left: 0
+        top: 0
+
+      label
+        display: flex
+        align-items: center
+        border: 1px solid #dbdbdb
+        background: #fff
+        position: relative
+        color: #4a4a4a
+        justify-content: center
+        margin-bottom: 0
+        padding: 0.5em 1em
+        vertical-align: top
+        font-weight: bold
+        cursor: pointer
+
+        &:hover
+          background-color: whitesmoke
+          border-color: #b5b5b5
+          z-index: 2
+
+      input:checked + label
+        background-color: #3273dc
+        border-color: #3273dc
+        color: #fff
+        z-index: 1
+
+  .inline-fields
+    display: flex
+    flex-wrap: wrap
+    .i-field
+      display: flex
+      align-items: center
+      font-style: normal
+      font-weight: normal
+
+      &:not(:first-child)
+        margin-left: 2em
+
+      &.lf-1-2:not(:first-child)
+        margin-left: 1em
+      &.lf-1-4:not(:first-child)
+        margin-left: 0.5em
+
+      &.ns
+        margin-left: 0 !important
+
+      .child
+        margin-left: 0.25em
+        margin-right: 0.25em
+        &:first-child
+          margin-left: 0
+          margin-right: 0.35em
+
+    &.is-full-in-column
+      display: block
+      .i-field
+        &:not(:first-child)
+        margin-left: 0
+        margin-top: 0.25em
+
+      label
+        width: 100px
+      input
+        width: 100% !important
+
+
+    &.yymmdd
+      .i-field
+        &:not(:first-child)
+          margin-left: 0.25em
+
+  +breakpoint(mobile)
+    .inline-fields
+      &.is-mobile
+        display: block
+        .i-field
+          &:not(:first-child)
+          margin-left: 0
+          margin-top: 0.25em
+
+      &.is-mobile-full-in-column
+        display: block
+        .i-field
+          &:not(:first-child)
+          margin-left: 0
+          margin-top: 0.25em
+
+        label
+          width: 100px
+        input
+          width: 100% !important
+
+
+  // 결제문서 상단 공통
+  &.approval-common
+
+  //문서정보
+  .document-info
+    display: flex
+    align-items: center
+    .columns:first-of-type
+      .select
+        width: 100%
+    .form-info
+      display: block
+      flex-wrap: wrap
+      .column
+        display: inline-block
+      .column:first-of-type
+        flex-grow: 0
+        flex-shrink: 0
+    +breakpoint(mobile)
+
+
+    .column
+      display: flex
+      padding-top: 0.5rem
+      padding-bottom: 0.5rem
+      align-items: center
+      flex-basis: auto
+
+      .tit, .control
+        display: inline-block
+        vertical-align: middle
+        white-space: nowrap
+
+      .tit
+        &:after
+          margin: 0 0.25rem
+          content: ':'
+
+      .control
+        font-weight: normal
+
+
+
+    +breakpoint(mobile)
+      padding-top: 1.6rem
+      padding-bottom: 1.6rem
+      .columns:first-of-type
+        .select
+          width: 100%
+
+
+      .column
+        padding-top: 0.25rem
+        padding-bottom: 0.25rem
+
+
+  .tbl-form-tit
+    display: block
+    padding-bottom: 0.5em
+    font-size: 1rem
+
+    &.is-next-chk
+      margin-bottom: 0.5em
+
+  .box-approval
+    height: 100%
+    padding-bottom: 0.85rem
+
+    .title
+      margin-bottom: 0.75rem
+
+    +breakpoint(mobile)
+      height: auto
+
+
+  // 결제라인
+  .approval-line
+    .inner-wrap
+      .approval-line-list
+        display: flex
+        align-items: center
+        //justify-content: space-around
+        justify-content: end
+        height: 80px
+        margin-bottom: 0.75rem
+
+        +breakpoint(mobile)
+          overflow: hidden
+          overflow-x: auto
+
+        .column
+          min-width: 60px
+          height: 100%
+          padding: 0
+          margin-left: 2.5%
+
+          &:first-child
+            margin-left: 0
+
+        .item
+          position: relative
+          display: flex
+          flex-direction: column
+          border: 1px solid #eaeaea
+          border-radius: 4px
+          background-color: #f6f6f6
+          height: 100%
+          justify-content: center
+          align-items: center
+          padding-bottom: calc(0.75em - 1px)
+          padding-left: 0.75em
+          padding-right: 0.75em
+          padding-top: calc(0.75em - 1px)
+          text-align: center
+          white-space: nowrap
+          line-height: 1
+          color: #000
+
+          &.tooltip
+            &:before
+              display: none
+              bottom: 60%
+              background-color: rgba(#000, 0.45)
+              padding: 0.4em
+              border-radius: 2px
+            &:after
+              display: none
+
+          span
+            display: block
+            &.pos
+              font-size: 0.75rem
+            &.signature-name
+              position: relative
+              display: block
+              font-size: 1rem
+              line-height: 1.8
+              width: 50px
+              height: 50px
+
+              i.txt
+                display: flex
+                width: inherit
+                height: inherit
+                border: solid 1px transparent
+                border-radius: 50%
+                align-items: center
+                justify-content: center
+                font-style: normal
+
+              i.sign
+                display: none
+                position: absolute
+                left: 0
+                top: -8px
+                width: inherit
+                height: inherit
+                background: url('../images/icons/checkbox-marked-circle-outline.svg') no-repeat center center
+                background-size: 100%
+
+
+                &:after
+                  display: none
+                  content: ''
+                  position: absolute
+                  left: 0
+                  top: 0
+                  width: inherit
+                  height: inherit
+                  border: 1px solid red
+                  border-radius: 50%
+
+          &.is-completed
+            background-color: #fff
+            border-color: #ddd
+            //background: #eaeaea
+            cursor: default
+            color: red
+            //pointer-events: none
+
+            &.tooltip
+              &:before
+                display: block
+            span
+              &.signature-name
+                i.sign
+                  display: block
+                  &:after
+                    //display: block
+                i.txt
+                  display: block
+                  height: auto
+                  position: absolute
+                  bottom: -11px
+                  font-size: 0.8em
+
+            &.has-sign
+              i.txt
+
+              i.sign
+                &:after
+                  display: none !important
+
+          &.is-active
+            background-color: #fff
+            border-color: #2366d1
+            color: #2366d1
+            cursor: default
+
+            &:hover
+              color: #2366d1
+              &.tooltip
+                &:before
+                  display: block
+                  content: '미결제'
+
+          &.is-inactive
+            opacity: 0.5
+            cursor: default
+            pointer-events: none
+
+        a.item:not(.is-completed)
+          &:hover
+            color: #000
+            border-color: #2366d1
+
+
+
+        +breakpoint(mobile)
+
+  // 휴가자 지정 결제폼
+  .vacation-members
+    .columns
+      display: block
+      font-size: 0
+      padding-bottom: 0.75rem
+      .column
+        display: inline-block
+        padding-bottom: 0
+        font-size: 1rem
+
+    +breakpoint(mobile)
+      .columns
+        .column
+          width: 50%
+
+
+
+// 보기페이지
+.tbl-form-box.mode-view-page
+  .content, .box, .tab-contents
+    > .columns:not(.no-underline)
+      border-bottom: 1px solid #f6f6f6
+    > .columns:last-of-type
+      border-bottom-color: transparent
+
+  input[type="radio"],
+  input[type="checkbox"]
+    opacity: 0
+    left: -9999px
+    &:hover + label
+      &:before
+        border-color: #dbdbdb !important
+
+    & + label
+      pointer-events: none
+      cursor: default
+  .is-checkradio
+    &:not(:checked) + label
+      opacity: 0.4
+  input[readonly] + label,
+  label + input[readonly]
+    pointer-events: none
+    cursor: default
+    border-color: #eee
+
+  .tabs li input:not(:checked) + label
+    opacity: 0.4
+    background: #eee
+
+
+
++breakpoint(mobile)
+  .content, .box, .tab-contents
+    > .columns
+      border-bottom-color: transparent !important
+
+
+
+
+
+
+
